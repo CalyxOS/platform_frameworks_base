@@ -665,6 +665,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private boolean mHandleVolumeKeysInWM;
 
+    boolean mVolumeAnswerCall;
+
     private boolean mPendingKeyguardOccluded;
     private boolean mKeyguardOccludedChanged;
 
@@ -998,6 +1000,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(LineageSettings.System.getUriFor(
                     LineageSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(LineageSettings.System.getUriFor(
+                    LineageSettings.System.VOLUME_ANSWER_CALL), false, this,
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -3243,6 +3248,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mTorchTimeout = LineageSettings.System.getIntForUser(
                     resolver, LineageSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0,
                     UserHandle.USER_CURRENT);
+            mVolumeAnswerCall = LineageSettings.System.getIntForUser(
+                    resolver, LineageSettings.System.VOLUME_ANSWER_CALL, 0,
+                    UserHandle.USER_CURRENT) == 1;
 
             // Configure wake gesture.
             boolean wakeGestureEnabledSetting = Settings.Secure.getIntForUser(resolver,
@@ -5529,6 +5537,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         // When {@link #mHandleVolumeKeysInWM} is set, volume key events
                         // should be dispatched to WM.
                         if (telecomManager.isRinging()) {
+                            if (mVolumeAnswerCall) {
+                                telecomManager.acceptRingingCall();
+                            }
+
                             // If an incoming call is ringing, either VOLUME key means
                             // "silence ringer".  We handle these keys here, rather than
                             // in the InCallScreen, to make sure we'll respond to them
