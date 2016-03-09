@@ -187,6 +187,9 @@ import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.utils.PriorityDump;
 import com.android.server.wm.WindowManagerInternal;
 
+import lineageos.hardware.LineageHardwareManager;
+import lineageos.providers.LineageSettings;
+
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -405,6 +408,8 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
     @Nullable
     @MultiUserUnawareField
     Future<?> mImeDrawsImeNavBarResLazyInitFuture;
+
+    private LineageHardwareManager mLineageHardware;
 
     private final ImeTracing.ServiceDumper mDumper = new ImeTracing.ServiceDumper() {
         /**
@@ -752,6 +757,12 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE), false, this, userId);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     STYLUS_HANDWRITING_ENABLED), false, this);
+            if (mLineageHardware.isSupported(
+                    LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                resolver.registerContentObserver(LineageSettings.System.getUriFor(
+                        LineageSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE),
+                        false, this, userId);
+            }
             mRegistered = true;
         }
 
@@ -763,6 +774,8 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     Settings.Secure.ACCESSIBILITY_SOFT_KEYBOARD_MODE);
             final Uri stylusHandwritingEnabledUri = Settings.Secure.getUriFor(
                     STYLUS_HANDWRITING_ENABLED);
+            final Uri touchSensitivityUri = LineageSettings.System.getUriFor(
+                    LineageSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
             synchronized (ImfLock.class) {
                 if (showImeUri.equals(uri)) {
                     mMenuController.updateKeyboardFromSettingsLocked();
@@ -784,6 +797,8 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     InputMethodManager.invalidateLocalStylusHandwritingAvailabilityCaches();
                     InputMethodManager
                             .invalidateLocalConnectionlessStylusHandwritingAvailabilityCaches();
+                } else if (touchSensitivityUri.equals(uri)) {
+                    updateTouchSensitivity();
                 } else {
                     boolean enabledChanged = false;
                     String newEnabled = InputMethodSettingsRepository.get(mCurrentUserId)
@@ -1479,6 +1494,8 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     newSettings.getEnabledInputMethodList());
         }
 
+        updateTouchSensitivity();
+
         if (DEBUG) {
             Slog.d(TAG, "Switching user stage 3/3. newUserId=" + newUserId
                     + " selectedIme=" + newSettings.getSelectedInputMethod());
@@ -1505,6 +1522,12 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
             if (!mSystemReady) {
                 mSystemReady = true;
                 final int currentUserId = mCurrentUserId;
+
+                // Must happen before registerContentObserverLocked
+                mLineageHardware = LineageHardwareManager.getInstance(mContext);
+
+                updateTouchSensitivity();
+
                 mStatusBarManagerInternal =
                         LocalServices.getService(StatusBarManagerInternal.class);
                 hideStatusBarIconLocked();
@@ -3060,6 +3083,15 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     settings.getMethodMap(), userId);
         }
         sendOnNavButtonFlagsChangedLocked();
+    }
+
+    private void updateTouchSensitivity() {
+        if (!mLineageHardware.isSupported(LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+            return;
+        }
+        final boolean enabled = LineageSettings.System.getInt(mContext.getContentResolver(),
+                LineageSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE, 0) == 1;
+        mLineageHardware.set(LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled);
     }
 
     @GuardedBy("ImfLock.class")
