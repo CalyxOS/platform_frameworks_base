@@ -681,7 +681,7 @@ public final class DefaultPermissionGrantPolicy {
                         Intent.CATEGORY_APP_EMAIL, userId),
                 userId, CONTACTS_PERMISSIONS, CALENDAR_PERMISSIONS);
 
-        // Browser
+        /* Browser
         String browserPackage = ArrayUtils.firstOrNull(getKnownPackages(
                 PackageManagerInternal.PACKAGE_BROWSER, userId));
         if (browserPackage == null) {
@@ -691,8 +691,9 @@ public final class DefaultPermissionGrantPolicy {
                 browserPackage = null;
             }
         }
-        grantPermissionsToPackage(pm, browserPackage, userId, false /* ignoreSystemPackage */,
-                true /*whitelistRestrictedPermissions*/, FOREGROUND_LOCATION_PERMISSIONS);
+        grantPermissionsToPackage(pm, browserPackage, userId, false, true,
+                FOREGROUND_LOCATION_PERMISSIONS);
+        */
 
         // Voice interaction
         if (voiceInteractPackageNames != null) {
