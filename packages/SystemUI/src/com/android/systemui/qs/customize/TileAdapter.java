@@ -342,6 +342,12 @@ public class TileAdapter extends RecyclerView.Adapter<Holder> implements TileSta
                     }
                 });
             }
+        } else {
+            holder.mTileView.setClickable(selectable);
+            if (selectable) {
+                holder.mTileView.setOnClickListener(v -> move(holder.getAdapterPosition(),
+                        mEditIndex));
+            }
         }
         if (position == mFocusIndex) {
             focusOnHolder(holder);
