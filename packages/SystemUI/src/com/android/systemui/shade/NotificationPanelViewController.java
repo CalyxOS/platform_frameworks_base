@@ -224,7 +224,6 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcherController;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcherView;
 import com.android.systemui.statusbar.policy.OnHeadsUpChangedListener;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
-import com.android.systemui.tuner.TunerService;
 import com.android.systemui.unfold.SysUIUnfoldComponent;
 import com.android.systemui.util.Compile;
 import com.android.systemui.util.LargeScreenUtils;
@@ -316,6 +315,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             new ShadeHeadsUpChangedListener();
     private final ConfigurationListener mConfigurationListener = new ConfigurationListener();
     private final SettingsChangeObserver mSettingsChangeObserver;
+    private final ContentObserver mDoubleTapToSleepObserver;
     private final StatusBarStateListener mStatusBarStateListener = new StatusBarStateListener();
     private final NotificationPanelView mView;
     private final VibratorHelper mVibratorHelper;
@@ -363,8 +363,6 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private final KeyguardRootView mKeyguardRootView;
     private final QuickSettingsController mQsController;
     private final TouchHandler mTouchHandler = new TouchHandler();
-    private final TunerService mTunerService;
-
     private long mDownTime;
     private boolean mTouchSlopExceededBeforeDown;
     private boolean mIsLaunchAnimationRunning;
@@ -785,7 +783,6 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             KeyguardViewConfigurator keyguardViewConfigurator,
             KeyguardFaceAuthInteractor keyguardFaceAuthInteractor,
             KeyguardRootView keyguardRootView,
-            TunerService tunerService,
             Context context) {
         keyguardStateController.addCallback(new KeyguardStateController.Callback() {
             @Override
@@ -883,7 +880,6 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                 LargeScreenUtils.shouldUseSplitNotificationShade(mResources);
         mView.setWillNotDraw(!DEBUG_DRAWABLE);
         mShadeHeaderController = shadeHeaderController;
-        mTunerService = tunerService;
         mLayoutInflater = layoutInflater;
         mFeatureFlags = featureFlags;
         mAnimateBack = mFeatureFlags.isEnabled(Flags.WM_SHADE_ANIMATE_BACK_GESTURE);
@@ -936,6 +932,19 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                 return true;
             }
         });
+        mDoubleTapToSleepEnabled = LineageSettings.System.getInt(mContentResolver,
+                LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                mResources.getBoolean(org.lineageos.platform.internal.R.bool.
+                        config_dt2sGestureEnabledByDefault) ? 1 : 0) != 0;
+        mDoubleTapToSleepObserver = new ContentObserver(handler) {
+            @Override
+            public void onChange(boolean selfChange) {
+                mDoubleTapToSleepEnabled = LineageSettings.System.getInt(mContentResolver,
+                        LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                        mResources.getBoolean(org.lineageos.platform.internal.R.bool.
+                                config_dt2sGestureEnabledByDefault) ? 1 : 0) != 0;
+            }
+        };
         mConversationNotificationManager = conversationNotificationManager;
         mAuthController = authController;
         mLockIconViewController = lockIconViewController;
@@ -1002,6 +1011,19 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         mAlternateBouncerInteractor = alternateBouncerInteractor;
         mKeyguardRootView = keyguardRootView;
         dumpManager.registerDumpable(this);
+
+        mContentResolver.registerContentObserver(
+                LineageSettings.System.getUriFor(LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE),
+                false,
+                new ContentObserver(handler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        mDoubleTapToSleepEnabled = LineageSettings.System.getInt(mContentResolver,
+                                LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                                mResources.getBoolean(org.lineageos.platform.internal.R.bool.
+                                        config_dt2sGestureEnabledByDefault) ? 1 : 0) != 0;
+                    }
+                });
     }
 
     private void unlockAnimationFinished() {
@@ -4670,8 +4692,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         positionClockAndNotifications(true /* forceUpdate */);
     }
 
-    private final class ShadeAttachStateChangeListener implements View.OnAttachStateChangeListener,
-            TunerService.Tunable {
+    private final class ShadeAttachStateChangeListener implements View.OnAttachStateChangeListener {
         @Override
         public void onViewAttachedToWindow(View v) {
             mFragmentService.getFragmentHostManager(mView)
@@ -4679,7 +4700,9 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             mStatusBarStateController.addCallback(mStatusBarStateListener);
             mStatusBarStateListener.onStateChanged(mStatusBarStateController.getState());
             mConfigurationController.addCallback(mConfigurationListener);
-            mTunerService.addTunable(this, DOUBLE_TAP_SLEEP_GESTURE);
+            mContentResolver.registerContentObserver(LineageSettings.System.getUriFor(
+                            LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE), false,
+                    mDoubleTapToSleepObserver);
             // Theme might have changed between inflating this view and attaching it to the
             // window, so
             // force a call to onThemeChanged
@@ -4691,22 +4714,13 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
 
         @Override
         public void onViewDetachedFromWindow(View v) {
+            mContentResolver.unregisterContentObserver(mDoubleTapToSleepObserver);
             mContentResolver.unregisterContentObserver(mSettingsChangeObserver);
             mFragmentService.getFragmentHostManager(mView)
                     .removeTagListener(QS.TAG, mQsController.getQsFragmentListener());
             mStatusBarStateController.removeCallback(mStatusBarStateListener);
             mConfigurationController.removeCallback(mConfigurationListener);
-            mTunerService.removeTunable(this);
             mFalsingManager.removeTapListener(mFalsingTapListener);
-        }
-
-        @Override
-        public void onTuningChanged(String key, String newValue) {
-            if (DOUBLE_TAP_SLEEP_GESTURE.equals(key)) {
-                mDoubleTapToSleepEnabled = TunerService.parseIntegerSwitch(newValue,
-                        mResources.getBoolean(org.lineageos.platform.internal.R.bool.
-                                config_dt2sGestureEnabledByDefault));
-            }
         }
     }
 
