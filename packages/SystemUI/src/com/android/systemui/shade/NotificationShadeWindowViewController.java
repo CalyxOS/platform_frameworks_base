@@ -255,7 +255,6 @@ public class NotificationShadeWindowViewController {
                 mPulsingGestureListener);
         mQQSGestureHandler = new GestureDetector(mView.getContext(),
                 mQQSGestureListener);
-
         if (mFeatureFlags.isEnabled(LOCKSCREEN_WALLPAPER_DREAM_ENABLED)) {
             mDreamingWakeupGestureHandler = new GestureDetector(mView.getContext(),
                     mLockscreenHostedDreamGestureListener);
