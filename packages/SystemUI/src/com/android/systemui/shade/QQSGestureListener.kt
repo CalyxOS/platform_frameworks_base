@@ -16,49 +16,43 @@
 
 package com.android.systemui.shade
 
-import android.content.res.Resources
+import android.content.Context
+import android.database.ContentObserver
 import android.os.PowerManager
 import android.view.GestureDetector
 import android.view.MotionEvent
-import com.android.systemui.dagger.qualifiers.Main
 import com.android.systemui.dagger.SysUISingleton
 import com.android.systemui.plugins.FalsingManager
 import com.android.systemui.plugins.statusbar.StatusBarStateController
-import com.android.systemui.tuner.TunerService
-import com.android.systemui.tuner.TunerService.Tunable
 import lineageos.providers.LineageSettings
-
 import javax.inject.Inject
 
 @SysUISingleton
 class QQSGestureListener @Inject constructor(
+        private val context: Context,
         private val falsingManager: FalsingManager,
         private val powerManager: PowerManager,
         private val statusBarStateController: StatusBarStateController,
-        tunerService: TunerService,
-        @Main resources: Resources
 ) : GestureDetector.SimpleOnGestureListener() {
-
-    companion object {
-        internal val DOUBLE_TAP_SLEEP_GESTURE =
-                "lineagesystem:" + LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE
-    }
 
     private var doubleTapToSleepEnabled = false
     private val quickQsOffsetHeight: Int
 
     init {
-        val tunable = Tunable { key: String?, value: String? ->
-            when (key) {
-                DOUBLE_TAP_SLEEP_GESTURE ->
-                    doubleTapToSleepEnabled = TunerService.parseIntegerSwitch(value,
-                            resources.getBoolean(org.lineageos.platform.internal.R.bool.
-                                    config_dt2sGestureEnabledByDefault))
+        val contentObserver = object : ContentObserver(null) {
+            override fun onChange(selfChange: Boolean) {
+                doubleTapToSleepEnabled = LineageSettings.System.getInt(
+                        context.contentResolver, LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                        if (context.resources.getBoolean(org.lineageos.platform.internal.
+                                R.bool.config_dt2sGestureEnabledByDefault)) 1 else 0) != 0
             }
         }
-        tunerService.addTunable(tunable, DOUBLE_TAP_SLEEP_GESTURE)
+        context.contentResolver.registerContentObserver(
+                LineageSettings.System.getUriFor(LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE),
+                false, contentObserver)
+        contentObserver.onChange(true)
 
-        quickQsOffsetHeight = resources.getDimensionPixelSize(
+        quickQsOffsetHeight = context.resources.getDimensionPixelSize(
                 com.android.internal.R.dimen.quick_qs_offset_height)
     }
 
