@@ -57,13 +57,10 @@ public class TunerFragment extends PreferenceFragment {
 
     private static final int MENU_REMOVE = Menu.FIRST + 1;
 
-    private final TunerService mTunerService;
-
     // We are the only ones who ever call this constructor, so don't worry about the warning
     @SuppressLint("ValidFragment")
-    public TunerFragment(TunerService tunerService) {
+    public TunerFragment() {
         super();
-        mTunerService = tunerService;
     }
 
     @Override
@@ -99,13 +96,6 @@ public class TunerFragment extends PreferenceFragment {
             for (int i = 0; i < DEBUG_ONLY.length; i++) {
                 Preference preference = findPreference(DEBUG_ONLY[i]);
                 if (preference != null) getPreferenceScreen().removePreference(preference);
-            }
-        }
-
-        if (Settings.Secure.getInt(getContext().getContentResolver(), SETTING_SEEN_TUNER_WARNING,
-                0) == 0) {
-            if (getFragmentManager().findFragmentByTag(WARNING_TAG) == null) {
-                new TunerWarningFragment().show(getFragmentManager(), WARNING_TAG);
             }
         }
     }

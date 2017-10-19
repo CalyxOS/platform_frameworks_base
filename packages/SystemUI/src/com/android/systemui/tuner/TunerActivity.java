@@ -44,18 +44,15 @@ public class TunerActivity extends Activity implements
     private static final String TAG_TUNER = "tuner";
 
     private final DemoModeController mDemoModeController;
-    private final TunerService mTunerService;
     private final GlobalSettings mGlobalSettings;
 
     @Inject
     TunerActivity(
             DemoModeController demoModeController,
-            TunerService tunerService,
             GlobalSettings globalSettings
     ) {
         super();
         mDemoModeController = demoModeController;
-        mTunerService = tunerService;
         mGlobalSettings = globalSettings;
     }
 
@@ -73,11 +70,15 @@ public class TunerActivity extends Activity implements
 
         if (getFragmentManager().findFragmentByTag(TAG_TUNER) == null) {
             final String action = getIntent().getAction();
-            boolean showDemoMode = action != null && action.equals(
-                    "com.android.settings.action.DEMO_MODE");
-            final PreferenceFragment fragment = showDemoMode
-                    ? new DemoModeFragment(mDemoModeController, mGlobalSettings)
-                    : new TunerFragment(mTunerService);
+            final Fragment fragment;
+            if ("com.android.settings.action.DEMO_MODE".equals(action)) {
+                fragment = new DemoModeFragment(mDemoModeController, mGlobalSettings);
+            } else if ("com.android.settings.action.STATUS_BAR_TUNER".equals(action)) {
+                fragment = new StatusBarTuner();
+            } else {
+                fragment = new TunerFragment();
+            }
+
             getFragmentManager().beginTransaction().replace(R.id.content_frame,
                     fragment, TAG_TUNER).commit();
         }
