@@ -624,6 +624,7 @@ android_library {
         "-Adagger.useBindingGraphFix=ENABLED",
     ],
     manifest: "AndroidManifest.xml",
+    additional_manifests: ["LineageManifest.xml"],
 }
 
 filegroup {
