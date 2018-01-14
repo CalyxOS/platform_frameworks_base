@@ -87,6 +87,7 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
     private final NotificationWakeUpCoordinator mWakeUpCoordinator;
 
     private final View mClockView;
+    private final View mCenteredView;
     private final Optional<View> mOperatorNameViewOptional;
 
     @VisibleForTesting
@@ -122,12 +123,14 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
             FeatureFlags featureFlags,
             HeadsUpStatusBarView headsUpStatusBarView,
             Clock clockView,
-            @Named(OPERATOR_NAME_FRAME_VIEW) Optional<View> operatorNameViewOptional) {
+            @Named(OPERATOR_NAME_FRAME_VIEW) Optional<View> operatorNameViewOptional,
+            View centeredView) {
         super(headsUpStatusBarView);
         mNotificationIconAreaController = notificationIconAreaController;
         mNotificationRoundnessManager = notificationRoundnessManager;
         mUseRoundnessSourceTypes = featureFlags.isEnabled(Flags.USE_ROUNDNESS_SOURCETYPES);
         mHeadsUpManager = headsUpManager;
+        mCenteredView = centeredView;
 
         // We may be mid-HUN-expansion when this controller is re-created (for example, if the user
         // has started pulling down the notification shade from the HUN and then the font size
@@ -238,9 +241,15 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 mView.setVisibility(View.VISIBLE);
                 show(mView);
                 hide(mClockView, View.INVISIBLE);
+                if (mCenteredView.getVisibility() != View.GONE) {
+                    hide(mCenteredView, View.INVISIBLE);
+                }
                 mOperatorNameViewOptional.ifPresent(view -> hide(view, View.INVISIBLE));
             } else {
                 show(mClockView);
+                if (mCenteredView.getVisibility() != View.GONE) {
+                    show(mCenteredView);
+                }
                 mOperatorNameViewOptional.ifPresent(this::show);
                 hide(mView, View.GONE, () -> {
                     updateParentClipping(true /* shouldClip */);
