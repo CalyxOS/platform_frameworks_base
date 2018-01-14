@@ -171,6 +171,10 @@ public class SecureSettings {
         Settings.Secure.ASSIST_HANDLES_LEARNING_TIME_ELAPSED_MILLIS,
         Settings.Secure.ASSIST_HANDLES_LEARNING_EVENT_COUNT,
         Settings.Secure.PANIC_IN_POWER_MENU,
-        Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS
+        Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
+        Settings.Secure.NETWORK_TRAFFIC_MODE,
+        Settings.Secure.NETWORK_TRAFFIC_AUTOHIDE,
+        Settings.Secure.NETWORK_TRAFFIC_UNITS,
+        Settings.Secure.NETWORK_TRAFFIC_SHOW_UNITS
     };
 }
