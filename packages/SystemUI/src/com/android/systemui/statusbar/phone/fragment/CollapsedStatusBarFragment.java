@@ -109,6 +109,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private View mClockView;
     private View mOngoingCallChip;
     private View mNotificationIconAreaInner;
+    private View mNetworkTrafficHolder;
     // Visibilities come in from external system callers via disable flags, but we also sometimes
     // modify the visibilities internally. We need to store both so that we don't accidentally
     // propagate our internally modified flags for too long.
@@ -297,6 +298,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         updateBlockedIcons();
         mStatusBarIconController.addIconGroup(mDarkIconManager);
         mEndSideContent = mStatusBar.findViewById(R.id.status_bar_end_side_content);
+        mNetworkTrafficHolder = mStatusBar.findViewById(R.id.network_traffic_holder);
         mClockView = mStatusBar.findViewById(R.id.clock);
         mOngoingCallChip = mStatusBar.findViewById(R.id.ongoing_call_chip);
         showEndSideContent(false);
@@ -594,6 +596,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     private void hideEndSideContent(boolean animate) {
         animateHide(mEndSideContent, animate);
+        animateHide(mNetworkTrafficHolder, animate);
     }
 
     private void showEndSideContent(boolean animate) {
@@ -601,6 +604,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         int state = mAnimationScheduler.getAnimationState();
         if (state == IDLE || state == SHOWING_PERSISTENT_DOT) {
             animateShow(mEndSideContent, animate);
+            animateShow(mNetworkTrafficHolder, animate);
         } else {
             // We are in the middle of a system status event animation, which will animate the
             // alpha (but not the visibility). Allow the view to become visible again
