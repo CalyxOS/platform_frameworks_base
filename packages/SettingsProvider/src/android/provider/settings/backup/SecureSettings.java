@@ -173,5 +173,9 @@ public class SecureSettings {
         Settings.Secure.PANIC_IN_POWER_MENU,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
         Settings.Secure.BERRY_BLACK_THEME,
+        Settings.Secure.NETWORK_TRAFFIC_MODE,
+        Settings.Secure.NETWORK_TRAFFIC_AUTOHIDE,
+        Settings.Secure.NETWORK_TRAFFIC_UNITS,
+        Settings.Secure.NETWORK_TRAFFIC_SHOW_UNITS,
     };
 }
