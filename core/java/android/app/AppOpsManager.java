@@ -2282,7 +2282,7 @@ public class AppOpsManager {
             AppOpsManager.MODE_ALLOWED, // WAKE_LOCK
             AppOpsManager.MODE_ALLOWED, // MONITOR_LOCATION
             AppOpsManager.MODE_ALLOWED, // MONITOR_HIGH_POWER_LOCATION
-            AppOpsManager.MODE_DEFAULT, // GET_USAGE_STATS
+            AppOpsManager.MODE_IGNORED, // GET_USAGE_STATS
             AppOpsManager.MODE_ALLOWED, // MUTE_MICROPHONE
             AppOpsManager.MODE_ALLOWED, // TOAST_WINDOW
             AppOpsManager.MODE_IGNORED, // PROJECT_MEDIA
