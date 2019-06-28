@@ -31,6 +31,7 @@ import static android.provider.settings.validators.SettingsValidators.NULLABLE_C
 import static android.provider.settings.validators.SettingsValidators.PACKAGE_NAME_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.TILE_LIST_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.TTS_LIST_VALIDATOR;
+import static android.provider.settings.validators.SettingsValidators.MICROG_DEFAULT_BACKENDS_VALIDATOR;
 
 import android.provider.Settings.Secure;
 import android.util.ArrayMap;
@@ -251,5 +252,8 @@ public class SecureSettingsValidators {
         VALIDATORS.put(
                 Secure.ACCESSIBILITY_BUTTON_TARGETS,
                 ACCESSIBILITY_SHORTCUT_TARGET_LIST_VALIDATOR);
+
+        VALIDATORS.put(Secure.MICROG_DEFAULT_LOCATION_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
+        VALIDATORS.put(Secure.MICROG_DEFAULT_GEOCODER_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
     }
 }

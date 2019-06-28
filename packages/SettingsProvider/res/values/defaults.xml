@@ -240,4 +240,9 @@
 
     <!-- Default for setting for Settings.Global.HDMI_CONTROL_AUTO_DEVICE_OFF_ENABLED -->
     <bool name="def_hdmiControlAutoDeviceOff">false</bool>
+
+    <!-- microG UnifiedNlp default backends
+        format: packagename/componentname/signature|pkg/cmp/sig|.. -->
+    <string name="def_microg_location_backends"></string>
+    <string name="def_microg_geocoder_backends"></string>
 </resources>

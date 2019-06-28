@@ -8929,6 +8929,25 @@ public final class Settings {
         public static final String MEDIA_CONTROLS_RESUME = "qs_media_resumption";
 
         /**
+         * The default location backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_LOCATION_BACKENDS =
+                "default_location_backends";
+
+        /**
+         * The default geocoder backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_GEOCODER_BACKENDS =
+                "default_geocoder_backends";
+
+        private static final Validator MICROG_DEFAULT_BACKENDS_VALIDATOR =
+                ANY_STRING_VALIDATOR; // TODO: Custom validator
+
+        /**
          * Controls if window magnification is enabled.
          * @hide
          */
