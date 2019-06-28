@@ -238,4 +238,9 @@
 
     <!-- Default for Settings.Secure.AWARE_LOCK_ENABLED -->
     <bool name="def_aware_lock_enabled">false</bool>
+
+    <!-- microG UnifiedNlp default backends
+        format: packagename/componentname/signature|pkg/cmp/sig|.. -->
+    <string name="def_microg_location_backends"></string>
+    <string name="def_microg_geocoder_backends"></string>
 </resources>
