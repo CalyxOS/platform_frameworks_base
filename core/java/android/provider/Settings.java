@@ -7929,6 +7929,25 @@ public final class Settings {
                 "packages_to_clear_data_before_full_restore";
 
         /**
+         * The default location backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_LOCATION_BACKENDS =
+                "default_location_backends";
+
+        /**
+         * The default geocoder backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_GEOCODER_BACKENDS =
+                "default_geocoder_backends";
+
+        private static final Validator MICROG_DEFAULT_BACKENDS_VALIDATOR =
+                ANY_STRING_VALIDATOR; // TODO: Custom validator
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -8029,6 +8048,8 @@ public final class Settings {
             VOLUME_HUSH_GESTURE,
             MANUAL_RINGER_TOGGLE_COUNT,
             HUSH_GESTURE_USED,
+            MICROG_DEFAULT_LOCATION_BACKENDS,
+            MICROG_DEFAULT_GEOCODER_BACKENDS,
         };
 
         /**
@@ -8177,6 +8198,8 @@ public final class Settings {
             VALIDATORS.put(MANUAL_RINGER_TOGGLE_COUNT, MANUAL_RINGER_TOGGLE_COUNT_VALIDATOR);
             VALIDATORS.put(LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS, BOOLEAN_VALIDATOR);
             VALIDATORS.put(LOCK_SCREEN_SHOW_NOTIFICATIONS, BOOLEAN_VALIDATOR);
+            VALIDATORS.put(MICROG_DEFAULT_LOCATION_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
+            VALIDATORS.put(MICROG_DEFAULT_GEOCODER_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
         }
 
         /**
