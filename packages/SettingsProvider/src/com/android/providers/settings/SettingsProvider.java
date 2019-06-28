@@ -2935,7 +2935,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 170;
+            private static final int SETTINGS_VERSION = 171;
 
             private final int mUserId;
 
@@ -3845,6 +3845,21 @@ public class SettingsProvider extends ContentProvider {
                                 SettingsState.SYSTEM_PACKAGE_NAME);
                     }
                     currentVersion = 170;
+                }
+
+                if (currentVersion == 170) {
+                    // Version 170: set private DNS mode
+                    final SettingsState globalSettings = getGlobalSettingsLocked();
+                    final Setting currentSetting = globalSettings.getSettingLocked(
+                            Global.PRIVATE_DNS_DEFAULT_MODE);
+                    if (currentSetting.isNull()) {
+                        globalSettings.insertSettingLocked(
+                                Global.PRIVATE_DNS_DEFAULT_MODE,
+                                getContext().getResources().getString(
+                                        R.string.def_private_dns_default_mode),
+                                null, true, SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+                    currentVersion = 171;
                 }
 
                 // vXXX: Add new settings above this point.
