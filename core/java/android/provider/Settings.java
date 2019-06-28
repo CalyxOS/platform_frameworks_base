@@ -8949,6 +8949,25 @@ public final class Settings {
         private static final Validator AWARE_LOCK_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * The default location backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_LOCATION_BACKENDS =
+                "default_location_backends";
+
+        /**
+         * The default geocoder backends for microG's UnifiedNlp implementation
+         *
+         * @hide
+         */
+        public static final String MICROG_DEFAULT_GEOCODER_BACKENDS =
+                "default_geocoder_backends";
+
+        private static final Validator MICROG_DEFAULT_BACKENDS_VALIDATOR =
+                ANY_STRING_VALIDATOR; // TODO: Custom validator
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -9090,7 +9109,9 @@ public final class Settings {
             SILENCE_TIMER_TOUCH_COUNT,
             DARK_MODE_DIALOG_SEEN,
             GLOBAL_ACTIONS_PANEL_ENABLED,
-            AWARE_LOCK_ENABLED
+            AWARE_LOCK_ENABLED,
+            MICROG_DEFAULT_LOCATION_BACKENDS,
+            MICROG_DEFAULT_GEOCODER_BACKENDS
         };
 
         /**
@@ -9285,6 +9306,8 @@ public final class Settings {
             VALIDATORS.put(UI_NIGHT_MODE, UI_NIGHT_MODE_VALIDATOR);
             VALIDATORS.put(GLOBAL_ACTIONS_PANEL_ENABLED, GLOBAL_ACTIONS_PANEL_ENABLED_VALIDATOR);
             VALIDATORS.put(AWARE_LOCK_ENABLED, AWARE_LOCK_ENABLED_VALIDATOR);
+            VALIDATORS.put(MICROG_DEFAULT_LOCATION_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
+            VALIDATORS.put(MICROG_DEFAULT_GEOCODER_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
         }
 
         /**
