@@ -245,4 +245,7 @@
         format: packagename/componentname/signature|pkg/cmp/sig|.. -->
     <string name="def_microg_location_backends"></string>
     <string name="def_microg_geocoder_backends"></string>
+
+    <!-- Default for Settings.Global.PRIVATE_DNS_DEFAULT_MODE -->
+    <string name="def_private_dns_default_mode"></string>
 </resources>
