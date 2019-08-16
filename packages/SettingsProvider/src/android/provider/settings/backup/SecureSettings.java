@@ -167,6 +167,7 @@ public class SecureSettings {
         Settings.Secure.MEDIA_CONTROLS_RESUME,
         Settings.Secure.ACCESSIBILITY_MAGNIFICATION_MODE,
         Settings.Secure.ACCESSIBILITY_BUTTON_TARGETS,
-        Settings.Secure.PANIC_IN_POWER_MENU
+        Settings.Secure.PANIC_IN_POWER_MENU,
+        Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS
     };
 }
