@@ -8941,6 +8941,15 @@ public final class Settings {
         public static final String PANIC_IN_POWER_MENU = "panic_in_power_menu";
 
         /**
+         * Whether tethering is allowed to use VPN upstreams. (0 = false, 1 = true)
+         * Any changes here must also be reflected in:
+         * packages/Tethering/src/com/android/networkstack/tethering/Tethering.java
+         * packages/Tethering/src/com/android/networkstack/tethering/UpstreamNetworkMonitor.java
+         * @hide
+         */
+        public static final String TETHERING_ALLOW_VPN_UPSTREAMS = "tethering_allow_vpn_upstreams";
+
+        /**
          * Controls magnification mode when magnification is enabled via a system-wide
          * triple tap gesture or the accessibility shortcut.
          *
