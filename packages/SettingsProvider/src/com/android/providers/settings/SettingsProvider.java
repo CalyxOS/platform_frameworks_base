@@ -4080,10 +4080,12 @@ public class SettingsProvider extends ContentProvider {
                                         R.bool.def_vibrate_when_ringing) ? "1" : "0",
                                 null, true, SettingsState.SYSTEM_PACKAGE_NAME);
                     }
-                    currentVersion = 169;
+                    currentVersion = 171; // To match CalyxOS Pie
                 }
 
-                if (currentVersion == 169) {
+                if (currentVersion == 171) {
+                    // We combine versions 169-171 as we bumped the version twice
+                    // on CalyxOS Pie
                     // Version 169: Set the default value for Secure Settings ZEN_DURATION,
                     // SHOW_ZEN_SETTINGS_SUGGESTION, ZEN_SETTINGS_UPDATE and
                     // ZEN_SETTINGS_SUGGESTION_VIEWED
@@ -4140,11 +4142,9 @@ public class SettingsProvider extends ContentProvider {
                                 Secure.ZEN_SETTINGS_SUGGESTION_VIEWED, "0",
                                 null, true, SettingsState.SYSTEM_PACKAGE_NAME);
                     }
-
-                    currentVersion = 170;
                 }
 
-                if (currentVersion == 170) {
+                if (currentVersion == 171) {
                     // Version 170: Set the default value for Secure Settings:
                     // CHARGING_SOUNDS_ENABLED and CHARGING_VIBRATION_ENABLED
 
@@ -4188,8 +4188,6 @@ public class SettingsProvider extends ContentProvider {
                                 Secure.CHARGING_VIBRATION_ENABLED, defChargingVibrationEnabled,
                                 null, true, SettingsState.SYSTEM_PACKAGE_NAME);
                     }
-
-                    currentVersion = 171;
                 }
 
                 if (currentVersion == 171) {
