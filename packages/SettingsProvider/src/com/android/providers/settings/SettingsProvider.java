@@ -3238,7 +3238,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 185;
+            private static final int SETTINGS_VERSION = 186;
 
             private final int mUserId;
 
@@ -4434,16 +4434,7 @@ public class SettingsProvider extends ContentProvider {
                 }
 
                 if (currentVersion == 182) {
-                    // Remove secure bubble settings.
-                    getSecureSettingsLocked(userId).deleteSettingLocked(
-                            Secure.NOTIFICATION_BUBBLES);
-
-                    // Add global bubble settings.
-                    getGlobalSettingsLocked().insertSettingLocked(Global.NOTIFICATION_BUBBLES,
-                            getContext().getResources().getBoolean(
-                                    R.bool.def_notification_bubbles) ? "1" : "0", null /* tag */,
-                            true /* makeDefault */, SettingsState.SYSTEM_PACKAGE_NAME);
-
+                    // Moved to version 186 for CalyxOS
                     currentVersion = 183;
                 }
 
@@ -4487,6 +4478,20 @@ public class SettingsProvider extends ContentProvider {
                                 null, true, SettingsState.SYSTEM_PACKAGE_NAME);
                     }
                     currentVersion = 185;
+                }
+
+                if (currentVersion == 185) {
+                    // Moved from AOSP version 183 for CalyxOS
+                    // Remove secure bubble settings.
+                    getSecureSettingsLocked(userId).deleteSettingLocked(
+                            Secure.NOTIFICATION_BUBBLES);
+
+                    // Add global bubble settings.
+                    getGlobalSettingsLocked().insertSettingLocked(Global.NOTIFICATION_BUBBLES,
+                            getContext().getResources().getBoolean(
+                                    R.bool.def_notification_bubbles) ? "1" : "0", null /* tag */,
+                            true /* makeDefault */, SettingsState.SYSTEM_PACKAGE_NAME);
+                    currentVersion = 186;
                 }
 
                 // vXXX: Add new settings above this point.
