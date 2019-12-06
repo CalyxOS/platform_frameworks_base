@@ -3238,7 +3238,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 186;
+            private static final int SETTINGS_VERSION = 187;
 
             private final int mUserId;
 
@@ -4492,6 +4492,33 @@ public class SettingsProvider extends ContentProvider {
                                     R.bool.def_notification_bubbles) ? "1" : "0", null /* tag */,
                             true /* makeDefault */, SettingsState.SYSTEM_PACKAGE_NAME);
                     currentVersion = 186;
+                }
+
+                if (currentVersion == 186) {
+                    // Version 187: Update default Backup app to Seedvault
+                    final SettingsState secureSettings = getSecureSettingsLocked(userId);
+                    Setting currentBackupTransportSetting = secureSettings.getSettingLocked(
+                            Secure.BACKUP_TRANSPORT);
+                    if (currentBackupTransportSetting.isDefaultFromSystem()) {
+                        secureSettings.insertSettingLocked(
+                                Settings.Secure.BACKUP_TRANSPORT,
+                                getContext().getResources().getString(
+                                        R.string.def_backup_transport),
+                                null, true,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+
+                    Setting currentBackupEnabledSetting = secureSettings.getSettingLocked(
+                            Secure.BACKUP_ENABLED);
+                    if (currentBackupEnabledSetting.isDefaultFromSystem()) {
+                        secureSettings.insertSettingLocked(
+                                Settings.Secure.BACKUP_ENABLED,
+                                getContext().getResources().getBoolean(
+                                        R.bool.def_backup_enabled)? "1" : "0",
+                                null, true,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+                    currentVersion = 187;
                 }
 
                 // vXXX: Add new settings above this point.
