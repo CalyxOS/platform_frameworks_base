@@ -3838,6 +3838,7 @@
          "logout" =  Logout the current user
          "system_update" = Launch System Update screen
          "standby" = Bring the device to standby
+         "panic" = Trigger a panic
          -->
     <string-array translatable="false" name="config_globalActionsList">
         <item>emergency</item>
@@ -3847,6 +3848,7 @@
         <item>logout</item>
         <item>screenshot</item>
         <item>bugreport</item>
+        <item>panic</item>
     </string-array>
 
     <!-- Number of milliseconds to hold a wake lock to ensure that drawing is fully
