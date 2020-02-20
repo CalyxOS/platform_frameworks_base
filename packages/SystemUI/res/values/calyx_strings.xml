@@ -15,4 +15,5 @@
      limitations under the License.
 -->
 <resources>
+    <string name="global_action_panic">Panic trigger</string>
 </resources>
