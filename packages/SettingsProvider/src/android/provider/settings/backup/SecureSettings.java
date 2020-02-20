@@ -168,6 +168,7 @@ public class SecureSettings {
         Settings.Secure.ACCESSIBILITY_MAGNIFICATION_MODE,
         Settings.Secure.ACCESSIBILITY_BUTTON_TARGETS,
         Settings.Secure.MICROG_DEFAULT_LOCATION_BACKENDS,
-        Settings.Secure.MICROG_DEFAULT_GEOCODER_BACKENDS
+        Settings.Secure.MICROG_DEFAULT_GEOCODER_BACKENDS,
+        Settings.Secure.PANIC_IN_POWER_MENU
     };
 }
