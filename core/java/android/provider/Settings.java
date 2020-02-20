@@ -10109,6 +10109,12 @@ public final class Settings {
         public static final String GAME_DASHBOARD_ALWAYS_ON = "game_dashboard_always_on";
 
         /**
+         * Whether the Panic button should be shown in the power menu.
+         * @hide
+         */
+        public static final String PANIC_IN_POWER_MENU = "panic_in_power_menu";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
