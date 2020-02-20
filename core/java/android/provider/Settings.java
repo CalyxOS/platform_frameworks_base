@@ -9013,6 +9013,14 @@ public final class Settings {
                 ANY_STRING_VALIDATOR; // TODO: Custom validator
 
         /**
+         * Whether the Panic button should be shown in the power menu.
+         * @hide
+         */
+        public static final String PANIC_IN_POWER_MENU = "panic_in_power_menu";
+
+        private static final Validator PANIC_IN_POWER_MENU_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -9150,7 +9158,8 @@ public final class Settings {
             AWARE_TAP_PAUSE_GESTURE_COUNT,
             AWARE_TAP_PAUSE_TOUCH_COUNT,
             MICROG_DEFAULT_LOCATION_BACKENDS,
-            MICROG_DEFAULT_GEOCODER_BACKENDS
+            MICROG_DEFAULT_GEOCODER_BACKENDS,
+            PANIC_IN_POWER_MENU
         };
 
         /**
@@ -9350,6 +9359,7 @@ public final class Settings {
             VALIDATORS.put(TAP_GESTURE, TAP_GESTURE_VALIDATOR);
             VALIDATORS.put(MICROG_DEFAULT_LOCATION_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
             VALIDATORS.put(MICROG_DEFAULT_GEOCODER_BACKENDS, MICROG_DEFAULT_BACKENDS_VALIDATOR);
+            VALIDATORS.put(PANIC_IN_POWER_MENU, PANIC_IN_POWER_MENU_VALIDATOR);
         }
 
         /**

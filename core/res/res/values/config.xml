@@ -2868,6 +2868,7 @@
          "emergency" = Launch emergency dialer
          "lockdown" = Lock down device until the user authenticates
          "logout" =  Logout the current user
+         "panic" = Trigger a panic
          -->
     <string-array translatable="false" name="config_globalActionsList">
         <item>power</item>
@@ -2876,6 +2877,7 @@
         <item>logout</item>
         <item>bugreport</item>
         <item>screenshot</item>
+        <item>panic</item>
         <item>emergency</item>
     </string-array>
 
