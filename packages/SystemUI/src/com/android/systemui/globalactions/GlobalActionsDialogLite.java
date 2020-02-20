@@ -39,6 +39,7 @@ import android.app.WallpaperManager;
 import android.app.admin.DevicePolicyManager;
 import android.app.trust.TrustManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -145,6 +146,8 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+import lineageos.providers.LineageSettings;
+
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that may show depending
  * on whether the keyguard is showing, and whether the device is provisioned.
@@ -183,6 +186,14 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
     private static final String GLOBAL_ACTION_KEY_LOGOUT = "logout";
     static final String GLOBAL_ACTION_KEY_EMERGENCY = "emergency";
     static final String GLOBAL_ACTION_KEY_SCREENSHOT = "screenshot";
+    private static final String GLOBAL_ACTION_KEY_PANIC = "panic";
+
+    private static final String[] PANIC_PACKAGES =
+            new String[]{"info.guardianproject.ripple", "org.calyxos.ripple"};
+    private static String PANIC_PACKAGE;
+    private static final String PANIC_ACTIVITY = "org.calyxos.ripple.CountDownActivity";
+    private static final String PANIC_SETTINGS = "org.calyxos.ripple.SettingsActivityLink";
+
 
     // See NotificationManagerService#scheduleDurationReachedLocked
     private static final long TOAST_FADE_TIME = 333;
@@ -651,6 +662,12 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
                 if (shouldDisplayEmergency()) {
                     addIfShouldShowAction(tempActions, new EmergencyDialerAction());
                 }
+            } else if (GLOBAL_ACTION_KEY_PANIC.equals(actionKey)) {
+                if (LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                        LineageSettings.Secure.PANIC_IN_POWER_MENU, 0, getCurrentUser().id) != 0
+                        && isPanicAvailable()) {
+                    addIfShouldShowAction(tempActions, new PanicAction());
+                }
             } else {
                 Log.e(TAG, "Invalid global action key " + actionKey);
             }
@@ -741,6 +758,20 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
         return user != null && user.isAdmin()
                 && mGlobalSettings.getIntForUser(Settings.Secure.BUGREPORT_IN_POWER_MENU, 0,
                 user.id) != 0;
+    }
+
+    private boolean isPanicAvailable() {
+        for (String panicPackage : PANIC_PACKAGES) {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(panicPackage, PANIC_ACTIVITY));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            if (mContext.getPackageManager().resolveActivity(intent,
+                    PackageManager.MATCH_SYSTEM_ONLY) != null) {
+                PANIC_PACKAGE = panicPackage;
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -1114,6 +1145,48 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
             mHandler.postDelayed(() -> {
                 mDevicePolicyManager.logoutUser();
             }, mDialogPressDelay);
+        }
+    }
+
+    private final class PanicAction extends SinglePressAction implements LongPressAction  {
+        private PanicAction() {
+            super(com.android.systemui.R.drawable.ic_panic,
+                    com.android.systemui.R.string.global_action_panic);
+        }
+
+        @Override
+        public boolean showDuringKeyguard() {
+            return false;
+        }
+
+        @Override
+        public boolean showBeforeProvisioning() {
+            return false;
+        }
+
+        @Override
+        public void onPress() {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_ACTIVITY));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            if (mContext.getPackageManager().resolveActivity(intent,
+                    PackageManager.MATCH_SYSTEM_ONLY) != null) {
+                mContext.startActivity(intent);
+            }
+        }
+
+        @Override
+        public boolean onLongPress() {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_SETTINGS));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            if (mContext.getPackageManager().resolveActivity(intent,
+                    PackageManager.MATCH_SYSTEM_ONLY) != null) {
+                mContext.startActivity(intent);
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
