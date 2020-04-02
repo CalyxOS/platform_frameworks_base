@@ -1423,8 +1423,13 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
         if (isBluetoothDisallowed) {
             return;
         }
+        String airplaneModeRadios =
+                Settings.Global.getString(mContentResolver, Settings.Global.AIRPLANE_MODE_RADIOS);
         final boolean isSafeMode = mContext.getPackageManager().isSafeMode();
-        if (mEnableExternal && isBluetoothPersistedStateOnBluetooth() && !isSafeMode) {
+        if (mEnableExternal && isBluetoothPersistedStateOn() && (Settings.Global.getInt(
+                mContentResolver, Settings.Global.AIRPLANE_MODE_ON, 0) == 0 ||
+                (airplaneModeRadios != null && !airplaneModeRadios.contains(
+                  Settings.Global.RADIO_BLUETOOTH))) && !isSafeMode) {
             if (DBG) {
                 Slog.d(TAG, "Auto-enabling Bluetooth.");
             }
