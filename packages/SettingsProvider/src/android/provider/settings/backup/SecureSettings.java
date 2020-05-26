@@ -171,6 +171,7 @@ public class SecureSettings {
         Settings.Secure.ASSIST_HANDLES_LEARNING_TIME_ELAPSED_MILLIS,
         Settings.Secure.ASSIST_HANDLES_LEARNING_EVENT_COUNT,
         Settings.Secure.PANIC_IN_POWER_MENU,
-        Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS
+        Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
+        Settings.Secure.BERRY_BLACK_THEME,
     };
 }
