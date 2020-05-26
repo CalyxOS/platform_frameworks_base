@@ -8956,6 +8956,12 @@ public final class Settings {
         public static final String TETHERING_ALLOW_VPN_UPSTREAMS = "tethering_allow_vpn_upstreams";
 
         /**
+         * Whether to use black theme for dark mode
+         * @hide
+         */
+        public static final String BERRY_BLACK_THEME = "berry_black_theme";
+
+        /**
          * Controls magnification mode when magnification is enabled via a system-wide
          * triple tap gesture or the accessibility shortcut.
          *

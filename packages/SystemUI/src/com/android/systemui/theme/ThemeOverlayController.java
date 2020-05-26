@@ -37,7 +37,6 @@ import com.android.systemui.R;
 import com.android.systemui.SystemUI;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.dagger.qualifiers.Background;
-
 import com.google.android.collect.Sets;
 
 import org.json.JSONException;
@@ -111,6 +110,39 @@ public class ThemeOverlayController extends SystemUI {
                     }
                 },
                 UserHandle.USER_ALL);
+        mContext.getContentResolver().registerContentObserver(
+                Settings.Secure.getUriFor(Settings.Secure.BERRY_BLACK_THEME),
+                false,
+                new ContentObserver(mBgHandler) {
+
+                    @Override
+                    public void onChange(boolean selfChange, Collection<Uri> uris, int flags,
+                                         int userId) {
+                        if (DEBUG) Log.d(TAG, "Overlay changed for user: " + userId);
+                        if (ActivityManager.getCurrentUser() == userId) {
+                            updateBlackTheme();
+                        }
+                    }
+                },
+                UserHandle.USER_ALL);
+    }
+
+    private void updateBlackTheme() {
+        final String OVERLAY_BERRY_BLACK_THEME = "org.lineageos.overlay.customization.blacktheme";
+        final boolean state = Settings.Secure.getInt(
+                mContext.getContentResolver(), Settings.Secure.BERRY_BLACK_THEME, 0);
+        final UserHandle userId = UserHandle.of(ActivityManager.getCurrentUser());
+        try {
+            mContext.getSystemService(OverlayManager.class).setEnabled(
+                    OVERLAY_BERRY_BLACK_THEME, state, userId);
+            if (DEBUG) {
+                Log.d(TAG, "applyBlackTheme: overlayPackage="
+                        + OVERLAY_BERRY_BLACK_THEME + " userId=" + userId);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to " + (state ? "enable" : "disable")
+                    + " overlay " + OVERLAY_BERRY_BLACK_THEME + " for user " + userId);
+        }
     }
 
     private void updateThemeOverlays() {
