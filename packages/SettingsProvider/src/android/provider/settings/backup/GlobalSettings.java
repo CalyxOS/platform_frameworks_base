@@ -76,6 +76,7 @@ public class GlobalSettings {
         Settings.Global.BLUETOOTH_OFF_TIMEOUT,
         Settings.Global.WIFI_OFF_TIMEOUT,
         Settings.Global.CLEARTEXT_NETWORK_POLICY,
-        Settings.Global.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT
+        Settings.Global.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
+        Settings.Global.BERRY_BLACK_THEME
     };
 }
