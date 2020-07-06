@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">Pozwala aplikacjom na udawanie innych. Złośliwe aplikacje mogą to wykorzystać, aby uzyskać dostęp do prywatnych danych. Uzasadnione zastosowania obejmują emulatory udające to, co emulują. Udzielaj tego pozwolenia ostrożnie!</string>
+</resources>

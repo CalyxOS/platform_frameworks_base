@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">מאפשר ליישומון להעמיד פנים שהוא יישומון אחר. יישומונים זדוניים יכולים להשתמש בזה כדי לגשת לנתונים פרטיים של יישומונים. שימושים לגיטימיים כוללים הדמיה שמתחזה להיות מה שהיא מדמה. יש להעניק את ההרשאה הזאת בזהירות רבה!</string>
+    <string name="permlab_fakePackageSignature">זיוף חתימת החבילה</string>
+</resources>

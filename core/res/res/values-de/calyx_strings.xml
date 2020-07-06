@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">Ermöglicht der App, sich als eine andere App auszugeben. Bösartige Anwendungen können dies möglicherweise verwenden, um auf private Anwendungsdaten zuzugreifen. Zu den legitimen Verwendungszwecken gehört ein Emulator, der vorgibt, das zu sein, was er emuliert. Erteilen Sie diese Erlaubnis nur mit Vorsicht!</string>
+    <string name="permlab_fakePackageSignature">Paket-Signatur fälschen</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">Permite que o aplicativo finja ser um aplicativo diferente. Aplicativos maliciosos podem usar isso para acessar dados de aplicativos privados. Os usos legítimos incluem um emulador que finge ser o que emula. Apenas conceda esta permissão com cuidado!</string>
+    <string name="permlab_fakePackageSignature">Falsificar assinatura do pacote</string>
+</resources>
