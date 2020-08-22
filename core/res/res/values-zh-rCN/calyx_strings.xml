@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">允许应用程序伪装为另一个应用。恶意软件可能会趁机获取其他应用的数据。而你也可以因此让伪装软件达到其效果。谨慎给予此权限！</string>
+    <string name="permlab_fakePackageSignature">安装包签名伪装</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">Leyfir appinu að þykjast vera annað app. Illviljuð öpp gætu hugsanlega notað þessar heimildir til að komast í leynileg gögn. Eðlileg notkun er meðal annars þegar hermir þarf að þykjast vera það sem hann er að herma. Veitið þessar heimildir aðeins að vandlega athugaðu máli!</string>
+    <string name="permlab_fakePackageSignature">Falsa stafræna undirskrift hugbúnaðarpakkans</string>
+</resources>
