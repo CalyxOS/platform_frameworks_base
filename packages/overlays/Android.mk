@@ -47,7 +47,6 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedThemePickerOverlay \
 	IconShapePebbleOverlay \
 	IconShapeRoundOverlay \
-	IconShapeRoundedRectOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTaperedRectOverlay \
 	IconShapeTeardropOverlay \
