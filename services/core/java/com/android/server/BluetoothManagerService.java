@@ -29,6 +29,7 @@ import android.annotation.RequiresPermission;
 import android.annotation.SuppressLint;
 import android.annotation.NonNull;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.AppGlobals;
 import android.app.AppOpsManager;
 import android.app.BroadcastOptions;
@@ -473,6 +474,9 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
                     Slog.i(TAG, "Device disconnected, reactivating pending flag changes");
                     onInitFlagsChanged();
                 }
+            } else if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)
+                    || BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED.equals(action)) {
+                setBluetoothTimeout();
             }
         }
     };
@@ -523,6 +527,8 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
         IntentFilter filter = new IntentFilter();
         filter.addAction(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED);
         filter.addAction(BluetoothAdapter.ACTION_BLUETOOTH_ADDRESS_CHANGED);
+        filter.addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
+        filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         filter.addAction(Intent.ACTION_SETTING_RESTORED);
         filter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
         filter.addAction(BluetoothHearingAid.ACTION_CONNECTION_STATE_CHANGED);
@@ -555,6 +561,31 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
             Slog.w(TAG, "Unable to resolve SystemUI's UID.");
         }
         mSystemUiUid = systemUiUid;
+    }
+
+    private void setBluetoothTimeout() {
+        long bluetoothTimeoutMillis = Settings.Global.getLong(mContext.getContentResolver(),
+                Settings.Global.BLUETOOTH_OFF_TIMEOUT, 0);
+        AlarmManager alarmManager = mContext.getSystemService(AlarmManager.class);
+        AlarmManager.OnAlarmListener bluetoothTimeoutListener = () -> {
+            try {
+                disable(mContext.getAttributionSource(), true);
+            } catch (RemoteException e) {
+                Slog.e(TAG, "setBluetoothTimeout()", e);
+            }
+        };
+        alarmManager.cancel(bluetoothTimeoutListener);
+        try {
+            if (bluetoothTimeoutMillis != 0 && getState() == BluetoothAdapter.STATE_ON
+                    && mBluetooth.getAdapterConnectionState()
+                    == BluetoothAdapter.STATE_DISCONNECTED) {
+                final long timeout = SystemClock.elapsedRealtime() + bluetoothTimeoutMillis;
+                alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout, TAG,
+                        bluetoothTimeoutListener, mHandler);
+            }
+        } catch (RemoteException e) {
+            Slog.e(TAG, "setBluetoothTimeout()", e);
+        }
     }
 
     /**
