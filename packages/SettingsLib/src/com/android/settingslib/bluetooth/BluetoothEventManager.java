@@ -26,6 +26,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.provider.Settings;
 import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -270,6 +271,11 @@ public class BluetoothEventManager {
             }
             // Inform CachedDeviceManager that the adapter state has changed
             mDeviceManager.onBluetoothStateChanged(state);
+
+            if (state == BluetoothAdapter.STATE_ON)
+                BluetoothTimeoutReceiver.setTimeoutAlarm(context,
+                        Settings.Global.getLong(context.getContentResolver(),
+                        Settings.Global.BLUETOOTH_OFF_TIMEOUT, 0));
         }
     }
 
@@ -323,6 +329,11 @@ public class BluetoothEventManager {
             int state = intent.getIntExtra(BluetoothAdapter.EXTRA_CONNECTION_STATE,
                     BluetoothAdapter.ERROR);
             dispatchConnectionStateChanged(cachedDevice, state);
+            if (state == BluetoothAdapter.STATE_DISCONNECTED) {
+                BluetoothTimeoutReceiver.setTimeoutAlarm(context,
+                        Settings.Global.getLong(context.getContentResolver(),
+                        Settings.Global.BLUETOOTH_OFF_TIMEOUT, 0));
+            }
         }
     }
 
