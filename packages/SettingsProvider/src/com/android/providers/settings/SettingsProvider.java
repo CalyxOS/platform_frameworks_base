@@ -4713,6 +4713,8 @@ public class SettingsProvider extends ContentProvider {
                 }
 
                 if (currentVersion == 183) {
+                    // We combine versions 183-187 as we bumped the version 4 times
+                    // on CalyxOS 10
                     // Version 183: Set default values for WIRELESS_CHARGING_STARTED_SOUND
                     // and CHARGING_STARTED_SOUND
                     final SettingsState globalSettings = getGlobalSettingsLocked();
@@ -4751,10 +4753,7 @@ public class SettingsProvider extends ContentProvider {
                                 null /* tag */, true /* makeDefault */,
                                 SettingsState.SYSTEM_PACKAGE_NAME);
                     }
-                    currentVersion = 184;
-                }
 
-                if (currentVersion == 184) {
                     // Version 184: Reset the default for Global Settings: NOTIFICATION_BUBBLES
                     // This is originally set in version 182, however, the default value changed
                     // so this step is to ensure the value is updated to the correct default.
@@ -4764,9 +4763,7 @@ public class SettingsProvider extends ContentProvider {
                             true /* makeDefault */, SettingsState.SYSTEM_PACKAGE_NAME);
 
                     currentVersion = 185;
-                }
 
-                if (currentVersion == 185) {
                     // Deprecate ACCESSIBILITY_DISPLAY_MAGNIFICATION_NAVBAR_ENABLED, and migrate it
                     // to ACCESSIBILITY_BUTTON_TARGETS.
                     final SettingsState secureSettings = getSecureSettingsLocked(userId);
@@ -4781,10 +4778,7 @@ public class SettingsProvider extends ContentProvider {
                     }
                     secureSettings.deleteSettingLocked(
                             Secure.ACCESSIBILITY_DISPLAY_MAGNIFICATION_NAVBAR_ENABLED);
-                    currentVersion = 186;
-                }
 
-                if (currentVersion == 186) {
                     // Remove unused wifi settings
                     getGlobalSettingsLocked().deleteSettingLocked(
                             "wifi_rtt_background_exec_gap_ms");
@@ -4809,9 +4803,7 @@ public class SettingsProvider extends ContentProvider {
                     getGlobalSettingsLocked().deleteSettingLocked(
                             "wifi_saved_state");
                     currentVersion = 187;
-                }
 
-                if (currentVersion == 187) {
                     // Migrate adaptive sleep setting from System to Secure.
                     if (userId == UserHandle.USER_OWNER) {
                         // Remove from the system settings.
@@ -4821,7 +4813,7 @@ public class SettingsProvider extends ContentProvider {
                         systemSettings.deleteSettingLocked(name);
 
                         // Add to the secure settings.
-                        SettingsState secureSettings = getSecureSettingsLocked(userId);
+                        //SettingsState secureSettings = getSecureSettingsLocked(userId);
                         secureSettings.insertSettingLocked(name, setting.getValue(), null /* tag */,
                                 false /* makeDefault */, SettingsState.SYSTEM_PACKAGE_NAME);
                     }
