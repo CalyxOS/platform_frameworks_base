@@ -3204,11 +3204,7 @@ public class ChooserActivity extends ResolverActivity implements
     }
 
     int getMaxTargetsPerRow() {
-        int maxTargets = MAX_TARGETS_PER_ROW_PORTRAIT;
-        if (mShouldDisplayLandscape) {
-            maxTargets = MAX_TARGETS_PER_ROW_LANDSCAPE;
-        }
-        return maxTargets;
+        return MAX_TARGETS_PER_ROW_LANDSCAPE;
     }
     /**
      * Adapter for all types of items and targets in ShareSheet.
