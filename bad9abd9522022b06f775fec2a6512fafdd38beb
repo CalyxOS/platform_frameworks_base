@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3286ffe9_bd58ad10",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-25T19:59:21Z",
+      "side": 1,
+      "message": "this needs to find a new home https://gitlab.com/CalyxOS/calyxos/-/issues/226",
+      "range": {
+        "startLine": 4443,
+        "startChar": 8,
+        "endLine": 4444,
+        "endChar": 73
+      },
+      "revId": "bad9abd9522022b06f775fec2a6512fafdd38beb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
