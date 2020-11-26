@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a75414a2_62c27e77",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4677,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-11-26T16:33:15Z",
+      "side": 1,
+      "message": "Ahha",
+      "revId": "d180e86bfdd2d311878e7f0c5a44af4074f10879",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
