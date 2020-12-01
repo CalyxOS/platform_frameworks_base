@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de5e2fc4_3ec56185",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 8946,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-01T21:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abad985c_370c9737",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0198152c_303495fe",
         "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ecea0be5_84c44c4a",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-01T21:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0198152c_303495fe",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1b4672_3258e6f2",
         "filename": "packages/Tethering/src/com/android/networkstack/tethering/UpstreamNetworkMonitor.java",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294ca943_c11f2d45",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-01T21:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1b4672_3258e6f2",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
     }
   ]
 }
