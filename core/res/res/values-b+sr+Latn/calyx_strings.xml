@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="permdesc_fakePackageSignature">Omogućava aplikaciji da se pretvara da je druga aplikacija. Zlonamerne aplikacije će možda moći da iskoriste to za pristup privatnim podacima aplikacije. Legitimna upotreba uključuje emulator koji se pretvara da je ono što oponaša. Odobrite ovu dozvolu samo sa oprezom!</string>
+    <string name="permlab_fakePackageSignature">Lažiraj potpis paketa</string>
+</resources>

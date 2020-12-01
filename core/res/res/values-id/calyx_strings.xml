@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="permdesc_fakePackageSignature">Mengizinkan aplikasi berpura-pura menjadi aplikasi lain. Aplikasi jahat mungkin dapat menggunakan ini untuk mengakses data aplikasi pribadi. Penggunaan yang sah termasuk emulator yang berpura-pura menjadi emulatornya. Berikan izin ini dengan hati-hati saja!</string>
+    <string name="permlab_fakePackageSignature">Tanda tangan paket Spoof</string>
+</resources>

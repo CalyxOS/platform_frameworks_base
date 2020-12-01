@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="permdesc_fakePackageSignature">به این برنامه اجازه می دهد تا وانمود کند که یک برنامه متفاوت است. برنامه های مخرب ممکن است بتوانند از این مورد برای دسترسی به داده های خصوصی برنامه استفاده کنند. استفاده های مشروع شامل یک شبیه ساز است که وانمود می کند همان چیزی است که از آن تقلید می کند. فقط با احتیاط و با دقت این اجازه را بدهید!</string>
+    <string name="permlab_fakePackageSignature">امضای بسته کلاه برداری</string>
+</resources>
