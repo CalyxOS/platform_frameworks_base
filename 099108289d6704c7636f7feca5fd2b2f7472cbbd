@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abad985c_370c9737",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 8946,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-01T19:23:06Z",
+      "side": 1,
+      "message": "Add\n// Should be kept in sync with Tethering",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0198152c_303495fe",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-01T19:23:06Z",
+      "side": 1,
+      "message": "Use \"tethering_allow_vpn_upstreams\"",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1b4672_3258e6f2",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-12-01T19:23:06Z",
+      "side": 1,
+      "message": "Change to \"tethering_allow_vpn_upstreams\"",
+      "revId": "099108289d6704c7636f7feca5fd2b2f7472cbbd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
