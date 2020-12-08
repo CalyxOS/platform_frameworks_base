@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permdesc_fakePackageSignature">Uygulamanın farklı bir uygulama gibi davranmasına izin verir. Kötü amaçlı uygulamalar, özel uygulama verilerine erişmek için bunu kullanabilir. Meşru kullanımlara öykündüğü uygulamaymış gibi davranan bir öykünücü (emulator) örnek verilebilir. Bu izni yalnızca dikkatli bir şekilde verin!</string>
+    <string name="permlab_fakePackageSignature">Paket imzasını taklit et</string>
+</resources>
