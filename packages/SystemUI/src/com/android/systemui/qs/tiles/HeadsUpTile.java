@@ -35,7 +35,7 @@ import javax.inject.Inject;
 /** Quick settings tile: Heads up **/
 public class HeadsUpTile extends QSTileImpl<BooleanState> {
 
-    private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_heads_up);
+    private final Icon mIcon = ResourceIcon.get(R.drawable.ic_volume_ringer);
 
     private static final Intent NOTIFICATION_SETTINGS =
             new Intent("android.settings.NOTIFICATION_SETTINGS");
