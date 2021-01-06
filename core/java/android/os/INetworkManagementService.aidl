@@ -291,6 +291,7 @@ interface INetworkManagementService
     void setUidMeteredNetworkWhitelist(int uid, boolean enable);
     boolean setDataSaverModeEnabled(boolean enable);
 
+    void setGlobalCleartextNetworkPolicy(int policy);
     void setUidCleartextNetworkPolicy(int uid, int policy);
 
     /**

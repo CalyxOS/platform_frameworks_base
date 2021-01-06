@@ -14437,6 +14437,8 @@ public final class Settings {
          * @hide
          */
         public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
+
+        public static final String CLEARTEXT_POLICY = "cleartext_policy";
     }
 
     /**
