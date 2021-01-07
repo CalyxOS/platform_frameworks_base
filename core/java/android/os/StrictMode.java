@@ -869,13 +869,6 @@ public final class StrictMode {
                 if (targetSdk >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                     detectFileUriExposure();
                 }
-                if (targetSdk >= Build.VERSION_CODES.M) {
-                    // TODO: always add DETECT_VM_CLEARTEXT_NETWORK once we have
-                    // facility for apps to mark sockets that should be ignored
-                    if (SystemProperties.getBoolean(CLEARTEXT_PROPERTY, false)) {
-                        detectCleartextNetwork();
-                    }
-                }
                 if (targetSdk >= Build.VERSION_CODES.O) {
                     detectContentUriWithoutPermission();
                     detectUntaggedSockets();
@@ -1434,20 +1427,26 @@ public final class StrictMode {
 
         if (Build.IS_USER || DISABLE || SystemProperties.getBoolean(DISABLE_PROPERTY, false)) {
             // Detect nothing extra
-        } else if (Build.IS_USERDEBUG) {
-            // Detect everything in bundled apps (except activity leaks, which
-            // are expensive to track)
-            if (isBundledSystemApp(ai)) {
-                builder.detectAll();
-                builder.permitActivityLeaks();
-                builder.penaltyDropBox();
-            }
-        } else if (Build.IS_ENG) {
-            // Detect everything in bundled apps
-            if (isBundledSystemApp(ai)) {
-                builder.detectAll();
-                builder.penaltyDropBox();
+        } else {
+            if (SystemProperties.getBoolean(CLEARTEXT_PROPERTY, false)) {
+                builder.detectCleartextNetwork();
                 builder.penaltyLog();
+            }
+            if (Build.IS_USERDEBUG) {
+                // Detect everything in bundled apps (except activity leaks, which
+                // are expensive to track)
+                if (isBundledSystemApp(ai)) {
+                    builder.detectAll();
+                    builder.permitActivityLeaks();
+                    builder.penaltyDropBox();
+                }
+            } else if (Build.IS_ENG) {
+                // Detect everything in bundled apps
+                if (isBundledSystemApp(ai)) {
+                    builder.detectAll();
+                    builder.penaltyDropBox();
+                    builder.penaltyLog();
+                }
             }
         }
 
