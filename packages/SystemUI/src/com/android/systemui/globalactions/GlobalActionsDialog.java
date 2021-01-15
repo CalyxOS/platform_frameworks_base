@@ -191,9 +191,10 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
     public static final String PREFS_CONTROLS_FILE = "controls_prefs";
     private static final int SEEDING_MAX = 2;
 
-    private static final String PANIC_PACKAGE = "info.guardianproject.ripple";
-    private static final String PANIC_ACTIVITY = "info.guardianproject.ripple.CountDownActivity";
-    private static final String PANIC_SETTINGS = "info.guardianproject.ripple.SettingsActivityLink";
+    private static final String[] PANIC_PACKAGES = new String[]{"info.guardianproject.ripple", "org.calyxos.ripple"};
+    private static String PANIC_PACKAGE;
+    private static final String PANIC_ACTIVITY = ".CountDownActivity";
+    private static final String PANIC_SETTINGS = ".SettingsActivityLink";
 
     private final Context mContext;
     private final GlobalActionsManager mWindowManagerFuncs;
@@ -764,14 +765,16 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
     }
 
     private boolean isPanicAvailable() {
-        Intent intent = new Intent();
-        intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_ACTIVITY));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if (mContext.getPackageManager().resolveActivity(intent, 0) != null) {
-            return true;
-        } else {
-            return false;
+        for (String panicPackage : PANIC_PACKAGES) {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(panicPackage, panicPackage + PANIC_ACTIVITY));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            if (mContext.getPackageManager().resolveActivity(intent, 0) != null) {
+                PANIC_PACKAGE = panicPackage;
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
@@ -1164,7 +1167,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         @Override
         public void onPress() {
             Intent intent = new Intent();
-            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_ACTIVITY));
+            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_PACKAGE + PANIC_ACTIVITY));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             if (mContext.getPackageManager().resolveActivity(intent, 0) != null) {
                 mContext.startActivity(intent);
@@ -1174,7 +1177,7 @@ public class GlobalActionsDialog implements DialogInterface.OnDismissListener,
         @Override
         public boolean onLongPress() {
             Intent intent = new Intent();
-            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_SETTINGS));
+            intent.setComponent(new ComponentName(PANIC_PACKAGE, PANIC_PACKAGES + PANIC_SETTINGS));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             if (mContext.getPackageManager().resolveActivity(intent, 0) != null) {
                 mContext.startActivity(intent);
