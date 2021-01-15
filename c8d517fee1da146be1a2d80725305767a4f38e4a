@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "248f15aa_28aedad2",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-15T20:46:42Z",
+      "side": 1,
+      "message": "One thing I\u0027d then like to do here is make sure that the panic package is a system app - that might make this code a bit more complicated though.",
+      "revId": "c8d517fee1da146be1a2d80725305767a4f38e4a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
