@@ -129,6 +129,7 @@ public class GlobalSettings {
         Settings.Global.ADD_USERS_WHEN_LOCKED,
         Settings.Global.REMOVE_GUEST_ON_EXIT,
         Settings.Global.USER_SWITCHER_ENABLED,
+        Settings.Global.WIFI_OFF_TIMEOUT,
         Settings.Global.GLOBAL_ACTIONS_TIMEOUT_MILLIS,
         Settings.Global.WATCH_RANGING_SUPPORTED_BY_PRIMARY_DEVICE,
         Settings.Global.MINMODE_ACTIVE,

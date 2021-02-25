@@ -20323,6 +20323,12 @@ public final class Settings {
         public static final String REPAIR_MODE_ACTIVE = "repair_mode_active";
 
         /**
+         * The amount of time in milliseconds before wifi is turned off
+         * @hide
+         */
+        public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
+
+        /**
          * Whether the notification manager service should redact notifications that contain otps
          * from untrusted listeners. Defaults to 1/true.
          * @hide
