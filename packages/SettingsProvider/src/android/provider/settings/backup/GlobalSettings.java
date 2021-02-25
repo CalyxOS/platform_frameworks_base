@@ -80,5 +80,6 @@ public class GlobalSettings {
         Settings.Global.DEVICE_REBOOT_TIMEOUT,
         Settings.Global.GLOBAL_VPN_APP,
         Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN,
+        Settings.Global.WIFI_OFF_TIMEOUT,
     };
 }
