@@ -16173,6 +16173,7 @@ public final class Settings {
         public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
 
         /**
+<<<<<<< HEAD
          * Global cleartext (aka non-TLS) traffic blocking
          *
          * Values are:
@@ -16204,6 +16205,12 @@ public final class Settings {
          */
         public static final String QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN =
                 "qs_tiles_toggleable_on_lock_screen";
+
+        /**
+         * The amount of time in milliseconds before wifi is turned off
+         * @hide
+         */
+        public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
     }
 
     /**
