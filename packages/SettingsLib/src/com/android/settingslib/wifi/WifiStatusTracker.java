@@ -17,6 +17,7 @@ import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.net.ConnectivityManager;
 import android.net.ConnectivityManager.NetworkCallback;
 import android.net.Network;
@@ -115,6 +116,20 @@ public class WifiStatusTracker {
         mNetworkScoreManager = networkScoreManager;
         mConnectivityManager = connectivityManager;
         mCallback = callback;
+
+        mContext.getContentResolver().registerContentObserver(
+                Settings.Global.getUriFor(Settings.Global.WIFI_OFF_TIMEOUT),
+                false,
+                new ContentObserver(mHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        WifiTimeoutReceiver.setTimeoutAlarm(context,
+                                Settings.Global.getLong(context.getContentResolver(),
+                                        Settings.Global.WIFI_OFF_TIMEOUT, 0));
+                    }
+                }
+        );
     }
 
     public void setListening(boolean listening) {
@@ -188,6 +203,10 @@ public class WifiStatusTracker {
                     updateRssi(mWifiInfo.getRssi());
                     maybeRequestNetworkScore();
                 }
+            } else if (networkInfo != null && !networkInfo.isConnectedOrConnecting()) {
+                WifiTimeoutReceiver.setTimeoutAlarm(mContext,
+                        Settings.Global.getLong(mContext.getContentResolver(),
+                                Settings.Global.WIFI_OFF_TIMEOUT, 0));
             }
             updateStatusLabel();
             mCallback.run();
