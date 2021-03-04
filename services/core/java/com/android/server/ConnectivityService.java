@@ -160,6 +160,7 @@ import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.ShellCallback;
 import android.os.ShellCommand;
+import android.os.StrictMode;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
@@ -3335,6 +3336,17 @@ public class ConnectivityService extends IConnectivityManager.Stub
         NetworkAgentInfo nai = getNetworkAgentInfoForNetId(update.netId);
         if (nai == null) {
             return;
+        }
+        try {
+            if (update.validated) {
+                mNMS.setGlobalCleartextNetworkPolicy(
+                        Settings.Global.getInt(
+                                mContext.getContentResolver(),
+                                Settings.Global.CLEARTEXT_NETWORK_POLICY,
+                                StrictMode.NETWORK_POLICY_ACCEPT));
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Exception setting global cleartext restriction", e);
         }
         mDnsManager.updatePrivateDnsValidation(update);
         handleUpdateLinkProperties(nai, new LinkProperties(nai.linkProperties));
