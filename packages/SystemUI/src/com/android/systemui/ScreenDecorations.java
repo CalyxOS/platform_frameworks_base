@@ -949,6 +949,16 @@ public class ScreenDecorations extends CoreStartable implements Tunable , Dumpab
             updateConfiguration();
             if (DEBUG) Log.i(TAG, "onConfigChanged from rot " + oldRotation + " to " + mRotation);
             setupDecorations();
+
+            // update cutout view rotation
+            if (mCutoutViews != null) {
+                for (final DisplayCutoutView cutoutView: mCutoutViews) {
+                    if (cutoutView != null) {
+                        cutoutView.updateCutout();
+                    }
+                }
+            }
+
             if (mOverlays != null) {
                 // Updating the layout params ensures that ViewRootImpl will call relayoutWindow(),
                 // which ensures that the forced seamless rotation will end, even if we updated
