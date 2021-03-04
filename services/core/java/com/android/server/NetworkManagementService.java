@@ -43,7 +43,14 @@ import static com.android.server.NetworkManagementSocketTagger.PROP_QTAGUID_ENAB
 
 import android.annotation.NonNull;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.UserInfo;
+import android.database.ContentObserver;
 import android.net.INetd;
 import android.net.INetdUnsolicitedEventListener;
 import android.net.INetworkManagementEventObserver;
@@ -77,6 +84,8 @@ import android.os.StrictMode;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
+import android.os.UserManager;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Slog;
@@ -106,6 +115,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @hide
@@ -247,6 +257,41 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         synchronized (mTetheringStatsProviders) {
             mTetheringStatsProviders.put(new NetdTetheringStatsProvider(), "netd");
         }
+
+        mContext.getContentResolver().registerContentObserver(
+                Settings.Global.getUriFor(Settings.Global.CLEARTEXT_NETWORK_POLICY),
+                false,
+                new ContentObserver(mDaemonHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        int cleartextNetworkPolicy = Settings.Global.getInt(
+                                mContext.getContentResolver(),
+                                Settings.Global.CLEARTEXT_NETWORK_POLICY,
+                                StrictMode.NETWORK_POLICY_ACCEPT);
+                        SystemProperties.set(StrictMode.GLOBAL_CLEARTEXT_PROPERTY,
+                                String.valueOf(cleartextNetworkPolicy));
+                        setGlobalCleartextNetworkPolicy(cleartextNetworkPolicy);
+                    }
+                }
+        );
+
+        BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                int cleartextNetworkPolicy = Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.CLEARTEXT_NETWORK_POLICY, StrictMode.NETWORK_POLICY_ACCEPT);
+                if (cleartextNetworkPolicy > 0) {
+                    setUidCleartextNetworkPolicy(intent.getIntExtra(Intent.EXTRA_UID, -1),
+                            Intent.ACTION_UID_REMOVED.equals(intent.getAction()) ?
+                                    StrictMode.NETWORK_POLICY_ACCEPT : cleartextNetworkPolicy);
+                }
+            }
+        };
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addDataScheme(IntentFilter.SCHEME_PACKAGE);
+        mContext.registerReceiver(receiver, intentFilter);
+        mContext.registerReceiver(receiver, new IntentFilter(Intent.ACTION_UID_REMOVED));
     }
 
     private NetworkManagementService() {
@@ -1257,6 +1302,14 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
             mUidCleartextPolicy.put(uid, policy);
         } catch (RemoteException | ServiceSpecificException e) {
             throw new IllegalStateException(e);
+        }
+    }
+
+    private void setGlobalCleartextNetworkPolicy(int policy) {
+        List<ApplicationInfo> installedApplications =
+                mContext.getPackageManager().getInstalledApplications(PackageManager.MATCH_ANY_USER);
+        for (ApplicationInfo app : installedApplications) {
+            setUidCleartextNetworkPolicy(app.uid, policy);
         }
     }
 

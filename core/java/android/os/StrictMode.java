@@ -178,6 +178,13 @@ public final class StrictMode {
     private static final String CLEARTEXT_PROPERTY = "persist.sys.strictmode.clear";
 
     /**
+     * The boolean system property containing the state of global cleartext restriction.
+     *
+     * @hide
+     */
+    public static final String GLOBAL_CLEARTEXT_PROPERTY = "persist.sys.global.cleartext";
+
+    /**
      * Quick feature-flag that can be used to disable the defaults provided by {@link
      * #initThreadDefaults(ApplicationInfo)} and {@link #initVmDefaults(ApplicationInfo)}.
      */
@@ -339,6 +346,8 @@ public final class StrictMode {
     /** @hide */
     public static final int PENALTY_ALL = 0xffff0000;
 
+    /** {@hide} */
+    public static final int NETWORK_POLICY_INVALID = -1;
     /** {@hide} */
     public static final int NETWORK_POLICY_ACCEPT = 0;
     /** {@hide} */
@@ -2086,9 +2095,14 @@ public final class StrictMode {
                     INetworkManagementService.Stub.asInterface(
                             ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
             if (netd != null) {
-                try {
-                    netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
-                } catch (RemoteException ignored) {
+                if (!(SystemProperties.getInt(GLOBAL_CLEARTEXT_PROPERTY, 0) > 0)) {
+                    try {
+                        netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
+                    } catch (RemoteException ignored) {
+                    }
+                } else {
+                    Log.w(TAG, "Dropping requested network policy due to global cleartext" +
+                            " network policy");
                 }
             } else if (networkPolicy != NETWORK_POLICY_ACCEPT) {
                 Log.w(TAG, "Dropping requested network policy due to missing service!");
