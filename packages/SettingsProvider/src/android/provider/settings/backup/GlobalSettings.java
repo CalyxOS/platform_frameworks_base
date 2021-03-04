@@ -77,5 +77,6 @@ public class GlobalSettings {
         Settings.Global.DEVICE_CONFIG_SYNC_DISABLED,
         Settings.Global.POWER_BUTTON_LONG_PRESS,
         Settings.Global.BLUETOOTH_OFF_TIMEOUT,
+        Settings.Global.CLEARTEXT_NETWORK_POLICY,
     };
 }

@@ -43,7 +43,13 @@ import static com.android.server.NetworkManagementSocketTagger.PROP_QTAGUID_ENAB
 
 import android.annotation.NonNull;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.database.ContentObserver;
 import android.net.INetd;
 import android.net.INetdUnsolicitedEventListener;
 import android.net.INetworkManagementEventObserver;
@@ -77,6 +83,7 @@ import android.os.StrictMode;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Slog;
@@ -247,6 +254,32 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         synchronized (mTetheringStatsProviders) {
             mTetheringStatsProviders.put(new NetdTetheringStatsProvider(), "netd");
         }
+
+        mContext.getContentResolver().registerContentObserver(
+                Settings.Global.getUriFor(Settings.Global.CLEARTEXT_NETWORK_POLICY),
+                false,
+                new ContentObserver(mDaemonHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        int cleartextNetworkPolicy = Settings.Global.getInt(
+                                mContext.getContentResolver(),
+                                Settings.Global.CLEARTEXT_NETWORK_POLICY,
+                                StrictMode.NETWORK_POLICY_INVALID);
+                        setUidCleartextNetworkPolicy(-1, cleartextNetworkPolicy);
+                    }
+                }
+        );
+
+        mContext.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                int uid = intent.getIntExtra(Intent.EXTRA_UID, -1);
+                if (uid != -1) {
+                    setUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_INVALID);
+                }
+            }
+        }, new IntentFilter(Intent.ACTION_UID_REMOVED));
     }
 
     private NetworkManagementService() {
@@ -513,6 +546,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
                     setUidCleartextNetworkPolicy(local.keyAt(i), local.valueAt(i));
                 }
             }
+
+            setUidCleartextNetworkPolicy(-1, Settings.Global.getInt(mContext.getContentResolver(),
+                    Settings.Global.CLEARTEXT_NETWORK_POLICY, StrictMode.NETWORK_POLICY_INVALID));
 
             setFirewallEnabled(mFirewallEnabled);
 
@@ -1239,6 +1275,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     private void applyUidCleartextNetworkPolicy(int uid, int policy) {
         final int policyValue;
         switch (policy) {
+            case StrictMode.NETWORK_POLICY_INVALID:
+                policyValue = 0;
+                break;
             case StrictMode.NETWORK_POLICY_ACCEPT:
                 policyValue = INetd.PENALTY_POLICY_ACCEPT;
                 break;
@@ -1267,10 +1306,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         }
 
         synchronized (mQuotaLock) {
-            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_INVALID);
             if (oldPolicy == policy) {
-                // This also ensures we won't needlessly apply an ACCEPT policy if we've just
-                // enabled strict and the underlying iptables rules are empty.
                 return;
             }
 
@@ -1286,9 +1323,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
             // policy without deleting it first. Rather than add state to netd, just always send
             // it an accept policy when switching between two non-accept policies.
             // TODO: consider keeping state in netd so we can simplify this code.
-            if (oldPolicy != StrictMode.NETWORK_POLICY_ACCEPT &&
-                    policy != StrictMode.NETWORK_POLICY_ACCEPT) {
-                applyUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            if (oldPolicy != StrictMode.NETWORK_POLICY_INVALID &&
+                    policy != StrictMode.NETWORK_POLICY_INVALID) {
+                applyUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_INVALID);
             }
 
             applyUidCleartextNetworkPolicy(uid, policy);

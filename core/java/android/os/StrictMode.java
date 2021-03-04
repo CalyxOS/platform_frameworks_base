@@ -340,6 +340,8 @@ public final class StrictMode {
     public static final int PENALTY_ALL = 0xffff0000;
 
     /** {@hide} */
+    public static final int NETWORK_POLICY_INVALID = -1;
+    /** {@hide} */
     public static final int NETWORK_POLICY_ACCEPT = 0;
     /** {@hide} */
     public static final int NETWORK_POLICY_LOG = 1;
@@ -2072,7 +2074,7 @@ public final class StrictMode {
                 }
             }
 
-            int networkPolicy = NETWORK_POLICY_ACCEPT;
+            int networkPolicy = NETWORK_POLICY_INVALID;
             if ((sVmPolicy.mask & DETECT_VM_CLEARTEXT_NETWORK) != 0) {
                 if ((sVmPolicy.mask & PENALTY_DEATH) != 0
                         || (sVmPolicy.mask & PENALTY_DEATH_ON_CLEARTEXT_NETWORK) != 0) {
@@ -2090,7 +2092,7 @@ public final class StrictMode {
                     netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
                 } catch (RemoteException ignored) {
                 }
-            } else if (networkPolicy != NETWORK_POLICY_ACCEPT) {
+            } else if (networkPolicy != NETWORK_POLICY_INVALID) {
                 Log.w(TAG, "Dropping requested network policy due to missing service!");
             }
 
