@@ -81,5 +81,6 @@ public class GlobalSettings {
         Settings.Global.GLOBAL_VPN_APP,
         Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN,
         Settings.Global.WIFI_OFF_TIMEOUT,
+        Settings.Global.CLEARTEXT_NETWORK_POLICY,
     };
 }
