@@ -43,7 +43,14 @@ import static com.android.server.NetworkManagementSocketTagger.PROP_QTAGUID_ENAB
 
 import android.annotation.NonNull;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.database.ContentObserver;
+import android.net.ConnectivityManager;
 import android.net.INetd;
 import android.net.INetdUnsolicitedEventListener;
 import android.net.INetworkManagementEventObserver;
@@ -53,7 +60,10 @@ import android.net.InterfaceConfiguration;
 import android.net.InterfaceConfigurationParcel;
 import android.net.IpPrefix;
 import android.net.LinkAddress;
+import android.net.LinkProperties;
+import android.net.Network;
 import android.net.NetworkPolicyManager;
+import android.net.NetworkRequest;
 import android.net.NetworkStack;
 import android.net.NetworkStats;
 import android.net.RouteInfo;
@@ -106,6 +116,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import lineageos.providers.LineageSettings;
 
 /**
  * @hide
@@ -169,6 +181,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     @GuardedBy("mTetheringStatsProviders")
     private final HashMap<ITetheringStatsProvider, String>
             mTetheringStatsProviders = Maps.newHashMap();
+
+    private final ConnectivityManager.NetworkCallback mNetworkCallback;
 
     /**
      * If both locks need to be held, then they should be obtained in the order:
@@ -247,6 +261,43 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         synchronized (mTetheringStatsProviders) {
             mTetheringStatsProviders.put(new NetdTetheringStatsProvider(), "netd");
         }
+
+        mNetworkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onLinkPropertiesChanged(@NonNull Network network,
+                    @NonNull LinkProperties linkProperties) {
+                // If the network has any validated private dns server, restrict cleartext
+                // traffic for UID 0. Otherwise, allow it in order to validate.
+                final int rootUID = 0;
+                if (linkProperties.getValidatedPrivateDnsServers().size() > 0) {
+                    setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_INVALID);
+                } else {
+                    setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_ACCEPT);
+                }
+            }
+        };
+
+        mContext.getContentResolver().registerContentObserver(
+                LineageSettings.Global.getUriFor(LineageSettings.Global.CLEARTEXT_NETWORK_POLICY),
+                false,
+                new ContentObserver(mDaemonHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        setGlobalCleartextNetworkPolicy();
+                    }
+                }
+        );
+
+        mContext.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                int uid = intent.getIntExtra(Intent.EXTRA_UID, -1);
+                if (uid != -1) {
+                    setUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_INVALID);
+                }
+            }
+        }, new IntentFilter(Intent.ACTION_UID_REMOVED));
     }
 
     private NetworkManagementService() {
@@ -254,6 +305,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         mDaemonHandler = null;
         mDeps = null;
         mNetdUnsolicitedEventListener = null;
+        mNetworkCallback = null;
     }
 
     static NetworkManagementService create(Context context, Dependencies deps)
@@ -513,6 +565,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
                     setUidCleartextNetworkPolicy(local.keyAt(i), local.valueAt(i));
                 }
             }
+
+            setGlobalCleartextNetworkPolicy();
 
             setFirewallEnabled(mFirewallEnabled);
 
@@ -1239,6 +1293,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     private void applyUidCleartextNetworkPolicy(int uid, int policy) {
         final int policyValue;
         switch (policy) {
+            case StrictMode.NETWORK_POLICY_INVALID:
+                policyValue = 0;
+                break;
             case StrictMode.NETWORK_POLICY_ACCEPT:
                 policyValue = INetd.PENALTY_POLICY_ACCEPT;
                 break;
@@ -1260,6 +1317,24 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         }
     }
 
+    private void setGlobalCleartextNetworkPolicy() {
+        int cleartextNetworkPolicy = LineageSettings.Global.getInt(
+                mContext.getContentResolver(),
+                LineageSettings.Global.CLEARTEXT_NETWORK_POLICY,
+                StrictMode.NETWORK_POLICY_INVALID);
+        SystemProperties.set(StrictMode.GLOBAL_CLEARTEXT_PROPERTY,
+                String.valueOf(cleartextNetworkPolicy));
+        final int globalUID = -1;
+        setUidCleartextNetworkPolicy(globalUID, cleartextNetworkPolicy);
+
+        ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
+        if (cleartextNetworkPolicy > 0) {
+            cm.registerNetworkCallback(new NetworkRequest.Builder().build(), mNetworkCallback);
+        } else {
+            cm.unregisterNetworkCallback(mNetworkCallback);
+        }
+    }
+
     @Override
     public void setUidCleartextNetworkPolicy(int uid, int policy) {
         if (mDeps.getCallingUid() != uid) {
@@ -1267,10 +1342,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         }
 
         synchronized (mQuotaLock) {
-            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_INVALID);
             if (oldPolicy == policy) {
-                // This also ensures we won't needlessly apply an ACCEPT policy if we've just
-                // enabled strict and the underlying iptables rules are empty.
                 return;
             }
 
@@ -1286,9 +1359,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
             // policy without deleting it first. Rather than add state to netd, just always send
             // it an accept policy when switching between two non-accept policies.
             // TODO: consider keeping state in netd so we can simplify this code.
-            if (oldPolicy != StrictMode.NETWORK_POLICY_ACCEPT &&
-                    policy != StrictMode.NETWORK_POLICY_ACCEPT) {
-                applyUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            if (oldPolicy != StrictMode.NETWORK_POLICY_INVALID &&
+                    policy != StrictMode.NETWORK_POLICY_INVALID) {
+                applyUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_INVALID);
             }
 
             applyUidCleartextNetworkPolicy(uid, policy);
