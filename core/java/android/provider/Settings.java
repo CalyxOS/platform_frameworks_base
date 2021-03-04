@@ -16196,6 +16196,20 @@ public final class Settings {
          * @hide
          */
         public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
+
+        /**
+         * Global cleartext (aka non-TLS) traffic blocking
+         *
+         * Values are:
+         * -1: StrictMode.NETWORK_POLICY_INVALID - Remove global cleartext traffic rule
+         *  0: StrictMode.NETWORK_POLICY_ACCEPT - Allow all cleartext traffic.
+         *  1: StrictMode.NETWORK_POLICY_LOG - Log all cleartext traffic.
+         *     Does not appear in logcat by default. Uses existing StrictMode logging
+         *     for cleartext network penalties.
+         *  2: StrictMode.NETWORK_POLICY_REJECT - Reject all cleartext traffic.
+         * @hide
+         */
+        public static final String CLEARTEXT_NETWORK_POLICY = "cleartext_network_policy";
     }
 
     /**

@@ -147,6 +147,7 @@ public class GlobalSettingsValidators {
                 value -> (value == null) || PACKAGE_NAME_VALIDATOR.validate(value));
         VALIDATORS.put(Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Global.WIFI_OFF_TIMEOUT, ANY_INTEGER_VALIDATOR);
+        VALIDATORS.put(Global.CLEARTEXT_NETWORK_POLICY, new InclusiveIntegerRangeValidator(-1, 2));
     }
 }
 
