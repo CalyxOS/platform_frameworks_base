@@ -55,6 +55,7 @@ import android.os.strictmode.UnbufferedIoViolation;
 import android.os.strictmode.UntaggedSocketViolation;
 import android.os.strictmode.Violation;
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.provider.Settings;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Printer;
@@ -2023,9 +2024,16 @@ public final class StrictMode {
                     INetworkManagementService.Stub.asInterface(
                             ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
             if (netd != null) {
-                try {
-                    netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
-                } catch (RemoteException ignored) {
+                if (Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.CLEARTEXT_NETWORK_POLICY, NETWORK_POLICY_ACCEPT) ==
+                        NETWORK_POLICY_ACCEPT) {
+                    try {
+                        netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
+                    } catch (RemoteException ignored) {
+                    }
+                } else {
+                    Log.w(TAG, "Dropping requested network policy due to global cleartext" +
+                            " network policy");
                 }
             } else if (networkPolicy != NETWORK_POLICY_ACCEPT) {
                 Log.w(TAG, "Dropping requested network policy due to missing service!");
