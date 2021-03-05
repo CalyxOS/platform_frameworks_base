@@ -55,6 +55,7 @@ import android.os.strictmode.UnbufferedIoViolation;
 import android.os.strictmode.UntaggedSocketViolation;
 import android.os.strictmode.Violation;
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.provider.Settings;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Printer;
@@ -173,8 +174,10 @@ public final class StrictMode {
      * Temporary property used to include {@link #DETECT_VM_CLEARTEXT_NETWORK} in {@link
      * VmPolicy.Builder#detectAll()}. Apps can still always opt-into detection using {@link
      * VmPolicy.Builder#detectCleartextNetwork()}.
+     *
+     * @hide
      */
-    private static final String CLEARTEXT_PROPERTY = "persist.sys.strictmode.clear";
+    public static final String CLEARTEXT_PROPERTY = "persist.sys.strictmode.clear";
 
     /**
      * Quick feature-flag that can be used to disable the defaults provided by {@link
@@ -2023,9 +2026,14 @@ public final class StrictMode {
                     INetworkManagementService.Stub.asInterface(
                             ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
             if (netd != null) {
-                try {
-                    netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
-                } catch (RemoteException ignored) {
+                if (!SystemProperties.getBoolean(CLEARTEXT_PROPERTY, false)) {
+                    try {
+                        netd.setUidCleartextNetworkPolicy(android.os.Process.myUid(), networkPolicy);
+                    } catch (RemoteException ignored) {
+                    }
+                } else {
+                    Log.w(TAG, "Dropping requested network policy due to global cleartext" +
+                            " network policy");
                 }
             } else if (networkPolicy != NETWORK_POLICY_ACCEPT) {
                 Log.w(TAG, "Dropping requested network policy due to missing service!");
