@@ -1289,6 +1289,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     private void applyUidCleartextNetworkPolicy(int uid, int policy) {
         final int policyValue;
         switch (policy) {
+            case StrictMode.NETWORK_POLICY_INVALID:
+                policyValue = INetd.PENALTY_POLICY_INVALID;
+                break;
             case StrictMode.NETWORK_POLICY_ACCEPT:
                 policyValue = INetd.PENALTY_POLICY_ACCEPT;
                 break;
@@ -1351,6 +1354,16 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
             }
 
             applyGlobalCleartextNetworkPolicy(policy);
+
+            int size = mUidCleartextPolicy.size();
+            if (size > 0) {
+                if (DBG) Slog.d(TAG, "Pushing " + size + " active UID cleartext policies");
+                final SparseIntArray local = mUidCleartextPolicy;
+                mUidCleartextPolicy = new SparseIntArray();
+                for (int i = 0; i < local.size(); i++) {
+                    setUidCleartextNetworkPolicy(local.keyAt(i), policy);
+                }
+            }
         }
     }
 
@@ -1361,10 +1374,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         }
 
         synchronized (mQuotaLock) {
-            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            final int oldPolicy = mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_INVALID);
+
             if (oldPolicy == policy) {
-                // This also ensures we won't needlessly apply an ACCEPT policy if we've just
-                // enabled strict and the underlying iptables rules are empty.
                 return;
             }
 
@@ -1376,17 +1388,18 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
                 return;
             }
 
-            // netd does not keep state on strict mode policies, and cannot replace a non-accept
-            // policy without deleting it first. Rather than add state to netd, just always send
-            // it an accept policy when switching between two non-accept policies.
-            // TODO: consider keeping state in netd so we can simplify this code.
-            if (oldPolicy != StrictMode.NETWORK_POLICY_ACCEPT &&
-                    policy != StrictMode.NETWORK_POLICY_ACCEPT) {
-                applyUidCleartextNetworkPolicy(uid, StrictMode.NETWORK_POLICY_ACCEPT);
+            if (oldPolicy == StrictMode.NETWORK_POLICY_INVALID) {
+                applyUidCleartextNetworkPolicy(uid, oldPolicy);
             }
 
             applyUidCleartextNetworkPolicy(uid, policy);
         }
+    }
+
+    @Override
+    public int getUidCleartextNetworkPolicy(int uid) {
+        NetworkStack.checkNetworkStackPermission(mContext);
+        return mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_INVALID);
     }
 
     @Override
