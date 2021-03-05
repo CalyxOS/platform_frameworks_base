@@ -294,6 +294,7 @@ interface INetworkManagementService
     void setDNSCleartextWhitelist(in String[] dns);
     void setGlobalCleartextNetworkPolicy(int policy);
     void setUidCleartextNetworkPolicy(int uid, int policy);
+    int getUidCleartextNetworkPolicy(int uid);
 
     /**
      * Return status of bandwidth control module.
