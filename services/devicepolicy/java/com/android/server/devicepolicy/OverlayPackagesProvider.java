@@ -95,12 +95,12 @@ public class OverlayPackagesProvider {
      * @return the set of non-required apps.
      */
     @NonNull
-    public Set<String> getNonRequiredApps(@NonNull ComponentName admin, int userId,
+    public Set<String> getNonRequiredApps(ComponentName admin, int userId,
             @NonNull String provisioningAction) {
         final Set<String> nonRequiredApps = getLaunchableApps(userId);
         // Newly installed system apps are uninstalled when they are not required and are either
         // disallowed or have a launcher icon.
-        nonRequiredApps.removeAll(getRequiredApps(provisioningAction, admin.getPackageName()));
+        nonRequiredApps.removeAll(getRequiredApps(provisioningAction, admin != null ? admin.getPackageName() : null));
         nonRequiredApps.removeAll(getSystemInputMethods(userId));
         nonRequiredApps.addAll(getDisallowedApps(provisioningAction));
         return nonRequiredApps;
