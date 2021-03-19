@@ -9196,13 +9196,6 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
             return;
         }
 
-        if (userHandle != mOwners.getDeviceOwnerUserId() && !mOwners.hasProfileOwner(userHandle)
-                && getManagedUserId(userHandle) == -1) {
-            // No managed device, user or profile, so setting provisioning state makes no sense.
-            throw new IllegalStateException("Not allowed to change provisioning state unless a "
-                      + "device or profile owner is set.");
-        }
-
         synchronized (getLockObject()) {
             boolean transitionCheckNeeded = true;
 
@@ -9259,6 +9252,9 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 break;
             case DevicePolicyManager.STATE_USER_SETUP_FINALIZED:
                 // Cannot transition out of finalized.
+                if (newState == DevicePolicyManager.STATE_USER_SETUP_FINALIZED) {
+                    return;
+                }
                 break;
         }
 
@@ -13310,7 +13306,6 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
     @Override
     public int checkProvisioningPreCondition(String action, String packageName) {
-        Objects.requireNonNull(packageName);
         enforceCanManageProfileAndDeviceOwners();
         return checkProvisioningPreConditionSkipPermission(action, packageName);
     }
@@ -13712,7 +13707,9 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         enforceManagedProfile(userId, "set organization color");
         synchronized (getLockObject()) {
             ActiveAdmin admin = getProfileOwnerAdminLocked(userId);
-            admin.organizationColor = color;
+            if (admin != null) {
+                admin.organizationColor = color;
+            }
             saveSettingsLocked(userId);
         }
     }
