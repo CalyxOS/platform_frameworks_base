@@ -9200,7 +9200,7 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 && getManagedUserId(userHandle) == -1) {
             // No managed device, user or profile, so setting provisioning state makes no sense.
             throw new IllegalStateException("Not allowed to change provisioning state unless a "
-                      + "device or profile owner is set.");
+                    + "device or profile owner is set.");
         }
 
         synchronized (getLockObject()) {
