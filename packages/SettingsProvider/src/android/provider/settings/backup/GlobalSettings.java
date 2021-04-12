@@ -76,5 +76,9 @@ public class GlobalSettings {
         Settings.Global.ARE_USER_DISABLED_HDR_FORMATS_ALLOWED,
         Settings.Global.DEVICE_CONFIG_SYNC_DISABLED,
         Settings.Global.POWER_BUTTON_LONG_PRESS,
+        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,
+        Settings.Global.BLUETOOTH_OFF_TIMEOUT,
+        Settings.Global.WIFI_OFF_TIMEOUT,
+        Settings.Global.CLEARTEXT_NETWORK_POLICY,
     };
 }
