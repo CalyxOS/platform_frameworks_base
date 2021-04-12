@@ -72,6 +72,10 @@ public class GlobalSettings {
         Settings.Global.NOTIFICATION_BUBBLES,
         Settings.Global.CUSTOM_BUGREPORT_HANDLER_APP,
         Settings.Global.CUSTOM_BUGREPORT_HANDLER_USER,
-        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED
+        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,
+        Settings.Global.BLUETOOTH_OFF_TIMEOUT,
+        Settings.Global.WIFI_OFF_TIMEOUT,
+        Settings.Global.CLEARTEXT_NETWORK_POLICY,
+        Settings.Global.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT
     };
 }
