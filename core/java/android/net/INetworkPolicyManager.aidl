@@ -30,6 +30,11 @@ import android.telephony.SubscriptionPlan;
  */
 interface INetworkPolicyManager {
 
+    /**
+     * Informs the service that network policy has been restored. Private API.
+     */
+    void policyRestored();
+
     /** Control UID policies. */
     @UnsupportedAppUsage
     void setUidPolicy(int uid, int policy);
