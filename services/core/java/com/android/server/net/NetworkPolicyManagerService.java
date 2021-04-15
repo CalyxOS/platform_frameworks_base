@@ -2591,6 +2591,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    public void policyRestored() {
+        if (Binder.getCallingUid() != android.os.Process.SYSTEM_UID) {
+            throw new RuntimeException("policyRestored() can only be called from the system process");
+        }
+        readPolicyAL();
+    }
+
     @Override
     public void setUidPolicy(int uid, int policy) {
         mContext.enforceCallingOrSelfPermission(MANAGE_NETWORK_POLICY, TAG);
