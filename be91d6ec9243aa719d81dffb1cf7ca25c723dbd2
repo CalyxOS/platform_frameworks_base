@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c220d696_7447ce0a",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2374,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T20:52:41Z",
+      "side": 1,
+      "message": "should I catch ProtocolException or make a forRestore boolean similar to the forBackup boolean in writePolicyXml?",
+      "range": {
+        "startLine": 2374,
+        "startChar": 29,
+        "endLine": 2374,
+        "endChar": 47
+      },
+      "revId": "be91d6ec9243aa719d81dffb1cf7ca25c723dbd2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
