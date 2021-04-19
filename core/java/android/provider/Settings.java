@@ -14468,6 +14468,13 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_PIN_SCRAMBLE_LAYOUT = "lockscreen_scramble_pin_layout";
+
+        /**
+         * Whether user is allowed to interact with quick settings on lcokscreen.
+         * @hide
+         */
+        public static final String QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN =
+                "qs_tiles_toggleable_on_lock_screen";
     }
 
     /**
