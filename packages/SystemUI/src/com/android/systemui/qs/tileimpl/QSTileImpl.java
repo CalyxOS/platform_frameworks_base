@@ -37,6 +37,7 @@ import android.metrics.LogMaker;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.text.format.DateUtils;
 import android.util.ArraySet;
@@ -68,6 +69,7 @@ import com.android.systemui.qs.QSEvent;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QuickStatusBarHeader;
 import com.android.systemui.qs.logging.QSLogger;
+import com.android.systemui.statusbar.policy.KeyguardStateController;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -96,6 +98,8 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     protected final Handler mUiHandler = new Handler(Looper.getMainLooper());
     private final ArraySet<Object> mListeners = new ArraySet<>();
     private final MetricsLogger mMetricsLogger = Dependency.get(MetricsLogger.class);
+    private final KeyguardStateController
+            mKeyguardStateController = Dependency.get(KeyguardStateController.class);
     private final StatusBarStateController
             mStatusBarStateController = Dependency.get(StatusBarStateController.class);
     private final UiEventLogger mUiEventLogger;
@@ -557,15 +561,25 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
                                 mContext, mEnforcedAdmin);
                         Dependency.get(ActivityStarter.class).postStartActivityDismissingKeyguard(
                                 intent, 0);
-                    } else {
+                    } else if (mKeyguardStateController.isUnlocked() || Settings.Global.getInt(
+                                mContext.getContentResolver(),
+                                Settings.Global.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 0) == 0) {
                         handleClick();
                     }
                 } else if (msg.what == SECONDARY_CLICK) {
                     name = "handleSecondaryClick";
-                    handleSecondaryClick();
+                    if (mKeyguardStateController.isUnlocked() || Settings.Global.getInt(
+                            mContext.getContentResolver(),
+                            Settings.Global.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 0) == 0) {
+                        handleSecondaryClick();
+                    }
                 } else if (msg.what == LONG_CLICK) {
                     name = "handleLongClick";
-                    handleLongClick();
+                    if (mKeyguardStateController.isUnlocked() || Settings.Global.getInt(
+                            mContext.getContentResolver(),
+                            Settings.Global.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 0) == 0) {
+                        handleLongClick();
+                    }
                 } else if (msg.what == REFRESH_STATE) {
                     name = "handleRefreshState";
                     handleRefreshState(msg.obj);
