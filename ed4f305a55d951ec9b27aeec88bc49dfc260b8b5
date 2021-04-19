@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf47d3f9_33068d67",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 14473,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-19T23:00:27Z",
+      "side": 1,
+      "message": "needs to be updated to reflect the current behaviour",
+      "range": {
+        "startLine": 14473,
+        "startChar": 11,
+        "endLine": 14473,
+        "endChar": 81
+      },
+      "revId": "ed4f305a55d951ec9b27aeec88bc49dfc260b8b5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1808aaca_9c9f9f46",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 14477,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-19T23:00:27Z",
+      "side": 1,
+      "message": "same?",
+      "range": {
+        "startLine": 14476,
+        "startChar": 35,
+        "endLine": 14477,
+        "endChar": 54
+      },
+      "revId": "ed4f305a55d951ec9b27aeec88bc49dfc260b8b5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20178e65_6d026baf",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-19T23:00:27Z",
+      "side": 1,
+      "message": "should we deal with the repetition somehow?",
+      "range": {
+        "startLine": 564,
+        "startChar": 27,
+        "endLine": 566,
+        "endChar": 94
+      },
+      "revId": "ed4f305a55d951ec9b27aeec88bc49dfc260b8b5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
