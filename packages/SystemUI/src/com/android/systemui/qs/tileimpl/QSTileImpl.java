@@ -37,6 +37,7 @@ import android.metrics.LogMaker;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.text.format.DateUtils;
 import android.util.ArraySet;
@@ -68,6 +69,7 @@ import com.android.systemui.qs.QSEvent;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QuickStatusBarHeader;
 import com.android.systemui.qs.logging.QSLogger;
+import com.android.systemui.statusbar.policy.KeyguardStateController;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -96,6 +98,8 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     protected final Handler mUiHandler = new Handler(Looper.getMainLooper());
     private final ArraySet<Object> mListeners = new ArraySet<>();
     private final MetricsLogger mMetricsLogger = Dependency.get(MetricsLogger.class);
+    private final KeyguardStateController
+            mKeyguardStateController = Dependency.get(KeyguardStateController.class);
     private final StatusBarStateController
             mStatusBarStateController = Dependency.get(StatusBarStateController.class);
     private final UiEventLogger mUiEventLogger;
@@ -247,39 +251,40 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     }
 
     public void click() {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_CLICK).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_CLICK, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
-        mHandler.sendEmptyMessage(H.CLICK);
+        if (handleClick(ACTION_QS_CLICK, QSEvent.QS_ACTION_CLICK, H.CLICK)) {
+            mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
+        }
     }
 
     public void secondaryClick() {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_SECONDARY_CLICK).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_SECONDARY_CLICK, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileSecondaryClick(mTileSpec, mStatusBarStateController.getState(),
-                mState.state);
-        mHandler.sendEmptyMessage(H.SECONDARY_CLICK);
+        if (handleClick(ACTION_QS_SECONDARY_CLICK, QSEvent.QS_ACTION_SECONDARY_CLICK, H.SECONDARY_CLICK)) {
+            mQSLogger.logTileSecondaryClick(mTileSpec, mStatusBarStateController.getState(),
+                    mState.state);
+        }
     }
 
     public void longClick() {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_LONG_PRESS).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_LONG_PRESS, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
-        mHandler.sendEmptyMessage(H.LONG_CLICK);
+        if (handleClick(ACTION_QS_LONG_PRESS, QSEvent.QS_ACTION_LONG_PRESS, H.LONG_CLICK)) {
+            mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
 
-        Prefs.putInt(
-                mContext,
-                Prefs.Key.QS_LONG_PRESS_TOOLTIP_SHOWN_COUNT,
-                QuickStatusBarHeader.MAX_TOOLTIP_SHOWN_COUNT);
+            Prefs.putInt(
+                    mContext,
+                    Prefs.Key.QS_LONG_PRESS_TOOLTIP_SHOWN_COUNT,
+                    QuickStatusBarHeader.MAX_TOOLTIP_SHOWN_COUNT);
+        }
+    }
+
+    private boolean handleClick(int category, UiEventLogger.UiEventEnum uiEventEnum, int message) {
+        if (mKeyguardStateController.isUnlocked() || Settings.Global.getInt(
+                mContext.getContentResolver(),
+                Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, 0) == 0) {
+            mMetricsLogger.write(populate(new LogMaker(category).setType(TYPE_ACTION)
+                    .addTaggedData(FIELD_STATUS_BAR_STATE,
+                            mStatusBarStateController.getState())));
+            mUiEventLogger.logWithInstanceId(uiEventEnum, 0, getMetricsSpec(),
+                    getInstanceId());
+            return mHandler.sendEmptyMessage(message);
+        } else return false;
     }
 
     public LogMaker populate(LogMaker logMaker) {
