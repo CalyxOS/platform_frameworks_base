@@ -16166,6 +16166,7 @@ public final class Settings {
         public static final String RESTRICTED_NETWORKING_MODE = "restricted_networking_mode";
 
         /**
+<<<<<<< HEAD
          * The amount of time in milliseconds before bluetooth is turned off
          * @hide
          */
@@ -16196,6 +16197,13 @@ public final class Settings {
          * @hide
          */
         public static final String GLOBAL_VPN_APP = "global_vpn_app";
+
+        /**
+         * Whether user is allowed to interact with quick settings on lockscreen.
+         * @hide
+         */
+        public static final String QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN =
+                "qs_tiles_toggleable_on_lock_screen";
     }
 
     /**
