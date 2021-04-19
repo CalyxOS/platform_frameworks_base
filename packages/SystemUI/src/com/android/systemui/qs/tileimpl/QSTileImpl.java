@@ -31,6 +31,7 @@ import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 import android.annotation.CallSuper;
 import android.annotation.NonNull;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -38,6 +39,7 @@ import android.metrics.LogMaker;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.util.ArraySet;
 import android.util.Log;
@@ -286,37 +288,40 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     }
 
     public void click(@Nullable View view) {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_CLICK).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_CLICK, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
-        if (!mFalsingManager.isFalseTap(FalsingManager.LOW_PENALTY)) {
-            mHandler.obtainMessage(H.CLICK, view).sendToTarget();
+        if (handleClick(ACTION_QS_CLICK, QSEvent.QS_ACTION_CLICK, H.CLICK)) {
+            mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
         }
     }
 
     public void secondaryClick(@Nullable View view) {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_SECONDARY_CLICK).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_SECONDARY_CLICK, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileSecondaryClick(mTileSpec, mStatusBarStateController.getState(),
-                mState.state);
-        mHandler.obtainMessage(H.SECONDARY_CLICK, view).sendToTarget();
+        if (handleClick(ACTION_QS_SECONDARY_CLICK, QSEvent.QS_ACTION_SECONDARY_CLICK, H.SECONDARY_CLICK)) {
+            mQSLogger.logTileSecondaryClick(mTileSpec, mStatusBarStateController.getState(),
+                    mState.state);
+        }
     }
 
     @Override
     public void longClick(@Nullable View view) {
-        mMetricsLogger.write(populate(new LogMaker(ACTION_QS_LONG_PRESS).setType(TYPE_ACTION)
-                .addTaggedData(FIELD_STATUS_BAR_STATE,
-                        mStatusBarStateController.getState())));
-        mUiEventLogger.logWithInstanceId(QSEvent.QS_ACTION_LONG_PRESS, 0, getMetricsSpec(),
-                getInstanceId());
-        mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
-        mHandler.obtainMessage(H.LONG_CLICK, view).sendToTarget();
+        if (handleClick(ACTION_QS_LONG_PRESS, QSEvent.QS_ACTION_LONG_PRESS, H.LONG_CLICK)) {
+            mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
+        }
+    }
+
+    private boolean handleClick(int category, UiEventLogger.UiEventEnum uiEventEnum, int message) {
+        if (!mContext.getSystemService(KeyguardManager.class).isKeguardLocked() ||
+                Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, 0) == 0) {
+            mMetricsLogger.write(populate(new LogMaker(category).setType(TYPE_ACTION)
+                   .addTaggedData(FIELD_STATUS_BAR_STATE,
+                         mStatusBarStateController.getState())));
+            mUiEventLogger.logWithInstanceId(uiEventEnum, 0, getMetricsSpec(),
+                    getInstanceId());
+            if (message == H.CLICK && !mFalsingManager.isFalseTap(FalsingManager.LOW_PENALTY)) {
+                return mHandler.obtainMessage(message, view).sendToTarget();
+            } else {
+                return mHandler.obtainMessage(message, view).sendToTarget();
+            }
+        } else return false;
     }
 
     public LogMaker populate(LogMaker logMaker) {
