@@ -78,5 +78,6 @@ public class GlobalSettings {
         Settings.Global.POWER_BUTTON_LONG_PRESS,
         Settings.Global.BLUETOOTH_OFF_TIMEOUT,
         Settings.Global.GLOBAL_VPN_APP,
+        Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN,
     };
 }
