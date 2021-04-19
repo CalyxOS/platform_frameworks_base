@@ -145,6 +145,7 @@ public class GlobalSettingsValidators {
         VALIDATORS.put(
                 Global.GLOBAL_VPN_APP,
                 value -> (value == null) || PACKAGE_NAME_VALIDATOR.validate(value));
+        VALIDATORS.put(Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, BOOLEAN_VALIDATOR);
     }
 }
 
