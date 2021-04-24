@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd63fd32_b16c7b48",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-24T01:35:28Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/2711/1/src/com/android/settings/development/CleartextNetworkPolicyPreferenceController.java",
+      "parentUuid": "7bff5173_4f5974dd",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33d1c6ee_d3c39e7d",
         "filename": "core/java/android/os/StrictMode.java",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2021-04-24T01:23:52Z",
       "side": 1,
       "message": "I\u0027d rather use a different property here if needed to keep things neater.",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3d74c4_17183141",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-24T01:35:28Z",
+      "side": 1,
+      "message": "could be done although this one seems appropriate given that it handles detection of cleartext",
+      "parentUuid": "33d1c6ee_d3c39e7d",
       "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "53957ad5_268b538d",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-24T01:35:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "add41f2e_a7b0a848",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78449cf0_d37d7ef1",
         "filename": "services/core/java/com/android/server/NetworkManagementService.java",
         "patchSetId": 8
@@ -67,6 +121,24 @@
       "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2503bf7_4a6f8647",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-24T01:35:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78449cf0_d37d7ef1",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
     }
   ]
 }
