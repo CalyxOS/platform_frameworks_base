@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bff5173_4f5974dd",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-04-24T01:23:52Z",
+      "side": 1,
+      "message": "Why is this change needed?",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d1c6ee_d3c39e7d",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-04-24T01:23:52Z",
+      "side": 1,
+      "message": "I\u0027d rather use a different property here if needed to keep things neater.",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add41f2e_a7b0a848",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-04-24T01:23:52Z",
+      "side": 1,
+      "message": "Variables!",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78449cf0_d37d7ef1",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-04-24T01:23:52Z",
+      "side": 1,
+      "message": "-1 should be a variable here and above.",
+      "revId": "c60b06660b4a523d07159810b66f4e1887fc5ec5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
