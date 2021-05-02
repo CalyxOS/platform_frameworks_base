@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94dfb74_1c383bf9",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2022,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-02T09:11:22Z",
+      "side": 1,
+      "message": "Thinking of seeing if we can somehow play with sVmPolicy.mask instead to avoid reading the property here.\n\nWriting to it from the app is fine, it\u0027s reading it here which causes issues. More details on the vendor/calyx commit.",
+      "revId": "9ed9fb40a9b2865bbc3c5a90925c247220ffc617",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
