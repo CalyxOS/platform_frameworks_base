@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cde15056_faba913e",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-10T15:49:03Z",
+      "side": 1,
+      "message": "Turns out restricting to just system apps is super easy!",
+      "revId": "7e19279352f35ef0fb9f1ea77fd677c71d24129c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
+    }
+  ]
+}
