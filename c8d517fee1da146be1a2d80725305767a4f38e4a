@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b498d804_81b648cf",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-10T15:40:09Z",
+      "side": 1,
+      "message": "For now, just flipped the package name list to try the rename first and then the upstream package name.",
+      "parentUuid": "248f15aa_28aedad2",
+      "revId": "c8d517fee1da146be1a2d80725305767a4f38e4a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9a61ec9_61fd61b8",
         "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
         "patchSetId": 1
