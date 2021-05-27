@@ -3792,8 +3792,11 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
         ComponentName profileOwner = getProfileOwnerAsUser(userHandle);
         // Profile challenge is supported on N or newer release.
-        return profileOwner != null &&
-                getTargetSdk(profileOwner.getPackageName(), userHandle) > Build.VERSION_CODES.M;
+        if (profileOwner != null) {
+            return getTargetSdk(profileOwner.getPackageName(), userHandle) > Build.VERSION_CODES.M;
+        } else {
+            return true;
+        }
     }
 
     private boolean canSetPasswordQualityOnParent(String packageName, final CallerIdentity caller) {
@@ -16956,7 +16959,6 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         Objects.requireNonNull(callerPackage, "callerPackage is null");
 
         final ComponentName admin = provisioningParams.getProfileAdminComponentName();
-        Objects.requireNonNull(admin, "admin is null");
 
         final CallerIdentity caller = getCallerIdentity(callerPackage);
         Preconditions.checkCallAuthorization(
@@ -16998,14 +17000,18 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                     startTime,
                     callerPackage);
 
-            installExistingAdminPackage(userInfo.id, admin.getPackageName());
-            if (!enableAdminAndSetProfileOwner(
+            if (admin != null) {
+                installExistingAdminPackage(userInfo.id, admin.getPackageName());
+            }
+            if (!provisioningParams.isUnamagedProvisioning() && !enableAdminAndSetProfileOwner(
                     userInfo.id, caller.getUserId(), admin, provisioningParams.getOwnerName())) {
                 throw new ServiceSpecificException(
                         PROVISIONING_RESULT_SETTING_PROFILE_OWNER_FAILED,
                         "Error setting profile owner.");
             }
-            setUserSetupComplete(userInfo.id);
+            if (!provisioningParams.isUnamagedProvisioning()) {
+                setUserSetupComplete(userInfo.id);
+            }
 
             startUser(userInfo.id, callerPackage);
             maybeMigrateAccount(
