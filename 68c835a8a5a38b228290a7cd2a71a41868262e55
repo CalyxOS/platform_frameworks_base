@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ab21cc_d36e044c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-27T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7bea62_8d1197d2",
+      "revId": "68c835a8a5a38b228290a7cd2a71a41868262e55",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bab2f5c1_c0ca6523",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-27T16:31:01Z",
       "side": 1,
       "message": "Let\u0027s make privileged|signature.",
+      "revId": "68c835a8a5a38b228290a7cd2a71a41868262e55",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "141bdb3c_5b3a80b2",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2472,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-27T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab2f5c1_c0ca6523",
       "revId": "68c835a8a5a38b228290a7cd2a71a41868262e55",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
