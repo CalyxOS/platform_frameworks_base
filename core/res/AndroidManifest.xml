@@ -2466,6 +2466,11 @@
         android:label="@string/permlab_manageProfileAndDeviceOwners"
         android:description="@string/permdesc_manageProfileAndDeviceOwners" />
 
+    <!-- Allows an application to provision profiles without owners.
+         @hide -->
+    <permission android:name="android.permission.CREATE_PROFILES_WITHOUT_OWNER"
+        android:protectionLevel="signature" />
+
     <!-- Allows an application to get full detailed information about
          recently running tasks, with full fidelity to the real state.
          @hide -->
