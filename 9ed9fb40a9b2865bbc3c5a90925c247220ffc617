@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "f94dfb74_1c383bf9",
         "filename": "core/java/android/os/StrictMode.java",
@@ -14,8 +15,25 @@
       "side": 1,
       "message": "Thinking of seeing if we can somehow play with sVmPolicy.mask instead to avoid reading the property here.\n\nWriting to it from the app is fine, it\u0027s reading it here which causes issues. More details on the vendor/calyx commit.",
       "revId": "9ed9fb40a9b2865bbc3c5a90925c247220ffc617",
-      "serverId": "35266860-6252-469c-a67d-185064479fc0",
-      "unresolved": true
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9402f063_e7c7d412",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2022,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-06-02T17:50:22Z",
+      "side": 1,
+      "message": "Not needed anymore after 3294: sepolicy: Label persist.sys.global.cleartext and let platform_app set it | https://review.calyxos.org/c/CalyxOS/vendor_calyx/+/3294",
+      "parentUuid": "f94dfb74_1c383bf9",
+      "revId": "9ed9fb40a9b2865bbc3c5a90925c247220ffc617",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
