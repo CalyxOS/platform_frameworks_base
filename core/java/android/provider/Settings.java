@@ -14509,6 +14509,13 @@ public final class Settings {
          */
         public static final String QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN =
                 "qs_tiles_toggleable_on_lock_screen";
+
+        /**
+         * Whether to automatically reboot the device after a user defined timeout
+         *
+         * @hide
+         */
+        public static final String DEVICE_REBOOT_TIMEOUT = "device_reboot_timeout";
     }
 
     /**
