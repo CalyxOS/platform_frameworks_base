@@ -16164,6 +16164,13 @@ public final class Settings {
          * @hide
          */
         public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
+
+        /**
+         * Whether to automatically reboot the device after a user defined timeout
+         *
+         * @hide
+         */
+        public static final String DEVICE_REBOOT_TIMEOUT = "device_reboot_timeout";
     }
 
     /**
