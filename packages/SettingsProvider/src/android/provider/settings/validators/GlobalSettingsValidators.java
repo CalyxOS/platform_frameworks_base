@@ -143,6 +143,7 @@ public class GlobalSettingsValidators {
         VALIDATORS.put(Global.BLUETOOTH_OFF_TIMEOUT, ANY_INTERGER_VALIDATOR);
         VALIDATORS.put(Global.WIFI_OFF_TIMEOUT, ANY_INTERGER_VALIDATOR);
         VALIDATORS.put(Global.CLEARTEXT_NETWORK_POLICY, new InclusiveIntegerRangeValidator(0, 3));
+        VALIDATORS.put(Global.DEVICE_REBOOT_TIMEOUT, ANY_INTERGER_VALIDATOR);
     }
 }
 
