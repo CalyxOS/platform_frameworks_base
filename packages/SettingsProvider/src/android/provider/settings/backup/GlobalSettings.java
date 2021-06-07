@@ -78,5 +78,6 @@ public class GlobalSettings {
         Settings.Global.POWER_BUTTON_LONG_PRESS,
         Settings.Global.BLUETOOTH_OFF_TIMEOUT,
         Settings.Global.CLEARTEXT_NETWORK_POLICY,
+        Settings.Global.DEVICE_REBOOT_TIMEOUT,
     };
 }
