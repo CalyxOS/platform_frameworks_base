@@ -77,6 +77,7 @@ public class GlobalSettings {
         Settings.Global.WIFI_OFF_TIMEOUT,
         Settings.Global.CLEARTEXT_NETWORK_POLICY,
         Settings.Global.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-        Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN
+        Settings.Global.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN,
+        Settings.Global.DEVICE_REBOOT_TIMEOUT
     };
 }
