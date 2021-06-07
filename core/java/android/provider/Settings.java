@@ -16183,6 +16183,13 @@ public final class Settings {
          * @hide
          */
         public static final String CLEARTEXT_NETWORK_POLICY = "cleartext_network_policy";
+
+        /**
+         * Whether to automatically reboot the device after a user defined timeout
+         *
+         * @hide
+         */
+        public static final String DEVICE_REBOOT_TIMEOUT = "device_reboot_timeout";
     }
 
     /**
