@@ -1115,7 +1115,7 @@ public abstract class DocumentsProvider extends ContentProvider {
         final String authority = documentUri.getAuthority();
         final String documentId = DocumentsContract.getDocumentId(documentUri);
 
-        if (!mAuthority.equals(authority)) {
+        if (!mAuthority.equals(ContentProvider.getAuthorityWithoutUserId(authority))) {
             throw new SecurityException(
                     "Requested authority " + authority + " doesn't match provider " + mAuthority);
         }
