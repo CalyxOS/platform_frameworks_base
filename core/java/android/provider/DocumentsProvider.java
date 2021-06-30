@@ -145,6 +145,8 @@ import java.util.Objects;
 public abstract class DocumentsProvider extends ContentProvider {
     private static final String TAG = "DocumentsProvider";
 
+    private static final String SEEDVAULT_PACKAGE = "com.stevesoltys.seedvault";
+
     private static final int MATCH_ROOTS = 1;
     private static final int MATCH_ROOT = 2;
     private static final int MATCH_RECENT = 3;
@@ -1116,8 +1118,21 @@ public abstract class DocumentsProvider extends ContentProvider {
         final String documentId = DocumentsContract.getDocumentId(documentUri);
 
         if (!mAuthority.equals(authority)) {
-            throw new SecurityException(
-                    "Requested authority " + authority + " doesn't match provider " + mAuthority);
+            // If the calling package is Seedvault, check authorities without user id
+            // (allows secondary users to backup to USB). Else, keep default behaviour.
+            boolean authorityMatchesProvider = false;
+            if (getCallingPackage().equals(SEEDVAULT_PACKAGE)) {
+                context.enforceCallingPermission(Manifest.permission.INTERACT_ACROSS_USERS, null);
+                if (!mAuthority.equals("com.android.externalstorage.documents")) {
+                    throw new SecurityException();
+                }
+                 authorityMatchesProvider = mAuthority.equals(
+                         ContentProvider.getAuthorityWithoutUserId(authority));
+            }
+            if (!authorityMatchesProvider) {
+                throw new SecurityException("Requested authority " + authority +
+                        " doesn't match provider " + mAuthority);
+            }
         }
 
         if (METHOD_IS_CHILD_DOCUMENT.equals(method)) {
