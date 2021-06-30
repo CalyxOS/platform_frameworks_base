@@ -16,6 +16,52 @@
       "message": "Need to look at the security implications.",
       "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fafba40_958fae1d",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-06-30T19:38:52Z",
+      "side": 1,
+      "message": "This is where mAuthority is set. My understanding is that its value comes from extending this class and setting the authority for the provider component in the manifest xml. This also explains why it should/would not contain the userid with it",
+      "range": {
+        "startLine": 192,
+        "startChar": 8,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f62bbd_48985bcb",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-06-30T19:38:52Z",
+      "side": 1,
+      "message": "As explained above, it would make sense that mAuthority would never contain the user id. This check is present to ensure that a provider cannot be used if the authority does not match it. Stripping the URI from the user id we appended to query and use the content providers in another user for the sake of a string comparison I would say makes sense",
+      "range": {
+        "startLine": 1118,
+        "startChar": 13,
+        "endLine": 1118,
+        "endChar": 84
+      },
+      "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
