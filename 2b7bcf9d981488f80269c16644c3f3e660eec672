@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f391eb9c_e3cea1e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-06-30T09:09:25Z",
+      "side": 1,
+      "message": "Need to look at the security implications.",
+      "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
