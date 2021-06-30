@@ -145,6 +145,8 @@ import java.util.Objects;
 public abstract class DocumentsProvider extends ContentProvider {
     private static final String TAG = "DocumentsProvider";
 
+    private static final String SEEDVAULT_PACKAGE = "com.stevesoltys.seedvault";
+
     private static final int MATCH_ROOTS = 1;
     private static final int MATCH_ROOT = 2;
     private static final int MATCH_RECENT = 3;
@@ -1116,8 +1118,12 @@ public abstract class DocumentsProvider extends ContentProvider {
         final String documentId = DocumentsContract.getDocumentId(documentUri);
 
         if (!mAuthority.equals(authority)) {
-            throw new SecurityException(
-                    "Requested authority " + authority + " doesn't match provider " + mAuthority);
+            // To allow secondary user usb backup
+            if (getCallingPackage().equals(SEEDVAULT_PACKAGE) &&
+                !mAuthority.equals(ContentProvider.getAuthorityWithoutUserId(authority))) {
+                throw new SecurityException(
+                        "Requested authority " + authority + " doesn't match provider " + mAuthority);
+            }
         }
 
         if (METHOD_IS_CHILD_DOCUMENT.equals(method)) {
