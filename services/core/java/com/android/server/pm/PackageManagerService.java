@@ -13478,10 +13478,9 @@ public class PackageManagerService extends IPackageManager.Stub
                 callingMethod);
 
         final int packageUid = getPackageUid(callingPackage, 0, userId);
-        final boolean allowedPackageUid = packageUid == callingUid;
+        final boolean allowedPackageUid = UserHandle.isSameApp(packageUid, callingUid);
         // TODO(b/139383163): remove special casing for shell and enforce INTERACT_ACROSS_USERS_FULL
-        final boolean allowedShell = callingUid == SHELL_UID
-                && UserHandle.isSameApp(packageUid, callingUid);
+        final boolean allowedShell = callingUid == SHELL_UID && allowedPackageUid;
 
         if (!allowedShell && !allowedPackageUid) {
             throw new SecurityException("Calling package " + callingPackage + " in user "
