@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ab3730_f306096e",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 13480,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-07-03T02:02:05Z",
+      "side": 1,
+      "message": "This is insufficient but works. We can restrict this further or use the previous patchset if preferred. Otherwise see my previous comments concerning the lines before SUSPEND_APPS. Could event add an exemption for launcher3 and leave the rest of the code as is (would potentially even remove the requirement for it to have SUSPEND_APPS granted entirely).",
+      "range": {
+        "startLine": 13479,
+        "startChar": 8,
+        "endLine": 13480,
+        "endChar": 31
+      },
+      "revId": "4c8c21a31d6f4327c53c7365627b3f923ff116cd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
