@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44163c31_0c2c047a",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 13488,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-07-03T01:19:53Z",
+      "side": 1,
+      "message": "could replace this section with mContext.enforceCallingOrSelfPermission(android.Manifest.permission.INTERACT_ACROSS_USERS)? INTERACT_ACROSS_USERS is signature|installer which would bring us back to having to use signature",
+      "range": {
+        "startLine": 13480,
+        "startChar": 8,
+        "endLine": 13488,
+        "endChar": 9
+      },
+      "revId": "3857dffb777b57b6814eeb9484db3503517acc18",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
