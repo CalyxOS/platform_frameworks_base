@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39dcaa03_8c0a5a62",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 13478,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-07-03T01:26:02Z",
+      "side": 1,
+      "message": "also, am I understanding correctly that apps that call the setPackagesSuspendedAsUser API function that fall into one of the conditions above do not require the SUSPEND_APPS permission given that they return before they reach this code?",
+      "range": {
+        "startLine": 13477,
+        "startChar": 8,
+        "endLine": 13478,
+        "endChar": 31
+      },
+      "revId": "3857dffb777b57b6814eeb9484db3503517acc18",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44163c31_0c2c047a",
         "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
         "patchSetId": 2
