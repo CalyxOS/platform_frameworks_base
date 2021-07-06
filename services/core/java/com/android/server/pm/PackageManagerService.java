@@ -4454,7 +4454,7 @@ public class PackageManagerService extends IPackageManager.Stub
             Set<String> permissions) {
         try {
             if (permissions.contains("android.permission.MICROG_SPOOF_SIGNATURE")
-                    && p.getMetaData() != null) {
+                    && p.getMetaData() != null && pi != null) {
                 // Only allow microG and FakeStore
                 if (p.getPackageName().equals("com.google.android.gms") || p.getPackageName().equals("com.android.vending")) {
                     pi.signatures = new Signature[] {new Signature(MICROG_FAKE_SIGNATURE)};
