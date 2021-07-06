@@ -3337,7 +3337,8 @@ public class PackageManagerService extends IPackageManager.Stub
         private PackageInfo mayFakeSignature(AndroidPackage p, PackageInfo pi,
                 Set<String> permissions) {
             try {
-                if (permissions.contains("android.permission.MICROG_SPOOF_SIGNATURE")) {
+                if (pi != null
+                        && permissions.contains("android.permission.MICROG_SPOOF_SIGNATURE")) {
                     if (DEBUG_PACKAGE_INFO) {
                         Log.v(TAG, "Spoofing signature for microG");
                     }
