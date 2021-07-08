@@ -579,6 +579,11 @@ public class Vpn {
         return mAlwaysOn;
     }
 
+    private synchronized boolean isGlobalVpn() {
+        return mPackage.equals(Settings.Global.getString(mContext.getContentResolver(),
+                Settings.Global.GLOBAL_VPN_APP));;
+    }
+
     /**
      * Checks if a VPN app supports always-on mode.
      *
@@ -1461,7 +1466,7 @@ public class Vpn {
         addUserToRanges(ranges, userHandle, allowedApplications, disallowedApplications);
 
         // If the user can have restricted profiles, assign all its restricted profiles too
-        if (canHaveRestrictedProfile(userHandle)) {
+        if (canHaveRestrictedProfile(userHandle) || isGlobalVpn()) {
             final long token = Binder.clearCallingIdentity();
             List<UserInfo> users;
             try {
@@ -1470,7 +1475,8 @@ public class Vpn {
                 Binder.restoreCallingIdentity(token);
             }
             for (UserInfo user : users) {
-                if (user.isRestricted() && (user.restrictedProfileParentId == userHandle)) {
+                if ((user.isRestricted() && (user.restrictedProfileParentId == userHandle))
+                        || isGlobalVpn()) {
                     addUserToRanges(ranges, user.id, allowedApplications, disallowedApplications);
                 }
             }
@@ -1550,7 +1556,8 @@ public class Vpn {
     public void onUserAdded(int userHandle) {
         // If the user is restricted tie them to the parent user's VPN
         UserInfo user = UserManager.get(mContext).getUserInfo(userHandle);
-        if (user.isRestricted() && user.restrictedProfileParentId == mUserHandle) {
+        if ((user.isRestricted() && user.restrictedProfileParentId == mUserHandle) ||
+                isGlobalVpn()) {
             synchronized(Vpn.this) {
                 final Set<UidRange> existingRanges = mNetworkCapabilities.getUids();
                 if (existingRanges != null) {
@@ -1577,7 +1584,8 @@ public class Vpn {
     public void onUserRemoved(int userHandle) {
         // clean up if restricted
         UserInfo user = UserManager.get(mContext).getUserInfo(userHandle);
-        if (user.isRestricted() && user.restrictedProfileParentId == mUserHandle) {
+        if ((user.isRestricted() && user.restrictedProfileParentId == mUserHandle) ||
+                isGlobalVpn()) {
             synchronized(Vpn.this) {
                 final Set<UidRange> existingRanges = mNetworkCapabilities.getUids();
                 if (existingRanges != null) {
