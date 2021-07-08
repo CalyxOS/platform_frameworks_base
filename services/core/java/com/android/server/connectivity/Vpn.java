@@ -1460,8 +1460,10 @@ public class Vpn {
         // Assign the top-level user to the set of ranges
         addUserToRanges(ranges, userHandle, allowedApplications, disallowedApplications);
 
+        boolean globalVpn = mPackage.equals(Settings.Global.getString(mContext.getContentResolver(),
+                Settings.Global.GLOBAL_VPN_APP));
         // If the user can have restricted profiles, assign all its restricted profiles too
-        if (canHaveRestrictedProfile(userHandle)) {
+        if (canHaveRestrictedProfile(userHandle) || globalVpn) {
             final long token = Binder.clearCallingIdentity();
             List<UserInfo> users;
             try {
@@ -1470,7 +1472,8 @@ public class Vpn {
                 Binder.restoreCallingIdentity(token);
             }
             for (UserInfo user : users) {
-                if (user.isRestricted() && (user.restrictedProfileParentId == userHandle)) {
+                if ((user.isRestricted() && (user.restrictedProfileParentId == userHandle))
+                        || globalVpn) {
                     addUserToRanges(ranges, user.id, allowedApplications, disallowedApplications);
                 }
             }
