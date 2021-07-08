@@ -79,5 +79,6 @@ public class GlobalSettings {
         Settings.Global.BLUETOOTH_OFF_TIMEOUT,
         Settings.Global.CLEARTEXT_NETWORK_POLICY,
         Settings.Global.DEVICE_REBOOT_TIMEOUT,
+        Settings.Global.GLOBAL_VPN_APP,
     };
 }
