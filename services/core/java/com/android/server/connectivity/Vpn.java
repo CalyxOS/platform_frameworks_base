@@ -580,6 +580,14 @@ public class Vpn {
     }
 
     /**
+     * Returns whether VPN is global.
+     */
+    private synchronized boolean isGlobalVpn() {
+        return mUserHandle == UserHandle.USER_SYSTEM && mPackage.equals(Settings.Global.getString(
+                mContext.getContentResolver(), Settings.Global.GLOBAL_VPN_APP));
+    }
+
+    /**
      * Checks if a VPN app supports always-on mode.
      *
      * <p>In order to support the always-on feature, an app has to either have an installed
@@ -1315,6 +1323,7 @@ public class Vpn {
         try {
             // Restricted users are not allowed to create VPNs, they are tied to Owner
             enforceNotRestrictedUser();
+            enforceNotGlobalVpn();
 
             ResolveInfo info = AppGlobals.getPackageManager().resolveService(intent,
                     null, 0, mUserHandle);
@@ -1461,7 +1470,7 @@ public class Vpn {
         addUserToRanges(ranges, userHandle, allowedApplications, disallowedApplications);
 
         // If the user can have restricted profiles, assign all its restricted profiles too
-        if (canHaveRestrictedProfile(userHandle)) {
+        if (canHaveRestrictedProfile(userHandle) || isGlobalVpn()) {
             final long token = Binder.clearCallingIdentity();
             List<UserInfo> users;
             try {
@@ -1470,7 +1479,8 @@ public class Vpn {
                 Binder.restoreCallingIdentity(token);
             }
             for (UserInfo user : users) {
-                if (user.isRestricted() && (user.restrictedProfileParentId == userHandle)) {
+                if ((user.isRestricted() && (user.restrictedProfileParentId == userHandle))
+                        || isGlobalVpn()) {
                     addUserToRanges(ranges, user.id, allowedApplications, disallowedApplications);
                 }
             }
@@ -1550,7 +1560,8 @@ public class Vpn {
     public void onUserAdded(int userHandle) {
         // If the user is restricted tie them to the parent user's VPN
         UserInfo user = UserManager.get(mContext).getUserInfo(userHandle);
-        if (user.isRestricted() && user.restrictedProfileParentId == mUserHandle) {
+        if ((user.isRestricted() && user.restrictedProfileParentId == mUserHandle) ||
+                isGlobalVpn()) {
             synchronized(Vpn.this) {
                 final Set<UidRange> existingRanges = mNetworkCapabilities.getUids();
                 if (existingRanges != null) {
@@ -1577,7 +1588,8 @@ public class Vpn {
     public void onUserRemoved(int userHandle) {
         // clean up if restricted
         UserInfo user = UserManager.get(mContext).getUserInfo(userHandle);
-        if (user.isRestricted() && user.restrictedProfileParentId == mUserHandle) {
+        if ((user.isRestricted() && user.restrictedProfileParentId == mUserHandle) ||
+                isGlobalVpn()) {
             synchronized(Vpn.this) {
                 final Set<UidRange> existingRanges = mNetworkCapabilities.getUids();
                 if (existingRanges != null) {
@@ -2029,6 +2041,16 @@ public class Vpn {
         });
     }
 
+    private void enforceNotGlobalVpn() {
+        Binder.withCleanCallingIdentity(() -> {
+            if (mUserHandle != UserHandle.USER_SYSTEM && Settings.Global.getString(
+                    mContext.getContentResolver(), Settings.Global.GLOBAL_VPN_APP) != null) {
+                throw new SecurityException("Secondary users cannot configure VPNs when" +
+                        " global vpn is set");
+            }
+        });
+    }
+
     /**
      * Start legacy VPN, controlling native daemons as needed. Creates a
      * secondary thread to perform connection work, returning quickly.
@@ -2061,6 +2083,7 @@ public class Vpn {
                     new UserHandle(mUserHandle))) {
             throw new SecurityException("Restricted users cannot establish VPNs");
         }
+        enforceNotGlobalVpn();
 
         final RouteInfo ipv4DefaultRoute = findIPv4DefaultRoute(egress);
         final String gateway = ipv4DefaultRoute.getGateway().getHostAddress();
@@ -3069,6 +3092,7 @@ public class Vpn {
 
         verifyCallingUidAndPackage(packageName);
         enforceNotRestrictedUser();
+        enforceNotGlobalVpn();
         validateRequiredFeatures(profile);
 
         if (profile.isRestrictedToTestNetworks) {
@@ -3115,6 +3139,7 @@ public class Vpn {
 
         verifyCallingUidAndPackage(packageName);
         enforceNotRestrictedUser();
+        enforceNotGlobalVpn();
 
         Binder.withCleanCallingIdentity(
                 () -> {
@@ -3169,6 +3194,7 @@ public class Vpn {
         checkNotNull(keyStore, "KeyStore missing");
 
         enforceNotRestrictedUser();
+        enforceNotGlobalVpn();
 
         // Prepare VPN for startup
         if (!prepare(packageName, null /* newPackage */, VpnManager.TYPE_VPN_PLATFORM)) {
@@ -3248,6 +3274,7 @@ public class Vpn {
         checkNotNull(packageName, "No package name provided");
 
         enforceNotRestrictedUser();
+        enforceNotGlobalVpn();
 
         // To stop the VPN profile, the caller must be the current prepared package and must be
         // running an Ikev2VpnProfile.
