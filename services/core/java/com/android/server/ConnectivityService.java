@@ -4686,7 +4686,19 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
         synchronized (mVpns) {
             throwIfLockdownEnabled();
-            Vpn vpn = mVpns.get(userId);
+            Vpn vpn;
+            String globalVpnPackage = Settings.Global.getString(mContext.getContentResolver(),
+                    Settings.Global.GLOBAL_VPN_APP);
+            if (globalVpnPackage != null && userId != UserHandle.USER_SYSTEM) {
+                vpn = mVpns.get(UserHandle.USER_SYSTEM);
+                long callingId = Binder.clearCallingIdentity();
+                if (vpn != null && globalVpnPackage.equals(vpn.getVpnConfig().user) &&
+                        vpn.getNetworkInfo().isConnected()) {
+                    return false;
+                }
+                Binder.restoreCallingIdentity(callingId);
+            }
+            vpn = mVpns.get(userId);
             if (vpn != null) {
                 return vpn.prepare(oldPackage, newPackage, VpnManager.TYPE_VPN_SERVICE);
             } else {
