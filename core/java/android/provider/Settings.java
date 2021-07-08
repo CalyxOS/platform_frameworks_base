@@ -14509,6 +14509,12 @@ public final class Settings {
          */
         public static final String QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN =
                 "qs_tiles_toggleable_on_lock_screen";
+
+        /**
+         * Package designated as global VPN provider.
+         * @hide
+         */
+        public static final String GLOBAL_VPN_APP = "global_vpn_app";
     }
 
     /**
