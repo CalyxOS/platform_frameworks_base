@@ -68,6 +68,8 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+import lineageos.providers.LineageSettings;
+
 /**
  */
 @SysUISingleton
@@ -320,8 +322,13 @@ public class SecurityControllerImpl extends CurrentUserTracker implements Securi
     @Override
     public void onUserSwitched(int newUserId) {
         mCurrentUserId = newUserId;
+        final String globalVpnApp = LineageSettings.Global.getString(mContext.getContentResolver(),
+                LineageSettings.Global.GLOBAL_VPN_APP);
         final UserInfo newUserInfo = mUserManager.getUserInfo(newUserId);
-        if (newUserInfo.isRestricted()) {
+        if (mCurrentVpns.get(UserHandle.USER_SYSTEM) != null &&
+                mCurrentVpns.get(UserHandle.USER_SYSTEM).user.equals(globalVpnApp)) {
+            mVpnUserId = UserHandle.USER_SYSTEM;
+        } else if (newUserInfo.isRestricted()) {
             // VPN for a restricted profile is routed through its owner user
             mVpnUserId = newUserInfo.restrictedProfileParentId;
         } else {
