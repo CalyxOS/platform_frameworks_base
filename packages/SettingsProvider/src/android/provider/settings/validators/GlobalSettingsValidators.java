@@ -143,6 +143,9 @@ public class GlobalSettingsValidators {
         VALIDATORS.put(Global.BLUETOOTH_OFF_TIMEOUT, ANY_INTEGER_VALIDATOR);
         VALIDATORS.put(Global.CLEARTEXT_NETWORK_POLICY, new InclusiveIntegerRangeValidator(0, 3));
         VALIDATORS.put(Global.DEVICE_REBOOT_TIMEOUT, ANY_INTEGER_VALIDATOR);
+        VALIDATORS.put(
+                Global.GLOBAL_VPN_APP,
+                value -> (value == null) || PACKAGE_NAME_VALIDATOR.validate(value));
     }
 }
 
