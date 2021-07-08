@@ -14524,6 +14524,12 @@ public final class Settings {
          * @hide
          */
         public static final String DEVICE_REBOOT_TIMEOUT = "device_reboot_timeout";
+
+        /**
+         * Package designated as global VPN provider.
+         * @hide
+         */
+        public static final String GLOBAL_VPN_APP = "global_vpn_app";
     }
 
     /**
