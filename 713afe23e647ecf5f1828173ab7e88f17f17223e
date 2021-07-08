@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d753103_28d49aab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-07-08T15:44:19Z",
+      "side": 1,
+      "message": "Don\u0027t forget to add it to settings to be backed up.",
+      "revId": "713afe23e647ecf5f1828173ab7e88f17f17223e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
