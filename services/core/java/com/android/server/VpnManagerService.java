@@ -75,6 +75,8 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.List;
 
+import lineageos.providers.LineageSettings;
+
 /**
  * Service that tracks and manages VPNs, and backs the VpnService and VpnManager APIs.
  * @hide
@@ -911,6 +913,12 @@ public class VpnManagerService extends IVpnManager.Stub {
             clearAppExclusionList(vpn, packageName);
 
             vpn.refreshPlatformVpnAppExclusionList();
+
+            if (TextUtils.equals(vpn.getPackage(), packageName) && userId == UserHandle.USER_SYSTEM
+                    && vpn.isGlobalVpn()) {
+                LineageSettings.Global.putString(mContext.getContentResolver(),
+                        LineageSettings.Global.GLOBAL_VPN_APP, "");
+            }
         }
     }
 
