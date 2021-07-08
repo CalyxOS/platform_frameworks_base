@@ -141,6 +141,9 @@ public class GlobalSettingsValidators {
         VALIDATORS.put(Global.DISABLE_WINDOW_BLURS, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Global.DEVICE_CONFIG_SYNC_DISABLED, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Global.BLUETOOTH_OFF_TIMEOUT, ANY_INTEGER_VALIDATOR);
+        VALIDATORS.put(
+                Global.GLOBAL_VPN_APP,
+                value -> (value == null) || PACKAGE_NAME_VALIDATOR.validate(value));
     }
 }
 
