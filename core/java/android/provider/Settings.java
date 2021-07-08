@@ -16164,6 +16164,12 @@ public final class Settings {
          * @hide
          */
         public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
+
+        /**
+         * Package designated as global VPN provider.
+         * @hide
+         */
+        public static final String GLOBAL_VPN_APP = "global_vpn_app";
     }
 
     /**
