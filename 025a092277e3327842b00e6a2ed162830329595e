@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be inside the first call.\n\nWe only want to do this when VPN over hotspot is enabled.\n\nActually you may need to rewrite this a bit, I miss GitLab code suggestions, but:\n\n\n```\nif (Settings.Secure.getInt(mContext.getContentResolver(),\n                        TETHERING_ALLOW_VPN_UPSTREAMS, 0) \u003d\u003d 1) {\n    if (mVpnInternetNetwork !\u003d null) {\n        return mNetworkMap.get(mVpnInternetNetwork);\n    } else {\n        if (Settings.Secure.getInt(mContext.getContentResolver(),\n                        ALWAYS_ON_VPN_LOCKDOWN, 0) \u003d\u003d 1) {\n            return null\n        }\n    }\n}\n```",
       "revId": "025a092277e3327842b00e6a2ed162830329595e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a769afa1_af210e07",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-07-14T18:27:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a600b9_7eeb4213",
+      "revId": "025a092277e3327842b00e6a2ed162830329595e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
