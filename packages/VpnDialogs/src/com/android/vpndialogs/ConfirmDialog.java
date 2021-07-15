@@ -29,6 +29,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.text.Html;
 import android.text.Html.ImageGetter;
 import android.util.Log;
@@ -65,6 +66,16 @@ public class ConfirmDialog extends AlertActivity
         mService = IConnectivityManager.Stub.asInterface(
                 ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
 
+        boolean globalVpn = mPackage.equals(Settings.Global.getString(mContext.getContentResolver(),
+                Settings.Global.GLOBAL_VPN_APP));
+
+        // Other users are not allowed to setup VPN when the primary user has Global VPN enabled
+        // TODO: Check if VPN is actually running
+        if (!UserManager.isPrimaryUser() && globalVpn) {
+            finish()
+            return;
+        }
+
         if (prepareVpn()) {
             setResult(RESULT_OK);
             finish();
@@ -80,6 +91,7 @@ public class ConfirmDialog extends AlertActivity
             finish();
             return;
         }
+
         View view = View.inflate(this, R.layout.confirm, null);
         ((TextView) view.findViewById(R.id.warning)).setText(
                 Html.fromHtml(getString(R.string.warning, getVpnLabel()),
