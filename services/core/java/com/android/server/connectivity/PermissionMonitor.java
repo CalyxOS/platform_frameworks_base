@@ -36,10 +36,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PackageManagerInternal;
 import android.content.pm.UserInfo;
+import android.net.IConnectivityManager;
 import android.net.INetd;
 import android.net.UidRange;
 import android.os.Build;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -106,6 +108,13 @@ public class PermissionMonitor {
 
         private int getPermissionForUid(int uid) {
             int permission = 0;
+            boolean isUidIsolated = false;
+            try {
+                isUidIsolated = IConnectivityManager.Stub.asInterface(
+                        ServiceManager.getService(Context.CONNECTIVITY_SERVICE)).isUidIsolated(uid);
+            } catch (RemoteException e) {
+                Log.e(TAG, "Exception when querying isUidIsolated", e);
+            }
             // Check all the packages for this UID. The UID has the permission if any of the
             // packages in it has the permission.
             String[] packages = mPackageManager.getPackagesForUid(uid);
@@ -114,7 +123,8 @@ public class PermissionMonitor {
                     final PackageInfo app = getPackageInfo(name);
                     if (app != null && app.requestedPermissions != null) {
                         permission |= getNetdPermissionMask(app.requestedPermissions,
-                              app.requestedPermissionsFlags);
+                              app.requestedPermissionsFlags,
+                                isUidIsolated);
                     }
                 }
             } else {
@@ -185,9 +195,17 @@ public class PermissionMonitor {
                 }
             }
 
+            boolean isUidIsolated = false;
+            try {
+                isUidIsolated = IConnectivityManager.Stub.asInterface(
+                        ServiceManager.getService(Context.CONNECTIVITY_SERVICE)).isUidIsolated(uid);
+            } catch (RemoteException e) {
+                Log.e(TAG, "Exception when querying isUidIsolated", e);
+            }
+
             //TODO: unify the management of the permissions into one codepath.
             int otherNetdPerms = getNetdPermissionMask(app.requestedPermissions,
-                    app.requestedPermissionsFlags);
+                    app.requestedPermissionsFlags, isUidIsolated);
             netdPermsUids.put(uid, netdPermsUids.get(uid) | otherNetdPerms);
         }
 
@@ -450,12 +468,15 @@ public class PermissionMonitor {
     }
 
     private static int getNetdPermissionMask(String[] requestedPermissions,
-                                             int[] requestedPermissionsFlags) {
+                                             int[] requestedPermissionsFlags,
+                                             boolean isUidIsolated) {
         int permissions = 0;
         if (requestedPermissions == null || requestedPermissionsFlags == null) return permissions;
+
         for (int i = 0; i < requestedPermissions.length; i++) {
             if (requestedPermissions[i].equals(INTERNET)
-                    && ((requestedPermissionsFlags[i] & REQUESTED_PERMISSION_GRANTED) != 0)) {
+                    && ((requestedPermissionsFlags[i] & REQUESTED_PERMISSION_GRANTED) != 0)
+                    && !isUidIsolated) {
                 permissions |= INetd.PERMISSION_INTERNET;
             }
             if (requestedPermissions[i].equals(UPDATE_DEVICE_STATS)
