@@ -36,10 +36,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PackageManagerInternal;
 import android.content.pm.UserInfo;
+import android.net.IConnectivityManager;
 import android.net.INetd;
 import android.net.UidRange;
 import android.os.Build;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -82,6 +84,7 @@ public class PermissionMonitor {
     private final PackageManager mPackageManager;
     private final UserManager mUserManager;
     private final INetd mNetd;
+    private final IConnectivityManager mConnMgr;
 
     // Values are User IDs.
     @GuardedBy("this")
@@ -114,7 +117,7 @@ public class PermissionMonitor {
                     final PackageInfo app = getPackageInfo(name);
                     if (app != null && app.requestedPermissions != null) {
                         permission |= getNetdPermissionMask(app.requestedPermissions,
-                              app.requestedPermissionsFlags);
+                              app.requestedPermissionsFlags, mConnMgr.isUidIsolated(uid));
                     }
                 }
             } else {
@@ -144,6 +147,8 @@ public class PermissionMonitor {
         mPackageManager = context.getPackageManager();
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mNetd = netd;
+        mConnMgr = IConnectivityManager.Stub.asInterface(
+                ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
     }
 
     // Intended to be called only once at startup, after the system is ready. Installs a broadcast
@@ -187,7 +192,7 @@ public class PermissionMonitor {
 
             //TODO: unify the management of the permissions into one codepath.
             int otherNetdPerms = getNetdPermissionMask(app.requestedPermissions,
-                    app.requestedPermissionsFlags);
+                    app.requestedPermissionsFlags, mConnMgr.isUidIsolated(uid));
             netdPermsUids.put(uid, netdPermsUids.get(uid) | otherNetdPerms);
         }
 
@@ -450,12 +455,13 @@ public class PermissionMonitor {
     }
 
     private static int getNetdPermissionMask(String[] requestedPermissions,
-                                             int[] requestedPermissionsFlags) {
+                                             int[] requestedPermissionsFlags, boolean isUidIsolated) {
         int permissions = 0;
         if (requestedPermissions == null || requestedPermissionsFlags == null) return permissions;
         for (int i = 0; i < requestedPermissions.length; i++) {
             if (requestedPermissions[i].equals(INTERNET)
-                    && ((requestedPermissionsFlags[i] & REQUESTED_PERMISSION_GRANTED) != 0)) {
+                    && ((requestedPermissionsFlags[i] & REQUESTED_PERMISSION_GRANTED) != 0)
+                    && !isUidIsolated) {
                 permissions |= INetd.PERMISSION_INTERNET;
             }
             if (requestedPermissions[i].equals(UPDATE_DEVICE_STATS)
