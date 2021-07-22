@@ -20,14 +20,18 @@ import static android.system.OsConstants.O_CLOEXEC;
 
 import static com.android.internal.os.ZygoteConnectionConstants.MAX_ZYGOTE_ARGC;
 
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.net.Credentials;
+import android.net.IConnectivityManager;
 import android.net.LocalServerSocket;
 import android.net.LocalSocket;
 import android.net.NetworkUtils;
 import android.os.FactoryTest;
 import android.os.IVold;
 import android.os.Process;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.provider.DeviceConfig;
@@ -351,8 +355,15 @@ public final class Zygote {
             Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "PostFork");
 
             // If no GIDs were specified, don't make any permissions changes based on groups.
+            boolean isUidIsolated = false;
+            try {
+                isUidIsolated = IConnectivityManager.Stub.asInterface(
+                        ServiceManager.getService(Context.CONNECTIVITY_SERVICE)).isUidIsolated(uid);
+            } catch (RemoteException e) {
+                Log.e("Zygote", "Failed to query isUidIsolated", e);
+            }
             if (gids != null && gids.length > 0) {
-                NetworkUtils.setAllowNetworkingForProcess(containsInetGid(gids));
+                NetworkUtils.setAllowNetworkingForProcess(containsInetGid(gids) && !isUidIsolated);
             }
         }
 
