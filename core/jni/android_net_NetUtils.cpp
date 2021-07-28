@@ -226,9 +226,9 @@ static jobject android_net_utils_getDnsNetwork(JNIEnv *env, jobject thiz) {
             class_Network, ctor, dnsNetId & ~NETID_USE_LOCAL_NAMESERVERS, privateDnsBypass);
 }
 
-static void android_net_utils_setAllowNetworkingForProcess(JNIEnv *env, jobject thiz,
+static void android_net_utils_setAllowNetworkingForProcess(JNIEnv *env, jobject thiz, jint uid,
                                                            jboolean hasConnectivity) {
-    setAllowNetworkingForProcess(hasConnectivity == JNI_TRUE);
+    setAllowNetworkingForProcess(uid, hasConnectivity == JNI_TRUE);
 }
 
 static jobject android_net_utils_getTcpRepairWindow(JNIEnv *env, jobject thiz, jobject javaFd) {
