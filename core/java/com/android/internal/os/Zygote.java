@@ -352,7 +352,7 @@ public final class Zygote {
 
             // If no GIDs were specified, don't make any permissions changes based on groups.
             if (gids != null && gids.length > 0) {
-                NetworkUtils.setAllowNetworkingForProcess(containsInetGid(gids));
+                NetworkUtils.setAllowNetworkingForProcess(uid, containsInetGid(gids));
             }
         }
 

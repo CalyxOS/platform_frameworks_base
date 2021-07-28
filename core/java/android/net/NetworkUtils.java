@@ -161,7 +161,7 @@ public class NetworkUtils {
      * @param allowNetworking whether to allow or disallow creating AF_INET/AF_INET6 sockets
      *                        and DNS lookups.
      */
-    public static native void setAllowNetworkingForProcess(boolean allowNetworking);
+    public static native void setAllowNetworkingForProcess(int uid, boolean allowNetworking);
 
     /**
      * Get the tcp repair window associated with the {@code fd}.
