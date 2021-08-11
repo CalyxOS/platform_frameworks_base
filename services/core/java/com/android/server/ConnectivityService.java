@@ -50,6 +50,9 @@ import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_TEST;
 import static android.net.NetworkCapabilities.TRANSPORT_VPN;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_WIFI;
 import static android.net.NetworkPolicyManager.RULE_NONE;
 import static android.net.NetworkPolicyManager.uidRulesToString;
 import static android.net.shared.NetworkMonitorUtils.isPrivateDnsValidationRequired;
@@ -2069,6 +2072,34 @@ public class ConnectivityService extends IConnectivityManager.Stub
             return mIsolatedUids.get(uid);
         }
     }
+
+    @Override
+    public boolean isUidIsolatedWifi(int uid) throws RemoteException {
+        int mUidPolicy = mPolicyManager.getUidPolicy(uid);
+        if ((mUidPolicy & POLICY_REJECT_WIFI) != 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isUidIsolatedCellular(int uid) throws RemoteException {
+        int mUidPolicy = mPolicyManager.getUidPolicy(uid);
+        if ((mUidPolicy & POLICY_REJECT_CELLULAR) != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isUidIsolatedVpn(int uid) throws RemoteException {
+        int mUidPolicy = mPolicyManager.getUidPolicy(uid);
+        if ((mUidPolicy & POLICY_REJECT_VPN) != 0){
+            return true;
+        }
+        return false;
+    }
+
 
     private void addDetachedRequest(NetworkRequestInfo nri) {
         mDetachedRequests.put(nri.request, nri);
