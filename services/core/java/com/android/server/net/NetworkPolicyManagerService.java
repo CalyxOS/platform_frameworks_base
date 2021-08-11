@@ -2958,6 +2958,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     }
 
     @Override
+    public boolean getUidHasPolicy(int uid, int policy) {
+        synchronized (mUidRulesFirstLock) {
+            return (mUidPolicy.get(uid, POLICY_NONE) & policy) != 0;
+        }
+    }
+
+    @Override
     public int getUidPolicy(int uid) {
         mContext.enforceCallingOrSelfPermission(MANAGE_NETWORK_POLICY, TAG);
 
