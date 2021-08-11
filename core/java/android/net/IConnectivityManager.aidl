@@ -80,6 +80,9 @@ interface IConnectivityManager
     boolean isActiveNetworkMetered();
 
     boolean isUidIsolated(int uid);
+    boolean isUidIsolatedWifi(int uid);
+    boolean isUidIsolatedCellular(int uid);
+    boolean isUidIsolatedVpn(int uid);
 
     boolean requestRouteToHostAddress(int networkType, in byte[] hostAddress);
 
