@@ -36,6 +36,7 @@ interface INetworkPolicyManager {
     void addUidPolicy(int uid, int policy);
     void removeUidPolicy(int uid, int policy);
     @UnsupportedAppUsage
+    boolean getUidHasPolicy(int uid, int policy);
     int getUidPolicy(int uid);
     int[] getUidsWithPolicy(int policy);
 
