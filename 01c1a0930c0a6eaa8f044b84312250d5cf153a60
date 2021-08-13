@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57be0ca0_f2b581da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-13T13:33:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this approach vs just what we had before.\n\nThat was more restrained to exactly what we wanted rather than have a generic open-all thing without any permission checks.",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9527077a_e27e280f",
+        "filename": "core/java/android/net/INetworkPolicyManager.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-13T13:33:36Z",
+      "side": 1,
+      "message": "@UnsupportedAppUsage was for getUidPolicy so you should add this line before that.\n\nAlthough having this set for the new method you added works too, so add one more line.",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bf5c6b_447058df",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-13T13:33:36Z",
+      "side": 1,
+      "message": "Feel like we should add a permission check here but I don\u0027t know what would be the most ideal here.\n\nTechnically it should be the same but that\u0027s signature which is a no go.\n\nAlso keep in mind we\u0027ll need to call this from webview eventually.",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
