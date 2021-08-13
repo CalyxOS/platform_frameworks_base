@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5535487e_e0d8e476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-08-13T14:08:19Z",
+      "side": 1,
+      "message": "The previous patchset had the same SecurityException thrown from ConnectivyService instead. The permission check is the cause",
+      "parentUuid": "57be0ca0_f2b581da",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9527077a_e27e280f",
         "filename": "core/java/android/net/INetworkPolicyManager.aidl",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-13T13:33:36Z",
       "side": 1,
       "message": "@UnsupportedAppUsage was for getUidPolicy so you should add this line before that.\n\nAlthough having this set for the new method you added works too, so add one more line.",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65f8724_182140b8",
+        "filename": "core/java/android/net/INetworkPolicyManager.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-08-13T14:08:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9527077a_e27e280f",
       "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-13T13:33:36Z",
       "side": 1,
       "message": "Feel like we should add a permission check here but I don\u0027t know what would be the most ideal here.\n\nTechnically it should be the same but that\u0027s signature which is a no go.\n\nAlso keep in mind we\u0027ll need to call this from webview eventually.",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a7e18f_5485c2c8",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-08-13T14:08:19Z",
+      "side": 1,
+      "message": "Currently it is only exposed internally via AIDL. Permission check would make sense for cases where we need to query via NetworkPolicyManager API",
+      "parentUuid": "33bf5c6b_447058df",
       "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
