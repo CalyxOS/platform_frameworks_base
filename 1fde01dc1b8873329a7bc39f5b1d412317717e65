@@ -16,6 +16,29 @@
       "message": "Setting.System is deprecated. Do we want to use it anyway? If it is a per-user setting could be in Secure?",
       "revId": "1fde01dc1b8873329a7bc39f5b1d412317717e65",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9204aafd_a95af40a",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/NavigationBarView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-08-17T14:02:13Z",
+      "side": 1,
+      "message": "Is this in order to observe the setting value change? For the network traffic monitor this did not work and we had to use this instead: https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/3420/7/packages/SystemUI/src/com/android/systemui/statusbar/NetworkTraffic.java#358",
+      "range": {
+        "startLine": 1214,
+        "startChar": 8,
+        "endLine": 1215,
+        "endChar": 70
+      },
+      "revId": "1fde01dc1b8873329a7bc39f5b1d412317717e65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
