@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1b4b89_c4ba968d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-08-17T13:50:08Z",
+      "side": 1,
+      "message": "Setting.System is deprecated. Do we want to use it anyway? If it is a per-user setting could be in Secure?",
+      "revId": "1fde01dc1b8873329a7bc39f5b1d412317717e65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
