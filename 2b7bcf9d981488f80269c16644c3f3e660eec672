@@ -59,6 +59,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c5d4b2_4880d600",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-18T21:30:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fafba40_958fae1d",
+      "range": {
+        "startLine": 192,
+        "startChar": 8,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f62bbd_48985bcb",
@@ -96,6 +120,30 @@
       "side": 1,
       "message": "What would help here is doing this for only for our specific use-case rather than doing a generic change\n\n```\nif (!mAuthority.equals(authority)) {\n    if (getCallingPackage() \u003d\u003d seedvault \u0026\u0026 authority \u003d\u003d usb \u0026\u0026 has INTERACT_ACROSS_USERS) {\n        if (!mAuthority.equals(ContentProvider.getAuthorityWithoutUserId(authority))) {\n        ....\n        }\n    }\n}",
       "parentUuid": "37f62bbd_48985bcb",
+      "range": {
+        "startLine": 1118,
+        "startChar": 13,
+        "endLine": 1118,
+        "endChar": 84
+      },
+      "revId": "2b7bcf9d981488f80269c16644c3f3e660eec672",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d44a76_7e981297",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-18T21:30:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd09fe76_05dc61e4",
       "range": {
         "startLine": 1118,
         "startChar": 13,
