@@ -39,6 +39,30 @@
       },
       "revId": "1fde01dc1b8873329a7bc39f5b1d412317717e65",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6bc49bf_8ad86b4c",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/NavigationBarView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T23:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9204aafd_a95af40a",
+      "range": {
+        "startLine": 1214,
+        "startChar": 8,
+        "endLine": 1215,
+        "endChar": 70
+      },
+      "revId": "1fde01dc1b8873329a7bc39f5b1d412317717e65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
