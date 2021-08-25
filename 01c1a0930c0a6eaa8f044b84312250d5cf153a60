@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c30e583_e5d1ae93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T18:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5535487e_e0d8e476",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9527077a_e27e280f",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Currently it is only exposed internally via AIDL. Permission check would make sense for cases where we need to query via NetworkPolicyManager API",
       "parentUuid": "33bf5c6b_447058df",
+      "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916302b9_8d534a06",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T18:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a7e18f_5485c2c8",
       "revId": "01c1a0930c0a6eaa8f044b84312250d5cf153a60",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }

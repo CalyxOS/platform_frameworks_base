@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d994643d_83f9988d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T18:24:50Z",
+      "side": 1,
+      "message": "Apps can\u0027t call this service at all.",
+      "revId": "a6c7cd3943c16bab4783118e5684f47d7c8153dc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
