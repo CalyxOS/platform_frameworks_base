@@ -24,6 +24,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae6e3ed_e7be7c10",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 13478,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T21:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39dcaa03_8c0a5a62",
+      "range": {
+        "startLine": 13477,
+        "startChar": 8,
+        "endLine": 13478,
+        "endChar": 31
+      },
+      "revId": "3857dffb777b57b6814eeb9484db3503517acc18",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44163c31_0c2c047a",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "INTERACT_ACROSS_USERS_FULL*",
       "parentUuid": "44163c31_0c2c047a",
+      "range": {
+        "startLine": 13480,
+        "startChar": 8,
+        "endLine": 13488,
+        "endChar": 9
+      },
+      "revId": "3857dffb777b57b6814eeb9484db3503517acc18",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c01da2_8fd32065",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 13488,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-08-25T21:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2537aaee_c22fc525",
       "range": {
         "startLine": 13480,
         "startChar": 8,
