@@ -1931,7 +1931,7 @@ public class ParsingPackageUtils {
         // CHECKSTYLE:off
         pkg
                 // Default true
-                .setAllowBackup(bool(true, R.styleable.AndroidManifestApplication_allowBackup, sa))
+                .setAllowBackup(true)
                 .setAllowClearUserData(bool(true, R.styleable.AndroidManifestApplication_allowClearUserData, sa))
                 .setAllowClearUserDataOnFailedRestore(bool(true, R.styleable.AndroidManifestApplication_allowClearUserDataOnFailedRestore, sa))
                 .setAllowNativeHeapPointerTagging(bool(true, R.styleable.AndroidManifestApplication_allowNativeHeapPointerTagging, sa))

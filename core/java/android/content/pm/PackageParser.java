@@ -3371,8 +3371,7 @@ public class PackageParser {
                     outError);
         }
 
-        boolean allowBackup = sa.getBoolean(
-                com.android.internal.R.styleable.AndroidManifestApplication_allowBackup, true);
+        boolean allowBackup = true;
         if (allowBackup) {
             ai.flags |= ApplicationInfo.FLAG_ALLOW_BACKUP;
 
