@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbcc2f22_5331be8e",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-09-02T10:16:33Z",
+      "side": 1,
+      "message": "Does this do anything and works? It seems it would still throw a Security exception either way, right?\n\nGenerally, I think adding an exception for Seedvault is better than a general exception. However, I\u0027d be even more happy limiting this to the authority used by USB.",
+      "revId": "e99968b97c343da43e8f03224a99dd680b47a3b6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
