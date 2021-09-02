@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728bdbd0_fc3816eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-09-02T18:18:10Z",
+      "side": 1,
+      "message": "What should the new title be? Same as for Seedvault patch?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "ae3cc394a70e864e223524dd019293bc5738f9f3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed9ff85_2ac291f3",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-09-02T18:18:10Z",
+      "side": 1,
+      "message": "What message do we want in here?",
+      "range": {
+        "startLine": 1127,
+        "startChar": 30,
+        "endLine": 1127,
+        "endChar": 49
+      },
+      "revId": "ae3cc394a70e864e223524dd019293bc5738f9f3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
