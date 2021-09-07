@@ -143,7 +143,6 @@ public class NavigationBarView extends FrameLayout implements
     private boolean mDockedStackExists;
     private boolean mImeVisible;
     private boolean mScreenOn = true;
-    private boolean mShowCursorKeys;
 
     private final SparseArray<ButtonDispatcher> mButtonDispatchers = new SparseArray<>();
     private final ContextualButtonGroup mContextualButtonGroup;
@@ -367,8 +366,6 @@ public class NavigationBarView extends FrameLayout implements
             @Override
             public void onChange(boolean selfChange) {
                 super.onChange(selfChange);
-                mShowCursorKeys = Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) == 1;
                 setNavigationIconHints(mNavigationIconHints);
             }
         };
@@ -697,8 +694,9 @@ public class NavigationBarView extends FrameLayout implements
 
         updateRecentsIcon();
 
-        boolean showCursorKeys = mShowCursorKeys
-                && (mNavigationIconHints & StatusBarManager.NAVIGATION_HINT_BACK_ALT) != 0;
+        boolean showCursorKeys = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, 0) == 1 &&
+                (mNavigationIconHints & StatusBarManager.NAVIGATION_HINT_BACK_ALT) != 0;
         final boolean showImeSwitcher = mImeVisible &&
                 // IME switcher can be shown while gestural mode is enabled because
                 // the cursor keys must be hidden anyway
