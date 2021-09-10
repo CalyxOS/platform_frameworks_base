@@ -148,8 +148,7 @@ public class RestoreUtils {
                     try {
                         PackageInfo pkg = packageManager.getPackageInfoAsUser(info.packageName,
                                 PackageManager.GET_SIGNING_CERTIFICATES, userId);
-                        if ((pkg.applicationInfo.flags & ApplicationInfo.FLAG_ALLOW_BACKUP)
-                                == 0) {
+                        if ( ((pkg.applicationInfo.flags & ApplicationInfo.FLAG_ALLOW_BACKUP) == 0) && ((pkg.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) ) {
                             Slog.w(TAG, "Restore stream contains apk of package "
                                     + info.packageName
                                     + " but it disallows backup/restore");

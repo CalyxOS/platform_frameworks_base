@@ -1522,9 +1522,13 @@ public class UserBackupManagerService {
             PackageInfo pkg = packages.get(a);
             try {
                 ApplicationInfo app = pkg.applicationInfo;
-                if (((app.flags & ApplicationInfo.FLAG_ALLOW_BACKUP) == 0)
-                        || app.backupAgentName == null
-                        || (app.flags & ApplicationInfo.FLAG_FULL_BACKUP_ONLY) != 0) {
+                if ( (
+                          ((app.flags & ApplicationInfo.FLAG_ALLOW_BACKUP) == 0)
+                           || app.backupAgentName == null
+                           || ((app.flags & ApplicationInfo.FLAG_FULL_BACKUP_ONLY) != 0)
+                     ) && (
+                            (app.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                        )) {   
                     packages.remove(a);
                 } else {
                     // we will need the shared library path, so look that up and store it here.

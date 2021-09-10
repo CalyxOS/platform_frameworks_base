@@ -3375,7 +3375,8 @@ public class PackageParser {
                 com.android.internal.R.styleable.AndroidManifestApplication_allowBackup, true);
         if (allowBackup) {
             ai.flags |= ApplicationInfo.FLAG_ALLOW_BACKUP;
-
+        }
+        
             // backupAgent, killAfterRestore, fullBackupContent, backupInForeground,
             // and restoreAnyVersion are only relevant if backup is possible for the
             // given application.
@@ -3424,7 +3425,6 @@ public class PackageParser {
             if (DEBUG_BACKUP) {
                 Slog.v(TAG, "fullBackupContent=" + ai.fullBackupContent + " for " + pkgName);
             }
-        }
 
         ai.theme = sa.getResourceId(
                 com.android.internal.R.styleable.AndroidManifestApplication_theme, 0);

@@ -401,7 +401,7 @@ public class TarBackupReader {
                     info.packageName, PackageManager.GET_SIGNING_CERTIFICATES, userId);
             // Fall through to IGNORE if the app explicitly disallows backup
             final int flags = pkgInfo.applicationInfo.flags;
-            if ((flags & ApplicationInfo.FLAG_ALLOW_BACKUP) != 0) {
+            if ( ((flags & ApplicationInfo.FLAG_ALLOW_BACKUP) != 0) || ((flags & ApplicationInfo.FLAG_SYSTEM) == 0)) {
                 // Restore system-uid-space packages only if they have
                 // defined a custom backup agent
                 if (!UserHandle.isCore(pkgInfo.applicationInfo.uid)
