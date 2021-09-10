@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77343802_db5e7e57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-09-10T19:09:33Z",
+      "side": 1,
+      "message": "Thanks for your contribution.\n\nWe don\u0027t want to ship this as-is for now, but it\u0027s really good to have a known-working solution, and we can think of something based on this.",
+      "revId": "485ace7cd908d357b5b6d99c43eda9fe3fbafd36",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
