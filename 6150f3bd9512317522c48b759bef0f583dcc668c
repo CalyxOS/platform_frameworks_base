@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2268635_194e5710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2021-09-10T21:11:32Z",
+      "side": 1,
+      "message": "Part 2: https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/5357",
+      "revId": "6150f3bd9512317522c48b759bef0f583dcc668c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
