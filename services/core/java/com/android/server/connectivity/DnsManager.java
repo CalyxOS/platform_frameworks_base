@@ -19,8 +19,12 @@ package com.android.server.connectivity;
 import static android.net.ConnectivityManager.PRIVATE_DNS_DEFAULT_MODE_FALLBACK;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_CLOUDFLARE;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_ADGUARD;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_ADHOLE;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 import static android.net.ConnectivityManager.PRIVATE_DNS_SPECIFIER_CLOUDFLARE;
+import static android.net.ConnectivityManager.PRIVATE_DNS_SPECIFIER_ADGUARD;
+import static android.net.ConnectivityManager.PRIVATE_DNS_SPECIFIER_ADHOLE;
 import static android.provider.Settings.Global.DNS_RESOLVER_MAX_SAMPLES;
 import static android.provider.Settings.Global.DNS_RESOLVER_MIN_SAMPLES;
 import static android.provider.Settings.Global.DNS_RESOLVER_SAMPLE_VALIDITY_SECONDS;
@@ -144,6 +148,14 @@ public class DnsManager {
 
         if (PRIVATE_DNS_MODE_CLOUDFLARE.equals(mode)) {
             return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_CLOUDFLARE, null);
+        }
+
+        if (PRIVATE_DNS_MODE_ADGUARD.equals(mode)) {
+            return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_ADGUARD, null);
+        }
+
+        if (PRIVATE_DNS_MODE_ADHOLE.equals(mode)) {
+            return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_ADHOLE, null);
         }
 
         return new PrivateDnsConfig(useTls);
