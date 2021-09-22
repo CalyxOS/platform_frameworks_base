@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852d3751_bf9be1f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-09-22T21:44:07Z",
+      "side": 1,
+      "message": "ro.build.version.incremental might be a better prop to use.",
+      "revId": "2ee1a80abb9617031c238cc940a1bf4733c7af89",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
