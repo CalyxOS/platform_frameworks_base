@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9226203_1576838e",
+        "filename": "services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-09-24T19:06:30Z",
+      "side": 1,
+      "message": "TODO: Check",
+      "revId": "9bc1ab11e0192c835abefbd43c815eb4a6c04535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6be5146_04a98163",
+        "filename": "services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-09-24T19:06:30Z",
+      "side": 1,
+      "message": "Probably not needed.",
+      "revId": "9bc1ab11e0192c835abefbd43c815eb4a6c04535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
