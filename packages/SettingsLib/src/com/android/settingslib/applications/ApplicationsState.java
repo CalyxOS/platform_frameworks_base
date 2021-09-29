@@ -1189,7 +1189,8 @@ public class ApplicationsState {
                                     launchIntent,
                                     PackageManager.MATCH_DISABLED_COMPONENTS
                                             | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE,
+                                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE
+                                            | PackageManager.MATCH_UNINSTALLED_PACKAGES,
                                     userId
                             );
                             synchronized (mEntriesMap) {
