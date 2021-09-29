@@ -90,7 +90,7 @@ public class ApplicationsState {
     public static final int SIZE_UNKNOWN = -1;
     public static final int SIZE_INVALID = -2;
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     private static final boolean DEBUG_LOCKING = false;
     private static final Object sLock = new Object();
     private static final Pattern REMOVE_DIACRITICALS_PATTERN
@@ -208,9 +208,11 @@ public class ApplicationsState {
         // Only the owner can see all apps.
         mAdminRetrieveFlags = PackageManager.MATCH_ANY_USER |
                 PackageManager.MATCH_DISABLED_COMPONENTS |
-                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS |
+                PackageManager.MATCH_UNINSTALLED_PACKAGES;
         mRetrieveFlags = PackageManager.MATCH_DISABLED_COMPONENTS |
-                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS |
+                PackageManager.MATCH_UNINSTALLED_PACKAGES;
 
         final List<ModuleInfo> moduleInfos = mPm.getInstalledModules(0 /* flags */);
         for (ModuleInfo info : moduleInfos) {
@@ -1189,7 +1191,8 @@ public class ApplicationsState {
                                     launchIntent,
                                     PackageManager.MATCH_DISABLED_COMPONENTS
                                             | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE,
+                                            | PackageManager.MATCH_DIRECT_BOOT_UNAWARE
+                                            | PackageManager.MATCH_UNINSTALLED_PACKAGES,
                                     userId
                             );
                             synchronized (mEntriesMap) {
