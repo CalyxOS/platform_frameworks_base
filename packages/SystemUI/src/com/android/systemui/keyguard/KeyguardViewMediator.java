@@ -2141,6 +2141,7 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
                 case KEYGUARD_TIMEOUT:
                     synchronized (KeyguardViewMediator.this) {
                         doKeyguardLocked((Bundle) msg.obj);
+                        notifyDefaultDisplayCallbacks(mShowing);
                     }
                     break;
                 case DISMISS:
