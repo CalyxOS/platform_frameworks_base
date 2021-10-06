@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4381892f_9f582a65",
+        "filename": "services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-06T17:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9226203_1576838e",
+      "revId": "9bc1ab11e0192c835abefbd43c815eb4a6c04535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6be5146_04a98163",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-24T19:06:30Z",
       "side": 1,
       "message": "Probably not needed.",
+      "revId": "9bc1ab11e0192c835abefbd43c815eb4a6c04535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21aedc98_74ec818c",
+        "filename": "services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-06T17:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6be5146_04a98163",
       "revId": "9bc1ab11e0192c835abefbd43c815eb4a6c04535",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
