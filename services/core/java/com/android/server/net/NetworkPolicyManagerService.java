@@ -300,6 +300,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -4588,6 +4589,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         // ...then update iptables asynchronously.
         mHandler.obtainMessage(MSG_RESET_FIREWALL_RULES_BY_UID, uid, 0).sendToTarget();
+
+        Set<String> uids = new HashSet<>(Arrays.asList(Settings.Global.getString(
+                mContext.getContentResolver(), UIDS_ALLOWED_ON_RESTRICTED_NETWORKS)
+                .split(";")));
+        uids.remove(Integer.toString(uid));
+        Settings.Global.putString(mContext.getContentResolver(),
+                UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, String.join(";", uids));
     }
 
     /**
