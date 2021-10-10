@@ -300,6 +300,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -454,7 +455,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
     private static final String PROP_SUB_PLAN_OWNER = "persist.sys.sub_plan_owner";
 
-    // TODO: this needs to be kept in sync with PermissionMonitor#hasRestrictedNetworkPermission
+    // TODO: this needs to be kept in sync with ConnectivitySettingsManager#UIDS_ALLOWED_ON_RESTRICTED_NETWORKS
     private static final String UIDS_ALLOWED_ON_RESTRICTED_NETWORKS =
             "uids_allowed_on_restricted_networks";
 
@@ -4588,6 +4589,11 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         // ...then update iptables asynchronously.
         mHandler.obtainMessage(MSG_RESET_FIREWALL_RULES_BY_UID, uid, 0).sendToTarget();
+
+        Set<Integer> uids = ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
+        uids.remove(uid);
+        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext,
+                uids);
     }
 
     /**
