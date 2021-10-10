@@ -30,6 +30,7 @@ import static android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Intent.ACTION_PACKAGE_ADDED;
+import static android.content.Intent.ACTION_PACKAGE_REMOVED;
 import static android.content.Intent.ACTION_UID_REMOVED;
 import static android.content.Intent.ACTION_USER_ADDED;
 import static android.content.Intent.ACTION_USER_REMOVED;
@@ -300,6 +301,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -970,6 +972,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             // listen for package changes to update policy
             final IntentFilter packageFilter = new IntentFilter();
             packageFilter.addAction(ACTION_PACKAGE_ADDED);
+            packageFilter.addAction(ACTION_PACKAGE_REMOVED);
             packageFilter.addDataScheme("package");
             mContext.registerReceiver(mPackageReceiver, packageFilter, null, mHandler);
 
@@ -1133,6 +1136,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     mInternetPermissionMap.delete(uid);
                     updateRestrictionRulesForUidUL(uid);
                 }
+            } else if (ACTION_PACKAGE_REMOVED.equals(action)) {
+                Set<String> uids = new HashSet<>(Arrays.asList(Settings.Global.getString(
+                        context.getContentResolver(), UIDS_ALLOWED_ON_RESTRICTED_NETWORKS)
+                        .split(";")));
+                uids.remove(Integer.toString(uid));
+                Settings.Global.putString(context.getContentResolver(),
+                        UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, String.join(";", uids));
             }
         }
     };
