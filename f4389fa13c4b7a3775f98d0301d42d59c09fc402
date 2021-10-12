@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413c320d_f93e0ac1",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-12T14:09:55Z",
+      "side": 1,
+      "message": "this can cause race conditions\nsync(mUidRulesFirstLock) {} plz",
+      "range": {
+        "startLine": 773,
+        "startChar": 16,
+        "endLine": 773,
+        "endChar": 47
+      },
+      "revId": "f4389fa13c4b7a3775f98d0301d42d59c09fc402",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
