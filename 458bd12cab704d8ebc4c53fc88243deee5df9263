@@ -22,6 +22,30 @@
       },
       "revId": "458bd12cab704d8ebc4c53fc88243deee5df9263",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287fa54a_a867040a",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-12T14:14:27Z",
+      "side": 1,
+      "message": "That receiver only resets internal variables but I don\u0027t mind setting the setting in there instead",
+      "parentUuid": "fded35ba_39d52a9f",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 981,
+        "endChar": 95
+      },
+      "revId": "458bd12cab704d8ebc4c53fc88243deee5df9263",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
