@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13a0d8d2_fb3995c6",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5252,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-14T19:19:01Z",
+      "side": 1,
+      "message": "Every package with network permission seems enough for me",
+      "parentUuid": "5d60c1e7_0a416e6c",
+      "range": {
+        "startLine": 5252,
+        "startChar": 53,
+        "endLine": 5252,
+        "endChar": 81
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9e2b00a_13510693",
         "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
         "patchSetId": 7
@@ -43,6 +67,70 @@
         "endLine": 5253,
         "endChar": 81
       },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72802ce5_008c390d",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5253,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-14T19:19:01Z",
+      "side": 1,
+      "message": "I would prefer the app to be put in the stoplist in case it was re-installed.\nBut I don\u0027t know how\u0027s the current logic",
+      "parentUuid": "b9e2b00a_13510693",
+      "range": {
+        "startLine": 5253,
+        "startChar": 40,
+        "endLine": 5253,
+        "endChar": 81
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992a4dbe_0e9e8719",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5255,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-14T19:19:01Z",
+      "side": 1,
+      "message": "is this needed? getPackagesHoldingPermissions should return a List\u003cT\u003e",
+      "range": {
+        "startLine": 5255,
+        "startChar": 34,
+        "endLine": 5255,
+        "endChar": 43
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7584282f_54adb6ea",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5257,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-14T19:19:01Z",
+      "side": 1,
+      "message": "I\u0027ll never get used to java streams, but this seems good",
       "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
