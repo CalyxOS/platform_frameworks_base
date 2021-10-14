@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d60c1e7_0a416e6c",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5252,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-14T18:37:51Z",
+      "side": 1,
+      "message": "Does this cover all packages we\u0027d like to allowlist by default?\nCurrently it adds UIDs that are already covered by other permissions which is unnecessary.",
+      "range": {
+        "startLine": 5252,
+        "startChar": 53,
+        "endLine": 5252,
+        "endChar": 81
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e2b00a_13510693",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5253,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-14T18:37:51Z",
+      "side": 1,
+      "message": "Do we want this flag? Any others?",
+      "range": {
+        "startLine": 5253,
+        "startChar": 40,
+        "endLine": 5253,
+        "endChar": 81
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
