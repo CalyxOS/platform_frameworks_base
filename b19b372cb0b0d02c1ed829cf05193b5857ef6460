@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "455a6319_c9d238da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-14T21:02:55Z",
+      "side": 1,
+      "message": "This should handle the migration from 11. Can ship when it does",
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d60c1e7_0a416e6c",
