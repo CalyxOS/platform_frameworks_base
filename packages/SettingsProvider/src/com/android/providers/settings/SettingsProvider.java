@@ -132,6 +132,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -3585,7 +3586,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 204;
+            private static final int SETTINGS_VERSION = 205;
 
             private final int mUserId;
 
@@ -5225,6 +5226,48 @@ public class SettingsProvider extends ContentProvider {
                                 SettingsState.SYSTEM_PACKAGE_NAME);
                     }
                     currentVersion = 204;
+                }
+
+                if (currentVersion == 204) {
+                    final SettingsState globalSettings = getGlobalSettingsLocked();
+                    final Setting restrictedNetworkingMode = globalSettings.getSettingLocked(
+                            Global.RESTRICTED_NETWORKING_MODE);
+                    if (restrictedNetworkingMode.isNull()) {
+                        globalSettings.insertSettingLocked(
+                                Global.RESTRICTED_NETWORKING_MODE,
+                                "1",
+                                null /* tag */,
+                                true /* makeDefault */,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+                    final String UIDS_ALLOWED_ON_RESTRICTED_NETWORKS =
+                            "uids_allowed_on_restricted_networks";
+                    final Setting uidsAllowedOnRestrictedNetworks = globalSettings.getSettingLocked(
+                            UIDS_ALLOWED_ON_RESTRICTED_NETWORKS);
+                    if (uidsAllowedOnRestrictedNetworks.isNull()) {
+                        try {
+                            List<PackageInfo> packages = new ArrayList<>();
+                            for (UserInfo userInfo : mUserManager.getAliveUsers()) {
+                                packages.addAll(mPackageManager.getPackagesHoldingPermissions(
+                                        new String[]{Manifest.permission.INTERNET},
+                                        PackageManager.MATCH_UNINSTALLED_PACKAGES,
+                                        userInfo.id
+                                ).getList());
+                            }
+                            Set<Integer> uids = packages.stream().map(
+                                    packageInfo -> packageInfo.applicationInfo.uid)
+                                    .collect(Collectors.toSet());
+                            globalSettings.insertSettingLocked(
+                                    UIDS_ALLOWED_ON_RESTRICTED_NETWORKS,
+                                    TextUtils.join(";", uids),
+                                    null /* tag */,
+                                    true /* makeDefault */,
+                                    SettingsState.SYSTEM_PACKAGE_NAME);
+                        } catch (RemoteException e) {
+                            Slog.e(LOG_TAG, "Failed to get set uids allowed on restricted networks");
+                        }
+                    }
+                    currentVersion = 205;
                 }
 
                 // vXXX: Add new settings above this point.
