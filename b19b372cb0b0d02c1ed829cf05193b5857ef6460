@@ -18,6 +18,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6411d936_b832fbe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-15T13:58:09Z",
+      "side": 1,
+      "message": "I don\u0027t like adding migration to AOSP code, we\u0027ll have to maintain this for 12.1 and 13 and so on.\n\nIf there\u0027s a better way / place to do it that\u0027d be better, if not we\u0027ll live with it I guess.",
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d60c1e7_0a416e6c",
