@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0a516c_06195055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-15T15:48:45Z",
+      "side": 1,
+      "message": "This is my current theory about some of the issues reported in https://gitlab.com/CalyxOS/calyxos/-/issues/581 and others.",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c230244_16b637d7",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-15T15:48:45Z",
+      "side": 1,
+      "message": "This would only get called on app launch.\n\nIt may explain the weirdness around launch app - change setting - re open, it\u0027s still not in effect.\n\nReboot / upgrade or restarting app would always fix it.\n\nShould try to look into other options or figure out a way around this.",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
