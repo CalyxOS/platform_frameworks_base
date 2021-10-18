@@ -105,6 +105,24 @@
       "parentUuid": "701b62da_3a4b98a7",
       "revId": "b541aff49308de55270c5dc4870c2a51de518174",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31cba48_e074c76b",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T15:02:24Z",
+      "side": 1,
+      "message": "We shouldn\u0027t confuse issues, a number of people have reported that network isolation doesn\u0027t seem to properly apply when being toggled (whether in Settings or Datura). Then we have the leaks, which this patch was meant to address and we know that data restrictions were part of the problem https://gitlab.com/CalyxOS/calyxos/-/issues/581#note_680740780\nThankfully, with restricted networking mode we\u0027ll have a centralized solution for data restriction and network isolation so should be less variables and more consistent functionality",
+      "parentUuid": "d3dd7a85_a973151c",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
