@@ -124,6 +124,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ed34f4_8922c8c0",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 3589,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T15:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81801e18_c496fddc",
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d60c1e7_0a416e6c",
@@ -241,6 +259,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c323f9a2_09c819e9",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5255,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T15:07:45Z",
+      "side": 1,
+      "message": "Without it, it was complaining saying it returns a ParceledListSlice or something",
+      "parentUuid": "992a4dbe_0e9e8719",
+      "range": {
+        "startLine": 5255,
+        "startChar": 34,
+        "endLine": 5255,
+        "endChar": 43
+      },
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7584282f_54adb6ea",
@@ -254,6 +296,24 @@
       "writtenOn": "2021-10-14T19:19:01Z",
       "side": 1,
       "message": "I\u0027ll never get used to java streams, but this seems good",
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c971290_077d3aae",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5257,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T15:07:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7584282f_54adb6ea",
       "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
