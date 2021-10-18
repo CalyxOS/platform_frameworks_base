@@ -51,6 +51,24 @@
       "parentUuid": "0c230244_16b637d7",
       "revId": "b541aff49308de55270c5dc4870c2a51de518174",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da641654_fe46cd56",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T14:40:13Z",
+      "side": 1,
+      "message": "I don\u0027t see why this would be the problem given all this does is send the UID down to be stored in netd client for future queries to netd server. The UID should not change unless the package is uninstalled?",
+      "parentUuid": "a5aff431_0ad3da5f",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
