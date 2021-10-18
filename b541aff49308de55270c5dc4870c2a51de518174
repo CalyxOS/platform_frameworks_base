@@ -69,6 +69,24 @@
       "parentUuid": "a5aff431_0ad3da5f",
       "revId": "b541aff49308de55270c5dc4870c2a51de518174",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701b62da_3a4b98a7",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-18T14:55:35Z",
+      "side": 1,
+      "message": "UID does not change.\n\nBut the fact that it\u0027s isolated or not can change after launch, however the boolean here won\u0027t get updated.",
+      "parentUuid": "da641654_fe46cd56",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
