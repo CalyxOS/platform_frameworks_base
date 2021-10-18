@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2164f6b6_ad13e971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T14:45:40Z",
+      "side": 1,
+      "message": "Sounds good to me, so both the default and migration from network isolation policy to restricted networking mode setting should be done there",
+      "parentUuid": "c70853f7_daede5fe",
+      "revId": "b19b372cb0b0d02c1ed829cf05193b5857ef6460",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3e3c483_ce7e926c",
         "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java",
         "patchSetId": 7
