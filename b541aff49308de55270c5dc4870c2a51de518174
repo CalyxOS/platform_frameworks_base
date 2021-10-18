@@ -87,6 +87,24 @@
       "parentUuid": "da641654_fe46cd56",
       "revId": "b541aff49308de55270c5dc4870c2a51de518174",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dd7a85_a973151c",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-18T14:58:32Z",
+      "side": 1,
+      "message": "I still don\u0027t get the concern.\nhttps://review.calyxos.org/c/CalyxOS/platform_system_netd/+/6009/2/client/NetdClient.cpp#660\nWe don\u0027t care about that boolean. We only need the uid to do our own processing. In fact, that\u0027s the boolean that if set to false causes crashes if an app tries to access the internet since it is tied to the internet permission",
+      "parentUuid": "701b62da_3a4b98a7",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
