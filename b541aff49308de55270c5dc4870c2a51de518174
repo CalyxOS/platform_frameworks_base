@@ -33,6 +33,24 @@
       "message": "This would only get called on app launch.\n\nIt may explain the weirdness around launch app - change setting - re open, it\u0027s still not in effect.\n\nReboot / upgrade or restarting app would always fix it.\n\nShould try to look into other options or figure out a way around this.",
       "revId": "b541aff49308de55270c5dc4870c2a51de518174",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5aff431_0ad3da5f",
+        "filename": "core/java/com/android/internal/os/Zygote.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-18T13:03:30Z",
+      "side": 1,
+      "message": "This is probably it, unless the process itself isn\u0027t stopped the zygote child will still have the old rules.",
+      "parentUuid": "0c230244_16b637d7",
+      "revId": "b541aff49308de55270c5dc4870c2a51de518174",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
