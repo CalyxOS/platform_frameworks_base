@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe2453d_a37616e7",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-18T13:01:38Z",
+      "side": 1,
+      "message": "still not sure why we use this value.",
+      "range": {
+        "startLine": 98,
+        "startChar": 49,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "34baa46704df0055a06315c7d9e290fb31336d4d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
