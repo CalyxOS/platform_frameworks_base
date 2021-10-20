@@ -62,6 +62,23 @@
       },
       "revId": "ae3cc394a70e864e223524dd019293bc5738f9f3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36200a23_7a47a5db",
+        "filename": "core/java/android/provider/DocumentsProvider.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-10-20T21:25:43Z",
+      "side": 1,
+      "message": "The logic here is a bit hard to follow which is not good for security critical code like this. E.g. could we do the following instead?\n\nif (!SEEDVAULT_PACKAGE.equals(getCallingPackage())) {\n  throw new SecurityException(\n    \"Requested authority \" + authority + \" doesn\u0027t match provider \" + mAuthority);\n} else {\n   // add our code here\n}",
+      "revId": "ae3cc394a70e864e223524dd019293bc5738f9f3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
