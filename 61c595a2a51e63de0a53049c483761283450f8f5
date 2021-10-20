@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b887b7_8f8c3384",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/OverlayPackagesProvider.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-20T14:13:52Z",
+      "side": 1,
+      "message": "Can switch to https://review.calyxos.org/c/CalyxOS/vendor_calyx/+/5540 instead",
+      "range": {
+        "startLine": 133,
+        "startChar": 23,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "61c595a2a51e63de0a53049c483761283450f8f5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
