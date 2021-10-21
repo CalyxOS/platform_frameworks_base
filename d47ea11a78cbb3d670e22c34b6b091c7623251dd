@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e23f72_dcfa46d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:11:50Z",
+      "side": 1,
+      "message": "Not directly related to this commit but every setting should have a validator.",
+      "revId": "d47ea11a78cbb3d670e22c34b6b091c7623251dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77b44cc_3be90457",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/SecureSettingsValidators.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:11:50Z",
+      "side": 1,
+      "message": "Feel like this is the only one where we added a validator. Should add for all.",
+      "revId": "d47ea11a78cbb3d670e22c34b6b091c7623251dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
