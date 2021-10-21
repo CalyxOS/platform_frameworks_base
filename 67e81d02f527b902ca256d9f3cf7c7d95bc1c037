@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "952c2d01_7dcfdf83",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16402,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:09:49Z",
+      "side": 0,
+      "message": "Heh they didn\u0027t get around to this still.",
+      "revId": "67e81d02f527b902ca256d9f3cf7c7d95bc1c037",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
