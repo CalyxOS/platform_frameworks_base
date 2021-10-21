@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2dc1758_3d6a4e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:08:31Z",
+      "side": 1,
+      "message": "Simple port. Can change impl at this time if we want.",
+      "revId": "7cfea3662e65af274f176d8485b01f14f8731195",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
