@@ -269,7 +269,7 @@ public class WifiStatusTracker {
             // TODO
                 WifiTimeoutReceiver.setTimeoutAlarm(mContext,
                         Settings.Global.getLong(mContext.getContentResolver(),
-                                Settings.Global.WIFI_OFF_TIMEOUT, 0))
+                                Settings.Global.WIFI_OFF_TIMEOUT, 0));
         }
     }
 
