@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879401a6_3b39424e",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/wifi/WifiStatusTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:08:17Z",
+      "side": 1,
+      "message": "This else was removed upstream.\n\nHave not looked into it more.",
+      "revId": "f8cf6667c642d5a3175c06576f0f8aacf85ec64a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
