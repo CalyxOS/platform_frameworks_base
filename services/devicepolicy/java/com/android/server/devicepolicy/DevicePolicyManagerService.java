@@ -13537,6 +13537,10 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
     public int checkProvisioningPreCondition(String action, String packageName) {
         Objects.requireNonNull(packageName, "packageName is null");
 
+        return checkUnmanagedProvisioningPreCondition(action, packageName);
+    }
+
+    public int checkUnmanagedProvisioningPreCondition(String action, String packageName) {
         Preconditions.checkCallAuthorization(
                 hasCallingOrSelfPermission(permission.MANAGE_PROFILE_AND_DEVICE_OWNERS));
 
@@ -16956,7 +16960,9 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         Objects.requireNonNull(callerPackage, "callerPackage is null");
 
         final ComponentName admin = provisioningParams.getProfileAdminComponentName();
-        Objects.requireNonNull(admin, "admin is null");
+        if (!provisioningParams.isUnmanagedProvisioning()) {
+            Objects.requireNonNull(admin, "admin is null");
+        }
 
         final CallerIdentity caller = getCallerIdentity(callerPackage);
         Preconditions.checkCallAuthorization(
@@ -16968,7 +16974,8 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         final long identity = Binder.clearCallingIdentity();
         try {
             final int result = checkProvisioningPreConditionSkipPermission(
-                    ACTION_PROVISION_MANAGED_PROFILE, admin.getPackageName());
+                    ACTION_PROVISION_MANAGED_PROFILE, !provisioningParams.isUnmanagedProvisioning()
+                            ? admin.getPackageName() : null);
             if (result != CODE_OK) {
                 throw new ServiceSpecificException(
                         PROVISIONING_RESULT_PRE_CONDITION_FAILED,
@@ -16998,14 +17005,17 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                     startTime,
                     callerPackage);
 
-            installExistingAdminPackage(userInfo.id, admin.getPackageName());
-            if (!enableAdminAndSetProfileOwner(
-                    userInfo.id, caller.getUserId(), admin, provisioningParams.getOwnerName())) {
-                throw new ServiceSpecificException(
-                        PROVISIONING_RESULT_SETTING_PROFILE_OWNER_FAILED,
-                        "Error setting profile owner.");
+            if (!provisioningParams.isUnmanagedProvisioning()) {
+                installExistingAdminPackage(userInfo.id, admin.getPackageName());
+                if (!enableAdminAndSetProfileOwner(
+                        userInfo.id, caller.getUserId(), admin,
+                        provisioningParams.getOwnerName())) {
+                    throw new ServiceSpecificException(
+                            PROVISIONING_RESULT_SETTING_PROFILE_OWNER_FAILED,
+                            "Error setting profile owner.");
+                }
+                setUserSetupComplete(userInfo.id);
             }
-            setUserSetupComplete(userInfo.id);
 
             startUser(userInfo.id, callerPackage);
             maybeMigrateAccount(
