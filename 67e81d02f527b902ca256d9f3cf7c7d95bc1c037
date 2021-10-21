@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61740f40_abafa0f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T16:09:21Z",
+      "side": 1,
+      "message": "This should still be fine just like this, just confirming.",
+      "revId": "67e81d02f527b902ca256d9f3cf7c7d95bc1c037",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
