@@ -2728,6 +2728,10 @@
         android:label="@string/permlab_manageProfileAndDeviceOwners"
         android:description="@string/permdesc_manageProfileAndDeviceOwners" />
 
+    <!-- @hide Allows an application to provision profiles without owners. -->
+    <permission android:name="android.permission.CREATE_PROFILES_WITHOUT_OWNER"
+        android:protectionLevel="signature|privileged" />
+
     <!-- @TestApi @hide Allows an application to reset the record of previous system update freeze
          periods. -->
     <permission android:name="android.permission.CLEAR_FREEZE_PERIOD"
