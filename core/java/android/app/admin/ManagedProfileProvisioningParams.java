@@ -49,6 +49,7 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
     private final boolean mLeaveAllSystemAppsEnabled;
     private final boolean mOrganizationOwnedProvisioning;
     private final boolean mKeepAccountMigrated;
+    private final boolean mIsUnmanagedProvisioning;
 
 
     private ManagedProfileProvisioningParams(
@@ -58,14 +59,17 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
             @Nullable Account accountToMigrate,
             boolean leaveAllSystemAppsEnabled,
             boolean organizationOwnedProvisioning,
-            boolean keepAccountMigrated) {
-        this.mProfileAdminComponentName = requireNonNull(profileAdminComponentName);
-        this.mOwnerName = requireNonNull(ownerName);
+            boolean keepAccountMigrated,
+            boolean isUnmanagedProvisioning) {
+        this.mProfileAdminComponentName = !isUnmanagedProvisioning ?
+                requireNonNull(profileAdminComponentName) : profileAdminComponentName;
+        this.mOwnerName = !isUnmanagedProvisioning ? requireNonNull(ownerName) : ownerName;
         this.mProfileName = profileName;
         this.mAccountToMigrate = accountToMigrate;
         this.mLeaveAllSystemAppsEnabled = leaveAllSystemAppsEnabled;
         this.mOrganizationOwnedProvisioning = organizationOwnedProvisioning;
         this.mKeepAccountMigrated = keepAccountMigrated;
+        this.mIsUnmanagedProvisioning = isUnmanagedProvisioning;
     }
 
     @NonNull
@@ -98,6 +102,13 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
 
     public boolean isKeepAccountMigrated() {
         return mKeepAccountMigrated;
+    }
+
+    /**
+     * @hide
+     */
+    public boolean isUnmanagedProvisioning() {
+        return mIsUnmanagedProvisioning;
     }
 
     /**
@@ -135,6 +146,15 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
         private boolean mLeaveAllSystemAppsEnabled;
         private boolean mOrganizationOwnedProvisioning;
         private boolean mKeepAccountMigrated;
+        private boolean mIsUnmanagedProvisioning;
+
+        /**
+         * @hide
+         */
+        public Builder() {
+            this.mProfileAdminComponentName = null;
+            this.mOwnerName = null;
+        }
 
         /**
          * Initialize a new {@link Builder) to construct a {@link ManagedProfileProvisioningParams}.
@@ -210,6 +230,15 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
         }
 
         /**
+         * @hide
+         */
+        @NonNull
+        public Builder setIsUnmanagedProvisioning(boolean isUnmanagedProvisioning) {
+            this.mIsUnmanagedProvisioning = isUnmanagedProvisioning;
+            return this;
+        }
+
+        /**
          * Combines all of the attributes that have been set on this {@code Builder}.
          *
          * @return a new {@link ManagedProfileProvisioningParams} object.
@@ -223,7 +252,8 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
                     mAccountToMigrate,
                     mLeaveAllSystemAppsEnabled,
                     mOrganizationOwnedProvisioning,
-                    mKeepAccountMigrated);
+                    mKeepAccountMigrated,
+                    mIsUnmanagedProvisioning);
         }
     }
 
@@ -254,6 +284,7 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
         dest.writeBoolean(mLeaveAllSystemAppsEnabled);
         dest.writeBoolean(mOrganizationOwnedProvisioning);
         dest.writeBoolean(mKeepAccountMigrated);
+        dest.writeBoolean(mIsUnmanagedProvisioning);
     }
 
     public static final @NonNull Creator<ManagedProfileProvisioningParams> CREATOR =
@@ -267,6 +298,7 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
                     boolean leaveAllSystemAppsEnabled = in.readBoolean();
                     boolean organizationOwnedProvisioning = in.readBoolean();
                     boolean keepAccountMigrated = in.readBoolean();
+                    boolean isUnmanagedProvisioning = in.readBoolean();
 
                     return new ManagedProfileProvisioningParams(
                             componentName,
@@ -275,7 +307,8 @@ public final class ManagedProfileProvisioningParams implements Parcelable {
                             account,
                             leaveAllSystemAppsEnabled,
                             organizationOwnedProvisioning,
-                            keepAccountMigrated);
+                            keepAccountMigrated,
+                            isUnmanagedProvisioning);
                 }
 
                 @Override
