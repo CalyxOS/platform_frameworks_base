@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6892031_33a141cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-22T22:58:48Z",
+      "side": 1,
+      "message": "Think this can be abandoned. It was mostly for testing / starting a work profile in v1",
+      "revId": "eeac1f0d9e4de7b70788d6ecd4137b000aa33903",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
