@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76e86ae_58050fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-23T00:36:24Z",
+      "side": 1,
+      "message": "Not sure if still needed given the restricted networking mode changes",
+      "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
