@@ -16,6 +16,24 @@
       "message": "Not sure if still needed given the restricted networking mode changes",
       "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8af3dce_de456975",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-23T11:23:39Z",
+      "side": 1,
+      "message": "This is for DownloadManager data-restrictions.\n\nAFAICT we\u0027ll still need that.",
+      "parentUuid": "f76e86ae_58050fd8",
+      "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
