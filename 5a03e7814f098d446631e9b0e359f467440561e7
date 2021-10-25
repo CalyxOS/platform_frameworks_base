@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d72087b_9a61e708",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/wifi/WifiTimeoutReceiver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-25T09:25:28Z",
+      "side": 1,
+      "message": "INTENT_TIMEOUT.equal(...)",
+      "range": {
+        "startLine": 52,
+        "startChar": 69,
+        "endLine": 52,
+        "endChar": 83
+      },
+      "revId": "5a03e7814f098d446631e9b0e359f467440561e7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

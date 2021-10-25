@@ -16,6 +16,24 @@
       "message": "This else was removed upstream.\n\nHave not looked into it more.",
       "revId": "f8cf6667c642d5a3175c06576f0f8aacf85ec64a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcea73d8_320cf0b9",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/wifi/WifiStatusTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-25T09:25:28Z",
+      "side": 1,
+      "message": "I guess before they were checking against a more broad action, now it\u0027s wifi specific.\nWill likely work just fine",
+      "parentUuid": "879401a6_3b39424e",
+      "revId": "f8cf6667c642d5a3175c06576f0f8aacf85ec64a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
