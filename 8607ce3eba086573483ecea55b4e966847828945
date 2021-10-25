@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739d72a6_7da7e536",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 16167,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-25T19:06:56Z",
+      "side": 1,
+      "message": "This now has to go in the chain otherwise it\u0027ll conflict with everything.\n\nAlso add a validator, boolean. See other commits for example.",
+      "revId": "8607ce3eba086573483ecea55b4e966847828945",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
