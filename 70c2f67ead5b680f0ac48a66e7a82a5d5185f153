@@ -52,6 +52,24 @@
       "parentUuid": "b8af3dce_de456975",
       "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3fc62d_81506ea1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-25T21:22:26Z",
+      "side": 1,
+      "message": "Ah, I missed that last bit somewhere in our conversations.",
+      "parentUuid": "b524c77a_61f0bc06",
+      "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
