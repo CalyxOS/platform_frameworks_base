@@ -34,6 +34,24 @@
       "parentUuid": "f76e86ae_58050fd8",
       "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b524c77a_61f0bc06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-25T20:07:54Z",
+      "side": 1,
+      "message": "I don\u0027t think so, https://review.calyxos.org/c/CalyxOS/platform_packages_providers_DownloadProvider/+/6010/4/src/com/android/providers/downloads/DownloadThread.java#299\nchecks isUidNetworkingBlocked which checks https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/net/NetworkPolicyManagerService.java;l\u003d5697;drc\u003dmaster\nGiven that data restrictions now are added/removed dynamically from the restricted networking mode allowlist, it should be covered by it",
+      "parentUuid": "b8af3dce_de456975",
+      "revId": "70c2f67ead5b680f0ac48a66e7a82a5d5185f153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
