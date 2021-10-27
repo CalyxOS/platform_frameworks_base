@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f271e4e_7ad141d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-27T06:06:08Z",
+      "side": 1,
+      "message": "This is wrong.\n\nIt changes the feature entirely, we should not do that.\n\nGlobal should mean global. Entire device. Not just apps.\n\n",
+      "revId": "b4aa536acd49c1a03efebde93fa784997f4d375f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbf56b4_893e1814",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-27T06:06:08Z",
+      "side": 1,
+      "message": "This would only cover a subset of uids.",
+      "revId": "b4aa536acd49c1a03efebde93fa784997f4d375f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
