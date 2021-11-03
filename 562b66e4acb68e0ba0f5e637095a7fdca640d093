@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bbbdd6_ad67bea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-03T09:43:45Z",
+      "side": 1,
+      "message": "frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java:19814: error: cannot find symbol\n                return mServices.canAllowWhileInUsePermissionInFgsLocked(pid, uid, packageName);\n                                ^\n  symbol:   method canAllowWhileInUsePermissionInFgsLocked(int,int,String)\n  location: variable mServices of type ActiveServices",
+      "revId": "562b66e4acb68e0ba0f5e637095a7fdca640d093",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
