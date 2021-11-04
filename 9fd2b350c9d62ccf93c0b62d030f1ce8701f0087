@@ -16,6 +16,41 @@
       "message": "tainted?",
       "revId": "9fd2b350c9d62ccf93c0b62d030f1ce8701f0087",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9085ca2e_0eab43f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-04T13:13:19Z",
+      "side": 1,
+      "message": "Need to test, also let\u0027s just do this directly in 12 instead.",
+      "revId": "9fd2b350c9d62ccf93c0b62d030f1ce8701f0087",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c94f5a_0c4d3c25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-04T13:13:19Z",
+      "side": 1,
+      "message": "Nope, it comes from 249219: SUPL: Don\u0027t send IMSI / Phone number to SUPL server | https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/249219",
+      "parentUuid": "f7127845_9508b573",
+      "revId": "9fd2b350c9d62ccf93c0b62d030f1ce8701f0087",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
