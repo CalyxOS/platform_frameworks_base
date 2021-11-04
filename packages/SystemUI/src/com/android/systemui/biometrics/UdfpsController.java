@@ -553,7 +553,7 @@ public class UdfpsController implements DozeReceiver {
         mPowerManager = powerManager;
         mAccessibilityManager = accessibilityManager;
         mLockscreenShadeTransitionController = lockscreenShadeTransitionController;
-        mHbmProvider = hbmProvider.orElse(null);
+        mHbmProvider = hbmProvider.orElse(new RavioleUdfpsHbmProvider());
         screenLifecycle.addObserver(mScreenObserver);
         mScreenOn = screenLifecycle.getScreenState() == ScreenLifecycle.SCREEN_ON;
         mOrientationListener = new BiometricOrientationEventListener(

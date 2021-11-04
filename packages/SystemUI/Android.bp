@@ -63,6 +63,7 @@ android_library {
         "res",
     ],
     static_libs: [
+        "//hardware/google/interfaces:com.google.hardware.pixel.display-V3-java",
         "WindowManager-Shell",
         "SystemUIAnimationLib",
         "SystemUIPluginLib",
@@ -144,6 +145,7 @@ android_library {
         "src/**/I*.aidl",
     ],
     static_libs: [
+        "//hardware/google/interfaces:com.google.hardware.pixel.display-V3-java",
         "SystemUIAnimationLib",
         "SystemUIPluginLib",
         "SystemUISharedLib",
