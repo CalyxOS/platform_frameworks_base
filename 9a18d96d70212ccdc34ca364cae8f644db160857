@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f6fe20_e76a6f33",
+        "filename": "services/core/java/com/android/server/pm/CrossProfileAppsServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-04T12:40:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e46aacef_25085178",
+      "revId": "9a18d96d70212ccdc34ca364cae8f644db160857",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a55e0b_2896375c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-03T00:42:06Z",
       "side": 1,
       "message": "Resolved merge conflict here, it still had userId.",
+      "revId": "9a18d96d70212ccdc34ca364cae8f644db160857",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27132bc3_0cce35b7",
+        "filename": "services/core/java/com/android/server/pm/CrossProfileAppsServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-04T12:40:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21a55e0b_2896375c",
       "revId": "9a18d96d70212ccdc34ca364cae8f644db160857",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
