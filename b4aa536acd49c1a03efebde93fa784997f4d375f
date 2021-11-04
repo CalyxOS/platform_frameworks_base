@@ -33,6 +33,24 @@
       "message": "This would only cover a subset of uids.",
       "revId": "b4aa536acd49c1a03efebde93fa784997f4d375f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6793cea_b910444c",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-04T13:12:00Z",
+      "side": 1,
+      "message": "No longer valid.",
+      "parentUuid": "4cbf56b4_893e1814",
+      "revId": "b4aa536acd49c1a03efebde93fa784997f4d375f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
