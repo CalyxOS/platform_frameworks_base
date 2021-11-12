@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433e68c1_cc995c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-12T23:03:36Z",
+      "side": 1,
+      "message": "I\u0027m fine with just doing this for now and reverting later tbh.",
+      "revId": "db2055f8ad0e1c709c28f40d59af2605d7600c39",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
