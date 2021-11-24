@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b1f1b4_f60d90da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-11-24T23:12:30Z",
+      "side": 1,
+      "message": "Works, just need to do the same in a more modular manner now.",
+      "revId": "7bc7ae27383d0cf2992b393c23b5851be7d11857",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
