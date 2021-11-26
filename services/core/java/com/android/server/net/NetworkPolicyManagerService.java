@@ -86,6 +86,7 @@ import static android.net.NetworkPolicyManager.MASK_METERED_NETWORKS;
 import static android.net.NetworkPolicyManager.MASK_RESTRICTED_MODE_NETWORKS;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
@@ -311,6 +312,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -2408,6 +2410,17 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private void migrateNetworkIsolation() {
+        // Get pre-12 network-isolation uids
+        final Set<Integer> uidsWithPolicy =
+                Collections.singleton(getUidsWithPolicy(POLICY_REJECT_ALL));
+        Set<Integer> uidsDeniedOnRestrictedNetworks =
+                ConnectivitySettingsManager.getUidsDeniedOnRestrictedNetworks(mContext);
+        uidsDeniedOnRestrictedNetworks.addAll(uidsWithPolicy);
+        ConnectivitySettingsManager.setUidsDeniedOnRestrictedNetworks(mContext,
+                uidsDeniedOnRestrictedNetworks);
+    }
+
     @GuardedBy({"mUidRulesFirstLock", "mNetworkPoliciesSecondLock"})
     private void readPolicyAL() {
         if (LOGV) Slog.v(TAG, "readPolicyAL()");
@@ -2430,6 +2443,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } finally {
             IoUtils.closeQuietly(fis);
         }
+
+        migrateNetworkIsolation();
     }
 
     private void readPolicyXml(InputStream inputStream, boolean forRestore) throws IOException,
