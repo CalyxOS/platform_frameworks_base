@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c966ad71_964600d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-17T21:16:33Z",
+      "side": 1,
+      "message": "Woops.\n\n\"Original-Change-Id:\" would\u0027ve worked, no spaces",
+      "revId": "0b477579639cf281c563c17a04b182a3bdc013d6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
