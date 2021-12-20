@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae5fa8e_2a090dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-20T10:18:01Z",
+      "side": 1,
+      "message": "We could ship this for now.\n\nThen, later on make it customisable and send that upstream, and revert this. ",
+      "revId": "79b0a13f18ad2111fb13830bb5e47f9a4e318b2a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
