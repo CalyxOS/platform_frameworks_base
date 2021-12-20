@@ -73,7 +73,6 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
     private final NotificationWakeUpCoordinator mWakeUpCoordinator;
 
     private final View mClockView;
-    private final View mCenteredView;
     private final Optional<View> mOperatorNameViewOptional;
 
     @VisibleForTesting
@@ -107,12 +106,10 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
             NotificationPanelViewController notificationPanelViewController,
             HeadsUpStatusBarView headsUpStatusBarView,
             Clock clockView,
-            @Named(OPERATOR_NAME_FRAME_VIEW) Optional<View> operatorNameViewOptional,
-            View centeredView) {
+            @Named(OPERATOR_NAME_FRAME_VIEW) Optional<View> operatorNameViewOptional) {
         super(headsUpStatusBarView);
         mNotificationIconAreaController = notificationIconAreaController;
         mHeadsUpManager = headsUpManager;
-        mCenteredView = centeredView;
 
         // We may be mid-HUN-expansion when this controller is re-created (for example, if the user
         // has started pulling down the notification shade from the HUN and then the font size
@@ -217,15 +214,9 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 mView.setVisibility(View.VISIBLE);
                 show(mView);
                 hide(mClockView, View.INVISIBLE);
-                if (mCenteredView.getVisibility() != View.GONE) {
-                    hide(mCenteredView, View.INVISIBLE);
-                }
                 mOperatorNameViewOptional.ifPresent(view -> hide(view, View.INVISIBLE));
             } else {
                 show(mClockView);
-                if (mCenteredView.getVisibility() != View.GONE) {
-                    show(mCenteredView);
-                }
                 mOperatorNameViewOptional.ifPresent(this::show);
                 hide(mView, View.GONE, () -> {
                     updateParentClipping(true /* shouldClip */);
