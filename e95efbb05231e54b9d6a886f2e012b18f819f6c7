@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d99ec5_38d5d717",
+        "filename": "packages/SettingsLib/res/values/calyx_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-20T17:06:03Z",
+      "side": 1,
+      "message": "From what I see this file is not used by anything anymore. Can be removed",
+      "revId": "e95efbb05231e54b9d6a886f2e012b18f819f6c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
