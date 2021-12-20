@@ -59,7 +59,6 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
     private final NotificationIconAreaController mNotificationIconAreaController;
     private final HeadsUpManagerPhone mHeadsUpManager;
     private final NotificationStackScrollLayoutController mStackScrollerController;
-    private final View mCenteredView;
     private final View mCenteredIconView;
     private final View mClockView;
     private final View mOperatorNameView;
@@ -110,7 +109,6 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 statusBarView.findViewById(R.id.heads_up_status_bar_view),
                 statusBarView.findViewById(R.id.clock),
                 statusBarView.findViewById(R.id.operator_name_frame),
-                statusBarView.findViewById(R.id.centered_area),
                 statusBarView.findViewById(R.id.centered_icon_area));
     }
 
@@ -128,12 +126,10 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
             HeadsUpStatusBarView headsUpStatusBarView,
             View clockView,
             View operatorNameView,
-            View centeredView,
             View centeredIconView) {
         super(headsUpStatusBarView);
         mNotificationIconAreaController = notificationIconAreaController;
         mHeadsUpManager = headsUpManager;
-        mCenteredView = centeredView;
         mCenteredIconView = centeredIconView;
 
         // We may be mid-HUN-expansion when this controller is re-created (for example, if the user
@@ -239,9 +235,6 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 mView.setVisibility(View.VISIBLE);
                 show(mView);
                 hide(mClockView, View.INVISIBLE);
-                if (mCenteredView.getVisibility() != View.GONE) {
-                    hide(mCenteredView, View.INVISIBLE);
-                }
                 if (mCenteredIconView.getVisibility() != View.GONE) {
                     hide(mCenteredIconView, View.INVISIBLE);
                 }
@@ -250,9 +243,6 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 }
             } else {
                 show(mClockView);
-                if (mCenteredView.getVisibility() != View.GONE) {
-                    show(mCenteredView);
-                }
                 if (mCenteredIconView.getVisibility() != View.GONE) {
                     show(mCenteredIconView);
                 }
