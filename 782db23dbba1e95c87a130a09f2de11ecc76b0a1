@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fb11d4_4740beea",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T19:46:44Z",
+      "side": 1,
+      "message": "Summary for this setting is \"Allow toggling quick settings on secure lockscreen\"\n\nSo on should be the default, and when it\u0027s off, toggling should not be allowed.",
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

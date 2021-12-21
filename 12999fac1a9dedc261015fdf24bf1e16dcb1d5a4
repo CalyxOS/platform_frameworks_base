@@ -16,6 +16,24 @@
       "message": "This will mean every QSTileImpl user needs updating.",
       "revId": "12999fac1a9dedc261015fdf24bf1e16dcb1d5a4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50d434a_d759640a",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T19:46:44Z",
+      "side": 1,
+      "message": "No longer true with latest impl, nice!",
+      "parentUuid": "4187866e_806d6e96",
+      "revId": "12999fac1a9dedc261015fdf24bf1e16dcb1d5a4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
