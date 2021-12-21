@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a208dd7_b76b5b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T19:53:55Z",
+      "side": 1,
+      "message": "Works now but it didn\u0027t work for the me the first time I tried it.\n\nI toggle bluetooth once (testing qs tiles), and then it worked.\n\nSo maybe try:\n\nWipe data, boot, turn bluetooth on, set timeout (even 15s is fine)\n\nVerify it turns bt off.\n\nIf it doesn\u0027t, try toggling manually once, then wait.",
+      "revId": "00fe328c54552b93cee1313751776a01d06785a4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
