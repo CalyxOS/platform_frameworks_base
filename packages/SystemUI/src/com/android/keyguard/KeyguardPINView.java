@@ -21,6 +21,7 @@ import static com.android.systemui.statusbar.policy.DevicePostureController.DEVI
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.UserHandle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -170,8 +171,9 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
                         null, mEcaView, null
                 }};
 
-        mScramblePin = LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1;
+        mScramblePin = LineageSettings.System.getIntForUser(getContext().getContentResolver(),
+                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0,
+                UserHandle.USER_CURRENT) == 1;
         if (mScramblePin) {
             Collections.shuffle(sNumbers);
             // get all children who are NumPadKey's
