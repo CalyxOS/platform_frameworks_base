@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a670b033_fab9ad20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-12-21T11:52:27Z",
+      "side": 1,
+      "message": "Can be abandoned given it will be moved to sdk. The remainder of the code is in other projects",
+      "revId": "44745701e309d6aae8f6f3b63bd4c0e18d0462a4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
