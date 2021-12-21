@@ -34,6 +34,24 @@
       "parentUuid": "5c965def_ff26411c",
       "revId": "ae379abf83073d5eff04663df77a470ae3b4bab3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe78018_52fd4864",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T14:05:42Z",
+      "side": 1,
+      "message": "When you squash commits, always include the original commit\u0027s details.\n\nThis commit\u0027s details are missing from \"Global VPN Feature\u0027\n\nLook at any other squashes for how it\u0027s done.\n\nOnly time it\u0027s ok to skip that is when it\u0027s a tiny fixup",
+      "parentUuid": "943521c0_5b01e739",
+      "revId": "ae379abf83073d5eff04663df77a470ae3b4bab3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
