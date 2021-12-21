@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756d46ad_529ddd31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T21:10:06Z",
+      "side": 1,
+      "message": "NFC tile isn\u0027t enabled right now?",
+      "revId": "46d1495af8a7d86063acf746baf83fa193292759",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
