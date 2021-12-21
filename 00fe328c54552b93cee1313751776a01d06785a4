@@ -16,6 +16,29 @@
       "message": "Works now but it didn\u0027t work for the me the first time I tried it.\n\nI toggle bluetooth once (testing qs tiles), and then it worked.\n\nSo maybe try:\n\nWipe data, boot, turn bluetooth on, set timeout (even 15s is fine)\n\nVerify it turns bt off.\n\nIf it doesn\u0027t, try toggling manually once, then wait.",
       "revId": "00fe328c54552b93cee1313751776a01d06785a4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee940f9_5827c879",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-21T19:58:28Z",
+      "side": 1,
+      "message": "Should probably also listen to BLUETOOTH_OFF_TIMEOUT via an observer so that we update timeout on user-change",
+      "range": {
+        "startLine": 566,
+        "startChar": 17,
+        "endLine": 566,
+        "endChar": 36
+      },
+      "revId": "00fe328c54552b93cee1313751776a01d06785a4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
