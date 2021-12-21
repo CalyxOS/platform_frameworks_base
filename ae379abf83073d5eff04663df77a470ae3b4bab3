@@ -16,6 +16,24 @@
       "message": "Squash into previous commit?",
       "revId": "ae379abf83073d5eff04663df77a470ae3b4bab3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943521c0_5b01e739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-12-21T12:12:10Z",
+      "side": 1,
+      "message": "Done. Can be abandoned",
+      "parentUuid": "5c965def_ff26411c",
+      "revId": "ae379abf83073d5eff04663df77a470ae3b4bab3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
