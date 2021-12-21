@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bcc3719_af7ba25a",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-21T19:55:34Z",
+      "side": 1,
+      "message": "maybe add it to a local class variable?",
+      "range": {
+        "startLine": 314,
+        "startChar": 39,
+        "endLine": 314,
+        "endChar": 54
+      },
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35fb11d4_4740beea",
         "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
         "patchSetId": 17
@@ -14,6 +37,29 @@
       "writtenOn": "2021-12-21T19:46:44Z",
       "side": 1,
       "message": "Summary for this setting is \"Allow toggling quick settings on secure lockscreen\"\n\nSo on should be the default, and when it\u0027s off, toggling should not be allowed.",
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0499a70_c70faba1",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-21T19:55:34Z",
+      "side": 1,
+      "message": "in SystemUI I\u0027d prefer to use the tuner interface ( if ported )\nDependency.get(TunerService).add($setting) and listener that keep track in a local variable",
+      "range": {
+        "startLine": 316,
+        "startChar": 39,
+        "endLine": 316,
+        "endChar": 73
+      },
       "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
