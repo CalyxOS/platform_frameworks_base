@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a6084e_f6bc5d70",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:53:47Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "b97642900f0d188125886431b5184da96f070934",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
