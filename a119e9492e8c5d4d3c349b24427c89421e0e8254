@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaf3051_d4268a7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T16:17:22Z",
+      "side": 1,
+      "message": "Test: adb shell settings get secure doze_enabled ",
+      "revId": "a119e9492e8c5d4d3c349b24427c89421e0e8254",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
