@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281345d0_e908e36e",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:48:53Z",
+      "side": 1,
+      "message": "Remove extra spaces",
+      "range": {
+        "startLine": 1431,
+        "startChar": 16,
+        "endLine": 1431,
+        "endChar": 18
+      },
+      "revId": "022f6f3ec6f20c78079fa00a8a2b9f3f6604aa56",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
