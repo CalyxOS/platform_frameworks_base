@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9164256d_e1b90e92",
+        "filename": "core/java/android/os/StrictMode.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:56:20Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "a2859095533a55a55d29ca1dede8b9f87241eb9a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
