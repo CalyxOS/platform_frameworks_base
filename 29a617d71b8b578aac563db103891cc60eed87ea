@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c30d527e_a36460fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T21:12:53Z",
+      "side": 1,
+      "message": "I tested with\n\n`setprop audio.camerasound.force true`\n\ndidn\u0027t work, still no sound when silent.",
+      "revId": "29a617d71b8b578aac563db103891cc60eed87ea",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
