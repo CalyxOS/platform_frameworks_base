@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3867acc_844a9c85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T16:16:07Z",
+      "side": 1,
+      "message": "Test: adb shell settings get global heads_up_notifications_enabled",
+      "revId": "1ddf5e45859b74a00979ab192f4ff830da5a45e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
