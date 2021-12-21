@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "248c6407_1c166f8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T16:18:35Z",
+      "side": 1,
+      "message": "I TetheringManager: setUsbTethering caller:com.android.systemui",
+      "revId": "016e0eea9c58800e2f5c911e8c96c0c14b2623a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
