@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de48c6e0_894fab82",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:50:28Z",
+      "side": 1,
+      "message": "8 spaces",
+      "range": {
+        "startLine": 632,
+        "startChar": 16,
+        "endLine": 632,
+        "endChar": 28
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8918a04_ef62324f",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:50:28Z",
+      "side": 1,
+      "message": "8 spaces",
+      "range": {
+        "startLine": 633,
+        "startChar": 16,
+        "endLine": 633,
+        "endChar": 28
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7a1598_3651a35b",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:50:28Z",
+      "side": 1,
+      "message": "8 spaces",
+      "range": {
+        "startLine": 1105,
+        "startChar": 12,
+        "endLine": 1105,
+        "endChar": 16
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6504f7f8_8309a137",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:50:28Z",
+      "side": 1,
+      "message": "Extra line",
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
