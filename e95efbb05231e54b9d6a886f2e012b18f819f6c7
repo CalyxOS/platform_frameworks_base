@@ -52,6 +52,24 @@
       "parentUuid": "c93b78bb_8b440df4",
       "revId": "e95efbb05231e54b9d6a886f2e012b18f819f6c7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3edcbe_31a64ea7",
+        "filename": "packages/SettingsLib/res/values/calyx_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T23:41:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "20947b5c_ee16b49c",
+      "revId": "e95efbb05231e54b9d6a886f2e012b18f819f6c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
