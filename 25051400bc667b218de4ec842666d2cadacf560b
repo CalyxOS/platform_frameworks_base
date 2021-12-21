@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "150b41c4_0ce0532a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T21:23:17Z",
+      "side": 1,
+      "message": "Test: Install Google Maps, go to notification settings, see that this category is disabled.",
+      "revId": "25051400bc667b218de4ec842666d2cadacf560b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
