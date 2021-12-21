@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747f1605_e146072c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-12-21T23:55:16Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "9b52b11c14bf3f4a94e6e533e5c4b377935a83e4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
