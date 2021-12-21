@@ -62,6 +62,30 @@
       },
       "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f56630_01cf2f67",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-21T20:03:55Z",
+      "side": 1,
+      "message": "7293: SystemUI: Allow using tuner API for LineageSettings | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/7293 merged.",
+      "parentUuid": "b0499a70_c70faba1",
+      "range": {
+        "startLine": 316,
+        "startChar": 39,
+        "endLine": 316,
+        "endChar": 73
+      },
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
