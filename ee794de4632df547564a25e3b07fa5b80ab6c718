@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17782a15_6bf0ce1a",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T12:34:41Z",
+      "side": 1,
+      "message": "Use hasInternetPermissionUL(uid)",
+      "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
