@@ -16,6 +16,23 @@
       "message": "Seems fine to me even without this change",
       "revId": "3aa23a837e86240cc90bdb438b939d31cf0e6102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a19ff7b_973c7c5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-22T11:01:28Z",
+      "side": 1,
+      "message": "iirc Google ( or HTC? ) had some issues with this change and ignored it since then.",
+      "revId": "3aa23a837e86240cc90bdb438b939d31cf0e6102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
