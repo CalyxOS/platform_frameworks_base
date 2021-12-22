@@ -16,6 +16,24 @@
       "message": "Use hasInternetPermissionUL(uid)",
       "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8a9493_ea877875",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T12:35:44Z",
+      "side": 1,
+      "message": "Although that is guarded by mUidRulesFirstLock.\n\nIn which case, you should use the same call as that anyway, \n\nmIPm.checkUidPermission(Manifest.permission.INTERNET,\n                    uid) \u003d\u003d PackageManager.PERMISSION_GRANTED;",
+      "parentUuid": "17782a15_6bf0ce1a",
+      "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
