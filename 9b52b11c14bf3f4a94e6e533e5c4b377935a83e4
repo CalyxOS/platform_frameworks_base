@@ -16,6 +16,24 @@
       "message": "100 chars",
       "revId": "9b52b11c14bf3f4a94e6e533e5c4b377935a83e4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a4fb9a_23775cc4",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-22T10:32:48Z",
+      "side": 1,
+      "message": "final String package \u003d LineageSettings.Global.getString(mContext.getContentResolver(), LineageSettings.Global.GLOBAL_VPN_APP);\nreturn mUserId \u003d\u003d UserHandle.USER_SYSTEM \u0026\u0026 mPackage.equals(package);",
+      "parentUuid": "747f1605_e146072c",
+      "revId": "9b52b11c14bf3f4a94e6e533e5c4b377935a83e4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
