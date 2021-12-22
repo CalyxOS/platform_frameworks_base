@@ -34,6 +34,24 @@
       "parentUuid": "747f1605_e146072c",
       "revId": "9b52b11c14bf3f4a94e6e533e5c4b377935a83e4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ec7b03_0081bade",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a4fb9a_23775cc4",
+      "revId": "9b52b11c14bf3f4a94e6e533e5c4b377935a83e4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
