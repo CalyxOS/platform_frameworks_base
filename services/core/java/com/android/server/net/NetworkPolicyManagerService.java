@@ -1146,10 +1146,15 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 if (LOGV) Slog.v(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid);
                 // Clear the cache for the app
                 synchronized (mUidRulesFirstLock) {
-                    Set<Integer> uids =
-                            ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(context);
-                    uids.add(uid);
-                    ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(context, uids);
+                    if (mContext.checkPermission(Manifest.permission.INTERNET, -1, uid)
+                            == PERMISSION_GRANTED) {
+                        Set<Integer> uids =
+                                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(
+                                        context);
+                        uids.add(uid);
+                        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(context,
+                                uids);
+                    }
                     mInternetPermissionMap.delete(uid);
                     updateRestrictionRulesForUidUL(uid);
                 }
