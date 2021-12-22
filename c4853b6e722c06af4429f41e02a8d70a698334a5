@@ -33,6 +33,24 @@
       "message": "This part inspired by kdrag0n\u0027s commit that does something similar.\"\n\nIt was needed to get microG Self check to work.",
       "revId": "c4853b6e722c06af4429f41e02a8d70a698334a5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58c0e29_40400e71",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:39:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8366ec8_cd56e023",
+      "revId": "c4853b6e722c06af4429f41e02a8d70a698334a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
