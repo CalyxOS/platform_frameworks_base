@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be76ff54_5ba7b311",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-22T10:30:45Z",
+      "side": 1,
+      "message": "make this a little function where you can pass panicPackage and returns the intent?",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 13
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c7a1598_3651a35b",
         "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
         "patchSetId": 21
