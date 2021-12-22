@@ -24,6 +24,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df5911f_e6f6f9bb",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de48c6e0_894fab82",
+      "range": {
+        "startLine": 632,
+        "startChar": 16,
+        "endLine": 632,
+        "endChar": 28
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8918a04_ef62324f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-21T23:50:28Z",
       "side": 1,
       "message": "8 spaces",
+      "range": {
+        "startLine": 633,
+        "startChar": 16,
+        "endLine": 633,
+        "endChar": 28
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12be8e7_f76167df",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8918a04_ef62324f",
       "range": {
         "startLine": 633,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26982969_0d1aaecd",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:29:37Z",
+      "side": 1,
+      "message": "We\u0027d still need the PANIC_PACKAGE handling, as that\u0027s used to know which package to fire off an intent too onPress() / onLongPress()\n\nThis might get removed in the future anyway so maybe it\u0027s fine for now?",
+      "parentUuid": "be76ff54_5ba7b311",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 13
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c7a1598_3651a35b",
@@ -93,6 +165,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f37e12f_e96b3305",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7a1598_3651a35b",
+      "range": {
+        "startLine": 1105,
+        "startChar": 12,
+        "endLine": 1105,
+        "endChar": 16
+      },
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6504f7f8_8309a137",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-12-21T23:50:28Z",
       "side": 1,
       "message": "Extra line",
+      "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf2f902_7f871463",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T14:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6504f7f8_8309a137",
       "revId": "ec6c8bf1359f1f08239da475d3e1adb2986bda71",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
