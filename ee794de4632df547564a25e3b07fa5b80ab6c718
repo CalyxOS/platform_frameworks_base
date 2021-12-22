@@ -34,6 +34,24 @@
       "parentUuid": "17782a15_6bf0ce1a",
       "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe57814b_2297d628",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T12:37:08Z",
+      "side": 1,
+      "message": "There\u0027s also isUidValidForAllowlistRulesUL, which does `return UserHandle.isApp(uid) \u0026\u0026 hasInternetPermissionUL(uid);`\n\nDoes any of the restricted networking mode code have isApp() checks? I know the policy code does.",
+      "parentUuid": "4f8a9493_ea877875",
+      "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
