@@ -52,6 +52,24 @@
       "parentUuid": "4f8a9493_ea877875",
       "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8717335b_4c09e8ff",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-12-22T12:40:45Z",
+      "side": 1,
+      "message": "There are no additional checks, UIDs are taken as they\u0027re given by the respective functions",
+      "parentUuid": "fe57814b_2297d628",
+      "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
