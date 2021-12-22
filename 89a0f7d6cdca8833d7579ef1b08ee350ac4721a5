@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6283a6d3_da3f53d7",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 3377,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-22T10:26:39Z",
+      "side": 1,
+      "message": "Maybe add them to a static array?",
+      "parentUuid": "7349c6ec_cfc98ac9",
+      "revId": "89a0f7d6cdca8833d7579ef1b08ee350ac4721a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b287e61d_7228bb2f",
         "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
         "patchSetId": 8
