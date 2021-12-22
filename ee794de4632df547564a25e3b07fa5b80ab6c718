@@ -70,6 +70,24 @@
       "parentUuid": "fe57814b_2297d628",
       "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cac71a_90f32784",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-22T13:38:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8717335b_4c09e8ff",
+      "revId": "ee794de4632df547564a25e3b07fa5b80ab6c718",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
