@@ -16,6 +16,29 @@
       "message": "100 chars",
       "revId": "a2859095533a55a55d29ca1dede8b9f87241eb9a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f7a14f_7bee3667",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 23
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-22T11:17:35Z",
+      "side": 1,
+      "message": "Maybe add reasoning on why this checks exist :P",
+      "range": {
+        "startLine": 1315,
+        "startChar": 0,
+        "endLine": 1319,
+        "endChar": 17
+      },
+      "revId": "a2859095533a55a55d29ca1dede8b9f87241eb9a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
