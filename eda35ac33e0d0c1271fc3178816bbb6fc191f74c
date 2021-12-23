@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae88f278_e497cc6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-23T15:56:19Z",
+      "side": 1,
+      "message": "This should be ok for now, we can handle the restricted-networking-mode bits in a follow up commit (or fixup) - would be much easier to review that way.",
+      "revId": "eda35ac33e0d0c1271fc3178816bbb6fc191f74c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
