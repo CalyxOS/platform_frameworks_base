@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016753c4_453586be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-23T13:55:31Z",
+      "side": 1,
+      "message": "As discussed, let\u0027s do this entirely in SDK so we only have one source touching the uids, avoiding conflicts.",
+      "revId": "eb18cdf5b29f6078603079fc7dd98d3272c78906",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
