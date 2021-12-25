@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fda052d_5c7fc1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-25T23:35:02Z",
+      "side": 1,
+      "message": "Need to have `adb shell settings` work. Shell already has the android perms for this.",
+      "revId": "057d15bd7855521bfb19807d8beee51e98cb42ce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
