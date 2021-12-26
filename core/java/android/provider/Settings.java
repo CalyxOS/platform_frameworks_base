@@ -14988,6 +14988,14 @@ public final class Settings {
                 "uids_allowed_on_restricted_networks";
 
         /**
+         * A list of uids that is denied to use restricted networks.
+         *
+         * @hide
+         */
+        public static final String UIDS_DENIED_ON_RESTRICTED_NETWORKS =
+                "uids_denied_on_restricted_networks";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
