@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfe1fab_f31faa42",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-26T21:07:00Z",
+      "side": 1,
+      "message": "This used to be `Collections.singleton(uidsWithPolicy)`;\n\nThat didn\u0027t work, this 😭 does!",
+      "revId": "550e1a6b6c1df8547219d1a2abef4af79e60fc11",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dbe73b_a405e35b",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-26T21:07:00Z",
+      "side": 1,
+      "message": "Added this to handle restores from 11.\n\nRestore installs apks first, so they\u0027d get allowlisted.\nThen it\u0027d restore app data, which would also trigger this, restricting isolated apps.",
+      "revId": "550e1a6b6c1df8547219d1a2abef4af79e60fc11",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
