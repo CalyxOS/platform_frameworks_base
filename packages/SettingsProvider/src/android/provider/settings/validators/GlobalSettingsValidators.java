@@ -23,6 +23,7 @@ import static android.provider.settings.validators.SettingsValidators.BOOLEAN_VA
 import static android.provider.settings.validators.SettingsValidators.NONE_NEGATIVE_LONG_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PACKAGE_NAME_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PERCENTAGE_INTEGER_VALIDATOR;
+import static android.provider.settings.validators.SettingsValidators.UID_LIST_VALIDATOR;
 import static android.view.Display.HdrCapabilities.HDR_TYPES;
 
 import android.os.BatteryManager;
@@ -159,6 +160,7 @@ public class GlobalSettingsValidators {
                         "14400000",
                         "28800000"
                 }));
+        VALIDATORS.put(Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, UID_LIST_VALIDATOR);
     }
 }
 
