@@ -25,6 +25,7 @@ import static android.provider.settings.validators.SettingsValidators.NON_NEGATI
 import static android.provider.settings.validators.SettingsValidators.NON_NEGATIVE_INTEGER_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PACKAGE_NAME_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PERCENTAGE_INTEGER_VALIDATOR;
+import static android.provider.settings.validators.SettingsValidators.UID_LIST_VALIDATOR;
 import static android.view.Display.HdrCapabilities.HDR_TYPES;
 
 import android.os.BatteryManager;
@@ -171,6 +172,7 @@ public class GlobalSettingsValidators {
                         "14400000",
                         "28800000"
                 }));
+        VALIDATORS.put(Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, UID_LIST_VALIDATOR);
 
         VALIDATORS.put(Global.Wearable.HAS_PAY_TOKENS, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Global.Wearable.GMS_CHECKIN_TIMEOUT_MIN, ANY_INTEGER_VALIDATOR);
