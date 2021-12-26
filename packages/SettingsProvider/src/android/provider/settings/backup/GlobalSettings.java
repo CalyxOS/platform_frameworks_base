@@ -79,6 +79,7 @@ public class GlobalSettings {
         Settings.Global.AUTOMATIC_POWER_SAVE_MODE,
         Settings.Global.ADVANCED_BATTERY_USAGE_AMOUNT,
         Settings.Global.POWER_BUTTON_LONG_PRESS_DURATION_MS,
-        Settings.Global.WIFI_OFF_TIMEOUT
+        Settings.Global.WIFI_OFF_TIMEOUT,
+        Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS
     };
 }
