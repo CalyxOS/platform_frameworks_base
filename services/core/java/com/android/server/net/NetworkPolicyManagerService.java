@@ -2411,7 +2411,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
     private void migrateNetworkIsolation() {
         // Get pre-12 network-isolation uids
-        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_ALL);
+        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_VPN);
         final Set<Integer> uidsToDeny =
                 Arrays.stream(uidsWithPolicy).boxed().collect(Collectors.toSet());
 
@@ -2424,7 +2424,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         // Clear policy to avoid future conflicts
         for (int uid : uidsToDeny) {
-            removeUidPolicy(uid, POLICY_REJECT_ALL);
+            removeUidPolicy(uid, POLICY_REJECT_VPN);
         }
     }
 
