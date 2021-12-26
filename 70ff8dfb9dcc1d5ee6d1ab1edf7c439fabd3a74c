@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1497c3fb_c508da92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-26T23:47:30Z",
+      "side": 1,
+      "message": "things still work...",
+      "revId": "70ff8dfb9dcc1d5ee6d1ab1edf7c439fabd3a74c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bef0af4_7fd81aa9",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/UidListValidator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-26T23:47:30Z",
+      "side": 1,
+      "message": "should be ;",
+      "revId": "70ff8dfb9dcc1d5ee6d1ab1edf7c439fabd3a74c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
