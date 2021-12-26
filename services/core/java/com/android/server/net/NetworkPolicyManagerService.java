@@ -2411,14 +2411,14 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
     private void migrateNetworkIsolation() {
         // Get pre-12 network-isolation uids
-        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_ALL);
+        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_VPN);
         final Set<Integer> uidsToDeny =
                 Arrays.stream(uidsWithPolicy).boxed().collect(Collectors.toSet());
         Set<Integer> uidsDeniedOnRestrictedNetworks =
                 ConnectivitySettingsManager.getUidsDeniedOnRestrictedNetworks(mContext);
         uidsDeniedOnRestrictedNetworks.addAll(uidsToDeny);
         for (int uid : uidsWithPolicy) {
-            removeUidPolicy(uid, POLICY_REJECT_ALL);
+            removeUidPolicy(uid, POLICY_REJECT_VPN);
         }
         ConnectivitySettingsManager.setUidsDeniedOnRestrictedNetworks(mContext,
                 uidsDeniedOnRestrictedNetworks);
