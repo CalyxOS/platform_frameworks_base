@@ -1575,7 +1575,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
 
     @Override
     public void setFirewallUidRule(int chain, int uid, int rule) {
-        enforceSystemUid();
+        enforceSystemOrFirewallAppUid();
         synchronized (mQuotaLock) {
             setFirewallUidRuleLocked(chain, uid, rule);
         }
@@ -1668,6 +1668,13 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         final int uid = mDeps.getCallingUid();
         if (uid != Process.SYSTEM_UID) {
             throw new SecurityException("Only available to AID_SYSTEM");
+        }
+    }
+
+    private void enforceSystemOrFirewallAppUid() {
+        final int uid = mDeps.getCallingUid();
+        if (uid != Process.SYSTEM_UID && uid != Process.FIREWALL_APP_UID) {
+            throw new SecurityException("Only available to AID_SYSTEM or AID_FIREWALL_APP");
         }
     }
 
