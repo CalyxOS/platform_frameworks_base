@@ -259,6 +259,12 @@ public class Process {
      */
     public static final int INET_GID = 3003;
 
+    /**
+     * Defines the UID/GID for the Firewall app.
+     * @hide
+     */
+    public static final int FIREWALL_APP_UID = 7960;
+
     /** {@hide} */
     public static final int NOBODY_UID = 9999;
 
