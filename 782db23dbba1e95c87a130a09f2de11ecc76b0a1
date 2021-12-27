@@ -110,6 +110,48 @@
       },
       "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f62346_7269cf77",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:15:02Z",
+      "side": 1,
+      "message": "Can switch over later if we want, perhaps if (and when) we send upstream.",
+      "parentUuid": "50f56630_01cf2f67",
+      "range": {
+        "startLine": 316,
+        "startChar": 39,
+        "endLine": 316,
+        "endChar": 73
+      },
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5697eb77_18748983",
+        "filename": "packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fb11d4_4740beea",
+      "revId": "782db23dbba1e95c87a130a09f2de11ecc76b0a1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
