@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70116b7d_98607d7e",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-12-27T08:32:05Z",
+      "side": 1,
+      "message": "this one is necessary too? I thought both cases pass by readPolicyXml which reaches readPolicyAL which would make this call redundant?",
+      "range": {
+        "startLine": 2914,
+        "startChar": 8,
+        "endLine": 2914,
+        "endChar": 34
+      },
+      "revId": "dfec8edd63c1f496e3da8bebc4f3526ba54fac38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
