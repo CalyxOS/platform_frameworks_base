@@ -22,6 +22,30 @@
       },
       "revId": "dfec8edd63c1f496e3da8bebc4f3526ba54fac38",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ab23e6_e513c4b3",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-12-27T08:33:43Z",
+      "side": 1,
+      "message": "nvm, the common place was readPolicyXml, not readPolicyAL. Why was it split into the 2 separate calls?",
+      "parentUuid": "70116b7d_98607d7e",
+      "range": {
+        "startLine": 2914,
+        "startChar": 8,
+        "endLine": 2914,
+        "endChar": 34
+      },
+      "revId": "dfec8edd63c1f496e3da8bebc4f3526ba54fac38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
