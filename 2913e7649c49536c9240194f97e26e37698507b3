@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5c0dbd_43a03b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:30:17Z",
+      "side": 1,
+      "message": "Works, Tested with both work profile A2 and separate user B1",
+      "revId": "2913e7649c49536c9240194f97e26e37698507b3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
