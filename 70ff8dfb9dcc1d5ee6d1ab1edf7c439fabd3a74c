@@ -33,6 +33,24 @@
       "message": "should be ;",
       "revId": "70ff8dfb9dcc1d5ee6d1ab1edf7c439fabd3a74c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6eee72_06cee12e",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/UidListValidator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bef0af4_7fd81aa9",
+      "revId": "70ff8dfb9dcc1d5ee6d1ab1edf7c439fabd3a74c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
