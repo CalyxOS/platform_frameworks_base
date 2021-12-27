@@ -22,6 +22,30 @@
       },
       "revId": "5a03e7814f098d446631e9b0e359f467440561e7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a42a68d_e62b6aa4",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/wifi/WifiTimeoutReceiver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:16:12Z",
+      "side": 1,
+      "message": "No longer handled here, see https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Wifi/+/6244",
+      "parentUuid": "6d72087b_9a61e708",
+      "range": {
+        "startLine": 52,
+        "startChar": 69,
+        "endLine": 52,
+        "endChar": 83
+      },
+      "revId": "5a03e7814f098d446631e9b0e359f467440561e7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

@@ -34,6 +34,24 @@
       "parentUuid": "879401a6_3b39424e",
       "revId": "f8cf6667c642d5a3175c06576f0f8aacf85ec64a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf17fa8c_1ec0d730",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/wifi/WifiStatusTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-27T19:16:12Z",
+      "side": 1,
+      "message": "No longer handled here, see https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Wifi/+/6244",
+      "parentUuid": "dcea73d8_320cf0b9",
+      "revId": "f8cf6667c642d5a3175c06576f0f8aacf85ec64a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
