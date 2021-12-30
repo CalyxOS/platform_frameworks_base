@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c53c1f9_14751e61",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T14:45:28Z",
+      "side": 1,
+      "message": "As discussed, proper way to do this:\n\n7511: Disable usb data by default | https://review.calyxos.org/c/CalyxOS/kernel_google_raviole/+/7511\n\nBut we can\u0027t do that easily without more considerations.\n\nIn 11 it was done by init.rc which would be earlier than this.\n\nSo perhaps as a workaround for now could we put this in some other service too when value is 2?\n\nOr maybe initialize the USB Service(s) (AOSP for Pixels, Lineage for others) to disabed by default?\n\ni.e. IUsb.getService() and IUsbRestrict.getService() both default to disabled",
+      "parentUuid": "4309b972_0e2c3e15",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38f2f1d3_4a8ccdd8",
         "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
         "patchSetId": 1
