@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa37714_a579f692",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T13:33:05Z",
+      "side": 1,
+      "message": "How early during boot would this get called?",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f2f1d3_4a8ccdd8",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T13:33:05Z",
+      "side": 1,
+      "message": "restristUsb",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ee702d_b297982f",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T13:33:05Z",
+      "side": 1,
+      "message": "default should be 1.",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f44bc1_df79d41e",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T13:33:05Z",
+      "side": 1,
+      "message": "I\u0027d do\n\nboolean shouldRestrictUsb \u003d restrictUsbKeyguard \u003d\u003d 2\n        || (restrictUsbKeyguard \u003d\u003d 1 \u0026\u0026 mIsShowing);\n\nfor readability.",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
