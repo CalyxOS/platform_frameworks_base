@@ -175,6 +175,24 @@
       "message": "I\u0027d do\n\nboolean shouldRestrictUsb \u003d restrictUsbKeyguard \u003d\u003d 2\n        || (restrictUsbKeyguard \u003d\u003d 1 \u0026\u0026 mIsShowing);\n\nfor readability.",
       "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27937001_dc84cce6",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-30T16:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f44bc1_df79d41e",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
