@@ -19,6 +19,7 @@ package com.android.server.policy.keyguard;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.database.ContentObserver;
 import android.os.RemoteException;
 import android.util.Slog;
 
@@ -72,6 +73,17 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
         } catch (RemoteException e) {
             Slog.w(TAG, "Remote Exception", e);
         }
+
+        mContentResolver.registerContentObserver(
+                LineageSettings.Global.getUriFor(LineageSettings.Global.TRUST_RESTRICT_USB),
+                false,
+                new ContentObserver(null) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        setTrustRestrictUsb();
+                    }
+                }
+        );
     }
 
     public boolean isShowing() {
@@ -100,43 +112,7 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
 
         mCallback.onShowingChanged();
 
-        if (mUsb == null) {
-            try {
-                mUsb = IUsb.getService();
-                if (mUsb == null) {
-                    // Ignore, the hal is not available
-                    // Try Usb Restrict
-                }
-            } catch (NoSuchElementException | RemoteException ignored) {
-                // Try Usb Restrict
-            }
-        }
-
-        if (mUsb == null && mUsbRestrictor == null) {
-            try {
-                mUsbRestrictor = IUsbRestrict.getService();
-                if (mUsbRestrictor == null) {
-                    // Ignore, the hal is not available
-                    return;
-                }
-            } catch (NoSuchElementException | RemoteException ignored) {
-                return;
-            }
-        }
-
-        boolean shouldRestrictUsb = LineageSettings.Secure.getInt(mContentResolver,
-                LineageSettings.Secure.TRUST_RESTRICT_USB_KEYGUARD, 0) == 1;
-        if (shouldRestrictUsb) {
-            try {
-                if (mUsb != null) {
-                    mUsb.enableUsbDataSignal(!showing);
-                } else {
-                    mUsbRestrictor.setEnabled(showing);
-                }
-            } catch (RemoteException ignored) {
-                // This feature is not supported
-            }
-        }
+        setTrustRestrictUsb();
     }
 
     @Override // Binder interface
@@ -162,6 +138,46 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
     @Override // Binder interface
     public void onHasLockscreenWallpaperChanged(boolean hasLockscreenWallpaper) {
         mHasLockscreenWallpaper = hasLockscreenWallpaper;
+    }
+
+    private void setTrustRestrictUsb() {
+        if (mUsb == null) {
+            try {
+                mUsb = IUsb.getService();
+                if (mUsb == null) {
+                    // Ignore, the hal is not available
+                    // Try Usb Restrict
+                }
+            } catch (NoSuchElementException | RemoteException ignored) {
+                // Try Usb Restrict
+            }
+        }
+
+        if (mUsb == null && mUsbRestrictor == null) {
+            try {
+                mUsbRestrictor = IUsbRestrict.getService();
+                if (mUsbRestrictor == null) {
+                    // Ignore, the hal is not available
+                    return;
+                }
+            } catch (NoSuchElementException | RemoteException ignored) {
+                return;
+            }
+        }
+
+        int restrictUsb = LineageSettings.Global.getInt(mContentResolver,
+                LineageSettings.Global.TRUST_RESTRICT_USB, 1);
+        boolean shouldRestrictUsb = restrictUsb == 2 || (restrictUsb == 1
+                && mIsShowing);
+        try {
+            if (mUsb != null) {
+                mUsb.enableUsbDataSignal(!shouldRestrictUsb);
+            } else {
+                mUsbRestrictor.setEnabled(shouldRestrictUsb);
+            }
+        } catch (RemoteException ignored) {
+            // This feature is not supported
+        }
     }
 
     public interface StateCallback {
