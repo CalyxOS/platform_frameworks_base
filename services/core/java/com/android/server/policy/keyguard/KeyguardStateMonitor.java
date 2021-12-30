@@ -17,14 +17,22 @@
 package com.android.server.policy.keyguard;
 
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.ContentObserver;
+import android.debug.AdbManagerInternal;
+import android.debug.AdbTransportType;
+import android.hardware.usb.UsbManager;
 import android.os.RemoteException;
 import android.util.Slog;
 
 import com.android.internal.policy.IKeyguardService;
 import com.android.internal.policy.IKeyguardStateCallback;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.server.LocalServices;
 
 import android.hardware.usb.V1_3.IUsb;
 import lineageos.providers.LineageSettings;
@@ -59,6 +67,7 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
 
     private IUsb mUsb;
     private IUsbRestrict mUsbRestrictor;
+    private UsbManager mUsbManager;
     private ContentResolver mContentResolver;
 
     public KeyguardStateMonitor(Context context, IKeyguardService service, StateCallback callback) {
@@ -66,12 +75,36 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
         mCurrentUserId = ActivityManager.getCurrentUser();
         mCallback = callback;
         mContentResolver = context.getContentResolver();
+        mUsbManager = context.getSystemService(UsbManager.class);
 
         try {
             service.addStateMonitorCallback(this);
         } catch (RemoteException e) {
             Slog.w(TAG, "Remote Exception", e);
         }
+
+        mContentResolver.registerContentObserver(
+                LineageSettings.Global.getUriFor(LineageSettings.Global.TRUST_RESTRICT_USB),
+                false,
+                new ContentObserver(null) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        setTrustRestrictUsb();
+                    }
+                }
+        );
+
+        IntentFilter intentFilter = new IntentFilter();
+        // Listen for USB device disconnections, and update usb restriction
+        // Needed for the "restrict usb only when locked" setting
+        intentFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        intentFilter.addAction(UsbManager.ACTION_USB_ACCESSORY_DETACHED);
+        context.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                setTrustRestrictUsb();
+            }
+        }, intentFilter);
     }
 
     public boolean isShowing() {
@@ -100,43 +133,7 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
 
         mCallback.onShowingChanged();
 
-        if (mUsb == null) {
-            try {
-                mUsb = IUsb.getService();
-                if (mUsb == null) {
-                    // Ignore, the hal is not available
-                    // Try Usb Restrict
-                }
-            } catch (NoSuchElementException | RemoteException ignored) {
-                // Try Usb Restrict
-            }
-        }
-
-        if (mUsb == null && mUsbRestrictor == null) {
-            try {
-                mUsbRestrictor = IUsbRestrict.getService();
-                if (mUsbRestrictor == null) {
-                    // Ignore, the hal is not available
-                    return;
-                }
-            } catch (NoSuchElementException | RemoteException ignored) {
-                return;
-            }
-        }
-
-        boolean shouldRestrictUsb = LineageSettings.Secure.getInt(mContentResolver,
-                LineageSettings.Secure.TRUST_RESTRICT_USB_KEYGUARD, 0) == 1;
-        if (shouldRestrictUsb) {
-            try {
-                if (mUsb != null) {
-                    mUsb.enableUsbDataSignal(!showing);
-                } else {
-                    mUsbRestrictor.setEnabled(showing);
-                }
-            } catch (RemoteException ignored) {
-                // This feature is not supported
-            }
-        }
+        setTrustRestrictUsb();
     }
 
     @Override // Binder interface
@@ -162,6 +159,63 @@ public class KeyguardStateMonitor extends IKeyguardStateCallback.Stub {
     @Override // Binder interface
     public void onHasLockscreenWallpaperChanged(boolean hasLockscreenWallpaper) {
         mHasLockscreenWallpaper = hasLockscreenWallpaper;
+    }
+
+    private void setTrustRestrictUsb() {
+        if (mUsb == null) {
+            try {
+                mUsb = IUsb.getService();
+                if (mUsb == null) {
+                    // Ignore, the hal is not available
+                    // Try Usb Restrict
+                }
+            } catch (NoSuchElementException | RemoteException ignored) {
+                // Try Usb Restrict
+            }
+        }
+
+        if (mUsb == null && mUsbRestrictor == null) {
+            try {
+                mUsbRestrictor = IUsbRestrict.getService();
+                if (mUsbRestrictor == null) {
+                    // Ignore, the hal is not available
+                    return;
+                }
+            } catch (NoSuchElementException | RemoteException ignored) {
+                return;
+            }
+        }
+
+        final int restrictUsb = LineageSettings.Global.getInt(mContentResolver,
+                LineageSettings.Global.TRUST_RESTRICT_USB, 1);
+        try {
+            if (mUsb != null) {
+                // Effective immediately (ejects device), hence
+                // If the restriction is set to be only when locked
+                // Make sure no devices are connected.
+                // We listen for disconnection events so this is fine.
+                final boolean usbHostconnected = mUsbManager != null
+                        && !mUsbManager.getDeviceList().isEmpty();
+                final boolean usbAccessoryConnected = mUsbManager != null
+                        && (mUsbManager.getAccessoryList() != null
+                        && mUsbManager.getAccessoryList().length > 0);
+                // TODO: Missing connected check
+                final boolean adbConnected = LocalServices.getService(AdbManagerInternal.class)
+                        .isAdbEnabled(AdbTransportType.USB);
+                final boolean usbConnected = !adbConnected
+                        && (usbHostconnected || usbAccessoryConnected);
+                final boolean shouldRestrict = (restrictUsb == 1 && mIsShowing && !usbConnected)
+                        || restrictUsb == 2;
+                mUsb.enableUsbDataSignal(!shouldRestrict);
+            } else {
+                // Simple, restrict only when locked, or always
+                // Effective only on next re-plug of USB device
+                final boolean shouldRestrict = (restrictUsb == 1 && mIsShowing) || restrictUsb == 2;
+                mUsbRestrictor.setEnabled(shouldRestrict);
+            }
+        } catch (RemoteException ignored) {
+            // This feature is not supported
+        }
     }
 
     public interface StateCallback {
