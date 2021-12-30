@@ -404,6 +404,9 @@
          is ready -->
     <uses-permission android:name="android.permission.OVERRIDE_SYSTEM_KEY_BEHAVIOR_IN_FOCUSED_WINDOW" />
 
+    <!-- To be able to reboot the device after a timeout -->
+    <uses-permission android:name="android.permission.REBOOT" />
+
     <!-- To be able to decipher default applications for certain roles in shortcut helper -->
     <uses-permission android:name="android.permission.MANAGE_DEFAULT_APPLICATIONS" />
 
