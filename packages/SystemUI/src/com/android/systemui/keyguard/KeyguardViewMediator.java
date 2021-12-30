@@ -179,6 +179,8 @@ import com.android.wm.shell.keyguard.KeyguardTransitions;
 
 import dagger.Lazy;
 
+import lineageos.providers.LineageSettings;
+
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -245,6 +247,8 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         "com.android.internal.policy.impl.PhoneWindowManager.DELAYED_KEYGUARD";
     private static final String DELAYED_LOCK_PROFILE_ACTION =
             "com.android.internal.policy.impl.PhoneWindowManager.DELAYED_LOCK";
+    private static final String DELAYED_REBOOT_ACTION =
+        "com.android.internal.policy.impl.PhoneWindowManager.DELAYED_REBOOT";
 
     private static final String SYSTEMUI_PERMISSION = "com.android.systemui.permission.SELF";
 
@@ -292,6 +296,12 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
      * the screen back on without having to face the keyguard).
      */
     public static final int KEYGUARD_LOCK_AFTER_DELAY_DEFAULT = 5000;
+
+    /**
+     * How long to wait after the screen turns off due to timeout before
+     * rebooting the device.
+     */
+    private static final int KEYGUARD_REBOOT_AFTER_DELAY_DEFAULT = 0;
 
     /**
      * How long we'll wait for the {@link ViewMediatorCallback#keyguardDoneDrawing()}
@@ -417,6 +427,11 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
      * Similar to {@link #mDelayedShowingSequence}, but it is for profile case.
      */
     private int mDelayedProfileShowingSequence;
+
+    /**
+     * Simiar to {@link #mDelayedProfileShowingSequence}, but it is for automatic reboot.
+     */
+    private int mDelayedRebootSequence;
 
     private final DismissCallbackRegistry mDismissCallbackRegistry;
 
@@ -836,6 +851,9 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         public void keyguardGone() {
             Trace.beginSection("KeyguardViewMediator.mViewMediatorCallback#keyguardGone");
             if (DEBUG) Log.d(TAG, "keyguardGone");
+            synchronized (this) {
+                cancelDoRebootLaterLocked();
+            }
             mKeyguardViewControllerLazy.get().setKeyguardGoingAwayState(false);
             mKeyguardDisplayManager.hide();
             mUpdateMonitor.startBiometricWatchdog();
@@ -1565,6 +1583,7 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         final IntentFilter delayedActionFilter = new IntentFilter();
         delayedActionFilter.addAction(DELAYED_KEYGUARD_ACTION);
         delayedActionFilter.addAction(DELAYED_LOCK_PROFILE_ACTION);
+        delayedActionFilter.addAction(DELAYED_REBOOT_ACTION);
         delayedActionFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
         mContext.registerReceiver(mDelayedLockBroadcastReceiver, delayedActionFilter,
                 SYSTEMUI_PERMISSION, null /* scheduler */,
@@ -1885,6 +1904,17 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         return timeout;
     }
 
+    private long getRebootTimeout() {
+        final ContentResolver cr = mContext.getContentResolver();
+
+        // From Global Settings
+        final long timeout = LineageSettings.Global.getLong(cr,
+                LineageSettings.Global.DEVICE_REBOOT_TIMEOUT,
+                KEYGUARD_REBOOT_AFTER_DELAY_DEFAULT);
+
+        return timeout;
+    }
+
     private void doKeyguardLaterLocked() {
         long timeout = getLockTimeout(mSelectedUserInteractor.getSelectedUserId());
         if (timeout == 0) {
@@ -1944,12 +1974,31 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         }
     }
 
+    private void doRebootLaterLocked(long timeout) {
+        // Reboot in the future
+        long when = mSystemClock.elapsedRealtime() + timeout;
+        Intent intent = new Intent(DELAYED_REBOOT_ACTION);
+        intent.putExtra("seq", mDelayedRebootSequence);
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        PendingIntent sender = PendingIntent.getBroadcast(mContext,
+                0, intent, PendingIntent.FLAG_CANCEL_CURRENT |  PendingIntent.FLAG_IMMUTABLE);
+        mAlarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, when, sender);
+        if (DEBUG) Log.d(TAG, "setting alarm to reboot device, seq = "
+                         + mDelayedRebootSequence);
+    }
+
     private void cancelDoKeyguardLaterLocked() {
         mDelayedShowingSequence++;
     }
 
     private void cancelDoKeyguardForChildProfilesLocked() {
         mDelayedProfileShowingSequence++;
+    }
+
+    private void cancelDoRebootLaterLocked() {
+        if (DEBUG) Log.d(TAG, "cancelling alarm to reboot device, seq = "
+                         + mDelayedRebootSequence);
+        mDelayedRebootSequence++;
     }
 
     /**
@@ -2375,6 +2424,10 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
 
         if (DEBUG) Log.d(TAG, "doKeyguard: showing the lock screen");
         showKeyguard(options);
+        final long timeout = getRebootTimeout();
+        if (timeout > 0) {
+            doRebootLaterLocked(timeout);
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -2556,6 +2609,13 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
                         if (mDelayedProfileShowingSequence == sequence) {
                             lockProfile(userId);
                         }
+                    }
+                }
+            } else if (DELAYED_REBOOT_ACTION.equals(intent.getAction())) {
+                final int sequence = intent.getIntExtra("seq", 0);
+                synchronized (KeyguardViewMediator.this) {
+                    if (mDelayedRebootSequence == sequence) {
+                        mContext.getSystemService(PowerManager.class).reboot("RebootTimeout");
                     }
                 }
             }
