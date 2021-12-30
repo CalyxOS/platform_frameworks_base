@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edbd05c5_b4ff6ea3",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-30T21:54:27Z",
+      "side": 1,
+      "message": "calling it here only starts the timer if a lockscreen is set.\nMight be worth considering enabling it even if no lockscreen is set ( duplicating the code at #1614 )",
+      "range": {
+        "startLine": 1621,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 9
+      },
+      "revId": "46ed5d48fcd828ee47d7afdd88ea334d88480f14",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7817561c_de34eebc",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-12-30T21:54:27Z",
+      "side": 1,
+      "message": "Using onKeyguardExitFinished might reset the timer in case we get a call.\nMight be worth moving to verifyUnlock ( or some inner function )",
+      "range": {
+        "startLine": 2389,
+        "startChar": 0,
+        "endLine": 2393,
+        "endChar": 9
+      },
+      "revId": "46ed5d48fcd828ee47d7afdd88ea334d88480f14",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
