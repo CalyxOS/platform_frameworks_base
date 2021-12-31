@@ -24,6 +24,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef72613a_febe263f",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-31T21:18:43Z",
+      "side": 1,
+      "message": "Fine with skipping that for now.",
+      "parentUuid": "edbd05c5_b4ff6ea3",
+      "range": {
+        "startLine": 1621,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 9
+      },
+      "revId": "46ed5d48fcd828ee47d7afdd88ea334d88480f14",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7817561c_de34eebc",
