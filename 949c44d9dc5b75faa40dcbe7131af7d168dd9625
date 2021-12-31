@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a8aec2_cf66135a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-31T01:22:21Z",
+      "side": 1,
+      "message": "With PS10 USB debugging would turn off when locked by default.\n\nPS12 \"fixes\" that. I also used that opportunity to split up the code a little, and added comments.\n\n`dumpsys usb` sort of helps, enable_usb_data_signaling is always true here in that, but other values are updated.",
+      "revId": "949c44d9dc5b75faa40dcbe7131af7d168dd9625",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
