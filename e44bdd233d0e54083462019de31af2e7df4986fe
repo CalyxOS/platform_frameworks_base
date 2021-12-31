@@ -16,6 +16,24 @@
       "message": "Not ideal, since now it means if \u0027USB Debugging\u0027 is enabled at all (even if not connected or even paired), this won\u0027t work.\n\nI didn\u0027t see a good way to do a connected check.\n\nI was thinking that at this stage it might be easier to move this code somewhere else.\n\ncom.android.server.usb.UsbDeviceManager should have everything we need both usb wise, and it also has our keyguard iShowing.",
       "revId": "e44bdd233d0e54083462019de31af2e7df4986fe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b716c809_9612d5d8",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-31T21:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965e1921_76a1a2c0",
+      "revId": "e44bdd233d0e54083462019de31af2e7df4986fe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

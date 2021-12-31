@@ -54,6 +54,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36eab1ae_80c9657f",
+        "filename": "services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-31T21:05:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c53c1f9_14751e61",
+      "revId": "540e42f0dcb05e04c2ccf43d8727c078f58e510f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f2f1d3_4a8ccdd8",
