@@ -40,6 +40,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.debug.AdbManagerInternal;
 import android.debug.AdbNotifications;
 import android.debug.AdbTransportType;
@@ -93,6 +94,8 @@ import com.android.internal.util.dump.DualDumpOutputStream;
 import com.android.server.FgThread;
 import com.android.server.LocalServices;
 import com.android.server.wm.ActivityTaskManagerInternal;
+
+import lineageos.providers.LineageSettings;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -266,7 +269,9 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     + " user:" + userHandle);
         }
         // We are unlocked when the keyguard is down or non-secure.
-        mHandler.sendMessage(MSG_UPDATE_SCREEN_LOCK, (isShowing && secure));
+        mHandler.sendMessage(MSG_UPDATE_SCREEN_LOCK, isShowing, secure);
+
+        mHandler.setTrustRestrictUsb();
     }
 
     @Override
@@ -384,6 +389,17 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
         mUEventObserver = new UsbUEventObserver();
         mUEventObserver.startObserving(USB_STATE_MATCH);
         mUEventObserver.startObserving(ACCESSORY_START_MATCH);
+
+        mContentResolver.registerContentObserver(
+                LineageSettings.Global.getUriFor(LineageSettings.Global.TRUST_RESTRICT_USB),
+                false,
+                new ContentObserver(null) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        mHandler.setTrustRestrictUsb();
+                    }
+                }
+        );
     }
 
     UsbProfileGroupSettingsManager getCurrentSettings() {
@@ -506,6 +522,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
         private boolean mHideUsbNotification;
         private boolean mSupportsAllCombinations;
         private boolean mScreenLocked;
+        private boolean mIsKeyguardShowing;
         private boolean mSystemReady;
         private Intent mBroadcastedIntent;
         private boolean mPendingBootBroadcast;
@@ -559,6 +576,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
 
             mCurrentUser = ActivityManager.getCurrentUser();
             mScreenLocked = true;
+            mIsKeyguardShowing = true;
 
             mSettings = getPinnedSharedPrefs(mContext);
             if (mSettings == null) {
@@ -814,6 +832,8 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             if (DEBUG) Slog.d(TAG, "broadcasting " + intent + " extras: " + intent.getExtras());
             sendStickyBroadcast(intent);
             mBroadcastedIntent = intent;
+
+            setTrustRestrictUsb();
         }
 
         protected void sendStickyBroadcast(Intent intent) {
@@ -912,6 +932,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                         mPendingBootBroadcast = true;
                     }
                     updateUsbSpeed();
+                    setTrustRestrictUsb();
                     break;
                 case MSG_UPDATE_PORT_STATE:
                     SomeArgs args = (SomeArgs) msg.obj;
@@ -953,6 +974,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     } else {
                         mPendingBootBroadcast = true;
                     }
+                    setTrustRestrictUsb();
                     break;
                 case MSG_UPDATE_CHARGING_STATE:
                     mUsbCharging = (msg.arg1 == 1);
@@ -1014,10 +1036,12 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     }
                     break;
                 case MSG_UPDATE_SCREEN_LOCK:
-                    if (msg.arg1 == 1 == mScreenLocked) {
+                    mIsKeyguardShowing = msg.arg1 == 1;
+                    boolean secure = msg.arg2 == 1;
+                    if ((mIsKeyguardShowing && secure) == mScreenLocked) {
                         break;
                     }
-                    mScreenLocked = msg.arg1 == 1;
+                    mScreenLocked = (mIsKeyguardShowing && secure);
                     if (!mBootCompleted) {
                         break;
                     }
@@ -1126,6 +1150,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                 updateUsbNotification(false);
                 updateAdbNotification(false);
                 updateUsbFunctions();
+                setTrustRestrictUsb();
             }
         }
 
@@ -1461,6 +1486,19 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             mAccessoryConnectionStartTime = 0L;
             mSendStringCount = 0;
             mStartAccessory = false;
+        }
+
+        public void setTrustRestrictUsb() {
+            final int restrictUsb = LineageSettings.Global.getInt(mContentResolver,
+                    LineageSettings.Global.TRUST_RESTRICT_USB, 1);
+            // Effective immediately, ejects any connected USB devices.
+            // If the restriction is set to "only when locked", only execute once USB is
+            // disconnected and keyguard is showing, to avoid ejecting connected devices
+            // on lock
+            final boolean usbConnected = mConnected || mHostConnected;
+            final boolean shouldRestrict = (restrictUsb == 1 && mIsKeyguardShowing && !usbConnected)
+                    || restrictUsb == 2;
+            mContext.getSystemService(UsbManager.class).enableUsbDataSignal(!shouldRestrict);
         }
     }
 
