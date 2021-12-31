@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32084811_531f819a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-31T21:27:27Z",
+      "side": 1,
+      "message": "I added the `setTrustRestrictUsb()` call to a bunch of places, basically anywhere where the variables we care about get updated - to make sure this gets called always.\n\nSeems to be working fine in my testing, with\n* USB Debugging (adb)\n* USB drive (with a light, makes testing so much easier)",
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
