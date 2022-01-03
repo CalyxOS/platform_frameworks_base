@@ -16,6 +16,98 @@
       "message": "I added the `setTrustRestrictUsb()` call to a bunch of places, basically anywhere where the variables we care about get updated - to make sure this gets called always.\n\nSeems to be working fine in my testing, with\n* USB Debugging (adb)\n* USB drive (with a light, makes testing so much easier)",
       "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8219d6d_411e3700",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T10:28:12Z",
+      "side": 1,
+      "message": "This one is probably not necessary anymore given it is called directly in the functions that update the variables we care about",
+      "range": {
+        "startLine": 854,
+        "startChar": 12,
+        "endLine": 854,
+        "endChar": 34
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468e70b8_d466713f",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T10:28:12Z",
+      "side": 1,
+      "message": "Should we only call this when mConnected \u003d false (and maybe mHostConnected too)?",
+      "range": {
+        "startLine": 953,
+        "startChar": 20,
+        "endLine": 953,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27389405_f913cfbf",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T10:28:12Z",
+      "side": 1,
+      "message": "Should we only call when mHostConnected \u003d false (and maybe mConnected too)?",
+      "range": {
+        "startLine": 995,
+        "startChar": 20,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ffb1ba_f1adb189",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T10:28:12Z",
+      "side": 1,
+      "message": "Maybe call this before other things above?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 16,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
