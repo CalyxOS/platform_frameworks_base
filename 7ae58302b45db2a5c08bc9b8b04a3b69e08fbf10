@@ -41,6 +41,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5731f610_9704cecf",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-03T12:54:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8219d6d_411e3700",
+      "range": {
+        "startLine": 854,
+        "startChar": 12,
+        "endLine": 854,
+        "endChar": 34
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468e70b8_d466713f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-03T10:28:12Z",
       "side": 1,
       "message": "Should we only call this when mConnected \u003d false (and maybe mHostConnected too)?",
+      "range": {
+        "startLine": 953,
+        "startChar": 20,
+        "endLine": 953,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11da9e6_89221a5c",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-03T12:54:05Z",
+      "side": 1,
+      "message": "Why? We would want to update it for both states.\n\nIf connected, it should not.\nIf not connected, it should restrict. Covers the case where you lock and then unplug usb later.",
+      "parentUuid": "468e70b8_d466713f",
       "range": {
         "startLine": 953,
         "startChar": 20,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a478b79_4ddf8289",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-03T12:54:05Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "27389405_f913cfbf",
+      "range": {
+        "startLine": 995,
+        "startChar": 20,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27ffb1ba_f1adb189",
         "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
         "patchSetId": 18
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-03T10:28:12Z",
       "side": 1,
       "message": "Maybe call this before other things above?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 16,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccf077f_d2845ec8",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-03T12:54:05Z",
+      "side": 1,
+      "message": "Why? I don\u0027t think it\u0027d make a big difference.",
+      "parentUuid": "27ffb1ba_f1adb189",
       "range": {
         "startLine": 1171,
         "startChar": 16,
