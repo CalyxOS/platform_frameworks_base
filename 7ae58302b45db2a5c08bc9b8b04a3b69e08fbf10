@@ -276,6 +276,30 @@
       },
       "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54abf92a_9fb32495",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-03T13:44:48Z",
+      "side": 1,
+      "message": "I don\u0027t see a notification being posted when it should be restricted.",
+      "parentUuid": "d0bf21dd_5b783e6e",
+      "range": {
+        "startLine": 1171,
+        "startChar": 16,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
