@@ -112,6 +112,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d73d25_87e80a4e",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T13:11:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b11da9e6_89221a5c",
+      "range": {
+        "startLine": 953,
+        "startChar": 20,
+        "endLine": 953,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27389405_f913cfbf",
@@ -159,6 +183,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d797bf3_87f82e02",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T13:11:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a478b79_4ddf8289",
+      "range": {
+        "startLine": 995,
+        "startChar": 20,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27ffb1ba_f1adb189",
@@ -196,6 +244,30 @@
       "side": 1,
       "message": "Why? I don\u0027t think it\u0027d make a big difference.",
       "parentUuid": "27ffb1ba_f1adb189",
+      "range": {
+        "startLine": 1171,
+        "startChar": 16,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "7ae58302b45db2a5c08bc9b8b04a3b69e08fbf10",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0bf21dd_5b783e6e",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-03T13:11:01Z",
+      "side": 1,
+      "message": "Was thinking more for the notification for example. It will post it and then immediately remove it if restricted. Similarly for the usb functions I think",
+      "parentUuid": "bccf077f_d2845ec8",
       "range": {
         "startLine": 1171,
         "startChar": 16,
