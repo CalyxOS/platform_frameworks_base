@@ -579,22 +579,20 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
         AlarmManager alarmManager = mContext.getSystemService(AlarmManager.class);
         AlarmManager.OnAlarmListener bluetoothTimeoutListener = () -> {
             try {
-                disable(mContext.getAttributionSource(), true);
+                if (getState() == BluetoothAdapter.STATE_ON
+                        && mBluetooth.getAdapterConnectionState()
+                        == BluetoothAdapter.STATE_DISCONNECTED) {
+                    disable(mContext.getAttributionSource(), true);
+                }
             } catch (RemoteException e) {
                 Slog.e(TAG, "setBluetoothTimeout()", e);
             }
         };
         alarmManager.cancel(bluetoothTimeoutListener);
-        try {
-            if (bluetoothTimeoutMillis != 0 && getState() == BluetoothAdapter.STATE_ON
-                    && mBluetooth.getAdapterConnectionState()
-                    == BluetoothAdapter.STATE_DISCONNECTED) {
-                final long timeout = SystemClock.elapsedRealtime() + bluetoothTimeoutMillis;
-                alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout, TAG,
-                        bluetoothTimeoutListener, mHandler);
-            }
-        } catch (RemoteException e) {
-            Slog.e(TAG, "setBluetoothTimeout()", e);
+        if (bluetoothTimeoutMillis != 0) {
+            final long timeout = SystemClock.elapsedRealtime() + bluetoothTimeoutMillis;
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout,
+                    TAG, mHandler, bluetoothTimeoutListener);
         }
     }
 
