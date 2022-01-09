@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120ae3e6_97a147fc",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-01-09T17:06:55Z",
+      "side": 1,
+      "message": "I think not caching this listener as a local class renders the .cancel call useless as it\u0027ll always think it never saw the current operation",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 0
+      },
+      "revId": "697e0a6ccd030fd25a171c21a0369cb1e9d5f6f6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
