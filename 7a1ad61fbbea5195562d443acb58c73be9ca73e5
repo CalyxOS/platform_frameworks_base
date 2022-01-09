@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f16ff7a_375345f1",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-09T21:04:28Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "7a1ad61fbbea5195562d443acb58c73be9ca73e5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36882bd1_88c44140",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-01-09T21:04:28Z",
+      "side": 1,
+      "message": "8 spaces",
+      "range": {
+        "startLine": 583,
+        "startChar": 16,
+        "endLine": 583,
+        "endChar": 20
+      },
+      "revId": "7a1ad61fbbea5195562d443acb58c73be9ca73e5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
