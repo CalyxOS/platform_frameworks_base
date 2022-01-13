@@ -2052,8 +2052,9 @@ public class Vpn {
 
     private void enforceNotGlobalVpn() {
         Binder.withCleanCallingIdentity(() -> {
-            if (mUserId != UserHandle.USER_SYSTEM && LineageSettings.Global.getString(
-                    mContext.getContentResolver(), LineageSettings.Global.GLOBAL_VPN_APP) != null) {
+            if (mUserId != UserHandle.USER_SYSTEM && !TextUtils.isEmpty(
+                    LineageSettings.Global.getString(mContext.getContentResolver(),
+                            LineageSettings.Global.GLOBAL_VPN_APP))) {
                 throw new SecurityException("Secondary users cannot configure VPNs when" +
                         " global vpn is set");
             }
