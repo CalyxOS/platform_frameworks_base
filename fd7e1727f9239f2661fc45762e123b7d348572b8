@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b695084_bbb93097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-13T18:51:00Z",
+      "side": 1,
+      "message": " I NetworkPolicy: ACTION_PACKAGE_ADDED for uid\u003d10230",
+      "revId": "fd7e1727f9239f2661fc45762e123b7d348572b8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
