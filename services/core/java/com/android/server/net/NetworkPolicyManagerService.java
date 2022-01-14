@@ -90,6 +90,7 @@ import static android.net.NetworkPolicyManager.FIREWALL_RULE_DEFAULT;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL_MIGRATED;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
@@ -2570,6 +2571,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         // Clear policy to avoid future conflicts
         for (int uid : uidsToDeny) {
+            addUidPolicy(uid, POLICY_REJECT_ALL_MIGRATED);
             removeUidPolicy(uid, POLICY_REJECT_ALL);
         }
     }
