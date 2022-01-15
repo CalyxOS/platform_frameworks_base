@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43819507_1fbf4b8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-15T18:29:47Z",
+      "side": 1,
+      "message": "Working ok.\n\n```\ndiff of adb shell dumpsys netpolicy, 11 to 12\n-  UID\u003d10179 policy\u003d262144 (REJECT_ALL)\n+  UID\u003d10179 policy\u003d524288 (REJECT_ALL_MIGRATED)\n```\n\nAnd 10179 is not in uids_allowed_on_restricted_networks",
+      "revId": "870d9975c06cbd44d0b0e2a7948d7298d3b474c6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
