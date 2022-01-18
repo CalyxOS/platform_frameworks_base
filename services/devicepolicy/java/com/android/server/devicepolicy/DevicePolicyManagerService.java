@@ -13786,7 +13786,7 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
             // Bail out if we are trying to provision a work profile but one already exists.
             if (!mUserManager.canAddMoreManagedProfiles(
-                    callingUserId, /* allowedToRemoveOne= */ false)) {
+                    callingUserId, /* allowedToRemoveOne= */ packageName == null)) {
                 Slogf.i(LOG_TAG, "A work profile already exists.");
                 return CODE_CANNOT_ADD_MANAGED_PROFILE;
             }
