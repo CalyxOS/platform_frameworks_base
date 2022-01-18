@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a193c922_e0130341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-18T22:03:43Z",
+      "side": 1,
+      "message": "Merged upstream so safe to assume it\u0027s working fine?\n\nI vaguely remember there being some issues with this.",
+      "revId": "62f56cd3fe9f597c95864dbfbd2a45f7a8a94531",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
