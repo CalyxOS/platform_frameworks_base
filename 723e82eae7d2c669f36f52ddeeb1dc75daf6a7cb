@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59e5e9d_80719fba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-18T14:30:50Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/_/android/platform/packages/apps/ManagedProvisioning/+/1a0f3958d5388ac8a8a21b846398b4df5bbea92c",
+      "revId": "723e82eae7d2c669f36f52ddeeb1dc75daf6a7cb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
