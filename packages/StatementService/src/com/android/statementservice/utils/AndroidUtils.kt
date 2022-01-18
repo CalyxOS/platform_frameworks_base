@@ -42,13 +42,7 @@ operator fun DomainVerificationUserState.component5() = hostToStateMap
 object AndroidUtils {
 
     fun isReceiverV1Enabled(context: Context): Boolean {
-        val receiver = ComponentName(context, DomainVerificationReceiverV1::class.java)
-        return when (context.packageManager.getComponentEnabledSetting(receiver)) {
-            // Must change this if the manifest ever changes
-            PackageManager.COMPONENT_ENABLED_STATE_DEFAULT -> true
-            PackageManager.COMPONENT_ENABLED_STATE_ENABLED -> true
-            else -> false
-        }
+        return false
     }
 
     fun isReceiverV2Enabled(context: Context): Boolean {

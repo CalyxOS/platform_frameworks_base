@@ -31,7 +31,7 @@ import com.android.statementservice.domain.worker.SingleV1RequestWorker
 class DomainVerificationReceiverV1 : BaseDomainVerificationReceiver() {
 
     companion object {
-        private const val ENABLE_V1 = true
+        private const val ENABLE_V1 = false
         private const val PACKAGE_WORK_PREFIX_V1 = "package_request_v1-"
     }
 
