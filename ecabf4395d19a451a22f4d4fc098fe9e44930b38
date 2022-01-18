@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7284b4_de4e8a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-18T11:50:37Z",
+      "side": 1,
+      "message": "I\u0027m thinking we should also use https://cs.android.com/android/platform/superproject/+/master:packages/modules/Connectivity/framework/src/android/net/ConnectivityManager.java;l\u003d1256;drc\u003d21f0d58294154d21cd6e8710bc66981435a1a84b",
+      "revId": "ecabf4395d19a451a22f4d4fc098fe9e44930b38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
