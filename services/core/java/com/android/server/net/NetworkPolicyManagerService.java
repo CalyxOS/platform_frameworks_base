@@ -4258,32 +4258,53 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     }
 
     private boolean hasRestrictedModeAccess(int uid) {
-        final long token = Binder.clearCallingIdentity();
         try {
-            NetworkCapabilities nc = mConnManager.getNetworkCapabilities(
-                    mConnManager.getActiveNetwork());
-            Binder.restoreCallingIdentity(token);
-            int policy = getUidPolicy(uid);
-            if (nc != null
-                    && ((nc.hasTransport(TRANSPORT_VPN) && ((policy & POLICY_REJECT_VPN) != 0))
-                    || (nc.hasTransport(TRANSPORT_CELLULAR) && ((policy & POLICY_REJECT_CELLULAR)
-                    != 0))
-                    || (nc.hasTransport(TRANSPORT_WIFI) && ((policy & POLICY_REJECT_WIFI) != 0)))) {
-                return false;
-            }
             // TODO: this needs to be kept in sync with
             // PermissionMonitor#hasRestrictedNetworkPermission
-            return ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext)
+            // Check for restricted-networking-mode status
+            final boolean isUidAllowedOnRestrictedNetworks = 
+                    ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext)
                     .contains(uid)
                     || mIPm.checkUidPermission(CONNECTIVITY_USE_RESTRICTED_NETWORKS, uid)
                     == PERMISSION_GRANTED
                     || mIPm.checkUidPermission(NETWORK_STACK, uid) == PERMISSION_GRANTED
                     || mIPm.checkUidPermission(PERMISSION_MAINLINE_NETWORK_STACK, uid)
                     == PERMISSION_GRANTED;
+
+            // Check for other policies (data-restrictions)
+            final long token = Binder.clearCallingIdentity();
+            NetworkCapabilities nc;
+            try {
+                nc = mConnManager.getNetworkCapabilities(
+                        mConnManager.getActiveNetworkForUid(uid));
+            } finally {
+                Binder.restoreCallingIdentity(token);
+            }
+            boolean isUidAllowedByPolicy = false;
+            if (nc != null) {
+                int policy = getUidPolicy(uid);
+                for (int transport : nc.getTransportTypes()) {
+                    switch (transport) {
+                        case TRANSPORT_CELLULAR:
+                            isUidAllowedByPolicy = ((policy & POLICY_REJECT_CELLULAR) == 0);
+                            break;
+                        case TRANSPORT_VPN:
+                            isUidAllowedByPolicy = ((policy & POLICY_REJECT_VPN) == 0);
+                            break;
+                        case TRANSPORT_WIFI:
+                            isUidAllowedByPolicy = ((policy & POLICY_REJECT_WIFI) == 0);
+                            break;
+                    }
+                    if (isUidAllowedByPolicy) {
+                        break;
+                    }
+                }
+            }
+            // If app is restricted (aka not on the allowlist), it's not allowed to use the internet
+            // If it is on the allowlist, then we also check the policy additionally
+            return isUidAllowedOnRestrictedNetworks && isUidAllowedByPolicy;
         } catch (RemoteException e) {
             return false;
-        } finally {
-            Binder.restoreCallingIdentity(token);
         }
     }
 
