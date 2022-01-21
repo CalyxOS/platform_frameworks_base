@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f1a8d6_9e88a297",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 4276,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-01-21T10:28:02Z",
+      "side": 1,
+      "message": "Finally block will always execute and this call belongs there. If we need it restored before we should limit the try block to the appropriate lines",
+      "range": {
+        "startLine": 4276,
+        "startChar": 12,
+        "endLine": 4276,
+        "endChar": 49
+      },
+      "revId": "d3a2a01e33dafd48f9c1bf8c6758fd2d77d82760",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
