@@ -3366,14 +3366,21 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
     public void addCrossProfileIntentFilter(@NonNull Computer snapshot,
             WatchedIntentFilter intentFilter, String ownerPackage, int sourceUserId,
             int targetUserId, int flags) {
+        modifyCrossProfileIntentFilter(snapshot, intentFilter, ownerPackage, sourceUserId,
+                targetUserId, flags, true);
+    }
+
+    private void modifyCrossProfileIntentFilter(Computer snapshot, WatchedIntentFilter intentFilter,
+            String ownerPackage, int sourceUserId, int targetUserId, int flags, boolean add) {
         mContext.enforceCallingOrSelfPermission(
-                        android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, null);
+                android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, null);
         int callingUid = Binder.getCallingUid();
-        enforceOwnerRights(snapshot, ownerPackage, callingUid);
+        enforceOwnerRights(snapshot != null ? snapshot : snapshotComputer(),
+                ownerPackage, callingUid);
         PackageManagerServiceUtils.enforceShellRestriction(mInjector.getUserManagerInternal(),
                 UserManager.DISALLOW_DEBUGGING_FEATURES, callingUid, sourceUserId);
         if (intentFilter.countActions() == 0) {
-            Slog.w(TAG, "Cannot set a crossProfile intent filter with no filter actions");
+            Slog.w(TAG, "Cannot modify a crossProfile intent filter with no filter actions");
             return;
         }
         synchronized (mLock) {
@@ -3382,16 +3389,24 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
             CrossProfileIntentResolver resolver =
                     mSettings.editCrossProfileIntentResolverLPw(sourceUserId);
             ArrayList<CrossProfileIntentFilter> existing = resolver.findFilters(intentFilter);
-            // We have all those whose filter is equal. Now checking if the rest is equal as well.
             if (existing != null) {
-                int size = existing.size();
-                for (int i = 0; i < size; i++) {
-                    if (newFilter.equalsIgnoreFilter(existing.get(i))) {
-                        return;
+                if (add) {
+                    // We have all those whose filter is equal. Now checking if the rest is equal as well.
+                    if (existing != null) {
+                        int size = existing.size();
+                        for (int i = 0; i < size; i++) {
+                            if (newFilter.equalsIgnoreFilter(existing.get(i))) {
+                                return;
+                            }
+                        }
+                    }
+                    resolver.addFilter(snapshotComputer(), newFilter);
+                } else {
+                    for (CrossProfileIntentFilter crossProfileIntentFilter : existing) {
+                        resolver.removeFilter(crossProfileIntentFilter);
                     }
                 }
             }
-            resolver.addFilter(snapshotComputer(), newFilter);
         }
         scheduleWritePackageRestrictions(sourceUserId);
     }
@@ -4576,6 +4591,13 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
                     } //end if observer
                 } //end run
             });
+        }
+
+        @Override
+        public void removeCrossProfileIntentFilter(IntentFilter intentFilter, String ownerPackage,
+                int sourceUserId, int targetUserId, int flags) {
+            modifyCrossProfileIntentFilter(null, new WatchedIntentFilter(intentFilter),
+                    ownerPackage, sourceUserId, targetUserId, flags, false);
         }
 
         @Override
