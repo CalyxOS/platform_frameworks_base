@@ -23461,7 +23461,9 @@ public class PackageManagerService extends IPackageManager.Stub
         mContext.enforceCallingOrSelfPermission(
                         android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, null);
         int callingUid = Binder.getCallingUid();
-        enforceOwnerRights(ownerPackage, callingUid);
+        if (ownerPackage != null) {
+            enforceOwnerRights(ownerPackage, callingUid);
+        }
         PackageManagerServiceUtils.enforceShellRestriction(mInjector.getUserManagerInternal(),
                 UserManager.DISALLOW_DEBUGGING_FEATURES, callingUid, sourceUserId);
         if (intentFilter.countActions() == 0) {
@@ -23489,11 +23491,47 @@ public class PackageManagerService extends IPackageManager.Stub
     }
 
     @Override
+    public void removeCrossProfileIntentFilter(IntentFilter intentFilter, String ownerPackage,
+            int sourceUserId, int targetUserId, int flags) {
+        removeCrossProfileIntentFilter(new WatchedIntentFilter(intentFilter), ownerPackage,
+                sourceUserId, targetUserId, flags);
+    }
+
+    private void removeCrossProfileIntentFilter(WatchedIntentFilter intentFilter, String ownerPackage,
+            int sourceUserId, int targetUserId, int flags) {
+        mContext.enforceCallingOrSelfPermission(
+                android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, null);
+        int callingUid = Binder.getCallingUid();
+        if (ownerPackage != null) {
+            enforceOwnerRights(ownerPackage, callingUid);
+        }
+        PackageManagerServiceUtils.enforceShellRestriction(mInjector.getUserManagerInternal(),
+                UserManager.DISALLOW_DEBUGGING_FEATURES, callingUid, sourceUserId);
+        if (intentFilter.countActions() == 0) {
+            Slog.w(TAG, "Cannot remove a crossProfile intent filter with no filter actions");
+            return;
+        }
+        synchronized (mLock) {
+            CrossProfileIntentFilter newFilter = new CrossProfileIntentFilter(intentFilter,
+                    ownerPackage, targetUserId, flags);
+            CrossProfileIntentResolver resolver =
+                    mSettings.editCrossProfileIntentResolverLPw(sourceUserId);
+            ArrayList<CrossProfileIntentFilter> existing = resolver.findFilters(intentFilter);
+            if (existing != null) {
+                resolver.removeFilter(newFilter);
+            }
+            scheduleWritePackageRestrictionsLocked(sourceUserId);
+        }
+    }
+
+    @Override
     public void clearCrossProfileIntentFilters(int sourceUserId, String ownerPackage) {
         mContext.enforceCallingOrSelfPermission(
                         android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, null);
         final int callingUid = Binder.getCallingUid();
-        enforceOwnerRights(ownerPackage, callingUid);
+        if (ownerPackage != null) {
+            enforceOwnerRights(ownerPackage, callingUid);
+        }
         PackageManagerServiceUtils.enforceShellRestriction(mInjector.getUserManagerInternal(),
                 UserManager.DISALLOW_DEBUGGING_FEATURES, callingUid, sourceUserId);
         synchronized (mLock) {
@@ -23502,7 +23540,7 @@ public class PackageManagerService extends IPackageManager.Stub
             ArraySet<CrossProfileIntentFilter> set =
                     new ArraySet<>(resolver.filterSet());
             for (CrossProfileIntentFilter filter : set) {
-                if (filter.getOwnerPackage().equals(ownerPackage)) {
+                if (ownerPackage.equals(filter.getOwnerPackage())) {
                     resolver.removeFilter(filter);
                 }
             }

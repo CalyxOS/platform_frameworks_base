@@ -164,7 +164,8 @@ class CrossProfileIntentFilter extends WatchedIntentFilter {
 
     boolean equalsIgnoreFilter(CrossProfileIntentFilter other) {
         return mTargetUserId == other.mTargetUserId
-                && mOwnerPackage.equals(other.mOwnerPackage)
+                && (mOwnerPackage == other.mOwnerPackage || mOwnerPackage.equals(
+                        other.mOwnerPackage))
                 && mFlags == other.mFlags;
     }
 
