@@ -252,9 +252,21 @@ public class DefaultCrossProfileIntentFiltersUtils {
     // Intents from parent to profile user
 
     /** ACTION_SEND can be forwarded to the managed profile on user's choice. */
-    private static final DefaultCrossProfileIntentFilter ACTION_SEND =
+    private static final DefaultCrossProfileIntentFilter ACTION_SEND_TO_PROFILE =
             new DefaultCrossProfileIntentFilter.Builder(
                     DefaultCrossProfileIntentFilter.Direction.TO_PROFILE,
+                    /* flags= */0,
+                    /* letsPersonalDataIntoProfile= */ true)
+                    .addAction(Intent.ACTION_SEND)
+                    .addAction(Intent.ACTION_SEND_MULTIPLE)
+                    .addCategory(Intent.CATEGORY_DEFAULT)
+                    .addDataType("*/*")
+                    .build();
+
+    /** ACTION_SEND can be forwarded to parent user. */
+    private static final DefaultCrossProfileIntentFilter ACTION_SEND_TO_PARENT =
+            new DefaultCrossProfileIntentFilter.Builder(
+                    DefaultCrossProfileIntentFilter.Direction.TO_PARENT,
                     /* flags= */0,
                     /* letsPersonalDataIntoProfile= */ true)
                     .addAction(Intent.ACTION_SEND)
@@ -292,7 +304,8 @@ public class DefaultCrossProfileIntentFiltersUtils {
                 OPEN_DOCUMENT,
                 GET_CONTENT,
                 USB_DEVICE_ATTACHED,
-                ACTION_SEND,
+                ACTION_SEND_TO_PARENT,
+                ACTION_SEND_TO_PROFILE,
                 HOME,
                 MOBILE_NETWORK_SETTINGS);
     }
