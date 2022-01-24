@@ -150,7 +150,8 @@ class CrossProfileIntentFilter extends WatchedIntentFilter {
     public void writeToXml(TypedXmlSerializer serializer) throws IOException {
         serializer.attributeInt(null, ATTR_TARGET_USER_ID, mTargetUserId);
         serializer.attributeInt(null, ATTR_FLAGS, mFlags);
-        serializer.attribute(null, ATTR_OWNER_PACKAGE, mOwnerPackage);
+        serializer.attribute(null, ATTR_OWNER_PACKAGE, mOwnerPackage != null
+                ? mOwnerPackage : "");
         serializer.startTag(null, ATTR_FILTER);
         mFilter.writeToXml(serializer);
         serializer.endTag(null, ATTR_FILTER);
@@ -164,7 +165,8 @@ class CrossProfileIntentFilter extends WatchedIntentFilter {
 
     boolean equalsIgnoreFilter(CrossProfileIntentFilter other) {
         return mTargetUserId == other.mTargetUserId
-                && mOwnerPackage.equals(other.mOwnerPackage)
+                && (mOwnerPackage != null ? mOwnerPackage.equals(other.mOwnerPackage)
+                : mOwnerPackage == other.mOwnerPackage)
                 && mFlags == other.mFlags;
     }
 
