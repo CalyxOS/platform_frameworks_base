@@ -16,6 +16,24 @@
       "message": "The original code doesn\u0027t make much sense really...",
       "revId": "ca203d5b73efb4910b5de5e2a93aadca6374e917",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958d1ffb_6fef88d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-31T18:01:59Z",
+      "side": 1,
+      "message": "That commit message makes no sense either - doesn\u0027t explain why this icon in particular is blocked. Oh well.",
+      "parentUuid": "fa28a5cd_273f40cb",
+      "revId": "ca203d5b73efb4910b5de5e2a93aadca6374e917",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
