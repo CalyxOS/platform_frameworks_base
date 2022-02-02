@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4a88ac_368fa70b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-02-02T22:56:59Z",
+      "side": 1,
+      "message": "```\n02-03 00:55:55.134  2815  2938 E Binder  : Outgoing transactions from this process must be FLAG_ONEWAY\n02-03 00:55:55.134  2815  2938 E Binder  : java.lang.Throwable\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.os.BinderProxy.transact(BinderProxy.java:528)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.internal.net.IOemNetd$Stub$Proxy.trafficSetRestrictedInterfaceForUid(IOemNetd.java:185)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.NetworkManagementService.setNetworkRestrictedForUid(NetworkManagementService.java:1823)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.setNetworkRestrictedForUid(NetworkPolicyManagerService.java:4313)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.setNetworkRestrictedForUid(NetworkPolicyManagerService.java:4301)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.updateNetworkRestrictionsForUidUL(NetworkPolicyManagerService.java:4286)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.lambda$updateRestrictedNetworksUL$3$NetworkPolicyManagerService(NetworkPolicyManagerService.java:4272)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService$$ExternalSyntheticLambda6.accept(Unknown Source:6)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.forEachUid(NetworkPolicyManagerService.java:4753)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.updateRestrictedNetworksUL(NetworkPolicyManagerService.java:4271)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService.access$2500(NetworkPolicyManagerService.java:353)\n02-03 00:55:55.134  2815  2938 E Binder  :      at com.android.server.net.NetworkPolicyManagerService$14.onLinkPropertiesChanged(NetworkPolicyManagerService.java:1433)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.net.ConnectivityManager$NetworkCallback.onAvailable(ConnectivityManager.java:3566)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.net.ConnectivityManager$NetworkCallback.onAvailable(ConnectivityManager.java:3542)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.net.ConnectivityManager$CallbackHandler.handleMessage(ConnectivityManager.java:3866)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.os.Handler.dispatchMessage(Handler.java:106)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.os.Looper.loopOnce(Looper.java:201)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.os.Looper.loop(Looper.java:288)\n02-03 00:55:55.134  2815  2938 E Binder  :      at android.os.HandlerThread.run(HandlerThread.java:67)\n```",
+      "revId": "9cbf3bd593c12bf59757387a3025fb2a3722c47d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
