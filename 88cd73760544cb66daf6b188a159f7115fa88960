@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdccbbf_3076d806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-03T18:52:30Z",
+      "side": 1,
+      "message": "Merged in AOSP master.",
+      "revId": "88cd73760544cb66daf6b188a159f7115fa88960",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
