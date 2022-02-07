@@ -16,6 +16,24 @@
       "message": "This only applies to new profiles",
       "revId": "c76be5e43a486816000cd095e9f0370c83e59dba",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b9b940_54a23faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-07T20:54:43Z",
+      "side": 1,
+      "message": "Any way we can apply it to existing profiles? Maybe another hacky boot receiver?",
+      "parentUuid": "ec1104fa_5e34e27b",
+      "revId": "c76be5e43a486816000cd095e9f0370c83e59dba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
