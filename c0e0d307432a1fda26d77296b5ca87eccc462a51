@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9409fcf_3168e7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-02-08T13:14:14Z",
+      "side": 1,
+      "message": "Was connecting/disconnecting VPNs in multiple users and at some point it stopped blocking when it should have. Need to try reproducing",
+      "revId": "c0e0d307432a1fda26d77296b5ca87eccc462a51",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
