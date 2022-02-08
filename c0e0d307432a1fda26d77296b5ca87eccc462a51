@@ -33,6 +33,23 @@
       "message": "I was using a debugger at the time so that may have been influencing. Let\u0027s test more anyway",
       "revId": "c0e0d307432a1fda26d77296b5ca87eccc462a51",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b03feb_d9f0aeb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-02-08T14:31:04Z",
+      "side": 1,
+      "message": "Turns out it\u0027s the onLost that is not triggered reliably on the network callbacks when listening to all networks. Testing with default network callback instead",
+      "revId": "c0e0d307432a1fda26d77296b5ca87eccc462a51",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
