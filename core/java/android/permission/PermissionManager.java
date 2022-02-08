@@ -921,6 +921,10 @@ public final class PermissionManager {
         updateIndicatorExemptedPackages(context);
         ArraySet<String> pkgNames = new ArraySet<>();
         pkgNames.add(SYSTEM_PKG);
+        pkgNames.addAll(context.getResources().getStringArray(
+                R.array.config_locationProviderPackageNames));
+        pkgNames.addAll(context.getResources().getStringArray(
+                R.array.config_locationExtraPackageNames));
         for (int i = 0; i < INDICATOR_EXEMPTED_PACKAGES.length; i++) {
             String exemptedPackage = INDICATOR_EXEMPTED_PACKAGES[i];
             if (exemptedPackage != null) {
