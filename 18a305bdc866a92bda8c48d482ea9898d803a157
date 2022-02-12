@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0959f58_d7a715a3",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-12T13:25:27Z",
+      "side": 1,
+      "message": "Could try adding another call to `setTrustRestrictUsb()` here.",
+      "revId": "18a305bdc866a92bda8c48d482ea9898d803a157",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
