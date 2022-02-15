@@ -69,6 +69,23 @@
       "message": "https://developer.android.com/reference/android/app/admin/DevicePolicyManager#clearCrossProfileIntentFilters(android.content.ComponentName)",
       "revId": "c76be5e43a486816000cd095e9f0370c83e59dba",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2dfb4b2_83b508a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-15T17:13:06Z",
+      "side": 1,
+      "message": "If addCrossProfileIntentFilter works, then we could add it as a toggle to Settings instead.",
+      "revId": "c76be5e43a486816000cd095e9f0370c83e59dba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
