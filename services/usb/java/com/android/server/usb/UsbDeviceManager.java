@@ -272,8 +272,6 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
         }
         // We are unlocked when the keyguard is down or non-secure.
         mHandler.sendMessage(MSG_UPDATE_SCREEN_LOCK, isShowing, secure);
-
-        mHandler.setTrustRestrictUsb();
     }
 
     @Override
@@ -924,6 +922,8 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     mConnected = (msg.arg1 == 1);
                     mConfigured = (msg.arg2 == 1);
 
+                    setTrustRestrictUsb();
+
                     updateUsbNotification(false);
                     updateAdbNotification(false);
                     if (mBootCompleted) {
@@ -948,7 +948,6 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                         mPendingBootBroadcast = true;
                     }
                     updateUsbSpeed();
-                    setTrustRestrictUsb();
                     break;
                 case MSG_UPDATE_PORT_STATE:
                     SomeArgs args = (SomeArgs) msg.obj;
@@ -979,6 +978,8 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                         mSupportsAllCombinations = false;
                     }
 
+                    setTrustRestrictUsb();
+
                     mAudioAccessorySupported = port.isModeSupported(MODE_AUDIO_ACCESSORY);
 
                     args.recycle();
@@ -990,7 +991,6 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     } else {
                         mPendingBootBroadcast = true;
                     }
-                    setTrustRestrictUsb();
                     break;
                 case MSG_UPDATE_CHARGING_STATE:
                     mUsbCharging = (msg.arg1 == 1);
@@ -1054,6 +1054,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                 case MSG_UPDATE_SCREEN_LOCK:
                     mIsKeyguardShowing = msg.arg1 == 1;
                     boolean secure = msg.arg2 == 1;
+                    setTrustRestrictUsb();
                     if ((mIsKeyguardShowing && secure) == mScreenLocked) {
                         break;
                     }
