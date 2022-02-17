@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec247f3_3028ddcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-02-17T16:59:37Z",
+      "side": 1,
+      "message": "Must keep in mind that this applies beyond unmanaged profiles",
+      "revId": "9ddb5dea1862a5529cad898bb0b99c6bf7b478d7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
