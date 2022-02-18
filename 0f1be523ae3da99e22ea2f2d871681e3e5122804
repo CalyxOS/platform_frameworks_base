@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f91f77e_9f0a098f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-18T19:51:56Z",
+      "side": 1,
+      "message": "LGTM. Which devices did you test on?\n\nAlso, did you test both USB drive and MTP / File Transfer",
+      "revId": "0f1be523ae3da99e22ea2f2d871681e3e5122804",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
