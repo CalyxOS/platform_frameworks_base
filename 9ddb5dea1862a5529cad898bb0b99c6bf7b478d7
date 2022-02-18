@@ -16,6 +16,24 @@
       "message": "Must keep in mind that this applies beyond unmanaged profiles",
       "revId": "9ddb5dea1862a5529cad898bb0b99c6bf7b478d7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfba2dd9_22d77eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-18T20:04:16Z",
+      "side": 1,
+      "message": "Good point, that\u0027s fine I think, we\u0027re only changing the default setting - these can still be enabled manually by the user if needed.\n\nAt the moment most non unmanaged profile users would be using Shelter or Insular or Island, for which I imagine this is fine.\n\nActual MDM users may want this to be on, but they could still turn this on themselves, and I haven\u0027t heard of anyone using that anyway.",
+      "parentUuid": "9ec247f3_3028ddcb",
+      "revId": "9ddb5dea1862a5529cad898bb0b99c6bf7b478d7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
