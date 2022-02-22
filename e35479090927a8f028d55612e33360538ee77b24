@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5d40de_4d1fc2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-22T22:23:52Z",
+      "side": 1,
+      "message": "Test: Buy a USB drive with an activity indicator LED\n\nMakes it very reliable, can\u0027t get it to fail now. Very easy before this.",
+      "revId": "e35479090927a8f028d55612e33360538ee77b24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
