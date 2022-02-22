@@ -28,8 +28,7 @@ import java.util.Arrays;
 public final class AttestationHooks {
     private static final String TAG = "GmsCompat/Attestation";
 
-    private static final String PRODUCT_STOCK_FINGERPRINT =
-            SystemProperties.get("ro.build.stock_fingerprint");
+    private static final String PACKAGE_GMS = "com.google.android.gms";
 
     private static volatile boolean sIsGms = false;
 
@@ -52,17 +51,13 @@ public final class AttestationHooks {
     }
 
     private static void spoofBuildGms() {
-        // Set fingerprint for SafetyNet CTS profile
-        if (PRODUCT_STOCK_FINGERPRINT.length() > 0) {
-            setBuildField("FINGERPRINT", PRODUCT_STOCK_FINGERPRINT);
-        }
 
         // Alter model name to avoid hardware attestation enforcement
         setBuildField("MODEL", Build.MODEL + " ");
     }
 
     public static void initApplicationBeforeOnCreate(Application app) {
-        if (GmsInfo.PACKAGE_GMS.equals(app.getPackageName())) {
+        if (PACKAGE_GMS.equals(app.getPackageName())) {
             sIsGms = true;
             spoofBuildGms();
         }
@@ -74,8 +69,7 @@ public final class AttestationHooks {
     }
 
     public static void onEngineGetCertificateChain() {
-        // Check stack for SafetyNet
-        if (sIsGms && isCallerSafetyNet()) {
+        if (sIsGms) {
             throw new UnsupportedOperationException();
         }
     }
