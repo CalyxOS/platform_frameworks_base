@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2021 The ProtonAOSP Project
+ * Copyright (C) 2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,39 +15,40 @@
  * limitations under the License.
  */
 
-package org.protonaosp.systemui
+package com.android.systemui.biometrics
 
+import android.content.Context
 import android.hardware.display.DisplayManager
 import android.os.Handler
 import android.os.IBinder
 import android.os.ServiceManager
 import android.view.Surface
 import com.android.systemui.biometrics.AuthController
-import com.android.systemui.biometrics.UdfpsHbmProvider
-import com.android.systemui.biometrics.UdfpsHbmTypes
-import com.android.systemui.dagger.SysUISingleton
 import com.android.systemui.dagger.qualifiers.DisplayId
 import com.android.systemui.dagger.qualifiers.Main
 import com.android.systemui.dagger.qualifiers.UiBackground
+import com.android.systemui.Dependency
 import com.google.hardware.pixel.display.IDisplay
 import java.util.concurrent.Executor
-import javax.inject.Inject
 
-@SysUISingleton
-class PixelUdfpsHbmProvider @Inject constructor(
-    @Main private val handler: Handler,
-    @UiBackground private val bgExecutor: Executor,
-    @DisplayId private val displayId: Int,
-    private val authController: AuthController,
-    private val displayManager: DisplayManager,
+class PixelUdfpsHbmProvider constructor(
+    private val context: Context
 ) : UdfpsHbmProvider, IBinder.DeathRecipient, DisplayManager.DisplayListener {
-    private var displayHal = ServiceManager.waitForDeclaredService(PIXEL_DISPLAY_HAL).let { binder ->
-        binder.linkToDeath(this, 0)
-        IDisplay.Stub.asInterface(binder)
-    }
+
+    private val authController = Dependency.get(AuthController::class.java)
+    private val bgExecutor = Dependency.get(Dependency.BACKGROUND_EXECUTOR)
+    private val handler = Dependency.get(Dependency.MAIN_HANDLER)
+    private val displayId = context.getDisplayId()
+    private val displayManager = context.getSystemService(DisplayManager::class.java)
+
+    private var displayHal = ServiceManager.waitForDeclaredService(PIXEL_DISPLAY_HAL)
+            .let { binder ->
+                binder.linkToDeath(this, 0)
+                IDisplay.Stub.asInterface(binder)
+            }
 
     private val peakRefreshRate = displayManager.getDisplay(displayId).supportedModes
-        .maxOf { it.refreshRate }
+            .maxOf { it.refreshRate }
     private val currentRefreshRate: Float
         get() = displayManager.getDisplay(displayId).refreshRate
 
