@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "652d94ec_5b137371",
+        "filename": "core/java/com/android/internal/gmscompat/AttestationHooks.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-26T00:21:14Z",
+      "side": 1,
+      "message": "FTR:\n\n```\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: dalvik.system.VMStack.getThreadStackTrace(Native Method)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: java.lang.Thread.getStackTrace(Thread.java:1724)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: com.android.internal.gmscompat.AttestationHooks.onEngineGetCertificateChain(AttestationHooks.java:78)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: android.security.keystore2.AndroidKeyStoreSpi.engineGetCertificateChain(AndroidKeyStoreSpi.java:168)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: java.security.KeyStore.getCertificateChain(KeyStore.java:1087)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: com.google.ccc.abuse.droidguard.DroidGuard.initNative(Native Method)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: com.google.ccc.abuse.droidguard.DroidGuard.init(DroidGuard.java:483)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: java.lang.reflect.Method.invoke(Native Method)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: org.microg.gms.droidguard.core.HandleProxy.init(HandleProxy.kt:39)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: org.microg.gms.droidguard.core.DroidGuardHandleImpl.initWithRequest(DroidGuardHandleImpl.kt:51)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: com.google.android.gms.droidguard.internal.IDroidGuardHandle$Stub.onTransact(IDroidGuardHandle.java:88)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: android.os.Binder.execTransactInternal(Binder.java:1179)\n02-23 23:06:14.011  5589  5604 E GmsCompat/Attestation: android.os.Binder.execTransact(Binder.java:1143)\n```",
+      "revId": "5fe7f0561857a179433622e0941df85a3009a1ac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
