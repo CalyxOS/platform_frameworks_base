@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603d3930_b4e9b1fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-26T11:38:25Z",
+      "side": 1,
+      "message": "Needs 8600: Expose getActiveNetworkForUid to system API | https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/8600",
+      "revId": "dae274495b71c73e7b50cd483ed3aea2f69f69e6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
