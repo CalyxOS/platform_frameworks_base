@@ -34,6 +34,24 @@
       "parentUuid": "293ae28a_d2d3e6d5",
       "revId": "62f56cd3fe9f597c95864dbfbd2a45f7a8a94531",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf98763c_663eed56",
+        "filename": "packages/SystemUI/res/drawable/stat_sys_ringer_vibrate.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-02-28T19:05:11Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "d4fb9217_6433d61a",
+      "revId": "62f56cd3fe9f597c95864dbfbd2a45f7a8a94531",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
