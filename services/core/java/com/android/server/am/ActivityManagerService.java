@@ -17213,6 +17213,15 @@ public class ActivityManagerService extends IActivityManager.Stub
         }
     }
 
+    @Override
+    public int getTopAppUid() {
+        WindowProcessController windowProcessController = mAtmInternal.getTopApp();
+        if (windowProcessController != null) {
+            return windowProcessController.getUid();
+        }
+        return 0;
+    }
+
     static void traceBegin(long traceTag, String methodName, String subInfo) {
         if (Trace.isTagEnabled(traceTag)) {
             Trace.traceBegin(traceTag, methodName + subInfo);
