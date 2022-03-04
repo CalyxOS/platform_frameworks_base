@@ -725,4 +725,6 @@ interface IActivityManager {
 
     /** Blocks until all broadcast queues become idle. */
     void waitForBroadcastIdle();
+
+    int getTopAppUid();
 }
