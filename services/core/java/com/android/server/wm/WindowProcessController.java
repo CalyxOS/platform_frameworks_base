@@ -269,6 +269,10 @@ public class WindowProcessController extends ConfigurationContainer<Configuratio
         return mPid;
     }
 
+    public int getUid() {
+        return mUid;
+    }
+
     @HotPath(caller = HotPath.PROCESS_CHANGE)
     public void setThread(IApplicationThread thread) {
         synchronized (mAtm.mGlobalLockWithoutBoost) {
