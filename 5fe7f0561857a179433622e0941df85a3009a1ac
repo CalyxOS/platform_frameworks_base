@@ -34,6 +34,24 @@
       "parentUuid": "652d94ec_5b137371",
       "revId": "5fe7f0561857a179433622e0941df85a3009a1ac",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "393bb689_3aea9443",
+        "filename": "core/java/com/android/internal/gmscompat/AttestationHooks.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-07T19:27:35Z",
+      "side": 1,
+      "message": "We could get away with only the simpler isGms check since microG does not use keystore for anything else at the moment.",
+      "parentUuid": "93ed9db0_5cc54fcc",
+      "revId": "5fe7f0561857a179433622e0941df85a3009a1ac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
