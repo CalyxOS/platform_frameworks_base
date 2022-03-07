@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de06d0b_decffb40",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-07T13:51:59Z",
+      "side": 1,
+      "message": "you can skip doing that, the icon is set once, and each update has the same params",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 99
+      },
+      "revId": "136dcf9ac1453c8e1876ba66a27a12a107c3c620",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
