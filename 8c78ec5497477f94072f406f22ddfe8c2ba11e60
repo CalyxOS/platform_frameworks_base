@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd4d70d_8acbadce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-08T13:05:41Z",
+      "side": 1,
+      "message": "as consistent as work profile icon",
+      "revId": "8c78ec5497477f94072f406f22ddfe8c2ba11e60",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
