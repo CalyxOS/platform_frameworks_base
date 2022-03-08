@@ -46,6 +46,30 @@
       },
       "revId": "136dcf9ac1453c8e1876ba66a27a12a107c3c620",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac6f268_073e3b1f",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-08T13:04:50Z",
+      "side": 1,
+      "message": "I think that\u0027s because it\u0027s using resources and needs to reload the accessibility_managed_profile string on update.\nRegardless it\u0027s fine.",
+      "parentUuid": "78a24e4f_fbd815e1",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 99
+      },
+      "revId": "136dcf9ac1453c8e1876ba66a27a12a107c3c620",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
