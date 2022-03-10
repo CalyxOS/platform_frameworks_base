@@ -24,6 +24,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedc82c0_d96e8497",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/HeadsUpAppearanceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-10T17:32:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5306292_bac53a8e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "9845e6476949b741e7451e1217584b00a298b66e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a72d4d5a_48c7c3bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T16:48:38Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "9845e6476949b741e7451e1217584b00a298b66e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c1c9fa_1bf3ee52",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/HeadsUpAppearanceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-10T17:32:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a72d4d5a_48c7c3bc",
       "range": {
         "startLine": 135,
         "startChar": 8,
