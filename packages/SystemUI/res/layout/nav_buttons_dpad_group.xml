@@ -19,7 +19,7 @@
 
     <com.android.systemui.navigationbar.buttons.KeyButtonView
         android:id="@+id/dpad_left"
-        android:layout_width="@dimen/navigation_extra_key_width"
+        android:layout_width="@dimen/navigation_side_padding"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         systemui:keyCode="21"
@@ -28,7 +28,7 @@
 
     <com.android.systemui.navigationbar.buttons.KeyButtonView
         android:id="@+id/dpad_right"
-        android:layout_width="@dimen/navigation_extra_key_width"
+        android:layout_width="@dimen/navigation_side_padding"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         systemui:keyCode="22"
