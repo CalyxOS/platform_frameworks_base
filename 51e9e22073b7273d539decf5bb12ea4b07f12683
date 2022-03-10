@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4880e5c4_e1788afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-10T01:29:26Z",
+      "side": 1,
+      "message": "Alternatively, could re-add navigation_extra_key_width",
+      "revId": "51e9e22073b7273d539decf5bb12ea4b07f12683",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
