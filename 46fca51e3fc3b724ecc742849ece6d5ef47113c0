@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a852715_d9c69297",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/HeadsUpAppearanceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-03-10T16:47:31Z",
+      "side": 1,
+      "message": "Wrong resolution, this line is not part of the commit.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 42
+      },
+      "revId": "46fca51e3fc3b724ecc742849ece6d5ef47113c0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
