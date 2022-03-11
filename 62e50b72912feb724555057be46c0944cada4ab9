@@ -16,6 +16,24 @@
       "message": "I think Luk reworked the whole chain to make it modular, shall we pick them?",
       "revId": "62e50b72912feb724555057be46c0944cada4ab9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58b7551_0da8bbe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T18:53:50Z",
+      "side": 1,
+      "message": "We already have that, 9787: udfps: Implement default udfps hbm provider | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/9787",
+      "parentUuid": "213dc101_b9245170",
+      "revId": "62e50b72912feb724555057be46c0944cada4ab9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
