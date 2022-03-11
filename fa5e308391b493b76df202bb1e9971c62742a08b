@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99602050_06a95d07",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T16:17:50Z",
+      "side": 1,
+      "message": "Did you try?",
+      "parentUuid": "b84a73b5_1e5f8eb0",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "fa5e308391b493b76df202bb1e9971c62742a08b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ae666f9_e6686959",
         "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-11T15:03:00Z",
       "side": 1,
       "message": "comments would help understand",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "fa5e308391b493b76df202bb1e9971c62742a08b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "763956f8_2a6fe87f",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T16:17:50Z",
+      "side": 1,
+      "message": "From my understanding:\n\n176: Collections.shuffle(sNumbers);\n\nWe don\u0027t change the actual views or buttons, in code they\u0027re still key0 key1 etc.\n\nBut we change the value of those, and thus this returns the correct \"key\"\n\nSee usage of this in KeyguardPinBasedInputView (check performNumberClick callers) and you\u0027ll see.",
+      "parentUuid": "3ae666f9_e6686959",
       "range": {
         "startLine": 244,
         "startChar": 8,
