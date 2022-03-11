@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ddb98f_dfed67b3",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/NotificationPanelViewController.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T19:47:14Z",
+      "side": 1,
+      "message": "would be cool to know which context is injected but ... probably fine",
+      "range": {
+        "startLine": 731,
+        "startChar": 39,
+        "endLine": 731,
+        "endChar": 54
+      },
+      "revId": "e0448e38e0cb41c315bfeebd6fb9453c75885487",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
