@@ -33,6 +33,24 @@
       "message": "Squash please",
       "revId": "ef0e40ee12ccc508d81fc531c60a8373318ef974",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c209e06_294cfa79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T18:48:30Z",
+      "side": 1,
+      "message": "Sorry, missed it.",
+      "parentUuid": "0aa56bbf_4abe1ad9",
+      "revId": "ef0e40ee12ccc508d81fc531c60a8373318ef974",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
