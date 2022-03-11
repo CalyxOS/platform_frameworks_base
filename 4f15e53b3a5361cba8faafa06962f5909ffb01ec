@@ -22,6 +22,30 @@
       },
       "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f761a6_13d5aeae",
+        "filename": "packages/SystemUI/res/layout/status_bar.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T18:55:54Z",
+      "side": 0,
+      "message": "Good catch, it\u0027s kinda broken.",
+      "parentUuid": "26cb0136_c93c2a55",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
