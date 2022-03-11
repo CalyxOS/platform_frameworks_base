@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8bade9_841df032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T01:05:45Z",
+      "side": 1,
+      "message": "fixup/squash gone wrong",
+      "revId": "d8c692aaab518ff0e77df17f9ed7d7aa540a0e9d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2bf94b9_b589e175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T01:05:45Z",
+      "side": 1,
+      "message": "Feature works though",
+      "revId": "d8c692aaab518ff0e77df17f9ed7d7aa540a0e9d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
