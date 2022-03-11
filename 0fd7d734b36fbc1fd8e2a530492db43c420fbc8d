@@ -33,6 +33,24 @@
       "message": "Squash",
       "revId": "0fd7d734b36fbc1fd8e2a530492db43c420fbc8d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d94495_d334b776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T18:48:02Z",
+      "side": 1,
+      "message": "Sorry, missed both comments. I was looking at submit requirements on top left, all green.",
+      "parentUuid": "b26d7ae1_572c1e4b",
+      "revId": "0fd7d734b36fbc1fd8e2a530492db43c420fbc8d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
