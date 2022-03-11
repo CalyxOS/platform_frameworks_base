@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df96287b_c8568620",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:27:28Z",
+      "side": 1,
+      "message": "The day I get the drawable list down to 0 and make it a java side Drawable I\u0027ll be happy.",
+      "revId": "afd166797d4b7948de44afb2c88b80fd4d77133c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
