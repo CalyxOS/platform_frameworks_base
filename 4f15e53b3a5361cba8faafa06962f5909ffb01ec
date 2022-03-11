@@ -46,6 +46,30 @@
       },
       "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984efece_e7c2187d",
+        "filename": "packages/SystemUI/res/layout/status_bar.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T22:08:00Z",
+      "side": 0,
+      "message": "Re-added",
+      "parentUuid": "42f761a6_13d5aeae",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
