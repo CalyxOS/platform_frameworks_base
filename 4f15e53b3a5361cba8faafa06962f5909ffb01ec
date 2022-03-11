@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c191e784_38846942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T00:02:17Z",
+      "side": 1,
+      "message": "woops. Forgot to move when squashing, this is the original change id.",
+      "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8e443b_4581141e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T00:02:17Z",
+      "side": 1,
+      "message": "Works from a quick test.",
+      "revId": "4f15e53b3a5361cba8faafa06962f5909ffb01ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
