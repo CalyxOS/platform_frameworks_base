@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0af414_12aaf13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T21:56:52Z",
+      "side": 1,
+      "message": "Hold.\n\nLet\u0027s do this properly, make it configurable like clock, left|center|right",
+      "revId": "035e4f19eeca4ad75ab39061137fa76e7587d072",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
