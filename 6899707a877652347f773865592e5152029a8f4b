@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47cc9c7a_1b22f24f",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T22:12:15Z",
+      "side": 1,
+      "message": "Previously discussed at: 10048: fixup! Keyguard: Add option to scramble pin layout when unlocking (2/2). | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/10048",
+      "revId": "6899707a877652347f773865592e5152029a8f4b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
