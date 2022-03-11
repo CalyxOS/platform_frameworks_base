@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9827d20b_ba46249c",
+        "filename": "packages/SystemUI/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:23:39Z",
+      "side": 1,
+      "message": "remove TODO?",
+      "revId": "4cf911810dbe4a884d408f5bffdedf7486844b24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
