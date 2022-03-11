@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c7dad7_2cdc01c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:32:45Z",
+      "side": 1,
+      "message": "Sad they never managed to get this in, looks much nicer",
+      "revId": "41c292d8e4c7c1b52941d0299ad543b62bc7a5f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
