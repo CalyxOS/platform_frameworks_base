@@ -16,6 +16,23 @@
       "message": "Squash to https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/9693 as well?",
       "revId": "ef0e40ee12ccc508d81fc531c60a8373318ef974",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa56bbf_4abe1ad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:25:55Z",
+      "side": 1,
+      "message": "Squash please",
+      "revId": "ef0e40ee12ccc508d81fc531c60a8373318ef974",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
