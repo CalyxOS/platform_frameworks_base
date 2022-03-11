@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afcf16c7_9e8ff6eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T01:43:05Z",
+      "side": 1,
+      "message": "In theory we don\u0027t need this anymore, but in practice I\u0027d like to keep it now and drop for 13.\n\nShouldn\u0027t hurt",
+      "revId": "25fbca7b5bde2739d6762a5f13dbabe64179e95a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
