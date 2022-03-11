@@ -395,9 +395,8 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         IconState qsIcon = null;
         CharSequence qsDescription = null;
 
-        boolean pm = mProviderModelSetting || mProviderModelBehavior;
         if (mCurrentState.dataSim) {
-            if (pm) {
+            if (mProviderModelBehavior) {
                 return new QsInfo(qsTypeIcon, qsIcon, qsDescription);
             }
 
