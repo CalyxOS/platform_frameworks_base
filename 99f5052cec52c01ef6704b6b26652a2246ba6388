@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87674ad3_fc74c604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:26:29Z",
+      "side": 1,
+      "message": "Hopefully this is legal :P",
+      "revId": "99f5052cec52c01ef6704b6b26652a2246ba6388",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
