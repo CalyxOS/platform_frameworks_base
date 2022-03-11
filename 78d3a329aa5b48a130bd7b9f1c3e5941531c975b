@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "931d1042_fce73655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-11T18:25:01Z",
+      "side": 1,
+      "message": "Fine, but are actually using both libs in core and services?",
+      "revId": "78d3a329aa5b48a130bd7b9f1c3e5941531c975b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
