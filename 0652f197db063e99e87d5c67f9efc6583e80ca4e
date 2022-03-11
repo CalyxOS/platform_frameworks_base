@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24978bb8_089c26bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-11T00:47:50Z",
+      "side": 1,
+      "message": "wifi works\n\ncell does not\n\nLikely something I missed resolving conflicts / migrating to SignalCallback",
+      "revId": "0652f197db063e99e87d5c67f9efc6583e80ca4e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
