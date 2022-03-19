@@ -80,13 +80,15 @@ public abstract class AbstractMultiProfilePagerAdapter extends PagerAdapter {
             @Override
             public boolean hasCrossProfileIntents(List<Intent> intents, int sourceUserId,
                     int targetUserId) {
-                return AbstractMultiProfilePagerAdapter.this
+                // TODO: fix this temporary lie, i.e. by modifying code to check EVERY profile instead of just one
+                return true || AbstractMultiProfilePagerAdapter.this
                         .hasCrossProfileIntents(intents, sourceUserId, targetUserId);
             }
 
             @Override
             public boolean isQuietModeEnabled(UserHandle workProfileUserHandle) {
-                return userManager.isQuietModeEnabled(workProfileUserHandle);
+                // TODO: fix this temporary lie, i.e. by modifying code to check EVERY profile instead of just one
+                return false && userManager.isQuietModeEnabled(workProfileUserHandle);
             }
 
             @Override
@@ -539,7 +541,8 @@ public abstract class AbstractMultiProfilePagerAdapter extends PagerAdapter {
                 return true;
             }
         }
-        return false;
+        // TODO: fix this temporary lie, i.e. by modifying code to check EVERY profile instead of just one
+        return true; // should be return false;
     }
 
     private boolean hasAppsInOtherProfile(ResolverListAdapter adapter) {
@@ -554,7 +557,8 @@ public abstract class AbstractMultiProfilePagerAdapter extends PagerAdapter {
                 return true;
             }
         }
-        return false;
+        // TODO: fix this temporary lie, i.e. by modifying code to check EVERY profile instead of just one
+        return true; // should be return false;
     }
 
     boolean shouldShowEmptyStateScreen(ResolverListAdapter listAdapter) {

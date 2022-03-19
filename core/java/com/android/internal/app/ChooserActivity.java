@@ -2631,6 +2631,7 @@ public class ChooserActivity extends ResolverActivity implements
     private int getProfileForUser(UserHandle currentUserHandle) {
         if (currentUserHandle.equals(getPersonalProfileUserHandle())) {
             return PROFILE_PERSONAL;
+        // TODO: be smarter about this check. if it is a managed profile, it's a work profile.
         } else if (currentUserHandle.equals(getWorkProfileUserHandle())) {
             return PROFILE_WORK;
         }
