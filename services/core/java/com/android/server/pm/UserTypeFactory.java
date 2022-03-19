@@ -134,7 +134,6 @@ public final class UserTypeFactory {
                 .setName(USER_TYPE_PROFILE_MANAGED)
                 .setBaseType(FLAG_PROFILE)
                 .setDefaultUserInfoPropertyFlags(FLAG_MANAGED_PROFILE)
-                .setMaxAllowedPerParent(1)
                 .setLabel(0)
                 .setIconBadge(com.android.internal.R.drawable.ic_corp_icon_badge_case)
                 .setBadgePlain(com.android.internal.R.drawable.ic_corp_badge_case)
