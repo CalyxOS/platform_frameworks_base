@@ -16,6 +16,24 @@
       "message": "Maybe set it to 2 or 4 for now? Just in case somebody tries creating too many profiles and it doesn\u0027t go as planned, since this is the only change I see for this (aka it\u0027d be available to all users)",
       "revId": "20465b22bf8f2197173cb81babeb34b7b7b79dbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe486ff8_76151679",
+        "filename": "services/core/java/com/android/server/pm/UserTypeFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-21T17:11:30Z",
+      "side": 0,
+      "message": "If I recall correctly, the limit of concurrent and max number of users is still 3 and 4 respectively. Shouldn\u0027t be a problem unless/until we change those",
+      "parentUuid": "e3f40fb7_6ac7f642",
+      "revId": "20465b22bf8f2197173cb81babeb34b7b7b79dbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
