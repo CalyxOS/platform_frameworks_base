@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aecfa1a_5953bbae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-23T18:59:29Z",
+      "side": 1,
+      "message": "Previous discussion: https://gitlab.com/CalyxOS/calyxos/-/issues/406\n\nThis patch could use some cleanup and testing, but at this point if a 5 line change works that\u0027s worth it rather than trying to spend any more hours debugging.",
+      "revId": "c3595ff3bbd72615b5ef798c04decea59ceae861",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
