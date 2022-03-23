@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7fdb33c_dfa01465",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerificationReceiverV1.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-23T22:32:39Z",
+      "side": 1,
+      "message": "for com.google.android.apps.maps this is 15k\n\nYet it still crashes",
+      "revId": "978a5ba59e1a42fc8f0c54f10b31763a2591e24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938a18ce_b36f8c02",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerificationReceiverV1.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-23T22:32:39Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be hit when it crashes, and it isn\u0027t",
+      "revId": "978a5ba59e1a42fc8f0c54f10b31763a2591e24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
