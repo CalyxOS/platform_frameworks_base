@@ -4075,6 +4075,10 @@ public class PackageManagerService extends IPackageManager.Stub
                 if (ps.name.equals(uidPackageName)) {
                     return false;
                 }
+                // F-Droid gets to see all static libs
+                if (uidPackageName.equals("org.fdroid.fdroid")) {
+                    return false;
+                }
                 PackageSetting uidPs = mSettings.getPackageLPr(uidPackageName);
                 if (uidPs != null) {
                     final int index = ArrayUtils.indexOf(uidPs.usesStaticLibraries,
@@ -6737,6 +6741,25 @@ public class PackageManagerService extends IPackageManager.Stub
                     sendPackageChangedBroadcast(pkg.getPackageName(), false /* dontKillApp */,
                             new ArrayList<>(Collections.singletonList(pkg.getPackageName())),
                             pkg.getUid(), null);
+                }
+                // Send added for users that don't see the package for the first time
+                Bundle extras = new Bundle(1);
+                extras.putInt(Intent.EXTRA_UID, res.uid);
+                if (update) {
+                    extras.putBoolean(Intent.EXTRA_REPLACING, true);
+                }
+                sendPackageBroadcast(Intent.ACTION_PACKAGE_ADDED, packageName,
+                        extras, 0 /*flags*/,
+                        "org.fdroid.fdroid" /*targetPackage*/, null /*finishedReceiver*/,
+                        updateUserIds, instantUserIds, null /*newBroadcastAllowList*/, null);
+
+                // Send replaced for users that don't see the package for the first time
+                if (update) {
+                    sendPackageBroadcast(Intent.ACTION_PACKAGE_REPLACED,
+                            packageName, extras, 0 /*flags*/,
+                            "org.fdroid.fdroid" /*targetPackage*/, null /*finishedReceiver*/,
+                            updateUserIds, instantUserIds, res.removedInfo.broadcastAllowList,
+                            null);
                 }
             }
 
