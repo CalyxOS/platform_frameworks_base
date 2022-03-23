@@ -24,7 +24,7 @@ import androidx.work.NetworkType
 abstract class BaseDomainVerificationReceiver : BroadcastReceiver() {
 
     companion object {
-        const val DEBUG = false
+        const val DEBUG = true
     }
 
     protected abstract val tag: String

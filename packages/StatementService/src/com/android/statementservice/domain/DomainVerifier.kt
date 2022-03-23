@@ -41,7 +41,7 @@ class DomainVerifier private constructor(
 ) {
     companion object {
         private val TAG = DomainVerifier::class.java.simpleName
-        private const val DEBUG = false
+        private const val DEBUG = true
 
         private var singleton: DomainVerifier? = null
 

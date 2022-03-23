@@ -61,11 +61,23 @@ class DomainVerificationReceiverV1 : BaseDomainVerificationReceiver() {
 
         debugLog { "Attempting v1 verification for $packageName" }
 
+        var size = 0
+
         val workRequests = hosts.map {
+            size += it.length
+            size += packageName.length
             SingleV1RequestWorker.buildRequest(packageName, it) {
                 setConstraints(networkConstraints)
             }
         }
+
+        debugLog { "size: $size" }
+
+        if (size > 10240) {
+            return
+        }
+
+        debugLog { "size2: $size" }
 
         WorkManager.getInstance(context)
             .beginUniqueWork(

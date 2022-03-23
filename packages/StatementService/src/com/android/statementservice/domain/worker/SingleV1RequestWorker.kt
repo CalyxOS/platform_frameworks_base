@@ -30,7 +30,7 @@ class SingleV1RequestWorker(appContext: Context, params: WorkerParameters) :
 
     companion object {
         private val TAG = SingleV1RequestWorker::class.java.simpleName
-        private const val DEBUG = false
+        private const val DEBUG = true
 
         private const val PACKAGE_NAME_KEY = "packageName"
         private const val HOST_KEY = "host"

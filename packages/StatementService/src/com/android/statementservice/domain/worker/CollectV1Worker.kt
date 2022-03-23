@@ -30,7 +30,7 @@ class CollectV1Worker(appContext: Context, params: WorkerParameters) :
 
     companion object {
         private val TAG = CollectV1Worker::class.java.simpleName
-        private const val DEBUG = false
+        private const val DEBUG = true
 
         private const val VERIFICATION_ID_KEY = "verificationId"
         private const val PACKAGE_NAME_KEY = "packageName"
