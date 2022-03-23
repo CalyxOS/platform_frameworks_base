@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b371d6_4d182ee7",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 6742,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-03-23T19:51:27Z",
+      "side": 1,
+      "message": "1?",
+      "range": {
+        "startLine": 6742,
+        "startChar": 43,
+        "endLine": 6742,
+        "endChar": 44
+      },
+      "revId": "a03652733e1607c395ae414b691581100c00442b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
