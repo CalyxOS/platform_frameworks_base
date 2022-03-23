@@ -34,6 +34,24 @@
       "parentUuid": "e3f40fb7_6ac7f642",
       "revId": "20465b22bf8f2197173cb81babeb34b7b7b79dbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a692cabb_eac97a84",
+        "filename": "services/core/java/com/android/server/pm/UserTypeFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-23T10:59:03Z",
+      "side": 0,
+      "message": "We should bump that up a bit then otherwise we\u0027ll run out soon.\n\nConcurrent at 3 is fine to avoid causing issues.\nMax at 4 means you can have 2 work profiles and 1 secondary user and you\u0027re already at it.\n\n8 or even 16 might be a good number, and so we should set a limit here.\n\n4 per parent would be a good start.",
+      "parentUuid": "fe486ff8_76151679",
+      "revId": "20465b22bf8f2197173cb81babeb34b7b7b79dbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
