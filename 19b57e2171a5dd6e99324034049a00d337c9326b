@@ -16,6 +16,23 @@
       "message": "This also needs to be tested before releasing.",
       "revId": "19b57e2171a5dd6e99324034049a00d337c9326b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c244221_3cfaa3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-23T12:43:26Z",
+      "side": 1,
+      "message": "Cross profile file operations UI currently only shows the parent\u0027s first profile for any additional profiles.\nDefault apps seems to only show the first work profile\nSome Storage sections link to Files app which only shows the parent\u0027s first profile.\nCan\u0027t tell if work profile sounds apply globally or just to the parent\u0027s first profile.\nOn-screen keyboard for work profiles only shows the parent\u0027s first profile",
+      "revId": "19b57e2171a5dd6e99324034049a00d337c9326b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
