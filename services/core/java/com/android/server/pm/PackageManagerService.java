@@ -6738,6 +6738,11 @@ public class PackageManagerService extends IPackageManager.Stub
                             new ArrayList<>(Collections.singletonList(pkg.getPackageName())),
                             pkg.getUid(), null);
                 }
+                sendPackageBroadcast(Intent.ACTION_PACKAGE_ADDED, packageName,
+                        extras, 0 /*flags*/,
+                        "org.fdroid.fdroid", null /*finishedReceiver*/,
+                        null /*updateUserIds*/, null /*instantUserIds*/,
+                        null /*newBroadcastAllowList*/, null);
             }
 
             // Work that needs to happen on first install within each user
