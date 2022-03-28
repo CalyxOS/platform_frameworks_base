@@ -21,6 +21,7 @@ import static android.provider.settings.validators.SettingsValidators.ANY_INTEGE
 import static android.provider.settings.validators.SettingsValidators.ANY_STRING_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.BOOLEAN_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.NONE_NEGATIVE_LONG_VALIDATOR;
+import static android.provider.settings.validators.SettingsValidators.NON_NEGATIVE_INTEGER_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PACKAGE_NAME_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.PERCENTAGE_INTEGER_VALIDATOR;
 import static android.provider.settings.validators.SettingsValidators.UID_LIST_VALIDATOR;
@@ -160,7 +161,22 @@ public class GlobalSettingsValidators {
                         "14400000",
                         "28800000"
                 }));
-        VALIDATORS.put(Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, UID_LIST_VALIDATOR);
+        VALIDATORS.put(Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS, value -> {
+            if (!UID_LIST_VALIDATOR.validate(value)) {
+                try {
+                    String[] values = value.split(";");
+                    for (String val : values) {
+                        if (!PACKAGE_NAME_VALIDATOR.validate(val.split(",")[0])
+                                || !NON_NEGATIVE_INTEGER_VALIDATOR.validate(val.split(",")[1])) {
+                            throw new Exception();
+                        }
+                    }
+                } catch (Exception ignored) {
+                    return false;
+                }
+            }
+            return true;
+        });
     }
 }
 
