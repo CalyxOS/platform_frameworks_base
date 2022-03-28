@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0873b2_5823670a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-28T10:12:24Z",
+      "side": 1,
+      "message": "No reason to remove this just yet. It can stay in for now, and can be dropped / just not included in 13.",
+      "revId": "b2a985a585853551055b30b78a8e050da4394b7e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
