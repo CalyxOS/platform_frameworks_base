@@ -17,6 +17,7 @@
 package android.provider.settings.validators;
 
 import static android.provider.settings.validators.SettingsValidators.NON_NEGATIVE_INTEGER_VALIDATOR;
+import static android.provider.settings.validators.SettingsValidators.PACKAGE_NAME_VALIDATOR;
 
 /**
  * Ensure a restored value is suitable to be used as a uid
@@ -33,7 +34,7 @@ final class UidListValidator extends ListValidator {
     }
 
     protected boolean isItemValid(String item) {
-        // TODO this could probably use a better check to ensure that it's a valid uid
-        return item.length() > 0 && NON_NEGATIVE_INTEGER_VALIDATOR.validate(item);
+        return NON_NEGATIVE_INTEGER_VALIDATOR.validate(item)
+                || PACKAGE_NAME_VALIDATOR.validate(item);
     }
 }

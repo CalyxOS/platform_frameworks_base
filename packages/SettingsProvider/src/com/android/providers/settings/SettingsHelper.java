@@ -32,6 +32,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.LocaleList;
 import android.os.RemoteException;
+import android.os.Process;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -190,6 +191,12 @@ public class SettingsHelper {
                         && !displayColorModeVendorModeHintsMatch) {
                     return;
                 }
+            } else if (Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS.equals(name)) {
+                String[] packages = value.split(";");
+                for (int i = 0; i < packages.length; i++) {
+                    packages[i] = String.valueOf(Process.getUidForName(packages[i]));
+                }
+                value = String.join(";", packages);
             }
 
             // Default case: write the restored value to settings
@@ -248,6 +255,20 @@ public class SettingsHelper {
             } else {
                 return getCanonicalRingtoneValue(value);
             }
+        }
+        // Special processing for backing up UIDs allowed on restricted networks
+        if (Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS.equals(name)) {
+            if (value == null) {
+                return null;
+            }
+            String[] uids = value.split(";");
+            for (int i = 0; i < uids.length; i++) {
+                int uid = Integer.parseInt(uids[i]);
+                if (UserHandle.getUserId(uid) == UserHandle.USER_SYSTEM) {
+                    uids[i] = mContext.getPackageManager().getNameForUid(uid);
+                }
+            }
+            return String.join(";", uids);
         }
         // Return the original value
         return isReplacedSystemSetting(name) ? getRealValueForSystemSetting(name) : value;
