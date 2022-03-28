@@ -33,6 +33,24 @@
       "message": "For backups made before this change, value here will be integer uid.",
       "revId": "1f4bc22cf549cc94555f88773d2692f7235cbee7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0220887_4841c432",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-28T10:52:24Z",
+      "side": 1,
+      "message": "Not sure how to handle since it\u0027s a broken case to begin with",
+      "parentUuid": "3ad6f007_c1400e96",
+      "revId": "1f4bc22cf549cc94555f88773d2692f7235cbee7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
