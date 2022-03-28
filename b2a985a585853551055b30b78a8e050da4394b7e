@@ -16,6 +16,23 @@
       "message": "No reason to remove this just yet. It can stay in for now, and can be dropped / just not included in 13.",
       "revId": "b2a985a585853551055b30b78a8e050da4394b7e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d1f080_3382bcfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-28T10:13:05Z",
+      "side": 1,
+      "message": "In fact, 13 won\u0027t need the POLICY_REJECT_ALL code migration at all, since we\u0027ll enforce 11 -\u003e 12 -\u003e 13 for upgrades, and thus everyone would have already migrated.",
+      "revId": "b2a985a585853551055b30b78a8e050da4394b7e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
