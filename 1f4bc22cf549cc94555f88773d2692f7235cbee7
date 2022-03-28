@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5968db_64709be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-28T10:48:51Z",
+      "side": 1,
+      "message": "For testing:\n\n1. Make a backup without this\n2. Install build with this change\n3. Try to restore backup made in 1.\n4. Create another backup, and try to restore that.\n\nMultiple phones or users or work profiles will help in testing.",
+      "revId": "1f4bc22cf549cc94555f88773d2692f7235cbee7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad6f007_c1400e96",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-28T10:48:51Z",
+      "side": 1,
+      "message": "For backups made before this change, value here will be integer uid.",
+      "revId": "1f4bc22cf549cc94555f88773d2692f7235cbee7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
