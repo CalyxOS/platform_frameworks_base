@@ -838,7 +838,8 @@ public class SettingsBackupAgent extends BackupAgentHelper {
             }
 
             // only restore the settings that have valid values
-            if (!isValidSettingValue(key, value, whitelist.mSettingsValidators)) {
+            if (!Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS.equals(key) &&
+                    !isValidSettingValue(key, value, whitelist.mSettingsValidators)) {
                 Log.w(TAG, "Attempted restore of " + key + " setting, but its value didn't pass"
                         + " validation, value: " + value);
                 continue;
