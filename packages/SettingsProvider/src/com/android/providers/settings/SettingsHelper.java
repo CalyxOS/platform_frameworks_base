@@ -190,6 +190,14 @@ public class SettingsHelper {
                         && !displayColorModeVendorModeHintsMatch) {
                     return;
                 }
+            } else if (Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS.equals(name)) {
+                String[] packages = value.split(";");
+                for (int i = 0; i < packages.length; i++) {
+                    packages[i] = String.valueOf(mContext.getPackageManager().getPackageUidAsUser(
+                            packages[i].split(",")[0],
+                            Integer.parseInt(packages[i].split(",")[1])));
+                }
+                value = String.join(";", packages);
             }
 
             // Default case: write the restored value to settings
@@ -248,6 +256,16 @@ public class SettingsHelper {
             } else {
                 return getCanonicalRingtoneValue(value);
             }
+        }
+        // Special processing for backing up UIDs allowed on restricted networks
+        if (Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS.equals(name)) {
+            String[] uids = value.split(";");
+            for (int i = 0; i < uids.length; i++) {
+                int uid = Integer.parseInt(uids[i]);
+                uids[i] = mContext.getPackageManager().getPackagesForUid(uid)[0] + "," +
+                        UserHandle.getUserId(uid);
+            }
+            return String.join(";", uids);
         }
         // Return the original value
         return isReplacedSystemSetting(name) ? getRealValueForSystemSetting(name) : value;
