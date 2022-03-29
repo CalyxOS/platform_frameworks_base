@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdb64bc_fe085e34",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/UidListValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T17:39:19Z",
+      "side": 1,
+      "message": "Erroneous negation?\n\nShouldn\u0027t this be `\u0026\u0026 NON_NEGATIVE_INTEGER_VALIDATOR.validate(parts[1]));`",
+      "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
