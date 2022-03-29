@@ -16,6 +16,23 @@
       "message": "This should be sent upstream",
       "revId": "fd59590acdbadaee2c592ded0c6b668f87ae36d7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db84fd3_a8e6248c",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/GlobalSettingsValidators.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T09:42:32Z",
+      "side": 1,
+      "message": "This still doesn\u0027t look right.\n\nWe added UID_LIST_VALIDATOR - just rename and modify it to handle this rather than doing it this way.\n\nIt already checks for NON_NEGATIVE_INTEGER_VALIDATOR",
+      "revId": "fd59590acdbadaee2c592ded0c6b668f87ae36d7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
