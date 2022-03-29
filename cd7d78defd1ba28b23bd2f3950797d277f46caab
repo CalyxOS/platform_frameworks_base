@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9483a16a_9967ed19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T10:58:07Z",
+      "side": 1,
+      "message": "Don\u0027t have to ship this for the first build with the managed profile changes.",
+      "revId": "cd7d78defd1ba28b23bd2f3950797d277f46caab",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
