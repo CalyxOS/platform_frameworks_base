@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a22829_dcfe3be6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-30T17:22:57Z",
+      "side": 1,
+      "message": "It is constrained to broadcasting to a single app, that\u0027s why you see the package names in the below comments.\n\nThere hasn\u0027t been a test case no since it\u0027s been sporadic - and we\u0027ve got too many things to do and little time, so for this I\u0027m just trying stuff till it works.",
+      "parentUuid": "79673b07_64743ede",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd169bf9_39dcb2f8",
@@ -35,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eea749_cc8984bf",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 4081,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-30T17:22:57Z",
+      "side": 1,
+      "message": "Rename is still pending. I\u0027ll also make it match system packages only to restrict it further.",
+      "parentUuid": "dd169bf9_39dcb2f8",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e72d7c99_a95ffb6c",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-30T13:11:48Z",
       "side": 1,
       "message": "Same as above, unless you\u0027re planning on switching to official upstream binaries, this needs to be something different.",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb75c24_0811e3af",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 6760,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-30T17:22:57Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "e72d7c99_a95ffb6c",
       "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
