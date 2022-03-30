@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79673b07_64743ede",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000021
+      },
+      "writtenOn": "2022-03-30T13:11:48Z",
+      "side": 1,
+      "message": "The code seems fine for the intended purpose. I don\u0027t know how long was spent debugging this, but I can say that changing this kind of change feels quite risky unless it can really be constrained to broadcasting to a single app.  Did anyone ever manage to write a test case that reproduces the issue?  I think that\u0027s a worthwhile thing to put time into.",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd169bf9_39dcb2f8",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 4081,
+      "author": {
+        "id": 1000021
+      },
+      "writtenOn": "2022-03-30T13:11:48Z",
+      "side": 1,
+      "message": "Unless you\u0027re planning on switching to the official upstream binaries, this Package Name needs to be for the Calyx fork",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72d7c99_a95ffb6c",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 6760,
+      "author": {
+        "id": 1000021
+      },
+      "writtenOn": "2022-03-30T13:11:48Z",
+      "side": 1,
+      "message": "Same as above, unless you\u0027re planning on switching to official upstream binaries, this needs to be something different.",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
