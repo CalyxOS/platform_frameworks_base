@@ -56,6 +56,30 @@
       },
       "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20523bba_169f8586",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-04-01T10:30:09Z",
+      "side": 1,
+      "message": "discard that, we already do per uid blocking, any package sharing uid is already blocked.",
+      "parentUuid": "76177d00_3078f704",
+      "range": {
+        "startLine": 265,
+        "startChar": 72,
+        "endLine": 265,
+        "endChar": 80
+      },
+      "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
