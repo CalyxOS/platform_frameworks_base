@@ -16,6 +16,46 @@
       "message": "Erroneous negation?\n\nShouldn\u0027t this be `\u0026\u0026 NON_NEGATIVE_INTEGER_VALIDATOR.validate(parts[1]));`",
       "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6287dea7_8e8707c5",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-04-01T10:23:30Z",
+      "side": 1,
+      "message": "could be null",
+      "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76177d00_3078f704",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-04-01T10:23:30Z",
+      "side": 1,
+      "message": "this won\u0027t ever work, uids can be shared, and aren\u0027t deterministic, could break on restore.",
+      "range": {
+        "startLine": 265,
+        "startChar": 72,
+        "endLine": 265,
+        "endChar": 80
+      },
+      "revId": "6d47dc77fefcdf0c01f58d198203594c2dfe8409",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
