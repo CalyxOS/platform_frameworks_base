@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce7ebe6_682aa2b1",
+        "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-04T20:41:55Z",
+      "side": 1,
+      "message": "mention this in the commit message",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
