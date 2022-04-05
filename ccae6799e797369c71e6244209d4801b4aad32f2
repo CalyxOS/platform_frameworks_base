@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c76a13e_4130c5f3",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2919,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-05T23:52:26Z",
+      "side": 0,
+      "message": "Why remove this?",
+      "revId": "ccae6799e797369c71e6244209d4801b4aad32f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
