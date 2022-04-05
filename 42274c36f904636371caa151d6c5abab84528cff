@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fef8d4_1e127cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-05T23:46:58Z",
+      "side": 1,
+      "message": "Keep the Settings.java part, it might break compilation otherwise. Even if not, good to have it documented.\n\nPartially Revert ...",
+      "revId": "42274c36f904636371caa151d6c5abab84528cff",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
