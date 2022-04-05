@@ -2906,6 +2906,27 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             out.endTag(null, TAG_UID_POLICY);
         }
 
+        if (forBackup) {
+            List<ApplicationInfo> applications = AppGlobals.getPackageManager()
+                    .getPackagesHoldingPermissions(
+                            new String[]{android.Manifest.permission.INTERNET},
+                            PackageManager.MATCH_KNOWN_PACKAGES,
+                            userId
+                    ).getList();
+            applications.removeAll(
+                    ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext));
+            for (int uid : applications.stream().map(applicationInfo -> applicationInfo.uid)
+                    .collect(Collectors.toList())) {
+                if (UserHandle.getUserId(uid) != userId) {
+                    continue;
+                }
+                out.startTag(null, TAG_UID_POLICY);
+                writeStringAttribute(out, ATTR_XML_UTILS_NAME, getPackageForUid(uid));
+                writeIntAttribute(out, ATTR_POLICY, POLICY_REJECT_ALL);
+                out.endTag(null, TAG_UID_POLICY);
+            }
+        }
+
         if (userId == UserHandle.USER_SYSTEM) {
             out.endTag(null, TAG_POLICY_LIST);
         }
