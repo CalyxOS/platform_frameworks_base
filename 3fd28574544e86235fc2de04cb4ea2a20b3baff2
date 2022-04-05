@@ -90,6 +90,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a24d80_deee72e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-05T23:49:00Z",
+      "side": 1,
+      "message": "`POLICY_REJECT_ALL` is fine based on the usage.\n\nWe can get rid of the _MIGRATION policy anytime (now, 13, sometime in between), and then that\u0027ll leave only 1 policy related to this, avoiding confusion.",
+      "parentUuid": "ff8dd7bc_795b20a0",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ce7ebe6_682aa2b1",

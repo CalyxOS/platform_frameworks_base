@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1fb7fd_6eb9751d",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-05T23:49:00Z",
+      "side": 1,
+      "message": "This would basically make it same as 11 then, as far the output is concerned. Works",
+      "revId": "28f0b85ba1baeadc93c0717febc55b01f842d2c9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
