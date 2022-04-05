@@ -103,7 +103,7 @@ public class SystemBackupAgent extends BackupAgentHelper {
         addHelper(ACCOUNT_MANAGER_HELPER, new AccountManagerBackupHelper());
         addHelper(SLICES_HELPER, new SliceBackupHelper(this));
         addHelper(PEOPLE_HELPER, new PeopleBackupHelper(mUserId));
-        addHelper(NETWORK_POLICY_HELPER, new NetworkPolicyBackupHelper());
+        addHelper(NETWORK_POLICY_HELPER, new NetworkPolicyBackupHelper(mUserId));
     }
 
     @Override
