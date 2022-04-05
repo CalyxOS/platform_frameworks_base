@@ -80,4 +80,10 @@ interface INetworkPolicyManager {
 
     boolean isUidNetworkingBlocked(int uid, boolean meteredNetwork);
     boolean isUidRestrictedOnMeteredNetworks(int uid);
+<<<<<<< HEAD   (d9a7d8 Hidden Apps filter for use in the Settings app)
+=======
+
+    byte[] getBackupPayload(int user);
+    void applyRestore(in byte[] payload, int user);
+>>>>>>> CHANGE (a8e152 fixup! Implement backup/restore for network policy)
 }
