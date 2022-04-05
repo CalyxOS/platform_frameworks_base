@@ -83,7 +83,6 @@ public class GlobalSettings {
         Settings.Global.USER_PREFERRED_RESOLUTION_HEIGHT,
         Settings.Global.USER_PREFERRED_RESOLUTION_WIDTH,
         Settings.Global.POWER_BUTTON_LONG_PRESS,
-        Settings.Global.WIFI_OFF_TIMEOUT,
-        Settings.Global.UIDS_ALLOWED_ON_RESTRICTED_NETWORKS
+        Settings.Global.WIFI_OFF_TIMEOUT
     };
 }
