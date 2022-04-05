@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b469c65_a9181863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-05T19:22:58Z",
+      "side": 1,
+      "message": "I think it is better if we set the old policy REJECT_ALL during backup and revert from backing up this setting since we already have migration code in NetworkPolicyManagerService and the following patch should handle each user correctly\nhttps://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/10477",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ce7ebe6_682aa2b1",
