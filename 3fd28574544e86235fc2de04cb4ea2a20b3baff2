@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ddf525_67cd888c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-05T19:33:35Z",
+      "side": 1,
+      "message": "We can add a new POLICY_REJECT_ALL_BACKUP for that to avoid confusion.",
+      "parentUuid": "4b469c65_a9181863",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ce7ebe6_682aa2b1",
