@@ -34,6 +34,24 @@
       "parentUuid": "73db3f8c_dc4ccc0a",
       "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d6d6ac_3c0d0659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-06T11:20:05Z",
+      "side": 1,
+      "message": "Actually, with the validator the value would still be restored if present in previous backups",
+      "parentUuid": "3caf64c6_7822dd8d",
+      "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
