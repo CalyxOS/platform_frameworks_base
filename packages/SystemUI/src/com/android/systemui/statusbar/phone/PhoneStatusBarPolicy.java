@@ -20,6 +20,7 @@ import android.annotation.Nullable;
 import android.app.ActivityTaskManager;
 import android.app.AlarmManager;
 import android.app.AlarmManager.AlarmClockInfo;
+import android.app.AppGlobals;
 import android.app.IActivityManager;
 import android.app.SynchronousUserSwitchObserver;
 import android.content.BroadcastReceiver;
@@ -78,6 +79,7 @@ import com.android.systemui.util.time.DateFormatUtil;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Executor;
@@ -578,9 +580,12 @@ public class PhoneStatusBarPolicy
                 boolean isRestricted = INetworkPolicyManager.Stub.asInterface(
                         ServiceManager.getService(Context.NETWORK_POLICY_SERVICE))
                         .isUidNetworkingBlocked(uid, false);
+                boolean isLauncher = AppGlobals.getPackageManager().resolveIntent(
+                        new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), null, 0,
+                        UserHandle.getUserId(uid)) != null;
                 mHandler.post(() -> {
                     final boolean showIcon;
-                    if (isRestricted && (!mKeyguardStateController.isShowing()
+                    if (!isLauncher && isRestricted && (!mKeyguardStateController.isShowing()
                             || mKeyguardStateController.isOccluded())) {
                         showIcon = true;
                         mIconController.setIcon(mSlotFirewall, R.drawable.stat_sys_firewall, null);
