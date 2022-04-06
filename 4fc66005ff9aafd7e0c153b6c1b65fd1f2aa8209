@@ -106,6 +106,24 @@
       "parentUuid": "5c62b414_09dae205",
       "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bb0a2f_96c5e9fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-06T12:26:44Z",
+      "side": 1,
+      "message": "My bad, you\u0027re right. Should test once with an old backup, but otherwise this is ok",
+      "parentUuid": "64444faf_6942f845",
+      "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
