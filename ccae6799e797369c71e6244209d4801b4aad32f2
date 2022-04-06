@@ -16,6 +16,24 @@
       "message": "Why remove this?",
       "revId": "ccae6799e797369c71e6244209d4801b4aad32f2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d901a5_5ac00f04",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2919,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-06T01:18:50Z",
+      "side": 0,
+      "message": "Restore provides the user id instead and we do not want to write policies for other users anymore",
+      "parentUuid": "2c76a13e_4130c5f3",
+      "revId": "ccae6799e797369c71e6244209d4801b4aad32f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
