@@ -16,6 +16,24 @@
       "message": "We need to verify that global settings are not restored on secondary users. Additionally, unsure how to handle UIDs for packages that are not present (if this runs only in primary user during suw)",
       "revId": "7820144c7fe483f6974042e50b845ca9c74e8d4f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b44f823_fb1b0ea7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-06T02:21:26Z",
+      "side": 1,
+      "message": "Global settings are not restore on secondary users since Settings Storage is not restored. And we now handle UIDs that are present in secondary users during restore.",
+      "parentUuid": "0b2c509b_1411ec59",
+      "revId": "7820144c7fe483f6974042e50b845ca9c74e8d4f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
