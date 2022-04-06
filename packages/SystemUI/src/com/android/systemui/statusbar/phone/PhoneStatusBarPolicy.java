@@ -22,6 +22,7 @@ import android.annotation.Nullable;
 import android.app.ActivityTaskManager;
 import android.app.AlarmManager;
 import android.app.AlarmManager.AlarmClockInfo;
+import android.app.AppGlobals;
 import android.app.IActivityManager;
 import android.app.SynchronousUserSwitchObserver;
 import android.app.admin.DevicePolicyManager;
@@ -30,6 +31,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.net.INetworkPolicyManager;
@@ -81,6 +83,8 @@ import com.android.systemui.util.time.DateFormatUtil;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Executor;
@@ -587,13 +591,23 @@ public class PhoneStatusBarPolicy
     private void updateFirewall() {
         mUiBgExecutor.execute(() -> {
             try {
-                int uid = ActivityTaskManager.getService().getLastResumedActivityUid();
-                boolean isRestricted = INetworkPolicyManager.Stub.asInterface(
+                final int uid = ActivityTaskManager.getService().getLastResumedActivityUid();
+                final boolean isRestricted = INetworkPolicyManager.Stub.asInterface(
                         ServiceManager.getService(Context.NETWORK_POLICY_SERVICE))
                         .isUidNetworkingBlocked(uid, false);
+                boolean isLauncher = false;
+                List<ResolveInfo> homeActivities = new ArrayList<>();
+                AppGlobals.getPackageManager().getHomeActivities(homeActivities);
+                for (ResolveInfo homeActivity : homeActivities) {
+                    if (uid == homeActivity.activityInfo.applicationInfo.uid) {
+                        isLauncher = true;
+                        break;
+                    }
+                }
+                final boolean finalIsLauncher = isLauncher;
                 mHandler.post(() -> {
                     final boolean showIcon;
-                    if (isRestricted && (!mKeyguardStateController.isShowing()
+                    if (!finalIsLauncher && isRestricted && (!mKeyguardStateController.isShowing()
                             || mKeyguardStateController.isOccluded())) {
                         showIcon = true;
                         mIconController.setIcon(mSlotFirewall, R.drawable.stat_sys_firewall, null);
