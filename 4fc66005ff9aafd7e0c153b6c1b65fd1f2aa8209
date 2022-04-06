@@ -52,6 +52,24 @@
       "parentUuid": "3caf64c6_7822dd8d",
       "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add3434e_b2932d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-06T12:14:41Z",
+      "side": 1,
+      "message": "Yes drop it.\n\nAlso, remember the changes you did to change the backup / restore format of this setting? Do one thing, make a new commit, but only add the restore part of it, and skip restoring it entirely.\n\nBasically:\n\n```\nonRestore()\nif (key.equals(restricted uid)) continue\n```\n\nThat\u0027ll skip restoring this key and fix existing backups.",
+      "parentUuid": "46d6d6ac_3c0d0659",
+      "revId": "4fc66005ff9aafd7e0c153b6c1b65fd1f2aa8209",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
