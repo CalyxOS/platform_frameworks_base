@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdbbcbe1_2ed059c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-06T12:27:17Z",
+      "side": 1,
+      "message": "Moved out of chain, ready to merge.",
+      "revId": "1b3b7891d9c1b99d5489b92b2e45506e75a37adf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
