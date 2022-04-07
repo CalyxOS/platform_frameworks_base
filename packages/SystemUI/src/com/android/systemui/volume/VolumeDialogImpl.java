@@ -96,6 +96,7 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -298,6 +299,8 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
     private final InteractionJankMonitor mInteractionJankMonitor;
 
     private int mWindowGravity;
+
+    private FrameLayout mRoundedBorderBottom;
 
     @VisibleForTesting
     final int mVolumeRingerIconDrawableId = R.drawable.ic_speaker_on;
@@ -679,6 +682,8 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
 
         mSettingsView = mDialog.findViewById(R.id.settings_container);
         mSettingsIcon = mDialog.findViewById(R.id.settings);
+
+        mRoundedBorderBottom = mDialog.findViewById(R.id.rounded_border_bottom);
 
         if (mRows.isEmpty()) {
             if (!AudioSystem.isSingleVolume(mContext)) {
@@ -1221,6 +1226,11 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
     }
 
     private void initSettingsH(int lockTaskModeState) {
+        if (mRoundedBorderBottom != null) {
+            mRoundedBorderBottom.setVisibility(!mDeviceProvisionedController.isCurrentUserSetup() ||
+                    mActivityManager.getLockTaskModeState() != LOCK_TASK_MODE_NONE
+                    ? VISIBLE : GONE);
+        }
         if (mSettingsView != null) {
             mSettingsView.setVisibility(
                     mDeviceProvisionedController.isCurrentUserSetup() &&
