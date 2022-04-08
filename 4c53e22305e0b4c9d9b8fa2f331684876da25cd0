@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd944d38_cfe5f12e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-04-08T11:01:55Z",
+      "side": 1,
+      "message": "Tested on lemonade with usb c to hdmi hub",
+      "revId": "4c53e22305e0b4c9d9b8fa2f331684876da25cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
