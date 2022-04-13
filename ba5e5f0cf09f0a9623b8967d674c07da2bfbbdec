@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbd0c75_9822a71b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-13T14:38:40Z",
+      "side": 1,
+      "message": "PS2 fixes entries not being clickable",
+      "revId": "ba5e5f0cf09f0a9623b8967d674c07da2bfbbdec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
