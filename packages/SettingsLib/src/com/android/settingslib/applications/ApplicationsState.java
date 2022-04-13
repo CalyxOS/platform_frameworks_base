@@ -210,7 +210,8 @@ public class ApplicationsState {
                 PackageManager.MATCH_DISABLED_COMPONENTS |
                 PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
         mRetrieveFlags = PackageManager.MATCH_DISABLED_COMPONENTS |
-                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+                PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS |
+                PackageManager.MATCH_UNINSTALLED_PACKAGES;
 
         final List<ModuleInfo> moduleInfos = mPm.getInstalledModules(0 /* flags */);
         for (ModuleInfo info : moduleInfos) {
