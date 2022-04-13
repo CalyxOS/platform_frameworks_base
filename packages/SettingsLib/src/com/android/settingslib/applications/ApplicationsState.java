@@ -121,7 +121,9 @@ public class ApplicationsState {
     final StorageStatsManager mStats;
     final int mAdminRetrieveFlags;
     final int mRetrieveFlags;
-    PackageIntentReceiver mPackageIntentReceiver;
+    final IntentFilter packageFilter;
+    final IntentFilter sdFilter;
+    final IntentFilter userFilter;
 
     boolean mResumed;
     boolean mHaveDisabledApps;
@@ -209,8 +211,22 @@ public class ApplicationsState {
         mAdminRetrieveFlags = PackageManager.MATCH_ANY_USER |
                 PackageManager.MATCH_DISABLED_COMPONENTS |
                 PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
-        mRetrieveFlags = PackageManager.MATCH_DISABLED_COMPONENTS |
+        mRetrieveFlags = PackageManager.MATCH_UNINSTALLED_PACKAGES |
+                PackageManager.MATCH_DISABLED_COMPONENTS |
                 PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+
+        packageFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+        packageFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        packageFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
+        packageFilter.addDataScheme("package");
+
+        sdFilter = new IntentFilter();
+        sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE);
+        sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE);
+
+        userFilter = new IntentFilter();
+        userFilter.addAction(Intent.ACTION_USER_ADDED);
+        userFilter.addAction(Intent.ACTION_USER_REMOVED);
 
         final List<ModuleInfo> moduleInfos = mPm.getInstalledModules(0 /* flags */);
         for (ModuleInfo info : moduleInfos) {
@@ -260,10 +276,6 @@ public class ApplicationsState {
             return;
         }
         mResumed = true;
-        if (mPackageIntentReceiver == null) {
-            mPackageIntentReceiver = new PackageIntentReceiver();
-            mPackageIntentReceiver.registerReceiver();
-        }
 
         final List<ApplicationInfo> prevApplications = mApplications;
         mApplications = new ArrayList<>();
@@ -452,10 +464,6 @@ public class ApplicationsState {
 
     void doPauseLocked() {
         mResumed = false;
-        if (mPackageIntentReceiver != null) {
-            mPackageIntentReceiver.unregisterReceiver();
-            mPackageIntentReceiver = null;
-        }
     }
 
     public AppEntry getEntry(String packageName, int userId) {
@@ -634,7 +642,7 @@ public class ApplicationsState {
                 if (DEBUG) Log.i(TAG, "removePackage: " + entry);
                 if (entry != null) {
                     mEntriesMap.get(userId).remove(pkgName);
-                    mAppEntries.remove(entry);
+                    mAppEntries.removeAll(Collections.singleton(entry));
                 }
                 ApplicationInfo info = mApplications.get(idx);
                 mApplications.remove(idx);
@@ -693,8 +701,8 @@ public class ApplicationsState {
             HashMap<String, AppEntry> userMap = mEntriesMap.get(userId);
             if (userMap != null) {
                 for (AppEntry appEntry : userMap.values()) {
-                    mAppEntries.remove(appEntry);
-                    mApplications.remove(appEntry.info);
+                    mAppEntries.removeAll(Collections.singleton(appEntry));
+                    mApplications.removeAll(Collections.singleton(appEntry.info));
                 }
                 mEntriesMap.remove(userId);
                 if (!mMainHandler.hasMessages(MainHandler.MSG_PACKAGE_LIST_CHANGED)) {
@@ -815,6 +823,19 @@ public class ApplicationsState {
 
         public void setSessionFlags(@SessionFlags int flags) {
             mFlags = flags;
+        }
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        public void onCreate() {
+            Log.d(TAG, "onCreate() " + UserHandle.myUserId());
+            for (UserInfo user : mUm.getProfiles(UserHandle.myUserId())) {
+                mContext.registerReceiverAsUser(new PackageIntentReceiver(), user.getUserHandle(),
+                        packageFilter, null, null);
+                mContext.registerReceiverAsUser(new ExternalApplicationIntentReceiver(),
+                        user.getUserHandle(), sdFilter, null, null);
+                mContext.registerReceiverAsUser(new UserIntentReceiver(), user.getUserHandle(),
+                        userFilter, null, null);
+            }
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -1128,7 +1149,7 @@ public class ApplicationsState {
                                 if (entry != null && !hasFlag(entry.info.flags,
                                         ApplicationInfo.FLAG_INSTALLED)) {
                                     mEntriesMap.get(0).remove(info.packageName);
-                                    mAppEntries.remove(entry);
+                                    mAppEntries.removeAll(Collections.singleton(entry));
                                 }
                             }
                         }
@@ -1424,28 +1445,6 @@ public class ApplicationsState {
      * Receives notifications when applications are added/removed.
      */
     private class PackageIntentReceiver extends BroadcastReceiver {
-        void registerReceiver() {
-            IntentFilter filter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
-            filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-            filter.addAction(Intent.ACTION_PACKAGE_CHANGED);
-            filter.addDataScheme("package");
-            mContext.registerReceiver(this, filter);
-            // Register for events related to sdcard installation.
-            IntentFilter sdFilter = new IntentFilter();
-            sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE);
-            sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE);
-            mContext.registerReceiver(this, sdFilter);
-            // Register for events related to user creation/deletion.
-            IntentFilter userFilter = new IntentFilter();
-            userFilter.addAction(Intent.ACTION_USER_ADDED);
-            userFilter.addAction(Intent.ACTION_USER_REMOVED);
-            mContext.registerReceiver(this, userFilter);
-        }
-
-        void unregisterReceiver() {
-            mContext.unregisterReceiver(this);
-        }
-
         @Override
         public void onReceive(Context context, Intent intent) {
             String actionStr = intent.getAction();
@@ -1460,6 +1459,11 @@ public class ApplicationsState {
                 String pkgName = data.getEncodedSchemeSpecificPart();
                 for (int i = 0; i < mEntriesMap.size(); i++) {
                     removePackage(pkgName, mEntriesMap.keyAt(i));
+                    if (!intent.getBooleanExtra(Intent.EXTRA_DATA_REMOVED, true)
+                            && !intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) {
+                        Log.d(TAG, "addPackage() " + UserHandle.myUserId());
+                        addPackage(pkgName, mEntriesMap.keyAt(i));
+                    }
                 }
             } else if (Intent.ACTION_PACKAGE_CHANGED.equals(actionStr)) {
                 Uri data = intent.getData();
@@ -1467,7 +1471,15 @@ public class ApplicationsState {
                 for (int i = 0; i < mEntriesMap.size(); i++) {
                     invalidatePackage(pkgName, mEntriesMap.keyAt(i));
                 }
-            } else if (Intent.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE.equals(actionStr) ||
+            }
+        }
+    }
+
+    private class ExternalApplicationIntentReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String actionStr = intent.getAction();
+            if (Intent.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE.equals(actionStr) ||
                     Intent.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE.equals(actionStr)) {
                 // When applications become available or unavailable (perhaps because
                 // the SD card was inserted or ejected) we need to refresh the
@@ -1488,7 +1500,15 @@ public class ApplicationsState {
                         }
                     }
                 }
-            } else if (Intent.ACTION_USER_ADDED.equals(actionStr)) {
+            }
+        }
+    }
+
+    private class UserIntentReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String actionStr = intent.getAction();
+            if (Intent.ACTION_USER_ADDED.equals(actionStr)) {
                 addUser(intent.getIntExtra(Intent.EXTRA_USER_HANDLE, UserHandle.USER_NULL));
             } else if (Intent.ACTION_USER_REMOVED.equals(actionStr)) {
                 removeUser(intent.getIntExtra(Intent.EXTRA_USER_HANDLE, UserHandle.USER_NULL));
