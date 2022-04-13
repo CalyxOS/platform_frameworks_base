@@ -209,7 +209,8 @@ public class ApplicationsState {
         mAdminRetrieveFlags = PackageManager.MATCH_ANY_USER |
                 PackageManager.MATCH_DISABLED_COMPONENTS |
                 PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
-        mRetrieveFlags = PackageManager.MATCH_DISABLED_COMPONENTS |
+        mRetrieveFlags = PackageManager.MATCH_UNINSTALLED_PACKAGES |
+                PackageManager.MATCH_DISABLED_COMPONENTS |
                 PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
 
         final List<ModuleInfo> moduleInfos = mPm.getInstalledModules(0 /* flags */);
@@ -1460,6 +1461,10 @@ public class ApplicationsState {
                 String pkgName = data.getEncodedSchemeSpecificPart();
                 for (int i = 0; i < mEntriesMap.size(); i++) {
                     removePackage(pkgName, mEntriesMap.keyAt(i));
+                    if (!intent.getBooleanExtra(Intent.EXTRA_DATA_REMOVED, true)
+                            && !intent.getBooleanExtra(Intent.EXTRA_REPLACING, true)) {
+                        addPackage(pkgName, mEntriesMap.keyAt(i));
+                    }
                 }
             } else if (Intent.ACTION_PACKAGE_CHANGED.equals(actionStr)) {
                 Uri data = intent.getData();
