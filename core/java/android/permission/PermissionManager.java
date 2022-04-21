@@ -234,6 +234,11 @@ public final class PermissionManager {
         mPermissionManager = IPermissionManager.Stub.asInterface(ServiceManager.getServiceOrThrow(
                 "permissionmgr"));
         mLegacyPermissionManager = context.getSystemService(LegacyPermissionManager.class);
+
+        mLocationProviderPkgNames = context.getResources().getStringArray(
+                R.array.config_locationProviderPackageNames);
+        mLocationExtraPkgNames = context.getResources().getStringArray(
+                R.array.config_locationExtraPackageNames);
     }
 
     /**
@@ -1193,10 +1198,6 @@ public final class PermissionManager {
             for (int i = 0; i < EXEMPTED_ROLES.length; i++) {
                 INDICATOR_EXEMPTED_PACKAGES[i] = context.getString(EXEMPTED_ROLES[i]);
             }
-            mLocationProviderPkgNames = context.getResources().getStringArray(
-                    R.array.config_locationProviderPackageNames);
-            mLocationExtraPkgNames = context.getResources().getStringArray(
-                    R.array.config_locationExtraPackageNames);
         }
     }
     /**
