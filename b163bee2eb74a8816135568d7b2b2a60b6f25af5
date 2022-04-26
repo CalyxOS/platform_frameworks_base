@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f2a689_bbd9a41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-04-26T10:54:27Z",
+      "side": 1,
+      "message": "Do we want apex-updates topic or tether-vpn-upstream?",
+      "revId": "b163bee2eb74a8816135568d7b2b2a60b6f25af5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
