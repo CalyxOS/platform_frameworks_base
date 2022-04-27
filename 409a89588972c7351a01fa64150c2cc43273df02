@@ -16,6 +16,23 @@
       "message": "I think this is fine too.",
       "revId": "409a89588972c7351a01fa64150c2cc43273df02",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5daf238_44f0d086",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-04-27T14:09:18Z",
+      "side": 1,
+      "message": "_meh_",
+      "revId": "409a89588972c7351a01fa64150c2cc43273df02",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
