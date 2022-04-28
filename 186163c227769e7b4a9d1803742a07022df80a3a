@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c12d26e_fd2f4d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-28T10:42:19Z",
+      "side": 1,
+      "message": "Did you test this?\n\nI no longer have firewall icon showing up in Launcher, but now it also won\u0027t how up when I open MuPDF Viewer, which doesn\u0027t have internet permissions at all.\n\nOr Contacts, disabled network access for that, ",
+      "revId": "186163c227769e7b4a9d1803742a07022df80a3a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
