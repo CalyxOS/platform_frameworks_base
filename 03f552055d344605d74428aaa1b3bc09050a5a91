@@ -54,6 +54,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4511bf39_e341293a",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T20:15:30Z",
+      "side": 1,
+      "message": "Caching causes issues.",
+      "parentUuid": "c7699e82_a955d3a5",
+      "revId": "03f552055d344605d74428aaa1b3bc09050a5a91",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6925e79d_ca688cc3",
