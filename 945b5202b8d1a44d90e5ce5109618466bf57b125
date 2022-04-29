@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491fdaea_fd919a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T21:45:24Z",
+      "side": 1,
+      "message": "One thing is this now shows \"Not installed for this user\" for all apps in the Settings -\u003e Apps -\u003e Work tab, and that doesn\u0027t work the best.\n\nWe did talk about this Oliver, but it just feels a bit unfinished due to that.\n\n",
+      "revId": "945b5202b8d1a44d90e5ce5109618466bf57b125",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
