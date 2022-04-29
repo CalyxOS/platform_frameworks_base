@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7457d60a_852b4d0f",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T20:16:02Z",
+      "side": 1,
+      "message": "It\u0027s either this or member variable.\n\n`error: local variables referenced from a lambda expression must be final or effectively final`",
+      "revId": "c130f548b786876ac0df34bba4aee6ebd464fe16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
