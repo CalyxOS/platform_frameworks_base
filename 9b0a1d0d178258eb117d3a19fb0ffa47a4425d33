@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc28489_412739aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T17:12:13Z",
+      "side": 1,
+      "message": "😭",
+      "revId": "9b0a1d0d178258eb117d3a19fb0ffa47a4425d33",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0efe608_b61be540",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T17:12:13Z",
+      "side": 1,
+      "message": "Sadly this doesn\u0027t work reliably either.\n\nIt works fine with just Launcher3\n\nThe moment I install a third party launcher, it doesn\u0027t work well for Launcher3 anymore, but worked fine for the launcher I installed (Last Launcher from F-Droid)",
+      "revId": "9b0a1d0d178258eb117d3a19fb0ffa47a4425d33",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
