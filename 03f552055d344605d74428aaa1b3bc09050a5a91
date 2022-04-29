@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3cd016e_4cadb01b",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T13:28:37Z",
+      "side": 1,
+      "message": "We should cache this, no need to look it up every time.\n\nThen it becomes a simple chip find uid in list.",
+      "revId": "03f552055d344605d74428aaa1b3bc09050a5a91",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6925e79d_ca688cc3",
         "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
         "patchSetId": 2
