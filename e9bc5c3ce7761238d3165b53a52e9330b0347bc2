@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c96180_0dfa3c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-03T17:45:45Z",
+      "side": 1,
+      "message": "No longer seeing \"not installed for this user\"",
+      "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
