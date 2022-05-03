@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ce8bcf_dd466d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-03T12:19:47Z",
+      "side": 1,
+      "message": "Still has the whole \"not installed for this user\" thing for work profile apps, check Settings -\u003e Apps -\u003e Show all apps -\u003e Work\n\nShows apps that aren\u0027t installed in the work profile, and those items don\u0027t respond to taps.\n\nI can hide and unhide hidden apps at least. ",
+      "revId": "e186b2213df0a445bab77b751153537a57893493",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
