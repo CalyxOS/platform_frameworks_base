@@ -16,6 +16,23 @@
       "message": "Still has the whole \"not installed for this user\" thing for work profile apps, check Settings -\u003e Apps -\u003e Show all apps -\u003e Work\n\nShows apps that aren\u0027t installed in the work profile, and those items don\u0027t respond to taps.\n\nI can hide and unhide hidden apps at least. ",
       "revId": "e186b2213df0a445bab77b751153537a57893493",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0228e8a_59abb7c2",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-03T12:21:23Z",
+      "side": 1,
+      "message": "Guess we can try something here",
+      "revId": "e186b2213df0a445bab77b751153537a57893493",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
