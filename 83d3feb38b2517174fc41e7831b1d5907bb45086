@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae31e67_e7ec09dc",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-03T11:49:13Z",
+      "side": 1,
+      "message": "If we get package removed:\n  if data is not removed (for hide it wouldn\u0027t be)\n  AND\n  app is not being replaced (aka upgrade)\n  then:\n    re-add it to the list",
+      "revId": "83d3feb38b2517174fc41e7831b1d5907bb45086",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
