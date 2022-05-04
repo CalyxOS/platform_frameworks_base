@@ -56,6 +56,30 @@
       },
       "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9b43ad_4cea791f",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-04T11:16:14Z",
+      "side": 1,
+      "message": "EXTRA_REPLACING indicates that a PACKAGE_ADDED will follow",
+      "parentUuid": "7d2281f1_93a9088a",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1454,
+        "endChar": 21
+      },
+      "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
