@@ -16,6 +16,23 @@
       "message": "No longer seeing \"not installed for this user\"",
       "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9fffc8_95516032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T11:11:26Z",
+      "side": 1,
+      "message": "Works fine for\n\n1. Normal users, A0\n2. Work profile, A1\n3. Secondary users, B0\n\n",
+      "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
