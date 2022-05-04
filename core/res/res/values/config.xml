@@ -1757,6 +1757,9 @@
 
     <string-array name="config_locationExtraPackageNames" translatable="false"></string-array>
 
+    <!-- Packages exempt from status bar location indicator. -->
+    <string-array name="config_locationIndicatorExemptPkgNames" translatable="false"></string-array>
+
     <!-- The package name of the default network recommendation app.
          A network recommendation provider must:
              * Be granted the SCORE_NETWORKS permission.
