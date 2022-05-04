@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t happen anymore.\n\nTest:\nInstall app in work profile\nMake sure it isn\u0027t installed in user 0\n\nNow it shows a \"Not installed in user\" for that app under Personal.\n\nBut I think that\u0027s alright, since it\u0027s still tappable.",
       "revId": "a77a4b6adc5032c71d5c72a4f581ab25d1b2479c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c463d0_3bfbdbd0",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-04T11:17:45Z",
+      "side": 0,
+      "message": "Feel free to try adding this part back. I removed it thinking it would be enough for all users to skip uninstalled packages but apparently not",
+      "parentUuid": "d828d8ca_73f0decf",
+      "revId": "a77a4b6adc5032c71d5c72a4f581ab25d1b2479c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
