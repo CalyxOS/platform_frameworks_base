@@ -755,15 +755,6 @@ final class DefaultPermissionGrantPolicy {
                         ALWAYS_LOCATION_PERMISSIONS, ACTIVITY_RECOGNITION_PERMISSIONS);
             }
         }
-        if (locationExtraPackageNames != null) {
-            // Also grant location and activity recognition permission to location extra packages.
-            for (String packageName : locationExtraPackageNames) {
-                grantPermissionsToSystemPackage(pm, packageName, userId,
-                        ALWAYS_LOCATION_PERMISSIONS, NEARBY_DEVICES_PERMISSIONS);
-                grantSystemFixedPermissionsToSystemPackage(pm, packageName, userId,
-                        ACTIVITY_RECOGNITION_PERMISSIONS);
-            }
-        }
 
         // Music
         Intent musicIntent = new Intent(Intent.ACTION_VIEW)
