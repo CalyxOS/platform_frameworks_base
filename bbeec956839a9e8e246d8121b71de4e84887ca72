@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39f2aad_ee289e0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T20:38:28Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java;l\u003d761;drc\u003d2b493bb13eb5e59a4dd125ca6fe679732bdd571b\n\n```\n        if (locationExtraPackageNames !\u003d null) {\n            // Also grant location and activity recognition permission to location extra packages.\n            for (String packageName : locationExtraPackageNames) {\n                grantPermissionsToSystemPackage(pm, packageName, userId,\n                        ALWAYS_LOCATION_PERMISSIONS, NEARBY_DEVICES_PERMISSIONS);\n                grantSystemFixedPermissionsToSystemPackage(pm, packageName, userId,\n                        ACTIVITY_RECOGNITION_PERMISSIONS);\n            }\n        }\n```",
+      "revId": "bbeec956839a9e8e246d8121b71de4e84887ca72",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
