@@ -33,6 +33,29 @@
       "message": "Works fine for\n\n1. Normal users, A0\n2. Work profile, A1\n3. Secondary users, B0\n\n",
       "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2281f1_93a9088a",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-05-04T11:15:04Z",
+      "side": 1,
+      "message": "maybe avoid removing the package if the cond is true?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1454,
+        "endChar": 21
+      },
+      "revId": "e9bc5c3ce7761238d3165b53a52e9330b0347bc2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
