@@ -352,4 +352,132 @@ final class RemovePackageHelper {
             });
         }
     }
+
+    /*
+     * This method deletes the package from internal data structures.
+     * The data directory is not removed.
+     */
+    public void removePackageMetaDataLIF(final PackageSetting deletedPs, @NonNull int[] allUserHandles,
+            PackageRemovedInfo outInfo, int flags, boolean writeSettings) {
+        String packageName = deletedPs.getPackageName();
+        if (DEBUG_REMOVE) Slog.d(TAG, "removePackageDataLI: " + deletedPs);
+        // Retrieve object to delete permissions for shared user later on
+        final AndroidPackage deletedPkg = deletedPs.getPkg();
+        if (outInfo != null) {
+            outInfo.mRemovedPackage = packageName;
+            outInfo.mInstallerPackageName = deletedPs.getInstallSource().installerPackageName;
+            outInfo.mIsStaticSharedLib = deletedPkg != null
+                    && deletedPkg.getStaticSharedLibName() != null;
+            outInfo.populateUsers(deletedPs.queryInstalledUsers(
+                    mUserManagerInternal.getUserIds(), true), deletedPs);
+            outInfo.mIsExternal = deletedPs.isExternalStorage();
+        }
+
+        removePackageLI(deletedPs.getPackageName(), (flags & PackageManager.DELETE_CHATTY) != 0);
+
+        /*if ((flags & PackageManager.DELETE_KEEP_DATA) == 0) {
+            final AndroidPackage resolvedPkg;
+            if (deletedPkg != null) {
+                resolvedPkg = deletedPkg;
+            } else {
+                // We don't have a parsed package when it lives on an ejected
+                // adopted storage device, so fake something together
+                resolvedPkg = PackageImpl.buildFakeForDeletion(deletedPs.getPackageName(),
+                        deletedPs.getVolumeUuid());
+            }
+            mAppDataHelper.destroyAppDataLIF(resolvedPkg, UserHandle.USER_ALL,
+                    FLAG_STORAGE_DE | FLAG_STORAGE_CE | FLAG_STORAGE_EXTERNAL);
+            mAppDataHelper.destroyAppProfilesLIF(resolvedPkg);
+            if (outInfo != null) {
+                outInfo.mDataRemoved = true;
+            }
+        }*/
+
+        int removedAppId = -1;
+
+        // writer
+        boolean installedStateChanged = false;
+        //if ((flags & PackageManager.DELETE_KEEP_DATA) == 0) {
+            final SparseBooleanArray changedUsers = new SparseBooleanArray();
+            synchronized (mPm.mLock) {
+                //mPm.mDomainVerificationManager.clearPackage(deletedPs.getPackageName());
+                //mPm.mSettings.getKeySetManagerService().removeAppKeySetDataLPw(packageName);
+                final Computer snapshot = mPm.snapshotComputer();
+                mPm.mAppsFilter.removePackage(snapshot,
+                        snapshot.getPackageStateInternal(packageName), false /* isReplace */);
+                removedAppId = mPm.mSettings.removePackageLPw(packageName);
+                if (outInfo != null) {
+                    outInfo.mRemovedAppId = removedAppId;
+                }
+                if (!mPm.mSettings.isDisabledSystemPackageLPr(packageName)) {
+                    // If we don't have a disabled system package to reinstall, the package is
+                    // really gone and its permission state should be removed.
+                    SharedUserSetting sus = mPm.mSettings.getSharedUserSettingLPr(deletedPs);
+                    List<AndroidPackage> sharedUserPkgs =
+                            sus != null ? sus.getPackages() : Collections.emptyList();
+                    //mPermissionManager.onPackageUninstalled(packageName, deletedPs.getAppId(),
+                            deletedPkg, sharedUserPkgs, UserHandle.USER_ALL);
+                    // After permissions are handled, check if the shared user can be migrated
+                    if (sus != null) {
+                        mPm.mSettings.checkAndConvertSharedUserSettingsLPw(sus);
+                    }
+                }
+                //mPm.clearPackagePreferredActivitiesLPw(
+                //        deletedPs.getPackageName(), changedUsers, UserHandle.USER_ALL);
+
+                mPm.mSettings.removeRenamedPackageLPw(deletedPs.getRealName());
+            }
+            if (changedUsers.size() > 0) {
+                final PreferredActivityHelper preferredActivityHelper =
+                        new PreferredActivityHelper(mPm);
+                preferredActivityHelper.updateDefaultHomeNotLocked(mPm.snapshotComputer(),
+                        changedUsers);
+                mPm.postPreferredActivityChangedBroadcast(UserHandle.USER_ALL);
+            }
+        //}
+        // make sure to preserve per-user disabled state if this removal was just
+        // a downgrade of a system app to the factory package
+        if (outInfo != null && outInfo.mOrigUsers != null) {
+            if (DEBUG_REMOVE) {
+                Slog.d(TAG, "Propagating install state across downgrade");
+            }
+            for (int userId : allUserHandles) {
+                final boolean installed = ArrayUtils.contains(outInfo.mOrigUsers, userId);
+                if (DEBUG_REMOVE) {
+                    Slog.d(TAG, "    user " + userId + " => " + installed);
+                }
+                if (installed != deletedPs.getInstalled(userId)) {
+                    installedStateChanged = true;
+                }
+                deletedPs.setInstalled(installed, userId);
+                if (installed) {
+                    deletedPs.setUninstallReason(UNINSTALL_REASON_UNKNOWN, userId);
+                }
+            }
+        }
+        synchronized (mPm.mLock) {
+            // can downgrade to reader
+            if (writeSettings) {
+                // Save settings now
+                mPm.writeSettingsLPrTEMP();
+            }
+            if (installedStateChanged) {
+                mPm.mSettings.writeKernelMappingLPr(deletedPs);
+            }
+        }
+
+        if (removedAppId != -1) {
+            // A user ID was deleted here. Go through all users and remove it from KeyStore.
+            final int appIdToRemove = removedAppId;
+            mPm.mInjector.getBackgroundHandler().post(() -> {
+                try {
+                    Trace.traceBegin(TRACE_TAG_PACKAGE_MANAGER,
+                            "clearKeystoreData:" + appIdToRemove);
+                    mAppDataHelper.clearKeystoreData(UserHandle.USER_ALL, appIdToRemove);
+                } finally {
+                    Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
+                }
+            });
+        }
+    }
 }
