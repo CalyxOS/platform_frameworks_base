@@ -129,7 +129,7 @@ final class RemovePackageHelper {
         }
     }
 
-    private void removePackageLI(String packageName, boolean chatty) {
+    public void removePackageLI(String packageName, boolean chatty) {
         if (DEBUG_INSTALL) {
             if (chatty) {
                 Log.d(TAG, "Removing package " + packageName);

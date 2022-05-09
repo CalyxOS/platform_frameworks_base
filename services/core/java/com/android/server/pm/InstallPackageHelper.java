@@ -18,6 +18,7 @@ package com.android.server.pm;
 
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+import static android.content.pm.PackageManager.DELETE_KEEP_DATA;
 import static android.content.pm.PackageManager.INSTALL_FAILED_ALREADY_EXISTS;
 import static android.content.pm.PackageManager.INSTALL_FAILED_BAD_PERMISSION_GROUP;
 import static android.content.pm.PackageManager.INSTALL_FAILED_DUPLICATE_PACKAGE;
@@ -205,6 +206,8 @@ final class InstallPackageHelper {
     private final ViewCompiler mViewCompiler;
     private final SharedLibrariesImpl mSharedLibraries;
     private final PackageManagerServiceInjector mInjector;
+
+    private static final String[] DEMOTED_SYSTEM_PACKAGES = {"org.fdroid.fdroid"};
 
     // TODO(b/198166813): remove PMS dependency
     InstallPackageHelper(PackageManagerService pm, AppDataHelper appDataHelper) {
@@ -3327,7 +3330,11 @@ final class InstallPackageHelper {
             if (disabledPs == null) {
                 logCriticalInfo(Log.WARN, "System package " + packageName
                         + " no longer exists; its data will be wiped");
-                mRemovePackageHelper.removePackageDataLIF(ps, userIds, null, 0, false);
+                int flags = 0;
+                if (ArrayUtils.contains(DEMOTED_SYSTEM_PACKAGES, packageName)) {
+                    flags |= DELETE_KEEP_DATA;
+                }
+                mRemovePackageHelper.removePackageDataLIF(ps, userIds, null, flags, false);
             } else {
                 // we still have a disabled system package, but, it still might have
                 // been removed. check the code path still exists and check there's
