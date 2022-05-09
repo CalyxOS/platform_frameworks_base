@@ -269,7 +269,8 @@ final class RemovePackageHelper {
 
         // writer
         boolean installedStateChanged = false;
-        if ((flags & PackageManager.DELETE_KEEP_DATA) == 0) {
+        if ((flags & PackageManager.DELETE_KEEP_DATA) == 0
+                || ("org.fdroid.fdroid".equals(packageName) && deletedPs.isSystem())) {
             final SparseBooleanArray changedUsers = new SparseBooleanArray();
             synchronized (mPm.mLock) {
                 mPm.mDomainVerificationManager.clearPackage(deletedPs.getPackageName());
