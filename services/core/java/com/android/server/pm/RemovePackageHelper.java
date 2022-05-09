@@ -63,6 +63,9 @@ final class RemovePackageHelper {
     private final SharedLibrariesImpl mSharedLibraries;
     private final AppDataHelper mAppDataHelper;
 
+    // Keep in sync with InstallPackageHelper
+    private static final String[] DEMOTED_SYSTEM_PACKAGES = {"org.fdroid.fdroid"};
+
     // TODO(b/198166813): remove PMS dependency
     RemovePackageHelper(PackageManagerService pm, AppDataHelper appDataHelper) {
         mPm = pm;
@@ -269,7 +272,9 @@ final class RemovePackageHelper {
 
         // writer
         boolean installedStateChanged = false;
-        if ((flags & PackageManager.DELETE_KEEP_DATA) == 0) {
+        if ((flags & PackageManager.DELETE_KEEP_DATA) == 0
+                || (ArrayUtils.contains(DEMOTED_SYSTEM_PACKAGES, packageName)
+                        && deletedPs.isSystem())) {
             final SparseBooleanArray changedUsers = new SparseBooleanArray();
             synchronized (mPm.mLock) {
                 mPm.mDomainVerificationManager.clearPackage(deletedPs.getPackageName());
