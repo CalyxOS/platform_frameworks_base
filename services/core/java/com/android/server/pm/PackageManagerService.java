@@ -829,6 +829,8 @@ public class PackageManagerService extends IPackageManager.Stub
     private static final String[] MICROG_FAKE_SIGNATURE_PACKAGES =
             new String[] { "com.google.android.gms", "com.android.vending"};
 
+    private static final String[] DEMOTED_SYSTEM_PACKAGES = {"org.fdroid.fdroid"};
+
     final Handler mHandler;
 
     private final ProcessLoggingHandler mProcessLoggingHandler;
@@ -7771,7 +7773,10 @@ public class PackageManagerService extends IPackageManager.Stub
                         continue;
                     }
 
-                    if (!mSettings.isDisabledSystemPackageLPr(ps.name)) {
+                    if (ArrayUtils.contains(DEMOTED_SYSTEM_PACKAGES, ps.name)) {
+                        logCriticalInfo(Log.WARN, "System package " + ps.name
+                                + " has been demoted; it's data will not be wiped");
+                    } else if (!mSettings.isDisabledSystemPackageLPr(ps.name)) {
                         logCriticalInfo(Log.WARN, "System package " + ps.name
                                 + " no longer exists; it's data will be wiped");
                         removePackageDataLIF(ps, userIds, null, 0, false);
