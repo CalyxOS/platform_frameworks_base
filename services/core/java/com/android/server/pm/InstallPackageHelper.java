@@ -22,6 +22,7 @@ import static android.content.pm.PackageManager.APP_METADATA_SOURCE_INSTALLER;
 import static android.content.pm.PackageManager.APP_METADATA_SOURCE_UNKNOWN;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+import static android.content.pm.PackageManager.DELETE_KEEP_DATA;
 import static android.content.pm.PackageManager.INSTALL_FAILED_ALREADY_EXISTS;
 import static android.content.pm.PackageManager.INSTALL_FAILED_BAD_PERMISSION_GROUP;
 import static android.content.pm.PackageManager.INSTALL_FAILED_DEPRECATED_SDK_VERSION;
@@ -225,6 +226,8 @@ final class InstallPackageHelper {
     private final SharedLibrariesImpl mSharedLibraries;
     private final PackageManagerServiceInjector mInjector;
     private final UpdateOwnershipHelper mUpdateOwnershipHelper;
+
+    private static final String[] DEMOTED_SYSTEM_PACKAGES = {"com.android.vending"};
 
     // TODO(b/198166813): remove PMS dependency
     InstallPackageHelper(PackageManagerService pm,
@@ -3420,9 +3423,21 @@ final class InstallPackageHelper {
             }
 
             if (disabledPs == null) {
+                String action = "wiped";
+                int flags = 0;
+                if (ArrayUtils.contains(DEMOTED_SYSTEM_PACKAGES, packageName)) {
+                    action = "kept";
+                    ps.setFlags(ps.getFlags() & ~ApplicationInfo.FLAG_SYSTEM
+                            & ~ApplicationInfo.FLAG_UPDATED_SYSTEM_APP);
+                    ps.setPrivateFlags(ps.getPrivateFlags()
+                            & ~ApplicationInfo.PRIVATE_FLAG_PRODUCT
+                            & ~ApplicationInfo.PRIVATE_FLAG_PRIVILEGED);
+                    flags |= DELETE_KEEP_DATA;
+                }
                 logCriticalInfo(Log.WARN, "System package " + packageName
-                        + " no longer exists; its data will be wiped");
-                mRemovePackageHelper.removePackageData(ps, userIds);
+                        + " no longer exists; its data will be " + action);
+                mRemovePackageHelper.removePackageDataLIF(ps, UserHandle.USER_ALL, userIds,
+                        new PackageRemovedInfo(), flags, false);
             } else {
                 // we still have a disabled system package, but, it still might have
                 // been removed. check the code path still exists and check there's
