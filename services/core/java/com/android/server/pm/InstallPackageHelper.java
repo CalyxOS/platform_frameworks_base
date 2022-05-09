@@ -205,6 +205,8 @@ final class InstallPackageHelper {
     private final SharedLibrariesImpl mSharedLibraries;
     private final PackageManagerServiceInjector mInjector;
 
+    private static final String[] DEMOTED_SYSTEM_PACKAGES = {"org.fdroid.fdroid"};
+
     // TODO(b/198166813): remove PMS dependency
     InstallPackageHelper(PackageManagerService pm, AppDataHelper appDataHelper) {
         mPm = pm;
@@ -3320,7 +3322,10 @@ final class InstallPackageHelper {
                 continue;
             }
 
-            if (disabledPs == null) {
+            if (ArrayUtils.contains(DEMOTED_SYSTEM_PACKAGES, packageName)) {
+                logCriticalInfo(Log.WARN, "System package " + packageName
+                        + " has been demoted; it's data will not be wiped");
+            } else if (disabledPs == null) {
                 logCriticalInfo(Log.WARN, "System package " + packageName
                         + " no longer exists; its data will be wiped");
                 mRemovePackageHelper.removePackageDataLIF(ps, userIds, null, 0, false);
