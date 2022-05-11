@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a19f922_092afc15",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4323,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-11T18:31:10Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:packages/modules/Connectivity/service/src/com/android/server/ConnectivityService.java;l\u003d1858;drc\u003d127b71f69388145309f32ec163c29718d195e320\nIf networking is blocked for a UID, it will return null",
+      "range": {
+        "startLine": 4323,
+        "startChar": 16,
+        "endLine": 4323,
+        "endChar": 99
+      },
+      "revId": "df22f45a7a4b92fdb431f361408bfdcaba27f00e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69274d70_f549f80c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4328,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-11T18:31:10Z",
+      "side": 1,
+      "message": "If nc is null we don\u0027t check if uid is restricted by our policies and assume it is not",
+      "range": {
+        "startLine": 4328,
+        "startChar": 52,
+        "endLine": 4328,
+        "endChar": 62
+      },
+      "revId": "df22f45a7a4b92fdb431f361408bfdcaba27f00e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77992f1_c6e2bd89",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4346,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-11T18:31:10Z",
+      "side": 1,
+      "message": "Should we assume an app does not have restricted mode access if the returned network capabilities are null (meaning its networking is blocked by some rule)?",
+      "range": {
+        "startLine": 4346,
+        "startChar": 55,
+        "endLine": 4346,
+        "endChar": 79
+      },
+      "revId": "df22f45a7a4b92fdb431f361408bfdcaba27f00e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
