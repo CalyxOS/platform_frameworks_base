@@ -4320,8 +4320,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             final long token = Binder.clearCallingIdentity();
             NetworkCapabilities nc;
             try {
-                nc = mConnManager.getNetworkCapabilities(
-                        mConnManager.getActiveNetworkForUid(uid, true));
+                nc = mConnManager.getNetworkCapabilities(mConnManager.getActiveNetworkForUid(uid));
             } finally {
                 Binder.restoreCallingIdentity(token);
             }
@@ -4343,8 +4342,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 }
             }
             // If app is restricted (aka not on the allowlist), it's not allowed to use the internet
-            // If it is on the allowlist, then we also check the policy additionally
-            return isUidAllowedOnRestrictedNetworks && !isUidRestrictedByPolicy;
+            // If it is on the allowlist, then we also check its networking is not blocked
+            // (aka active network is not null) and then other policies
+            return isUidAllowedOnRestrictedNetworks && nc != null && !isUidRestrictedByPolicy;
         } catch (RemoteException e) {
             return false;
         }
