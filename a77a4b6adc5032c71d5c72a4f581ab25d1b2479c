@@ -52,6 +52,24 @@
       "parentUuid": "f6c463d0_3bfbdbd0",
       "revId": "a77a4b6adc5032c71d5c72a4f581ab25d1b2479c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f8f14e_d7f3d83c",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/applications/ApplicationsState.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-16T13:01:29Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "b8f8e85b_7de2e763",
+      "revId": "a77a4b6adc5032c71d5c72a4f581ab25d1b2479c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
