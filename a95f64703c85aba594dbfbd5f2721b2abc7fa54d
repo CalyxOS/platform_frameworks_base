@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6423a214_f9b0cefc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-05-16T11:59:39Z",
+      "side": 1,
+      "message": "Function is not exposed to system API. Only getActiveNetwork is available",
+      "revId": "a95f64703c85aba594dbfbd5f2721b2abc7fa54d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
