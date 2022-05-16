@@ -16,6 +16,24 @@
       "message": "Function is not exposed to system API. Only getActiveNetwork is available",
       "revId": "a95f64703c85aba594dbfbd5f2721b2abc7fa54d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7a6175_418a9992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-16T12:14:39Z",
+      "side": 1,
+      "message": "I don\u0027t mind just trying APEX updates without this in that case and seeing how it goes.\n\ni.e. 10871: Revert \"Expose getActiveNetworkForUid to system API\" | https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/10871 - keep the original change, no revert.\n\nIt should mostly be fine, we\u0027ll see.",
+      "parentUuid": "6423a214_f9b0cefc",
+      "revId": "a95f64703c85aba594dbfbd5f2721b2abc7fa54d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
