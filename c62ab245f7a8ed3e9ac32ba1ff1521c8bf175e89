@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949e04c3_0834d14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-03T18:11:24Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/10696/1/core/java/android/permission/PermissionManager.java 😎",
+      "revId": "c62ab245f7a8ed3e9ac32ba1ff1521c8bf175e89",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
