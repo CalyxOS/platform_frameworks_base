@@ -16,6 +16,23 @@
       "message": "hid work profile app\ntapping settings -\u003e apps -\u003e work -\u003e app name does nothing\n\nhttps://zifb.in/raw/FITbWi1y0E",
       "revId": "f15aa6c8074db9d4f8b1cd521782549dfd4f22d7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deafaefa_4551c64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-14T14:24:28Z",
+      "side": 1,
+      "message": "Works with managed-profile.\n\nGiven that we\u0027re going to have to ship that anyway, let\u0027s go.",
+      "revId": "f15aa6c8074db9d4f8b1cd521782549dfd4f22d7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
