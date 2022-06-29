@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebda5747_7d5cf684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-29T16:55:13Z",
+      "side": 1,
+      "message": "Oliver can you make sure it\u0027s in sync with AOSP ",
+      "revId": "d4804ea081c02f3227fdc336974b12cdbe3d4c51",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
