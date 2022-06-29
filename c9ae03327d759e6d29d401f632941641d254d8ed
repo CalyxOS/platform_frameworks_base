@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c689716d_f70bbdfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-29T16:44:26Z",
+      "side": 1,
+      "message": "TODO: Test with https://review.lineageos.org/q/topic:twelve-legacy-wfd",
+      "revId": "c9ae03327d759e6d29d401f632941641d254d8ed",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
