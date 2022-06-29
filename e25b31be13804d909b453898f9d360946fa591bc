@@ -16,6 +16,23 @@
       "message": "This makes MozillaNlpBackend\u0027s location access only while in use - need to fix that before merging.",
       "revId": "e25b31be13804d909b453898f9d360946fa591bc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaba447_906aaa96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-29T16:50:59Z",
+      "side": 1,
+      "message": "Might be safe to just keep this in for now.",
+      "revId": "e25b31be13804d909b453898f9d360946fa591bc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
