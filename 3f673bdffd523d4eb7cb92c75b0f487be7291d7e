@@ -67,6 +67,23 @@
       "message": "Works for a newly-created secondary user. Also appears to have resolved the issue with my pre-existing secondary user, which now shows transports in `adb shell bmgr --user $user list transports` and is able to utilize the \"Backup now\" feature of Seedvault instead of showing an error that backup is not enabled.",
       "revId": "3f673bdffd523d4eb7cb92c75b0f487be7291d7e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca6449b_74c04cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-30T19:50:50Z",
+      "side": 1,
+      "message": "All that\u0027s left then is a test with managed-profile just to be sure",
+      "revId": "3f673bdffd523d4eb7cb92c75b0f487be7291d7e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
