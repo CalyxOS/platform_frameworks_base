@@ -10584,11 +10584,9 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         }
         ComponentName profileOwnerComponent =
                 mOwners.getProfileOwnerComponent(managedProfileUser.getIdentifier());
-        if (profileOwnerComponent == null) {
-            throw new IllegalStateException("There is no profile owner on the given profile");
-        }
         Intent primaryProfileSuccessIntent = new Intent(ACTION_MANAGED_PROFILE_PROVISIONED);
-        primaryProfileSuccessIntent.setPackage(profileOwnerComponent.getPackageName());
+        primaryProfileSuccessIntent.setPackage(profileOwnerComponent != null ?
+                profileOwnerComponent.getPackageName() : null);
         primaryProfileSuccessIntent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES
                 | Intent.FLAG_RECEIVER_FOREGROUND);
         primaryProfileSuccessIntent.putExtra(Intent.EXTRA_USER, managedProfileUser);
