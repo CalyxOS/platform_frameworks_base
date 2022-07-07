@@ -16,6 +16,58 @@
       "message": "Not tested extensively. Also would need an exposed mechanism to toggle. A tile might do",
       "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c873d86e_c28b40b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-07T17:13:01Z",
+      "side": 1,
+      "message": "\u003e Not tested extensively. Also would need an exposed mechanism to toggle. A tile might do\n\nHow does this play with the existing \u0027Sensors\u0027 tile?",
+      "parentUuid": "8cadb07d_72a894bc",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a0b697_c58c892e",
+        "filename": "services/core/java/com/android/server/SensorPrivacyService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-07T17:13:01Z",
+      "side": 1,
+      "message": "Judging by this, your change would affect new installs. What about existing users?",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c8e2fa_308fc223",
+        "filename": "services/core/java/com/android/server/SensorPrivacyService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-07T17:13:01Z",
+      "side": 1,
+      "message": "I would say maybe it can be an upgrade here, but then what about conflicts with AOSP",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
