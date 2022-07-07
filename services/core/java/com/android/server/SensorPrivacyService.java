@@ -1059,7 +1059,7 @@ public final class SensorPrivacyService extends SystemService {
                 // New file, default state for current version goes here.
                 mEnabled = new SparseBooleanArray();
                 mIndividualEnabled = new SparseArray<>();
-                forAllUsers(userId -> mEnabled.put(userId, false));
+                forAllUsers(userId -> mEnabled.put(userId, true));
                 forAllUsers(userId -> mIndividualEnabled.put(userId, new SparseArray<>()));
                 return true;
             }
