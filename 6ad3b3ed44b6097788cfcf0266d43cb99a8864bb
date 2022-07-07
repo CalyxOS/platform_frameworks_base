@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cadb07d_72a894bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-07-07T17:03:36Z",
+      "side": 1,
+      "message": "Not tested extensively. Also would need an exposed mechanism to toggle. A tile might do",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
