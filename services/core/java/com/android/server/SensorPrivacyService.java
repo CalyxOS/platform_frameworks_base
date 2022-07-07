@@ -1062,7 +1062,7 @@ public final class SensorPrivacyService extends SystemService {
                 SparseArray<SensorState> individualDefaultEnabled = new SparseArray<>();
                 individualDefaultEnabled.put(CAMERA, new SensorState(true));
                 individualDefaultEnabled.put(MICROPHONE, new SensorState(true));
-                forAllUsers(userId -> mEnabled.put(userId, false));
+                forAllUsers(userId -> mEnabled.put(userId, true));
                 forAllUsers(userId -> mIndividualEnabled.put(userId, individualDefaultEnabled));
                 return true;
             }
