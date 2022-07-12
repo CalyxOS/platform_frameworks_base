@@ -126,6 +126,7 @@ public class ApplicationsState {
     boolean mResumed;
     boolean mHaveDisabledApps;
     boolean mHaveInstantApps;
+    boolean mHaveHiddenApps;
 
     // Information about all applications.  Synchronize on mEntriesMap
     // to protect access to these.
@@ -297,6 +298,7 @@ public class ApplicationsState {
 
         mHaveDisabledApps = false;
         mHaveInstantApps = false;
+        mHaveHiddenApps = false;
         for (int i = 0; i < mApplications.size(); i++) {
             final ApplicationInfo info = mApplications.get(i);
             // Need to trim out any applications that are disabled by
@@ -315,6 +317,10 @@ public class ApplicationsState {
             }
             if (!mHaveInstantApps && AppUtils.isInstant(info)) {
                 mHaveInstantApps = true;
+            }
+            if (!mHaveHiddenApps && hasFlag(info.privateFlags,
+                    ApplicationInfo.PRIVATE_FLAG_HIDDEN)) {
+                mHaveHiddenApps = true;
             }
 
             int userId = UserHandle.getUserId(info.uid);
@@ -424,6 +430,10 @@ public class ApplicationsState {
 
     public boolean haveInstantApps() {
         return mHaveInstantApps;
+    }
+
+    public boolean haveHiddenApps() {
+        return mHaveHiddenApps;
     }
 
     boolean isHiddenModule(String packageName) {
@@ -612,6 +622,10 @@ public class ApplicationsState {
                 if (AppUtils.isInstant(info)) {
                     mHaveInstantApps = true;
                 }
+                if (!mHaveHiddenApps && hasFlag(info.privateFlags,
+                        ApplicationInfo.PRIVATE_FLAG_HIDDEN)) {
+                    mHaveHiddenApps = true;
+                }
                 mApplications.add(info);
                 if (!mBackgroundHandler.hasMessages(BackgroundHandler.MSG_LOAD_ENTRIES)) {
                     mBackgroundHandler.sendEmptyMessage(BackgroundHandler.MSG_LOAD_ENTRIES);
@@ -653,6 +667,16 @@ public class ApplicationsState {
                     for (ApplicationInfo otherInfo : mApplications) {
                         if (AppUtils.isInstant(otherInfo)) {
                             mHaveInstantApps = true;
+                            break;
+                        }
+                    }
+                }
+                if (hasFlag(info.privateFlags, ApplicationInfo.PRIVATE_FLAG_HIDDEN)) {
+                    mHaveHiddenApps = false;
+                    for (ApplicationInfo otherInfo : mApplications) {
+                        if (hasFlag(info.privateFlags,
+                                ApplicationInfo.PRIVATE_FLAG_HIDDEN)) {
+                            mHaveHiddenApps = true;
                             break;
                         }
                     }
@@ -1850,6 +1874,19 @@ public class ApplicationsState {
         @Override
         public boolean filterApp(AppEntry entry) {
             return !entry.info.enabled && !AppUtils.isInstant(entry.info);
+        }
+    };
+
+    public static final AppFilter FILTER_HIDDEN = new AppFilter() {
+        @Override
+        public void init() {
+        }
+
+        @Override
+        public boolean filterApp(AppEntry entry) {
+            return !AppUtils.isInstant(entry.info)
+                    && hasFlag(entry.info.privateFlags,
+                    ApplicationInfo.PRIVATE_FLAG_HIDDEN);
         }
     };
 
