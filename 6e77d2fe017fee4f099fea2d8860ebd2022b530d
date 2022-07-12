@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9b15ff_fba7441c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-12T14:59:49Z",
+      "side": 1,
+      "message": "Won\u0027t be shipped.\n\nOnly for easier testing of managed-profile migration before shipping that.",
+      "revId": "6e77d2fe017fee4f099fea2d8860ebd2022b530d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
