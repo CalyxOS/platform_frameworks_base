@@ -1160,6 +1160,8 @@
 
     <!-- [CHAR LIMIT=25] Manage applications, text telling using an application is disabled. -->
     <string name="disabled">Disabled</string>
+    <!-- [CHAR LIMIT=25] Manage applications, text telling using an application is hidden. -->
+    <string name="hidden">Hidden</string>
     <!-- Summary of app trusted to install apps [CHAR LIMIT=45] -->
     <string name="external_source_trusted">Allowed</string>
     <!-- Summary of app not trusted to install apps [CHAR LIMIT=45] -->
