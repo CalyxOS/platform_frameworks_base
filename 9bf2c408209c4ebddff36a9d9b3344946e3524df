@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa5f0f7_aaff0246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-07-15T22:23:55Z",
+      "side": 1,
+      "message": "Patch set 1 was a big mistake, but if you want to stop your phone from booting, check it out!",
+      "revId": "9bf2c408209c4ebddff36a9d9b3344946e3524df",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
