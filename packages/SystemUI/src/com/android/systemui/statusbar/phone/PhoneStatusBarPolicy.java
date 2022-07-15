@@ -33,8 +33,10 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
+import android.net.INetworkPolicyListener;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.NetworkPolicyManager;
 import android.net.NetworkPolicyManager;
 import android.os.Handler;
 import android.os.Looper;
@@ -369,6 +371,8 @@ public class PhoneStatusBarPolicy
         mLocationController.addCallback(this);
         mRecordingController.addCallback(this);
 
+        registerNetworkPolicyListener();
+
         mCommandQueue.addCallback(this);
 
         // Get initial user setup state
@@ -649,6 +653,36 @@ public class PhoneStatusBarPolicy
             }
         });
     }
+
+    private void registerNetworkPolicyListener() {
+        try {
+            INetworkPolicyManager policyManager = INetworkPolicyManager.Stub.asInterface(
+                    ServiceManager.getService(Context.NETWORK_POLICY_SERVICE));
+            policyManager.registerListener(mNetworkPolicyListener);
+        } catch (RemoteException e) {
+            Log.e(TAG, "registerNetworkPolicyListener: ", e);
+            return;
+        }
+    }
+
+    private final INetworkPolicyListener mNetworkPolicyListener =
+            new NetworkPolicyManager.Listener() {
+        @Override
+        public void onUidRulesChanged(int uid, int uidRules) {
+            if (DEBUG) Log.d(TAG, "INetworkPolicyListener." +
+                    "onUidRulesChanged: uid: " + uid +
+                    ", uidRules: " + uidRules);
+            updateFirewall();
+        }
+
+        @Override
+        public void onUidPoliciesChanged(int uid, int uidPolicies) {
+            if (DEBUG) Log.d(TAG, "INetworkPolicyListener." +
+                    "onUidPoliciesChanged: uid: " + uid +
+                    ", uidPolicies: " + uidPolicies);
+            updateFirewall();
+        }
+    };
 
     private final ConnectivityManager.NetworkCallback mNetworkCallback =
             new ConnectivityManager.NetworkCallback() {
