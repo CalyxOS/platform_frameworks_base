@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cc8a64_1eac42e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-17T18:42:52Z",
+      "side": 1,
+      "message": "Shelter was able to create a work profile even after this change.",
+      "revId": "b62d6f996c297d5f37c645519c295d738eb4f644",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
