@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58b3f87_cefe0d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-07-17T13:33:58Z",
+      "side": 1,
+      "message": "Noticing a bug which causes the blocking icon to appear for apps that do not even use the Internet permission, such as Calculator, if you enter such an app and then disconnect from the internet (turn off Wi-Fi or enter airplane mode).\n\nMay need additional callback(s) or other adjustments to fix.",
+      "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
