@@ -34,6 +34,24 @@
       "parentUuid": "e58b3f87_cefe0d34",
       "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d62f969_4fb125d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-07-17T16:52:16Z",
+      "side": 1,
+      "message": "Okay, interesting. The problem, then, is that when the blocking icon appears for an app like Calculator (which it does when disconnecting from the internet), that icon goes away if you switch out of the app and back. So there\u0027s some inconsistent behavior there.",
+      "parentUuid": "54f58b29_75555482",
+      "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
