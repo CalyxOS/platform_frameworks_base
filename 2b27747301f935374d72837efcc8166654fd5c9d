@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db63f3c4_d07da448",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-07-30T13:03:18Z",
+      "side": 1,
+      "message": "Tested back and forth in emulator. Does not fix whatever underlying problem leads to nonexistent codePath/sourceDir, since that is not known, but does fix Settings app NPE without requiring user to look through logs and reinstall faulty package. (Probably not high-priority for review vs 6a/13.)",
+      "revId": "2b27747301f935374d72837efcc8166654fd5c9d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
