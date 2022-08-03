@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d7abc4_1b0a9b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-08-03T16:05:43Z",
+      "side": 1,
+      "message": "Builds and I see no crashes with google maps installed",
+      "revId": "f72aa1dd217f00492b1d87df57f111b59f3d961d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
