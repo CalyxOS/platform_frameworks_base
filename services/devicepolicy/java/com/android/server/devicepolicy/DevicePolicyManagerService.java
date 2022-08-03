@@ -16055,12 +16055,13 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
     @Override
     public boolean isLogoutEnabled() {
+        // logout is enabled unless explicitly disabled by a device owner
         if (!mHasFeature) {
-            return false;
+            return true;
         }
         synchronized (getLockObject()) {
             ActiveAdmin deviceOwner = getDeviceOwnerAdminLocked();
-            return (deviceOwner != null) && deviceOwner.isLogoutEnabled;
+            return (deviceOwner == null) || deviceOwner.isLogoutEnabled;
         }
     }
 

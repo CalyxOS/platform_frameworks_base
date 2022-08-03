@@ -214,7 +214,7 @@ class ActiveAdmin {
     boolean requireAutoTime = false;
     boolean forceEphemeralUsers = false;
     boolean isNetworkLoggingEnabled = false;
-    boolean isLogoutEnabled = false;
+    boolean isLogoutEnabled = true;
 
     // one notification after enabling + one more after reboots
     static final int DEF_MAXIMUM_NETWORK_LOGGING_NOTIFICATIONS_SHOWN = 2;
@@ -536,7 +536,7 @@ class ActiveAdmin {
         if (organizationName != null) {
             writeTextToXml(out, TAG_ORGANIZATION_NAME, organizationName);
         }
-        if (isLogoutEnabled) {
+        if (!isLogoutEnabled) {
             writeAttributeValueToXml(out, TAG_IS_LOGOUT_ENABLED, isLogoutEnabled);
         }
         if (startUserSessionMessage != null) {
@@ -811,7 +811,7 @@ class ActiveAdmin {
                     Slogf.w(LOG_TAG, "Missing text when loading organization name");
                 }
             } else if (TAG_IS_LOGOUT_ENABLED.equals(tag)) {
-                isLogoutEnabled = parser.getAttributeBoolean(null, ATTR_VALUE, false);
+                isLogoutEnabled = parser.getAttributeBoolean(null, ATTR_VALUE, true);
             } else if (TAG_START_USER_SESSION_MESSAGE.equals(tag)) {
                 type = parser.next();
                 if (type == TypedXmlPullParser.TEXT) {
