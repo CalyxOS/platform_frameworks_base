@@ -49,6 +49,10 @@ class LockSettingsShellCommand extends ShellCommand {
             "set-resume-on-reboot-provider-package";
     private static final String COMMAND_REQUIRE_STRONG_AUTH =
             "require-strong-auth";
+    private static final String COMMAND_GET_POWER_BUTTON_INSTANTLY_LOCKS =
+            "get-power-button-instantly-locks";
+    private static final String COMMAND_SET_POWER_BUTTON_INSTANTLY_LOCKS =
+            "set-power-button-instantly-locks";
     private static final String COMMAND_HELP = "help";
 
     private int mCurrentUserId;
@@ -100,6 +104,12 @@ class LockSettingsShellCommand extends ShellCommand {
                     return 0;
                 case COMMAND_REQUIRE_STRONG_AUTH:
                     runRequireStrongAuth();
+                    return 0;
+                case COMMAND_GET_POWER_BUTTON_INSTANTLY_LOCKS:
+                    runGetPowerButtonInstantlyLocks();
+                    return 0;
+                case COMMAND_SET_POWER_BUTTON_INSTANTLY_LOCKS:
+                    runSetPowerButtonInstantlyLocks();
                     return 0;
                 case COMMAND_HELP:
                     onHelp();
@@ -194,6 +204,12 @@ class LockSettingsShellCommand extends ShellCommand {
             pw.println("  require-strong-auth [--user USER_ID] <reason>");
             pw.println("    Requires strong authentication. The current supported reasons:");
             pw.println("    STRONG_AUTH_REQUIRED_AFTER_USER_LOCKDOWN.");
+            pw.println("");
+            pw.println("  get-power-button-instantly-locks [--user USER_ID]");
+            pw.println("    Check whether the power button instantly locks.");
+            pw.println("");
+            pw.println("  set-power-button-instantly-locks [--user USER_ID] <true|false>");
+            pw.println("    Sets whether the power button instantly locks.");
             pw.println("");
         }
     }
@@ -296,6 +312,17 @@ class LockSettingsShellCommand extends ShellCommand {
         getOutPrintWriter().println("Require strong auth for USER_ID "
                 + mCurrentUserId + " because of " + mNew);
         return true;
+    }
+
+    private void runGetPowerButtonInstantlyLocks() {
+        final boolean enabled = mLockPatternUtils.getPowerButtonInstantlyLocks(mCurrentUserId);
+        getOutPrintWriter().println(enabled);
+    }
+
+    private void runSetPowerButtonInstantlyLocks() {
+        final boolean enabled = Boolean.parseBoolean(mNew);
+        mLockPatternUtils.setPowerButtonInstantlyLocks(enabled, mCurrentUserId);
+        getOutPrintWriter().println("Power button instantly locks set to " + enabled);
     }
 
     private boolean runClear() {
