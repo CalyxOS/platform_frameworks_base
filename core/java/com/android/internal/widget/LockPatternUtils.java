@@ -1212,6 +1212,11 @@ public class LockPatternUtils {
         return getBoolean(LOCKSCREEN_POWER_BUTTON_INSTANTLY_LOCKS, true, userId);
     }
 
+    @UnsupportedAppUsage
+    public boolean getPowerButtonInstantlyLocks(int userId, boolean defaultValue) {
+        return getBoolean(LOCKSCREEN_POWER_BUTTON_INSTANTLY_LOCKS, defaultValue, userId);
+    }
+
     public boolean isPowerButtonInstantlyLocksEverChosen(int userId) {
         return getString(LOCKSCREEN_POWER_BUTTON_INSTANTLY_LOCKS, userId) != null;
     }
