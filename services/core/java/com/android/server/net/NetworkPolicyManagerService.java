@@ -3024,6 +3024,15 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    @Override
+    public void updateRestrictedModeAllowlist() {
+        mContext.enforceCallingOrSelfPermission(MANAGE_NETWORK_POLICY, TAG);
+
+        synchronized (mUidRulesFirstLock) {
+            updateRestrictedModeAllowlistUL();
+        }
+    }
+
     @GuardedBy("mUidRulesFirstLock")
     private void setUidPolicyUncheckedUL(int uid, int oldPolicy, int policy, boolean persist) {
         setUidPolicyUncheckedUL(uid, policy, false);

@@ -619,6 +619,18 @@ public class NetworkPolicyManager {
         }
     }
 
+    /**
+     * Update app firewall restrictions, i.e. in response to a network change.
+     */
+    @RequiresPermission(android.Manifest.permission.MANAGE_NETWORK_POLICY)
+    public void updateRestrictedModeAllowlist() {
+        try {
+            mService.updateRestrictedModeAllowlist();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
     /** {@hide} */
     @Deprecated
     public static Iterator<Pair<ZonedDateTime, ZonedDateTime>> cycleIterator(NetworkPolicy policy) {

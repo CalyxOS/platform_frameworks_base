@@ -81,4 +81,6 @@ interface INetworkPolicyManager {
 
     byte[] getBackupPayload();
     void applyRestore(in byte[] payload);
+
+    void updateRestrictedModeAllowlist();
 }
