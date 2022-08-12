@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97016a81_d18e9df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-08-12T02:31:44Z",
+      "side": 1,
+      "message": "This may not be the best way to solve this, but it works.\n\nAn attempted alternative: calling mConnManager.registerNetworkCallback with new NetworkRequest().Builder().removeCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN).build() to allow it to receive changes related to VPNs; however, this doesn\u0027t seem to result in the expected calls, as calls are still not received from split-tunnel VPNs.\n\nRequires changes to platform_packages_modules_Connectivity as well.",
+      "revId": "73318f23ece060da4e665fd0ab26eaa4fd9b5ae5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
