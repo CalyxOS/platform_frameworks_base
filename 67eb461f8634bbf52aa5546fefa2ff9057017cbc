@@ -70,6 +70,24 @@
       "parentUuid": "0d62f969_4fb125d6",
       "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6f797f_154ebae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-08-17T20:45:08Z",
+      "side": 1,
+      "message": "Mind testing the behaviour in the work profile too? It is helpful to see if the work profile icon also has the same bug since the code that is used for detection of the top acitivity is the same",
+      "parentUuid": "0be8adba_1f71365c",
+      "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
