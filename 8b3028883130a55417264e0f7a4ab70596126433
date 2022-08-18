@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f521b4e_f692ce50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2022-08-18T12:50:13Z",
+      "side": 1,
+      "message": "subscriptions plan seems to have been moved in independent function",
+      "revId": "8b3028883130a55417264e0f7a4ab70596126433",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
