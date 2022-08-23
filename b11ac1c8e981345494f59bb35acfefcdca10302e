@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ada862_aface4f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-08-23T20:38:47Z",
+      "side": 1,
+      "message": "Do we need this code anymore?\n\nWe\u0027ll only allow upgrades to 13 from 12L (potentially even only from the next build), so it\u0027d be safe to assume everyone has migrated.\n\nI doubt anyone is manually skipping 12/12L and going from 11 to 13 via sideload or something. That may cause other issues anyways",
+      "revId": "b11ac1c8e981345494f59bb35acfefcdca10302e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
