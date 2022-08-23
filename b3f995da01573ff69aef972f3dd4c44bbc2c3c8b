@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3ae6bf_4f0072c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-08-23T20:36:39Z",
+      "side": 1,
+      "message": "Don\u0027t really need this anymore, I think.",
+      "revId": "b3f995da01573ff69aef972f3dd4c44bbc2c3c8b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
