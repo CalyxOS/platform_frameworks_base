@@ -16,6 +16,24 @@
       "message": "Do we need this code anymore?\n\nWe\u0027ll only allow upgrades to 13 from 12L (potentially even only from the next build), so it\u0027d be safe to assume everyone has migrated.\n\nI doubt anyone is manually skipping 12/12L and going from 11 to 13 via sideload or something. That may cause other issues anyways",
       "revId": "b11ac1c8e981345494f59bb35acfefcdca10302e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9e1471_cb77007c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-08-23T20:40:16Z",
+      "side": 1,
+      "message": "We may use this for firewall backup. Let\u0027s keep an eye on this patch if/when merging the topic in 12L",
+      "parentUuid": "b7ada862_aface4f2",
+      "revId": "b11ac1c8e981345494f59bb35acfefcdca10302e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
