@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87b47a8_961977e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-08-23T20:37:40Z",
+      "side": 1,
+      "message": "fixups should be squashed.\n\nDo note that auto rebase removes the commit message, so I\u0027d squash it myself to retain that since it\u0027s good to have.",
+      "revId": "74673ca290ed5e25f0bfd85cc5466f8a88d1ada9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
