@@ -34,6 +34,24 @@
       "parentUuid": "b7ada862_aface4f2",
       "revId": "b11ac1c8e981345494f59bb35acfefcdca10302e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "823513fe_693edef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-08-26T12:25:04Z",
+      "side": 1,
+      "message": "I see, 10357: Add custom handling for backup/restore of UIDS_ALLOWED_ON_RESTRICTED_NETWORKS | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/10357\n\nLet\u0027s just update the commit message and comments then before merging.",
+      "parentUuid": "8b9e1471_cb77007c",
+      "revId": "b11ac1c8e981345494f59bb35acfefcdca10302e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
