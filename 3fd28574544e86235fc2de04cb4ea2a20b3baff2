@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9b17135_5df1b130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-08-29T20:01:02Z",
+      "side": 1,
+      "message": "Keep in mind these patches need to be submitted upstream as well and lineage will support upgrade from 17.1/18.1/19.1 to 20. Any additional changes/cleanup we do should be in separate commits.",
+      "parentUuid": "6644fa6d_1944c825",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ce7ebe6_682aa2b1",
         "filename": "packages/SettingsProvider/src/com/android/providers/settings/SettingsHelper.java",
         "patchSetId": 7
