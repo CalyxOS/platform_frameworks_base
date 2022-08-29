@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d3eff7_4ca7489c",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2230,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-08-29T11:51:49Z",
+      "side": 1,
+      "message": "synchronized (this) {}\nI forgot to wrap it.",
+      "revId": "c3f2c0e6e0177bce10e026e10da375166707107b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
