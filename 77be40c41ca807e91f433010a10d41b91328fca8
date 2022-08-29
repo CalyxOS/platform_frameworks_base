@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1507f2b6_53799cc7",
+        "filename": "services/core/java/com/android/server/display/WifiDisplayController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2022-08-29T12:06:10Z",
+      "side": 1,
+      "message": "+4 :space:",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 74
+      },
+      "revId": "77be40c41ca807e91f433010a10d41b91328fca8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
