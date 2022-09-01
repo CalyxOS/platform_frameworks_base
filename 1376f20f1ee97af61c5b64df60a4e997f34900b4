@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ede62f6_933e7db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-09-01T19:03:34Z",
+      "side": 1,
+      "message": "Let\u0027s leave this at the end of the chain for now",
+      "revId": "1376f20f1ee97af61c5b64df60a4e997f34900b4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
