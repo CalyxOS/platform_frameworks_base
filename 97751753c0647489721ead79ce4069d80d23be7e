@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0118aa_e922d2b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-09-01T18:45:28Z",
+      "side": 1,
+      "message": "Let\u0027s make sure it is not backed up and restored. Otherwise for validation I think it\u0027s ok",
+      "revId": "97751753c0647489721ead79ce4069d80d23be7e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
