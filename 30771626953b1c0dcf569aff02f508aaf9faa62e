@@ -16,6 +16,23 @@
       "message": "hey - please check this https://gerrit.omnirom.org/c/android_frameworks_base/+/42192",
       "revId": "30771626953b1c0dcf569aff02f508aaf9faa62e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ec51a6_2677275c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000054
+      },
+      "writtenOn": "2022-09-01T15:03:47Z",
+      "side": 1,
+      "message": "since you use Build.VERSION.INCREMENTAL and not Build.TIME as we - you might consider using the old line - but fact is that the cache dir must be really deleted to prevent old cache files remaining and causing issues ",
+      "revId": "30771626953b1c0dcf569aff02f508aaf9faa62e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
