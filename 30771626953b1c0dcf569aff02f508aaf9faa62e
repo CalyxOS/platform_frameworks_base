@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ce37b2_e96acfe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000054
+      },
+      "writtenOn": "2022-09-01T15:01:03Z",
+      "side": 1,
+      "message": "hey - please check this https://gerrit.omnirom.org/c/android_frameworks_base/+/42192",
+      "revId": "30771626953b1c0dcf569aff02f508aaf9faa62e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
