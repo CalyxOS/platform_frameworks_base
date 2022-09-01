@@ -16,6 +16,24 @@
       "message": "Could maybe be squashed",
       "revId": "d6cd6b2d540d5ffbbcafc6b74eca7d51163438e5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75dceee4_45708ef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-01T19:09:03Z",
+      "side": 1,
+      "message": "Whoever squashes, make sure the commit message is maintained.\n\nCan either be the usual \"Includes and full commit details\", or the gist of it should be maintained.",
+      "parentUuid": "7a4ff503_e217a1dd",
+      "revId": "d6cd6b2d540d5ffbbcafc6b74eca7d51163438e5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
