@@ -34,6 +34,24 @@
       "parentUuid": "4b112a62_8754d43f",
       "revId": "6bb3443699fc49d5b242d2b7e1ca60442e84ed58",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed7e888_2d0e1fc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-09-05T15:55:23Z",
+      "side": 1,
+      "message": "You can\u0027t simply copy them, you can see for example in commit message setCompensationImageHandle had to be removed previously.",
+      "parentUuid": "25d393bb_2bd0192f",
+      "revId": "6bb3443699fc49d5b242d2b7e1ca60442e84ed58",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
