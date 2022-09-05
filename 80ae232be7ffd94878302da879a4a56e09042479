@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca56f167_0633f068",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-05T11:39:15Z",
+      "side": 0,
+      "message": "Just adding a note here that this is not just 1 fingerprint but a combination of the fingerprint of all partitions.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/content/pm/PackagePartitions.java;l\u003d95?q\u003dPackagePartitions.java\n\nShould be fine for us given we build and ship all partitions at the same time, and thus incremental would also always change.",
+      "revId": "80ae232be7ffd94878302da879a4a56e09042479",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
