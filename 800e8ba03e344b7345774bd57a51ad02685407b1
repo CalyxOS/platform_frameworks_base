@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fbcd01_24eb6738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-05T18:17:04Z",
+      "side": 1,
+      "message": "The number of people who turn this off and then say notifications are broken - too damn high.",
+      "revId": "800e8ba03e344b7345774bd57a51ad02685407b1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
