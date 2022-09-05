@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b798e8_5f4c142f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-05T18:16:23Z",
+      "side": 1,
+      "message": "I wish we hadn\u0027t added this tile, it\u0027s just confusing.\n\nTo this day I don\u0027t know for sure what this does",
+      "revId": "4fe59876c47e10221523ead50402e64c9005494f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
