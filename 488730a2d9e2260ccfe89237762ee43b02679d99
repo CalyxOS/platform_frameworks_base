@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a209b388_4261f181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-05T18:47:29Z",
+      "side": 1,
+      "message": "I guess we\u0027ll ship this for now and revert later if we can get the new thing working.",
+      "revId": "488730a2d9e2260ccfe89237762ee43b02679d99",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
