@@ -16,6 +16,24 @@
       "message": "This has received updates since,\n\n`cp ../../hardware/google/interfaces/display/com/google/hardware/pixel/display/* packages/SystemUI/src/com/google/hardware/pixel/display/`",
       "revId": "6bb3443699fc49d5b242d2b7e1ca60442e84ed58",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d393bb_2bd0192f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-05T13:59:25Z",
+      "side": 1,
+      "message": "But updating might lead us to a rabbit hole.",
+      "parentUuid": "4b112a62_8754d43f",
+      "revId": "6bb3443699fc49d5b242d2b7e1ca60442e84ed58",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
