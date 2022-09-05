@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbf99bc_e317dc4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-09-05T09:42:16Z",
+      "side": 1,
+      "message": "Previously we\u0027ve had these patches early in the chain. It may be ok to be at this point in the chain if patches before it do not make use of it.",
+      "revId": "2a2a69fefc9c341ba31dc1696f20a7779eac8b1a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
