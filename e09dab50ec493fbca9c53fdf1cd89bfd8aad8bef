@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81105f59_72dafadd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-09-05T19:01:31Z",
+      "side": 1,
+      "message": "Haven\u0027t tested the feature yet but this is just the setting.",
+      "revId": "e09dab50ec493fbca9c53fdf1cd89bfd8aad8bef",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
