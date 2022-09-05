@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459f614a_366020ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-09-05T09:40:18Z",
+      "side": 1,
+      "message": "Nitpick but, in the relation chain, this should maybe be before both timeout patches",
+      "revId": "638dae8881bcf2b0c144098938146b8c14293ede",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
