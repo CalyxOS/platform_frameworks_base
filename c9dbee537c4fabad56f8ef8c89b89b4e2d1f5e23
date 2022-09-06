@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b37175_354a3e2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-06T19:35:34Z",
+      "side": 1,
+      "message": "Relies on 2122223: Do not load keylayout if required kernel module is missing | https://android-review.googlesource.com/c/platform/frameworks/native/+/2122223 which doesn\u0027t apply cleanly\n",
+      "revId": "c9dbee537c4fabad56f8ef8c89b89b4e2d1f5e23",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
