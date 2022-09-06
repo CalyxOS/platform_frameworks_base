@@ -16,6 +16,23 @@
       "message": "Breaks location indicator.",
       "revId": "d903797f2d00b66ae771d9b6a4b19cf2e7a8f325",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9689ebcd_3f352d70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-06T12:07:23Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/11872",
+      "revId": "d903797f2d00b66ae771d9b6a4b19cf2e7a8f325",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
