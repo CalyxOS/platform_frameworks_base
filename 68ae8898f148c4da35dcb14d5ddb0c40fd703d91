@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96dd966c_17e0bbd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T21:09:41Z",
+      "side": 1,
+      "message": "I\u0027d like to squash all the commits after this into this one and just call it \"Restricted networking mode changes\" or something.",
+      "revId": "68ae8898f148c4da35dcb14d5ddb0c40fd703d91",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
