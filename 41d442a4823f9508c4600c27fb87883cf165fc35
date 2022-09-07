@@ -34,6 +34,24 @@
       "parentUuid": "33b2d0bd_88416680",
       "revId": "41d442a4823f9508c4600c27fb87883cf165fc35",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082fa154_041bfa86",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/GlobalSettingsValidators.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T19:13:57Z",
+      "side": 1,
+      "message": "10482: Revert \"SettingsProvider: Add a UID list validator\" | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/10482\n\n\"Actually, with the validator the value would still be restored if present in previous backups\"",
+      "parentUuid": "e42fae97_9b0f9519",
+      "revId": "41d442a4823f9508c4600c27fb87883cf165fc35",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
