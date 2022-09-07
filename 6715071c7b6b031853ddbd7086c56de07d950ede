@@ -52,6 +52,24 @@
       "parentUuid": "1571e20a_c797e1fe",
       "revId": "6715071c7b6b031853ddbd7086c56de07d950ede",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8412424_fcb0ce82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T19:23:10Z",
+      "side": 1,
+      "message": "Command isn\u0027t working.\n\nIt builds fine with this. If I take out the txt file update, it fails to build, and asks to run this same command, but does nothing.",
+      "parentUuid": "32bec202_32c0446e",
+      "revId": "6715071c7b6b031853ddbd7086c56de07d950ede",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
