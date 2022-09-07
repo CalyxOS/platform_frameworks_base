@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b2d0bd_88416680",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/GlobalSettingsValidators.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T18:58:42Z",
+      "side": 1,
+      "message": "Why remove the validator?",
+      "revId": "41d442a4823f9508c4600c27fb87883cf165fc35",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
