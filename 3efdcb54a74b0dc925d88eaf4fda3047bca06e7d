@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9a9f02_14ebb3aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T20:27:22Z",
+      "side": 1,
+      "message": "Needs some review and testing, not merged in 12 yet, should move out of chain for now.",
+      "revId": "3efdcb54a74b0dc925d88eaf4fda3047bca06e7d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
