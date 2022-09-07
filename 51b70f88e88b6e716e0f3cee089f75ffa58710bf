@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7230c8ab_c46f284e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T21:09:07Z",
+      "side": 1,
+      "message": "Sent to AOSP so leave unsquashed, but needs update.",
+      "revId": "51b70f88e88b6e716e0f3cee089f75ffa58710bf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
