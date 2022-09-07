@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898f824e_0dc983cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-07T21:09:13Z",
+      "side": 1,
+      "message": "Sent to AOSP so leave unsquashed",
+      "revId": "db73f47b5ab0f64a80b4351fb8f9288ee8e9c29f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
