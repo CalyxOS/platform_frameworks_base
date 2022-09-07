@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t seem to work anymore.",
       "revId": "6715071c7b6b031853ddbd7086c56de07d950ede",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1571e20a_c797e1fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-09-07T19:18:10Z",
+      "side": 1,
+      "message": "In what way?",
+      "parentUuid": "9707621d_3d4c3bdf",
+      "revId": "6715071c7b6b031853ddbd7086c56de07d950ede",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
