@@ -16,6 +16,24 @@
       "message": "Why remove the validator?",
       "revId": "41d442a4823f9508c4600c27fb87883cf165fc35",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42fae97_9b0f9519",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/GlobalSettingsValidators.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-09-07T19:03:23Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/12259",
+      "parentUuid": "33b2d0bd_88416680",
+      "revId": "41d442a4823f9508c4600c27fb87883cf165fc35",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
