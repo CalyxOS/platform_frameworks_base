@@ -144,6 +144,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8ecd59_11f6cf8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-08T18:25:04Z",
+      "side": 1,
+      "message": "`POLICY_REJECT_ALL` is fine then.\n\nWe have the code to read it to support migration from pre-12, and can keep that around to support restoring old backups.\n\nAdding a new policy would mean we need to change the migration code to that (which then won\u0027t support old backups), or add more code. Best to just re-use.",
+      "parentUuid": "c9b17135_5df1b130",
+      "revId": "3fd28574544e86235fc2de04cb4ea2a20b3baff2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ce7ebe6_682aa2b1",
