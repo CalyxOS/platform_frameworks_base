@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1004c8_8b10d861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-08T16:24:52Z",
+      "side": 1,
+      "message": "Fine on sunfish",
+      "revId": "2b804976c8f79e3e16d775150a40dd01159f5b43",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
