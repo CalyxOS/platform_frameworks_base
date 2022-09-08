@@ -33,6 +33,24 @@
       "message": "usbManager \u003d\u003d null ||",
       "revId": "040836ac9c3907bcb6ea678d7ffe7b9502e91fc2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfd9af0_2f2d4a02",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-08T16:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5da07e_f845c649",
+      "revId": "040836ac9c3907bcb6ea678d7ffe7b9502e91fc2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
