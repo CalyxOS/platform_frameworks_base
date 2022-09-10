@@ -16,6 +16,7 @@
 
 package com.android.server.pm.permission;
 
+import android.Manifest;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
@@ -329,7 +330,8 @@ public final class UidPermissionState {
      * @return the GIDs for the user
      */
     @NonNull
-    public int[] computeGids(@NonNull int[] globalGids, @UserIdInt int userId) {
+    public int[] computeGids(@NonNull int[] globalGids, @UserIdInt int userId,
+            boolean isUidNetworkingBlocked) {
         IntArray gids = IntArray.wrap(globalGids);
         if (mPermissions == null) {
             return gids.toArray();
@@ -337,7 +339,9 @@ public final class UidPermissionState {
         final int permissionsSize = mPermissions.size();
         for (int i = 0; i < permissionsSize; i++) {
             PermissionState permissionState = mPermissions.valueAt(i);
-            if (!permissionState.isGranted()) {
+            if (!permissionState.isGranted() ||
+                    (Manifest.permission.INTERNET.equals(permissionState.getName())
+                            && isUidNetworkingBlocked)) {
                 continue;
             }
             final int[] permissionGids = permissionState.computeGids(userId);
