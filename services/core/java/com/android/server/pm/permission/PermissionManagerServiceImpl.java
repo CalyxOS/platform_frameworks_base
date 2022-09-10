@@ -78,6 +78,7 @@ import android.content.pm.PermissionInfo;
 import android.content.pm.SigningDetails;
 import android.content.pm.permission.SplitPermissionInfoParcelable;
 import android.metrics.LogMaker;
+import android.net.INetworkPolicyManager;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Build;
@@ -258,6 +259,8 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
 
     /** Permission controller: User space permission management */
     private PermissionControllerManager mPermissionControllerManager;
+
+    private INetworkPolicyManager mNetworkPolicyManager;
 
     /**
      * Built-in permissions. Read from system configuration files. Mapping is from
@@ -4408,6 +4411,9 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
             }
         }
 
+        mNetworkPolicyManager = INetworkPolicyManager.Stub.asInterface(
+                ServiceManager.getService(Context.NETWORK_POLICY_SERVICE));
+
         mPermissionControllerManager = mContext.getSystemService(PermissionControllerManager.class);
         mPermissionPolicyInternal = LocalServices.getService(PermissionPolicyInternal.class);
     }
@@ -5125,7 +5131,13 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
                         + userId);
                 return EMPTY_INT_ARRAY;
             }
-            return uidState.computeGids(mGlobalGids, userId);
+            boolean hasRestrictedModeAccess = true;
+            try {
+                hasRestrictedModeAccess = mNetworkPolicyManager.hasRestrictedModeAccess(uid);
+            } catch (RemoteException e) {
+                Slog.e(TAG, "Failed to query restricted networking mode access", e);
+            }
+            return uidState.computeGids(mGlobalGids, userId, hasRestrictedModeAccess);
         }
     }
 
