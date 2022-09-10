@@ -78,6 +78,7 @@ import android.content.pm.PermissionInfo;
 import android.content.pm.SigningDetails;
 import android.content.pm.permission.SplitPermissionInfoParcelable;
 import android.metrics.LogMaker;
+import android.net.NetworkPolicyManager;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Build;
@@ -258,6 +259,8 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
 
     /** Permission controller: User space permission management */
     private PermissionControllerManager mPermissionControllerManager;
+
+    private NetworkPolicyManager mNetworkPolicyManager;
 
     /**
      * Built-in permissions. Read from system configuration files. Mapping is from
@@ -4408,6 +4411,8 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
             }
         }
 
+        mNetworkPolicyManager = mContext.getSystemService(NetworkPolicyManager.class);
+
         mPermissionControllerManager = mContext.getSystemService(PermissionControllerManager.class);
         mPermissionPolicyInternal = LocalServices.getService(PermissionPolicyInternal.class);
     }
@@ -5125,7 +5130,8 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
                         + userId);
                 return EMPTY_INT_ARRAY;
             }
-            return uidState.computeGids(mGlobalGids, userId);
+            return uidState.computeGids(mGlobalGids, userId,
+                    mNetworkPolicyManager.isUidNetworkingBlocked(uid, false));
         }
     }
 
