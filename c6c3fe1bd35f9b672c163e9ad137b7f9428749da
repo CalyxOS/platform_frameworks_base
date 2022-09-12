@@ -16,6 +16,23 @@
       "message": "Let\u0027s pick a different Change-Id and first line of commit message since this does things entirely different than we did before, and that could get confusing.\n\n",
       "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c50fce_3346c3e2",
+        "filename": "services/core/java/com/android/server/pm/permission/UidPermissionState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:11:00Z",
+      "side": 1,
+      "message": "How often is this ran / how will it deal with upgrades / existing users.\n\nIf you tested it without data wipe then it should be fine.\n\nNew users should be fine either way I assume.",
+      "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
