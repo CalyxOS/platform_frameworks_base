@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da26cb0_21769660",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:21:58Z",
+      "side": 1,
+      "message": "Needs an update and revisit after 13340: Stop reading UIDS_ALLOWED_ON_RESTRICTED_NETWORKS setting in PermissionMonitor | https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/13340",
+      "revId": "405c78174759f66ec5e38dcf53185b22cbf0e98b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "https://android.googlesource.com/platform/packages/modules/Connectivity/+/android-13.0.0_r1/service/src/com/android/server/connectivity/PermissionMonitor.java#493",
       "revId": "c18cc9d6aba6d4ed3d1787ce2b6c6fc87f51226a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959a9ccb_f30b0e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:21:58Z",
+      "side": 1,
+      "message": "Needs an update after 13340: Stop reading UIDS_ALLOWED_ON_RESTRICTED_NETWORKS setting in PermissionMonitor | https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/13340 as well.",
+      "parentUuid": "b9ba5df9_7323fd65",
+      "revId": "c18cc9d6aba6d4ed3d1787ce2b6c6fc87f51226a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
