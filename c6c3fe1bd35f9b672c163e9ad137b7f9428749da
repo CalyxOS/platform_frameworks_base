@@ -54,6 +54,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6098540_40b19c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:30:01Z",
+      "side": 1,
+      "message": "Woops, moved to 13342: Disallow creating network sockets if uid is restricted | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13342",
+      "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c50fce_3346c3e2",
