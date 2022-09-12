@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed161c3_e0546366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T17:12:29Z",
+      "side": 1,
+      "message": "Make sure to send the updated patch upstream if you haven\u0027t already",
+      "revId": "c6549ce483badf51ba73dc45390a1957f3f1f96d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
