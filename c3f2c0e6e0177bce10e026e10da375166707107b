@@ -16,6 +16,24 @@
       "message": "synchronized (this) {}\nI forgot to wrap it.",
       "revId": "c3f2c0e6e0177bce10e026e10da375166707107b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bd43c7_6ca20153",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2230,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T14:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68d3eff7_4ca7489c",
+      "revId": "c3f2c0e6e0177bce10e026e10da375166707107b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
