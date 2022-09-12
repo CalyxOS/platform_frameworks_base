@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d076e3_592c75d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T16:44:44Z",
+      "side": 1,
+      "message": "Let\u0027s update commit message to mention firewall backup",
+      "revId": "50ab817dba4aa1aa6cdc3cd338db217d23bde143",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
