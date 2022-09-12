@@ -16,6 +16,24 @@
       "message": "Should we squash this?",
       "revId": "9a36dadad1b7c020ee692ad65c78f4a89e97963e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7307a4d_9a9a0cba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T16:26:22Z",
+      "side": 1,
+      "message": "After resolving conflicts yes",
+      "parentUuid": "41013a6b_c32548d6",
+      "revId": "9a36dadad1b7c020ee692ad65c78f4a89e97963e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
