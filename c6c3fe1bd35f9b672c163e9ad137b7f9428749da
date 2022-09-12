@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071e9745_a58f5f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:09:30Z",
+      "side": 1,
+      "message": "Let\u0027s pick a different Change-Id and first line of commit message since this does things entirely different than we did before, and that could get confusing.\n\n",
+      "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
