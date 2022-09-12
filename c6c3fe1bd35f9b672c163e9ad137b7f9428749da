@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c709fb6f_3d5867a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:25:48Z",
+      "side": 1,
+      "message": "Yes let\u0027s do that!",
+      "parentUuid": "8da8fca0_f8bc963f",
+      "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c50fce_3346c3e2",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "computeGids is run at least every time a process is forked. More testing required but I did test without wiping data.",
       "parentUuid": "05c50fce_3346c3e2",
+      "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d29e6f_fb565cae",
+        "filename": "services/core/java/com/android/server/pm/permission/UidPermissionState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-12T12:25:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e72d10d_e381b3c3",
       "revId": "c6c3fe1bd35f9b672c163e9ad137b7f9428749da",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
