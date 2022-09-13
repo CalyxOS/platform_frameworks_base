@@ -34,6 +34,24 @@
       "parentUuid": "b9ba5df9_7323fd65",
       "revId": "c18cc9d6aba6d4ed3d1787ce2b6c6fc87f51226a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0d557d_cb2dc40e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-13T10:34:46Z",
+      "side": 1,
+      "message": "The first one `isCarryoverPackage` isn\u0027t drop in, and we\u0027ve been shipping without it just fine.\n\nIt was introduced in https://github.com/CalyxOS/platform_frameworks_base/commit/3b0f5ea29ed0dfb111f85503a5a9ec6e7b23d6a4\n\n\nThe second one doesn\u0027t need any changes here.",
+      "parentUuid": "959a9ccb_f30b0e59",
+      "revId": "c18cc9d6aba6d4ed3d1787ce2b6c6fc87f51226a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
