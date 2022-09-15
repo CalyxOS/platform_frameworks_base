@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736b5731_2938af7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-09-15T04:25:03Z",
+      "side": 1,
+      "message": "Tested working, but it needs to be tested more thoroughly and have a testing methodology laid out, particularly unless/until there is a way to actually *change* these settings, e.g. via https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/13384",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
