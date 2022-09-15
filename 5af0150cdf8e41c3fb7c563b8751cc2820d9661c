@@ -16,6 +16,40 @@
       "message": "Tested working, but it needs to be tested more thoroughly and have a testing methodology laid out, particularly unless/until there is a way to actually *change* these settings, e.g. via https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/13384",
       "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4cbdca_f524d682",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-09-15T04:35:18Z",
+      "side": 1,
+      "message": "The reason we have the fallback value here is for the case that LOCK_SCREEN_LOCK_AFTER_TIMEOUT is not set for a profile.\n\nWe want more complex logic for profiles than a simple hardcoded fallback value; they should use their parent\u0027s value if available.\n\nIt would be nice to not *have* to determine the fallback value until it is needed, but that would require using getString for LOCK_SCREEN_LOCK_AFTER_TIMEOUT, checking for null, and parsing it otherwise. Doing this is still an option if preferable.",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a935a0_7391d12a",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-09-15T04:35:18Z",
+      "side": 1,
+      "message": "The code for this function was moved out of doKeyguardLaterForChildProfilesLocked so that it could be used both for locking child profiles immediately and scheduling future locks. The only change is to the otherwise-unused resultCode in the PendingIntent (from 0 to profileId) so that the PendingIntent is unique from AOSP\u0027s perspective, allowing multiple such intents to exist simultaneously rather than overwrite each other.",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
