@@ -16,6 +16,24 @@
       "message": "Try without this since it doesn\u0027t work on its own anyway",
       "revId": "31d570c6019dc0293956f79f62410a221c8cfde8",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142a3d29_f741216a",
+        "filename": "core/res/res/xml/config_user_types.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-09-19T14:42:50Z",
+      "side": 1,
+      "message": "Done, will see how that goes",
+      "parentUuid": "eab878c2_162711af",
+      "revId": "31d570c6019dc0293956f79f62410a221c8cfde8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
