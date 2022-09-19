@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce76dc8_244ab18a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2022-09-19T15:18:26Z",
+      "side": 1,
+      "message": "Adding new resources to core/res is a no go, it can break prebuilt system apks. You should overlay core/res/res/xml/config_user_types.xml in vendor/calyx instead and \ntry defining the colors/strings directly in it.",
+      "revId": "7b41edecae975a7fa3e2e9ac7acd9420ec20ef53",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
