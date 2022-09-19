@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9218bf69_493508aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-19T14:37:15Z",
+      "side": 1,
+      "message": "Let\u0027s do this for now. Can always revert later as things work.\n\nMight want to remove it from Settings too",
+      "revId": "9a25bdb506fa81f72b809e3eb3046dd4afdf4308",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
