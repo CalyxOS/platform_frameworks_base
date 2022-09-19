@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13187516_30149617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-19T14:36:48Z",
+      "side": 1,
+      "message": "I wonder if we could add other things here like this, e.g. panic or vpn\n\nSomething for later, unrelated to this change.",
+      "revId": "d0ffeb5abf847389c4ebfe40de63d9991d3984e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
