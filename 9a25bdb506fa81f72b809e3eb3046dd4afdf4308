@@ -16,6 +16,23 @@
       "message": "Let\u0027s do this for now. Can always revert later as things work.\n\nMight want to remove it from Settings too",
       "revId": "9a25bdb506fa81f72b809e3eb3046dd4afdf4308",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6be11a_3f23d04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2022-09-20T05:01:31Z",
+      "side": 1,
+      "message": "Overlay in our vendor instead?",
+      "revId": "9a25bdb506fa81f72b809e3eb3046dd4afdf4308",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
