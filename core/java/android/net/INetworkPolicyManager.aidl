@@ -81,6 +81,8 @@ interface INetworkPolicyManager {
     boolean isUidNetworkingBlocked(int uid, boolean meteredNetwork);
     boolean isUidRestrictedOnMeteredNetworks(int uid);
 
+    boolean hasRestrictedModeAccess(int uid);
+
     byte[] getBackupPayload(int user);
     void applyRestore(in byte[] payload, int user);
 }

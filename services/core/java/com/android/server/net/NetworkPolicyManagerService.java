@@ -4510,7 +4510,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
-    private boolean hasRestrictedModeAccess(int uid) {
+    @Override
+    public boolean hasRestrictedModeAccess(int uid) {
         try {
             // TODO: this needs to be kept in sync with
             // PermissionMonitor#hasRestrictedNetworkPermission
