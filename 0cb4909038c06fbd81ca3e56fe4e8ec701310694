@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46dee0a_5401152c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4514,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-21T14:46:43Z",
+      "side": 1,
+      "message": "Do we want to add any permission checks here?\n\n`isUidNetworkingBlocked` and `isUidRestrictedOnMeteredNetworks` are both public and have:\n\n`mContext.enforceCallingOrSelfPermission(OBSERVE_NETWORK_POLICY, TAG);`",
+      "revId": "0cb4909038c06fbd81ca3e56fe4e8ec701310694",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
