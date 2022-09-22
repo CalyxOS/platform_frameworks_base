@@ -16,6 +16,24 @@
       "message": "I don\u0027t want to merge a toggle for this.\n\nWe can\u0027t add a toggle for everything, we have to draw the line somewhere.\n\nUI changes like this are always going to be controversial - we can\u0027t keep reverting or adding a toggle for it all, at some point you just have to live with it.",
       "revId": "0ae87e65bffc3769290cbf10276f66b4c259c184",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1267dd63_62421e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-09-22T02:30:13Z",
+      "side": 1,
+      "message": "Fair enough. This works on device but I won\u0027t be using it either.",
+      "parentUuid": "37623a9b_0e141422",
+      "revId": "0ae87e65bffc3769290cbf10276f66b4c259c184",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
