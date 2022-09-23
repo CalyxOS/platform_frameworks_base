@@ -51,6 +51,23 @@
       "parentUuid": "bb6be11a_3f23d04f",
       "revId": "9a25bdb506fa81f72b809e3eb3046dd4afdf4308",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ad8105_2609feda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-09-23T15:45:34Z",
+      "side": 1,
+      "message": "I still see the \"Screen cast\" tile on an upgrade to a build with this included.",
+      "revId": "9a25bdb506fa81f72b809e3eb3046dd4afdf4308",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
