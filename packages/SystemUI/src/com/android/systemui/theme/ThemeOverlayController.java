@@ -531,7 +531,7 @@ public class ThemeOverlayController extends CoreStartable implements Dumpable {
      * Given a color candidate, return an overlay definition.
      */
     protected @Nullable FabricatedOverlay getOverlay(int color, int type, Style style) {
-        mColorScheme = new ColorScheme(color, isNightMode());
+        mColorScheme = new ColorScheme(color, isNightMode(), style);
         List<Integer> colorShades = type == ACCENT
                 ? mColorScheme.getAllAccentColors() : mColorScheme.getAllNeutralColors();
         String name = type == ACCENT ? "accent" : "neutral";
