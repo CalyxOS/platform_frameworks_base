@@ -172,8 +172,6 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     private final HashMap<ITetheringStatsProvider, String>
             mTetheringStatsProviders = Maps.newHashMap();
 
-    private final ConnectivityManager.NetworkCallback mNetworkCallback;
-
     /**
      * If both locks need to be held, then they should be obtained in the order:
      * first {@link #mQuotaLock} and then {@link #mRulesLock}.
@@ -231,6 +229,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     @GuardedBy("mRulesLock")
     final SparseBooleanArray mFirewallChainStates = new SparseBooleanArray();
 
+    private ConnectivityManager.NetworkCallback mNetworkCallback;
+
     @GuardedBy("mQuotaLock")
     private volatile boolean mDataSaverMode;
 
@@ -256,21 +256,6 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         synchronized (mTetheringStatsProviders) {
             mTetheringStatsProviders.put(new NetdTetheringStatsProvider(), "netd");
         }
-
-        mNetworkCallback = new ConnectivityManager.NetworkCallback() {
-            @Override
-            public void onLinkPropertiesChanged(@NonNull Network network,
-                    @NonNull LinkProperties linkProperties) {
-                // If the network has any validated private dns server, restrict cleartext
-                // traffic for UID 0. Otherwise, allow it in order to validate.
-                final int rootUID = 0;
-                if (linkProperties.getValidatedPrivateDnsServers().size() > 0) {
-                    setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_INVALID);
-                } else {
-                    setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_ACCEPT);
-                }
-            }
-        };
 
         mContext.getContentResolver().registerContentObserver(
                 LineageSettings.Global.getUriFor(LineageSettings.Global.CLEARTEXT_NETWORK_POLICY),
@@ -1323,10 +1308,26 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
         setUidCleartextNetworkPolicy(globalUID, cleartextNetworkPolicy);
 
         ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
-        if (cleartextNetworkPolicy > 0) {
-            cm.registerNetworkCallback(new NetworkRequest.Builder().build(), mNetworkCallback);
-        } else {
+        if (mNetworkCallback != null) {
             cm.unregisterNetworkCallback(mNetworkCallback);
+            mNetworkCallback = null;
+        }
+        if (cleartextNetworkPolicy > 0) {
+            mNetworkCallback = new ConnectivityManager.NetworkCallback() {
+                @Override
+                public void onLinkPropertiesChanged(@NonNull Network network,
+                        @NonNull LinkProperties linkProperties) {
+                    // If the network has any validated private dns server, restrict cleartext
+                    // traffic for UID 0. Otherwise, allow it in order to validate.
+                    final int rootUID = 0;
+                    if (linkProperties.getValidatedPrivateDnsServers().size() > 0) {
+                        setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_INVALID);
+                    } else {
+                        setUidCleartextNetworkPolicy(rootUID, StrictMode.NETWORK_POLICY_ACCEPT);
+                    }
+                }
+            };
+            cm.registerNetworkCallback(new NetworkRequest.Builder().build(), mNetworkCallback);
         }
     }
 
