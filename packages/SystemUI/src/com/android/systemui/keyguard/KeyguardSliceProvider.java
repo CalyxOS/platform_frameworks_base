@@ -314,7 +314,9 @@ public class KeyguardSliceProvider extends SliceProvider implements
             mPendingIntent = PendingIntent.getActivity(getContext(), 0,
                     new Intent(getContext(), KeyguardSliceProvider.class),
                     PendingIntent.FLAG_IMMUTABLE);
-            mMediaManager.addCallback(this);
+            if (mMediaManager != null) {
+                mMediaManager.addCallback(this);
+            }
             mStatusBarStateController.addCallback(this);
             mNextAlarmController.addCallback(this);
             mZenModeController.addCallback(this);
