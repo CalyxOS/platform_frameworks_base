@@ -16,6 +16,23 @@
       "message": "Looks good from a quick glance!",
       "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f0afd0_7e69dd07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-10-08T14:07:10Z",
+      "side": 1,
+      "message": "If the device\u0027s owner wants to pretend that a secondary user is actually their main user, e.g. if their phone is about to be examined by an unfriendly agent, this patch makes it a lot more obvious that the secondary user is *not* the main user by showing an End Session button on the lock screen (and in the power menu, but lock screen is even more obvious).\n\nThis could harm some CalyxOS users, so this should probably not be merged.",
+      "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
