@@ -16,6 +16,23 @@
       "message": "How does this look in 13?",
       "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbd7d75_e1362661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-10-11T18:48:41Z",
+      "side": 1,
+      "message": "Also mention that icon is being removed.",
+      "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
