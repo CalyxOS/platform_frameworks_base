@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c974e92e_e7f55084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-10-11T22:48:01Z",
+      "side": 1,
+      "message": "There may be a more elegant way of handling this, but it works for me. Not sure how it could break anything, but I\u0027ll keep testing it.",
+      "revId": "7ebabbf3fff493a7c3bca70c08bd4437ebf33dca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
