@@ -4528,7 +4528,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             final long token = Binder.clearCallingIdentity();
             NetworkCapabilities nc;
             try {
-                nc = mConnManager.getNetworkCapabilities(mConnManager.getActiveNetwork());
+                nc = mConnManager.getNetworkCapabilities(
+                        mConnManager.getActiveNetworkForUid(uid, true));
             } finally {
                 Binder.restoreCallingIdentity(token);
             }
