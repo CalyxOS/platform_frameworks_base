@@ -33,6 +33,24 @@
       "message": "This *might* be causing (or contributing to) occasional delays of ~5 seconds or so in the fingerprint sensor showing up and becoming usable on the lock screen; not sure right now. Could be caused by other things. Not sure how to reproduce yet.",
       "revId": "7ebabbf3fff493a7c3bca70c08bd4437ebf33dca",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "522f547c_bfab8754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-10-14T21:04:29Z",
+      "side": 1,
+      "message": "Built without this patch again and confirmed that the lock screen fingerprint delay is an unrelated issue, caused by work profile with separate lock and fingerprint set up.",
+      "parentUuid": "13d4ebd4_1e84f7be",
+      "revId": "7ebabbf3fff493a7c3bca70c08bd4437ebf33dca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
