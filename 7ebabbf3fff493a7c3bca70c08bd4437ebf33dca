@@ -16,6 +16,23 @@
       "message": "There may be a more elegant way of handling this, but it works for me. Not sure how it could break anything, but I\u0027ll keep testing it.",
       "revId": "7ebabbf3fff493a7c3bca70c08bd4437ebf33dca",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d4ebd4_1e84f7be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-10-14T19:31:49Z",
+      "side": 1,
+      "message": "This *might* be causing (or contributing to) occasional delays of ~5 seconds or so in the fingerprint sensor showing up and becoming usable on the lock screen; not sure right now. Could be caused by other things. Not sure how to reproduce yet.",
+      "revId": "7ebabbf3fff493a7c3bca70c08bd4437ebf33dca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
