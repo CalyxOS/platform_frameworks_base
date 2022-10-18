@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26283f03_ce531041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-10-18T22:36:39Z",
+      "side": 1,
+      "message": "Verified with https://gitlab.com/CalyxOS/tmp/thornapple/-/commit/fec1544dd687db3b5d8620bc38fc28089d6bac7d\n\nBefore: getNetworkCapabilites `null` for no internet perm. After, available.",
+      "revId": "59009394a3eb6b095796be37e33683602e5d8145",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
