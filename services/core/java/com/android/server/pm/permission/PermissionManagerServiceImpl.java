@@ -176,6 +176,12 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
             + "app kill for notification test";
 
 
+    /** Define allowed permissions for Android Auto */
+    private ArrayList<String> androidAutoPerms = new ArrayList<String>(
+    Arrays.asList("android.permission.MODIFY_AUDIO_ROUTING", "android.permission.REAL_GET_TASKS", "android.permission.LOCAL_MAC_ADDRESS", "android.permission.MANAGE_USB", "android.permission.MANAGE_USERS", "android.permission.BLUETOOTH_PRIVILEGED", "android.permission.TOGGLE_AUTOMOTIVE_PROJECTION", "android.permission.READ_PHONE_NUMBERS"));
+    Set<String> GOOGLEAUTOHASH = new ArraySet<>(Arrays.asList("FDB00C43DBDE8B51CB312AA81D3B5FA17713ADB94B28F598D77F8EB89DACEEDF"));
+
+
     private static final long BACKUP_TIMEOUT_MILLIS = SECONDS.toMillis(60);
 
     /** Cap the size of permission trees that 3rd party apps can define; in characters of text */
@@ -960,6 +966,14 @@ public class PermissionManagerServiceImpl implements PermissionManagerServiceInt
                 Slog.e(TAG, "Missing permissions state for " + pkg.getPackageName() + " and user "
                         + userId);
                 return PackageManager.PERMISSION_DENIED;
+            }
+
+            if (pkg.getPackageName() == "com.google.android.projection.gearhead") {
+             if(pkg.getSigningDetails().hasAncestorOrSelfWithDigest(GOOGLEAUTOHASH)) {
+                 if (androidAutoPerms.contains(permissionName)) {
+                     return PackageManager.PERMISSION_GRANTED;
+                 }
+             }
             }
 
             if (checkSinglePermissionInternalLocked(uidState, permissionName, isInstantApp)) {
