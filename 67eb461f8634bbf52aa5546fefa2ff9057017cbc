@@ -88,6 +88,24 @@
       "parentUuid": "0be8adba_1f71365c",
       "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827a8f34_944e3737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-10-24T20:32:19Z",
+      "side": 1,
+      "message": "It looks like the same issue, as discussed. Work Profile icon sometimes missing, and with it goes the firewall icon. So that can be handled separately.",
+      "parentUuid": "4b6f797f_154ebae8",
+      "revId": "67eb461f8634bbf52aa5546fefa2ff9057017cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
