@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f973c47c_762d807f",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-10-24T16:06:35Z",
+      "side": 1,
+      "message": "Preferably mNetworkPolicyListener",
+      "range": {
+        "startLine": 643,
+        "startChar": 41,
+        "endLine": 643,
+        "endChar": 56
+      },
+      "revId": "ee938c7674644b4e4318037549c92c1f62f6956d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
