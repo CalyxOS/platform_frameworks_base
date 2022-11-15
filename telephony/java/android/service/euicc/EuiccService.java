@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.telephony.euicc.DownloadableSubscription;
 import android.telephony.euicc.EuiccInfo;
 import android.telephony.euicc.EuiccManager;
@@ -733,6 +734,8 @@ public abstract class EuiccService extends Service {
      * Wrapper around IEuiccService that forwards calls to implementations of {@link EuiccService}.
      */
     private class IEuiccServiceWrapper extends IEuiccService.Stub {
+        final boolean tiramisuEuiccLpa = SystemProperties.getBoolean(
+                "ro.telephony.tiramisu_euicc_lpa", true);
         @Override
         public void downloadSubscription(int slotId, int portIndex,
                 DownloadableSubscription subscription,
@@ -742,14 +745,20 @@ public abstract class EuiccService extends Service {
                 @Override
                 public void run() {
                     DownloadSubscriptionResult result;
-                    try {
-                        result = EuiccService.this.onDownloadSubscription(
-                                slotId, portIndex, subscription, switchAfterDownload,
-                                forceDeactivateSim, resolvedBundle);
-                    } catch (UnsupportedOperationException | AbstractMethodError e) {
-                        Log.w(TAG, "The new onDownloadSubscription(int, int, "
-                                + "DownloadableSubscription, boolean, boolean, Bundle) is not "
-                                + "implemented. Fall back to the old one.", e);
+                    if (tiramisuEuiccLpa) {
+                        try {
+                            result = EuiccService.this.onDownloadSubscription(
+                                    slotId, portIndex, subscription, switchAfterDownload,
+                                    forceDeactivateSim, resolvedBundle);
+                        } catch (UnsupportedOperationException | AbstractMethodError e) {
+                            Log.w(TAG, "The new onDownloadSubscription(int, int, "
+                                    + "DownloadableSubscription, boolean, boolean, Bundle) is not "
+                                    + "implemented. Fall back to the old one.", e);
+                            result = EuiccService.this.onDownloadSubscription(
+                                    slotId, subscription, switchAfterDownload,
+                                    forceDeactivateSim, resolvedBundle);
+                        }
+                    } else {
                         result = EuiccService.this.onDownloadSubscription(
                                 slotId, subscription, switchAfterDownload,
                                 forceDeactivateSim, resolvedBundle);
@@ -906,7 +915,7 @@ public abstract class EuiccService extends Service {
                 @Override
                 public void run() {
                     int result = 0;
-                    if (usePortIndex) {
+                    if (usePortIndex && tiramisuEuiccLpa) {
                         result = EuiccService.this.onSwitchToSubscriptionWithPort(
                                 slotId, portIndex, iccid, forceDeactivateSim);
                     } else {
