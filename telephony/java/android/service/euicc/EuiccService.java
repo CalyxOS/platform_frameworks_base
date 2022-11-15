@@ -560,8 +560,9 @@ public abstract class EuiccService extends Service {
     public DownloadSubscriptionResult onDownloadSubscription(int slotIndex, int portIndex,
             @NonNull DownloadableSubscription subscription, boolean switchAfterDownload,
             boolean forceDeactivateSim, @NonNull Bundle resolvedBundle) {
-        // stub implementation, LPA needs to implement this
-        throw new UnsupportedOperationException("LPA must override onDownloadSubscription");
+        // Provide fallback for old LPAs
+        return onDownloadSubscription(slotIndex, 0, subscription, switchAfterDownload,
+            forceDeactivateSim, resolvedBundle)
     }
 
     /**
