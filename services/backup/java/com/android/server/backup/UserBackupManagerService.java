@@ -552,7 +552,7 @@ public class UserBackupManagerService {
         mActivityManager = ActivityManager.getService();
         mActivityManagerInternal = LocalServices.getService(ActivityManagerInternal.class);
         mScheduledBackupEligibility = getEligibilityRules(mPackageManager, userId,
-                OperationType.BACKUP);
+                OperationType.MIGRATION);
 
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -2375,7 +2375,7 @@ public class UserBackupManagerService {
                             /* monitor */ null,
                             /* userInitiated */ false,
                             "BMS.beginFullBackup()",
-                            getEligibilityRulesForOperation(OperationType.BACKUP));
+                            getEligibilityRulesForOperation(OperationType.MIGRATION));
                 } catch (IllegalStateException e) {
                     Slog.w(TAG, "Failed to start backup", e);
                     runBackup = false;
@@ -2926,7 +2926,7 @@ public class UserBackupManagerService {
                         /* monitor */ null,
                         /* userInitiated */ false,
                         "BMS.fullTransportBackup()",
-                        getEligibilityRulesForOperation(OperationType.BACKUP));
+                        getEligibilityRulesForOperation(OperationType.MIGRATION));
                 // Acquiring wakelock for PerformFullTransportBackupTask before its start.
                 mWakelock.acquire();
                 (new Thread(task, "full-transport-master")).start();

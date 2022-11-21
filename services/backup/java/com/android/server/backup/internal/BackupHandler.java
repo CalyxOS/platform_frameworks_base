@@ -231,7 +231,7 @@ public class BackupHandler extends Handler {
                                 /* userInitiated */ false,
                                 /* nonIncremental */ false,
                                 backupManagerService.getEligibilityRulesForOperation(
-                                        OperationType.BACKUP));
+                                        OperationType.MIGRATION));
                     } catch (Exception e) {
                         // unable to ask the transport its dir name -- transient failure, since
                         // the above check succeeded.  Try again next time.
