@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.util.EventLog;
 import android.util.Pair;
 import android.util.Slog;
@@ -83,6 +84,9 @@ public class BackupHandler extends Handler {
     // Release the wakelock. This is used to ensure we don't hold it after
     // a user is removed. This will also terminate the looper thread.
     public static final int MSG_STOP = 22;
+
+    // Fake D2D backups (aka use OperationType.MIGRATION)
+    public static final String BACKUP_D2D_PROPERTY = "persist.backup.fake-d2d";
 
     private final UserBackupManagerService backupManagerService;
     private final OperationStorage mOperationStorage;
@@ -231,7 +235,7 @@ public class BackupHandler extends Handler {
                                 /* userInitiated */ false,
                                 /* nonIncremental */ false,
                                 backupManagerService.getEligibilityRulesForOperation(
-                                        OperationType.BACKUP));
+                                        getBackupOperationType()));
                     } catch (Exception e) {
                         // unable to ask the transport its dir name -- transient failure, since
                         // the above check succeeded.  Try again next time.
@@ -489,5 +493,11 @@ public class BackupHandler extends Handler {
                 break;
             }
         }
+    }
+
+    @OperationType public int getBackupOperationType() {
+        // Fake D2D if the property is set to true
+        return SystemProperties.getBoolean(BACKUP_D2D_PROPERTY, false)
+                ? OperationType.MIGRATION : OperationType.BACKUP;
     }
 }
