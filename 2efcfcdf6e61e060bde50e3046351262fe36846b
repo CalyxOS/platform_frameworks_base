@@ -51,6 +51,23 @@
       "parentUuid": "98f0afd0_7e69dd07",
       "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44b63a2_c3f75cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-21T19:28:28Z",
+      "side": 1,
+      "message": "The \"End session\" button does not do anything. Confirmed on daily driver and test build.\n\nI could have sworn this worked once, but in any case, it definitely does not work right now.",
+      "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
