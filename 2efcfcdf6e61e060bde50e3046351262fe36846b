@@ -85,6 +85,42 @@
       "message": "Would this be better handled by a preference in Device Owner or something? Maybe this can be abandoned.",
       "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6589571_10272406",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-22T12:33:31Z",
+      "side": 1,
+      "message": "Just saw this, in that case let\u0027s abandon.",
+      "parentUuid": "f44b63a2_c3f75cf9",
+      "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd33c18a_0a538ad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-22T12:33:31Z",
+      "side": 1,
+      "message": "What do you mean by \"Device Owner\" ? The garlic level bits are optional and won\u0027t be used always.",
+      "parentUuid": "a0440eb7_10df4f07",
+      "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
