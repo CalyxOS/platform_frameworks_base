@@ -121,6 +121,24 @@
       "parentUuid": "a0440eb7_10df4f07",
       "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91aefbd8_55439948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-22T15:45:31Z",
+      "side": 1,
+      "message": "I just mean that because the enablement of the End Session button (logout) is controlled by Device Policy, if we end up with code that is already setting device policies (which is being worked on for certain things now, right?), it might be a reasonable place to include an option, alongside other options that affect device policies. But I haven\u0027t dug into the device owner / policy work that\u0027s being done, yet.",
+      "parentUuid": "dd33c18a_0a538ad0",
+      "revId": "2efcfcdf6e61e060bde50e3046351262fe36846b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": []
