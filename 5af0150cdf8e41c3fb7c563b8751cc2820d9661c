@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88cd97af_e2d30c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-23T20:35:34Z",
+      "side": 1,
+      "message": "I\u0027ve been using this successfully for months and haven\u0027t encountered any problems. But because this touches on security, at least a little structured testing is still important. I\u0027m going to leave it unverified until then.",
+      "parentUuid": "736b5731_2938af7a",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f4cbdca_f524d682",
         "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-15T04:35:18Z",
       "side": 1,
       "message": "The reason we have the fallback value here is for the case that LOCK_SCREEN_LOCK_AFTER_TIMEOUT is not set for a profile.\n\nWe want more complex logic for profiles than a simple hardcoded fallback value; they should use their parent\u0027s value if available.\n\nIt would be nice to not *have* to determine the fallback value until it is needed, but that would require using getString for LOCK_SCREEN_LOCK_AFTER_TIMEOUT, checking for null, and parsing it otherwise. Doing this is still an option if preferable.",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9728fd_6e31f6a8",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-23T20:35:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f4cbdca_f524d682",
       "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-15T04:35:18Z",
       "side": 1,
       "message": "The code for this function was moved out of doKeyguardLaterForChildProfilesLocked so that it could be used both for locking child profiles immediately and scheduling future locks. The only change is to the otherwise-unused resultCode in the PendingIntent (from 0 to profileId) so that the PendingIntent is unique from AOSP\u0027s perspective, allowing multiple such intents to exist simultaneously rather than overwrite each other.",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b0f909_a60d4f03",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-23T20:35:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00a935a0_7391d12a",
       "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
