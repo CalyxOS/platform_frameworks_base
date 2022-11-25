@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd0ca46_9c61e1d9",
+        "filename": "services/core/java/com/android/server/pm/permission/DefaultPermissionGrantPolicy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-25T16:48:04Z",
+      "side": 0,
+      "message": "Could drop this line, and nearby devices instead. And keep always location",
+      "revId": "a77a4b6adc5032c71d5c72a4f581ab25d1b2479c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
