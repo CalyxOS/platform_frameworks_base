@@ -53,6 +53,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6715df2c_596512c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-25T16:38:57Z",
+      "side": 1,
+      "message": "This is a non-trivial conflict, and we should figure out what we want to do here first before we work on the resolution.",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a0b697_c58c892e",
