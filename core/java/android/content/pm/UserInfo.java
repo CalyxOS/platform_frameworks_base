@@ -397,13 +397,14 @@ public class UserInfo implements Parcelable {
     // TODO(b/142482943): Make this logic more specific and customizable. (canHaveProfile(userType))
     /* @hide */
     public boolean canHaveProfile() {
-        if (isProfile() || isGuest() || isRestricted()) {
+        if (isProfile() || isDemo() || isGuest() || isRestricted()) {
             return false;
         }
         if (UserManager.isSplitSystemUser() || UserManager.isHeadlessSystemUserMode()) {
             return id != UserHandle.USER_SYSTEM;
         } else {
-            return id == UserHandle.USER_SYSTEM;
+            return id == UserHandle.USER_SYSTEM || UserManager.USER_TYPE_FULL_SECONDARY.equals(
+                    userType);
         }
     }
 
