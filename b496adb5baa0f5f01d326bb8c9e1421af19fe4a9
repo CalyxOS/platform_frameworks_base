@@ -18,6 +18,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53537cfe_fa0ca5b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2022-11-28T17:13:37Z",
+      "side": 1,
+      "message": "I have uploaded the change to Lineage gerrit with the fixed code style.",
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f6102c_5123e252",
@@ -77,6 +94,29 @@
       "writtenOn": "2022-11-26T01:39:35Z",
       "side": 1,
       "message": "100 chars",
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e50089_4851d9f0",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17786,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2022-11-28T17:13:37Z",
+      "side": 1,
+      "message": "Also make it one single line here.",
+      "range": {
+        "startLine": 17785,
+        "startChar": 12,
+        "endLine": 17786,
+        "endChar": 26
+      },
       "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
