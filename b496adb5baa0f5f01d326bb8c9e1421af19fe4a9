@@ -35,6 +35,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42e6af1_92b1dc0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-29T21:44:42Z",
+      "side": 1,
+      "message": "Thanks, picked and uploaded PS1 on lineage (bdbf4ad5a6d71fc0d9743706134759ac906c0a24) as PS4 here.",
+      "parentUuid": "53537cfe_fa0ca5b3",
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f6102c_5123e252",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-26T01:39:35Z",
       "side": 1,
       "message": "Won\u0027t this be an issue?",
+      "range": {
+        "startLine": 17776,
+        "startChar": 10,
+        "endLine": 17776,
+        "endChar": 56
+      },
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968afb0f_7c5ab384",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17776,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-29T21:44:42Z",
+      "side": 1,
+      "message": "No, on the contrary, this should be fine.\n\nWe\u0027re the OEM in this case.\n\nWe could likely extend it some other way rather than modify it here, but I don\u0027t know if that\u0027s worth it.",
+      "parentUuid": "94f6102c_5123e252",
       "range": {
         "startLine": 17776,
         "startChar": 10,
@@ -81,6 +123,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b979d17b_db6af6e1",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17782,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-29T21:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52bfd580_4493fc01",
+      "range": {
+        "startLine": 17782,
+        "startChar": 12,
+        "endLine": 17782,
+        "endChar": 16
+      },
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c2be18_4fe6b921",
@@ -98,6 +164,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3aaf0a5_8074e149",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17783,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-29T21:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c2be18_4fe6b921",
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68e50089_4851d9f0",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-11-28T17:13:37Z",
       "side": 1,
       "message": "Also make it one single line here.",
+      "range": {
+        "startLine": 17785,
+        "startChar": 12,
+        "endLine": 17786,
+        "endChar": 26
+      },
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701aaa0f_e51ccccb",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17786,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-29T21:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e50089_4851d9f0",
       "range": {
         "startLine": 17785,
         "startChar": 12,
