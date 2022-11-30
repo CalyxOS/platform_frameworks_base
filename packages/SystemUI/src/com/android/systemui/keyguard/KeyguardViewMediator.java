@@ -2219,6 +2219,9 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
             return;
         }
         setPendingLock(false); // user may have authenticated during the screen off animation
+        synchronized (this) {
+            cancelDoRebootLaterLocked();
+        }
         if (mExitSecureCallback != null) {
             try {
                 mExitSecureCallback.onKeyguardExitResult(true /* authenciated */);
@@ -2227,9 +2230,6 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
             }
 
             mExitSecureCallback = null;
-            synchronized (this) {
-                cancelDoRebootLaterLocked();
-            }
 
             // after successfully exiting securely, no need to reshow
             // the keyguard when they've released the lock
