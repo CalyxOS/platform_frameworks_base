@@ -100,6 +100,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f521649_3ca39c01",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17776,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-11-30T16:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968afb0f_7c5ab384",
+      "range": {
+        "startLine": 17776,
+        "startChar": 10,
+        "endLine": 17776,
+        "endChar": 56
+      },
+      "revId": "b496adb5baa0f5f01d326bb8c9e1421af19fe4a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52bfd580_4493fc01",
