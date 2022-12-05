@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3624a28_ef72d0be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-05T21:08:20Z",
+      "side": 1,
+      "message": "Do we want this to be set by default or only when garlic level safest is set?",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3a0b697_c58c892e",
         "filename": "services/core/java/com/android/server/SensorPrivacyService.java",
         "patchSetId": 2
