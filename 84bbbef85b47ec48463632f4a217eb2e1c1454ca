@@ -16,6 +16,23 @@
       "message": "Bump.",
       "revId": "84bbbef85b47ec48463632f4a217eb2e1c1454ca",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69809cf6_806789b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-05T17:41:43Z",
+      "side": 1,
+      "message": "See: https://review.calyxos.org/c/CalyxOS/vendor_calyx/+/14752",
+      "revId": "84bbbef85b47ec48463632f4a217eb2e1c1454ca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
