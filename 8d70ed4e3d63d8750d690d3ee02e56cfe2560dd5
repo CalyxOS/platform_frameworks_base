@@ -33,6 +33,24 @@
       "message": "Do we want this to be set by default or only when garlic level safest is set?",
       "revId": "8d70ed4e3d63d8750d690d3ee02e56cfe2560dd5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f601fb5e_5c7e64a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-05T22:43:50Z",
+      "side": 1,
+      "message": "Same as mic.",
+      "parentUuid": "e6bc0f34_29c59bf8",
+      "revId": "8d70ed4e3d63d8750d690d3ee02e56cfe2560dd5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
