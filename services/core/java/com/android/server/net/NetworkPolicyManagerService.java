@@ -1105,14 +1105,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     ACTION_CARRIER_CONFIG_CHANGED);
             mContext.registerReceiver(mCarrierConfigReceiver, carrierConfigFilter, null, mHandler);
 
-            for (UserInfo userInfo : mUserManager.getAliveUsers()) {
-                mConnManager.registerDefaultNetworkCallbackForUid(
-                        UserHandle.getUid(userInfo.id, Process.myUid()),
-                        mDefaultNetworkCallback,
-                        mUidEventHandler
-                );
-            }
-
             // listen for meteredness changes
             mConnManager.registerNetworkCallback(
                     new NetworkRequest.Builder().build(), mNetworkCallback);
@@ -1303,11 +1295,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                                 ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(
                                         mContext);
                         if (action == ACTION_USER_ADDED) {
-                            mConnManager.registerDefaultNetworkCallbackForUid(
-                                    UserHandle.getUid(userId, Process.myUid()),
-                                    mDefaultNetworkCallback,
-                                    mUidEventHandler
-                            );
                             // Add apps that are allowed by default.
                             addDefaultRestrictBackgroundAllowlistUidsUL(userId);
                             try {
@@ -1442,24 +1429,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
         return changed;
     }
-
-    private final NetworkCallback mDefaultNetworkCallback = new NetworkCallback() {
-        @Override
-        public void onAvailable(@NonNull Network network) {
-            updateRestrictedModeAllowlistUL();
-        }
-
-        @Override
-        public void onCapabilitiesChanged(@NonNull Network network,
-                @NonNull NetworkCapabilities networkCapabilities) {
-            final int[] newTransports = networkCapabilities.getTransportTypes();
-            final boolean transportsChanged = updateTransportChange(
-                    mNetworkTransports, newTransports, network);
-            if (transportsChanged) {
-                updateRestrictedModeAllowlistUL();
-            }
-        }
-    };
 
     private final NetworkCallback mNetworkCallback = new NetworkCallback() {
         @Override
