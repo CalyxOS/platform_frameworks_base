@@ -33,6 +33,24 @@
       "message": "Do we want this to be set by default or only when garlic level safest is set?",
       "revId": "ca442780bd5d87a015c9aea10c5d4b92153341ba",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f619241_9132b480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-05T22:43:40Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to set this by default.\n\nFrom what I remember, you said that this would make it so that the first time you need to use a mic, it\u0027d ask you to enable access.\n\nThat\u0027s not going to be a good default for most users IMO.\n\nIn safest it does make sense, and then maybe even additionally have a timeout mechanism like the others where it gets disabled after some time of non usage. Non-usage should be easy to detect given this has an indicator. And I\u0027m sure we heave a feature request for this timeout functionality.",
+      "parentUuid": "91d97c00_5c5bb0ed",
+      "revId": "ca442780bd5d87a015c9aea10c5d4b92153341ba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
