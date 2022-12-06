@@ -105,6 +105,42 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b457b58_22e7849a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-06T14:01:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "796be831_22b0a7d0",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6eb0ab_ec330b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-06T14:01:52Z",
+      "side": 1,
+      "message": "Will test after moving this to safest garlic mode",
+      "parentUuid": "c873d86e_c28b40b0",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a0b697_c58c892e",
@@ -122,6 +158,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff27783_08f31696",
+        "filename": "services/core/java/com/android/server/SensorPrivacyService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-06T14:01:52Z",
+      "side": 1,
+      "message": "It should not affect existing users since the version wouldn\u0027t be -1 anymore and the file exists (should have been created on first initialization)",
+      "parentUuid": "e3a0b697_c58c892e",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18c8e2fa_308fc223",
@@ -135,6 +189,24 @@
       "writtenOn": "2022-07-07T17:13:01Z",
       "side": 1,
       "message": "I would say maybe it can be an upgrade here, but then what about conflicts with AOSP",
+      "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26dfdfe_67a7a993",
+        "filename": "services/core/java/com/android/server/SensorPrivacyService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-06T14:01:52Z",
+      "side": 1,
+      "message": "An upgrade wouldn\u0027t make sense for existing users",
+      "parentUuid": "18c8e2fa_308fc223",
       "revId": "6ad3b3ed44b6097788cfcf0266d43cb99a8864bb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
