@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4dae2a8_fb1c6f80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-06T14:21:26Z",
+      "side": 1,
+      "message": "This still doesn\u0027t include the original fix, those lines need to be re-added.",
+      "parentUuid": "6dd2dc52_65ef40e5",
+      "revId": "9e15cccac0160d4c8d01930ef5349a0d1f7749e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cfaeac2c_914e70c5",
