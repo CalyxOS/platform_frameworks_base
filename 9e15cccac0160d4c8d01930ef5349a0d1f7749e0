@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9d7fa792_ea83a588",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-06T21:29:49Z",
+      "side": 1,
+      "message": "Brought in the other patch and updated the commit message, which is now an accurate (if not long-winded, as usual) description of the commit in my mind, with the possible exception of the term \"reland\" which is new to me.\n\nWill test soon.",
+      "parentUuid": "d8bea98a_948099f8",
+      "revId": "9e15cccac0160d4c8d01930ef5349a0d1f7749e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cfaeac2c_914e70c5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
