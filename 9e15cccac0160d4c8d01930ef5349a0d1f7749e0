@@ -54,6 +54,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bea98a_948099f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-06T14:22:59Z",
+      "side": 1,
+      "message": "Original fix: 12990: Fix network leaks with split-tunnel VPNs | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/12990\n\nReverted by: 14647: Revert \"Fix network leaks with split-tunnel VPNs\" | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/14647\n\nSo, this change 14745 needs to contain the changes from the original fix again otherwise it\u0027d be incomplete, and not \"relanding\" that commit.\n\nThe commit message also needs to be updated appropriately, since right now it mentions a \"fix\" which got reverted.",
+      "parentUuid": "a4dae2a8_fb1c6f80",
+      "revId": "9e15cccac0160d4c8d01930ef5349a0d1f7749e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cfaeac2c_914e70c5",
