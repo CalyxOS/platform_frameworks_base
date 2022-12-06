@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd290ac6_8c8ba93a",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-06T14:20:50Z",
+      "side": 0,
+      "message": "Why get rid of the log message",
+      "revId": "0dfe03af11c888b078171f4db89ff2d5abd13523",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
