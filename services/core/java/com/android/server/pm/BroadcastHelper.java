@@ -309,13 +309,14 @@ public final class BroadcastHelper {
 
     public void sendPackageAddedForNewUsers(String packageName,
             @AppIdInt int appId, int[] userIds, int[] instantUserIds,
-            int dataLoaderType, SparseArray<int[]> broadcastAllowlist) {
+            int dataLoaderType, boolean wasHidden, SparseArray<int[]> broadcastAllowlist) {
         Bundle extras = new Bundle(1);
         // Set to UID of the first user, EXTRA_UID is automatically updated in sendPackageBroadcast
         final int uid = UserHandle.getUid(
                 (ArrayUtils.isEmpty(userIds) ? instantUserIds[0] : userIds[0]), appId);
         extras.putInt(Intent.EXTRA_UID, uid);
         extras.putInt(PackageInstaller.EXTRA_DATA_LOADER_TYPE, dataLoaderType);
+        extras.putBoolean(Intent.EXTRA_DATA_REMOVED, !wasHidden);
 
         sendPackageBroadcast(Intent.ACTION_PACKAGE_ADDED,
                 packageName, extras, 0, null, null, userIds, instantUserIds,

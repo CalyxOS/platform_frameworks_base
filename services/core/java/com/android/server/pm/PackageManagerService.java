@@ -3004,7 +3004,8 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
                 snapshot.getPackageStateInternal(packageName, Process.SYSTEM_UID),
                 userIds, snapshot.getPackageStates());
         mHandler.post(() -> mBroadcastHelper.sendPackageAddedForNewUsers(
-                packageName, appId, userIds, instantUserIds, dataLoaderType, broadcastAllowList));
+                packageName, appId, userIds, instantUserIds, dataLoaderType, false,
+                broadcastAllowList));
         if (sendBootCompleted && !ArrayUtils.isEmpty(userIds)) {
             mHandler.post(() -> {
                         for (int userId : userIds) {
@@ -5520,7 +5521,8 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
                     return false;
                 }
 
-                if (packageState.getUserStateOrDefault(userId).isHidden() == hidden) {
+                boolean wasHidden = packageState.getUserStateOrDefault(userId).isHidden();
+                if (wasHidden == hidden) {
                     return false;
                 }
 
@@ -5535,8 +5537,36 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
                     killApplication(packageName, newPackageState.getAppId(), userId, "hiding pkg");
                     sendApplicationHiddenForUser(packageName, newPackageState, userId);
                 } else {
-                    sendPackageAddedForUser(newSnapshot, packageName, newPackageState, userId,
-                            DataLoaderType.NONE);
+                    final PackageUserStateInternal userState = newPackageState.getUserStateOrDefault(
+                            userId);
+                    final boolean isSystem = newPackageState.isSystem();
+                    final boolean isInstantApp = userState.isInstantApp();
+                    final int[] userIds = isInstantApp ? EMPTY_INT_ARRAY : new int[] { userId };
+                    final int[] instantUserIds = isInstantApp ? new int[] { userId }
+                            : EMPTY_INT_ARRAY;
+                    if (!ArrayUtils.isEmpty(userIds) || !ArrayUtils.isEmpty(instantUserIds)) {
+                        SparseArray<int[]> broadcastAllowList = mAppsFilter.getVisibilityAllowList(
+                                newSnapshot, newSnapshot.getPackageStateInternal(packageName,
+                                        Process.SYSTEM_UID), userIds, newSnapshot.getPackageStates()
+                        );
+                        mHandler.post(() -> mBroadcastHelper.sendPackageAddedForNewUsers(
+                                packageName, newPackageState.getAppId(), userIds, instantUserIds,
+                                DataLoaderType.NONE, wasHidden, broadcastAllowList));
+                        if (isSystem && !ArrayUtils.isEmpty(userIds)) {
+                            mHandler.post(() -> {
+                                for (int user : userIds) {
+                                    mBroadcastHelper.sendBootCompletedBroadcastToSystemApp(
+                                            packageName, false, user);
+                                }
+                            });
+                        }
+                    }
+
+                    // Send a session commit broadcast
+                    final PackageInstaller.SessionInfo info = new PackageInstaller.SessionInfo();
+                    info.installReason = userState.getInstallReason();
+                    info.appPackageName = packageName;
+                    sendSessionCommitBroadcast(info, userId);
                 }
 
                 scheduleWritePackageRestrictions(userId);
