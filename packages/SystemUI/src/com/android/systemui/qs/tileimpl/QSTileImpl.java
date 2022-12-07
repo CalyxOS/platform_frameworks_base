@@ -109,6 +109,9 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     private final FalsingManager mFalsingManager;
     protected final QSLogger mQSLogger;
     private volatile int mReadyState;
+    // Keeps track of the click event, to match it with the handling in the background thread
+    // Only read and modified in main thread (where click events come through).
+    private int mClickEventId = 0;
 
     private final ArrayList<Callback> mCallbacks = new ArrayList<>();
     private final Object mStaleListener = new Object();
@@ -294,26 +297,32 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
     }
 
     public void click(@Nullable View view) {
-        mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
+        final int eventId = mClickEventId++;
+        mQSLogger.logTileClick(mTileSpec, mStatusBarStateController.getState(), mState.state,
+                eventId);
         if (!mFalsingManager.isFalseTap(FalsingManager.LOW_PENALTY)) {
-            handleClick(ACTION_QS_CLICK, QSEvent.QS_ACTION_CLICK, H.CLICK, view);
+            handleClick(ACTION_QS_CLICK, QSEvent.QS_ACTION_CLICK, H.CLICK, eventId, view);
         }
     }
 
     public void secondaryClick(@Nullable View view) {
+        final int eventId = mClickEventId++;
         mQSLogger.logTileSecondaryClick(mTileSpec, mStatusBarStateController.getState(),
-                mState.state);
+                mState.state, eventId);
         handleClick(ACTION_QS_SECONDARY_CLICK, QSEvent.QS_ACTION_SECONDARY_CLICK, H.SECONDARY_CLICK,
-                view);
+                eventId, view);
     }
 
     @Override
     public void longClick(@Nullable View view) {
-        mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state);
-        handleClick(ACTION_QS_LONG_PRESS, QSEvent.QS_ACTION_LONG_PRESS, H.LONG_CLICK, view);
+        final int eventId = mClickEventId++;
+        mQSLogger.logTileLongClick(mTileSpec, mStatusBarStateController.getState(), mState.state,
+                eventId);
+        handleClick(ACTION_QS_LONG_PRESS, QSEvent.QS_ACTION_LONG_PRESS, H.LONG_CLICK,
+                eventId, view);
     }
 
-    private void handleClick(int category, QSEvent event, int message, View view) {
+    private void handleClick(int category, QSEvent event, int message, int eventId, View view) {
         final KeyguardManager keyguardManager = mContext.getSystemService(KeyguardManager.class);
         mMetricsLogger.write(populate(new LogMaker(category).setType(TYPE_ACTION)
                 .addTaggedData(FIELD_STATUS_BAR_STATE, mStatusBarStateController.getState())));
@@ -321,7 +330,7 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
         if (!keyguardManager.isKeyguardLocked() ||
                 LineageSettings.Secure.getInt(mContext.getContentResolver(),
                 LineageSettings.Secure.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, 1) == 1) {
-            mHandler.obtainMessage(message, view).sendToTarget();
+            mHandler.obtainMessage(message, eventId, 0, view).sendToTarget();
         }
     }
 
@@ -592,13 +601,16 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
                                 mContext, mEnforcedAdmin);
                         mActivityStarter.postStartActivityDismissingKeyguard(intent, 0);
                     } else {
+                        mQSLogger.logHandleClick(mTileSpec, msg.arg1);
                         handleClick((View) msg.obj);
                     }
                 } else if (msg.what == SECONDARY_CLICK) {
                     name = "handleSecondaryClick";
+                    mQSLogger.logHandleSecondaryClick(mTileSpec, msg.arg1);
                     handleSecondaryClick((View) msg.obj);
                 } else if (msg.what == LONG_CLICK) {
                     name = "handleLongClick";
+                    mQSLogger.logHandleLongClick(mTileSpec, msg.arg1);
                     handleLongClick((View) msg.obj);
                 } else if (msg.what == REFRESH_STATE) {
                     name = "handleRefreshState";
