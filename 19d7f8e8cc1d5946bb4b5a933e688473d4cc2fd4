@@ -16,6 +16,24 @@
       "message": "What if we don\u0027t revert this, and instead set it properly in 14747: Do not exit if setup complete for managed profiles | https://review.calyxos.org/c/CalyxOS/platform_packages_apps_SetupWizard/+/14747",
       "revId": "19d7f8e8cc1d5946bb4b5a933e688473d4cc2fd4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65beb859_a8d59b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-07T12:11:04Z",
+      "side": 1,
+      "message": "I\u0027d rather revert to return to AOSP behaviour. Setting it in the app relies on the app to guarantee this is executed which is partly what has cause the issues linked above (including the setup wizard disappearing from recents).",
+      "parentUuid": "3397b5dc_025b5652",
+      "revId": "19d7f8e8cc1d5946bb4b5a933e688473d4cc2fd4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
