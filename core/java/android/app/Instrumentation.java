@@ -785,6 +785,17 @@ public class Instrumentation {
             return null;
         }
 
+        /**
+         * This is called after starting an Activity and provides the result code that defined in
+         * {@link ActivityManager}, like {@link ActivityManager#START_SUCCESS}.
+         *
+         * @param result the result code that returns after starting an Activity.
+         * @param bOptions the bundle generated from {@link ActivityOptions} that originally
+         *                 being used to start the Activity.
+         * @hide
+         */
+        public void onStartActivityResult(int result, @NonNull Bundle bOptions) {}
+
         final boolean match(Context who,
                             Activity activity,
                             Intent intent) {
@@ -1348,6 +1359,28 @@ public class Instrumentation {
         return apk.getAppFactory();
     }
 
+    /**
+     * This should be called before {@link #checkStartActivityResult(int, Object)}, because
+     * exceptions might be thrown while checking the results.
+     */
+    private void notifyStartActivityResult(int result, @Nullable Bundle options) {
+        if (mActivityMonitors == null) {
+            return;
+        }
+        synchronized (mSync) {
+            final int size = mActivityMonitors.size();
+            for (int i = 0; i < size; i++) {
+                final ActivityMonitor am = mActivityMonitors.get(i);
+                if (am.ignoreMatchingSpecificIntents()) {
+                    if (options == null) {
+                        options = ActivityOptions.makeBasic().toBundle();
+                    }
+                    am.onStartActivityResult(result, options);
+                }
+            }
+        }
+    }
+
     private void prePerformCreate(Activity activity) {
         if (mWaitingActivities != null) {
             synchronized (mSync) {
@@ -1806,6 +1839,7 @@ public class Instrumentation {
                     who.getOpPackageName(), who.getAttributionTag(), intent,
                     intent.resolveTypeIfNeeded(who.getContentResolver()), token,
                     target != null ? target.mEmbeddedID : null, requestCode, 0, null, options);
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
             throw new RuntimeException("Failure from system", e);
@@ -1880,6 +1914,7 @@ public class Instrumentation {
             int result = ActivityTaskManager.getService().startActivities(whoThread,
                     who.getOpPackageName(), who.getAttributionTag(), intents, resolvedTypes,
                     token, options, userId);
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intents[0]);
             return result;
         } catch (RemoteException e) {
@@ -1951,6 +1986,7 @@ public class Instrumentation {
                     who.getOpPackageName(), who.getAttributionTag(), intent,
                     intent.resolveTypeIfNeeded(who.getContentResolver()), token, target,
                     requestCode, 0, null, options);
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
             throw new RuntimeException("Failure from system", e);
@@ -2021,6 +2057,7 @@ public class Instrumentation {
                     who.getOpPackageName(), who.getAttributionTag(), intent,
                     intent.resolveTypeIfNeeded(who.getContentResolver()), token, resultWho,
                     requestCode, 0, null, options, user.getIdentifier());
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
             throw new RuntimeException("Failure from system", e);
@@ -2072,6 +2109,7 @@ public class Instrumentation {
                             token, target != null ? target.mEmbeddedID : null,
                             requestCode, 0, null, options,
                             ignoreTargetSecurity, userId);
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
             throw new RuntimeException("Failure from system", e);
@@ -2119,6 +2157,7 @@ public class Instrumentation {
             int result = appTask.startActivity(whoThread.asBinder(), who.getOpPackageName(),
                     who.getAttributionTag(), intent,
                     intent.resolveTypeIfNeeded(who.getContentResolver()), options);
+            notifyStartActivityResult(result, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
             throw new RuntimeException("Failure from system", e);
