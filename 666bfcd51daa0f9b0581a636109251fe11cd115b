@@ -24,6 +24,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95342114_4bafcb1a",
+        "filename": "packages/SystemUI/res/layout/status_bar.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-07T17:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c0f2e06_4e713039",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 76
+      },
+      "revId": "666bfcd51daa0f9b0581a636109251fe11cd115b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9be2db9_934ca27a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T14:26:00Z",
       "side": 1,
       "message": "This should go after color_correction",
+      "range": {
+        "startLine": 84,
+        "startChar": 330,
+        "endLine": 84,
+        "endChar": 335
+      },
+      "revId": "666bfcd51daa0f9b0581a636109251fe11cd115b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289b539a_a3a8b0c4",
+        "filename": "packages/SystemUI/res/values/config.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-07T17:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9be2db9_934ca27a",
       "range": {
         "startLine": 84,
         "startChar": 330,
@@ -70,6 +118,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a7afce_f9343bdd",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-07T17:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28146749_7aacf804",
+      "range": {
+        "startLine": 290,
+        "startChar": 16,
+        "endLine": 290,
+        "endChar": 20
+      },
+      "revId": "666bfcd51daa0f9b0581a636109251fe11cd115b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207bb589_5821bf8c",
@@ -93,6 +165,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10300b6_c9eec15d",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-07T17:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207bb589_5821bf8c",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 13
+      },
+      "revId": "666bfcd51daa0f9b0581a636109251fe11cd115b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62edccf6_bde1f3d5",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-07T14:26:00Z",
       "side": 1,
       "message": "These need to be removed since we add back the tiles",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 5
+      },
+      "revId": "666bfcd51daa0f9b0581a636109251fe11cd115b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669f7fde_9792edf3",
+        "filename": "packages/SystemUI/tests/src/com/android/systemui/qs/QSTileHostTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-07T17:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62edccf6_bde1f3d5",
       "range": {
         "startLine": 244,
         "startChar": 0,
