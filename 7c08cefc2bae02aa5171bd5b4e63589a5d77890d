@@ -33,6 +33,24 @@
       "message": "Even the original patch is failing this test. I think I am seeing a different but related bug that is preventing the system from realizing that an app is included in a VPN. Too tangled of a mess right now, will postpone till after qpr1 if that works",
       "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c0ad91_3ffca0cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-08T17:32:32Z",
+      "side": 1,
+      "message": "^ I want to clarify this though, for when it *is* revisited: the part of the firewall that determines that an app is currently using the VPN transport, as opposed to Wi-Fi or Mobile Data, is not functioning properly for *connected* split-tunnel VPNs (where the user only includes certain apps). The firewall thinks included apps are on Wi-Fi or Mobile Data instead, so they are blocked. You enable Wi-Fi or Mobile Data, and then they get online through the VPN.\n\nSimilarly, you can turn off VPN for a VPN-included app, and *only* have Wi-Fi or Mobile Data on, and the app will still get online. This is technically a leak, too, so this needs work.\n\nAlso to be clear, none of it happens if you include UID 1000 app (e.g. Dynamic System Updates), so affected users still have a workaround.",
+      "parentUuid": "e7a3c6c6_4108551b",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
