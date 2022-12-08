@@ -86,6 +86,24 @@
       "message": "I suspect the issues I am seeing are related to the use of getActiveNetwork() here, instead of getActiveNetworkForUid(), but getActiveNetworkForUid() is not exposed. 😞 See I75f952e2.\n\nAgain, an app\u0027s active network can be different from the system\u0027s active network, in the case of split tunnel VPNs (some apps included, some not) and we need to be sure we are determining an app\u0027s firewall state based on its actual network, or it won\u0027t be allowed/blocked appropriately.\n\nIs there some other way we can do this? I am not sure how the Binder calling identities work, so it might completely unrelated, but is there a way we could pretend to be the uid in question when we make the getActiveNetwork() call?",
       "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b88b7d_4952af7d",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 4512,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-08T21:55:30Z",
+      "side": 1,
+      "message": "yes, context hacking is possible but often frameworks code check the real calling UID and whatnot to avoid exploits",
+      "parentUuid": "e6e3674c_e0400999",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
