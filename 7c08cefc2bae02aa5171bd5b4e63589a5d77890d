@@ -104,6 +104,24 @@
       "parentUuid": "e6e3674c_e0400999",
       "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079ec932_1b4e5dff",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 4512,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-08T22:51:09Z",
+      "side": 1,
+      "message": "They removed it from public availability [because JobScheduler no longer needed it](https://cs.android.com/android/_/android/platform/packages/modules/Connectivity/+/db7d676f2098faaaddfbea4208992e7f9374c299) (I0f23272d2).\n\nAnd here is why JobScheduler no longer needed it: [\"Migrate to the asynchronous version of getActiveNetworkForUid.\"](https://cs.android.com/android/_/android/platform/frameworks/base/+/8697a083a882694a473f75b1d323eee178012428) (Ie93cd22b1).\n\nMaybe there is something to be learned from JobScheduler\u0027s new implementation? I have not fully examined it yet.",
+      "parentUuid": "a6b88b7d_4952af7d",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
