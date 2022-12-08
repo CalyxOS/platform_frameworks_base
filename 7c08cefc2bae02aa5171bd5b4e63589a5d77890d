@@ -51,6 +51,24 @@
       "parentUuid": "e7a3c6c6_4108551b",
       "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847c2566_7ee9c818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-08T18:18:13Z",
+      "side": 1,
+      "message": "qpr1 has been tagged (4.4.0)",
+      "parentUuid": "15c0ad91_3ffca0cb",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
