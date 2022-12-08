@@ -16,6 +16,23 @@
       "message": "Using the test steps here, I am running into the same problem with patch as without: VPN-only, Tor-Enabled apps are simply not able to get online at all (they show as blocked unless you turn on Wi-Fi / Mobile Data toggle, depending on which the underlying network uses): https://gitlab.com/CalyxOS/calyxos/-/issues/1081#note_1201669553\n\nMaybe it is a separate problem, but if so, it\u0027s closely-related.",
       "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a3c6c6_4108551b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-08T17:24:57Z",
+      "side": 1,
+      "message": "Even the original patch is failing this test. I think I am seeing a different but related bug that is preventing the system from realizing that an app is included in a VPN. Too tangled of a mess right now, will postpone till after qpr1 if that works",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
