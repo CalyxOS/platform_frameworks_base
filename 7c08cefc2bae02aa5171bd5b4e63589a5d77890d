@@ -71,6 +71,42 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ad09f3_68a55ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-09T03:57:56Z",
+      "side": 1,
+      "message": "Works alongside [change 12622](https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/12622), [change 14949](https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/14949). Fixes VPN-only apps still being able to access plain internet when VPN is disconnected. More details: https://gitlab.com/CalyxOS/calyxos/-/issues/1081#note_1202625433",
+      "parentUuid": "5897dc96_436e020d",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b6431f_84725da2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-09T03:57:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "847c2566_7ee9c818",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6e3674c_e0400999",
