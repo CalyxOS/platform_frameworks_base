@@ -33,6 +33,23 @@
       "message": "https://github.com/seedvault-app/seedvault/pull/478",
       "revId": "a87a9be41923b6bcde315709d262408bbf265a78",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cea839e_068ac29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-09T19:31:23Z",
+      "side": 1,
+      "message": "I was thinking that if we could make this conditional (based on a Setting (Other settings or dev options), prop, or something else, we could ship this already.\n\nThen the seedvault change can just get shipped as APKs in a test repo",
+      "revId": "a87a9be41923b6bcde315709d262408bbf265a78",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
