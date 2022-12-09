@@ -67,6 +67,24 @@
       "message": "Untested.\n\nMay need sepolicy rule to let shell set this\n\nOoh maybe we could add a rule to let SeedVault set this too! 😄",
       "revId": "a87a9be41923b6bcde315709d262408bbf265a78",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4440c9_93bb94f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-09T22:02:51Z",
+      "side": 1,
+      "message": "I think you\u0027re right about sepolicy. I haven\u0027t tested it yet either, but I tried to apply the property in advance with adb shell and got `W libc    : Unable to set property \"persist.backup.fake-d2d\" to \"true\": error code: 0x18` followed by selinux denials.",
+      "parentUuid": "60546566_f6287b96",
+      "revId": "a87a9be41923b6bcde315709d262408bbf265a78",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
