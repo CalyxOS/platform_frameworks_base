@@ -16,6 +16,23 @@
       "message": "https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/12846/1..2/services/core/java/com/android/server/net/NetworkPolicyManagerService.java\n\nI kept the `nc !\u003d null` here because I thought that\u0027d still be ok. lmk / feel free to change if either of you feel otherwise.",
       "revId": "8951c66da707f88faa87dddba86a57608ce44696",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818bdac8_db53bb9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-09T23:55:02Z",
+      "side": 1,
+      "message": "Not sure what is causing it right now, but one of the 3 patches is leading to \"Block connections without VPN\" blocking *everything* for me, when testing these on daily driver. Glad we waited on this",
+      "revId": "8951c66da707f88faa87dddba86a57608ce44696",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
