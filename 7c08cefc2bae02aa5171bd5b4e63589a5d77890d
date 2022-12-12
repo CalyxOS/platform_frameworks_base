@@ -125,6 +125,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "997d394a_c82e8d03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-12T17:21:45Z",
+      "side": 1,
+      "message": "False alarm with the -1\u0027s. This solves the firewall being unaware of whether the VPN is connected or disconnected, and not properly allowing or disallowing a VPN\u0027s apps from accessing the network.",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6e3674c_e0400999",
