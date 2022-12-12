@@ -33,6 +33,23 @@
       "message": "Not sure what is causing it right now, but one of the 3 patches is leading to \"Block connections without VPN\" blocking *everything* for me, when testing these on daily driver. Glad we waited on this",
       "revId": "8951c66da707f88faa87dddba86a57608ce44696",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab388737_79f23a2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-12T17:20:21Z",
+      "side": 1,
+      "message": "False alarm with the -1\u0027s. This solves the firewall improperly assuming that all apps are part of, or not part of, the VPN (so not applying the toggles appropriately in some circumstances).",
+      "revId": "8951c66da707f88faa87dddba86a57608ce44696",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
