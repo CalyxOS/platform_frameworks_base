@@ -1882,6 +1882,10 @@ public class ApplicationPackageManager extends PackageManager {
 
     @Override
     public Drawable getUserBadgedIcon(Drawable icon, UserHandle user) {
+        if (icon == null) {
+            return getUserBadgeForDensity(user, 0 /* density */);
+        }
+
         if (!hasUserBadge(user.getIdentifier())) {
             return icon;
         }
