@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8860bacb_cfd6ad0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-16T18:05:28Z",
+      "side": 1,
+      "message": "Removes Screen Cast tile from existing installs, too.\n\nIf/when this is reverted, the user needs to edit their tiles and drag the Screen Cast tile back manually.",
+      "revId": "68dcb20aa4ae7f9d164aa64d96ca6bdb98e92f5f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
