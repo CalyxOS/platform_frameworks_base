@@ -676,6 +676,8 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                     + "management app's authentication policy";
     private static final String NOT_SYSTEM_CALLER_MSG = "Only the system can %s";
 
+    private static final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+
     final Context mContext;
     final Injector mInjector;
     final PolicyPathProvider mPathProvider;
@@ -2252,6 +2254,11 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         final int doUserId = mOwners.getDeviceOwnerUserId();
         if (doUserId == UserHandle.USER_NULL) {
             if (VERBOSE_LOG) Slogf.d(LOG_TAG, "No DO found, skipping application of restriction.");
+            return;
+        }
+
+        if (BELLIS_PACKAGE_NAME.equals(mOwners.getDeviceOwnerPackageName())) {
+            if (VERBOSE_LOG) Slogf.d(LOG_TAG, "Bellis is DO, skipping application of restriction.");
             return;
         }
 
@@ -8422,25 +8429,28 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 saveSettingsLocked(userId);
             }
 
-            mInjector.binderWithCleanCallingIdentity(() -> {
-                // Restrict adding a managed profile when a device owner is set on the device.
-                // That is to prevent the co-existence of a managed profile and a device owner
-                // on the same device.
-                // Instead, the device may be provisioned with an organization-owned managed
-                // profile, such that the admin on that managed profile has extended management
-                // capabilities that can affect the entire device (but not access private data
-                // on the primary profile).
-                mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_MANAGED_PROFILE, true,
-                        UserHandle.of(userId));
-                // Restrict adding a clone profile when a device owner is set on the device.
-                // That is to prevent the co-existence of a clone profile and a device owner
-                // on the same device.
-                // CDD for reference : https://source.android.com/compatibility/12/android-12-cdd#95_multi-user_support
-                mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_CLONE_PROFILE, true,
-                        UserHandle.of(userId));
-                // TODO Send to system too?
-                sendOwnerChangedBroadcast(DevicePolicyManager.ACTION_DEVICE_OWNER_CHANGED, userId);
-            });
+            if (!BELLIS_PACKAGE_NAME.equals(mOwners.getDeviceOwnerPackageName())) {
+                mInjector.binderWithCleanCallingIdentity(() -> {
+                    // Restrict adding a managed profile when a device owner is set on the device.
+                    // That is to prevent the co-existence of a managed profile and a device owner
+                    // on the same device.
+                    // Instead, the device may be provisioned with an organization-owned managed
+                    // profile, such that the admin on that managed profile has extended management
+                    // capabilities that can affect the entire device (but not access private data
+                    // on the primary profile).
+                    mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_MANAGED_PROFILE, true,
+                            UserHandle.of(userId));
+                    // Restrict adding a clone profile when a device owner is set on the device.
+                    // That is to prevent the co-existence of a clone profile and a device owner
+                    // on the same device.
+                    // CDD for reference : https://source.android.com/compatibility/12/android-12-cdd#95_multi-user_support
+                    mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_CLONE_PROFILE, true,
+                            UserHandle.of(userId));
+                    // TODO Send to system too?
+                    sendOwnerChangedBroadcast(DevicePolicyManager.ACTION_DEVICE_OWNER_CHANGED,
+                            userId);
+                });
+            }
             mDeviceAdminServiceController.startServiceForOwner(
                     admin.getPackageName(), userId, "set-device-owner");
 
@@ -14199,11 +14209,6 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 // The check is called from inside a managed profile. A managed profile cannot
                 // be provisioned from within another managed profile.
                 return STATUS_CANNOT_ADD_MANAGED_PROFILE;
-            }
-
-            // If there's a device owner, the restriction on adding a managed profile must be set.
-            if (hasDeviceOwner && !addingProfileRestricted) {
-                Slogf.wtf(LOG_TAG, "Has a device owner but no restriction on adding a profile.");
             }
 
             // Do not allow adding a managed profile if there's a restriction.
