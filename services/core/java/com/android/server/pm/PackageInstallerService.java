@@ -136,6 +136,9 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
     /** XML constants used in {@link #mSessionsFile} */
     private static final String TAG_SESSIONS = "sessions";
 
+    private static final String AURORA_STORE = "com.aurora.store";
+    private static final String PLAY_STORE = "com.android.vending";
+
     /** Automatically destroy sessions older than this */
     private static final long MAX_AGE_MILLIS = 3 * DateUtils.DAY_IN_MILLIS;
     /** Automatically destroy staged sessions that have not changed state in this time */
@@ -683,6 +686,17 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
             if (packages != null && packages.length > 0) {
                 // Choose an arbitrary representative package in the case of a shared UID.
                 originatingPackageName = packages[0];
+            }
+        }
+
+        if (AURORA_STORE.equals(installerPackageName)) {
+            installerPackageName = PLAY_STORE;
+            originatingPackageName = PLAY_STORE;
+            requestedInstallerPackageName = PLAY_STORE;
+            try {
+                installerAttributionTag = mContext.createPackageContextAsUser(PLAY_STORE, 0,
+                        UserHandle.getUserHandleForUid(userId)).getAttributionTag();
+            } catch (PackageManager.NameNotFoundException ignored) {
             }
         }
 
