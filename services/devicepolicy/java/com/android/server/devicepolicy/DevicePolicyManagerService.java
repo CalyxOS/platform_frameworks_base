@@ -2255,6 +2255,12 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
             return;
         }
 
+        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+        if (BELLIS_PACKAGE_NAME.equals(mOwners.getDeviceOwnerPackageName())) {
+            if (VERBOSE_LOG) Slogf.d(LOG_TAG, "Bellis is DO, skipping application of restriction.");
+            return;
+        }
+
         final UserHandle doUserHandle = UserHandle.of(doUserId);
 
         // Based on  CDD : https://source.android.com/compatibility/12/android-12-cdd#95_multi-user_support,
@@ -14199,11 +14205,6 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 // The check is called from inside a managed profile. A managed profile cannot
                 // be provisioned from within another managed profile.
                 return STATUS_CANNOT_ADD_MANAGED_PROFILE;
-            }
-
-            // If there's a device owner, the restriction on adding a managed profile must be set.
-            if (hasDeviceOwner && !addingProfileRestricted) {
-                Slogf.wtf(LOG_TAG, "Has a device owner but no restriction on adding a profile.");
             }
 
             // Do not allow adding a managed profile if there's a restriction.
