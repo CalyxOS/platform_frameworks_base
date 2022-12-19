@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d178ee0d_731c7c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-19T15:35:04Z",
+      "side": 1,
+      "message": "Hitting the following which leaves the profile disabled and in bad recoverable state (can delete from Settings) https://cs.android.com/android/platform/superproject/+/master:packages/apps/ManagedProvisioning/src/com/android/managedprovisioning/finalization/PreFinalizationController.java;l\u003d99;drc\u003dbcf06ca814862b06084f202399b30793f1fe2df3;bpv\u003d0;bpt\u003d1",
+      "revId": "0323b14dbfd52bc307e36b98aab1c26c558856c3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
