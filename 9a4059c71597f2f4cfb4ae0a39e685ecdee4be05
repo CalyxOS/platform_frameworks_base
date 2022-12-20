@@ -34,6 +34,24 @@
       "parentUuid": "158a086c_05350899",
       "revId": "9a4059c71597f2f4cfb4ae0a39e685ecdee4be05",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549d88e1_ec4855fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-20T18:24:05Z",
+      "side": 1,
+      "message": "After adding some debug lines, it looks like the larger problem is that cancelDoRebootLaterLocked is not being called, ever, in my testing. :(",
+      "parentUuid": "bf47de39_5eddd9e2",
+      "revId": "9a4059c71597f2f4cfb4ae0a39e685ecdee4be05",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
