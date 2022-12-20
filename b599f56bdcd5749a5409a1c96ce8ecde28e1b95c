@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc04b11a_0369b4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-20T20:46:30Z",
+      "side": 1,
+      "message": "For this case, we don\u0027t even need a user\u0027s logs because the problem is easily reproducible (much easier if we adjust the validator to allow setting `device_reboot_timeout` to something like `60000` (1min)); the log messages would mostly be to help us have an idea what is happening if we had to troubleshoot more issues with this in the future.\n\nThen again, this is simple enough that it *shouldn\u0027t* - knock on wood - need any extra debugging, but it would be nice to have, since it would have made this even more obvious.\n\nAndroid is chatty enough about so many things, to me it just makes sense to be chatty about something as serious as rebooting the device, even if it\u0027s not a silver bullet for troubleshooting.",
+      "parentUuid": "7bab3956_99e51a41",
+      "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d50c5597_453adc9e",
         "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
         "patchSetId": 1
