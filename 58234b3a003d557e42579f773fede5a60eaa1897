@@ -18,6 +18,41 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc456377_a2751bc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T13:05:42Z",
+      "side": 1,
+      "message": "Should also check the iode patch to see what they\u0027re doing.",
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c0c770_43dfee71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T13:05:42Z",
+      "side": 1,
+      "message": "One thing I was thinking is what if we didn\u0027t modify the actual value when installing, but rather only return a fake installer when asked for it.\n\nThat\u0027d solve this issue and still let us have the correct installer stored.",
+      "parentUuid": "09caf059_faf2daa2",
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532629f7_0517d196",
@@ -31,6 +66,30 @@
       "writtenOn": "2022-12-20T01:08:06Z",
       "side": 1,
       "message": "Might want to check more than just package? Could check for its hardcoded signature?",
+      "range": {
+        "startLine": 692,
+        "startChar": 12,
+        "endLine": 692,
+        "endChar": 24
+      },
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb1eb0e_ca6da79b",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T13:05:42Z",
+      "side": 1,
+      "message": "Could do that.",
+      "parentUuid": "532629f7_0517d196",
       "range": {
         "startLine": 692,
         "startChar": 12,
