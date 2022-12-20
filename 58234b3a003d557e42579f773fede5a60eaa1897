@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09caf059_faf2daa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-20T01:09:55Z",
+      "side": 1,
+      "message": "One downside to setting a different installer package name is that we lose the ability to update packages installed by Aurora Store without prompt (see https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l\u003d871?q\u003disInstallDisabledForPackage). More modifications could be done to exempt this case if wanted/needed.",
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "532629f7_0517d196",
         "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
         "patchSetId": 1
