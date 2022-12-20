@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532629f7_0517d196",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-20T01:08:06Z",
+      "side": 1,
+      "message": "Might want to check more than just package? Could check for its hardcoded signature?",
+      "range": {
+        "startLine": 692,
+        "startChar": 12,
+        "endLine": 692,
+        "endChar": 24
+      },
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9bf3bf_af457320",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-20T01:08:06Z",
+      "side": 1,
+      "message": "Technically this is the only one that `setPackageInstallerName` sets but apps can query for any of these and I would think that more security conscious apps will/do. Probably best to set them.",
+      "range": {
+        "startLine": 695,
+        "startChar": 12,
+        "endLine": 695,
+        "endChar": 42
+      },
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
