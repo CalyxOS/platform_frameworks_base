@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6c3c28b_54980122",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-20T11:39:43Z",
+      "side": 1,
+      "message": "Could check what Play Store sends back here. Additionally what it sends back for `originatingPackageSignature` and consider setting it too",
+      "range": {
+        "startLine": 694,
+        "startChar": 12,
+        "endLine": 694,
+        "endChar": 34
+      },
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d9bf3bf_af457320",
         "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
         "patchSetId": 1
