@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f6f742_f1d22cff",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2343,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T18:51:46Z",
+      "side": 1,
+      "message": "I had done https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/14712/1/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java \n\nBehavior would differ if it get the exception when trying to call `onKeyguardExitResult` - otherwise this part of the change would behave the same.",
+      "revId": "78e7213e68d01c634ba4046bab6f76221cb8c234",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
