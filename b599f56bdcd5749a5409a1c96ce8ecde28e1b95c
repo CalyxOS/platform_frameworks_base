@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bab3956_99e51a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T20:27:33Z",
+      "side": 1,
+      "message": "It won\u0027t help with prod builds though.\n\nThese logs go to logcat which is lost on reboot.\n\npstore/pmsg/ramoops is the kernel dmesg, won\u0027t have this\n\nUnless you have some form of persist to disk logger going on all the time, or are just watching the logs from a computer, these won\u0027t be seen.",
+      "parentUuid": "917fb0b5_d112d2bf",
+      "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50c5597_453adc9e",
