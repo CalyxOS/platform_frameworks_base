@@ -345,9 +345,9 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
     private int mDelayedProfileShowingSequence;
 
     /**
-     * Simiar to {@link #mDelayedProfileShowingSequence}, but it is for automatic reboot.
+     * Keep track of when a delayed reboot is scheduled. 0 if not scheduled.
      */
-    private int mDelayedRebootSequence;
+    private long mDelayedRebootScheduled;
 
     /**
      * If the user has disabled the keyguard, then requests to exit, this is
@@ -1580,13 +1580,13 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
         // Reboot in the future
         long when = SystemClock.elapsedRealtime() + timeout;
         Intent intent = new Intent(DELAYED_REBOOT_ACTION);
-        intent.putExtra("seq", mDelayedRebootSequence);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         PendingIntent sender = PendingIntent.getBroadcast(mContext,
                 0, intent, PendingIntent.FLAG_CANCEL_CURRENT |  PendingIntent.FLAG_IMMUTABLE);
         mAlarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, when, sender);
-        if (DEBUG) Log.d(TAG, "setting alarm to reboot device, seq = "
-                         + mDelayedRebootSequence);
+        Log.i(TAG, "setting alarm to reboot device at " + when + (mDelayedRebootScheduled == 0 ? ""
+                : ", replacing alarm at " + mDelayedRebootScheduled));
+        mDelayedRebootScheduled = when;
     }
 
     private void cancelDoKeyguardLaterLocked() {
@@ -1598,7 +1598,13 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
     }
 
     private void cancelDoRebootLaterLocked() {
-        mDelayedRebootSequence++;
+        Log.i(TAG, "canceling alarm to reboot device" + (mDelayedRebootScheduled == 0
+                ? ", but no alarm set" : (" at " + mDelayedRebootScheduled)));
+        Intent intent = new Intent(DELAYED_REBOOT_ACTION);
+        PendingIntent sender = PendingIntent.getBroadcast(mContext,
+                0, intent, PendingIntent.FLAG_CANCEL_CURRENT |  PendingIntent.FLAG_IMMUTABLE);
+        mAlarmManager.cancel(sender);
+        mDelayedRebootScheduled = 0;
     }
 
     /**
@@ -2148,10 +2154,15 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
                     }
                 }
             } else if (DELAYED_REBOOT_ACTION.equals(intent.getAction())) {
-                final int sequence = intent.getIntExtra("seq", 0);
                 synchronized (KeyguardViewMediator.this) {
-                    if (mDelayedRebootSequence == sequence) {
-                        mContext.getSystemService(PowerManager.class).reboot("RebootTimeout");
+                    if (mDelayedRebootScheduled != 0) {
+                        if (getRebootTimeout() == 0) {
+                            Log.e(TAG, "received intent for delayed reboot, but it is not on!");
+                        } else {
+                            mContext.getSystemService(PowerManager.class).reboot("RebootTimeout");
+                        }
+                    } else {
+                        Log.e(TAG, "received intent for delayed reboot, but no reboot scheduled!");
                     }
                 }
             }
@@ -2320,15 +2331,15 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
             }
 
             mExitSecureCallback = null;
-            synchronized (this) {
-                cancelDoRebootLaterLocked();
-            }
 
             // after successfully exiting securely, no need to reshow
             // the keyguard when they've released the lock
             mExternallyEnabled = true;
             mNeedToReshowWhenReenabled = false;
             updateInputRestricted();
+        }
+        synchronized (this) {
+            cancelDoRebootLaterLocked();
         }
 
         handleHide();
