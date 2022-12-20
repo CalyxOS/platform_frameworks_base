@@ -16,6 +16,24 @@
       "message": "I know the sequence numbers are something that AOSP itself uses in KeyguardViewMediator rather than simply canceling the PendingIntent sent to AlarmManager, but is there any reason we need to follow the same pattern instead of just canceling it, e.g. as is done for the Bluetooth timeout? It would be a lot easier to understand, for me at least, if we switched this.\n\nSee: https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Bluetooth/+/12923/5/service/java/com/android/server/bluetooth/BluetoothManagerService.java",
       "revId": "9a4059c71597f2f4cfb4ae0a39e685ecdee4be05",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf47de39_5eddd9e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T18:14:25Z",
+      "side": 1,
+      "message": "Another way would be to watch for settings change.\n\nHowever, that\u0027d only help with my latest bug today. There\u0027s been another report (which I did manage to reproduce) wherein when set to 2h, it\u0027d reboot even if device was actively being used.\n\nYour approach _might_ help with that?",
+      "parentUuid": "158a086c_05350899",
+      "revId": "9a4059c71597f2f4cfb4ae0a39e685ecdee4be05",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
