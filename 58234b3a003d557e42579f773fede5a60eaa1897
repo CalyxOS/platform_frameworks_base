@@ -53,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4a2db4_6d3530b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-20T15:29:49Z",
+      "side": 1,
+      "message": "https://gitlab.com/iode/os/public/lineage/frameworks_base/-/commit/f1ba9b14a35c57455a1f855dd56ed60e0f8440f5\n\nhttps://gitlab.com/iode/os/public/lineage/frameworks_base/-/commit/528e59a16b142ee65ffd773b08263e69971c496a",
+      "parentUuid": "cc456377_a2751bc7",
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532629f7_0517d196",
