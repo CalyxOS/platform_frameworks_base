@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0b12fe7_5d9186bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-21T09:32:22Z",
+      "side": 1,
+      "message": "Sure, can you do it in a follow up change to this commit. Aka just rebase your fixup on top of this.\n\nWe can also add a `ContentObserver` for the setting if that helps.",
+      "parentUuid": "bc04b11a_0369b4f1",
+      "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d50c5597_453adc9e",
         "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
         "patchSetId": 1
