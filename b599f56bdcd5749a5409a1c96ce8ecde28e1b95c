@@ -107,6 +107,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee3bb2a_60e79520",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-21T13:26:18Z",
+      "side": 1,
+      "message": "Will be done in a follow-up",
+      "parentUuid": "d50c5597_453adc9e",
+      "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f04391de_43f9777b",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "And include the sequence number",
       "parentUuid": "f04391de_43f9777b",
+      "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6285f1_501207db",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-21T13:26:18Z",
+      "side": 1,
+      "message": "Will be done in a follow-up",
+      "parentUuid": "32ad36ec_ee075759",
       "revId": "b599f56bdcd5749a5409a1c96ce8ecde28e1b95c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
