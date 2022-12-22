@@ -121,6 +121,7 @@ interface IUserManager {
     int getUserBadgeResId(int userId);
     int getUserBadgeNoBackgroundResId(int userId);
     int getUserBadgeLabelResId(int userId);
+    String getUserBadgeLabel(CharSequence label, int userId);
     int getUserBadgeColorResId(int userId);
     int getUserBadgeDarkColorResId(int userId);
     boolean hasBadge(int userId);
