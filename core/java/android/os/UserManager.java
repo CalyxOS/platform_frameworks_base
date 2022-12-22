@@ -4808,6 +4808,10 @@ public class UserManager {
     private String getDefaultUserBadgedLabel(CharSequence label, int userId) {
         try {
             final int resourceId = mService.getUserBadgeLabelResId(userId);
+            final UserInfo userInfo = getUserInfo(userId);
+            if (userInfo != null && userInfo.name != null) {
+                return Resources.getSystem().getString(resourceId, label, userInfo.name);
+            }
             return Resources.getSystem().getString(resourceId, label);
         } catch (RemoteException re) {
             throw re.rethrowFromSystemServer();
