@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb134b90_35b6a745",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 6439,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-22T21:53:04Z",
+      "side": 0,
+      "message": "😭 this does exist and has been used in the past, but it\u0027s only for debuggable builds. Also let\u0027s not allow configuring the number, so our patch is good.",
+      "revId": "2556e6da943297ea3af5da1a8f811cd69408055b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
