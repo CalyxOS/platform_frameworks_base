@@ -146,4 +146,7 @@ interface IUserManager {
     void setBootUser(int userId);
     @JavaPassthrough(annotation="@android.annotation.RequiresPermission(anyOf = {android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS})")
     int getBootUser();
+
+    /* Non-AOSP additions */
+    String getUserBadgeLabel(CharSequence label, int userId);
 }
