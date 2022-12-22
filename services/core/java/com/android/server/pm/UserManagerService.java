@@ -2287,6 +2287,20 @@ public class UserManagerService extends IUserManager.Stub {
         return userTypeDetails.getBadgeLabel(badgeIndex);
     }
 
+    @Override
+    public String getUserBadgeLabel(CharSequence label, @UserIdInt int userId) {
+        checkManageOrInteractPermissionIfCallerInOtherProfileGroup(userId,
+                "getUserBadgeLabel");
+        final UserInfo userInfo = getUserInfoNoChecks(userId);
+        final UserTypeDetails userTypeDetails = getUserTypeDetails(userInfo);
+        if (userInfo == null || userTypeDetails == null || !userTypeDetails.hasBadge()) {
+            throw new RuntimeException("Requested badge label for non-badged user " + userId);
+        }
+        final int badgeIndex = userInfo.profileBadge;
+        final int resourceId = userTypeDetails.getBadgeLabel(badgeIndex);
+        return Resources.getSystem().getString(resourceId, label, badgeIndex + 1, userInfo.name);
+    }
+
     /**
      * @return the color (not the resource ID) to be used for the user's badge in light theme
      */
