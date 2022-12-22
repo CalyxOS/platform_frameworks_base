@@ -134,4 +134,7 @@ interface IUserManager {
     long getUserStartRealtime();
     long getUserUnlockRealtime();
     boolean setUserEphemeral(int userId, boolean enableEphemeral);
+
+    /* Non-AOSP additions */
+    String getUserBadgeLabel(CharSequence label, int userId);
 }
