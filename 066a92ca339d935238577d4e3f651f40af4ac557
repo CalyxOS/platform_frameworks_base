@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec8c866_d1cfde10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-23T16:45:31Z",
+      "side": 1,
+      "message": "This has not been tested yet, but the idea is that perhaps after we bring in Ia85dcb32, we can also add customized label strings in that file directly (assuming we figure out how to do that without adding new string resources). I\u0027m not sure if doing it there would present an extra challenge for localization or not. If that\u0027s an issue, we could also look for a different way to edit/overlay `managed_profile_label_badge` and its variants that won\u0027t cause explosions - or is it only *adding* framework resources that causes explosions?",
+      "revId": "066a92ca339d935238577d4e3f651f40af4ac557",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
