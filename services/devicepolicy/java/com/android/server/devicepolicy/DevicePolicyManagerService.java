@@ -14723,27 +14723,31 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                 isProfileOwnerOnOrganizationOwnedDevice ? "Marking" : "Unmarking",
                 who.flattenToString(), userId);
 
-        // First, set restriction on removing the profile.
-        mInjector.binderWithCleanCallingIdentity(() -> {
-            // Clear restriction as user.
-            final UserHandle parentUser = mUserManager.getProfileParent(UserHandle.of(userId));
-            if (parentUser == null) {
-                throw new IllegalStateException(String.format("User %d is not a profile", userId));
-            }
-            if (!parentUser.isSystem()) {
-                throw new IllegalStateException(
-                        String.format("Only the profile owner of a managed profile on the"
-                                + " primary user can be granted access to device identifiers, not"
-                                + " on user %d", parentUser.getIdentifier()));
-            }
+        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+        if (!BELLIS_PACKAGE_NAME.equals(who.getPackageName())) {
+            // First, set restriction on removing the profile.
+            mInjector.binderWithCleanCallingIdentity(() -> {
+                // Clear restriction as user.
+                final UserHandle parentUser = mUserManager.getProfileParent(UserHandle.of(userId));
+                if (parentUser == null) {
+                    throw new IllegalStateException(
+                            String.format("User %d is not a profile", userId));
+                }
+                if (!parentUser.isSystem()) {
+                    throw new IllegalStateException(
+                            String.format("Only the profile owner of a managed profile on the"
+                                    + " primary user can be granted access to device identifiers, not"
+                                    + " on user %d", parentUser.getIdentifier()));
+                }
 
-            mUserManager.setUserRestriction(UserManager.DISALLOW_REMOVE_MANAGED_PROFILE,
-                    isProfileOwnerOnOrganizationOwnedDevice,
-                    parentUser);
-            mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_USER,
-                    isProfileOwnerOnOrganizationOwnedDevice,
-                    parentUser);
-        });
+                mUserManager.setUserRestriction(UserManager.DISALLOW_REMOVE_MANAGED_PROFILE,
+                        isProfileOwnerOnOrganizationOwnedDevice,
+                        parentUser);
+                mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_USER,
+                        isProfileOwnerOnOrganizationOwnedDevice,
+                        parentUser);
+            });
+        }
 
         // setProfileOwnerOfOrganizationOwnedDevice will trigger writing of the profile owner
         // data, no need to do it manually.
