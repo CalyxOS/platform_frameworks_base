@@ -17878,9 +17878,12 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
             mUserManager.setUserRestriction(UserManager.DISALLOW_REMOVE_MANAGED_PROFILE,
                     isProfileOwnerOnOrganizationOwnedDevice,
                     parentUser);
-            mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_USER,
-                    isProfileOwnerOnOrganizationOwnedDevice,
-                    parentUser);
+            final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+            if (!BELLIS_PACKAGE_NAME.equals(who.getPackageName())) {
+                mUserManager.setUserRestriction(UserManager.DISALLOW_ADD_USER,
+                        isProfileOwnerOnOrganizationOwnedDevice,
+                        parentUser);
+            }
         });
 
         // setProfileOwnerOfOrganizationOwnedDevice will trigger writing of the profile owner
