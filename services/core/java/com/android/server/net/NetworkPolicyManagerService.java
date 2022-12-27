@@ -1852,10 +1852,17 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     };
 
     private void updateNetworksInternal() {
+        if (LOGV) {
+            final String stackTrace = Arrays.stream(Thread.currentThread().getStackTrace())
+                    .skip(2).collect(Collectors.toList()).toString();
+            Slog.v(TAG, "updateNetworksInternal: begin: " + stackTrace);
+
+        }
         // Get all of our cross-process communication with telephony out of
         // the way before we acquire internal locks.
         updateSubscriptions();
 
+        if (LOGV) Slog.v(TAG, "updateNetworksInternal: entering mUidRulesFirstLock");
         synchronized (mUidRulesFirstLock) {
             /* With split-tunnel VPNs (those that only include specific apps),
              * the usual NetworkCallback handlers are never called, because the call to
@@ -1867,8 +1874,10 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             // TODO: Come up with an appropriate callback that runs more promptly.
             // updateNetworksInternal runs later than NetworkCallback handlers run, so
             // this may present a window of opportunity for unauthorized network access.
+            if (LOGV) Slog.v(TAG, "updateNetworksInternal: call updateRestrictedModeAllowlistUL");
             updateRestrictedModeAllowlistUL();
 
+            if (LOGV) Slog.v(TAG, "updateNetworksInternal: entering mNetworkPoliciesSecondLock");
             synchronized (mNetworkPoliciesSecondLock) {
                 ensureActiveCarrierPolicyAL();
                 normalizePoliciesNL();
@@ -1877,6 +1886,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 updateNotificationsNL();
             }
         }
+        if (LOGV) Slog.v(TAG, "updateNetworksInternal: end");
     }
 
     @VisibleForTesting
