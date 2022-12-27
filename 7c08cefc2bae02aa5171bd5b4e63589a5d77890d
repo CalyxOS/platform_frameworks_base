@@ -144,6 +144,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5eed2cf_b437c70f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-27T15:18:38Z",
+      "side": 1,
+      "message": "Twice this weekend, I was not able to convince the firewall that my VPN was connected until I manually toggled Wi-Fi off and on. This happened while troubleshooting VPN provider issues, which required some disconnecting and reconnecting the VPN (Wireguard). No amount of VPN-toggling would fix it; had to toggle Wi-Fi. I\u0027m not using a split tunnel or anything fancy. All apps are meant to be included.\n\nI took some bug reports, which do show that apps were being blocked as a result of restricted mode. The bug reports do not show Wi-Fi being toggled off and on because that info was blasted out of the buffer, despite being at max buffer size.\n\nUnfortunately, I can\u0027t reproduce it at will. But the point is, I think we may need *more* callbacks to make this work consistently, not less, so instead of removing the default network callbacks because they don\u0027t work perfectly, we might want to properly synchronize them using mUidFirstRulesLock - or just figure out what else we need to add here to make it work better. But that\u0027s tricky since I can\u0027t reproduce this at will.\n\nAnyway, if we properly synchronize the other callbacks instead of removing them, then this patch will definitely *only* improve things, rather than possibly make them a little worse. And that shouldn\u0027t be hard to do",
+      "revId": "7c08cefc2bae02aa5171bd5b4e63589a5d77890d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6e3674c_e0400999",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 5
