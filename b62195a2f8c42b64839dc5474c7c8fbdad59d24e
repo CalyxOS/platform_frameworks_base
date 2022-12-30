@@ -34,6 +34,23 @@
       "parentUuid": "36677d1d_5307c3ba",
       "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7fd9a3c_b2e40076",
+        "filename": "core/java/android/os/IUserManager.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-30T16:12:46Z",
+      "side": 1,
+      "message": "Given that this entire class is hidden, it\u0027s not part of the public api.\n\nIf a clean build worked, then no system api complaints too, so it should be fine.",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
