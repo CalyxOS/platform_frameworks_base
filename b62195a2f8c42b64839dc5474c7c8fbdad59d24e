@@ -16,6 +16,24 @@
       "message": "Holding off on \"Builds\" because I don\u0027t know if the (unfortunately, seemingly necessary) change to `IUserManager` will cause API-related complaints with a clean build. It does build fine from installclean though.",
       "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb329def_737244eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-30T15:24:44Z",
+      "side": 1,
+      "message": "Nothing weird with `m clean` and `m`.",
+      "parentUuid": "36677d1d_5307c3ba",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
