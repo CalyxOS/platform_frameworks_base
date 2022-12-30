@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa34062_46b778f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-12-30T01:56:34Z",
+      "side": 1,
+      "message": "As in previous patchsets, Launcher3 is not permitted to call `getUserInfo` due to `SecurityException: You either need MANAGE_USERS, CREATE_USERS, or QUERY_USERS permission to: query user`. As you can see, I tried some `Binder.clearCallingIdentity()` shenanigans as I\u0027ve seen done elsewhere in the framework, and calling `mService.getUserInfo` directly instead, and it didn\u0027t help at all. So right now, I\u0027m not exactly sure how to get the framework to allow itself to obtain this info on behalf of a calling app.",
+      "revId": "d822ee7aa7c688f7cf74d0f39ea81210d2277f28",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
