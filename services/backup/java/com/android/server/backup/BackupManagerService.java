@@ -667,6 +667,17 @@ public class BackupManagerService extends IBackupManager.Stub {
     }
 
     @Override
+    public void setFrameworkSchedulingEnabledForUser(int userId, boolean isEnabled) {
+        UserBackupManagerService userBackupManagerService =
+                getServiceForUserIfCallerHasPermission(userId,
+                        "setFrameworkSchedulingEnabledForUser()");
+
+        if (userBackupManagerService != null) {
+            userBackupManagerService.setFrameworkSchedulingEnabled(isEnabled);
+        }
+    }
+
+    @Override
     public void setBackupEnabledForUser(@UserIdInt int userId, boolean isEnabled)
             throws RemoteException {
         if (isUserReadyForBackup(userId)) {
