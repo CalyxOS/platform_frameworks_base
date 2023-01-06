@@ -277,6 +277,9 @@ public class PackageInstallerActivity extends AlertActivity {
     }
 
     private boolean isInstallRequestFromUnknownSource(Intent intent) {
+        if (PackageUtil.isGarlicLevelTrustedInstaller(this, mCallingPackage)) {
+            return false;
+        }
         if (mCallingPackage != null && intent.getBooleanExtra(
                 Intent.EXTRA_NOT_UNKNOWN_SOURCE, false)) {
             if (mSourceInfo != null && mSourceInfo.isPrivilegedApp()) {
