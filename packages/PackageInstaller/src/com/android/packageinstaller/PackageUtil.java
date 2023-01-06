@@ -22,12 +22,16 @@ import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -39,6 +43,8 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.UserHandle;
+import android.os.UserManager;
+import android.util.Pair;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -54,6 +60,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
+import java.security.cert.CertificateException;
+import java.util.Set;
 
 /**
  * This is a utility class for defining some utility methods and constants
@@ -61,6 +69,17 @@ import java.util.Objects;
  */
 public class PackageUtil {
     private static final String LOG_TAG = "PackageInstaller";
+
+    private static final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+
+    /**
+     * Signatures of CalyxOS repo apps that are allowed to install packages when this would
+     * otherwise be prevented by garlic level Safest.
+     */
+    private static final Set<Pair<String, String>> GARLIC_LEVEL_TRUSTED_INSTALLERS = Set.of(
+            new Pair<>("com.aurora.store", "3082035F30820247A0030201020204746B1B22300D06092A864886F70D01010B05003060310B300906035504061302554B310C300A060355040813034F5247310C300A060355040713034F524731133011060355040A130A6664726F69642E6F7267310F300D060355040B13064644726F6964310F300D060355040313064644726F6964301E170D3139303431333035343835355A170D3436303832393035343835355A3060310B300906035504061302554B310C300A060355040813034F5247310C300A060355040713034F524731133011060355040A130A6664726F69642E6F7267310F300D060355040B13064644726F6964310F300D060355040313064644726F696430820122300D06092A864886F70D01010105000382010F003082010A0282010100C21FFD1B6D1DCAF1AF18F4AD483714A2261BB8A71465CF5D831C3DC0383AF949B8BDE433594C4476CC9E6EC5EA21DF3147BBAB13305AC22A841BBCEBF0192A00A19EB79C1F1117F4CFDCA9B05A38EE24AC737906470BA7193A9981BF3BB413790A99D7CC11F878CE4885123434C86EF22DE4DDD396821B5211B168862D37EB11705F41DC493CF9F5B28FA7F8E64578D32BAFBC0C817742E58779746012445C8D716BC9170B225E64F3EFE6F0534E8E464C13180DEB0AC719E8EA75D003798AF44848FF1253263A4B1DF9D522E4D4699E04F4F5DCF1E7C56615AD76ED821033852CC521CA69BFE3FD9C2B2867663BE303BB936111638FF9A8241F8FCC8D66E1290203010001A321301F301D0603551D0E0416041402443ECFB8376A2F8356212A3B4FD7B3987BBEBE300D06092A864886F70D01010B050003820101008E8FE70E2A156F4A22FB2A20C4C7ED2D680B379E71A5D19FB51E380674AD94CD27DD36FB77A781E1E23616FF30CC35A280EC824E7E392F6868FFD7C21252EFD86226621CB01D8271E0D9646AA529C184D796F189F20C6595AA4A5E9EE748BBF589A1D48B0BC71B54E053E5093ABD64B85D8933BCBD8315A5522D98797D2BF2DA15FC1DAE043C9983AB85C9D1A120336591E7105CCD71EC244EA9D744DE70BE167F17CBF8EC50F7A794FF027F94591CA37B689912027EE6BFD3660CA924294BC9C0C30067D4169B44E513FA086C4763EAFF90B05A66993045BFC28032FF8122E38A31E9467D06BD5E0BCEEC8DFA811FBCAD29915126A69327D98F0E655D1CDB1B"),
+            new Pair<>("org.fdroid.basic", "3082036130820249A00302010202042A3D3590300D06092A864886F70D01010B05003060310B300906035504061302554B310C300A060355040813034F5247310C300A060355040713034F524731133011060355040A130A6664726F69642E6F7267310F300D060355040B13064644726F6964310F300D060355040313064644726F69643020170D3233303430353038303235315A180F32303530303832313038303235315A3060310B300906035504061302554B310C300A060355040813034F5247310C300A060355040713034F524731133011060355040A130A6664726F69642E6F7267310F300D060355040B13064644726F6964310F300D060355040313064644726F696430820122300D06092A864886F70D01010105000382010F003082010A02820101009B339156D36085FC67EDD920F8278D01D65DD9EFF64042560D0F6C440FFD1E1A3478B35138B46403E1D79C48ACDBE6D8BE37D112F70DF948DBA16BE82E3A1112AA07E280C5EF25D3F82FB1F0E7CD2FE53D263517C5E5C9EFB871975E61EA581E887D6FABBA7A02E6574D38BB3D7979770C91D521E98C00A8C8872E6B44D5BB7581B73D99E7528083488B6DF374B2C1DAD0FFC58B593DE0EEF0BE07F349541AEE69843F18730412FDC6B7D6ABD9B951643C6289D5EB39934A53F296836A95472982A83B478F0FB094CFF373489214413A90C84D01F281AC5BD90C0BDDD29321CFAD48F5B68F68FE9C207EB12478BAF1EB2A2C29385DA1F9C92554C8E7320190E50203010001A321301F301D0603551D0E041604149E71EB04BCBA667200CBD1400EC41C6CF0FE9BD3300D06092A864886F70D01010B050003820101001B005117E824AF14A43543373AD3A20D998390EC11C188AC762045AC7291C5BC1FFB4577BA74BB30873F2EBE9930DF0E51830B57FD4147FE7389EB414607FB7F698CD1E8D1BAE46AC38B9280B6B36FF2E40C0C4E128EFCDA6EA06427BC0BAFD0A322B2E5329BFEEC71BF5EDC2D91DBFEEC33463E17E6D74F548548FA3B9CEF3BEB32965EF4EDC885241256CFE4DA81AB1C5CAAA315E3D4ADD23C7A2C98E0D099BA16269E58374D44DD9FE548D97CB3A225D9F89EC8CA41A14D912A09457C47C42FC03048E7C163B2355E005A4954B009EFDDEDD8EC525685E5AD8BC4DD617C819D11606B639FEE49BD356C9288DBE458104CF36A4AF9DEBF2A342370E4243E65")
+    );
 
     public static final String PREFIX="com.android.packageinstaller.";
     public static final String INTENT_ATTR_INSTALL_STATUS = PREFIX+"installStatus";
@@ -384,5 +403,76 @@ public class PackageUtil {
             return appInfo;
         }
         return null;
+    }
+
+    /**
+      Return true if the provided package should be considered an allowed source, when
+      garlic level is Safest. It is assumed that the garlic level is Safest if Bellis
+      is the organization owner and if there is a global restriction on unknown sources.
+     */
+    public static boolean isTrustedSourceForGarlicLevel(@NonNull final Context context,
+            @Nullable final String callingPackage) {
+        if (!isOrganizationOwnerBellis(context)) {
+            return false;
+        }
+        final UserManager um = context.getSystemService(UserManager.class);
+        if (!um.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY)) {
+            return false;
+        }
+        // At this point, garlic level Safest is effectively confirmed.
+        // Now we check to see if the unknown source is a trusted installer.
+        return isGarlicLevelTrustedInstaller(context, callingPackage);
+    }
+
+    /**
+     * Return true if the provided package is a trusted installation source for garlic level
+     * and its signature matches the expected trusted signature.
+     */
+    private static boolean isGarlicLevelTrustedInstaller(@NonNull final Context context,
+            @Nullable final String packageName) {
+        for (Pair<String, String> pair : GARLIC_LEVEL_TRUSTED_INSTALLERS) {
+            final String trustedPackageName = pair.first;
+            final String trustedPackageSignature = pair.second;
+            if (!trustedPackageName.equals(packageName)) {
+                continue;
+            }
+            try {
+                PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
+                        packageName, PackageManager.PackageInfoFlags.of(
+                                PackageManager.GET_SIGNING_CERTIFICATES));
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                for (Signature signature : packageInfo.signingInfo.getApkContentsSigners()) {
+                    outputStream.write(signature.toByteArray());
+                }
+                if (Signature.areEffectiveMatch(new Signature(trustedPackageSignature),
+                        new Signature(outputStream.toByteArray()))) {
+                    return true;
+                }
+            } catch (NameNotFoundException | IOException | CertificateException ignored) {
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Return true if the device is organization-owned and if the system user's first
+     * managed profile is owned by Bellis.
+     */
+    private static boolean isOrganizationOwnerBellis(@NonNull final Context context) {
+        final DevicePolicyManager dpm = context.getSystemService(DevicePolicyManager.class);
+        if (!dpm.isOrganizationOwnedDeviceWithManagedProfile()) {
+            return false;
+        }
+        final UserManager um = context.getSystemService(UserManager.class);
+        for (int profileId : um.getProfileIds(UserHandle.USER_SYSTEM, false /* enabledOnly */)) {
+            if (!um.isManagedProfile(profileId)) {
+                continue;
+            }
+            // Check if the system's first managed profile is owned by the Bellis package.
+            final ComponentName componentName = dpm.getProfileOwnerAsUser(profileId);
+            return componentName != null
+                    && BELLIS_PACKAGE_NAME.equals(componentName.getPackageName());
+        }
+        return false;
     }
 }
