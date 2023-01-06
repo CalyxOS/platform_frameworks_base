@@ -128,7 +128,7 @@ public class InstallStart extends Activity {
             mAbortInstall = true;
         }
 
-        checkDevicePolicyRestrictions();
+        checkDevicePolicyRestrictions(callingPackage);
 
         final String installerPackageNameFromIntent = getIntent().getStringExtra(
                 Intent.EXTRA_INSTALLER_PACKAGE_NAME);
@@ -291,7 +291,7 @@ public class InstallStart extends Activity {
         return originatingUid == installerUid;
     }
 
-    private void checkDevicePolicyRestrictions() {
+    private void checkDevicePolicyRestrictions(@Nullable final String callingPackage) {
         final String[] restrictions = new String[] {
             UserManager.DISALLOW_INSTALL_APPS,
             UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES,
@@ -304,6 +304,10 @@ public class InstallStart extends Activity {
                 continue;
             }
 
+            if (UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY.equals(restriction)
+                    && PackageUtil.isUnknownSourceAllowedForGarlicLevel(this, callingPackage)) {
+                continue;
+            }
             mAbortInstall = true;
 
             // If the given restriction is set by an admin, display information about the
