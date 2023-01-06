@@ -893,6 +893,8 @@ public class VpnManagerService extends IVpnManager.Stub {
             }
 
             vpn.refreshPlatformVpnAppExclusionList();
+            vpn.setAlwaysOnPackage(vpn.getAlwaysOnPackage(), vpn.getLockdown(),
+                    vpn.getLockdownAllowlist());
 
             if (vpn.isGlobalVpn()) {
                 LineageSettings.Global.putString(mContext.getContentResolver(),
@@ -913,6 +915,8 @@ public class VpnManagerService extends IVpnManager.Stub {
 
             if (vpn != null && !isReplacing) {
                 vpn.refreshPlatformVpnAppExclusionList();
+                vpn.setAlwaysOnPackage(vpn.getAlwaysOnPackage(), vpn.getLockdown(),
+                        vpn.getLockdownAllowlist());
             }
         }
     }
