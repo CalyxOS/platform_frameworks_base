@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7f61ba_4e68a9f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-06T18:30:42Z",
+      "side": 1,
+      "message": "Mark old comments as resolved",
+      "revId": "d7114742994fc7b6fa09529473baf3826ca814be",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
