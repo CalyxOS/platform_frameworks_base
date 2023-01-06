@@ -39,6 +39,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.ApplicationInfoFlags;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.BitmapDrawable;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,7 +56,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -277,6 +281,9 @@ public class PackageInstallerActivity extends AlertActivity {
     }
 
     private boolean isInstallRequestFromUnknownSource(Intent intent) {
+        if (PackageUtil.isGarlicLevelTrustedInstaller(this, mCallingPackage)) {
+            return false;
+        }
         if (mCallingPackage != null && intent.getBooleanExtra(
                 Intent.EXTRA_NOT_UNKNOWN_SOURCE, false)) {
             if (mSourceInfo != null && mSourceInfo.isPrivilegedApp()) {
