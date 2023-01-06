@@ -132,7 +132,8 @@ public class InstallStart extends Activity {
             checkPermission(Manifest.permission.INSTALL_PACKAGES, /* pid= */ -1, callingUid)
                     == PackageManager.PERMISSION_GRANTED;
 
-        boolean isTrustedSource = isPrivilegedAndKnown || isInstallPkgPermissionGranted;
+        boolean isTrustedSource = isPrivilegedAndKnown || isInstallPkgPermissionGranted
+                || PackageUtil.isTrustedSourceForGarlicLevel(this, callingPackage);
 
         if (!isTrustedSource && !isSystemDownloadsProvider && !isDocumentsManager
                 && callingUid != Process.INVALID_UID) {
