@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19384f9_71180bc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-06T18:51:43Z",
+      "side": 1,
+      "message": "Nice, gonna take another look at the signature code with a fresher mind. i.e. not late on a Friday.",
+      "revId": "907ce26d7359e30491b3c3d5f07a6dd79de35ad7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
