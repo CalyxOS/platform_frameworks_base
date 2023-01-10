@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbbf3bf_e28dcfd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-10T17:20:16Z",
+      "side": 1,
+      "message": "Looks fine. I\u0027m hoping we can revisit the lineage settings provider code to match AOSP more closely so we can make use of it in modules and dumps",
+      "revId": "6987f4309fbf866469e1c931bb7841f893790deb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
