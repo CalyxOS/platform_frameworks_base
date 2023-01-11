@@ -50,6 +50,24 @@
       "message": "Wait for merge in lineage?",
       "revId": "beae3c05a9c8efef69eceaba731422344f632a70",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13262e45_e59ecbec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-01-11T12:38:54Z",
+      "side": 1,
+      "message": "We can just merge it there too, AOSP ignored it as usual",
+      "parentUuid": "cbed7abb_708fb92b",
+      "revId": "beae3c05a9c8efef69eceaba731422344f632a70",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
