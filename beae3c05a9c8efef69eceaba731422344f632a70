@@ -33,6 +33,23 @@
       "message": "Works for me; can verify the problem exists on CalyxOS 4.4.0 but not on test devices with this patch included.",
       "revId": "beae3c05a9c8efef69eceaba731422344f632a70",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbed7abb_708fb92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-11T11:45:41Z",
+      "side": 1,
+      "message": "Wait for merge in lineage?",
+      "revId": "beae3c05a9c8efef69eceaba731422344f632a70",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
