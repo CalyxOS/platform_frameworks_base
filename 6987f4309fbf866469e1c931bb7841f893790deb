@@ -16,6 +16,23 @@
       "message": "Looks fine. I\u0027m hoping we can revisit the lineage settings provider code to match AOSP more closely so we can make use of it in modules and dumps",
       "revId": "6987f4309fbf866469e1c931bb7841f893790deb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe647b3_c48bd02f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-11T12:15:51Z",
+      "side": 1,
+      "message": "Ok with this unless there\u0027s any major objections upstream.\n\nI\u0027d like to get this in for 4.5.1\n\nCan always revert / reland / fixup later as needed.",
+      "revId": "6987f4309fbf866469e1c931bb7841f893790deb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
