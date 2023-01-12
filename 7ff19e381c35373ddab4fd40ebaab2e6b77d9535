@@ -69,6 +69,24 @@
       "parentUuid": "f883a0a8_4ce74633",
       "revId": "7ff19e381c35373ddab4fd40ebaab2e6b77d9535",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b18bf6d_484aafd4",
+        "filename": "services/core/java/com/android/server/vibrator/VibratorManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-12T17:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f502a79_8ed33b62",
+      "revId": "7ff19e381c35373ddab4fd40ebaab2e6b77d9535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
