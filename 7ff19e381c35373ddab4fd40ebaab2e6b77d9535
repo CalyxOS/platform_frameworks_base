@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b08385_a7406bc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-12T16:17:07Z",
+      "side": 1,
+      "message": "I honestly can\u0027t think of any security issue or potential for abuse, here.",
+      "revId": "7ff19e381c35373ddab4fd40ebaab2e6b77d9535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
