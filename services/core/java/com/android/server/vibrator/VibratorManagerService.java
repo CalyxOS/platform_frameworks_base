@@ -904,6 +904,10 @@ public class VibratorManagerService extends IVibratorManagerService.Stub {
     @Nullable
     private Vibration.Status shouldIgnoreVibrationLocked(int uid, int displayId, String opPkg,
             VibrationAttributes attrs) {
+        if (uid == Process.SHELL_UID) {
+            // Always allow vibrations from shell. Necessary e.g. for dumpstate's end vibrations.
+            return null;
+        }
         Vibration.Status statusFromSettings = mVibrationSettings.shouldIgnoreVibration(uid,
                 displayId, attrs);
         if (statusFromSettings != null) {
