@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf2b414_4ff4d7af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-12T18:07:49Z",
+      "side": 1,
+      "message": "Confused myself for a bit, which is why I added so much detail to the commit message, but I can confirm this works as expected now.",
+      "revId": "5cfd9b74cf0c04758788e76bd016de0e69db6e0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
