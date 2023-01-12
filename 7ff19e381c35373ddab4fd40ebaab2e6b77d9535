@@ -51,6 +51,24 @@
       "message": "Putting it here also ignores DnD, as that\u0027s checked in \n\n`mVibrationSettings.shouldIgnoreVibration`\n\nBut that\u0027s where the current error is coming from I presume, given the \"is background\" error.\n\nOh well, in that case just noting it down.",
       "revId": "7ff19e381c35373ddab4fd40ebaab2e6b77d9535",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f502a79_8ed33b62",
+        "filename": "services/core/java/com/android/server/vibrator/VibratorManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-12T16:29:16Z",
+      "side": 1,
+      "message": "That\u0027s a good point actually. :/ I\u0027ll see if there\u0027s a simple way around it.",
+      "parentUuid": "f883a0a8_4ce74633",
+      "revId": "7ff19e381c35373ddab4fd40ebaab2e6b77d9535",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
