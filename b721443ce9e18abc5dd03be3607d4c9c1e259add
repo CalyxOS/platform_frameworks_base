@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a699ae_c694516d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-13T21:40:33Z",
+      "side": 1,
+      "message": "This will affect SeedVault.\n\nhttps://github.com/seedvault-app/seedvault/blob/android13/app/src/main/java/com/stevesoltys/seedvault/restore/install/InstallIntentCreator.kt - this is based on `installerPackageName`, which SeedVault reads when backing up, which\u0027d presumably get set to Play Store now.\n\nOne way around that, even if not the best, might be to add an exception for SeedVault here.",
+      "revId": "b721443ce9e18abc5dd03be3607d4c9c1e259add",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
