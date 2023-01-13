@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9299de4_379520b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-13T21:10:06Z",
+      "side": 1,
+      "message": "That commit doesn\u0027t work for me either when opening Terminal Emulator, rotating to landscape, spamming 32-64 infinite loop processes, and turning off screen.\n\nThis was nearly double the amount of time, too. :(",
+      "revId": "47de1d082b8eecfc8aa4b4fa9541d9c3e4bc514a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
