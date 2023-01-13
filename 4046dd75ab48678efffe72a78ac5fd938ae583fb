@@ -16,6 +16,24 @@
       "message": "Testing working on bramble. Needs testing on other devices.\n\nAlso, this change makes a lot of sense to me, but I\u0027m not sure if it makes enough sense to include without running it by AOSP or something. Simply increasing the timeout might be enough.",
       "revId": "4046dd75ab48678efffe72a78ac5fd938ae583fb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb355d18_ef872178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-13T12:19:37Z",
+      "side": 1,
+      "message": "You can always try just sending it to AOSP and adding the original author as reviewer.\n\nBest case they reply\n\nWorst case no reply, which just leaves us as the same place, wondering,",
+      "parentUuid": "6bc0eb31_5d023800",
+      "revId": "4046dd75ab48678efffe72a78ac5fd938ae583fb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
