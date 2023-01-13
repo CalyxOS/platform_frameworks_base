@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817e0169_8453a60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-13T17:09:37Z",
+      "side": 1,
+      "message": "From a quick look at log while testing this on bramble, it looks like maybe other things are timing out first now, e.g. `WindowManager: Window freeze timeout expired.`\n\n...which is good!",
+      "revId": "b154b305b70867e14411d600a32e06b60b56137b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
