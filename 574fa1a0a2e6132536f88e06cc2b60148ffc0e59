@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a401d47c_8243f06e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-13T21:34:44Z",
+      "side": 1,
+      "message": "Can ship next week before the builds unless we think of a problem with this / get some feedback from AOSP.",
+      "revId": "574fa1a0a2e6132536f88e06cc2b60148ffc0e59",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
