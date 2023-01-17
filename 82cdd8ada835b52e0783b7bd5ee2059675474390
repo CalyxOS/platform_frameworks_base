@@ -68,6 +68,23 @@
       "parentUuid": "ad48fa38_11e2150b",
       "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69954bc_806cb8b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-17T15:31:56Z",
+      "side": 1,
+      "message": "When this change is applied, how is BatteryStatsViewer accessed? I couldn\u0027t figure it out.",
+      "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
