@@ -85,6 +85,23 @@
       "message": "When this change is applied, how is BatteryStatsViewer accessed? I couldn\u0027t figure it out.",
       "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2582e313_ebfc880c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-17T15:34:48Z",
+      "side": 1,
+      "message": "IA entries are shown within a specified menu in the Settings app. This one is under the battery section",
+      "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
