@@ -16,6 +16,23 @@
       "message": "This will affect SeedVault.\n\nhttps://github.com/seedvault-app/seedvault/blob/android13/app/src/main/java/com/stevesoltys/seedvault/restore/install/InstallIntentCreator.kt - this is based on `installerPackageName`, which SeedVault reads when backing up, which\u0027d presumably get set to Play Store now.\n\nOne way around that, even if not the best, might be to add an exception for SeedVault here.",
       "revId": "b721443ce9e18abc5dd03be3607d4c9c1e259add",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b11e820_50e8fcc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-17T18:56:50Z",
+      "side": 1,
+      "message": "This also needs to handle Aurora Services",
+      "revId": "b721443ce9e18abc5dd03be3607d4c9c1e259add",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
