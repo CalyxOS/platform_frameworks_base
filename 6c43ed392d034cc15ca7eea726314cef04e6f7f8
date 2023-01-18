@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea26c540_d5b0df55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T20:52:01Z",
+      "side": 1,
+      "message": "Needs further changes (microG apps and prebuilts), and consideration.\n\nFigured I\u0027d throw it here quickly so that we don\u0027t forget.\n\nhttps://github.com/microg/GmsCore/pull/1826",
+      "revId": "6c43ed392d034cc15ca7eea726314cef04e6f7f8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
