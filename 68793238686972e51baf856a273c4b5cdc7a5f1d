@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85aa3e2b_585c89c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T10:27:13Z",
+      "side": 1,
+      "message": "Need to test uninstalling apps from within Aurora Store after this.",
+      "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
