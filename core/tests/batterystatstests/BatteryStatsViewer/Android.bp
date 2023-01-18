@@ -19,7 +19,6 @@ android_app {
         "com.google.android.material_material",
     ],
     platform_apis: true,
-    certificate: "platform",
     system_ext_specific: true,
     owner: "google",
 }
