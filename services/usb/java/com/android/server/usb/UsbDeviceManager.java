@@ -622,6 +622,9 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             } catch (NoSuchElementException | RemoteException ignored) {
                 // This feature is not supported
             }
+
+            // Try to restrict USB early. It'll get updated based on the setting later.
+            restrictUsb(true);
         }
 
         public void sendMessage(int what, boolean arg) {
@@ -1543,6 +1546,10 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             final boolean usbConnected = mConnected || mHostConnected;
             final boolean shouldRestrict = (restrictUsb == 1 && mIsKeyguardShowing && !usbConnected)
                     || restrictUsb == 2;
+            restrictUsb(shouldRestrict);
+        }
+
+        public void restrictUsb(Boolean shouldRestrict) {
             UsbManager usbManager = mContext.getSystemService(UsbManager.class);
             if (usbManager == null || !usbManager.enableUsbDataSignal(!shouldRestrict)) {
                 try {
