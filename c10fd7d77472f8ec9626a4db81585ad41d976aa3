@@ -16,6 +16,24 @@
       "message": "https://zifb.in/l87guZdjTe",
       "revId": "c10fd7d77472f8ec9626a4db81585ad41d976aa3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08fac99_8373afab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T17:35:14Z",
+      "side": 1,
+      "message": "The perm is `signature|privileged|development`\n\nBetter to leave it platform key signed then make it priv-app in that case.",
+      "parentUuid": "52743955_db94d0d5",
+      "revId": "c10fd7d77472f8ec9626a4db81585ad41d976aa3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
