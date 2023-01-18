@@ -33,6 +33,24 @@
       "message": "Doesn\u0027t work with https://play.google.com/store/apps/details?id\u003dco.mona.android \n\nWhat apps was this tested with?",
       "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3003884e_a32be743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T19:54:09Z",
+      "side": 1,
+      "message": "App info still shows \"App installed from Aurora Store\"",
+      "parentUuid": "9cfefb64_afaa218c",
+      "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
