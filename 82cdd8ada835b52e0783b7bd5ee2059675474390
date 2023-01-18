@@ -102,6 +102,24 @@
       "message": "IA entries are shown within a specified menu in the Settings app. This one is under the battery section",
       "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a93e2e_1f6a03ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T15:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bd3539_584bfcf2",
+      "revId": "82cdd8ada835b52e0783b7bd5ee2059675474390",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
