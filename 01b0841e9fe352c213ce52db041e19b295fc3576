@@ -16,6 +16,24 @@
       "message": "First line shouldn\u0027t be this long usually.\n\nAlso add reason (is this needed for garlic level safest even from SuW?)",
       "revId": "01b0841e9fe352c213ce52db041e19b295fc3576",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8010bd46_d50d22d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T20:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312b732b_ca88581c",
+      "revId": "01b0841e9fe352c213ce52db041e19b295fc3576",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
