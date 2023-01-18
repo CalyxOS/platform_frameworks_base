@@ -33,6 +33,24 @@
       "message": "This also needs to handle Aurora Services",
       "revId": "b721443ce9e18abc5dd03be3607d4c9c1e259add",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d22943b_4c179298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-18T10:29:40Z",
+      "side": 1,
+      "message": "I did https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Seedvault/+/15300 instead.",
+      "parentUuid": "04a699ae_c694516d",
+      "revId": "b721443ce9e18abc5dd03be3607d4c9c1e259add",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
