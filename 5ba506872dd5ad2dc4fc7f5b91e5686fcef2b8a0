@@ -34,6 +34,23 @@
       "parentUuid": "4e65935e_a01f2041",
       "revId": "5ba506872dd5ad2dc4fc7f5b91e5686fcef2b8a0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e268ba3b_bc7798c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-19T13:53:07Z",
+      "side": 1,
+      "message": "We could abandon this now or keep it more easily visible until we get reports from 4.5.1",
+      "revId": "5ba506872dd5ad2dc4fc7f5b91e5686fcef2b8a0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
