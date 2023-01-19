@@ -17,10 +17,22 @@
   -->
 
 <resources>
-    <style name="Theme" parent="Theme.MaterialComponents.Light">
-        <item name="colorPrimary">#34a853</item>
+    <!-- Base Theme -->
+    <style name="BaseTheme" parent="Theme.Material3.DayNight">
+        <item name="android:navigationBarColor">?android:colorBackground</item>
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
+        <item name="actionBarStyle">@style/Widget.Material3.ActionBar.Solid</item>
         <item name="android:windowActionBar">true</item>
         <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <!-- Light Theme -->
+    <style name="Theme" parent="BaseTheme">
+        <item name="colorPrimary">@android:color/system_accent1_500</item>
+        <item name="colorAccent">@android:color/system_accent1_500</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="LoadTestCardView" parent="Widget.MaterialComponents.CardView">
