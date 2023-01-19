@@ -51,6 +51,42 @@
       "parentUuid": "9cfefb64_afaa218c",
       "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c498634_368b3fb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-19T16:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85aa3e2b_585c89c2",
+      "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50012f11_44573de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-19T16:51:47Z",
+      "side": 1,
+      "message": "Tested with the app linked in the issue and with the one mentioned above as well now",
+      "parentUuid": "3003884e_a32be743",
+      "revId": "68793238686972e51baf856a273c4b5cdc7a5f1d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
