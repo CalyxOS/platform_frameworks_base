@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63bc44a_a0d9f602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-19T20:08:36Z",
+      "side": 1,
+      "message": "So, SYSTEM_UID is the one that matters for allowing apps to update without user interaction. This means that App Info will now once again display Aurora Store. But all other UIDs are not exempt from the spoof",
+      "revId": "d81763383588e81353e24ad0a56ae2478752319c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
