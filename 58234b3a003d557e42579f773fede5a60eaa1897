@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2e7a010_baeacc96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-01-19T17:03:47Z",
+      "side": 1,
+      "message": "Ugh, this is happening again now. Maybe we add an exception for Aurora itself to see the real installer?",
+      "parentUuid": "548c0c90_479478c0",
+      "revId": "58234b3a003d557e42579f773fede5a60eaa1897",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "532629f7_0517d196",
         "filename": "services/core/java/com/android/server/pm/PackageInstallerService.java",
         "patchSetId": 1
