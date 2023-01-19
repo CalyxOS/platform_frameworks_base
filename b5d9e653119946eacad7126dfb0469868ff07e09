@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76aac59b_7b5a6544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-19T22:05:34Z",
+      "side": 1,
+      "message": "We have a better patch for this already, 15032: Set FakeStore as Aurora Store installer package name | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/15032",
+      "revId": "b5d9e653119946eacad7126dfb0469868ff07e09",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
