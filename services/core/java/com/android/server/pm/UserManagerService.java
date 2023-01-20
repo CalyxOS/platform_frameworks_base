@@ -1007,6 +1007,7 @@ public class UserManagerService extends IUserManager.Stub {
             }
             result.add(profile.id);
         }
+        Slog.e(LOG_TAG, "Returning " + result.size() + " children of " + userId);
         return result;
     }
 
@@ -2666,6 +2667,8 @@ public class UserManagerService extends IUserManager.Stub {
 
             // Limit total number of users that can be created
             int result = UserManager.getMaxSupportedUsers() - usersCountAfterRemoving;
+            Slog.e(LOG_TAG, "Limiting total number of users that can be created for " + userId
+                    + " to " + result);
 
             // Special case: Allow creating a managed profile anyway if there's only 1 user
             if (result <= 0 && isManagedProfile && usersCountAfterRemoving == 1) {
@@ -2675,6 +2678,9 @@ public class UserManagerService extends IUserManager.Stub {
             // Limit the number of profiles of this type that can be created.
             final int maxUsersOfType = getMaxUsersOfTypePerParent(type);
             if (maxUsersOfType != UserTypeDetails.UNLIMITED_NUMBER_OF_USERS) {
+                Slog.e(LOG_TAG, "Can have up to " + maxUsersOfType + " children for " + userId);
+                Slog.e(LOG_TAG, "userTypeCount: " + userTypeCount);
+                Slog.e(LOG_TAG, "profilesRemovedCount: " + profilesRemovedCount);
                 result = Math.min(result, maxUsersOfType - (userTypeCount - profilesRemovedCount));
             }
             if (result <= 0) {
