@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7616f941_06b25a68",
+        "filename": "core/java/android/content/pm/UserInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-20T19:32:51Z",
+      "side": 1,
+      "message": "What does `isDemo()` help with here? Is it an additional enhancement or necessary to support this?",
+      "revId": "810c4101590fa913980d481558dde2ecadb9081b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
