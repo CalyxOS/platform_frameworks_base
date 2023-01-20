@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6f57bc_fcd3c5b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-20T22:59:59Z",
+      "side": 1,
+      "message": "`java.lang.SecurityException: Calling identity is not authorized`\n`at android.app.admin.DevicePolicyManager.isProvisioningAllowed(DevicePolicyManager.java:12237)`\n\nOkay, I think it is because of `caller.getUid()` which needs to be a userId, not a uid. Will fix later",
+      "revId": "334d5bf13b26d1ad5e12610c548881b5ac7fac9f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
