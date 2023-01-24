@@ -410,7 +410,7 @@ public class LockSettingsService extends ILockSettings.Stub {
         try (LockscreenCredential unifiedProfilePassword = generateRandomProfilePassword()) {
             setLockCredentialInternal(unifiedProfilePassword, profileUserPassword, profileUserId,
                     /* isLockTiedToParent= */ true);
-            tieProfileLockToParent(profileUserId, unifiedProfilePassword);
+            tieProfileLockToParent(profileUserId, parentId, unifiedProfilePassword);
             mManagedProfilePasswordCache.storePassword(profileUserId, unifiedProfilePassword);
         }
     }
@@ -2024,34 +2024,43 @@ public class LockSettingsService extends ILockSettings.Stub {
     }
 
     @VisibleForTesting /** Note: this method is overridden in unit tests */
-    protected void tieProfileLockToParent(int userId, LockscreenCredential password) {
-        if (DEBUG) Slog.v(TAG, "tieProfileLockToParent for user: " + userId);
+    protected void tieProfileLockToParent(int profileUserId, int parentUserId,
+            LockscreenCredential password) {
+        if (DEBUG) Slog.v(TAG, "tieProfileLockToParent for user: " + profileUserId);
         byte[] encryptionResult;
         byte[] iv;
+        final long parentSid;
+        try {
+            parentSid = getGateKeeperService().getSecureUserId(parentUserId);
+        } catch (RemoteException e) {
+            throw new IllegalStateException("Failed to talk to GateKeeper service", e);
+        }
+
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES);
             keyGenerator.init(new SecureRandom());
             SecretKey secretKey = keyGenerator.generateKey();
             try {
                 mJavaKeyStore.setEntry(
-                        PROFILE_KEY_NAME_ENCRYPT + userId,
+                        PROFILE_KEY_NAME_ENCRYPT + profileUserId,
                         new java.security.KeyStore.SecretKeyEntry(secretKey),
                         new KeyProtection.Builder(KeyProperties.PURPOSE_ENCRYPT)
                                 .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
                                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                                 .build());
                 mJavaKeyStore.setEntry(
-                        PROFILE_KEY_NAME_DECRYPT + userId,
+                        PROFILE_KEY_NAME_DECRYPT + profileUserId,
                         new java.security.KeyStore.SecretKeyEntry(secretKey),
                         new KeyProtection.Builder(KeyProperties.PURPOSE_DECRYPT)
                                 .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
                                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                                 .setUserAuthenticationRequired(true)
+                                .setBoundToSpecificSecureUserId(parentSid)
                                 .setUserAuthenticationValidityDurationSeconds(30)
                                 .build());
                 // Key imported, obtain a reference to it.
                 SecretKey keyStoreEncryptionKey = (SecretKey) mJavaKeyStore.getKey(
-                        PROFILE_KEY_NAME_ENCRYPT + userId, null);
+                        PROFILE_KEY_NAME_ENCRYPT + profileUserId, null);
                 Cipher cipher = Cipher.getInstance(
                         KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_GCM + "/"
                                 + KeyProperties.ENCRYPTION_PADDING_NONE);
@@ -2060,7 +2069,7 @@ public class LockSettingsService extends ILockSettings.Stub {
                 iv = cipher.getIV();
             } finally {
                 // The original key can now be discarded.
-                mJavaKeyStore.deleteEntry(PROFILE_KEY_NAME_ENCRYPT + userId);
+                mJavaKeyStore.deleteEntry(PROFILE_KEY_NAME_ENCRYPT + profileUserId);
             }
         } catch (UnrecoverableKeyException
                 | BadPaddingException | IllegalBlockSizeException | KeyStoreException
@@ -2077,7 +2086,7 @@ public class LockSettingsService extends ILockSettings.Stub {
         } catch (IOException e) {
             throw new IllegalStateException("Failed to concatenate byte arrays", e);
         }
-        mStorage.writeChildProfileLock(userId, outputStream.toByteArray());
+        mStorage.writeChildProfileLock(profileUserId, outputStream.toByteArray());
     }
 
     private void setUserKeyProtection(int userId, byte[] key) {
@@ -2200,7 +2209,7 @@ public class LockSettingsService extends ILockSettings.Stub {
                 LockscreenCredential piUserDecryptedPassword = profileUserDecryptedPasswords.get(i);
                 if (piUserId != -1 && piUserDecryptedPassword != null) {
                     if (DEBUG) Slog.v(TAG, "Restore tied profile lock");
-                    tieProfileLockToParent(piUserId, piUserDecryptedPassword);
+                    tieProfileLockToParent(piUserId, userId, piUserDecryptedPassword);
                 }
                 if (piUserDecryptedPassword != null) {
                     piUserDecryptedPassword.zeroize();
