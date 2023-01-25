@@ -677,6 +677,12 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                     + "management app's authentication policy";
     private static final String NOT_SYSTEM_CALLER_MSG = "Only the system can %s";
 
+    // Enable logout regardless of device policy.
+    private static final boolean FORCE_ENABLE_LOGOUT = true;
+
+    // Switch to the system user on logout when users are switched by something other than DPM.
+    private static final boolean DEFAULT_LOGOUT_USER_ID_IS_SYSTEM = true;
+
     final Context mContext;
     final Injector mInjector;
     final PolicyPathProvider mPathProvider;
@@ -11024,7 +11030,11 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
     private @UserIdInt int getLogoutUserIdUnchecked() {
         synchronized (getLockObject()) {
-            return mLogoutUserId;
+            final int logoutUserId = mLogoutUserId;
+            if (logoutUserId == UserHandle.USER_NULL && DEFAULT_LOGOUT_USER_ID_IS_SYSTEM) {
+                return UserHandle.USER_SYSTEM;
+            }
+            return logoutUserId;
         }
     }
 
@@ -16061,6 +16071,9 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
     @Override
     public boolean isLogoutEnabled() {
+        if (FORCE_ENABLE_LOGOUT) {
+            return true;
+        }
         if (!mHasFeature) {
             return false;
         }

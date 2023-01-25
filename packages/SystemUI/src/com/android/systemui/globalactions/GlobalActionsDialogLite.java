@@ -168,6 +168,10 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
     private static final boolean SHOW_SILENT_TOGGLE = true;
 
+    // Show the logout button even for the system user. System logout is currently not supported
+    // and causes the screen to flash black and return to the lock screen when SystemUI crashes.
+    private static final boolean SHOW_LOGOUT_FOR_SYSTEM = false;
+
     /* Valid settings for global actions keys.
      * see config.xml config_globalActionList */
     @VisibleForTesting
@@ -642,7 +646,8 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
                 // (and then call mDevicePolicyManager.clearLogoutUser() after switched)
                 if (mDevicePolicyManager.isLogoutEnabled()
                         && currentUser.get() != null
-                        && currentUser.get().id != UserHandle.USER_SYSTEM) {
+                        && currentUser.get().id != UserHandle.USER_SYSTEM
+                        || SHOW_LOGOUT_FOR_SYSTEM) {
                     addIfShouldShowAction(tempActions, new LogoutAction());
                 }
             } else if (GLOBAL_ACTION_KEY_EMERGENCY.equals(actionKey)) {

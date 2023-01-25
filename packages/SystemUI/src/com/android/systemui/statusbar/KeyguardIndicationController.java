@@ -125,6 +125,9 @@ public class KeyguardIndicationController {
     private static final boolean DEBUG_CHARGING_SPEED = false;
     private static final boolean DEBUG = Build.IS_DEBUGGABLE;
 
+    // Never show the logout button on the lockscreen.
+    private static final boolean HIDE_LOCKSCREEN_LOGOUT = true;
+
     private static final int MSG_HIDE_TRANSIENT = 1;
     private static final int MSG_SHOW_ACTION_TO_UNLOCK = 2;
     private static final int MSG_HIDE_BIOMETRIC_MESSAGE = 3;
@@ -604,6 +607,7 @@ public class KeyguardIndicationController {
 
     private void updateLockScreenLogoutView() {
         final boolean shouldShowLogout = mKeyguardUpdateMonitor.isLogoutEnabled()
+                && !HIDE_LOCKSCREEN_LOGOUT
                 && getCurrentUser() != UserHandle.USER_SYSTEM;
         if (shouldShowLogout) {
             mRotateTextViewController.updateIndication(
