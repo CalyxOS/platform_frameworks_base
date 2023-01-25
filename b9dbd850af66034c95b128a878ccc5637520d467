@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f579d9f_4c876256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T19:26:10Z",
+      "side": 1,
+      "message": "Updated commit message after figuring out how to reproduce on stock / any device",
+      "revId": "b9dbd850af66034c95b128a878ccc5637520d467",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
