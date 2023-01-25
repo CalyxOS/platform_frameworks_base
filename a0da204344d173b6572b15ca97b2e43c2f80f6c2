@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2a03cc_b9b3aa25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T18:40:56Z",
+      "side": 1,
+      "message": "\"certain OS environments\" basically refers to CalyxOS for our purposes here; wrote that part with AOSP in mind",
+      "revId": "a0da204344d173b6572b15ca97b2e43c2f80f6c2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
