@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "440a483a_0bdd8ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T23:18:39Z",
+      "side": 1,
+      "message": "Wanted to get this up, we can of course discuss details / adjust things later",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea6c2b9_d476d4c7",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T23:18:39Z",
+      "side": 1,
+      "message": "I tried adding this because having some uniformity between system and secondary users would be nice, especially if we are going to enable logout for secondary users without an option to disable it. One of my concerns previously was that users might not want it to be obvious that they are using a secondary user.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c05c714_539ab047",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/KeyguardIndicationController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T23:18:39Z",
+      "side": 1,
+      "message": "Just as with the above comment, I added this to make it less glaring that a secondary user is in use. (It also seems too easy to accidentally log out if it\u0027s right there on the lockscreen - I don\u0027t think it shows a confirmation for that either, but I could be wrong.)",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d337f44_76a5368e",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T23:18:39Z",
+      "side": 1,
+      "message": "Without this, logout doesn\u0027t work because it can\u0027t find the user.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e7feba_a25662d7",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16074,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T23:18:39Z",
+      "side": 1,
+      "message": "Unlike the last attempt (I7519d413), I did not want to do anything that might alter the actual device policy state, but simply override it instead. But we don\u0027t have to do it my way, or we could make this read a setting, property, or whatever.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
