@@ -16,6 +16,24 @@
       "message": "I can confirm that this *is* correctly causing the the allowlist to be updated in more circumstances, including when the VPN is disconnected. But in practice, this doesn\u0027t appear to be having the desired effect of blocking VPN-only apps from getting online when the VPN is disconnected. 😞 I did not observe problems when testing before, but I do now, reproducibly, on Pixel 4a (5G) -- oddly not on Pixel 6 Pro (daily driver).\n\n[Test steps](https://gitlab.com/CalyxOS/calyxos/-/issues/1081#note_1202625433) (\"Bug 2\") should probably always be included in the commit message for something like this and run before marking \"Works\". In this case, we had steps, but they were buried in the issue.\n\nI\u0027ll take a closer look into what\u0027s going on, but this is apparently going to need yet another fix.",
       "revId": "83a8c46146bd587c8b4edd76173cf68b257151c7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e1f2cf_7816ad9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-26T17:12:06Z",
+      "side": 1,
+      "message": "Well... `NetworkCallback.onLost` (and most of the other callbacks) contain this warning in [the documentation](https://developer.android.com/reference/android/net/ConnectivityManager.NetworkCallback#onLost%28android.net.Network%29):\n`Do NOT call ConnectivityManager.getNetworkCapabilities(android.net.Network) or ConnectivityManager.getLinkProperties(android.net.Network) or other synchronous ConnectivityManager methods in this callback as this is prone to race conditions ; calling these methods while in a callback may return an outdated or even a null object`\n\n...And we do exactly that, within `hasRestrictedModeAccess` which is called as part of updating the restricted mode allowlist.\n\nSee us do it here: https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/14949/2/services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+      "parentUuid": "21fc3a8b_7f544117",
+      "revId": "83a8c46146bd587c8b4edd76173cf68b257151c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
