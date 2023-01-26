@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9908d180_a7478940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-26T22:56:55Z",
+      "side": 1,
+      "message": "Happy to temporarily ship this for 4.6.0 if needed. Just putting it here so we don\u0027t forget.",
+      "revId": "14a702d220d9d8516f0dba033355499a45abc0d4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
