@@ -1442,6 +1442,27 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     }
 
     private final NetworkCallback mNetworkAvailabilityCallback = new NetworkCallback() {
+        // If we call updateRestrictedModeAllowlistUL from onLost right away, then when
+        // getActiveNetworkForUid is called, it may still receive the Network that was just lost,
+        // affecting its policy judgments. For example, an app that is only allowed network access
+        // via VPN (disallowed via Wi-Fi and Cellular) may be judged as if it is still connected
+        // to the VPN after the VPN disconnects, allowing it to access other non-VPN resources
+        // indefinitely. On the other hand, shortly after the call to onLost, the active network
+        // for uids is updated. Our callback apparently happens too early for this, and it is not
+        // clear whether there is any other reliable callback that we can use to handle this case.
+        //
+        // Additionally, onLost will not always be followed up by onCapabilitiesChanged or
+        // seemingly anything else either, since e.g. a VPN disconnection does not mean any other
+        // networks have changed.
+        //
+        // Ideally, we could track all default network changes affecting any uid and react at that
+        // time, but this does not appear to be possible, currently.
+        //
+        // Call updateRestrictedModeAllowlistUL multiple times with different delays, to ensure
+        // changes get handled early if possible, but if we were too early, they are still handled.
+        // Delays are specified in milliseconds.
+        private final List<Integer> onLostUpdateDelays = List.of(15, 50, 1000);
+
         @Override
         public void onCapabilitiesChanged(@NonNull Network network,
                 @NonNull NetworkCapabilities networkCapabilities) {
@@ -1458,8 +1479,14 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         @Override
         public void onLost(@NonNull Network network) {
-            synchronized (mUidRulesFirstLock) {
-                updateRestrictedModeAllowlistUL();
+            // Call updateRestrictedModeAllowlistUL multiple times, with each of the specified
+            // delay values.
+            for (int delay : onLostUpdateDelays) {
+                mHandler.postDelayed(() -> {
+                    synchronized (mUidRulesFirstLock) {
+                        updateRestrictedModeAllowlistUL();
+                    }
+                }, delay);
             }
         }
     };
