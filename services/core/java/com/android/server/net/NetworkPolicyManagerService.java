@@ -1457,7 +1457,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
 
         @Override
-        public void onLost(@NonNull Network network) {
+        public void onDestroyed(@NonNull Network network) {
             synchronized (mUidRulesFirstLock) {
                 updateRestrictedModeAllowlistUL();
             }
