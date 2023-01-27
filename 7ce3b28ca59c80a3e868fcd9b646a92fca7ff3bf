@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de943e35_89b11a3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-27T01:29:23Z",
+      "side": 1,
+      "message": "I really don\u0027t like this btw and I am not at all attached to it. Hopefully we can find a better way, but if nothing else... I guess there\u0027s this.",
+      "revId": "7ce3b28ca59c80a3e868fcd9b646a92fca7ff3bf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
