@@ -16,6 +16,23 @@
       "message": "I really don\u0027t like this btw and I am not at all attached to it. Hopefully we can find a better way, but if nothing else... I guess there\u0027s this.",
       "revId": "7ce3b28ca59c80a3e868fcd9b646a92fca7ff3bf",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fb7aa0_5206fa9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-27T15:39:43Z",
+      "side": 1,
+      "message": "A more reliable alternative here, except that it requires an API addition: https://review.calyxos.org/q/hashtag:firewall-update-ondestroyed+(status:open%20OR%20status:merged)",
+      "revId": "7ce3b28ca59c80a3e868fcd9b646a92fca7ff3bf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
