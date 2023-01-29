@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f99f1f02_6ebdefcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-29T20:42:11Z",
+      "side": 1,
+      "message": "Is there something that might prevent this from appearing on a -user build vs -userdebug? I included this for my signed raven builds but I am not seeing Battery Stats in Other Options; the Battery Stats Viewer app *is* visible in the app list, though, and .BatteryConsumerPickerActivity can be launched e.g. from App Manager.",
+      "revId": "5056dca5bef9544a8186c4c4fb9089de69bd387e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
