@@ -33,6 +33,23 @@
       "message": "I was hoping this could be done entirely with standard mocking, but VpnTest.java does not mock Vpn (it\u0027s real by design) so we can\u0027t fake the values from there.\n\nThis seems to fix the tests that fail referencing LineageSettings, though (along with the required change from the commit message, I83eb5cad).\n\nLet me know if you can think of a better way to handle this.",
       "revId": "a314d0f32458ba47d1087a90370dc523cc5afce4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81c1a15_24202e5c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-31T19:10:50Z",
+      "side": 1,
+      "message": "Oops, I guess since we are not mocking these (VpnTest.java does not use mocking so it\u0027s not a complete solution), the function signatures can be left alone.",
+      "revId": "a314d0f32458ba47d1087a90370dc523cc5afce4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
