@@ -396,6 +396,8 @@ public class Vpn {
     private final VpnProfileStore mVpnProfileStore;
     protected boolean mDataStallSuspected = false;
 
+    private Boolean mForceGlobalVpnForTesting;
+
     @VisibleForTesting
     VpnProfileStore getVpnProfileStore() {
         return mVpnProfileStore;
@@ -749,6 +751,15 @@ public class Vpn {
             INetworkManagementService netService, INetd netd,
             int userId, VpnProfileStore vpnProfileStore, SystemServices systemServices,
             Ikev2SessionCreator ikev2SessionCreator) {
+        this(looper, context, deps, netService, netd, userId, vpnProfileStore,
+                systemServices, ikev2SessionCreator, null /* forceGlobalVpn */);
+    }
+
+    @VisibleForTesting
+    protected Vpn(Looper looper, Context context, Dependencies deps,
+            INetworkManagementService netService, INetd netd,
+            int userId, VpnProfileStore vpnProfileStore, SystemServices systemServices,
+            Ikev2SessionCreator ikev2SessionCreator, Boolean forceGlobalVpn) {
         mVpnProfileStore = vpnProfileStore;
         mContext = context;
         mConnectivityManager = mContext.getSystemService(ConnectivityManager.class);
@@ -767,6 +778,7 @@ public class Vpn {
         mLooper = looper;
         mSystemServices = systemServices;
         mIkev2SessionCreator = ikev2SessionCreator;
+        mForceGlobalVpnForTesting = forceGlobalVpn;
         mUserManager = mContext.getSystemService(UserManager.class);
 
         mPackage = VpnConfig.LEGACY_VPN;
@@ -915,6 +927,9 @@ public class Vpn {
      * Returns whether currently prepared VPN package is set as the global VPN.
      */
     private synchronized boolean isGlobalVpn() {
+        if (mForceGlobalVpnForTesting != null) {
+            return mForceGlobalVpnForTesting;
+        }
         final String globalVpnPkg = LineageSettings.Global.getString(mContext.getContentResolver(),
                 LineageSettings.Global.GLOBAL_VPN_APP);
         return mUserId == UserHandle.USER_SYSTEM && mPackage.equals(globalVpnPkg);
@@ -2582,9 +2597,11 @@ public class Vpn {
 
     private void enforceNotGlobalVpn() {
         Binder.withCleanCallingIdentity(() -> {
-            if (mUserId != UserHandle.USER_SYSTEM && !TextUtils.isEmpty(
-                    LineageSettings.Global.getString(mContext.getContentResolver(),
-                            LineageSettings.Global.GLOBAL_VPN_APP))) {
+            if (mUserId == UserHandle.USER_SYSTEM || mForceGlobalVpnForTesting == Boolean.FALSE) {
+                return;
+            }
+            if (!TextUtils.isEmpty(LineageSettings.Global.getString(
+                    mContext.getContentResolver(), LineageSettings.Global.GLOBAL_VPN_APP))) {
                 throw new SecurityException("Secondary users cannot configure VPNs when" +
                         " global vpn is set");
             }
