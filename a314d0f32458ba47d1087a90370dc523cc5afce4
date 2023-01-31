@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bd1c1f_46f13011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-31T17:29:29Z",
+      "side": 1,
+      "message": "Appears to fix many test failures/crashes with `atest FrameworksNetTests` related to LineageSettings. (Other failures remain.)\n\nTODO: Ensure in an actual build that this doesn\u0027t somehow break Global VPN in real use. (It shouldn\u0027t, but must be confirmed.)",
+      "revId": "a314d0f32458ba47d1087a90370dc523cc5afce4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
