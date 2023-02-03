@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7111348c_82a8123e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-03T09:36:13Z",
+      "side": 1,
+      "message": "Will be shipped in 4.6.1, need to \"Revert: \"Revert\"",
+      "revId": "145de069e7e150fc3393fa233821626829a2a79e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
