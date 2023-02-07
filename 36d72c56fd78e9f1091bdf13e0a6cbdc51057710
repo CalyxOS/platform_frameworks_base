@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8741b5_bf174979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-07T21:47:49Z",
+      "side": 1,
+      "message": "AFAICT this is only used by the Settings app and not ready anywhere.\n\nCould be a lineage setting instead then.\n\nUnless it\u0027s moved to Bellis in which case it could be a pref there.",
+      "revId": "36d72c56fd78e9f1091bdf13e0a6cbdc51057710",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
