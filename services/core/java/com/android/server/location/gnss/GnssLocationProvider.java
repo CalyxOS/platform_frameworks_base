@@ -1716,6 +1716,13 @@ public class GnssLocationProvider extends AbstractLocationProvider implements
 
     @Override
     public void onRequestSetID(@GnssNative.AGpsCallbacks.AgpsSetIdFlags int flags) {
+        if (!mNIHandler.getInEmergency()) {
+            // Unless we are in an emergency, do not provider sensitive subscriber information
+            // to SUPL servers.
+            mGnssNative.setAgpsSetId(type, "");
+            return;
+        }
+
         TelephonyManager phone = (TelephonyManager)
                 mContext.getSystemService(Context.TELEPHONY_SERVICE);
         int type = AGPS_SETID_TYPE_NONE;
