@@ -16,6 +16,23 @@
       "message": "Just a possibility, not tested",
       "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a914c57c_a8fad537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-10T15:58:55Z",
+      "side": 1,
+      "message": "We need to understand more about how SUPL uses the SET ID (SUPL-Enabled Terminal ID), and the consequences of not providing it. This patch may be worse than nothing for emergencies if it\u0027s effectively causing SUPL to have to start over.",
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
