@@ -1720,9 +1720,10 @@ public class GnssLocationProvider extends AbstractLocationProvider implements
                 mContext.getSystemService(Context.TELEPHONY_SERVICE);
         int type = AGPS_SETID_TYPE_NONE;
         String setId = null;
+        final Boolean isEmergency = mNIHandler.getInEmergency();
 
         int subId = SubscriptionManager.getDefaultDataSubscriptionId();
-        if (mNIHandler.getInEmergency() && mNetworkConnectivityHandler.getActiveSubId() >= 0) {
+        if (isEmergency && mNetworkConnectivityHandler.getActiveSubId() >= 0) {
             subId = mNetworkConnectivityHandler.getActiveSubId();
         }
         if (SubscriptionManager.isValidSubscriptionId(subId)) {
@@ -1740,6 +1741,13 @@ public class GnssLocationProvider extends AbstractLocationProvider implements
                 // This means the framework has the SIM card.
                 type = AGPS_SETID_TYPE_MSISDN;
             }
+        }
+
+        // Unless we are in an emergency, do not provide sensitive subscriber information
+        // to SUPL servers.
+        if (!isEmergency) {
+            mGnssNative.setAgpsSetId(type, "");
+            return;
         }
 
         mGnssNative.setAgpsSetId(type, (setId == null) ? "" : setId);
