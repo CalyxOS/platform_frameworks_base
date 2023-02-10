@@ -239,6 +239,7 @@ package android.net {
   }
 
   public class NetworkPolicyManager {
+    method @RequiresPermission(android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK) public void clearRestrictedModeAllowlist();
     method @RequiresPermission(android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK) public int getMultipathPreference(@NonNull android.net.Network);
     method @RequiresPermission(android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK) public int getRestrictBackgroundStatus(int);
     method @Nullable @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK}) public android.telephony.SubscriptionPlan getSubscriptionPlan(@NonNull android.net.NetworkTemplate);
@@ -248,6 +249,7 @@ package android.net {
     method @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK}) public void notifyStatsProviderWarningReached();
     method @RequiresPermission(android.Manifest.permission.OBSERVE_NETWORK_POLICY) public void registerNetworkPolicyCallback(@Nullable java.util.concurrent.Executor, @NonNull android.net.NetworkPolicyManager.NetworkPolicyCallback);
     method @RequiresPermission(android.Manifest.permission.OBSERVE_NETWORK_POLICY) public void unregisterNetworkPolicyCallback(@NonNull android.net.NetworkPolicyManager.NetworkPolicyCallback);
+    method @RequiresPermission(android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK) public void updateRestrictedModeAllowlist();
   }
 
   public static interface NetworkPolicyManager.NetworkPolicyCallback {

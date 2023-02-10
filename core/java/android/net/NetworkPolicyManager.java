@@ -891,6 +891,28 @@ public class NetworkPolicyManager {
         return DebugUtils.flagsToString(NetworkPolicyManager.class, "ALLOWED_", allowedReasons);
     }
 
+    /** @hide */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void clearRestrictedModeAllowlist() {
+        try {
+            mService.clearRestrictedModeAllowlist();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /** @hide */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void updateRestrictedModeAllowlist() {
+        try {
+            mService.updateRestrictedModeAllowlist();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
     /**
      * Register a {@link NetworkPolicyCallback} to listen for changes to network blocked status
      * of apps.

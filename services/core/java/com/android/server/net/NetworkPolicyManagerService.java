@@ -4385,6 +4385,35 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    @Override
+    public void clearRestrictedModeAllowlist() {
+        synchronized (mUidRulesFirstLock) {
+            clearRestrictedModeAllowlistUL();
+        }
+    }
+
+    @Override
+    public void updateRestrictedModeAllowlist() {
+        synchronized (mUidRulesFirstLock) {
+            updateRestrictedModeAllowlistUL();
+        }
+    }
+
+    /**
+     * clears restricted mode state / access for all apps
+     * Called by the Connectivity module prior to network rematching to prevent leaks.
+     */
+    @VisibleForTesting
+    @GuardedBy("mUidRulesFirstLock")
+    void clearRestrictedModeAllowlistUL() {
+        mUidFirewallRestrictedModeRules.clear();
+        if (mRestrictedNetworkingMode) {
+            // firewall rules only need to be set when this mode is being enabled.
+            setUidFirewallRulesUL(FIREWALL_CHAIN_RESTRICTED, mUidFirewallRestrictedModeRules);
+        }
+        enableFirewallChainUL(FIREWALL_CHAIN_RESTRICTED, mRestrictedNetworkingMode);
+    }
+
     /**
      * updates restricted mode state / access for all apps
      * Called on initialization and when restricted mode is enabled / disabled.
