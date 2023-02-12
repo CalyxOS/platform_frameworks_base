@@ -37,6 +37,7 @@ import android.content.pm.Signature;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.telephony.Annotation;
@@ -889,6 +890,47 @@ public class NetworkPolicyManager {
     @NonNull
     public static String allowedReasonsToString(int allowedReasons) {
         return DebugUtils.flagsToString(NetworkPolicyManager.class, "ALLOWED_", allowedReasons);
+    }
+
+    /**
+     * Clear the effective restricted mode allowlist for the specified UIDs, preventing these UIDs
+     * from accessing restricted networks. In addition, populate the cache of their effective
+     * permission to access restricted networks for use when updating the list later. This method
+     * is called by the Connectivity module just before network reassignment takes place.
+     *
+     * @param uidRangesBundle A bundle containing an ArrayList in the "uidsRanges" key.
+     *                        If this key is not present, all UIDs will be cleared.
+     *
+     * @hide
+     */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void clearRestrictedModeAllowlistForUids(@NonNull Bundle uidRangesBundle) {
+        try {
+            mService.clearRestrictedModeAllowlistForUids(uidRangesBundle);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Update the effective restricted mode allowlist for the specified UIDs, using and populating
+     * cached data where possible. This method is called by the Connectivity module after network
+     * reassignment has taken place, but before network callbacks have been sent.
+     *
+     * @param uidRangesBundle A bundle containing an ArrayList in the "uidsRanges" key.
+     *                        If this key is not present, all UIDs will be updated.
+     *
+     * @hide
+     */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void updateRestrictedModeAllowlistForUids(@NonNull Bundle uidRangesBundle) {
+        try {
+            mService.updateRestrictedModeAllowlistForUids(uidRangesBundle);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /**
