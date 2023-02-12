@@ -37,6 +37,7 @@ import android.content.pm.Signature;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.telephony.Annotation;
@@ -889,6 +890,28 @@ public class NetworkPolicyManager {
     @NonNull
     public static String allowedReasonsToString(int allowedReasons) {
         return DebugUtils.flagsToString(NetworkPolicyManager.class, "ALLOWED_", allowedReasons);
+    }
+
+    /** @hide */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void clearRestrictedModeAllowlist(@NonNull Bundle uidRangesBundle) {
+        try {
+            mService.clearRestrictedModeAllowlist(uidRangesBundle);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /** @hide */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void updateRestrictedModeAllowlist(@NonNull Bundle uidRangesBundle) {
+        try {
+            mService.updateRestrictedModeAllowlist(uidRangesBundle);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /**
