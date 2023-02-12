@@ -195,10 +195,12 @@ import android.net.NetworkRequest;
 import android.net.NetworkStack;
 import android.net.NetworkStateSnapshot;
 import android.net.NetworkTemplate;
+import android.net.UidRange;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.BestClock;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerExecutor;
@@ -304,6 +306,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -701,6 +704,18 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     /** List of apps indexed by uid and whether they have the internet permission */
     @GuardedBy("mUidRulesFirstLock")
     private final SparseBooleanArray mInternetPermissionMap = new SparseBooleanArray();
+
+    /** Cached netId to transport types for use when updating the restricted mode allowlist */
+    @GuardedBy("mUidRulesFirstLock")
+    private final SparseArray<Set<Integer>> mNetIdTransports = new SparseArray<>();
+
+    /**
+     * Cached state of uids' effective permission to access restricted networks.
+     * Does not use SparseBooleanArray because we need to know when the uid is not cached.
+     */
+    @GuardedBy("mUidRulesFirstLock")
+    private final SparseArray<Boolean> mRestrictedNetworkPermissionEquivalentMap =
+            new SparseArray<>();
 
     /**
      * Map of uid -> UidStateCallbackInfo objects holding the data received from
@@ -4385,6 +4400,92 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private static @Nullable List<UidRange> getUidRangesFromBundle(@NonNull Bundle bundle) {
+        return bundle.getParcelableArrayList("uidRanges", UidRange.class);
+    }
+
+    /** {@see NetworkPolicyManager#clearRestrictedModeAllowlistForUids} */
+    @Override
+    public void clearRestrictedModeAllowlistForUids(@NonNull Bundle uidRangesBundle) {
+        PermissionUtils.enforceNetworkStackPermission(mContext);
+        synchronized (mUidRulesFirstLock) {
+            final List<UidRange> uids = getUidRangesFromBundle(uidRangesBundle);
+            clearRestrictedModeAllowlistForUidsUL(uids);
+            refreshRestrictedNetworkPermissionEquivalentMapUL(uids);
+        }
+    }
+
+    /** {@see NetworkPolicyManager#updateRestrictedModeAllowlistForUids} */
+    @Override
+    public void updateRestrictedModeAllowlistForUids(@NonNull Bundle uidRangesBundle) {
+        PermissionUtils.enforceNetworkStackPermission(mContext);
+        synchronized (mUidRulesFirstLock) {
+            updateRestrictedModeAllowlistUL(getUidRangesFromBundle(uidRangesBundle));
+        }
+    }
+
+    /**
+     * Remove the specified UIDs from our tracked restricted mode allowlist. Does not update the
+     * restricted mode allowlist that is currently in effect.
+     *
+     * @param uids UIDs to be removed from our tracked restricted mode allowlist, or {@code null}
+     *             to clear the list entirely.
+     */
+    @GuardedBy("mUidRulesFirstLock")
+    private void clearRestrictedModeAllowlistUidsUL(
+            @Nullable final Collection<UidRange> uids) {
+        final SparseIntArray rules = mUidFirewallRestrictedModeRules;
+        if (uids == null) {
+            rules.clear();
+        } else if (uids.size() > 0) {
+            for (int i = 0; i < rules.size(); i++) {
+                if (UidRange.containsUid(uids, rules.keyAt(i))) {
+                    rules.removeAt(i--);
+                }
+            }
+        }
+    }
+
+    /**
+     * clears restricted mode state / access for specified UIDs, or all if uids is null.
+     * Called by the Connectivity module prior to network rematching to prevent leaks.
+     */
+    @GuardedBy("mUidRulesFirstLock")
+    void clearRestrictedModeAllowlistForUidsUL(@Nullable final Collection<UidRange> uids) {
+        clearRestrictedModeAllowlistUidsUL(uids);
+        if (mRestrictedNetworkingMode) {
+            // firewall rules only need to be set when this mode is being enabled.
+            setUidFirewallRulesUL(FIREWALL_CHAIN_RESTRICTED, mUidFirewallRestrictedModeRules);
+        }
+        enableFirewallChainUL(FIREWALL_CHAIN_RESTRICTED, mRestrictedNetworkingMode);
+    }
+
+    /**
+     * Refresh the cache of UIDs' effective permission to access restricted networks.
+     *
+     * @param uids UIDs whose cache should be cleared, or {@code null} to clear the entire cache.
+     */
+    @GuardedBy("mUidRulesFirstLock")
+    void refreshRestrictedNetworkPermissionEquivalentMapUL(
+            @Nullable final Collection<UidRange> uids) {
+        final SparseArray<Boolean> map = mRestrictedNetworkPermissionEquivalentMap;
+        if (uids == null) {
+            map.clear();
+        } else if (uids.size() > 0) {
+            for (int i = 0; i < map.size(); i++) {
+                if (UidRange.containsUid(uids, map.keyAt(i))) {
+                    map.removeAt(i--);
+                }
+            }
+        }
+        forEachUid("refreshRestrictedNetworkPermissionEquivalentMap", uid -> {
+            if (uids != null && !UidRange.containsUid(uids, uid)) {
+                return;
+            }
+            hasRestrictedNetworkPermissionEquivalent(uid, true /* refreshCache */);
+        });
+    }
+
     /**
      * updates restricted mode state / access for all apps
      * Called on initialization and when restricted mode is enabled / disabled.
@@ -4392,11 +4493,39 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     @VisibleForTesting
     @GuardedBy("mUidRulesFirstLock")
     void updateRestrictedModeAllowlistUL() {
-        mUidFirewallRestrictedModeRules.clear();
+        updateRestrictedModeAllowlistUL(null /* uids */);
+    }
+
+    /**
+     * updates restricted mode state / access for specified UIDs.
+     *
+     * @param uids UIDs to update, or {@code null} to update all apps.
+     */
+    @VisibleForTesting
+    @GuardedBy("mUidRulesFirstLock")
+    void updateRestrictedModeAllowlistUL(@Nullable final Collection<UidRange> uids) {
+        if (uids == null) {
+            // Clear the cache of UIDs' effective permission to access restricted networks.
+            // We only need to do this if we are being called to act on all UIDs. Otherwise,
+            // we have a cache that was just populated in clearRestrictedModeAllowlistForUids.
+            refreshRestrictedNetworkPermissionEquivalentMapUL(null /* uids */);
+        }
+
+        // Remove any affected UIDs from the current list of allowlisted UIDs.
+        clearRestrictedModeAllowlistUidsUL(uids);
+
+        // Clear the cache of networks and their transports.
+        mNetIdTransports.clear();
+
+        final Set<Integer> uidsAllowedOnRestrictedNetworks =
+                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
         forEachUid("updateRestrictedModeAllowlist", uid -> {
+            if (uids != null && !UidRange.containsUid(uids, uid)) {
+                return;
+            }
             synchronized (mUidRulesFirstLock) {
-                final int effectiveBlockedReasons = updateBlockedReasonsForRestrictedModeUL(
-                        uid);
+                final int effectiveBlockedReasons = updateBlockedReasonsForRestrictedModeUL(uid,
+                        uidsAllowedOnRestrictedNetworks, false /* refreshCache */);
                 final int newFirewallRule = getRestrictedModeFirewallRule(effectiveBlockedReasons);
 
                 // setUidFirewallRulesUL will allowlist all uids that are passed to it, so only add
@@ -4417,7 +4546,11 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     @VisibleForTesting
     @GuardedBy("mUidRulesFirstLock")
     void updateRestrictedModeForUidUL(int uid) {
-        final int effectiveBlockedReasons = updateBlockedReasonsForRestrictedModeUL(uid);
+        final Set<Integer> uidsAllowedOnRestrictedNetworks =
+                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
+
+        final int effectiveBlockedReasons = updateBlockedReasonsForRestrictedModeUL(uid,
+                uidsAllowedOnRestrictedNetworks, true /* refreshCache */);
 
         // if restricted networking mode is on, and the app has an access exemption, the uid rule
         // will not change, but the firewall rule will have to be updated.
@@ -4435,8 +4568,10 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     }
 
     @GuardedBy("mUidRulesFirstLock")
-    private int updateBlockedReasonsForRestrictedModeUL(int uid) {
-        final boolean hasRestrictedModeAccess = hasRestrictedModeAccess(uid);
+    private int updateBlockedReasonsForRestrictedModeUL(int uid,
+            Set<Integer> uidsAllowedOnRestrictedNetworks, boolean refreshCache) {
+        final boolean hasRestrictedModeAccess = hasRestrictedModeAccess(uid,
+                uidsAllowedOnRestrictedNetworks, refreshCache);
         final int oldEffectiveBlockedReasons;
         final int newEffectiveBlockedReasons;
         final int uidRules;
@@ -4479,53 +4614,87 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
-    private boolean hasRestrictedModeAccess(int uid) {
-        try {
-            // TODO: this needs to be kept in sync with
-            // PermissionMonitor#hasRestrictedNetworkPermission
-            // Check for restricted-networking-mode status
-            final boolean isUidAllowedOnRestrictedNetworks =
-                    ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext)
-                    .contains(uid)
-                    || mIPm.checkUidPermission(CONNECTIVITY_USE_RESTRICTED_NETWORKS, uid)
-                    == PERMISSION_GRANTED
-                    || mIPm.checkUidPermission(NETWORK_STACK, uid) == PERMISSION_GRANTED
-                    || mIPm.checkUidPermission(PERMISSION_MAINLINE_NETWORK_STACK, uid)
-                    == PERMISSION_GRANTED;
-
-            // Check for other policies (data-restrictions)
-            final long token = Binder.clearCallingIdentity();
-            NetworkCapabilities nc;
+    /**
+     * Returns, or fetches and stores, the cached state of whether an app effectively has
+     * permission to access restricted networks.
+     */
+    private boolean hasRestrictedNetworkPermissionEquivalent(final int uid,
+            final boolean refreshCache) {
+        Boolean hasPermission = refreshCache ? null
+                : mRestrictedNetworkPermissionEquivalentMap.get(uid);
+        if (hasPermission == null) {
             try {
-                nc = mConnManager.getNetworkCapabilities(
-                        mConnManager.getActiveNetworkForUid(uid, true));
-            } finally {
-                Binder.restoreCallingIdentity(token);
+                hasPermission = mIPm.checkUidPermission(CONNECTIVITY_USE_RESTRICTED_NETWORKS, uid)
+                        == PERMISSION_GRANTED
+                        || mIPm.checkUidPermission(NETWORK_STACK, uid) == PERMISSION_GRANTED
+                        || mIPm.checkUidPermission(PERMISSION_MAINLINE_NETWORK_STACK, uid)
+                        == PERMISSION_GRANTED;
+                mRestrictedNetworkPermissionEquivalentMap.put(uid, hasPermission);
+            } catch (RemoteException e) {
+                return false;
             }
-            boolean isUidRestrictedByPolicy = false;
-            if (isUidAllowedOnRestrictedNetworks && nc != null) {
-                int policy = getUidPolicy(uid);
-                final boolean isUidAllowedOnVpn = nc.hasTransport(TRANSPORT_VPN)
-                        && ((policy & POLICY_REJECT_VPN) == 0);
-                if (!isUidAllowedOnVpn) {
-                    final boolean isUidRestrictedOnCell = nc.hasTransport(TRANSPORT_CELLULAR)
-                            && ((policy & POLICY_REJECT_CELLULAR) != 0);
-                    final boolean isUidRestrictedOnVpn = nc.hasTransport(TRANSPORT_VPN)
-                            && ((policy & POLICY_REJECT_VPN) != 0);
-                    final boolean isUidRestrictedOnWifi = nc.hasTransport(TRANSPORT_WIFI)
-                            && ((policy & POLICY_REJECT_WIFI) != 0);
-                    if (isUidRestrictedOnVpn || isUidRestrictedOnCell || isUidRestrictedOnWifi) {
-                            isUidRestrictedByPolicy = true;
-                    }
+        }
+        return hasPermission;
+    }
+
+    private Set<Integer> getNetworkTransports(@Nullable final Network network,
+            final boolean refreshCache) {
+        if (network == null) {
+            return null;
+        }
+        final int netId = network.getNetId();
+        Set<Integer> transports = refreshCache ? null : mNetIdTransports.get(netId);
+        if (transports == null) {
+            final NetworkCapabilities nc =
+                    mConnManager.getNetworkCapabilities(network);
+            if (nc != null) {
+                transports = Arrays.stream(nc.getTransportTypes()).boxed()
+                        .collect(Collectors.toSet());
+                mNetIdTransports.put(netId, transports);
+            }
+        }
+        return transports;
+    }
+
+    private boolean hasRestrictedModeAccess(int uid,
+            final Set<Integer> uidsAllowedOnRestrictedNetworks, final boolean refreshCache) {
+        // TODO: this needs to be kept in sync with
+        // PermissionMonitor#hasRestrictedNetworkPermission
+        // Check for restricted-networking-mode status
+        final boolean isUidAllowedOnRestrictedNetworks =
+                uidsAllowedOnRestrictedNetworks.contains(uid)
+                || hasRestrictedNetworkPermissionEquivalent(uid, refreshCache);
+
+        // Check for other policies (data-restrictions)
+        final Set<Integer> transports;
+        final long token = Binder.clearCallingIdentity();
+        try {
+            transports = getNetworkTransports(mConnManager.getActiveNetworkForUid(uid, true),
+                    refreshCache);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+        boolean isUidRestrictedByPolicy = false;
+        if (isUidAllowedOnRestrictedNetworks && transports != null) {
+            int policy = getUidPolicy(uid);
+            final boolean isUidAllowedOnVpn = transports.contains(TRANSPORT_VPN)
+                    && ((policy & POLICY_REJECT_VPN) == 0);
+            if (!isUidAllowedOnVpn) {
+                final boolean isUidRestrictedOnCell = transports.contains(TRANSPORT_CELLULAR)
+                        && ((policy & POLICY_REJECT_CELLULAR) != 0);
+                final boolean isUidRestrictedOnVpn = transports.contains(TRANSPORT_VPN)
+                        && ((policy & POLICY_REJECT_VPN) != 0);
+                final boolean isUidRestrictedOnWifi = transports.contains(TRANSPORT_WIFI)
+                        && ((policy & POLICY_REJECT_WIFI) != 0);
+                if (isUidRestrictedOnVpn || isUidRestrictedOnCell || isUidRestrictedOnWifi) {
+                        isUidRestrictedByPolicy = true;
                 }
             }
-            // If app is restricted (aka not on the allowlist), it's not allowed to use the internet
-            // If it is on the allowlist, then we also check its networking is not blocked
-            // (aka active network is not null) and then other policies
-            return isUidAllowedOnRestrictedNetworks && !isUidRestrictedByPolicy;
-        } catch (RemoteException e) {
-            return false;
         }
+        // If app is restricted (aka not on the allowlist), it's not allowed to use the internet
+        // If it is on the allowlist, then we also check its networking is not blocked
+        // (aka active network is not null) and then other policies
+        return isUidAllowedOnRestrictedNetworks && !isUidRestrictedByPolicy;
     }
 
     @GuardedBy("mUidRulesFirstLock")
