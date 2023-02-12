@@ -16,6 +16,7 @@
 
 package android.net;
 
+import android.os.Bundle;
 import android.net.INetworkPolicyListener;
 import android.net.Network;
 import android.net.NetworkPolicy;
@@ -83,4 +84,7 @@ interface INetworkPolicyManager {
 
     byte[] getBackupPayload(int user);
     void applyRestore(in byte[] payload, int user);
+
+    void clearRestrictedModeAllowlist(in Bundle uidRangesBundle);
+    void updateRestrictedModeAllowlist(in Bundle uidRangesBundle);
 }
