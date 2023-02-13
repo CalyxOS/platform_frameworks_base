@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbc9d2f_981f2adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-13T16:25:09Z",
+      "side": 1,
+      "message": "Mention 5551: SUPL: Don\u0027t send IMSI / Phone number to SUPL server | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/5551 - can list as co-author or change authorship and list yourself as co-author.",
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc41b6d8_3da0c198",
