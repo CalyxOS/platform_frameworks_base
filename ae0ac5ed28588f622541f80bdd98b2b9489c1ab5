@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dc486a2_55b3309b",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4504,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T01:15:11Z",
+      "side": 1,
+      "message": "If this is being called without UIDs, we need to invalidate the entire cache for restricted network permission equivalent or it might get very stale, since we only update it when `clearRestrictedModeAllowlistUL` is called, which only accounts for calls from the Connectivity module, not from within NetworkPolicyManagerService itself.",
+      "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1183831_176d9ed1",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4537,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T01:15:11Z",
+      "side": 1,
+      "message": "We need to invalidate the cache for restricted networking permission equivalent for this uid before we update the blocked reasons, because when `updateRestrictedModeForUidUL` is called, it\u0027s not guaranteed to be up-to-date.",
+      "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb32093a_213ccdf4",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 2
