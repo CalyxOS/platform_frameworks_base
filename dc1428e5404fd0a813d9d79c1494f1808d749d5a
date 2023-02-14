@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "add87d20_6bde7ef0",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "685942cb_2b9d92a0",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e92cd56_dad1abef",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-14T13:38:33Z",
       "side": 1,
       "message": "Naming...?",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f798342_50a0cde5",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e92cd56_dad1abef",
       "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -52,6 +88,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "282f0eba_9c8cccd7",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80e3cc5_9202f561",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "557f2db8_75e70eab",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-02-14T13:38:33Z",
       "side": 1,
       "message": "UidRange already has `containsUid` as a static method. It does the same thing, and it\u0027s exposed, so this is not necessary.",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50eb7cc5_57b5a03d",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4426,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557f2db8_75e70eab",
       "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -86,6 +158,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4127790a_a7249299",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4609,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0ffcf06_0bcfa30e",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14744517_65fc97b1",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-02-14T13:38:33Z",
       "side": 1,
       "message": "At least put a comment that this uses cached data when available",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b5ad82_916d73a0",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4626,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T16:50:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14744517_65fc97b1",
       "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
