@@ -16,6 +16,24 @@
       "message": "There seems to be a substantial bug (in AOSP, I think) that occurs here when this method is called with `rule` set to `FIREWALL_RULE_DEFAULT` -- this means blocked, for the restricted mode allowlist, because it is an allowlist.\n\nOn this line, the block rule gets put into our list, whereas in other places of this code, it\u0027s *not* put in the list for blocked UIDs (it\u0027s the default, so no need). This doesn\u0027t cause major problems until later, when a batch of rules is sent via `setUidFirewallRulesUL`, and the rule for the blocked UID gets included, which -- somewhere along the line -- gets misinterpreted as an allow rule!\n\nIdeally, this bug should be fixed in multiple places, but we can work around it here for now.",
       "revId": "400e3e9dc8e32a942211ccec3fbe04e42c7a7fc5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51ca8c0_13b2a5d6",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6164,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T22:11:51Z",
+      "side": 1,
+      "message": "Maybe we should only fix this for our specific use case, in case the processing of the other chains is somehow broken in a way that benefits them. Or look further at the call chain for setUidFirewallRulesUL. Or both. Or just do some simple tests for the other chains to make sure they appear to work as expected.\n\nIn any case, do one of the above things.",
+      "parentUuid": "00f9308a_f3c321c9",
+      "revId": "400e3e9dc8e32a942211ccec3fbe04e42c7a7fc5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
