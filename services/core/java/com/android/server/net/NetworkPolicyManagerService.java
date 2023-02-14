@@ -6159,16 +6159,37 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     "setUidFirewallRuleUL: " + chain + "/" + uid + "/" + rule);
         }
         try {
-            if (chain == FIREWALL_CHAIN_DOZABLE) {
-                mUidFirewallDozableRules.put(uid, rule);
-            } else if (chain == FIREWALL_CHAIN_STANDBY) {
-                mUidFirewallStandbyRules.put(uid, rule);
-            } else if (chain == FIREWALL_CHAIN_POWERSAVE) {
-                mUidFirewallPowerSaveRules.put(uid, rule);
-            } else if (chain == FIREWALL_CHAIN_RESTRICTED) {
-                mUidFirewallRestrictedModeRules.put(uid, rule);
-            } else if (chain == FIREWALL_CHAIN_LOW_POWER_STANDBY) {
-                mUidFirewallLowPowerStandbyModeRules.put(uid, rule);
+            final SparseIntArray chainArray;
+            switch (chain) {
+                case FIREWALL_CHAIN_DOZABLE:
+                    chainArray = mUidFirewallDozableRules;
+                    break;
+                case FIREWALL_CHAIN_STANDBY:
+                    chainArray = mUidFirewallStandbyRules;
+                    break;
+                case FIREWALL_CHAIN_POWERSAVE:
+                    chainArray = mUidFirewallPowerSaveRules;
+                    break;
+                case FIREWALL_CHAIN_RESTRICTED:
+                    chainArray = mUidFirewallRestrictedModeRules;
+                    break;
+                case FIREWALL_CHAIN_LOW_POWER_STANDBY:
+                    chainArray = mUidFirewallLowPowerStandbyModeRules;
+                    break;
+                default:
+                    chainArray = null;
+            }
+            if (chainArray != null) {
+                // Somewhere along the call chain for setUidFirewallRulesUL, there is a bug, at
+                // least for allowlists, which causes included UIDs to be allowed even if the rule
+                // is FIREWALL_RULE_DEFAULT (blocked). In this case, we need to make sure the UID
+                // is not present in this list of rules at all until this is fixed.
+                // TODO: Find and fix the aforementioned bug.
+                if (rule != FIREWALL_RULE_DEFAULT) {
+                    chainArray.put(uid, rule);
+                } else {
+                    chainArray.delete(uid);
+                }
             }
 
             try {
