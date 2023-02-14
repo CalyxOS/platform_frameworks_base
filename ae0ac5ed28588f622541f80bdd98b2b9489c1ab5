@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9dfed4f_f804fa5d",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4504,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T01:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc486a2_55b3309b",
+      "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1183831_176d9ed1",
@@ -35,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d860314_14046247",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4537,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T01:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1183831_176d9ed1",
+      "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb32093a_213ccdf4",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-02-14T00:56:05Z",
       "side": 1,
       "message": "Oops, meant to take this out",
+      "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750a3c53_a97d3a00",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4639,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T01:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb32093a_213ccdf4",
       "revId": "ae0ac5ed28588f622541f80bdd98b2b9489c1ab5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
