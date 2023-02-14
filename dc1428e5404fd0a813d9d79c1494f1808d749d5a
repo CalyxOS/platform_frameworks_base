@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685942cb_2b9d92a0",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "Naming...?",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e92cd56_dad1abef",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "Naming...?",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80e3cc5_9202f561",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "Remove extra newline",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557f2db8_75e70eab",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4426,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "UidRange already has `containsUid` as a static method. It does the same thing, and it\u0027s exposed, so this is not necessary.",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ffcf06_0bcfa30e",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4609,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "At least put a comment that this uses cached data when available",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14744517_65fc97b1",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4626,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T13:38:33Z",
+      "side": 1,
+      "message": "At least put a comment that this uses cached data when available",
+      "revId": "dc1428e5404fd0a813d9d79c1494f1808d749d5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
