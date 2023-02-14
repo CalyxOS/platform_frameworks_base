@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f9308a_f3c321c9",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6164,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-14T21:57:10Z",
+      "side": 1,
+      "message": "There seems to be a substantial bug (in AOSP, I think) that occurs here when this method is called with `rule` set to `FIREWALL_RULE_DEFAULT` -- this means blocked, for the restricted mode allowlist, because it is an allowlist.\n\nOn this line, the block rule gets put into our list, whereas in other places of this code, it\u0027s *not* put in the list for blocked UIDs (it\u0027s the default, so no need). This doesn\u0027t cause major problems until later, when a batch of rules is sent via `setUidFirewallRulesUL`, and the rule for the blocked UID gets included, which -- somewhere along the line -- gets misinterpreted as an allow rule!\n\nIdeally, this bug should be fixed in multiple places, but we can work around it here for now.",
+      "revId": "400e3e9dc8e32a942211ccec3fbe04e42c7a7fc5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
