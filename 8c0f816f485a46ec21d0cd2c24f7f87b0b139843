@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc0caf4_13eb6680",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T19:49:19Z",
+      "side": 1,
+      "message": "nit: unneeded newline",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff786db_e9c485d4",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T19:49:19Z",
+      "side": 1,
+      "message": "nit: Maybe private static and outside of the method? Minor, doesn\u0027t matter either way.",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6044ad2e_231f5f4e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T19:49:19Z",
+      "side": 1,
+      "message": "nit: lines are a little long",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
