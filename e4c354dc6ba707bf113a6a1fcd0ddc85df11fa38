@@ -84,6 +84,29 @@
       "message": "Idea is good but I will be interested in how GPS works with this",
       "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554dff40_25274104",
+        "filename": "services/core/java/com/android/server/location/gnss/GnssLocationProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-02-15T19:03:44Z",
+      "side": 1,
+      "message": "could add `\u0026\u0026 isEmergency` here?",
+      "range": {
+        "startLine": 1753,
+        "startChar": 40,
+        "endLine": 1753,
+        "endChar": 53
+      },
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
