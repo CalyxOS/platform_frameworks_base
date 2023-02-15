@@ -34,6 +34,24 @@
       "parentUuid": "00f9308a_f3c321c9",
       "revId": "400e3e9dc8e32a942211ccec3fbe04e42c7a7fc5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0370920f_ae747b8a",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6164,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T21:27:30Z",
+      "side": 1,
+      "message": "This is a separate bug which has been split off into I3229fa82 and will be submitted for AOSP to look at, too.",
+      "parentUuid": "e51ca8c0_13b2a5d6",
+      "revId": "400e3e9dc8e32a942211ccec3fbe04e42c7a7fc5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
