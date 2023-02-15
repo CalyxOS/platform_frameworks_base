@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ac7893_d5e6e62b",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-02-15T19:09:41Z",
+      "side": 0,
+      "message": "Probably can remove the rest of the plumbing if unused?",
+      "range": {
+        "startLine": 1458,
+        "startChar": 16,
+        "endLine": 1458,
+        "endChar": 33
+      },
+      "revId": "d5e9f1a5ebdf3eb4d3904d9a4e4bb269b23dc062",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
