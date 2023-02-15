@@ -16,6 +16,23 @@
       "message": "AOSP says: \"This has been fixed already internally so would be fixed in the upcoming release.\"",
       "revId": "8cae0cd245ea437d6eec944c12ba0c085ce269ac",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa30168_b2dc26dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-02-15T17:14:13Z",
+      "side": 1,
+      "message": "Revert or leave out during rebase after upstream fix has landed",
+      "revId": "8cae0cd245ea437d6eec944c12ba0c085ce269ac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
