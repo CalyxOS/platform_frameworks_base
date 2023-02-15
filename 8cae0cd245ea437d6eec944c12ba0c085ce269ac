@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b594fb_61a53a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T17:06:34Z",
+      "side": 1,
+      "message": "AOSP says: \"This has been fixed already internally so would be fixed in the upcoming release.\"",
+      "revId": "8cae0cd245ea437d6eec944c12ba0c085ce269ac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
