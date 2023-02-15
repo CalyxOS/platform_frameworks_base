@@ -86,6 +86,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24de1bb1_760493a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-02-15T19:15:48Z",
+      "side": 1,
+      "message": "`type` needs to be AGPS_SETID_TYPE_NONE in non-emergency case",
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554dff40_25274104",
@@ -99,6 +116,30 @@
       "writtenOn": "2023-02-15T19:03:44Z",
       "side": 1,
       "message": "could add `\u0026\u0026 isEmergency` here?",
+      "range": {
+        "startLine": 1753,
+        "startChar": 40,
+        "endLine": 1753,
+        "endChar": 53
+      },
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754c8759_8ba8b4d5",
+        "filename": "services/core/java/com/android/server/location/gnss/GnssLocationProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-02-15T19:15:48Z",
+      "side": 1,
+      "message": "`type` is also different so no",
+      "parentUuid": "554dff40_25274104",
       "range": {
         "startLine": 1753,
         "startChar": 40,
