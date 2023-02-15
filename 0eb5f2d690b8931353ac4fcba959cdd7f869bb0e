@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb41448a_d748e24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-15T18:36:23Z",
+      "side": 1,
+      "message": "This still doesn\u0027t address the possibility that some users may want to hide (to some extent) that they are using multiple users.\n\nOne way to address this would be to allow users to hide the user switcher, requiring them to switch users via the Settings app. If such an option existed, it could also control whether the Logout/End Session button will appear.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cea6c2b9_d476d4c7",
         "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
         "patchSetId": 1
