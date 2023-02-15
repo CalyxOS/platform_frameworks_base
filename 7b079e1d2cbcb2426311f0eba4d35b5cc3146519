@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f24eed_b78d3c10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-15T16:20:20Z",
+      "side": 1,
+      "message": "Test:\n1. Normal userdebug flashall build with 9014: init: Make SafetyNet pass on debug builds | https://review.calyxos.org/c/CalyxOS/platform_system_core/+/9014\n2. Prod signed and locked build.",
+      "revId": "7b079e1d2cbcb2426311f0eba4d35b5cc3146519",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
