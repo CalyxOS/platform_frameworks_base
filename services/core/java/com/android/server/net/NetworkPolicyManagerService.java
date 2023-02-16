@@ -710,6 +710,14 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     private final SparseArray<Set<Integer>> mNetIdTransports = new SparseArray<>();
 
     /**
+     * UIDs for which network transport information was missing last time we evaluated their
+     * restricted mode access eligibility. These UIDs should be included in all restricted mode
+     * allowlist updates until more information is available for them.
+     */
+    @GuardedBy("mUidRulesFirstLock")
+    private final Set<Integer> mUidsNeedingUpdateForRestrictedMode = new ArraySet<>();
+
+    /**
      * Cached state of uids' effective permission to access restricted networks.
      * Does not use SparseBooleanArray because we need to know when the uid is not cached.
      */
@@ -4437,6 +4445,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         final SparseIntArray rules = mUidFirewallRestrictedModeRules;
         if (uids == null) {
             rules.clear();
+            mUidsNeedingUpdateForRestrictedMode.clear();
         } else if (uids.size() > 0) {
             for (int i = 0; i < rules.size(); i++) {
                 if (UidRange.containsUid(uids, rules.keyAt(i))) {
@@ -4521,7 +4530,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         final Set<Integer> uidsAllowedOnRestrictedNetworks =
                 ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
         forEachUid("updateRestrictedModeAllowlist", uid -> {
-            if (uids != null && !UidRange.containsUid(uids, uid)) {
+            if (uids != null && !UidRange.containsUid(uids, uid)
+                    && !mUidsNeedingUpdateForRestrictedMode.contains(uid)) {
                 return;
             }
             synchronized (mUidRulesFirstLock) {
@@ -4653,7 +4663,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             if (nc != null) {
                 transports = Arrays.stream(nc.getTransportTypes()).boxed()
                         .collect(Collectors.toSet());
-                if (useCache) {
+                if (useCache && transports.size() > 0) {
                     mNetIdTransports.put(netId, transports);
                 }
             }
@@ -4679,9 +4689,19 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } finally {
             Binder.restoreCallingIdentity(token);
         }
+        if (transports == null) {
+            mUidsNeedingUpdateForRestrictedMode.add(uid);
+        } else {
+            mUidsNeedingUpdateForRestrictedMode.remove(uid);
+        }
         boolean isUidRestrictedByPolicy = false;
-        if (isUidAllowedOnRestrictedNetworks && transports != null) {
+        if (isUidAllowedOnRestrictedNetworks) {
             int policy = getUidPolicy(uid);
+            if (transports == null) {
+                // We do not know a transport for this UID right now. To prevent leaks, only allow
+                // the UID access if it does not have any transport-based restrictions.
+                return policy == POLICY_NONE;
+            }
             final boolean isUidAllowedOnVpn = transports.contains(TRANSPORT_VPN)
                     && ((policy & POLICY_REJECT_VPN) == 0);
             if (!isUidAllowedOnVpn) {
