@@ -16,6 +16,23 @@
       "message": "Still looking into this",
       "revId": "c014a2063b68d0154210e96b0bd6aa9d1a21eb58",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935f2453_08884add",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-16T00:58:16Z",
+      "side": 1,
+      "message": "This is a workaround for the problem fixed by I0a71ad37. It\u0027s still not bad to include this as well, since it\u0027s unnecessary to have default firewall rules in the maps, and care is already taken elsewhere in NPMS to ensure that default rules aren\u0027t added.",
+      "revId": "c014a2063b68d0154210e96b0bd6aa9d1a21eb58",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
