@@ -103,6 +103,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "714b4f58_332a3194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-16T19:59:12Z",
+      "side": 1,
+      "message": "As discussed before hand, for emergencies it\u0027d be same as if you\n1. Didn\u0027t have a SIM card in the phone at all\n2. Didn\u0027t have location turned on at all\n\nWhat you\u0027re saying may happen but there\u0027s already other scenarios that could cause the same.",
+      "parentUuid": "a914c57c_a8fad537",
+      "revId": "e4c354dc6ba707bf113a6a1fcd0ddc85df11fa38",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc3a3815_69128193",
