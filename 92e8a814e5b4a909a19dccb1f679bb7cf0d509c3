@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a49b64_b75afd02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-16T23:51:59Z",
+      "side": 1,
+      "message": "This might be necessary too, but it\u0027s not sufficient on its own to solve everything. If/when we figure out some other aspects of transition problems, we will know if this is needed.",
+      "revId": "92e8a814e5b4a909a19dccb1f679bb7cf0d509c3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
