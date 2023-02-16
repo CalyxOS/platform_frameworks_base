@@ -6125,6 +6125,17 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    /** Remove any default rules present in a chain. */
+    private void removeDefaultRules(final SparseIntArray uidRules) {
+        int size = uidRules.size();
+        for (int i = 0; i < size; i++) {
+            if (uidRules.valueAt(i) == FIREWALL_RULE_DEFAULT) {
+                uidRules.delete(uidRules.keyAt(i--));
+                size--;
+            }
+        }
+    }
+
     /**
      * Set uid rules on a particular firewall chain. This is going to synchronize the rules given
      * here to netd.  It will clean up dead rules and make sure the target chain only contains rules
@@ -6132,6 +6143,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
      */
     private void setUidFirewallRulesUL(int chain, SparseIntArray uidRules) {
         addSdkSandboxUidsIfNeeded(uidRules);
+        removeDefaultRules(uidRules);
         try {
             int size = uidRules.size();
             int[] uids = new int[size];
@@ -6159,16 +6171,27 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     "setUidFirewallRuleUL: " + chain + "/" + uid + "/" + rule);
         }
         try {
+            final SparseIntArray uidFirewallRules;
             if (chain == FIREWALL_CHAIN_DOZABLE) {
-                mUidFirewallDozableRules.put(uid, rule);
+                uidFirewallRules = mUidFirewallDozableRules;
             } else if (chain == FIREWALL_CHAIN_STANDBY) {
-                mUidFirewallStandbyRules.put(uid, rule);
+                uidFirewallRules = mUidFirewallStandbyRules;
             } else if (chain == FIREWALL_CHAIN_POWERSAVE) {
-                mUidFirewallPowerSaveRules.put(uid, rule);
+                uidFirewallRules = mUidFirewallPowerSaveRules;
             } else if (chain == FIREWALL_CHAIN_RESTRICTED) {
-                mUidFirewallRestrictedModeRules.put(uid, rule);
+                uidFirewallRules = mUidFirewallRestrictedModeRules;
             } else if (chain == FIREWALL_CHAIN_LOW_POWER_STANDBY) {
-                mUidFirewallLowPowerStandbyModeRules.put(uid, rule);
+                uidFirewallRules = mUidFirewallLowPowerStandbyModeRules;
+            } else {
+                uidFirewallRules = null;
+            }
+
+            if (uidFirewallRules != null) {
+                if (rule != FIREWALL_RULE_DEFAULT) {
+                    uidFirewallRules.put(uid, rule);
+                } else {
+                    uidFirewallRules.delete(uid);
+                }
             }
 
             try {
