@@ -36,6 +36,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61a521f_db892299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2023-02-17T14:48:29Z",
+      "side": 1,
+      "message": "I think with new F-Droid and the Lupin updater, we won\u0027t have any need for this patch.",
+      "revId": "c87f19a6697f9e6bac9c10d9bc16351ce64a463d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd169bf9_39dcb2f8",
