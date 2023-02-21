@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05042144_7b89e630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-02-21T17:10:16Z",
+      "side": 1,
+      "message": "Do we want to make this Bellis exclusive? https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/app/admin/DevicePolicyManager.java;l\u003d7841;drc\u003dee976fd24cfbd567c4543da39aadb1b3e4567042;bpv\u003d0;bpt\u003d1 Wouldn\u0027t require frameworks changes",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fc0caf4_13eb6680",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 2
