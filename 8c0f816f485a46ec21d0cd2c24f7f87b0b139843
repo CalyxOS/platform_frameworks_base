@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6cfcbd_eec37716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-21T18:32:04Z",
+      "side": 1,
+      "message": "I\u0027m fine with this change because it\u0027s good to support this in general.\n\n`lockdownAllowlist` wouldn\u0027t work either way:\n\n\u003e Packages that will be able to access the network directly when VPN is in lockdown mode but not connected. Has no effect when clearing.\n\nWe want these to work when Orbot is actually running.",
+      "parentUuid": "05042144_7b89e630",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fc0caf4_13eb6680",
