@@ -88,6 +88,8 @@ import static android.net.NetworkPolicyManager.ALLOWED_REASON_TOP;
 import static android.net.NetworkPolicyManager.EXTRA_NETWORK_TEMPLATE;
 import static android.net.NetworkPolicyManager.FIREWALL_RULE_DEFAULT;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
+import static android.net.NetworkPolicyManager.POLICY_LOCKDOWN_VPN;
+import static android.net.NetworkPolicyManager.POLICY_LOCKDOWN_VPN_MASK;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
@@ -1116,6 +1118,10 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             // listen for meteredness changes
             mConnManager.registerNetworkCallback(
                     new NetworkRequest.Builder().build(), mNetworkCallback);
+
+            // Set up the firewall for any insisted VPN lockdown UIDs.
+            mConnManager.setRequireVpnInsistedForUids(true /* insist */,
+                    getUidsWithLockdownPolicy());
 
             mAppStandby.addListener(new NetPolicyAppIdleStateChangeListener());
             synchronized (mUidRulesFirstLock) {
@@ -3124,6 +3130,18 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     @GuardedBy("mUidRulesFirstLock")
     private void setUidPolicyUncheckedUL(int uid, int oldPolicy, int policy, boolean persist) {
         setUidPolicyUncheckedUL(uid, policy, false);
+        final boolean wasLockdownUid =
+                (oldPolicy & POLICY_LOCKDOWN_VPN_MASK) == POLICY_LOCKDOWN_VPN;
+        final boolean isLockdownUid =
+                (policy & POLICY_LOCKDOWN_VPN_MASK) == POLICY_LOCKDOWN_VPN;
+        if (wasLockdownUid != isLockdownUid) {
+            try {
+                mConnManager.setRequireVpnInsistedForUids(isLockdownUid, new int[]{uid});
+            } catch (RuntimeException e) {
+                Slog.wtf(TAG, "setUidPolicyUncheckedUL: Failed to insist VPN for UID: "
+                        + isLockdownUid + ", " + uid);
+            }
+        }
 
         final boolean notifyApp;
         if (!isUidValidForAllowlistRulesUL(uid)) {
@@ -3177,6 +3195,21 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         synchronized (mUidRulesFirstLock) {
             return mUidPolicy.get(uid, POLICY_NONE);
         }
+    }
+
+    @NonNull
+    private int[] getUidsWithLockdownPolicy() {
+        int[] uids = new int[0];
+        synchronized (mUidRulesFirstLock) {
+            for (int i = 0; i < mUidPolicy.size(); i++) {
+                final int uid = mUidPolicy.keyAt(i);
+                final int uidPolicy = mUidPolicy.valueAt(i);
+                if ((uidPolicy & POLICY_LOCKDOWN_VPN_MASK) == POLICY_LOCKDOWN_VPN) {
+                    uids = appendInt(uids, uid);
+                }
+            }
+        }
+        return uids;
     }
 
     @Override
