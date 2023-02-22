@@ -104,6 +104,13 @@ public class NetworkPolicyManager {
      */
     public static final int POLICY_REJECT_ALL = 0x40000;
 
+    /** @hide */
+    public static final int POLICY_LOCKDOWN_VPN = POLICY_REJECT_WIFI | POLICY_REJECT_CELLULAR;
+
+    /** @hide */
+    public static final int POLICY_LOCKDOWN_VPN_MASK = POLICY_REJECT_WIFI | POLICY_REJECT_CELLULAR
+            | POLICY_REJECT_VPN;
+
     /*
      * Rules defining whether an uid has access to a network given its type (metered / non-metered).
      *
@@ -386,6 +393,18 @@ public class NetworkPolicyManager {
     public int getUidPolicy(int uid) {
         try {
             return mService.getUidPolicy(uid);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /** @hide */
+    @UnsupportedAppUsage
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(android.Manifest.permission.OBSERVE_NETWORK_POLICY)
+    public @NonNull int[] getUidsWithLockdownPolicy() {
+        try {
+            return mService.getUidsWithLockdownPolicy();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
