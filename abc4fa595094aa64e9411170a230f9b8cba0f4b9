@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52a12f4_9b381d3b",
+        "filename": "core/java/android/net/INetworkPolicyManager.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-24T15:10:22Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t need to expose this at all if we simply call setRequireVpnInsistedForUids with these when we start up.",
+      "revId": "abc4fa595094aa64e9411170a230f9b8cba0f4b9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
