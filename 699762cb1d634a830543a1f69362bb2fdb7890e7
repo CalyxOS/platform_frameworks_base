@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12886b2_4cf8d5af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-28T20:53:01Z",
+      "side": 1,
+      "message": "And now the other change is the simpler one!",
+      "parentUuid": "55c96cda_6fd3ddde",
+      "revId": "699762cb1d634a830543a1f69362bb2fdb7890e7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2370f70_e34b4f9d",
