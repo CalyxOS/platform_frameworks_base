@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa78f683_018ed0f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:25:47Z",
+      "side": 1,
+      "message": "Look forward to getting all this squashed",
+      "revId": "d5acf59644b18ae9795fe68fdf71a5ca3bc3cbf1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
