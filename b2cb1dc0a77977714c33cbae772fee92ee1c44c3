@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0a584b_00e75fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:41:58Z",
+      "side": 1,
+      "message": "Concerning upstream, might be worth checking who commented/checked/merged my patches for restricted networking mode. Might have a better chance",
+      "revId": "b2cb1dc0a77977714c33cbae772fee92ee1c44c3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
