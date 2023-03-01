@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8baca15_4aff9c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:39:21Z",
+      "side": 1,
+      "message": "Is this one of the patches that should be sent to AOSP?",
+      "revId": "5d497562809b175a9bedea0cb2ef0546dfa9355c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce152559_e149d595",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 6137,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:39:21Z",
+      "side": 1,
+      "message": "Personally I prefer the idea of a conditional check in `setUidFirewallRulesUL`. Not a blocker",
+      "range": {
+        "startLine": 6129,
+        "startChar": 4,
+        "endLine": 6137,
+        "endChar": 5
+      },
+      "revId": "5d497562809b175a9bedea0cb2ef0546dfa9355c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
