@@ -240,7 +240,7 @@ public class PhoneStatusBarPolicy
         mSlotSensorsOff = resources.getString(com.android.internal.R.string.status_bar_sensors_off);
         mSlotScreenRecord = resources.getString(
                 com.android.internal.R.string.status_bar_screen_record);
-        mSlotFirewall = resources.getString(com.android.internal.R.string.status_bar_firewall);
+        mSlotFirewall = resources.getString(R.string.status_bar_firewall_slot);
 
         mDisplayId = displayId;
         mSharedPreferences = sharedPreferences;
