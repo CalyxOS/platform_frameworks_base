@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d66e99_b47a776c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:32:50Z",
+      "side": 1,
+      "message": "Can\u0027t be use values from there directly?",
+      "range": {
+        "startLine": 1135,
+        "startChar": 4,
+        "endLine": 1135,
+        "endChar": 36
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cba485_00541783",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:32:50Z",
+      "side": 1,
+      "message": "I don\u0027t find bitwise operations and bitmasks generally readable. I try to keep them to a minimum and do basic ones. Can this be simplified? Not a blocker at all. Just a preference of mine",
+      "range": {
+        "startLine": 1136,
+        "startChar": 4,
+        "endLine": 1159,
+        "endChar": 5
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb21bbfe_3ce4af94",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3125,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-01T22:32:50Z",
+      "side": 1,
+      "message": "Is the packing occurring to simplify the data structure required to pass the information around? If it were not packed what would it look like? I\u0027m guessing this simplifies code overall. At the sametime makes comparisons slightly less obvious (compared to comparing policy with \u0026, if that makes sense and if it doesn\u0027t no worries)",
+      "range": {
+        "startLine": 3125,
+        "startChar": 19,
+        "endLine": 3125,
+        "endChar": 47
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
