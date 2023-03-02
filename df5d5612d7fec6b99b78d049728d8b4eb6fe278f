@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d068b6fc_7f9d507a",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-02T17:01:27Z",
+      "side": 1,
+      "message": "Doing this should implicitly block Ethernet and other transports as well, until we have a separate toggle for them.",
+      "parentUuid": "c9e7af8d_99e29e62",
+      "range": {
+        "startLine": 111,
+        "startChar": 28,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "df5d5612d7fec6b99b78d049728d8b4eb6fe278f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47290b71_ea75d74b",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 6
