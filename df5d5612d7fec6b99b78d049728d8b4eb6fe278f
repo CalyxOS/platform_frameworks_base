@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9e7af8d_99e29e62",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-02T17:00:23Z",
+      "side": 1,
+      "message": "We might not actually need the mask, in a way. For example: if the user has Wi-Fi off, Mobile Data off, and VPN off -- which is the case we\u0027ve been trying to exclude via the mask, since we want to affect VPN on -- does it even matter if the UID is in lockdown at that point? Isn\u0027t it *fine* for it to be in lockdown when all these toggles are off? It won\u0027t get online anyway.\n\ntl;dr maybe we can just have the policy take effect whenever Wi-Fi and Mobile Data toggles are off, regardless of the VPN toggle.",
+      "parentUuid": "83aa5379_6db7aca1",
+      "range": {
+        "startLine": 111,
+        "startChar": 28,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "df5d5612d7fec6b99b78d049728d8b4eb6fe278f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47290b71_ea75d74b",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-01T22:53:41Z",
       "side": 1,
       "message": "Nitpick: Could make use of the existing `getUidPolicy` and provess directly instead of utility function?",
+      "range": {
+        "startLine": 3133,
+        "startChar": 4,
+        "endLine": 3150,
+        "endChar": 5
+      },
+      "revId": "df5d5612d7fec6b99b78d049728d8b4eb6fe278f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bfd60ae_1d387ca8",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-02T17:00:23Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not fully sure what you mean. Do you mean getUidsWithPolicy? By design of that method, that will only work as-is if we add an actual policy for this instead of using the mask; otherwise, we would have to use it to get all UIDs with POLICY_LOCKDOWN_VPN, and then separately get all UIDs with POLICY_REJECT_VPN and remove those from the first list. Plus it returns an array, so it\u0027s not as convenient to work with directly. Overall, we\u0027d lose some performance (but maybe negligible).\n\nAlthough, you know something... I have another thought. I\u0027ll reply with a different comment.",
+      "parentUuid": "47290b71_ea75d74b",
       "range": {
         "startLine": 3133,
         "startChar": 4,
