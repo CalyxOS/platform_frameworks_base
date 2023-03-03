@@ -49,6 +49,7 @@ import static android.net.ConnectivityManager.BLOCKED_METERED_REASON_MASK;
 import static android.net.ConnectivityManager.BLOCKED_METERED_REASON_USER_RESTRICTED;
 import static android.net.ConnectivityManager.BLOCKED_REASON_APP_STANDBY;
 import static android.net.ConnectivityManager.BLOCKED_REASON_BATTERY_SAVER;
+import static android.net.ConnectivityManager.BLOCKED_REASON_DENYLIST;
 import static android.net.ConnectivityManager.BLOCKED_REASON_DOZE;
 import static android.net.ConnectivityManager.BLOCKED_REASON_LOW_POWER_STANDBY;
 import static android.net.ConnectivityManager.BLOCKED_REASON_NONE;
@@ -180,6 +181,7 @@ import android.content.pm.UserInfo;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.net.ConnectivityManager;
+import android.net.ConnectivityManager.OnDenylistChangedListener;
 import android.net.ConnectivityManager.NetworkCallback;
 import android.net.ConnectivitySettingsManager;
 import android.net.INetworkManagementEventObserver;
@@ -1106,6 +1108,15 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             // listen for meteredness changes
             mConnManager.registerNetworkCallback(
                     new NetworkRequest.Builder().build(), mNetworkCallback);
+
+            mConnManager.addDenylistChangedListener(new OnDenylistChangedListener() {
+                @Override
+                public void onDenylistChanged(int uid, boolean denied) {
+                    synchronized (mUidRulesFirstLock) {
+                        updateBlockedReasonsForDenylistUL(uid, denied);
+                    }
+                }
+            });
 
             mAppStandby.addListener(new NetPolicyAppIdleStateChangeListener());
             synchronized (mUidRulesFirstLock) {
@@ -4468,6 +4479,36 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 Binder.restoreCallingIdentity(token);
             }
         }
+    }
+
+    @GuardedBy("mUidRulesFirstLock")
+    private int updateBlockedReasonsForDenylistUL(int uid, boolean denied) {
+        final int oldEffectiveBlockedReasons;
+        final int newEffectiveBlockedReasons;
+        final int uidRules;
+        synchronized (mUidBlockedState) {
+            final UidBlockedState uidBlockedState = getOrCreateUidBlockedStateForUid(
+                    mUidBlockedState, uid);
+            oldEffectiveBlockedReasons = uidBlockedState.effectiveBlockedReasons;
+            if (denied) {
+                uidBlockedState.blockedReasons |= BLOCKED_REASON_DENYLIST;
+            } else {
+                uidBlockedState.blockedReasons &= BLOCKED_REASON_DENYLIST;
+            }
+            uidBlockedState.updateEffectiveBlockedReasons();
+
+            newEffectiveBlockedReasons = uidBlockedState.effectiveBlockedReasons;
+            uidRules = oldEffectiveBlockedReasons == newEffectiveBlockedReasons
+                    ? RULE_NONE
+                    : uidBlockedState.deriveUidRules();
+        }
+        if (oldEffectiveBlockedReasons != newEffectiveBlockedReasons) {
+            handleBlockedReasonsChanged(uid,
+                    newEffectiveBlockedReasons, oldEffectiveBlockedReasons);
+
+            postUidRulesChangedMsg(uid, uidRules);
+        }
+        return newEffectiveBlockedReasons;
     }
 
     @GuardedBy("mUidRulesFirstLock")
