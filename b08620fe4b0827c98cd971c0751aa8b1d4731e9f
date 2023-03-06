@@ -16,6 +16,23 @@
       "message": "Not tested",
       "revId": "b08620fe4b0827c98cd971c0751aa8b1d4731e9f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fee9767_33ae1738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-06T17:54:11Z",
+      "side": 1,
+      "message": "Need to update the list of BLOCKED_REASONS and the method that converts to string to avoid NetworkPolicy exception/wtf.",
+      "revId": "b08620fe4b0827c98cd971c0751aa8b1d4731e9f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
