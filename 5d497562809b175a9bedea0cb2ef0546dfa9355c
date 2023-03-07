@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "354fd312_08b9dbd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-07T22:20:01Z",
+      "side": 1,
+      "message": "*Maybe* not... I submitted a patch for the underlying issue. What do you think?\n\nAs long as nothing we\u0027re doing is triggering the problem anymore anyway (which should be true, now that we are not using the rest of firewall-update-sync), I don\u0027t think we even need this, ourselves. Probably abandon?",
+      "parentUuid": "d8baca15_4aff9c49",
+      "revId": "5d497562809b175a9bedea0cb2ef0546dfa9355c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce152559_e149d595",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 2
