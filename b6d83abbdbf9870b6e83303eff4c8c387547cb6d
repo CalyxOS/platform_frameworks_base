@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d877fd2_0f758cc6",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4486,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-07T22:32:57Z",
+      "side": 1,
+      "message": "This is basically a copy of `updateBlockedReasonsForRestrictedModeUL` below, but customized for our purposes.",
+      "revId": "b6d83abbdbf9870b6e83303eff4c8c387547cb6d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
