@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95bcb6a1_da8e0594",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-07T17:19:24Z",
+      "side": 1,
+      "message": "Unfortunately, they\u0027re not exposed...",
+      "parentUuid": "75d66e99_b47a776c",
+      "range": {
+        "startLine": 1135,
+        "startChar": 4,
+        "endLine": 1135,
+        "endChar": 36
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2cba485_00541783",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15e342d0_65dc94ad",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-07T17:19:24Z",
+      "side": 1,
+      "message": "It\u0027s funny you should comment on this, because this code was kind of wrong... In practice it didn\u0027t matter, but I shouldn\u0027t have been using `^\u003d` because that\u0027s a toggle; would have been better to use `\u0026\u003d ~` like they\u0027re doing elsewhere because that turns the flag off. Whoops. Today I learned.\n\nAnyway, you\u0027re not the only one who feels that way about bitmasks. There are helper classes in various parts of AOSP probably for this reason, e.g. [BitUtils](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/com/android/internal/util/BitUtils.java;drc\u003d5ca657189aac546af0aafaba11bbc9c5d889eab3;l\u003d34) and [FlagOp](https://cs.android.com/android/platform/superproject/+/master:frameworks/libs/systemui/iconloaderlib/src/com/android/launcher3/util/FlagOp.java;l\u003d1;drc\u003d5ca657189aac546af0aafaba11bbc9c5d889eab3?q\u003dflagop.java\u0026sq\u003d). Sadly there does not seem to be a helper class that is accessible from everywhere and has everything that is needed.\n\nSo, I\u0027m not really sure how to make this any simpler, without adding a lot of boilerplate for dealing with bitmasks, and I don\u0027t think it\u0027s worth avoiding them, either (see other comment). Let me know if you have ideas.",
+      "parentUuid": "c2cba485_00541783",
+      "range": {
+        "startLine": 1136,
+        "startChar": 4,
+        "endLine": 1159,
+        "endChar": 5
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb21bbfe_3ce4af94",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-01T22:32:50Z",
       "side": 1,
       "message": "Is the packing occurring to simplify the data structure required to pass the information around? If it were not packed what would it look like? I\u0027m guessing this simplifies code overall. At the sametime makes comparisons slightly less obvious (compared to comparing policy with \u0026, if that makes sense and if it doesn\u0027t no worries)",
+      "range": {
+        "startLine": 3125,
+        "startChar": 19,
+        "endLine": 3125,
+        "endChar": 47
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01af341b_50e5aeb3",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3125,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-07T17:19:24Z",
+      "side": 1,
+      "message": "Yeah, it simplifies passing it around, simplifies comparisons (at least computationally), and it\u0027s the way the transports are stored in NetworkCapabilities internally.\n\nI could always try to add comments or something if you see somewhere with comparisons that are confusing.",
+      "parentUuid": "bb21bbfe_3ce4af94",
       "range": {
         "startLine": 3125,
         "startChar": 19,
