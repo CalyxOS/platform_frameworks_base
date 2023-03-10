@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa5a057_0d92ffd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-10T00:27:01Z",
+      "side": 1,
+      "message": "Using a debugger, I can see that all BackupEligibilityRules objects floating around in the framework have mOperationType \u003d 1 (MIGRATION), and that this is what is being assigned when running something like `adb shell bmgr fullbackup org.bromite.bromite` and breakpointing in the BackupEligibilityRules constructor.\n\nSo, this patch appears to work.",
+      "revId": "96875f0787febbc8dc38b50d3bf27d02eeb2bf92",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
