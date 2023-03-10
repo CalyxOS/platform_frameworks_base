@@ -16,6 +16,24 @@
       "message": "Concerning upstream, might be worth checking who commented/checked/merged my patches for restricted networking mode. Might have a better chance",
       "revId": "b2cb1dc0a77977714c33cbae772fee92ee1c44c3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a6a210_d42c4e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-10T18:58:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f0a584b_00e75fdb",
+      "revId": "b2cb1dc0a77977714c33cbae772fee92ee1c44c3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
