@@ -89,6 +89,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd02abe2_88853341",
+        "filename": "core/java/android/net/NetworkPolicyManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-10T19:00:06Z",
+      "side": 1,
+      "message": "Ack, let\u0027s keep the mask, it\u0027s not hurting anything",
+      "parentUuid": "d068b6fc_7f9d507a",
+      "range": {
+        "startLine": 111,
+        "startChar": 28,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "df5d5612d7fec6b99b78d049728d8b4eb6fe278f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47290b71_ea75d74b",
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "Hmm, I\u0027m not fully sure what you mean. Do you mean getUidsWithPolicy? By design of that method, that will only work as-is if we add an actual policy for this instead of using the mask; otherwise, we would have to use it to get all UIDs with POLICY_LOCKDOWN_VPN, and then separately get all UIDs with POLICY_REJECT_VPN and remove those from the first list. Plus it returns an array, so it\u0027s not as convenient to work with directly. Overall, we\u0027d lose some performance (but maybe negligible).\n\nAlthough, you know something... I have another thought. I\u0027ll reply with a different comment.",
       "parentUuid": "47290b71_ea75d74b",
+      "range": {
+        "startLine": 3133,
+        "startChar": 4,
+        "endLine": 3150,
+        "endChar": 5
+      },
+      "revId": "df5d5612d7fec6b99b78d049728d8b4eb6fe278f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ea90b6_4efbba12",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-10T19:00:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0bfd60ae_1d387ca8",
       "range": {
         "startLine": 3133,
         "startChar": 4,
