@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "228d346a_a26c788b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-10T18:42:10Z",
+      "side": 1,
+      "message": "Let\u0027s just abandon, right? It\u0027s not our role to fix every bug or quirk when it doesn\u0027t even affect us. This might have affected us with firewall-update-sync at a certain time, but now it won\u0027t.",
+      "parentUuid": "addb7b71_d9856199",
+      "revId": "5d497562809b175a9bedea0cb2ef0546dfa9355c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce152559_e149d595",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 2
