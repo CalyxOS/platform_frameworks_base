@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb592cd_1dda4123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:25:07Z",
+      "side": 1,
+      "message": "Untested but looking good so far.",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a15e4f_832e8fe8",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:25:07Z",
+      "side": 1,
+      "message": "We should probably make sure to ignore the provided networkCapabilities, if any, if the UID has changed, since they might not apply to the new UID (and even if we checked using appliesToUid, that doesn\u0027t necessarily mean it\u0027s the active network anymore, right?).\n\nSince the networkCapabilities argument isn\u0027t final, could potentially just reassign it to null, unless that would be too confusing.\n\nOnce that\u0027s done this should get a CR+1 from me but I haven\u0027t tested it yet.",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
