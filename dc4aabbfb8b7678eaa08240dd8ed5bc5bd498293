@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6b68e8_8056afda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-03-14T11:32:23Z",
+      "side": 1,
+      "message": "This doesn\u0027t affect the new expanded header and it\u0027s still needed to have aligned QS header",
+      "revId": "dc4aabbfb8b7678eaa08240dd8ed5bc5bd498293",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
