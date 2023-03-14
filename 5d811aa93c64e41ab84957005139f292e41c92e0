@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa67721_3f24df45",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T21:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4861a83e_5048af45",
+      "revId": "5d811aa93c64e41ab84957005139f292e41c92e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3b167f5_cbc30613",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-14T20:33:44Z",
       "side": 1,
       "message": "Provided we are registering for changes to the default network of a UID (prior comment), we should definitely use the NetworkCapabilities that are given to us, when they are given to us. They won\u0027t be given to us when the user switches to a different app.\n\nMaybe add a `@Nullable NetworkCapabilities` argument to updateFirewall, and use it when not-null; otherwise, call getActiveNetworkForUid()?",
+      "revId": "5d811aa93c64e41ab84957005139f292e41c92e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5f24b2_1a249af8",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T21:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b167f5_cbc30613",
       "revId": "5d811aa93c64e41ab84957005139f292e41c92e0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
