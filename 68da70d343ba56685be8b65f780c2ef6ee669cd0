@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f59972c_a462da37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:03:03Z",
+      "side": 1,
+      "message": "Note: CtsJobSchedulerTestCases currently seems to fail in CalyxOS, with or without this patch.",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
