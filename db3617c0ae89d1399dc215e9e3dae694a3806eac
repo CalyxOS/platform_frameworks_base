@@ -51,6 +51,40 @@
       "parentUuid": "08a15e4f_832e8fe8",
       "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "713b5902_2615ba7a",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:54:55Z",
+      "side": 1,
+      "message": "What does this fix / why is this used instead of getHomeActivities?",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c7e21b_29b342fc",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:54:55Z",
+      "side": 1,
+      "message": "Why do we need to use getAppId for this?",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
