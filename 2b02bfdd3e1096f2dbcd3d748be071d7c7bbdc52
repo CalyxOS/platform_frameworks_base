@@ -16,6 +16,24 @@
       "message": "This line change is a particular problem, because it includes system apps that are exempt *except when idle* (except-idle). We need this to check whether it is either user-exempt or *fully* system-exempt.",
       "revId": "2b02bfdd3e1096f2dbcd3d748be071d7c7bbdc52",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbdb384_43717781",
+        "filename": "apex/jobscheduler/service/java/com/android/server/alarm/AlarmManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2864,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T20:52:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d408f76d_d4aa6b52",
+      "revId": "2b02bfdd3e1096f2dbcd3d748be071d7c7bbdc52",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
