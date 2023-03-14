@@ -34,9 +34,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.net.ConnectivityManager;
 import android.net.INetworkPolicyListener;
-import android.net.INetworkPolicyManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.NetworkPolicyManager;
+import android.net.NetworkRequest;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
@@ -50,6 +53,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 
 import com.android.systemui.R;
@@ -162,6 +166,8 @@ public class PhoneStatusBarPolicy
     private final RecordingController mRecordingController;
     private final RingerModeTracker mRingerModeTracker;
     private final PrivacyLogger mPrivacyLogger;
+    private final ConnectivityManager mConnectivityManager;
+    private final NetworkPolicyManager mNetworkPolicyManager;
 
     private boolean mZenVisible;
     private boolean mVibrateVisible;
@@ -175,7 +181,7 @@ public class PhoneStatusBarPolicy
     private AlarmManager.AlarmClockInfo mNextAlarm;
 
     @Inject
-    public PhoneStatusBarPolicy(StatusBarIconController iconController,
+    public PhoneStatusBarPolicy(Context context, StatusBarIconController iconController,
             CommandQueue commandQueue, BroadcastDispatcher broadcastDispatcher,
             @UiBackground Executor uiBgExecutor, @Main Looper looper, @Main Resources resources,
             CastController castController, HotspotController hotspotController,
@@ -220,6 +226,8 @@ public class PhoneStatusBarPolicy
         mTelecomManager = telecomManager;
         mRingerModeTracker = ringerModeTracker;
         mPrivacyLogger = privacyLogger;
+        mConnectivityManager = context.getSystemService(ConnectivityManager.class);
+        mNetworkPolicyManager = context.getSystemService(NetworkPolicyManager.class);
 
         mSlotCast = resources.getString(com.android.internal.R.string.status_bar_cast);
         mSlotHotspot = resources.getString(com.android.internal.R.string.status_bar_hotspot);
@@ -270,6 +278,10 @@ public class PhoneStatusBarPolicy
         } catch (RemoteException e) {
             // Ignore
         }
+
+        mConnectivityManager.registerNetworkCallback(
+                new NetworkRequest.Builder().setUids(null).build(), mNetworkCallback);
+        mNetworkPolicyManager.registerListener(mNetworkPolicyListener);
 
         // TTY status
         updateTTY();
@@ -360,8 +372,6 @@ public class PhoneStatusBarPolicy
         mSensorPrivacyController.addCallback(mSensorPrivacyListener);
         mLocationController.addCallback(this);
         mRecordingController.addCallback(this);
-
-        registerNetworkPolicyListener();
 
         mCommandQueue.addCallback(this);
 
@@ -599,14 +609,21 @@ public class PhoneStatusBarPolicy
         mUiBgExecutor.execute(() -> {
             try {
                 final int uid = ActivityTaskManager.getService().getLastResumedActivityUid();
-                final boolean isRestricted = INetworkPolicyManager.Stub.asInterface(
-                        ServiceManager.getService(Context.NETWORK_POLICY_SERVICE))
-                        .isUidNetworkingBlocked(uid, false);
+                final int policy = mNetworkPolicyManager.getUidPolicy(uid);
+                final Network network = mConnectivityManager.getActiveNetworkForUid(uid, true);
+                final NetworkCapabilities nc = mConnectivityManager.getNetworkCapabilities(network);
+                final boolean isRestricted =
+                        (nc.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                                && policy == NetworkPolicyManager.POLICY_REJECT_CELLULAR)
+                                || (nc.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                                && policy == NetworkPolicyManager.POLICY_REJECT_VPN)
+                                || (nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                                && policy == NetworkPolicyManager.POLICY_REJECT_WIFI);
                 boolean isLauncher = false;
                 List<ResolveInfo> homeActivities = new ArrayList<>();
                 AppGlobals.getPackageManager().getHomeActivities(homeActivities);
                 for (ResolveInfo homeActivity : homeActivities) {
-                    if (uid == homeActivity.activityInfo.applicationInfo.uid) {
+                    if (UserHandle.getAppId(uid) == homeActivity.activityInfo.applicationInfo.uid) {
                         isLauncher = true;
                         break;
                     }
@@ -632,33 +649,20 @@ public class PhoneStatusBarPolicy
         });
     }
 
-    private void registerNetworkPolicyListener() {
-        try {
-            INetworkPolicyManager policyManager = INetworkPolicyManager.Stub.asInterface(
-                    ServiceManager.getService(Context.NETWORK_POLICY_SERVICE));
-            policyManager.registerListener(mNetworkPolicyListener);
-        } catch (RemoteException e) {
-            Log.e(TAG, "registerNetworkPolicyListener: ", e);
-            return;
-        }
-    }
+    private final ConnectivityManager.NetworkCallback mNetworkCallback =
+            new ConnectivityManager.NetworkCallback() {
+                @Override
+                public void onCapabilitiesChanged(@NonNull Network network,
+                        @NonNull NetworkCapabilities networkCapabilities) {
+                    mHandler.post(() -> updateFirewall());
+                }
+            };
 
     private final INetworkPolicyListener mNetworkPolicyListener =
             new NetworkPolicyManager.Listener() {
         @Override
-        public void onUidRulesChanged(int uid, int uidRules) {
-            if (DEBUG) Log.d(TAG, "INetworkPolicyListener." +
-                    "onUidRulesChanged: uid: " + uid +
-                    ", uidRules: " + uidRules);
-            updateFirewall();
-        }
-
-        @Override
         public void onUidPoliciesChanged(int uid, int uidPolicies) {
-            if (DEBUG) Log.d(TAG, "INetworkPolicyListener." +
-                    "onUidPoliciesChanged: uid: " + uid +
-                    ", uidPolicies: " + uidPolicies);
-            updateFirewall();
+            mHandler.post(() -> updateFirewall());
         }
     };
 
