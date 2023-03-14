@@ -53,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e76a02_143845ba",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e82a73_225c6ee3",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "713b5902_2615ba7a",
@@ -70,6 +88,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33c9112_affa8f93",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T23:16:36Z",
+      "side": 1,
+      "message": "Internally it queries only for the calling user according to the binder. This addresses https://gitlab.com/CalyxOS/calyxos/-/issues/1041. Additionally, it is deprecated in `IPackageManagerBase`.",
+      "parentUuid": "713b5902_2615ba7a",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c7e21b_29b342fc",
@@ -83,6 +119,24 @@
       "writtenOn": "2023-03-14T21:54:55Z",
       "side": 1,
       "message": "Why do we need to use getAppId for this?",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c189fa_c5628165",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T23:16:36Z",
+      "side": 1,
+      "message": "Should not be needed anymore",
+      "parentUuid": "10c7e21b_29b342fc",
       "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
