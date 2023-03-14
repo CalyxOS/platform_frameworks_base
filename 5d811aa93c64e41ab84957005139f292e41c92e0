@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4861a83e_5048af45",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T20:33:44Z",
+      "side": 1,
+      "message": "We should use `registerDefaultNetworkCallbackForUid` if possible.\n\n`registerNetworkCallback`, untailored to a particular UID, may not get called with regard to certain events, such as VPN disconnect or an app requesting a specific network. The behavior we are monitoring is dependent on the default network of the active app UID, not just on network changes, and we are not supposed to call `getActiveNetworkForUid` in reaction to callbacks, since the info may be out-of-date or inaccurate (race).",
+      "revId": "5d811aa93c64e41ab84957005139f292e41c92e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b167f5_cbc30613",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T20:33:44Z",
+      "side": 1,
+      "message": "Provided we are registering for changes to the default network of a UID (prior comment), we should definitely use the NetworkCapabilities that are given to us, when they are given to us. They won\u0027t be given to us when the user switches to a different app.\n\nMaybe add a `@Nullable NetworkCapabilities` argument to updateFirewall, and use it when not-null; otherwise, call getActiveNetworkForUid()?",
+      "revId": "5d811aa93c64e41ab84957005139f292e41c92e0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
