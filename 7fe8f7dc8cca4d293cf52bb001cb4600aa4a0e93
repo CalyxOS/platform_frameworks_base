@@ -48,6 +48,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69618dcf_0e645219",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T14:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95bcb6a1_da8e0594",
+      "range": {
+        "startLine": 1135,
+        "startChar": 4,
+        "endLine": 1135,
+        "endChar": 36
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cba485_00541783",
@@ -95,6 +119,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef44c775_226bccd7",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T14:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15e342d0_65dc94ad",
+      "range": {
+        "startLine": 1136,
+        "startChar": 4,
+        "endLine": 1159,
+        "endChar": 5
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb21bbfe_3ce4af94",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Yeah, it simplifies passing it around, simplifies comparisons (at least computationally), and it\u0027s the way the transports are stored in NetworkCapabilities internally.\n\nI could always try to add comments or something if you see somewhere with comparisons that are confusing.",
       "parentUuid": "bb21bbfe_3ce4af94",
+      "range": {
+        "startLine": 3125,
+        "startChar": 19,
+        "endLine": 3125,
+        "endChar": 47
+      },
+      "revId": "7fe8f7dc8cca4d293cf52bb001cb4600aa4a0e93",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cfc257_46214a49",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3125,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-14T14:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01af341b_50e5aeb3",
       "range": {
         "startLine": 3125,
         "startChar": 19,
