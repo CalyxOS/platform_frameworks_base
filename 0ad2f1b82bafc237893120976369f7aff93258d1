@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68c30f2_ccd59b2d",
+        "filename": "apex/jobscheduler/service/java/com/android/server/AppStateTrackerImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T19:16:03Z",
+      "side": 1,
+      "message": "This was only to provide the system app IDs for proto dumps. This may not matter to us *at all*, unless we decided to submit to AOSP.\n\nSo these comments can probably be removed.",
+      "revId": "0ad2f1b82bafc237893120976369f7aff93258d1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
