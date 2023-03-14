@@ -33,6 +33,24 @@
       "message": "We should probably make sure to ignore the provided networkCapabilities, if any, if the UID has changed, since they might not apply to the new UID (and even if we checked using appliesToUid, that doesn\u0027t necessarily mean it\u0027s the active network anymore, right?).\n\nSince the networkCapabilities argument isn\u0027t final, could potentially just reassign it to null, unless that would be too confusing.\n\nOnce that\u0027s done this should get a CR+1 from me but I haven\u0027t tested it yet.",
       "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e82a73_225c6ee3",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-14T21:27:33Z",
+      "side": 1,
+      "message": "I meant to say, `NetworkCapabilities.appliesToUid` *almost* seems perfect, except that it only checks if the capabilities apply, not whether the network is the default, so we probably shouldn\u0027t rely on the provided NetworkCapabilities at all when the UID has changed.\n\n(You didn\u0027t even suggest we use appliesToUid, it just popped in my head)",
+      "parentUuid": "08a15e4f_832e8fe8",
+      "revId": "db3617c0ae89d1399dc215e9e3dae694a3806eac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
