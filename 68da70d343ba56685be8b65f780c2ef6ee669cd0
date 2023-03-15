@@ -69,6 +69,23 @@
       "parentUuid": "914b87a0_613ad892",
       "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f46484c_79b02957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-15T17:53:15Z",
+      "side": 1,
+      "message": "There\u0027s also probably a way to fix this directly in Messaging (and any other affected apps) - but this is a clean enough generic solution, and we\u0027re limited on time.\n\nI\u0027d have been happy with a \"allow user to exempt Messaging\" solution too because at the end of the day that\u0027s still far better than missing notifications.\n\nMaybe someday we\u0027ll be able to fix it \"properly\", till then I\u0027m ok with this.",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
