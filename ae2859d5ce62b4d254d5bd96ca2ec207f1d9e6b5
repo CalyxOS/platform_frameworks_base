@@ -16,6 +16,23 @@
       "message": "NPE is fixed in latest patchset, so I was able to test this.\n\nThe indicator works for transport restrictions, but not for being blocked by restricted mode overall (network access toggle off) - so, the opposite of pre-patch.",
       "revId": "ae2859d5ce62b4d254d5bd96ca2ec207f1d9e6b5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae96fba5_a0ee1381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-15T16:24:58Z",
+      "side": 1,
+      "message": "If connected to a VPN + Wi-Fi, and the Wi-Fi toggle is off for an app, then the firewall indicator will show that the firewall is blocking network access, but it isn\u0027t; the app still gets online through the VPN.\n\n(The logic in the previous firewall code in NetworkPolicyManagerService separated these checks out.)\n\nThis reminds me: we will need to remember to update the indicator code if we ever update the firewall logic.",
+      "revId": "ae2859d5ce62b4d254d5bd96ca2ec207f1d9e6b5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
