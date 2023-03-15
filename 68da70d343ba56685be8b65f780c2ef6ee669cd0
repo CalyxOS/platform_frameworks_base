@@ -86,6 +86,42 @@
       "message": "There\u0027s also probably a way to fix this directly in Messaging (and any other affected apps) - but this is a clean enough generic solution, and we\u0027re limited on time.\n\nI\u0027d have been happy with a \"allow user to exempt Messaging\" solution too because at the end of the day that\u0027s still far better than missing notifications.\n\nMaybe someday we\u0027ll be able to fix it \"properly\", till then I\u0027m ok with this.",
       "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e76ee6_9a2c76bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-15T17:54:56Z",
+      "side": 1,
+      "message": "That\u0027s a useful list and a good point. If the others aren\u0027t having problems, I wonder what Messaging is doing differently, and if we can learn from the others somehow.",
+      "parentUuid": "432de739_e0907a27",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb6c42b_07363341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-15T17:54:56Z",
+      "side": 1,
+      "message": "That\u0027s a useful list and a good point. If apps like Etar and DeskClock aren\u0027t having problems, I wonder what Messaging is doing differently, and if we can learn from the others somehow.\n\nI did initially try to implement what you were talking about with the Messaging app, but the prompt wasn\u0027t coming up, and believe it or not, this seemed to me like it would be easier (on top of handling more cases, like if an app is the default SMS app, in which case, *can* the prompt even come up?).",
+      "parentUuid": "0f46484c_79b02957",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
