@@ -16,6 +16,23 @@
       "message": "Note: CtsJobSchedulerTestCases currently seems to fail in CalyxOS, with or without this patch.",
       "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da2fd3b_9df743ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-15T17:38:46Z",
+      "side": 1,
+      "message": "Note: Submitted to AOSP and rejected as intentional behavior.\n\nI will be running this on my daily driver regardless and see if/how it impacts other apps, e.g. microG. I don\u0027t use the Messaging app personally, but it did work properly using the tests described in the issue.",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
