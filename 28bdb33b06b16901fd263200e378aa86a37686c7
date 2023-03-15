@@ -16,6 +16,24 @@
       "message": "Getting an NPE on boot related to NetworkCapabilities.hasTransport. If network is null above, nc will be null, because getNetworkCapabilities excepts a null network and ends up just returning null too.",
       "revId": "28bdb33b06b16901fd263200e378aa86a37686c7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef2e8e5_b52b1807",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-15T16:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7594b27_9fb981a9",
+      "revId": "28bdb33b06b16901fd263200e378aa86a37686c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
