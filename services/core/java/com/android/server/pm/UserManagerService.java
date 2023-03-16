@@ -133,6 +133,8 @@ import com.android.server.wm.ActivityTaskManagerInternal;
 
 import libcore.io.IoUtils;
 
+import lineageos.providers.LineageSettings;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -4628,6 +4630,29 @@ public class UserManagerService extends IUserManager.Stub {
     public boolean removeUser(@UserIdInt int userId) {
         Slog.i(LOG_TAG, "removeUser u" + userId);
         checkCreateUsersPermission("Only the system can remove users");
+
+        try {
+            final int garlicLevel = LineageSettings.Global.getInt(mContext.getContentResolver(),
+                    LineageSettings.Global.GARLIC_LEVEL, 0);
+            final int GARLIC_LEVEL_SAFEST = 2;
+
+            if (garlicLevel >= GARLIC_LEVEL_SAFEST) {
+                final UserInfo userInfo;
+                synchronized (mUsersLock) {
+                    userInfo = getUserInfoLU(userId);
+                }
+                if (userInfo != null && userInfo.isManagedProfile()
+                        && userInfo.profileGroupId == 0 && userInfo.profileBadge == 0) {
+                    // If this is the first profile for the primary user, do not remove it,
+                    // as we rely on it for Safest policies.
+                    Slog.w(LOG_TAG, "Cannot remove Safest profile (user " + userId + ").");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            Slog.e(LOG_TAG, "Failed garlic level checks. Refusing to remove user.", e);
+            return false;
+        }
 
         final String restriction = getUserRemovalRestriction(userId);
         if (getUserRestrictions(UserHandle.getCallingUserId()).getBoolean(restriction, false)) {
