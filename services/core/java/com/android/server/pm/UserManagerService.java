@@ -133,6 +133,8 @@ import com.android.server.wm.ActivityTaskManagerInternal;
 
 import libcore.io.IoUtils;
 
+import lineageos.providers.LineageSettings;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -4628,6 +4630,44 @@ public class UserManagerService extends IUserManager.Stub {
     public boolean removeUser(@UserIdInt int userId) {
         Slog.i(LOG_TAG, "removeUser u" + userId);
         checkCreateUsersPermission("Only the system can remove users");
+
+        try {
+            final int garlicLevel = LineageSettings.Global.getInt(mContext.getContentResolver(),
+                    LineageSettings.Global.GARLIC_LEVEL, 0);
+            final int GARLIC_LEVEL_SAFEST = 2;
+            final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+
+            if (garlicLevel >= GARLIC_LEVEL_SAFER) {
+                final UserInfo userInfo;
+                synchronized (mUsersLock) {
+                    userInfo = getUserInfoLU(userId);
+                }
+                final DevicePolicyManagerInternal dpm = getDevicePolicyManagerInternal();
+                if (dpm != null) {
+                    final String profileOwner;
+                    final long ident = Binder.clearCallingIdentity();
+                    try {
+                        final var componentName = dpm.getProfileOwnerAsUser(userInfo.id);
+                        profileOwner = componentName == null ? null
+                                : componentName.getPackageName();
+                    } finally {
+                        Binder.restoreCallingIdentity(ident);
+                    }
+                    if (userInfo != null && userInfo.isManagedProfile()
+                            && userInfo.profileGroupId == 0 && userInfo.profileBadge == 0
+                            && BELLIS_PACKAGE_NAME.equals(profileOwner)) {
+                        // If this is the first profile for the primary user, do not remove it,
+                        // as we rely on it for Safer and Safest policies. Where applicable, the
+                        // profile may be removed from within the Bellis app.
+                        Slog.w(LOG_TAG, "Cannot remove garlic profile (user " + userId + ").");
+                        return false;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Slog.e(LOG_TAG, "Failed garlic level checks. Refusing to remove user.", e);
+            return false;
+        }
 
         final String restriction = getUserRemovalRestriction(userId);
         if (getUserRestrictions(UserHandle.getCallingUserId()).getBoolean(restriction, false)) {
