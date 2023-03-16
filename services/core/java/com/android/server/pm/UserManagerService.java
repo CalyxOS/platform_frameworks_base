@@ -5418,6 +5418,10 @@ public class UserManagerService extends IUserManager.Stub {
         Slog.i(LOG_TAG, "removeUser u" + userId);
         checkCreateUsersPermission("Only the system can remove users");
 
+        if (isNonEssentialManagedProfileOnBellisManagedDevice(userId)) {
+            return removeUserUnchecked(userId);
+        }
+
         final String restriction = getUserRemovalRestriction(userId);
         if (getUserRestrictions(UserHandle.getCallingUserId()).getBoolean(restriction, false)) {
             Slog.w(LOG_TAG, "Cannot remove user. " + restriction + " is enabled.");
@@ -5463,6 +5467,59 @@ public class UserManagerService extends IUserManager.Stub {
         }
 
         return removeUserUnchecked(userId);
+    }
+
+    private boolean isNonEssentialManagedProfileOnBellisManagedDevice(@UserIdInt int userId) {
+        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+
+        final UserInfo userInfo;
+        final int firstManagedProfileId;
+        synchronized (mUsersLock) {
+            userInfo = getUserInfoLU(userId);
+            firstManagedProfileId = getFirstManagedProfileIdLU(userId);
+        }
+
+        if (firstManagedProfileId != userId
+                && userInfo.isManagedProfile()
+                && userInfo.profileGroupId == UserHandle.USER_SYSTEM) {
+            // We're trying to remove a managed profile from the system user, but not the first
+            // one. The first system profile is potentially responsible for device restrictions
+            // on organization-owned devices, so we never want to make an exception for it.
+            try {
+                final DevicePolicyManagerInternal dpm = getDevicePolicyManagerInternal();
+                final String profileOwner;
+                final long ident = Binder.clearCallingIdentity();
+                try {
+                    final var componentName = dpm.getProfileOwnerAsUser(firstManagedProfileId);
+                    profileOwner = componentName == null ? null
+                            : componentName.getPackageName();
+                } finally {
+                    Binder.restoreCallingIdentity(ident);
+                }
+                if (BELLIS_PACKAGE_NAME.equals(profileOwner)) {
+                    // Bellis is the owner of the first managed profile, meaning Bellis is the only
+                    // app that should be able to prohibit its profile from being removed.
+                    // We can guarantee that any additional managed profiles are not organization-
+                    // owned; their removal would typically be allowed, so we should allow it.
+                    // (We restrict this exception to Bellis out of an abundance of caution, not
+                    // wanting to adversely affect other organization-owner apps somehow.)
+                    return true;
+                }
+            } catch (Exception e) {
+                Slog.e(LOG_TAG, "Failed Bellis profile checks. Cannot bypass removal restriction.",
+                        e);
+            }
+        }
+        return false;
+    }
+
+    private int getFirstManagedProfileIdLU(@UserIdInt int userId) {
+        final IntArray profileIds = getProfileIdsLU(userId,
+                UserManager.USER_TYPE_PROFILE_MANAGED, false /* enabledOnly */);
+        if (profileIds.size() > 0) {
+            return profileIds.get(0);
+        }
+        return -1;
     }
 
     @Override
