@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec045df1_d87781da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-16T22:06:52Z",
+      "side": 1,
+      "message": "I need to test this without the change to the Settings app to ensure removal is still properly prevented on an underlying level.",
+      "revId": "0034fa92aa05419427d8b0091b1989c0a698e805",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
