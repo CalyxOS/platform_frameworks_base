@@ -122,6 +122,23 @@
       "parentUuid": "0f46484c_79b02957",
       "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4425b9d6_3893069e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-17T22:47:09Z",
+      "side": 1,
+      "message": "Works for me. Upstream mentioned \"expedited job\", but from a quick search I found https://developer.android.com/guide/background/persistent/getting-started/define-work#expedited - which isn\u0027t really going to apply to AOSP messaging.\n\n\nLet\u0027s just try this!\n\nI\u0027m happy to solve a long standing user issue this way. If it turns out we have a better solution later I\u0027ll happily revert this.\n\nAnd who knows, maybe it\u0027ll help with microG too.",
+      "revId": "68da70d343ba56685be8b65f780c2ef6ee669cd0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
