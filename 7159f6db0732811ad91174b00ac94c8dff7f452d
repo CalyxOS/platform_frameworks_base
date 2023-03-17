@@ -16,6 +16,24 @@
       "message": "Funny thing about this when having it apply to Safer right now...\n\nIf the user removes the Safer profile using Bellis, and then they create another work profile with Bellis (which currently creates a failed-provision profile due to a bug), that new broken profile can\u0027t even be removed as a result of this change; this change looks at garlic level, which isn\u0027t reset when that happens, so this code considers it to be the first profile in a Safer configuration and decides that it shouldn\u0027t be removable (that responsibility is delegated to Bellis, but it cannot be accessed due to the bug).\n\nIf we could also/instead check if the device is organization-owned from UserManagerService, that would be helpful, but I couldn\u0027t see an easy way.",
       "revId": "7159f6db0732811ad91174b00ac94c8dff7f452d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea32847_679f1155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-17T14:37:08Z",
+      "side": 1,
+      "message": "Flipped the way this works, so this is no longer a problem.",
+      "parentUuid": "102d3972_c374ec62",
+      "revId": "7159f6db0732811ad91174b00ac94c8dff7f452d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
