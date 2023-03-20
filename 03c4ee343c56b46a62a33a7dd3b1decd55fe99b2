@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbe2b0d_b11159c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-20T18:25:58Z",
+      "side": 1,
+      "message": "We now randomize in `startAppearAnimation` too. As with many parts of System UI, although it\u0027s called `startAppearAnimation`, this appears to work even with the \"Remove animations\" accessibility option. I\u0027d like others to review/test too.",
+      "revId": "03c4ee343c56b46a62a33a7dd3b1decd55fe99b2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
