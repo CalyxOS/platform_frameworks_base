@@ -33,6 +33,24 @@
       "message": "Doesn\u0027t unscramble when scrambling is turned off, until a reboot.",
       "revId": "03c4ee343c56b46a62a33a7dd3b1decd55fe99b2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6e7b39_6531e483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-20T19:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2dc04e_a281565a",
+      "revId": "03c4ee343c56b46a62a33a7dd3b1decd55fe99b2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
