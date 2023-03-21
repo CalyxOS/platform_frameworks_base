@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e8b7eb_0eef0b95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-21T20:36:31Z",
+      "side": 1,
+      "message": "I was thinking we could just have in Settings -\u003e Battery, now that Mike fixed the theme.\n\nI do have the conflict fixed locally but it won\u0027t upload so I\u0027m not gonna bother will we agree on doing this.",
+      "revId": "ec48b86f5ea9a519d2ecdd9e4a384d9208f2de32",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
