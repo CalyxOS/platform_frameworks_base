@@ -16,6 +16,24 @@
       "message": "slightly better and slightly worse now",
       "revId": "85a87839b81d70bb814c48fa982060cbeb7aa15e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f7134b_6e83808a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-21T16:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bb5c5a0_65d302ac",
+      "revId": "85a87839b81d70bb814c48fa982060cbeb7aa15e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
