@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d8e81c_73f80717",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardPINView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-21T01:10:59Z",
+      "side": 1,
+      "message": "Not necessary but it feels like it should be possible to do scrambling as part of the construction of mViews rather than processing it after?",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 13
+      },
+      "revId": "7ad3459cd23f4739ca8b9128fee481a1239be94c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
