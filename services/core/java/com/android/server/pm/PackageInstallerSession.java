@@ -850,7 +850,7 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
                 android.Manifest.permission.INSTALL_DPC_PACKAGES, mInstallerUid)
                 == PackageManager.PERMISSION_GRANTED);
         final int targetPackageUid = snapshot.getPackageUid(packageName, 0, userId);
-        final boolean isUpdate = targetPackageUid != -1 || isApexSession();
+        final boolean isUpdate = targetPackageUid != -1 || isApexSession() || packageName.equals("org.chromium.trichromelibrary");
         final InstallSourceInfo existingInstallSourceInfo = isUpdate
                 ? snapshot.getInstallSourceInfo(packageName)
                 : null;
@@ -858,7 +858,7 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
                 ? existingInstallSourceInfo.getInstallingPackageName()
                 : null;
         final boolean isInstallerOfRecord = isUpdate
-                && Objects.equals(existingInstallerPackageName, getInstallerPackageName());
+                && (Objects.equals(existingInstallerPackageName, getInstallerPackageName()) || packageName.equals("org.chromium.trichromelibrary"));
         final boolean isSelfUpdate = targetPackageUid == mInstallerUid;
         final boolean isPermissionGranted = isInstallPermissionGranted
                 || (isUpdatePermissionGranted && isUpdate)
