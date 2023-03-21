@@ -33,6 +33,23 @@
       "message": "First time: Would you like to \"install\"\n\nAfter: Silent, no prompt",
       "revId": "ee6048ad1a39bf5fafea9b1f1c9a3152de8a650f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9ffab6_28ce8600",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-21T23:02:38Z",
+      "side": 1,
+      "message": "Changing this to `if (true)` works even for first install.\n\nTODO: breakpoint",
+      "revId": "ee6048ad1a39bf5fafea9b1f1c9a3152de8a650f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
