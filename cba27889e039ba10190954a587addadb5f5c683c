@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946984de_2db8bd9d",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-22T07:57:03Z",
+      "side": 1,
+      "message": "uid might be -1 here, let\u0027s try moving the trichrome check forward.",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aeabf1b_70ee3e58",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-22T07:57:03Z",
+      "side": 1,
+      "message": "TODO: Try to set this via some other app with `INSTALL_PACKAGES` permission.",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
