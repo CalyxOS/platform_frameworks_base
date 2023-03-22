@@ -365,7 +365,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     private static final int VERSION_ADDED_NETWORK_TYPES = 12;
     private static final int VERSION_SUPPORTED_CARRIER_USAGE = 13;
     private static final int VERSION_REMOVED_SUBSCRIPTION_PLANS = 14;
-    private static final int VERSION_LATEST = VERSION_REMOVED_SUBSCRIPTION_PLANS;
+    private static final int VERSION_REINSTATED_POLICY_REJECT_ALL = 15;
+    private static final int VERSION_LATEST = VERSION_REINSTATED_POLICY_REJECT_ALL;
 
     @VisibleForTesting
     public static final int TYPE_WARNING = SystemMessage.NOTE_NET_WARNING;
@@ -1277,14 +1278,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 // global background data policy
                 // Clear the cache for the app
                 synchronized (mUidRulesFirstLock) {
-                    if (hasInternetPermissionUL(uid)) {
-                        Slog.i(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid);
-                        Set<Integer> uids =
-                                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(
-                                        context);
-                        uids.add(uid);
-                        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(context,
-                                uids);
+                    if (!hasInternetPermissionUL(uid)) {
+                        Slog.i(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid + ", no INTERNET");
+                        addUidPolicy(uid, POLICY_REJECT_ALL);
                     }
                     mInternetPermissionMap.delete(uid);
                     updateRestrictionRulesForUidUL(uid);
@@ -1332,28 +1328,19 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                         // Removing outside removeUserStateUL since that can also be called when
                         // user resets app preferences.
                         mMeteredRestrictedUids.remove(userId);
-                        Set<Integer> uids =
-                                ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(
-                                        mContext);
                         if (action == ACTION_USER_ADDED) {
                             // Add apps that are allowed by default.
                             addDefaultRestrictBackgroundAllowlistUidsUL(userId);
-                            try {
-                                List<PackageInfo> packages = mIPm.getPackagesHoldingPermissions(
-                                        new String[]{Manifest.permission.INTERNET},
-                                        0, userId).getList();
-                                uids.addAll(packages.stream().map(packageInfo ->
-                                        packageInfo.applicationInfo.uid)
-                                                .collect(Collectors.toSet()));
-                            } catch (RemoteException ignored) {
-                            }
                         } else {
-                            uids.removeAll(uids.stream().filter(uid ->
-                                    UserHandle.getUserId(uid) == userId)
-                                    .collect(Collectors.toSet()));
+                            synchronized (mUidRulesFirstLock) {
+                                for (int i = 0; i < mUidPolicy.size(); i++) {
+                                    final int uid = mUidPolicy.keyAt(i);
+                                    if (UserHandle.getUserId(uid) == userId) {
+                                        mUidPolicy.delete(uid);
+                                    }
+                                }
+                            }
                         }
-                        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext,
-                                uids);
                         // Update global restrict for that user
                         synchronized (mNetworkPoliciesSecondLock) {
                             updateRulesForGlobalChangeAL(true);
@@ -2597,23 +2584,46 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
-    private void migrateNetworkIsolation() {
-        // Get pre-12 network-isolation uids
-        final int[] uidsWithPolicy = getUidsWithPolicy(POLICY_REJECT_ALL);
-        final Set<Integer> uidsToDeny =
-                Arrays.stream(uidsWithPolicy).boxed().collect(Collectors.toSet());
-
-        // Remove the POLICY_REJECT_ALL uids from the allowlist
-        Set<Integer> uidsAllowedOnRestrictedNetworks =
+    private void migrateToPolicyRejectAll() {
+        final Set<Integer> uidsAllowedOnRestrictedNetworks =
                 ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
-        uidsAllowedOnRestrictedNetworks.removeAll(uidsToDeny);
-        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext,
-                uidsAllowedOnRestrictedNetworks);
+        final Set<Integer> uidsToDeny = new ArraySet<>();
 
-        // Clear policy to avoid future conflicts
-        for (int uid : uidsToDeny) {
-            removeUidPolicy(uid, POLICY_REJECT_ALL);
+        for (final UserInfo userInfo : UserManager.get(mContext).getUsers()) {
+            final List<PackageInfo> packagesForUser;
+            try {
+                packagesForUser = mIPm.getPackagesHoldingPermissions(
+                        new String[]{android.Manifest.permission.INTERNET},
+                                0 /* flags */, userInfo.id).getList();
+            } catch (RemoteException e) {
+                Slog.e(TAG, "migrateToPolicyRejectAll: Failed to retrieve package UIDs for user "
+                        + userInfo.id, e);
+                continue;
+            }
+            for (final PackageInfo packageInfo : packagesForUser) {
+                final int uid = packageInfo.applicationInfo.uid;
+                if (!uidsAllowedOnRestrictedNetworks.contains(uid)
+                        && !hasRestrictedModeAccess(uid)) {
+                    uidsToDeny.add(uid);
+                }
+            }
         }
+
+        // Add POLICY_REJECT_ALL to UIDs that are not allowed to use networks.
+        synchronized (mUidRulesFirstLock) {
+            for (final int uid : uidsToDeny) {
+                // Update the policy in memory before writing it to disk.
+                final int policy = mUidPolicy.get(uid, POLICY_NONE);
+                setUidPolicyUncheckedUL(uid, policy | POLICY_REJECT_ALL, false /* persist */);
+            }
+            synchronized (mNetworkPoliciesSecondLock) {
+                // Persist the policy now that we are done updating it.
+                writePolicyAL();
+            }
+        }
+
+        // Unset the restricted mode allowlist setting, which will no longer be utilized.
+        ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext, Set.of());
     }
 
     @GuardedBy({"mUidRulesFirstLock", "mNetworkPoliciesSecondLock"})
@@ -2638,9 +2648,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } finally {
             IoUtils.closeQuietly(fis);
         }
-
-        // Migrate from pre-12 network-isolation to restricted-networking-mode
-        migrateNetworkIsolation();
     }
 
     private void readPolicyXml(InputStream inputStream, boolean forRestore, int userId)
@@ -2818,6 +2825,10 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 Slog.w(TAG, "unable to update policy on UID " + uid);
             }
         }
+
+        if (version < VERSION_REINSTATED_POLICY_REJECT_ALL) {
+            migrateToPolicyRejectAll();
+        }
     }
 
     /**
@@ -2938,26 +2949,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             out.endTag(null, TAG_UID_POLICY);
         }
 
-        if (forBackup) {
-            try {
-                List<PackageInfo> packages = mIPm.getPackagesHoldingPermissions(
-                        new String[]{android.Manifest.permission.INTERNET}, 0, userId
-                ).getList();
-                List<Integer> uids = packages.stream().map(packageInfo ->
-                        packageInfo.applicationInfo.uid).collect(Collectors.toList());
-                uids.removeAll(
-                        ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext));
-                for (int uid : uids) {
-                    out.startTag(null, TAG_UID_POLICY);
-                    writeStringAttribute(out, ATTR_XML_UTILS_NAME, getPackageForUid(uid));
-                    writeIntAttribute(out, ATTR_POLICY, POLICY_REJECT_ALL);
-                    out.endTag(null, TAG_UID_POLICY);
-                }
-            } catch (RemoteException ignored) {
-
-            }
-        }
-
         // write all allowlists
         out.startTag(null, TAG_WHITELIST);
 
@@ -3058,9 +3049,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         } catch (IOException | XmlPullParserException e) {
             Slog.w(TAG, "applyRestore: error reading payload for user " + user, e);
         }
-
-        // Migrate from pre-12 network-isolation to restricted-networking-mode
-        migrateNetworkIsolation();
     }
 
     @Override
@@ -4481,7 +4469,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
     @GuardedBy("mUidRulesFirstLock")
     private int updateBlockedReasonsForRestrictedModeUL(int uid) {
-        final boolean hasRestrictedModeAccess = hasRestrictedModeAccess(uid);
+        final boolean hasRestrictedModeAccess = hasRestrictedModeAccess(uid)
+                || !isUidBlockedOnAllNetworks(uid);
         final int oldEffectiveBlockedReasons;
         final int newEffectiveBlockedReasons;
         final int uidRules;
@@ -4524,14 +4513,16 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private boolean isUidBlockedOnAllNetworks(int uid) {
+        // Check for restricted-networking-mode status
+        return (getUidPolicy(uid) & POLICY_REJECT_ALL) == POLICY_REJECT_ALL;
+    }
+
     private boolean hasRestrictedModeAccess(int uid) {
         try {
             // TODO: this needs to be kept in sync with
             // PermissionMonitor#hasRestrictedNetworkPermission
-            // Check for restricted-networking-mode status
-            return ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext)
-                    .contains(uid)
-                    || mIPm.checkUidPermission(CONNECTIVITY_USE_RESTRICTED_NETWORKS, uid)
+            return mIPm.checkUidPermission(CONNECTIVITY_USE_RESTRICTED_NETWORKS, uid)
                     == PERMISSION_GRANTED
                     || mIPm.checkUidPermission(NETWORK_STACK, uid) == PERMISSION_GRANTED
                     || mIPm.checkUidPermission(PERMISSION_MAINLINE_NETWORK_STACK, uid)
