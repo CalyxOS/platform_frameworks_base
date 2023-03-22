@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936847cc_e4487297",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-22T21:04:11Z",
+      "side": 0,
+      "message": "Given that we\u0027re re-using `POLICY_REJECT_ALL`, it\u0027d be fine if someone was directly migrating from 12, or restoring an old backup. Right?",
+      "revId": "dcc3a6783f224098732f28c4605a50f93e9915bf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
