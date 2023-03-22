@@ -51,6 +51,24 @@
       "parentUuid": "8aeabf1b_70ee3e58",
       "revId": "cba27889e039ba10190954a587addadb5f5c683c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508d9f13_b02accee",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-22T18:30:29Z",
+      "side": 1,
+      "message": "I didn\u0027t check without this yet, but I will do so.\n\nAnd yes, it should be fine, given Trichrome Library is a system app, and thus you can never \"install\" it, it\u0027d only be an update.\n\nIt should be safe to rely on android\u0027s existing security checks and downgrade protection for this.\n\ni.e., if there\u0027s no Lupin check here, the most some app could do is update Trichrome Library to a newer officially signed version.",
+      "parentUuid": "c21468af_544df4eb",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
