@@ -16,6 +16,24 @@
       "message": "Given that we\u0027re re-using `POLICY_REJECT_ALL`, it\u0027d be fine if someone was directly migrating from 12, or restoring an old backup. Right?",
       "revId": "dcc3a6783f224098732f28c4605a50f93e9915bf",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6480a7_2c425e4e",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-22T21:05:47Z",
+      "side": 0,
+      "message": "That\u0027s my understanding, since this is the policy that was used then and we\u0027re simply eliminating a double migration - Oliver can you confirm?",
+      "parentUuid": "936847cc_e4487297",
+      "revId": "dcc3a6783f224098732f28c4605a50f93e9915bf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
