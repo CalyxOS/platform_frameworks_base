@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da872f54_82917e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-22T21:18:48Z",
+      "side": 1,
+      "message": "Tested: Install build without. Set Chromium + F-Droid to have no network access, change Messaging to have Wi-Fi and Mobile Data off. Upgrade. Ensure toggles are the same.\n\nTested: Install useless new Android Studio app without INTERNET permission. Update to new build with INTERNET permission. Network access is correctly turned off.",
+      "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
