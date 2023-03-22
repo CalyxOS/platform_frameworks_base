@@ -33,6 +33,24 @@
       "message": "TODO: Try to set this via some other app with `INSTALL_PACKAGES` permission.",
       "revId": "cba27889e039ba10190954a587addadb5f5c683c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21468af_544df4eb",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2023-03-22T15:02:40Z",
+      "side": 1,
+      "message": "Did you check if it works without this for 2nd update after confirming once? Then the installer record should be fine and we shouldn\u0027t need to mess with this, just treating trichrome installs as updates (maybe even without considering lupin) should be fine, right?",
+      "parentUuid": "8aeabf1b_70ee3e58",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
