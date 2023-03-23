@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "444fb25f_9fc77c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-23T19:42:31Z",
+      "side": 1,
+      "message": "Being told that this is replaced by https://review.calyxos.org/q/topic:firewall-indicator",
+      "revId": "5adb6f4bff2a5429220de8cda8f75375785851ab",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
