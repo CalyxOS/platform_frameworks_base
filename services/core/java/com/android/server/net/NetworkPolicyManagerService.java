@@ -375,7 +375,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
     private static final int LINEAGE_VERSION_INIT = 1;
     private static final int LINEAGE_VERSION_REINSTATED_POLICY_REJECT_ALL = 2;
-    private static final int LINEAGE_VERSION_LATEST = LINEAGE_VERSION_REINSTATED_POLICY_REJECT_ALL;
+    private static final int LINEAGE_VERSION_ALLOW_LUPIN = 3;
+    private static final int LINEAGE_VERSION_LATEST = LINEAGE_VERSION_ALLOW_LUPIN;
 
     @VisibleForTesting
     public static final int TYPE_WARNING = SystemMessage.NOTE_NET_WARNING;
@@ -2700,6 +2701,26 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private void allowNetworkAccessForPackages(final List<String> packageNames) {
+        final Set<Integer> uidsToAllow = new ArraySet<>();
+        for (UserInfo userInfo : UserManager.get(mContext).getUsers()) {
+            for (final String allowedPackageName : packageNames) {
+                final int uid = getUidForPackage(allowedPackageName, userInfo.id);
+                if (uid == -1) {
+                    Log.w(TAG, "allowNetworkAccessForPackages: Did not find expected package "
+                            + allowedPackageName + " for user " + userInfo.id);
+                    continue;
+                }
+                Log.i(TAG, "allowNetworkAccessForPackages: Will ensure network access for "
+                        + allowedPackageName + " (uid " + uid + ")");
+                uidsToAllow.add(uid);
+            }
+        }
+
+        // Remove POLICY_REJECT_ALL from UIDs that are now allowed to use networks.
+        setPolicyForUids(uidsToAllow, POLICY_REJECT_ALL, false /* enabled */);
+    }
+
     @GuardedBy({"mUidRulesFirstLock", "mNetworkPoliciesSecondLock"})
     private void readPolicyAL() {
         if (LOGV) Slog.v(TAG, "readPolicyAL()");
@@ -2900,6 +2921,17 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             } else {
                 Slog.w(TAG, "unable to update policy on UID " + uid);
             }
+        }
+
+        // There is nothing to migrate if coming from pre-12 or from nothing.
+        final boolean isMigratingFromAtLeastAndroid12 = version >= VERSION_SUPPORTED_CARRIER_USAGE;
+        if (lineageVersion < LINEAGE_VERSION_REINSTATED_POLICY_REJECT_ALL
+                && isMigratingFromAtLeastAndroid12) {
+            migrateToPolicyRejectAll();
+        }
+
+        if (lineageVersion < LINEAGE_VERSION_ALLOW_LUPIN) {
+            allowNetworkAccessForPackages(List.of("org.calyxos.lupin.installer"));
         }
     }
 
