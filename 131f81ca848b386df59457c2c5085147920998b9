@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a814855_da5a6b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T16:34:58Z",
+      "side": 1,
+      "message": "Changes in patchset 5:\n- Use our own version attribute for policy upgrades (called it LINEAGE_VERSION since they\u0027ll be using this too).\n- Refactor mass UID policy changes into a helper method (setPolicyForUids); benefits the next change for re-allowing package network access.",
+      "revId": "131f81ca848b386df59457c2c5085147920998b9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
