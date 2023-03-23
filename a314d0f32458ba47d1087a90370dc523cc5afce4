@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a5c69b5_d31ad775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-23T15:25:31Z",
+      "side": 1,
+      "message": "Is this patch still required if we get this https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/15561 functional?",
+      "revId": "a314d0f32458ba47d1087a90370dc523cc5afce4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f81c1a15_24202e5c",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 3
