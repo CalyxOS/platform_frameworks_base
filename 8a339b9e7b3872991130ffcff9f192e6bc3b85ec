@@ -89,6 +89,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b0e118_ad9dff2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T16:49:32Z",
+      "side": 1,
+      "message": "I did test it now, and UID policies are restored properly (overall network access and otherwise). Did not test with a pre-12 or 12 backup, or a backup from prior to this patch. I have no reason to think it wouldn\u0027t work.",
+      "parentUuid": "934cd60b_75687a64",
+      "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea03078_f50c554f",
