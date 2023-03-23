@@ -71,6 +71,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "934cd60b_75687a64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T15:05:31Z",
+      "side": 1,
+      "message": "Haven\u0027t tested with Seedvault, but the policy xml is read and written already on boot and change, and the difference in handling depending on whether this is a backup is pretty minimal. The policies are read and written exactly as they are, so I would expect POLICY_REJECT_ALL to be included just like the others now, without requiring any special handling.\n\nLooking at the former code, it looks like POLICY_REJECT_ALL would have overwritten all the other policies when restored, but I never tried. (If so, that won\u0027t happen now.)",
+      "parentUuid": "35c11789_57713204",
+      "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea03078_f50c554f",
