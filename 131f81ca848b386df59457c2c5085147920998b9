@@ -33,6 +33,24 @@
       "message": "Don\u0027t deny if it\u0027s a system app missing INTERNET permission. We\u0027re concerned about user apps.",
       "revId": "131f81ca848b386df59457c2c5085147920998b9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde0f8f5_898faeab",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2611,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T19:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38cafbfe_815eec27",
+      "revId": "131f81ca848b386df59457c2c5085147920998b9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

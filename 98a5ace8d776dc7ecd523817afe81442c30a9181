@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bccd2c1_1f6888af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T19:48:54Z",
+      "side": 1,
+      "message": "Changes in patchset 6:\n- System apps that lack the INTERNET permission are not treated like user apps that lack it. User apps lacking the permission are added to the denylist right away. Now, system apps are not.\n- As part of above, do some refactoring to make the logic clearer.",
+      "revId": "98a5ace8d776dc7ecd523817afe81442c30a9181",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a9cd44_8edea218",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-23T19:48:54Z",
+      "side": 1,
+      "message": "I\u0027m really not sure when a system app would be newly-added while the system is up and running, but in case it happens, we want to be sure it doesn\u0027t get added to the denylist, regardless of whether it currently has the INTERNET permission or not.",
+      "revId": "98a5ace8d776dc7ecd523817afe81442c30a9181",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
