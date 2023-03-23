@@ -52,6 +52,52 @@
       "parentUuid": "a856485b_be6ada05",
       "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea03078_f50c554f",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-23T14:53:22Z",
+      "side": 1,
+      "message": "This is likely to conflict in future AOSP changes. Can we do without it? If we can\u0027t, would it work to remove this in a future update of ours?",
+      "range": {
+        "startLine": 368,
+        "startChar": 29,
+        "endLine": 368,
+        "endChar": 66
+      },
+      "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "583e22d8_da345292",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-23T14:53:22Z",
+      "side": 1,
+      "message": "I had written a comment and not seen that this was inverted. I\u0027m relieved :P",
+      "range": {
+        "startLine": 1281,
+        "startChar": 24,
+        "endLine": 1281,
+        "endChar": 25
+      },
+      "revId": "8a339b9e7b3872991130ffcff9f192e6bc3b85ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
