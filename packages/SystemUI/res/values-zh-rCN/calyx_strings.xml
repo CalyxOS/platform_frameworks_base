@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="global_action_panic">恐慌触发器</string>
-    <string name="status_bar_firewall">防火墙</string>
 </resources>
