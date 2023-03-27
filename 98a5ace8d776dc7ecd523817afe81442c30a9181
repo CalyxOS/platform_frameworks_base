@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e0c7041b_3df7e390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-27T13:54:48Z",
+      "side": 1,
+      "message": "Tested behavior of system apps by:\n1. Build and flash with the INTERNET permission missing for a system package (Contacts).\n2. Check toggles for app. They are disabled but on.\n3. Build and flash with the INTERNET permission added back.\n4. Check toggles for app. They are on.\n\nA naturally-occurring visual cue to this behavior (with this topic) is that when you install a user app without INTERNET permission, the toggles will be disabled-off, but system apps without INTERNET are disabled-on.",
+      "revId": "98a5ace8d776dc7ecd523817afe81442c30a9181",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "56a9cd44_8edea218",
         "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
         "patchSetId": 6
