@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="global_action_panic">Wyzwalacz paniki</string>
-    <string name="status_bar_firewall">Zapora sieciowa</string>
 </resources>
