@@ -16,6 +16,24 @@
       "message": "This needs to wait for weblate",
       "revId": "2e7d0f653f4defa251566ba06084c229e56b141a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07662110_3afad439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-03-28T14:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c6dc7c8_984b5454",
+      "revId": "2e7d0f653f4defa251566ba06084c229e56b141a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
