@@ -88,6 +88,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fabf90f_9058757f",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-29T21:12:47Z",
+      "side": 1,
+      "message": "Ohhh I see, they already did that check, but in a less-clear way. Okay, got it. But true, it doesn\u0027t need to be a member variable if we want this.",
+      "parentUuid": "e130c7a7_fd1cd073",
+      "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dadfc809_0fdc96ad",
