@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b3e32f_6a082178",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-29T20:17:01Z",
+      "side": 1,
+      "message": "This calls setTrustRestrictUsb() so we\u0027re good on that front.",
+      "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdba7c2_443cc094",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-29T20:17:01Z",
+      "side": 1,
+      "message": "Commenting to make sure I got the logic right (even though I wrote it initially :D)\n\nAllow when unlockedr\n   restrictUsb \u003d\u003d 1 AND\n   mIsKeyguardShowing AND # Initialized to true\n   (NOT mBootCompleted OR NOT usbConnected)\n   # mBootCompleted is uninitialized\n   # When false, aka true in this condition, it\u0027ll restrict.\n   # When true, aka boot completed, it won\u0027t restrict.\n   # For this test case, usbConnected will be true, aka NOT usbConnected is false.\n   \n   \nDeny always -\u003e restrictUsb \u003d\u003d 2 -\u003e denied.",
+      "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
