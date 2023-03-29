@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2e8efe_02f12561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-03-29T23:47:55Z",
+      "side": 1,
+      "message": "Fixes sdcard not being visible in MTP",
+      "revId": "e9e1ce2643f8fcf825058de6749a71c31578708f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
