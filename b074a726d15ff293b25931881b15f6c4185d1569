@@ -51,6 +51,23 @@
       "parentUuid": "9d4e34f9_fe54bb99",
       "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadfc809_0fdc96ad",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-29T19:55:45Z",
+      "side": 1,
+      "message": "FYI: This is called from two places now just to ensure it\u0027s called exactly as often as it was before, but that when it is called, mScreenLocked is up-to-date.",
+      "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
