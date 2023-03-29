@@ -1073,11 +1073,12 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                 case MSG_UPDATE_SCREEN_LOCK:
                     mIsKeyguardShowing = msg.arg1 == 1;
                     boolean secure = msg.arg2 == 1;
-                    setTrustRestrictUsb();
                     if ((mIsKeyguardShowing && secure) == mScreenLocked) {
+                        setTrustRestrictUsb();
                         break;
                     }
                     mScreenLocked = (mIsKeyguardShowing && secure);
+                    setTrustRestrictUsb();
                     if (!mBootCompleted) {
                         break;
                     }
@@ -1539,11 +1540,11 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     LineageSettings.Global.TRUST_RESTRICT_USB, 1);
             // Effective immediately, ejects any connected USB devices.
             // If the restriction is set to "allow when unlocked", only execute once USB is
-            // disconnected and keyguard is showing, to avoid ejecting connected devices on lock,
+            // disconnected and screen is locked, to avoid ejecting connected devices on lock,
             // unless the device has not finished booting, in which case it has never unlocked.
             final boolean usbConnected = mConnected || mHostConnected;
             final boolean shouldRestrict =
-                    (restrictUsb == 1 && mIsKeyguardShowing && (!mBootCompleted || !usbConnected))
+                    (restrictUsb == 1 && mScreenLocked && (!mBootCompleted || !usbConnected))
                     || restrictUsb == 2;
 
             UsbManager usbManager = mContext.getSystemService(UsbManager.class);
