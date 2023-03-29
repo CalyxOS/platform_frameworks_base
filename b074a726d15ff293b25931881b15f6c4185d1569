@@ -53,6 +53,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63474138_74e1b6d0",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-29T20:03:52Z",
+      "side": 1,
+      "message": "If we end up deciding that we want this, we should probably remove all of the mIsKeyguardShowing stuff, since it is custom to Restrict USB and having it here is confusing and unexplained. This would make things cleaner for rebasing/fixups too.",
+      "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dadfc809_0fdc96ad",
