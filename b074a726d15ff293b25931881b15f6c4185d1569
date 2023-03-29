@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef23794d_203c786e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-29T19:37:01Z",
+      "side": 1,
+      "message": "This is an optional add-on to `Restrict USB at boot time in \"unlocked\" mode` that it sits atop. That one works just fine without this, but this is nice to have for e.g. testing devices that don\u0027t have a screen lock and stay connected to a PC for debugging.",
+      "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
