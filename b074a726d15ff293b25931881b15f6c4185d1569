@@ -106,6 +106,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0edf4788_c1dfdb1f",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-29T21:21:33Z",
+      "side": 1,
+      "message": "`boolean isShowing` should do, will match the message sender.",
+      "parentUuid": "3fabf90f_9058757f",
+      "revId": "b074a726d15ff293b25931881b15f6c4185d1569",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dadfc809_0fdc96ad",
