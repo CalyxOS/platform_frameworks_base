@@ -16,6 +16,24 @@
       "message": "Apps that are transport-denied due to topic:firewall-update-allowed-uids (e.g. Wi-Fi toggle is off, connected to Wi-Fi) still have OEM_DENY_1_MATCH even if the profile is not running, and even after reboot. This is good because it means this change will *not* add a race in which our denylisted apps *might* be able to get online. If there is even a race at all, it will only affect something less important like BATTERY_SAVER_MATCH.",
       "revId": "193a8e49d6bbcdc9cf3d550549b57fa36ee19980",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de4258a_a0f78c42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-30T17:59:25Z",
+      "side": 1,
+      "message": "(Also to be clear: RESTRICTED_MATCH, being an allowlist flag, ensures that if there is a race period when starting a user or profile, it will *not* mean that fully-disallowed apps have a chance to get online.)",
+      "parentUuid": "e55502c6_84269621",
+      "revId": "193a8e49d6bbcdc9cf3d550549b57fa36ee19980",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
