@@ -33,6 +33,24 @@
       "message": "Commenting to make sure I got the logic right (even though I wrote it initially :D)\n\nAllow when unlockedr\n   restrictUsb \u003d\u003d 1 AND\n   mIsKeyguardShowing AND # Initialized to true\n   (NOT mBootCompleted OR NOT usbConnected)\n   # mBootCompleted is uninitialized\n   # When false, aka true in this condition, it\u0027ll restrict.\n   # When true, aka boot completed, it won\u0027t restrict.\n   # For this test case, usbConnected will be true, aka NOT usbConnected is false.\n   \n   \nDeny always -\u003e restrictUsb \u003d\u003d 2 -\u003e denied.",
       "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0952471c_7ea7d32b",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-30T15:20:28Z",
+      "side": 1,
+      "message": "super-nit: mBootCompleted is initialized to its default value of false, so it\u0027s not uninitialized, but yes.\n\nThat all looks right.\n\nDo you think we should separate out the logic to make it clearer or maybe some other time?",
+      "parentUuid": "5cdba7c2_443cc094",
+      "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
