@@ -51,6 +51,24 @@
       "parentUuid": "5cdba7c2_443cc094",
       "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8965be9_ceb98827",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-30T17:52:21Z",
+      "side": 1,
+      "message": "I\u0027d do it in a follow up commit, given that this is in the beta, tested and known working.",
+      "parentUuid": "0952471c_7ea7d32b",
+      "revId": "989152342d27df404f2a571f2f5410d9a9f68ca6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
