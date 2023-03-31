@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "661cfed7_2c3acd72",
+        "filename": "services/appwidget/java/com/android/server/appwidget/AppWidgetServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-31T20:33:43Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m having trouble understanding this suggestion. :( Can you rephrase?",
+      "parentUuid": "417257f0_e430335e",
+      "range": {
+        "startLine": 558,
+        "startChar": 20,
+        "endLine": 559,
+        "endChar": 72
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3a7a1dd_e1307329",
         "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-31T19:45:03Z",
       "side": 1,
       "message": "What\u0027s the difference between returning here rather than continuing with the code below?",
+      "range": {
+        "startLine": 330,
+        "startChar": 52,
+        "endLine": 330,
+        "endChar": 63
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c38587d_1749b0b0",
+        "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-31T20:33:43Z",
+      "side": 1,
+      "message": "If we return false here, then the package will be treated as not being suspended at all, I think -- no dialog would even pop up. So that\u0027s why I have it only return when it\u0027s true.",
+      "parentUuid": "b3a7a1dd_e1307329",
       "range": {
         "startLine": 330,
         "startChar": 52,
