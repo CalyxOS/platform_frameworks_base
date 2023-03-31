@@ -16,6 +16,24 @@
       "message": "Title could change to another fixup so can autosquash in next rebase?",
       "revId": "dd588d8cef03cf9ab5d2ba67435f311c4c21abb9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d2b13e_34631eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-31T21:28:06Z",
+      "side": 1,
+      "message": "Sure, but what would it be fixed up onto?",
+      "parentUuid": "a8383d83_6b8a067e",
+      "revId": "dd588d8cef03cf9ab5d2ba67435f311c4c21abb9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
