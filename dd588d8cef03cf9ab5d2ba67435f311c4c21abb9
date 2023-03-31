@@ -70,6 +70,24 @@
       "parentUuid": "0e23bc2e_11c13c89",
       "revId": "dd588d8cef03cf9ab5d2ba67435f311c4c21abb9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5d175b_02d4a207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-31T21:30:55Z",
+      "side": 1,
+      "message": "Oh, onto this? https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/6188\n\nBut yeah, it might be nice to have the flexibility to submit it upstream more easily.",
+      "parentUuid": "10149aa6_1c04893b",
+      "revId": "dd588d8cef03cf9ab5d2ba67435f311c4c21abb9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
