@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5681a8e2_49fe1b34",
+        "filename": "services/appwidget/java/com/android/server/appwidget/AppWidgetServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-31T21:24:53Z",
+      "side": 1,
+      "message": "```\nfinal Intent adminSupportIntent \u003d mDevicePolicyManagerInternal.createShowAdminSupportIntent(\n                            appUserId, false /* useDefaultIfNoAdmin */);\n                            \nif (adminSupportIntent !\u003d null \u0026\u0026 PLATFORM_PACKAGE_NAME.equals(suspendingPackage)) {\n    onClickIntent \u003d adminSupportIntent;\n} else {\n```",
+      "parentUuid": "661cfed7_2c3acd72",
+      "range": {
+        "startLine": 558,
+        "startChar": 20,
+        "endLine": 559,
+        "endChar": 72
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3a7a1dd_e1307329",
         "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "If we return false here, then the package will be treated as not being suspended at all, I think -- no dialog would even pop up. So that\u0027s why I have it only return when it\u0027s true.",
       "parentUuid": "b3a7a1dd_e1307329",
+      "range": {
+        "startLine": 330,
+        "startChar": 52,
+        "endLine": 330,
+        "endChar": 63
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dcb2fff_41eba88e",
+        "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-31T21:24:53Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t mean to return false. I didn\u0027t realize the return true there was conditional now, so if it applies it returns true and all other variables have been set within the function. Otherwise, it continues with the code below. Just wasn\u0027t immediately clear to me",
+      "parentUuid": "2c38587d_1749b0b0",
       "range": {
         "startLine": 330,
         "startChar": 52,
