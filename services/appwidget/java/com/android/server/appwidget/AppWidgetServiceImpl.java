@@ -553,10 +553,19 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
                 showBadge = mUserManager.hasBadge(appUserId);
                 final String suspendingPackage = mPackageManagerInternal.getSuspendingPackage(
                         appInfo.packageName, appUserId);
+                final Intent adminSupportIntent;
                 if (PLATFORM_PACKAGE_NAME.equals(suspendingPackage)) {
-                    onClickIntent = mDevicePolicyManagerInternal.createShowAdminSupportIntent(
-                            appUserId, true);
+                    adminSupportIntent = mDevicePolicyManagerInternal.createShowAdminSupportIntent(
+                            appUserId, false /* useDefaultIfNoAdmin */);
                 } else {
+                    adminSupportIntent = null;
+                }
+
+                if (adminSupportIntent != null) {
+                    onClickIntent = adminSupportIntent;
+                } else {
+                    // Either not suspended by the platform package, or there is no enforcing
+                    // admin. Show the unsuspend dialog.
                     final SuspendDialogInfo dialogInfo =
                             mPackageManagerInternal.getSuspendedDialogInfo(
                                     appInfo.packageName, suspendingPackage, appUserId);

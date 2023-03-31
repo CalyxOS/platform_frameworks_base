@@ -288,7 +288,14 @@ class ActivityStartInterceptor {
         if (devicePolicyManager == null) {
             return false;
         }
-        mIntent = devicePolicyManager.createShowAdminSupportIntent(mUserId, true);
+        final Intent adminSupportIntent = devicePolicyManager.createShowAdminSupportIntent(mUserId,
+                false /* useDefaultIfNoAdmin */);
+        if (adminSupportIntent == null) {
+            // There is no enforcing admin component, so don't intercept.
+            return false;
+        }
+
+        mIntent = adminSupportIntent;
         mIntent.putExtra(EXTRA_RESTRICTION, POLICY_SUSPEND_PACKAGES);
 
         mCallingPid = mRealCallingPid;
@@ -320,7 +327,7 @@ class ActivityStartInterceptor {
         final String suspendedPackage = mAInfo.applicationInfo.packageName;
         final String suspendingPackage = pmi.getSuspendingPackage(suspendedPackage, mUserId);
         if (PLATFORM_PACKAGE_NAME.equals(suspendingPackage)) {
-            return interceptSuspendedByAdminPackage();
+            if (interceptSuspendedByAdminPackage()) return true;
         }
         final SuspendDialogInfo dialogInfo = pmi.getSuspendedDialogInfo(suspendedPackage,
                 suspendingPackage, mUserId);
