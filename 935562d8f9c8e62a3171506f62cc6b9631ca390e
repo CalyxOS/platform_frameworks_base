@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "417257f0_e430335e",
+        "filename": "services/appwidget/java/com/android/server/appwidget/AppWidgetServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-31T19:47:33Z",
+      "side": 1,
+      "message": "This already returns null if there\u0027s no enforcing admin? If so, this if else can be simplified to always initialize `adminSupportIntent` and then add the below condition to the original if else (if that makes sense)?",
+      "range": {
+        "startLine": 558,
+        "startChar": 20,
+        "endLine": 559,
+        "endChar": 72
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3a7a1dd_e1307329",
         "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
         "patchSetId": 1
