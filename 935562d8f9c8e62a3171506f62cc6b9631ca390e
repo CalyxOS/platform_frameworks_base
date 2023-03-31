@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a7a1dd_e1307329",
+        "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-31T19:45:03Z",
+      "side": 1,
+      "message": "What\u0027s the difference between returning here rather than continuing with the code below?",
+      "range": {
+        "startLine": 330,
+        "startChar": 52,
+        "endLine": 330,
+        "endChar": 63
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
