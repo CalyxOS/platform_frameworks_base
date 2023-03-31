@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63d4a0b_44a63d7c",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 6254,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-03-31T21:18:58Z",
+      "side": 0,
+      "message": "If you need to be convinced that this section of code hasn\u0027t been reviewed in a while, see this ArraySet that is ultimately not used for anything. It and the lines below have been hanging around being ineffective for a while.",
+      "revId": "a65e755bea3f957a1987274c0ee24dd2d36c4bbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
