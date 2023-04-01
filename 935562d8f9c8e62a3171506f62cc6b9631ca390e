@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f765a72_072e73f9",
+        "filename": "services/appwidget/java/com/android/server/appwidget/AppWidgetServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-04-01T02:32:43Z",
+      "side": 1,
+      "message": "Pretty much. No biggie either way.",
+      "parentUuid": "30222e5b_108608e2",
+      "range": {
+        "startLine": 558,
+        "startChar": 20,
+        "endLine": 559,
+        "endChar": 72
+      },
+      "revId": "935562d8f9c8e62a3171506f62cc6b9631ca390e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3a7a1dd_e1307329",
         "filename": "services/core/java/com/android/server/wm/ActivityStartInterceptor.java",
         "patchSetId": 1
