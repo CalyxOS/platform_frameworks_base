@@ -865,6 +865,9 @@ class UserController implements Handler.Callback {
                     getTemporaryAppAllowlistBroadcastOptions(REASON_BOOT_COMPLETED).toBundle(),
                     true, false, MY_PID, SYSTEM_UID, callingUid, callingPid, userId);
         });
+
+        // Unlock any child profiles
+        mHandler.post(() -> unlockProfilesForUser(userId));
     }
 
     int restartUser(final int userId, final boolean foreground) {
@@ -1802,6 +1805,10 @@ class UserController implements Handler.Callback {
             return false;
         }
 
+        return true;
+    }
+
+    private void unlockProfilesForUser(final @UserIdInt int userId) {
         // We just unlocked a user, so let's now attempt to unlock any
         // managed profiles under that user.
 
@@ -1821,8 +1828,6 @@ class UserController implements Handler.Callback {
                 maybeUnlockUser(testUserId);
             }
         }
-
-        return true;
     }
 
     boolean switchUser(final int targetUserId) {
