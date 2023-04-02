@@ -100,6 +100,7 @@ import android.provider.Settings.Secure;
 import android.provider.Settings.SettingNotFoundException;
 import android.security.AndroidKeyStoreMaintenance;
 import android.security.Authorization;
+import android.security.GateKeeper;
 import android.security.KeyStore;
 import android.security.keystore.KeyProperties;
 import android.security.keystore.KeyProtection;
@@ -2038,6 +2039,7 @@ public class LockSettingsService extends ILockSettings.Stub {
                                 .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
                                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                                 .setUserAuthenticationRequired(true)
+                                .setBoundToSpecificSecureUserId(getProfileParentSid(userId))
                                 .setUserAuthenticationValidityDurationSeconds(30)
                                 .build());
                 // Key imported, obtain a reference to it.
@@ -2069,6 +2071,17 @@ public class LockSettingsService extends ILockSettings.Stub {
             throw new IllegalStateException("Failed to concatenate byte arrays", e);
         }
         mStorage.writeChildProfileLock(userId, outputStream.toByteArray());
+    }
+
+    private long getProfileParentSid(int userId) {
+        final int parentId = mUserManager.getProfileParent(userId).id;
+        try {
+            return getGateKeeperService().getSecureUserId(parentId);
+        } catch (RemoteException e) {
+            Slog.e(TAG, "Failed to obtain secure user ID for user " + parentId
+                    + " (parent of " + userId + ")", e);
+            return GateKeeper.INVALID_SECURE_USER_ID;
+        }
     }
 
     private void setUserKeyProtection(int userId, byte[] key) {
