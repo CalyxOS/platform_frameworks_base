@@ -585,6 +585,13 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
          */
         protected static final String USB_PERSISTENT_CONFIG_PROPERTY = "persist.sys.usb.config";
 
+        /**
+         * The non-persistent property which stores the current Restrict USB setting. Mirrored from
+         * LineageSettings so that vendor init files for USB can fully reactivate USB connectivity
+         * when Restrict USB is turned off, without requiring the user to unplug and re-plug.
+         */
+        protected static final String TRUST_RESTRICT_USB_PROPERTY = "security.trust_restrict_usb";
+
         UsbHandler(Looper looper, Context context, UsbDeviceManager deviceManager,
                 UsbAlsaManager alsaManager, UsbPermissionManager permissionManager) {
             super(looper);
@@ -1545,6 +1552,15 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             final boolean shouldRestrict =
                     (restrictUsb == 1 && mIsKeyguardShowing && (!mBootCompleted || !usbConnected))
                     || restrictUsb == 2;
+
+            try {
+                setSystemProperty(TRUST_RESTRICT_USB_PROPERTY, Integer.toString(restrictUsb));
+                // Vendor init files should react to this change right away when restrictUsb is 0,
+                // effectively making the rest of this method redundant, but in case vendor init
+                // files do not react to it, better redundant than nothing.
+            } catch (Exception e) {
+                Slog.e(TAG, "Failed to set " + TRUST_RESTRICT_USB_PROPERTY, e);
+            }
 
             UsbManager usbManager = mContext.getSystemService(UsbManager.class);
             boolean useUsbManager = false;
