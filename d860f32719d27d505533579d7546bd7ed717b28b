@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87295422_9b047ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-06T14:31:10Z",
+      "side": 1,
+      "message": "I\u0027ve thought about this and I don\u0027t actually want it.\n\nEven users without a secure screen lock could potentially benefit from being able to shut off their screen, plug in, and charge, and know that there\u0027s no data connectivity e.g. if it\u0027s some random less-than-trusted charger.\n\nOther users can turn off Restrict USB.\n\nWe can handle debugging situations / debug builds some other way. (Trust me, I\u0027m planning to handle those, too -- just would rather not do it this way.)",
+      "revId": "d860f32719d27d505533579d7546bd7ed717b28b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
