@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da4467a_c3545773",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-06T12:59:10Z",
+      "side": 1,
+      "message": "Too late for this one, but another good way to do this generally is using the same Change-Id.\n\nHow?\nCommit 1 change (to either repo)\nCheck it\u0027s Change-Id using git log\nAdd that to the footer of all other changes.\n\n\nToo late for this one because it\u0027s already up and this is a minor thing.",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d821bf36_389e9a11",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-04-06T00:29:56Z",
       "side": 1,
       "message": "This is happening too often and the property trigger is responding every time, even if the setting hasn\u0027t actually changed and the prop is being set to the same value.\n\nChange it to happen once at init and then whenever actually changed. Don\u0027t do it here where it also reacts to screen locking, etc.",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34487c6_a6ce2307",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1557,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-06T12:59:10Z",
+      "side": 1,
+      "message": "Why not do this in Settings?\n\nThat\u0027s where this is controlled from.\n\nAnd if you make it persist. it\u0027ll stick around reboots.",
+      "parentUuid": "d821bf36_389e9a11",
       "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
