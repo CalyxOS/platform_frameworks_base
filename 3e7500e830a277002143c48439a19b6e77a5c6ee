@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d821bf36_389e9a11",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1557,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-06T00:29:56Z",
+      "side": 1,
+      "message": "This is happening too often and the property trigger is responding every time, even if the setting hasn\u0027t actually changed and the prop is being set to the same value.\n\nChange it to happen once at init and then whenever actually changed. Don\u0027t do it here where it also reacts to screen locking, etc.",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
