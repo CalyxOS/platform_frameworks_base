@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb84901a_c8032684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-06T13:05:54Z",
+      "side": 1,
+      "message": "Is that a standard way of doing this? It can be confusing for me and it has led to problems for me in the past. I don\u0027t remember the situation exactly, I\u0027d have to check, but at least with \"Requires\" the requirement is spelled out more explicitly.\n\nUsing the same Change-Id to me might make more sense for the different device implementations... Or am I wrong?",
+      "parentUuid": "9da4467a_c3545773",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d821bf36_389e9a11",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Why not do this in Settings?\n\nThat\u0027s where this is controlled from.\n\nAnd if you make it persist. it\u0027ll stick around reboots.",
       "parentUuid": "d821bf36_389e9a11",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ef1fef_d80e842e",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1557,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-06T13:05:54Z",
+      "side": 1,
+      "message": "Right, at first I didn\u0027t want it to persist, but now I think it\u0027s a good idea (https://review.calyxos.org/c/CalyxOS/device_calyx_sepolicy/+/16519/comments/0ad2c658_322feff9).\n\nI\u0027d rather not do it in Settings because I really don\u0027t want to risk them getting out of sync or starting out out-of-sync for users who don\u0027t go and change it again. That\u0027s why I didn\u0027t make it persist initially, either.",
+      "parentUuid": "f34487c6_a6ce2307",
       "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
