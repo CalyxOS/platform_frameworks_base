@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e635d8_e320a46e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-06T13:14:46Z",
+      "side": 1,
+      "message": "It can\u0027t be same Change-Id in the same repo.\n\nJust try it next time I guess. Either way is fine, the topic alone is enough to associate relevant changes together, and we don\u0027t have a set way for this atm.",
+      "parentUuid": "fb84901a_c8032684",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d821bf36_389e9a11",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Right, at first I didn\u0027t want it to persist, but now I think it\u0027s a good idea (https://review.calyxos.org/c/CalyxOS/device_calyx_sepolicy/+/16519/comments/0ad2c658_322feff9).\n\nI\u0027d rather not do it in Settings because I really don\u0027t want to risk them getting out of sync or starting out out-of-sync for users who don\u0027t go and change it again. That\u0027s why I didn\u0027t make it persist initially, either.",
       "parentUuid": "f34487c6_a6ce2307",
+      "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd84bd3a_c7395c41",
+        "filename": "services/usb/java/com/android/server/usb/UsbDeviceManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1557,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-06T13:14:46Z",
+      "side": 1,
+      "message": "How would it even go out of sync with Settings? That\u0027s the only place you can set this.\n\nSomebody manually doing \"adb shell settings put\" is rare.\n\n\nThe way to do this properly would be to have an observer, that listens to changes in settings and does things accordingly (in this case, update prop)\n\nThat then should always stay consistent.",
+      "parentUuid": "33ef1fef_d80e842e",
       "revId": "3e7500e830a277002143c48439a19b6e77a5c6ee",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
