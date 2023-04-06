@@ -1174,7 +1174,8 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
 
         protected void finishBoot() {
             if (mBootCompleted && mCurrentUsbFunctionsReceived && mSystemReady) {
-                setTrustRestrictUsb();
+                if (DEBUG) Slog.d(TAG, "finishBoot called");
+                setTrustRestrictUsb(true /* isOnBootEvent */);
 
                 if (mPendingBootBroadcast) {
                     updateUsbStateBroadcastIfNeeded(getAppliedFunctions(mCurrentFunctions));
@@ -1535,6 +1536,10 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
         }
 
         public void setTrustRestrictUsb() {
+            setTrustRestrictUsb(false /* isOnBootEvent */);
+        }
+
+        public void setTrustRestrictUsb(final boolean isOnBootEvent) {
             final int restrictUsb = LineageSettings.Global.getInt(mContentResolver,
                     LineageSettings.Global.TRUST_RESTRICT_USB, 1);
             // Effective immediately, ejects any connected USB devices.
@@ -1545,7 +1550,15 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             final boolean shouldRestrict =
                     (restrictUsb == 1 && mIsKeyguardShowing && (!mBootCompleted || !usbConnected))
                     || restrictUsb == 2;
+            if (isOnBootEvent && restrictUsb == 0/* && !Build.IS_DEBUGGABLE*/) {
+                // Work around total unavailability of USB when restrictions are turned off by
+                // restricting USB now and then unrestricting it right after.
+                setUsbDataRestriction(true /* shouldRestrict */);
+            }
+            setUsbDataRestriction(shouldRestrict);
+        }
 
+        public void setUsbDataRestriction(final boolean shouldRestrict) {
             UsbManager usbManager = mContext.getSystemService(UsbManager.class);
             boolean useUsbManager = false;
             try {
