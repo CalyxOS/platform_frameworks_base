@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6487f37_545cd5a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-07T23:11:51Z",
+      "side": 1,
+      "message": "Note: Not needed and in fact must be reverted if/when we ship topic:restrict-usb-off-fixes. Otherwise, needed.",
+      "revId": "88816d885311daa8a53000673af66615c164023d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
