@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e69c19_98130176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-07T23:08:13Z",
+      "side": 1,
+      "message": "If we shipped restrict-usb and restrict-usb-off-fixes together, we wouldn\u0027t need to add this in one and revert it in the other.",
+      "revId": "3b6f952e6d85c6280edfd41591402a6011b9a3a4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
