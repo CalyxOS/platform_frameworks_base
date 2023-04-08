@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035f7b8a_218398ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-08T12:40:09Z",
+      "side": 1,
+      "message": "Needs testing and explanation.\n\niirc the issue is that the child profile\u0027s key is protected by a flag causing the key to only be available within 30 seconds of the main user\u0027s unlock, but this corresponds only to user 0\u0027s unlock, so providing a secure user ID corresponding with the secondary user (when one is involved) is needed or else the child profile key is unavailable without quickly switching to the main user, unlocking, and switching back within that 30-second window.",
+      "revId": "b70eebd82970ea2e0b4df7d6d7977c31e20a6434",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
