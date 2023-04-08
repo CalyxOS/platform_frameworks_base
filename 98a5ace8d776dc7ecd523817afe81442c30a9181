@@ -35,6 +35,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7dbd854_f58b8477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-08T14:49:03Z",
+      "side": 1,
+      "message": "This actually does not migrate properly from pre-12 after all, as I just found out accidentally. My daily driver had the patchset from prior to adding and using LINEAGE_VERSION, so it migrated again and removed network access from almost all apps because uids_allowed_on_restricted_networks was already emptied out. That would happen for users upgrading from pre-12 too.\n\nVERSION_SUPPORTED_CARRIER_USAGE is added in 12, so we can decide to only migrate if version \u003e\u003d that with the lineageVersion check staying the same.",
+      "revId": "98a5ace8d776dc7ecd523817afe81442c30a9181",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "56a9cd44_8edea218",
