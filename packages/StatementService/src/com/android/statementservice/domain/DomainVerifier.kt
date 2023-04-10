@@ -17,8 +17,12 @@
 package com.android.statementservice.domain
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.pm.verify.domain.DomainVerificationManager
+import android.net.ConnectivityManager
 import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkPolicyManager
 import android.util.Log
 import androidx.collection.LruCache
 import com.android.statementservice.network.retriever.StatementRetriever
@@ -91,6 +95,20 @@ class DomainVerifier private constructor(
         val assetMatcher = synchronized(targetAssetCache) { targetAssetCache[packageName] }
             .takeIf { it!!.isPresent }
             ?: return WorkResult.failure() to VerifyStatus.FAILURE_PACKAGE_MANAGER
+        if (appContext.getSystemService(ConnectivityManager::class.java)
+                ?.getNetworkCapabilities(network)?.let {
+                    appContext.getSystemService(NetworkPolicyManager::class.java)
+                        ?.isUidNetworkingBlocked(
+                            appContext.packageManager.getPackageUid(
+                                packageName,
+                                PackageManager.PackageInfoFlags.of(0)
+                            ),
+                            !it.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
+                        ) == true
+                } == true
+        ) {
+            return WorkResult.failure() to VerifyStatus.NO_RESPONSE
+        }
         return verifyHost(host, assetMatcher.get(), network)
     }
 
