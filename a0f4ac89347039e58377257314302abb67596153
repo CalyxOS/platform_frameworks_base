@@ -22,6 +22,23 @@
       },
       "revId": "a0f4ac89347039e58377257314302abb67596153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc4aee3_798744be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-10T18:26:26Z",
+      "side": 1,
+      "message": "If we\u0027re going to do this, maybe we should also allow any active device admin\u0027s behavior to remain unchanged (so they can see uninstalled apps)?",
+      "revId": "a0f4ac89347039e58377257314302abb67596153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
