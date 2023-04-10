@@ -1691,7 +1691,9 @@ public class ComputerEngine implements Computer {
 
             return packageInfo;
         } else if ((flags & MATCH_UNINSTALLED_PACKAGES) != 0
-                && PackageUserStateUtils.isAvailable(state, flags)) {
+                && PackageUserStateUtils.isAvailable(state, flags)
+                && (mSettings.getSettingBase(UserHandle.getAppId(callingUid)).getFlags()
+                & ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM) {
             PackageInfo pi = new PackageInfo();
             pi.packageName = ps.getPackageName();
             pi.setLongVersionCode(ps.getVersionCode());
