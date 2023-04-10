@@ -27,6 +27,7 @@ import static com.android.systemui.statusbar.phone.CentralSurfacesImpl.ONLY_CORE
 
 import android.annotation.Nullable;
 import android.app.ITransientNotificationCallback;
+import android.app.KeyguardManager;
 import android.app.StatusBarManager;
 import android.app.StatusBarManager.Disable2Flags;
 import android.app.StatusBarManager.DisableFlags;
@@ -80,6 +81,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import lineageos.providers.LineageSettings;
 
 /**
  * This class takes the functions from IStatusBar that come in on
@@ -191,6 +194,9 @@ public class CommandQueue extends IStatusBar.Stub implements
     private ProtoTracer mProtoTracer;
     private final @Nullable CommandRegistry mRegistry;
     private final @Nullable DumpHandler mDumpHandler;
+
+    private final Context mContext;
+    private final KeyguardManager mKeyguardManager;
 
     /**
      * These methods are called back on the main thread.
@@ -504,9 +510,11 @@ public class CommandQueue extends IStatusBar.Stub implements
             CommandRegistry registry,
             DumpHandler dumpHandler
     ) {
+        mContext = context;
         mProtoTracer = protoTracer;
         mRegistry = registry;
         mDumpHandler = dumpHandler;
+        mKeyguardManager = context.getSystemService(KeyguardManager.class);
         context.getSystemService(DisplayManager.class).registerDisplayListener(this, mHandler);
         // We always have default display.
         setDisabled(DEFAULT_DISPLAY, DISABLE_NONE, DISABLE2_NONE);
@@ -633,8 +641,17 @@ public class CommandQueue extends IStatusBar.Stub implements
         Pair<Integer, Integer> disablePair = mDisplayDisabled.get(displayId);
         if (disablePair == null) {
             disablePair = new Pair<>(DISABLE_NONE, DISABLE2_NONE);
-            mDisplayDisabled.put(displayId, disablePair);
         }
+        if (mKeyguardManager.isKeyguardLocked() && mKeyguardManager.isKeyguardSecure() &&
+                LineageSettings.Secure.getInt(mContext.getContentResolver(),
+                        LineageSettings.Secure.QS_TILES_TOGGLEABLE_ON_LOCK_SCREEN, 1) == 0) {
+            disablePair = new Pair<>(disablePair.first,
+                    disablePair.second | StatusBarManager.DISABLE2_QUICK_SETTINGS);
+        } else {
+            disablePair = new Pair<>(disablePair.first,
+                    disablePair.second & ~StatusBarManager.DISABLE2_QUICK_SETTINGS);
+        }
+        mDisplayDisabled.put(displayId, disablePair);
         return disablePair;
     }
 
