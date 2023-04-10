@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53ed3f6_3ca7737d",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-10T15:57:32Z",
+      "side": 1,
+      "message": "Since we decided to separate isUidNetworkingBlocked from new [isUidCurrentlyDisallowedByPolicy](https://review.calyxos.org/c/CalyxOS/platform_packages_modules_Connectivity/+/16218), this won\u0027t work for transport-blocked UIDs unless you also check that. Kind of inconvenient. We could alternatively make `isUidNetworkingBlocked` consult `isUidCurrentlyDisallowedByPolicy` as well.",
+      "revId": "3bb1c1f6003f335eba65677e79b5b7a59ee2247d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9035db08_6270f66c",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-10T15:57:32Z",
+      "side": 1,
+      "message": "What about assigning this to `val uid` somewhere above for clarity, and then just using `uid` here?",
+      "revId": "3bb1c1f6003f335eba65677e79b5b7a59ee2247d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
