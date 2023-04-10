@@ -17,8 +17,14 @@
 package com.android.statementservice.domain
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.pm.verify.domain.DomainVerificationManager
+import android.net.ConnectivityManager
+import android.net.IConnectivityManager
 import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkPolicyManager
+import android.os.ServiceManager
 import android.util.Log
 import androidx.collection.LruCache
 import com.android.statementservice.network.retriever.StatementRetriever
@@ -91,6 +97,35 @@ class DomainVerifier private constructor(
         val assetMatcher = synchronized(targetAssetCache) { targetAssetCache[packageName] }
             .takeIf { it!!.isPresent }
             ?: return WorkResult.failure() to VerifyStatus.FAILURE_PACKAGE_MANAGER
+        // Only verify hosts if UID's networking is not blocked
+        val connectivityManager = IConnectivityManager.Stub.asInterface(
+            ServiceManager.getService(Context.CONNECTIVITY_SERVICE))
+        val networkPolicyManager = appContext.getSystemService(NetworkPolicyManager::class.java)
+        if (connectivityManager != null && networkPolicyManager != null) {
+            val packageUid = appContext.packageManager.getPackageUid(
+                packageName,
+                PackageManager.PackageInfoFlags.of(0)
+            )
+            val activeNetwork = connectivityManager.getActiveNetworkForUid(packageUid, false)
+            val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork)
+            val uidPolicy = networkPolicyManager.getUidPolicy(packageUid)
+            val uidPolicyRejectAll = uidPolicy and NetworkPolicyManager.POLICY_REJECT_ALL != 0
+            val uidPolicyRejectWifi = uidPolicy and NetworkPolicyManager.POLICY_REJECT_WIFI != 0
+            val uidPolicyRejectCellular = uidPolicy and
+                    NetworkPolicyManager.POLICY_REJECT_CELLULAR != 0
+            val uidPolicyRejectVpn = uidPolicy and NetworkPolicyManager.POLICY_REJECT_VPN != 0
+            val uidPolicyRejectAny =
+                uidPolicyRejectAll || (uidPolicyRejectWifi && networkCapabilities?.hasTransport(
+                    NetworkCapabilities.TRANSPORT_WIFI
+                ) ?: false) || (uidPolicyRejectCellular && networkCapabilities?.hasTransport(
+                    NetworkCapabilities.TRANSPORT_CELLULAR
+                ) ?: false) || (uidPolicyRejectVpn && networkCapabilities?.hasTransport(
+                    NetworkCapabilities.TRANSPORT_VPN
+                ) ?: false)
+            if (uidPolicyRejectAny) {
+                return WorkResult.failure() to VerifyStatus.NO_RESPONSE
+            }
+        }
         return verifyHost(host, assetMatcher.get(), network)
     }
 
