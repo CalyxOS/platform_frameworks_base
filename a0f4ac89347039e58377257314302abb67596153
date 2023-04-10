@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f0e951_676fa5ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-04-10T18:04:17Z",
+      "side": 1,
+      "message": "Feel free to suggest better shorther titles",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 96
+      },
+      "revId": "a0f4ac89347039e58377257314302abb67596153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
