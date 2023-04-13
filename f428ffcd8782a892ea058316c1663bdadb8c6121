@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64e1f77_d5fdcac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-13T11:54:27Z",
+      "side": 1,
+      "message": "Patchset 9 -\u003e Patchset 10 is a recent but small change mentioned in this one\u0027s new parent.",
+      "revId": "f428ffcd8782a892ea058316c1663bdadb8c6121",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
