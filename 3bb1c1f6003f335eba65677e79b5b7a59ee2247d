@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99b3484_ea8b75e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-17T20:09:35Z",
+      "side": 1,
+      "message": "D\u0027oh, never mind, I guess I already did write some up here: https://gitlab.com/CalyxOS/calyxos/-/issues/889#note_1205824377",
+      "parentUuid": "375e43fb_2da7ade4",
+      "revId": "3bb1c1f6003f335eba65677e79b5b7a59ee2247d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53ed3f6_3ca7737d",
