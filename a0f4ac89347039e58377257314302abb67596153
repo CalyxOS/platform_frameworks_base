@@ -39,6 +39,24 @@
       "message": "If we\u0027re going to do this, maybe we should also allow any active device admin\u0027s behavior to remain unchanged (so they can see uninstalled apps)?",
       "revId": "a0f4ac89347039e58377257314302abb67596153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924337dc_c4992a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-17T20:52:36Z",
+      "side": 1,
+      "message": "This is tricky. PackageManagerService has a method called isPackageDeviceAdmin, but it looks like there\u0027s a circular dependency or something if we try to use it here. We would probably need to obtain the active admins first (dpm.getActiveAdmins) and pass them along somehow.",
+      "parentUuid": "6bc4aee3_798744be",
+      "revId": "a0f4ac89347039e58377257314302abb67596153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
