@@ -36,6 +36,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94016854_01502e73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-17T21:30:29Z",
+      "side": 1,
+      "message": "Not working for me using the steps here: https://gitlab.com/CalyxOS/calyxos/-/issues/889#note_1205824377",
+      "revId": "3bb1c1f6003f335eba65677e79b5b7a59ee2247d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53ed3f6_3ca7737d",
