@@ -33,6 +33,24 @@
       "message": "Oops, this is being inverted...",
       "revId": "b66b10fb9bfc4e98b0bd846401a8642e7f2b04c9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc7f4e8_59943a3e",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-18T15:23:40Z",
+      "side": 1,
+      "message": "Fixed, variable is being set as expected (debugger shows). Re-tested, works",
+      "parentUuid": "98f4760f_d7b8127a",
+      "revId": "b66b10fb9bfc4e98b0bd846401a8642e7f2b04c9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
