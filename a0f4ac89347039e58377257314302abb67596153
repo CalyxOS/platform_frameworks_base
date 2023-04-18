@@ -99,6 +99,24 @@
       "parentUuid": "924337dc_c4992a3d",
       "revId": "a0f4ac89347039e58377257314302abb67596153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e6e3a4_d5658207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-18T18:16:21Z",
+      "side": 1,
+      "message": "Well, we can\u0027t know everything in advance, and we can\u0027t *worry* about everything, either, but I just don\u0027t want to break people\u0027s legitimate work apps or their non-Bellis work profile apps. I did a quick test of Insular and Shelter and they both seem fine -- oddly enough, they can still see hidden apps even with this change, so maybe that\u0027s a good sign for device admins.\n\nThe risk of merging as-is is probably low, but the difficulty of solving this comment is pretty high. That said, the risk posed by the problem that this solves is also pretty low. So, it\u0027s just a gamble.",
+      "parentUuid": "028b392d_38635e73",
+      "revId": "a0f4ac89347039e58377257314302abb67596153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
