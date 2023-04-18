@@ -152,6 +152,24 @@
       "message": "Shouldn\u0027t this be `\u003d\u003d 0` if you want to check that this is not a system app.\n\n`getFlags()` may return other flags.",
       "revId": "a0f4ac89347039e58377257314302abb67596153",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e707491f_784313a1",
+        "filename": "services/core/java/com/android/server/pm/ComputerEngine.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-18T19:10:28Z",
+      "side": 1,
+      "message": "No, because it\u0027s masked by `ApplicationInfo.FLAG_SYSTEM`, so we\u0027re just checking that flag.\n\nJust ignore me if this is over-explaining. In this case, we *could* use `\u003d\u003d 0`, but if FLAG_SYSTEM happened to be a weird combo flag that represented more than one flag -- like, let\u0027s say it was defined as `INTERNAL_SYSTEM | INTERNAL_SPECIAL` -- then it would be more appropriate as it is now; otherwise, `\u003d\u003d 0` would be incorrect if *either* of those internal states were present (e.g. `INTERNAL_SPECIAL` would get caught up in this).\n\nIt\u0027s a good practice to compare to the flag itself so you don\u0027t have to think about that.",
+      "parentUuid": "4a00701c_242ac721",
+      "revId": "a0f4ac89347039e58377257314302abb67596153",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
