@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcd42ab_b09b6fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-18T21:21:09Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually depend on \"Allow network access for Lupin\" but it does depend on \"Use POLICY_REJECT_ALL instead of allowlist\". I moved it to the tip of the chain to make things easier, since both of those will probably be merged before this.",
+      "revId": "46f4ad9e195d610a3a9cd4959dc5d1d6d8f803ae",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
