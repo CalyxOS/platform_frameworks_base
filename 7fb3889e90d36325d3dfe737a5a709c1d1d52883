@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78eb5d44_11a1a6f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-04-19T15:25:02Z",
+      "side": 1,
+      "message": "Test: Manual: Factory reset the device. Try to turn off notifications for Android System \u003e USB connection, and/or Important developer notifications; it should not be possible to do this. If it is, then to confirm the presence of this bug, reboot the device, and try to turn those channels back on. Now it won\u0027t be possible; they are stuck off.\n\n^ Based on my understanding of this patch. If correct, then this patch works. Prior to this patch, the issue described does exist; after, it doesn\u0027t.",
+      "revId": "7fb3889e90d36325d3dfe737a5a709c1d1d52883",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
