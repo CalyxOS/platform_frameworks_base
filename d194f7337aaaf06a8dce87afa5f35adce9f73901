@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44eb72bf_ba12db12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-26T18:24:34Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/android-13.0.0_r41:frameworks/base/services/core/java/com/android/server/pm/InstallPackageHelper.java\n\nvs\n\nhttps://cs.android.com/android/platform/superproject/+/android-12.1.0_r27:frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java",
+      "revId": "d194f7337aaaf06a8dce87afa5f35adce9f73901",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
