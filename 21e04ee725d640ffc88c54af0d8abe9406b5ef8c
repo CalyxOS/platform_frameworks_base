@@ -16,6 +16,24 @@
       "message": "Maybe add the demotion log message back, and move it here?\n\nBecause otherwise you\u0027d see \"System package org.fdroid.fdroid no longer exists; its data will be wiped\" in the logs.",
       "revId": "21e04ee725d640ffc88c54af0d8abe9406b5ef8c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6c2e7c9_68bb88c2",
+        "filename": "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3335,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-04-27T20:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ccef3e8_96d5b012",
+      "revId": "21e04ee725d640ffc88c54af0d8abe9406b5ef8c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
