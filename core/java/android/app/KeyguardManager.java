@@ -372,8 +372,9 @@ public class KeyguardManager {
     }
 
     private String getSettingsPackageForIntent(Intent intent) {
-        List<ResolveInfo> resolveInfos = mContext.getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_SYSTEM_ONLY);
+        List<ResolveInfo> resolveInfos = mContext.getPackageManager().queryIntentActivitiesAsUser(
+                intent, PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_SYSTEM_ONLY),
+                UserHandle.USER_CURRENT);
         for (int i = 0; i < resolveInfos.size(); i++) {
             return resolveInfos.get(i).activityInfo.packageName;
         }
