@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27777d96_8fc4631f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-04-28T19:48:43Z",
+      "side": 1,
+      "message": "Personally I\u0027d like to find out why this is not a problem for system user",
+      "revId": "0854f80a351d26ac28e5907dcf3037e37ceba506",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
