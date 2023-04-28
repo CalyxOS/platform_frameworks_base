@@ -16,6 +16,24 @@
       "message": "Does this patch interfere with the unlocking of profiles in the primary user? (I can\u0027t remember, but it\u0027s important to check.)\n\nThis should additionally be tested with a child profile that has its own lock.",
       "revId": "9115e9cc2b61184b5c467542c35f292c5df35cfe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "107f86dc_3c932328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-04-28T19:47:34Z",
+      "side": 1,
+      "message": "Quick test with 2 users with a profile each (with their own locks) worked as expected",
+      "parentUuid": "90378a00_367d9b88",
+      "revId": "9115e9cc2b61184b5c467542c35f292c5df35cfe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
