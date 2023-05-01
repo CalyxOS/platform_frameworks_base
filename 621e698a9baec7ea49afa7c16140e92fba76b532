@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5133cf3_fae3fcd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-01T14:43:37Z",
+      "side": 1,
+      "message": "Test: Manual: Hide an app, e.g. Calculator. Install App Manager from F-Droid. Search for the hidden app, or filter based on uninstalled apps. It will not appear. Optionally try the same with a user app and it should also not appear.",
+      "revId": "621e698a9baec7ea49afa7c16140e92fba76b532",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
