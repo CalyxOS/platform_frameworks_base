@@ -33,6 +33,24 @@
       "message": "remove unnecessary newline",
       "revId": "b70eebd82970ea2e0b4df7d6d7977c31e20a6434",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c247a1dd_b8e67c5a",
+        "filename": "services/core/java/com/android/server/locksettings/LockSettingsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-09T17:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381c5dfd_29d12d75",
+      "revId": "b70eebd82970ea2e0b4df7d6d7977c31e20a6434",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
