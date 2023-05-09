@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea0a4f51_e8d443d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-09T18:08:26Z",
+      "side": 1,
+      "message": "This test doesn\u0027t currently build for us, I think partly because of the custom tiles: `QSFactoryImplTest.kt:179:9: error: no value passed for parameter \u0027ambientDisplayTileProvider\u0027` (and many more).",
+      "parentUuid": "6c770067_10d7c835",
+      "revId": "5af0150cdf8e41c3fb7c563b8751cc2820d9661c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f4cbdca_f524d682",
         "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
         "patchSetId": 3
