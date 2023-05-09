@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563f6156_cc3c0477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-09T16:26:25Z",
+      "side": 1,
+      "message": "Bug found: after migration, when a primary user has an app installed, but a work profile does not, and then you install that app to the work profile (with Manage Apps \u0026 Content), the app\u0027s network access will be turned off.",
+      "revId": "439acb4a15230eaa45a7ec24ab75668137df2faf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
