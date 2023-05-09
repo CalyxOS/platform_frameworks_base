@@ -51,6 +51,41 @@
       "message": "Given that this entire class is hidden, it\u0027s not part of the public api.\n\nIf a clean build worked, then no system api complaints too, so it should be fine.",
       "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8eb974_7a400ec3",
+        "filename": "core/java/android/os/IUserManager.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-09T18:38:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7fd9a3c_b2e40076",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fcd19f_02272be9",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-09T18:38:52Z",
+      "side": 1,
+      "message": "Using a RuntimeException here is a little unusual. The way this case was handled previously would ultimately result in an uncaught Resources.NotFoundException (a subclass of RuntimeException, but more specific). That said, clearly this doesn\u0027t come up much if ever in practice, so it\u0027s probably not worth worrying about.",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
