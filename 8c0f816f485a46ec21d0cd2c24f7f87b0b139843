@@ -53,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3b75ee_89daa166",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-10T20:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc0caf4_13eb6680",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff786db_e9c485d4",
@@ -70,6 +88,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac505fd_ee01d4ba",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-10T20:43:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ff786db_e9c485d4",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6044ad2e_231f5f4e",
@@ -83,6 +119,24 @@
       "writtenOn": "2023-02-15T19:49:19Z",
       "side": 1,
       "message": "nit: lines are a little long",
+      "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b13f10_44d3ee05",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-10T20:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6044ad2e_231f5f4e",
       "revId": "8c0f816f485a46ec21d0cd2c24f7f87b0b139843",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
