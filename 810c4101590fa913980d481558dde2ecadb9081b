@@ -16,6 +16,24 @@
       "message": "What does `isDemo()` help with here? Is it an additional enhancement or necessary to support this?",
       "revId": "810c4101590fa913980d481558dde2ecadb9081b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5955b1e8_ff7675fa",
+        "filename": "core/java/android/content/pm/UserInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-05-10T20:34:48Z",
+      "side": 1,
+      "message": "Not necessary to support this. But feels like something that AOSP missed and should add to ensure no other types than those explicitly intended can have profiles",
+      "parentUuid": "7616f941_06b25a68",
+      "revId": "810c4101590fa913980d481558dde2ecadb9081b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
