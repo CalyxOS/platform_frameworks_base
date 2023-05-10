@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c50587_8348d34e",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-10T13:27:16Z",
+      "side": 0,
+      "message": "With this removed, mLockLater isn\u0027t read at all anymore, so it may be a good idea to remove it completely, since that will help reveal relevant changes while porting to newer upstream versions.",
+      "revId": "c0a0110d60f52f2e4115b2fdd84edc245a6b0b33",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
