@@ -16,6 +16,24 @@
       "message": "This looks inverted. Should this instead be `!\u003d 0`, or `\u003d\u003d 1`?",
       "revId": "d2d5d831607f518787a1c8819dce84ded6e0f4fa",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a26522_b753c1e1",
+        "filename": "services/core/java/com/android/server/location/gnss/GnssLocationProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1797,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-11T13:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dd54806_b5293e86",
+      "revId": "d2d5d831607f518787a1c8819dce84ded6e0f4fa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
