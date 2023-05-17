@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f72fc8_b6cb21e4",
+        "filename": "core/java/com/android/internal/app/ResolverActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-17T15:16:00Z",
+      "side": 1,
+      "message": "Nitpick-ish:\nWe only want this to apply for managed profiles, right?\n\nAlso, there is a method directly below, `getPersonalProfileUserHandle`, that we might be able to re-use here, and simply return PROFILE_PERSONAL if it\u0027s the same and PROFILE_WORK if it isn\u0027t...? There is a similar check done earlier in this code, so we could use the same logic as that.\n```\nUserHandle.myUserId()\n                        \u003d\u003d getPersonalProfileUserHandle().getIdentifier())\n```",
+      "revId": "225deca0487ebd90677bdb9a951a049471138e40",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
