@@ -424,7 +424,7 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
 
     private static final String ATTRIBUTION_TAG = "DevicePolicyManagerService";
 
-    static final boolean VERBOSE_LOG = false; // DO NOT SUBMIT WITH TRUE
+    static final boolean VERBOSE_LOG = true; // DO NOT SUBMIT WITH TRUE
 
     static final String DEVICE_POLICIES_XML = "device_policies.xml";
 
