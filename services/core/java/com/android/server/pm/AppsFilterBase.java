@@ -64,6 +64,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class AppsFilterBase implements AppsFilterSnapshot {
     protected static final String TAG = "AppsFilter";
 
+    private static final String GMS = "com.google.android.gms";
+    private static final String GOOGLE_TRANSLATE = "com.google.android.apps.translate";
+
     // Logs all filtering instead of enforcing
     protected static final boolean DEBUG_ALLOW_ALL = false;
     protected static final boolean DEBUG_LOGGING = false;
@@ -496,7 +499,9 @@ public abstract class AppsFilterBase implements AppsFilterSnapshot {
                     if (DEBUG_LOGGING) {
                         log(callingSetting, targetPkgSetting, "force queryable");
                     }
-                    return false;
+                    return GOOGLE_TRANSLATE.equals(
+                            callingPkgSetting != null ? callingPkgSetting.getPackageName() : null)
+                            && GMS.equals(targetPkgSetting.getPackageName());
                 }
             } finally {
                 if (DEBUG_TRACING) {
