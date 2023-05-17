@@ -701,7 +701,8 @@ public class ResolverActivity extends Activity implements
     }
 
     protected @Profile int getCurrentProfile() {
-        return (UserHandle.myUserId() == UserHandle.USER_SYSTEM ? PROFILE_PERSONAL : PROFILE_WORK);
+        return !UserManager.get(getApplicationContext()).getUserInfo(
+                UserHandle.myUserId()).isProfile() ? PROFILE_PERSONAL : PROFILE_WORK;
     }
 
     protected UserHandle getPersonalProfileUserHandle() {
