@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d646dd02_f1ad704e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-05-18T18:54:36Z",
+      "side": 1,
+      "message": "Test:\n1. Set timeout to 1h, leave device idle, watch it reboot every hour\n2. Set timeout to 1h, alarm for 50min, unlock device when alarm sounds - device should never reboot\n3. Set timeout to 8h or something high, leave device idle, notice it reboot the next day or something.\n\n\nEasy way to check is Settings -\u003e About -\u003e uptime",
+      "revId": "0aff5ffb441db32cbaa72d465d617441ab61f4ca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ace18c4f_030d10d7",
         "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
         "patchSetId": 2
