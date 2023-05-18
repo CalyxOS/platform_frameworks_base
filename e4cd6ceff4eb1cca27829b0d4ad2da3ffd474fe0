@@ -16,6 +16,23 @@
       "message": "As much as I don\u0027t like this, it\u0027s worse having broken apps, especially for so long.\n\nWe should properly fix it eventually, but that shouldn\u0027t be a blocker towards a working solution.\n\n\nI would suggest some minor code changes (make it a bit more generic, add a method instead of elongating the `return` statement, etc, but that\u0027s all a nit)\n\n\nThe other thing is that this would stop letting the app work with a Google Account, right? So it won\u0027t work for all apps.",
       "revId": "e4cd6ceff4eb1cca27829b0d4ad2da3ffd474fe0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9225aa8_be5714b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-18T15:01:31Z",
+      "side": 1,
+      "message": "Agree that using a list or something would be nice, but a nit.\n\nIf Google Translate adds gms to \u003cqueries\u003e this will break, right? Just a question, not a suggestion to change anything",
+      "revId": "e4cd6ceff4eb1cca27829b0d4ad2da3ffd474fe0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
