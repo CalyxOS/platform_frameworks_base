@@ -781,6 +781,9 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
         public void keyguardGone() {
             Trace.beginSection("KeyguardViewMediator.mViewMediatorCallback#keyguardGone");
             if (DEBUG) Log.d(TAG, "keyguardGone");
+            synchronized (this) {
+                cancelDoRebootLaterLocked();
+            }
             mKeyguardViewControllerLazy.get().setKeyguardGoingAwayState(false);
             mKeyguardDisplayManager.hide();
             Trace.endSection();
@@ -1648,6 +1651,8 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
     }
 
     private void cancelDoRebootLaterLocked() {
+        if (DEBUG) Log.d(TAG, "cancelling alarm to reboot device, seq = "
+                         + mDelayedRebootSequence);
         mDelayedRebootSequence++;
     }
 
@@ -2345,9 +2350,6 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
             return;
         }
         setPendingLock(false); // user may have authenticated during the screen off animation
-        synchronized (this) {
-            cancelDoRebootLaterLocked();
-        }
 
         handleHide();
         mUpdateMonitor.clearBiometricRecognizedWhenKeyguardDone(currentUser);
