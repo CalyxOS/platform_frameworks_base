@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47a20c8_e603c70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-05-25T12:29:39Z",
+      "side": 1,
+      "message": "It looks like it was only a rebase that removed my earlier approvals. I see no reason this won\u0027t still work.",
+      "revId": "8db7e67cec9ffafdb2937cf286a27965e31cc4da",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
