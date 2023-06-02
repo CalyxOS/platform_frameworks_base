@@ -16,6 +16,24 @@
       "message": "Tested by Oliver, and then by me separately.\n\nData intact in all cases\n\n* Normal system app -\u003e becomes user app, can uninstall\n* Hidden app -\u003e stays hidden, can unhide\n* Disabled app -\u003e Can\u0027t re-enable via UI, but `adb shell pm enable` works. I think that\u0027s ok\n* Paused app -\u003e stays paused, can unpause\n* Work profile F-Droid -\u003e fine\n* Secondary user F-Droid -\u003e fine\n\n",
       "revId": "9be4567c60b9872152ff11ca95d7bd238aa5b14a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d656134_8c939c16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-02T22:26:31Z",
+      "side": 1,
+      "message": "F-Droid set as panic app, panic triggered and then hidden, works.\n\nPanic functionality doesn\u0027t work anymore however (not sure why), let\u0027s just take this opportunity to write a quick replacement for that, and we can them keep improving it.",
+      "parentUuid": "a68bfd52_062996ae",
+      "revId": "9be4567c60b9872152ff11ca95d7bd238aa5b14a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
