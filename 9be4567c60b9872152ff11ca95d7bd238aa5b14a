@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68bfd52_062996ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-02T21:32:56Z",
+      "side": 1,
+      "message": "Tested by Oliver, and then by me separately.\n\nData intact in all cases\n\n* Normal system app -\u003e becomes user app, can uninstall\n* Hidden app -\u003e stays hidden, can unhide\n* Disabled app -\u003e Can\u0027t re-enable via UI, but `adb shell pm enable` works. I think that\u0027s ok\n* Paused app -\u003e stays paused, can unpause\n* Work profile F-Droid -\u003e fine\n* Secondary user F-Droid -\u003e fine\n\n",
+      "revId": "9be4567c60b9872152ff11ca95d7bd238aa5b14a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
