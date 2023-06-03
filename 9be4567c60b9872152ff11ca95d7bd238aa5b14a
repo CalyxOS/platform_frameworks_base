@@ -34,6 +34,24 @@
       "parentUuid": "a68bfd52_062996ae",
       "revId": "9be4567c60b9872152ff11ca95d7bd238aa5b14a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16ebc9d_a5765411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-03T00:05:23Z",
+      "side": 1,
+      "message": "On another device, I just had the system2user migration done without any panic involvement.\n\nSetup panic afterwards, and that did work.\n\nGoing back to the phone above where it didn\u0027t work - I basically reset the panic settings in F-Droid (set app to none then back to ripple) - but it still doesn\u0027t work for some reason 😞",
+      "parentUuid": "6d656134_8c939c16",
+      "revId": "9be4567c60b9872152ff11ca95d7bd238aa5b14a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
