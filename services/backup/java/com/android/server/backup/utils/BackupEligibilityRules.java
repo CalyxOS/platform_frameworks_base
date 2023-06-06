@@ -217,7 +217,6 @@ public class BackupEligibilityRules {
      * Returns whether an app is eligible for backup at runtime. That is, the app has to:
      * <ol>
      *     <li>Return true for {@link #appIsEligibleForBackup(ApplicationInfo, int)}
-     *     <li>Return false for {@link #appIsStopped(ApplicationInfo)}
      *     <li>Return false for {@link #appIsDisabled(ApplicationInfo, int)}
      *     <li>Be eligible for the transport via
      *         {@link BackupTransport#isAppEligibleForBackup(PackageInfo, boolean)}
@@ -231,7 +230,6 @@ public class BackupEligibilityRules {
                     PackageManager.GET_SIGNING_CERTIFICATES, mUserId);
             ApplicationInfo applicationInfo = packageInfo.applicationInfo;
             if (!appIsEligibleForBackup(applicationInfo)
-                    || appIsStopped(applicationInfo)
                     || appIsDisabled(applicationInfo)) {
                 return false;
             }
@@ -270,22 +268,6 @@ public class BackupEligibilityRules {
             default:
                 return false;
         }
-    }
-
-    /**
-     * Checks if the app is in a stopped state.  This is not part of the general "eligible for
-     * backup?" check because we *do* still need to restore data to apps in this state (e.g.
-     * newly-installing ones).
-     *
-     * <p>Reasons for such state:
-     * <ul>
-     *     <li>The app has been force-stopped.
-     *     <li>The app has been cleared.
-     *     <li>The app has just been installed.
-     * </ul>
-     */
-    public boolean appIsStopped(ApplicationInfo app) {
-        return ((app.flags & ApplicationInfo.FLAG_STOPPED) != 0);
     }
 
     /**
