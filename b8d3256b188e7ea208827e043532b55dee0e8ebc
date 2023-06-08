@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d945bf42_06922c8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-08T12:24:14Z",
+      "side": 1,
+      "message": "I\u0027ve been seeing a fatal exception in crash logs when switching to a Guest user. It may be related to calyxos#1634 but I\u0027m not sure.\n\n`E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method \u0027java.lang.String com.android.server.net.NetworkPolicyManagerService$UidBlockedState.toString()\u0027 on a null object reference`\n\nThis change should fix that, at least.",
+      "revId": "b8d3256b188e7ea208827e043532b55dee0e8ebc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
