@@ -34,6 +34,24 @@
       "parentUuid": "32f72fc8_b6cb21e4",
       "revId": "225deca0487ebd90677bdb9a951a049471138e40",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39a89a0_04a8916e",
+        "filename": "core/java/com/android/internal/app/ResolverActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-13T17:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc20636_300d649d",
+      "revId": "225deca0487ebd90677bdb9a951a049471138e40",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
