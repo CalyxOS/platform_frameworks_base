@@ -495,16 +495,16 @@ public class MediaControlPanel {
                 mLogger.logTapContentView(mUid, mPackageName, mInstanceId);
                 logSmartspaceCardReported(SMARTSPACE_CARD_CLICK_EVENT);
 
+                // See StatusBarNotificationActivityStarter#onNotificationClicked
                 boolean showOverLockscreen = mKeyguardStateController.isShowing()
-                        && mActivityIntentHelper.wouldPendingShowOverLockscreen(clickIntent,
+                        && mActivityIntentHelper.wouldShowOverLockscreen(clickIntent.getIntent(),
                         mLockscreenUserManager.getCurrentUserId());
 
                 if (showOverLockscreen) {
-                    try {
-                        clickIntent.send();
-                    } catch (PendingIntent.CanceledException e) {
-                        Log.e(TAG, "Pending intent for " + key + " was cancelled");
-                    }
+                    mActivityStarter.startActivity(clickIntent.getIntent(),
+                            /* dismissShade */ true,
+                            /* animationController */ null,
+                            /* showOverLockscreenWhenLocked */ true);
                 } else {
                     mActivityStarter.postStartActivityDismissingKeyguard(clickIntent,
                             buildLaunchAnimatorController(mMediaViewHolder.getPlayer()));
