@@ -274,7 +274,7 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
             final int uid = entry.getSbn().getUid();
             android.util.EventLog.writeEvent(0x534e4554, "274759612", uid, "bubbleMetadata");
             mLogger.logNoFullscreenWarning(entry, "BubbleMetadata may prevent HUN");
-            return FullScreenIntentDecision.NO_FULL_SCREEN_INTENT;
+            return false;
         }
 
         // If the screen is off, then launch the FullScreenIntent
