@@ -22,11 +22,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.Set;
-import java.util.concurrent.CancellationException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * A cache for inline images of image messages.
@@ -59,13 +56,12 @@ public class NotificationInlineImageCache implements NotificationInlineImageReso
     }
 
     @Override
-    public Drawable get(Uri uri, long timeoutMs) {
+    public Drawable get(Uri uri) {
         Drawable result = null;
         try {
-            result = mCache.get(uri).get(timeoutMs, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException | ExecutionException
-                | TimeoutException | CancellationException ex) {
-            Log.d(TAG, "get: Failed get image from " + uri + " " + ex);
+            result = mCache.get(uri).get();
+        } catch (InterruptedException | ExecutionException ex) {
+            Log.d(TAG, "get: Failed get image from " + uri);
         }
         return result;
     }
@@ -74,15 +70,6 @@ public class NotificationInlineImageCache implements NotificationInlineImageReso
     public void purge() {
         Set<Uri> wantedSet = mResolver.getWantedUriSet();
         mCache.entrySet().removeIf(entry -> !wantedSet.contains(entry.getKey()));
-    }
-
-    @Override
-    public void cancelRunningTasks() {
-        mCache.forEach((key, value) -> {
-            if (value.getStatus() != AsyncTask.Status.FINISHED) {
-                value.cancel(true);
-            }
-        });
     }
 
     private static class PreloadImageTask extends AsyncTask<Uri, Void, Drawable> {
