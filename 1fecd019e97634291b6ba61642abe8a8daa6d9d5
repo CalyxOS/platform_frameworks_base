@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb54428_e7c2e468",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-16T14:43:26Z",
+      "side": 1,
+      "message": "They may not have, that was the point of 17579: Rework migration code | https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Bellis/+/17579",
+      "revId": "1fecd019e97634291b6ba61642abe8a8daa6d9d5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
