@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c61523e_ea19ee90",
+        "filename": "core/java/android/app/KeyguardManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-19T14:51:16Z",
+      "side": 1,
+      "message": "Just not sure if UserHandle.USER_CURRENT will always represent the parent of the work profile we\u0027re interacting with or not (if we are interacting with one).",
+      "revId": "ef5fa5ce0c00aa011d588070d7580d73d80432a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc7b690_3011e03f",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-19T14:51:16Z",
+      "side": 1,
+      "message": "Not sure if UserHandle.CURRENT will always represents the parent user for the userId provided, here, or if it will simply always represent the current user, which under weird timing conditions may not be the parent.\n\nThis has been tested and will ensure we start it in the parent, but this may not be necessary, depending on whether what I said above is a legitimate concern or not:\n```\n        final int profileParentId \u003d getProfileParentId(userId);\n        mContext.startActivityAsUser(unlockIntent, UserHandle.of(profileParentId));\n```",
+      "revId": "ef5fa5ce0c00aa011d588070d7580d73d80432a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
