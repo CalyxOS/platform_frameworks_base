@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3116aa_38106cc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-20T13:56:49Z",
+      "side": 1,
+      "message": "On bramble, has option for Center, as expected.\n\nAlso as expected, on bluejay, no option for Center (there\u0027s a camera there).\n\nLooks like it\u0027s working well.",
+      "revId": "bc9c90003c4670c2b1acf30314749289064d5148",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
