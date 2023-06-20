@@ -33,6 +33,24 @@
       "message": "Not sure if UserHandle.CURRENT will always represents the parent user for the userId provided, here, or if it will simply always represent the current user, which under weird timing conditions may not be the parent.\n\nThis has been tested and will ensure we start it in the parent, but this may not be necessary, depending on whether what I said above is a legitimate concern or not:\n```\n        final int profileParentId \u003d getProfileParentId(userId);\n        mContext.startActivityAsUser(unlockIntent, UserHandle.of(profileParentId));\n```",
       "revId": "ef5fa5ce0c00aa011d588070d7580d73d80432a5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff268b8e_09d6c9a1",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-20T12:18:15Z",
+      "side": 1,
+      "message": "From a code search, USER_CURRENT and UserHandle.CURRENT result in calls to ActivityManager.getCurrentUser(), which returns the foreground user, whatever it may be at the time. Although it would likely require rapidly switching users for this to happen, the foreground user may not always be the profile parent, so I would recommend an approach like above where we use the actual, for-sure parent user.",
+      "parentUuid": "6fc7b690_3011e03f",
+      "revId": "ef5fa5ce0c00aa011d588070d7580d73d80432a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
