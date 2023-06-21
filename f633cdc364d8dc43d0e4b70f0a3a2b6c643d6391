@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48398396_d5fd1ec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-06-21T22:54:29Z",
+      "side": 1,
+      "message": "AOSP reports that an equivalent change was submitted internally several months ago. Apparently we can also expect other fixes for secondary user profiles in the future, but for now they\u0027re all internal.",
+      "revId": "f633cdc364d8dc43d0e4b70f0a3a2b6c643d6391",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
