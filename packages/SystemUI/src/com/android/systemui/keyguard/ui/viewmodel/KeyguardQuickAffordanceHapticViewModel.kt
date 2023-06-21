@@ -50,9 +50,17 @@ constructor(private val msdlPlayer: MSDLPlayer, private val vibratorHelper: Vibr
             // history updates.
             val vibration =
                 if (isActivated) {
-                    KeyguardBottomAreaVibrations.Activated
+                    if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                        KeyguardBottomAreaVibrations.Activated
+                    } else {
+                        KeyguardBottomAreaVibrations.ActivatedAlt
+                    }
                 } else {
-                    KeyguardBottomAreaVibrations.Deactivated
+                    if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                        KeyguardBottomAreaVibrations.Deactivated
+                    } else {
+                        KeyguardBottomAreaVibrations.DeactivatedAlt
+                    }
                 }
             vibratorHelper.vibrate(vibration)
         }
@@ -62,7 +70,13 @@ constructor(private val msdlPlayer: MSDLPlayer, private val vibratorHelper: Vibr
         if (Flags.msdlFeedback()) {
             msdlPlayer.playToken(MSDLToken.FAILURE)
         } else {
-            vibratorHelper.vibrate(KeyguardBottomAreaVibrations.Shake)
+            vibratorHelper.vibrate(
+                if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                    KeyguardBottomAreaVibrations.Shake
+                } else {
+                    KeyguardBottomAreaVibrations.ShakeAlt
+                },
+            )
         }
     }
 
