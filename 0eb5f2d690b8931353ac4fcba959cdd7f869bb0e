@@ -52,6 +52,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74859f65_9f0d4b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-28T17:50:55Z",
+      "side": 1,
+      "message": "Bump.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea6c2b9_d476d4c7",
