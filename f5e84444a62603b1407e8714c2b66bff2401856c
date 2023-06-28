@@ -16,6 +16,24 @@
       "message": "Just for testing.\n\nAlso useful: https://git.sr.ht/~dylanger/Google-App-Stub",
       "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f3406c_2a036a9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-28T17:37:20Z",
+      "side": 1,
+      "message": "Alternative: Ship the stub.",
+      "parentUuid": "915b2be5_0a80fd45",
+      "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
