@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "831e3238_4a209b64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-28T16:44:02Z",
+      "side": 1,
+      "message": "Bit of a hack to pretend that microG is not available.",
+      "revId": "e4cd6ceff4eb1cca27829b0d4ad2da3ffd474fe0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fbd21771_cbc4eb9e",
