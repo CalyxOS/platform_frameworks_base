@@ -34,6 +34,23 @@
       "parentUuid": "915b2be5_0a80fd45",
       "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62138a61_88823bf5",
+        "filename": "services/core/java/com/android/server/pm/permission/PermissionManagerServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-29T20:37:35Z",
+      "side": 1,
+      "message": "The beauty of this is that you can get away with a lower set of permissions than full priv-app\n\n8 here vs 17 at https://review.calyxos.org/c/CalyxOS/vendor_calyx/+/18108/3/prebuilt/aa/permissions_com.google.android.projection.gearhead.xml",
+      "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
