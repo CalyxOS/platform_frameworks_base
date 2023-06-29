@@ -50,6 +50,41 @@
       "message": "Another thing is that this\u0027d do this always, regardless of garlic-level.\n\nWe only _need_ it for garlic level safest.\n\nWe don\u0027t need it for anything else - doesn\u0027t hurt, but may also cause additional confusion amongst users - why the sudden change.\n\nMay or may not be easy to check LineageSettings (garlic level) from here, but given that it\u0027s a separate package it likely won\u0027t be too bad.",
       "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa7bc6a_ad3942e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-29T17:14:31Z",
+      "side": 1,
+      "message": "Let\u0027s make sure we only do this for garlic level safest.",
+      "parentUuid": "04f54d74_c514b1c4",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d90983_21db0ddd",
+        "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-29T17:14:31Z",
+      "side": 1,
+      "message": "I\u0027d also move all of the code to a method and then just call that here.\n\nVariables should go at the top (pkg name, sig)\n\nShould specify that it\u0027s signature of the F-Droid version",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
