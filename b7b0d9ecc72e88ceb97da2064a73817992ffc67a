@@ -16,6 +16,40 @@
       "message": "Edits were exclusively to whitespace",
       "revId": "b7b0d9ecc72e88ceb97da2064a73817992ffc67a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72d16a8_c1eec22a",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-29T19:08:28Z",
+      "side": 1,
+      "message": "Should move these variables to the top, and add comments (I presume they\u0027re for the default bundled versions, aka Tor Browser from the Guardian Project Repo and Briar from the F-Droid official repo.",
+      "revId": "b7b0d9ecc72e88ceb97da2064a73817992ffc67a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05a50fc_83141ce9",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-29T19:08:28Z",
+      "side": 1,
+      "message": "We shouldn\u0027t throw an exception here, simply log - because it\u0027s not fatal at all.",
+      "revId": "b7b0d9ecc72e88ceb97da2064a73817992ffc67a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
