@@ -1,5 +1,91 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6d6ab1_86801bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-30T17:22:05Z",
+      "side": 1,
+      "message": "Option 1: See comments.\nOption 2: Easy in fw/b, need to check migration.",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4856635_7faa62c1",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-30T17:22:05Z",
+      "side": 1,
+      "message": "false on all, true on sidefps",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7014da72_fc5681a9",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2436,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-30T17:22:05Z",
+      "side": 1,
+      "message": "so it\u0027d get set to false.",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19861eb1_09e35084",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-30T17:22:05Z",
+      "side": 1,
+      "message": "if (!mFingerprintWakeAndUnlock \u0026\u0026 isSideFps) could work for now.",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58a53be_86b47244",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2870,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-30T17:22:05Z",
+      "side": 1,
+      "message": "Move this higher.",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
