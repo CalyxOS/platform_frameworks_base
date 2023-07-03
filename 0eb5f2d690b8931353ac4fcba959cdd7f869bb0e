@@ -104,6 +104,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f67f4a_1d1e568d",
+        "filename": "packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T15:09:10Z",
+      "side": 1,
+      "message": "Trying to hide that Multiple Users is in use is a separate endeavor from this change. Remove this.",
+      "parentUuid": "cea6c2b9_d476d4c7",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8c05c714_539ab047",
@@ -151,6 +169,24 @@
       "writtenOn": "2023-01-25T23:18:39Z",
       "side": 1,
       "message": "Unlike the last attempt (I7519d413), I did not want to do anything that might alter the actual device policy state, but simply override it instead. But we don\u0027t have to do it my way, or we could make this read a setting, property, or whatever.",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597972d2_adf55b10",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 16074,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T15:09:10Z",
+      "side": 1,
+      "message": "How about we don\u0027t override the device policy at all? There should be virtually no circumstances in which CalyxOS is managed by a device owner, but if that happens, we may as well prefer its setting.",
+      "parentUuid": "50e7feba_a25662d7",
       "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }

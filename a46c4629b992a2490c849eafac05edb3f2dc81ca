@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10850aa1_2a768b45",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T15:09:10Z",
+      "side": 1,
+      "message": "There\u0027s no reason we wouldn\u0027t want this behavior, so remove this constant.",
+      "revId": "a46c4629b992a2490c849eafac05edb3f2dc81ca",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
