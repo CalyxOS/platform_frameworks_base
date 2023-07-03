@@ -16,6 +16,24 @@
       "message": "This is kind of an opinionated change from AOSP, so maybe it should be considered separately...",
       "revId": "27db9ea096bb5b96749718a821329dd464a4306f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6ae115_a5cae6f7",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/KeyguardIndicationController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T16:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1271ef3d_f6ab1a8d",
+      "revId": "27db9ea096bb5b96749718a821329dd464a4306f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
