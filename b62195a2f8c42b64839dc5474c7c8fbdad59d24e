@@ -86,6 +86,23 @@
       "message": "Using a RuntimeException here is a little unusual. The way this case was handled previously would ultimately result in an uncaught Resources.NotFoundException (a subclass of RuntimeException, but more specific). That said, clearly this doesn\u0027t come up much if ever in practice, so it\u0027s probably not worth worrying about.",
       "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02d04a3_2aa67488",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T17:43:24Z",
+      "side": 1,
+      "message": "Add 1 to this so that we provide a 1-based number instead of 0-based. \"Work Profile 0\" is a weird thing to see.",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
