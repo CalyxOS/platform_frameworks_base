@@ -87,6 +87,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc75de6_f82b299e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-03T15:46:32Z",
+      "side": 1,
+      "message": "I\u0027d say it\u0027s not a blocker, but something we should just keep in mind and think about briefly when doing anything like this, given we\u0027ve considered it in the past.",
+      "parentUuid": "be4ca329_a93eb896",
+      "revId": "0eb5f2d690b8931353ac4fcba959cdd7f869bb0e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea6c2b9_d476d4c7",
