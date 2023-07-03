@@ -103,6 +103,24 @@
       "message": "Add 1 to this so that we provide a 1-based number instead of 0-based. \"Work Profile 0\" is a weird thing to see.",
       "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fae41a3_fb3a5bc9",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-03T17:45:25Z",
+      "side": 1,
+      "message": "Not to this! But to `badgeIndex` in the arguments to getString below.",
+      "parentUuid": "c02d04a3_2aa67488",
+      "revId": "b62195a2f8c42b64839dc5474c7c8fbdad59d24e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
