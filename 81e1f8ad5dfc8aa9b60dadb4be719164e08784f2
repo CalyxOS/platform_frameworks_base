@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ebac36_3c6cbb9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-05T14:36:57Z",
+      "side": 1,
+      "message": "https://matrix.to/#/!KtMYeHvlAzOjYqqRSz:matrix.org/$8eA03XEeT_bqOW0qBlLyoZJifVKbRLBmgYyl-ryh4fk?via\u003dcalyx.dev\u0026via\u003dmatrix.org\u0026via\u003dmozilla.org\n\nhttps://developer.android.com/about/versions/12/features#safer-grant-signature-perms",
+      "revId": "81e1f8ad5dfc8aa9b60dadb4be719164e08784f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
