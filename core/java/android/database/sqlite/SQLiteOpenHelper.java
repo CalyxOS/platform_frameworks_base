@@ -405,6 +405,7 @@ public abstract class SQLiteOpenHelper implements AutoCloseable {
                                 + mName + " with version " + version);
                     }
                 } else {
+                    Log.i(TAG, "Working with " + mName + "...");
                     db.beginTransaction();
                     try {
                         if (version == 0) {
@@ -413,13 +414,23 @@ public abstract class SQLiteOpenHelper implements AutoCloseable {
                             if (version > mNewVersion) {
                                 onDowngrade(db, version, mNewVersion);
                             } else {
+                                Log.i(TAG, "Upgrading " + mName + "...");
                                 onUpgrade(db, version, mNewVersion);
+                                Log.i(TAG, "Upgraded " + mName + ".");
                             }
                         }
+                        Log.i(TAG, "Setting " + mName + " version to " + mNewVersion);
                         db.setVersion(mNewVersion);
+                        Log.i(TAG, "Setting " + mName + " transaction successful.");
                         db.setTransactionSuccessful();
+                        Log.i(TAG, "Done with " + mName);
+                    } catch (Exception ex) {
+                        Log.e(TAG, "Failed to create, upgrade, or downgrade database " + mName, ex);
+                        throw ex;
                     } finally {
+                        Log.i(TAG, "Ending transaction for " + mName + "...");
                         db.endTransaction();
+                        Log.i(TAG, "Successfully ended transaction for " + mName);
                     }
                 }
             }
@@ -432,10 +443,15 @@ public abstract class SQLiteOpenHelper implements AutoCloseable {
 
             mDatabase = db;
             return db;
+        } catch (Exception ex) {
+            Log.e(TAG, "Exception in getDatabaseLocked", ex);
+            throw ex;
         } finally {
             mIsInitializing = false;
             if (db != null && db != mDatabase) {
+                Log.e(TAG, "Closing " + mName + "...");
                 db.close();
+                Log.e(TAG, "Closed " + mName);
             }
         }
     }
@@ -449,12 +465,16 @@ public abstract class SQLiteOpenHelper implements AutoCloseable {
      * Close any open database object.
      */
     public synchronized void close() {
+        Log.e(TAG, "close() called for " + mName + "...");
         if (mIsInitializing) throw new IllegalStateException("Closed during initialization");
 
         if (mDatabase != null && mDatabase.isOpen()) {
+            Log.e(TAG, "Database non-null and open; closing " + mName);
             mDatabase.close();
+            Log.e(TAG, "Closed " + mName);
             mDatabase = null;
         }
+        Log.e(TAG, "close() completed for " + mName);
     }
 
     /**
