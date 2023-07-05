@@ -3577,7 +3577,8 @@
     <!-- @hide Allows an application to change the package signature as
          seen by applications. Only allowed to be used by microG.-->
     <permission android:name="android.permission.MICROG_SPOOF_SIGNATURE"
-        android:protectionLevel="signature|privileged" />
+        android:protectionLevel="signature|knownSigner"
+        android:knownCerts="@array/microg_known_signers" />
 
     <!-- @deprecated No longer useful, see
          {@link android.content.pm.PackageManager#addPackageToPreferred}

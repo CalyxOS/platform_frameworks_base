@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /* //device/apps/common/assets/res/any/colors.xml
@@ -206,5 +207,12 @@
          This is used to differentiate between removable eUICCs and built in eUICCs, and should
          be set by OEMs for devices which use eUICCs. -->
     <integer-array name="non_removable_euicc_slots"></integer-array>
+
+    <!-- Certificate digests for microG apps that will be allowed to spoof their signature.
+         The digest should be computed over the DER encoding of the trusted certificate using
+         the SHA-256 digest algorithm. -->
+    <string-array name="microg_known_signers">
+        <item>3a237c74a4920f539c1f9a21283d48fc96f3b40195b5e1f51cb9ac4592b2b0c5</item>
+    </string-array>
 
 </resources>
