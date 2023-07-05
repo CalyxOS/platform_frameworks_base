@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a863486d_399f1e6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-05T20:58:23Z",
+      "side": 1,
+      "message": "Ideally the usual AOSP way is that it just replaces the cert hash while signing, but that\u0027s not easy to do when it\u0027s inside an apk like this.\n\nUsually it\u0027s done in plaintext files.",
+      "revId": "c32bf99cb2d7b81aa7331c134252ac8ce37d75af",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f757a8_2b25f138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-05T20:58:23Z",
+      "side": 1,
+      "message": "Thanks for the upload!",
+      "revId": "c32bf99cb2d7b81aa7331c134252ac8ce37d75af",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db187eeb_568d14ed",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3580,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-05T20:58:23Z",
+      "side": 1,
+      "message": "Ah so you could either sign it with `platform` key due to the `signature` part, or this key you specified in `knownCerts`",
+      "revId": "c32bf99cb2d7b81aa7331c134252ac8ce37d75af",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
