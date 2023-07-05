@@ -16,6 +16,24 @@
       "message": "This _might_ break things, `aidl` works on order, adding a method to the middle moves everything which is backwards incompatible.\n\nEven if this is hidden, anything prebuilt that was built against the AOSP version but now running on CalyxOS will have a mismatch.\n\nAt the very least, should move to the bottom, and perhaps add a comment.",
       "revId": "61a6ad148dc02f2144f57e4d145cc4fa7559be5c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c870ce_101508ab",
+        "filename": "core/java/android/os/IUserManager.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-05T18:17:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c8c603_ed315825",
+      "revId": "61a6ad148dc02f2144f57e4d145cc4fa7559be5c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
