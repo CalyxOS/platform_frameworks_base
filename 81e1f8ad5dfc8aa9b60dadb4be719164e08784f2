@@ -16,6 +16,24 @@
       "message": "https://matrix.to/#/!KtMYeHvlAzOjYqqRSz:matrix.org/$8eA03XEeT_bqOW0qBlLyoZJifVKbRLBmgYyl-ryh4fk?via\u003dcalyx.dev\u0026via\u003dmatrix.org\u0026via\u003dmozilla.org\n\nhttps://developer.android.com/about/versions/12/features#safer-grant-signature-perms",
       "revId": "81e1f8ad5dfc8aa9b60dadb4be719164e08784f2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c8fc9a_bbc61341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-05T20:58:40Z",
+      "side": 1,
+      "message": "Impl: 18172: microG: change permission protection level to \"knownSigner\" | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/18172",
+      "parentUuid": "88ebac36_3c6cbb9f",
+      "revId": "81e1f8ad5dfc8aa9b60dadb4be719164e08784f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
