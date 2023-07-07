@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f533139f_4a1d2d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-07T14:39:41Z",
+      "side": 1,
+      "message": "If this works, to me it seems good enough to go with for now. Other options for silent uninstall like device admin should be harmless to switch to in the future if we want.",
+      "revId": "83adba2fd9fc7f46b35fc2e7515686bddd0fd177",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
