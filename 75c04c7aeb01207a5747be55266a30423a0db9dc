@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939c5ac7_d209f7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-11T22:13:20Z",
+      "side": 1,
+      "message": "Merged in AOSP.\n\nI\u0027ll merge after the current AOSP merges are in otherwise we\u0027ll have to re merge them which is a PITA",
+      "revId": "75c04c7aeb01207a5747be55266a30423a0db9dc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
