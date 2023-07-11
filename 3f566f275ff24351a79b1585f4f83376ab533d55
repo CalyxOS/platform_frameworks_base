@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d144a00_3dd1ef2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2023-07-11T17:41:19Z",
+      "side": 1,
+      "message": "Always good to keep things same as upstream to reduce merge pain",
+      "revId": "3f566f275ff24351a79b1585f4f83376ab533d55",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
