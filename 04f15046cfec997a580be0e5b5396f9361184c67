@@ -16,6 +16,24 @@
       "message": "Is it worth merging if it\u0027s empty? We skip empty merges on every other AOSP merge case.",
       "revId": "04f15046cfec997a580be0e5b5396f9361184c67",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71e87a4_dee7681a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-13T16:40:57Z",
+      "side": 1,
+      "message": "Nope!",
+      "parentUuid": "7fdb33fd_54a987d1",
+      "revId": "04f15046cfec997a580be0e5b5396f9361184c67",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
