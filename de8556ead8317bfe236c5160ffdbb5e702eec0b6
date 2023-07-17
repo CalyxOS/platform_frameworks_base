@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9852c69e_4cd0acaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-17T16:40:46Z",
+      "side": 1,
+      "message": "This works and can be merged even without its accompanying change to the actual app label strings. In that situation, it\u0027s just a no-op.",
+      "revId": "de8556ead8317bfe236c5160ffdbb5e702eec0b6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
