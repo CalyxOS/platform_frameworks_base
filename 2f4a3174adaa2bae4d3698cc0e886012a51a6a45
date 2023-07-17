@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5220c1c_4600ab61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-17T20:27:01Z",
+      "side": 1,
+      "message": "This does work. The commit message points out some annoyances that it would be nice to see resolved at some point. Maybe 14 or beyond will make it easier to do that, maybe not.",
+      "revId": "2f4a3174adaa2bae4d3698cc0e886012a51a6a45",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
