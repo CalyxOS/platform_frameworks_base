@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76b0def_ad22ca18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-19T20:19:42Z",
+      "side": 1,
+      "message": "See commit message for why this should likely not be merged as-is.",
+      "revId": "b1d2f2c91fd049716bb4b4a2f1fb12e8f57c1ec7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
