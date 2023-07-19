@@ -158,6 +158,7 @@ import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcherController;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcherView;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
+import com.android.systemui.tuner.TunerService;
 import com.android.systemui.unfold.SysUIUnfoldComponent;
 import com.android.systemui.util.time.FakeSystemClock;
 import com.android.systemui.util.time.SystemClock;
@@ -298,6 +299,7 @@ public class NotificationPanelViewControllerBaseTest extends SysuiTestCase {
 
     protected KeyguardBottomAreaInteractor mKeyguardBottomAreaInteractor;
     protected KeyguardInteractor mKeyguardInteractor;
+    @Mock protected TunerService mTunerService;
     protected NotificationPanelViewController.TouchHandler mTouchHandler;
     protected ConfigurationController mConfigurationController;
     protected SysuiStatusBarStateController mStatusBarStateController;
@@ -575,7 +577,9 @@ public class NotificationPanelViewControllerBaseTest extends SysuiTestCase {
                 mKeyguardTransitionInteractor,
                 mDumpManager,
                 mKeyuardLongPressViewModel,
-                mKeyguardInteractor);
+                mKeyguardInteractor,
+                mTunerService,
+                mContext);
         mNotificationPanelViewController.initDependencies(
                 mCentralSurfaces,
                 null,
@@ -642,7 +646,8 @@ public class NotificationPanelViewControllerBaseTest extends SysuiTestCase {
                 mFeatureFlags,
                 mInteractionJankMonitor,
                 mShadeLog,
-                mCastController
+                mCastController,
+                mTunerService
         );
     }
 
