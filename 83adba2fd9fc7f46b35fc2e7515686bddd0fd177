@@ -16,6 +16,23 @@
       "message": "If this works, to me it seems good enough to go with for now. Other options for silent uninstall like device admin should be harmless to switch to in the future if we want.",
       "revId": "83adba2fd9fc7f46b35fc2e7515686bddd0fd177",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61360586_46de461c",
+        "filename": "services/core/java/com/android/server/pm/DeletePackageHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-19T17:03:41Z",
+      "side": 1,
+      "message": "Looks like it should return -1 if not found, so this seems fine",
+      "revId": "83adba2fd9fc7f46b35fc2e7515686bddd0fd177",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
