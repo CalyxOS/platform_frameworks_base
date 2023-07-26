@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23120d9_fb6415de",
+        "filename": "services/core/java/com/android/server/pm/ComputerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5157,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-26T17:54:07Z",
+      "side": 1,
+      "message": "This part isn\u0027t strictly needed since we do an equals check below, but it doesn\u0027t hurt either.",
+      "revId": "1631cfcf4288fcee2d3c45c97e0267c3db8cc326",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
