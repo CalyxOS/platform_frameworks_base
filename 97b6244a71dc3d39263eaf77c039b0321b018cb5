@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fbf553a_9ff7eaed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-26T17:52:28Z",
+      "side": 1,
+      "message": "https://github.com/guardianproject/orbot/issues/632",
+      "revId": "97b6244a71dc3d39263eaf77c039b0321b018cb5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
