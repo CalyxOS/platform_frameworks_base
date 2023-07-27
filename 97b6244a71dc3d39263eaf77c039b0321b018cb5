@@ -69,6 +69,24 @@
       "message": "Squashed",
       "revId": "97b6244a71dc3d39263eaf77c039b0321b018cb5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a7fb66_9f7c5188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-27T20:35:32Z",
+      "side": 1,
+      "message": "Lost partial authorship / credits, though.",
+      "parentUuid": "cbcb39b0_27dc7d4a",
+      "revId": "97b6244a71dc3d39263eaf77c039b0321b018cb5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
