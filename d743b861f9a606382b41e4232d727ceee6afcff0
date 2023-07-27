@@ -70,6 +70,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4199fd_01acef12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-07-27T21:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa7bc6a_ad3942e9",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1d90983_21db0ddd",
@@ -83,6 +101,24 @@
       "writtenOn": "2023-06-29T17:14:31Z",
       "side": 1,
       "message": "I\u0027d also move all of the code to a method and then just call that here.\n\nVariables should go at the top (pkg name, sig)\n\nShould specify that it\u0027s signature of the F-Droid version",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cebb911_34c116e8",
+        "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-07-27T21:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1d90983_21db0ddd",
       "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }

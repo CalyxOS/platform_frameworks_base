@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc6c772_9c21e058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-07-27T21:15:52Z",
+      "side": 1,
+      "message": "```frameworks/base/packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java:63: error: package lineageos.providers does not exist\nimport lineageos.providers.LineageSettings;```",
+      "revId": "62bc92522646ae4d3ca8ef91e016fa13bf132ae0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
