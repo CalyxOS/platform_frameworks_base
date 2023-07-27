@@ -33,6 +33,24 @@
       "message": "Oops, we need to add a continue line just above",
       "revId": "2f4b08c833cddb6f04db4e62127b63c2b75ba10d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a011228_cda78016",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-07-27T20:37:09Z",
+      "side": 1,
+      "message": "Added back the SecurityException since it is one and the catch block will now catch all exceptions",
+      "parentUuid": "37a61611_d603c574",
+      "revId": "2f4b08c833cddb6f04db4e62127b63c2b75ba10d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
