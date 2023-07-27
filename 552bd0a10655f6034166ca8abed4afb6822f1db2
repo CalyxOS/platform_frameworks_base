@@ -16,6 +16,24 @@
       "message": "Patchset 6 has an issue where the value of `adb shell settings get secure always_on_vpn_lockdown_whitelist` was modified to include Tor Browser or Briar, and those packages could potentially get stuck in the allowlist even after being uninstalled.\n\nPatchset 7 was uploaded to fix this.",
       "revId": "552bd0a10655f6034166ca8abed4afb6822f1db2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d4103b_b7957dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-27T20:15:22Z",
+      "side": 1,
+      "message": "...I put this comment on the wrong patch.",
+      "parentUuid": "bb5246e6_d405ea84",
+      "revId": "552bd0a10655f6034166ca8abed4afb6822f1db2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
