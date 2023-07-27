@@ -16,6 +16,24 @@
       "message": "https://github.com/guardianproject/orbot/issues/632",
       "revId": "97b6244a71dc3d39263eaf77c039b0321b018cb5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "694662e4_b425b111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-27T13:03:05Z",
+      "side": 1,
+      "message": "Tad explained that the Orbot UI may not reflect that it has been disconnected, but that any existing Orbot-facilitated connections in the main profile will be killed when the work profile\u0027s Orbot is stopped; that is a bug that is *not* related to this change or our original change. One way to test this *across* profiles is to start a long-running download in Chromium. You\u0027ll see when one Orbot stops, the download switches to \"pending\" briefly. (There are probably also entries in logs to indicate what\u0027s happening.)\n\nHowever, apparently with our change (just the original even, assuming the device doesn\u0027t crash or something), this will also be noticeable within the same profile, presumably if Orbot stops while Tor Browser is running, or the other way around.\n\nThis is all good to know, but the way I understand it, I don\u0027t think we need to adjust or hold back this patch or the original at the moment, since the alternative is having apps like Tor Browser not work *at all* when lockdown is on.",
+      "parentUuid": "2fbf553a_9ff7eaed",
+      "revId": "97b6244a71dc3d39263eaf77c039b0321b018cb5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
