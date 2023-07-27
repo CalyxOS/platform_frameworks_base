@@ -50,6 +50,24 @@
       "message": "We shouldn\u0027t throw an exception here, simply log - because it\u0027s not fatal at all.",
       "revId": "b7b0d9ecc72e88ceb97da2064a73817992ffc67a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a594d3_e5e5492c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-07-27T18:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05a50fc_83141ce9",
+      "revId": "b7b0d9ecc72e88ceb97da2064a73817992ffc67a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
