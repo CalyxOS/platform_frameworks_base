@@ -16,6 +16,23 @@
       "message": "This works and can be merged even without its accompanying change to the actual app label strings. In that situation, it\u0027s just a no-op.",
       "revId": "de8556ead8317bfe236c5160ffdbb5e702eec0b6",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94012d52_c25227b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-31T15:20:38Z",
+      "side": 1,
+      "message": "Said in the other part of this change, but I still think it\u0027s important to be able to differentiate between different work profiles apart from just briefcase colors.",
+      "revId": "de8556ead8317bfe236c5160ffdbb5e702eec0b6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
