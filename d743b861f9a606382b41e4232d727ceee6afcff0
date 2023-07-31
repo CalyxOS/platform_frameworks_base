@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa9a4144_61fc9861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-07-31T20:56:47Z",
+      "side": 1,
+      "message": "We don\u0027t already have a prop for this IIRC, but we talked about doing something like 16518: Mirror TRUST_RESTRICT_USB setting to sysprop | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/16518 for garlic level as well if needed, this\u0027d be a good use-case.",
+      "parentUuid": "cb96ba1c_3a549ce7",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1d90983_21db0ddd",
         "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
         "patchSetId": 3
