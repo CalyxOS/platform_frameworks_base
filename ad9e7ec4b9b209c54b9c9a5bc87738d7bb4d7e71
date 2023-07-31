@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d915a85e_0615d070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-31T15:18:46Z",
+      "side": 1,
+      "message": "This was merged in LineageOS. I\u0027ve also been using it for months on my daily driver, never encountered any issues.",
+      "revId": "ad9e7ec4b9b209c54b9c9a5bc87738d7bb4d7e71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
