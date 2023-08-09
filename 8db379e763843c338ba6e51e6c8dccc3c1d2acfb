@@ -16,6 +16,24 @@
       "message": "Could not perform action: Failed to submit 1 change due to the following problems:\nChange 18742: Depends on change that was not submitted. Commit 8db379e763843c338ba6e51e6c8dccc3c1d2acfb depends on commit 0c0d251edfa35e460c952b1eff76b5db731c8eba which cannot be merged. Is the change of this commit not visible to \u0027chirayudesai\u0027 or was it deleted?",
       "revId": "8db379e763843c338ba6e51e6c8dccc3c1d2acfb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16f07f7_182032aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-09T08:01:02Z",
+      "side": 1,
+      "message": "Pushed upstream branch and it worked.",
+      "parentUuid": "754f35a9_ba5cd9f7",
+      "revId": "8db379e763843c338ba6e51e6c8dccc3c1d2acfb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
