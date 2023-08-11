@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="global_action_panic">Panická spúšť</string>
+    <string name="global_action_panic">Spúšťač \"paniky\"</string>
 </resources>
