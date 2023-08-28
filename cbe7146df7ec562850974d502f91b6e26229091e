@@ -16,6 +16,24 @@
       "message": "We could see if this helps, and if it doesn\u0027t, we can always bring it back. IMO we don\u0027t necessarily need to verify it ourselves, although we could try.\n\nI am wondering if work profiles still in the process of provisioning might be considered \"stopped\" so not able to get online. I haven\u0027t verified but I don\u0027t think we have many users who will be adversely impacted by doing this.",
       "revId": "cbe7146df7ec562850974d502f91b6e26229091e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5136eb_3eb4606e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-28T12:36:16Z",
+      "side": 1,
+      "message": "Agreed.\n\nGiven that it\u0027s enterprise hard to test stuff, this would be the fastest way to have users test.",
+      "parentUuid": "59307a33_4ed9309f",
+      "revId": "cbe7146df7ec562850974d502f91b6e26229091e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
