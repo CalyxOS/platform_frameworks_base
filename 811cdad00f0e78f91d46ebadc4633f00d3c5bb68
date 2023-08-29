@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54be3a27_c7831c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-29T19:26:05Z",
+      "side": 1,
+      "message": "I tested it working prior to PS7 which was only a rebase.",
+      "revId": "811cdad00f0e78f91d46ebadc4633f00d3c5bb68",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
