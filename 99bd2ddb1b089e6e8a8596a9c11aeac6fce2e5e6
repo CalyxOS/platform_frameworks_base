@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543d4699_2868e2d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000098
+      },
+      "writtenOn": "2023-08-29T15:38:32Z",
+      "side": 1,
+      "message": "Should fix https://github.com/LSPosed/LSPosed/issues/2638. Not using CalyxOS myself so cannot test, but code should be reasonable.",
+      "revId": "99bd2ddb1b089e6e8a8596a9c11aeac6fce2e5e6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
