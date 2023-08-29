@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3062de18_a3d7c429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-29T20:38:45Z",
+      "side": 1,
+      "message": "Without this patch, if the secondary user has a secure lock, apps like Chromium in the work profile of that secondary user will crash, if I recall correctly, since the profile is not decrypted (since it couldn\u0027t be, since it was attempted at the wrong time). That is not happening, so this must still be working.",
+      "revId": "903ce7ac84cb4f8820d00c1732077afe0a65dd0c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
