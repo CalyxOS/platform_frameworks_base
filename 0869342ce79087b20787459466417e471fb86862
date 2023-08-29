@@ -69,6 +69,24 @@
       "parentUuid": "4ff5440e_c2d55124",
       "revId": "0869342ce79087b20787459466417e471fb86862",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db76d8c0_4e7665e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-29T19:30:48Z",
+      "side": 1,
+      "message": "I definitely want that outcome, too, although we\u0027ve also gotten feedback from users that they *do not* want apps to start running after they\u0027ve force-stopped them.\n\nFor what it\u0027s worth, this is something that spontaneously happens already, so I guess adding one more thing that could cause it isn\u0027t the worst. As far as I know, the app is started in a limited capacity anyway.\n\n(Separately, we should figure out a simple solution for users who want to ensure that apps aren\u0027t running without having the apps removed the apps from the launcher or homescreen like Hide does.)\n\n(This comment chain can potentially be Ack\u0027d)",
+      "parentUuid": "ea72c0bd_17badaec",
+      "revId": "0869342ce79087b20787459466417e471fb86862",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
