@@ -16,6 +16,24 @@
       "message": "Looks like it\u0027s actually *not* working. I have this applied on my daily driver, and when tapping on the notification, it tries to start the unlock activity in user 0. No idea what\u0027s wrong since I could have sworn it worked before. I\u0027ll mess with this on a test device.",
       "revId": "62176f6ca2e939778cc33b967593d2722122ff76",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53869274_d3226ca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-29T20:59:55Z",
+      "side": 1,
+      "message": "Tapping on an app to bring up the unlock prompt and unlocking that way *does* work. I *think* that was broken before this change too. Getting the notification to show the prompt in the parent user on tap is a work in progress now...",
+      "parentUuid": "64160e58_64bf5e57",
+      "revId": "62176f6ca2e939778cc33b967593d2722122ff76",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
