@@ -69,6 +69,42 @@
       "parentUuid": "9a14b14b_61458a77",
       "revId": "ef1c68e499e9e927db62684aaf9b729ace72b5b0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6589d5_fb755b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-30T22:32:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76378c4e_b1a64890",
+      "revId": "ef1c68e499e9e927db62684aaf9b729ace72b5b0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874cee64_159b6be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-30T22:32:19Z",
+      "side": 1,
+      "message": "Testing with safetynet, but that may be broken in general, need to investigate separately.",
+      "parentUuid": "c5f331c4_c0220ae1",
+      "revId": "ef1c68e499e9e927db62684aaf9b729ace72b5b0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
