@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d46bb9_0f8bdd29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-30T23:02:56Z",
+      "side": 1,
+      "message": "18661: fixup! Set FakeStore as Aurora Store installer package name | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/18661 didn\u0027t build.",
+      "revId": "26668a036c5f66d94f6acb3a751d1efd7cb8d421",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
