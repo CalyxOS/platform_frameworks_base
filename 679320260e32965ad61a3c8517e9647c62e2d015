@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e6c9c0_8b0dd5c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-30T17:56:53Z",
+      "side": 1,
+      "message": "Made an untested change of `UserHandle.myUserId()` to `getCurrentUser()` in a couple places, need to verify it builds and works",
+      "revId": "679320260e32965ad61a3c8517e9647c62e2d015",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

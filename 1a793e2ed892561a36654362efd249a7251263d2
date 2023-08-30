@@ -16,6 +16,24 @@
       "message": "This explains what the code below is doing, literally, which seems less useful than why it\u0027s doing it.\n\nThe goal is to use the child profile\u0027s own value for \"lock after screen timeout\" if it has one. If it doesn\u0027t have one, we want to behave exactly as always. The same is true if it\u0027s not a child profile at all.\n\nProbably update the comments to say something like that, and/or restructure this to be clearer.",
       "revId": "1a793e2ed892561a36654362efd249a7251263d2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b7ffc6_f36fecfc",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-30T17:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296284f9_5fc79f66",
+      "revId": "1a793e2ed892561a36654362efd249a7251263d2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
