@@ -5155,7 +5155,7 @@ public class ComputerEngine implements Computer {
 
         InstallSource installSource = ps.getInstallSource();
         if (installSource != null && installSource.installerPackageName != null
-                && mSettings.getPackage(PACKAGE_PLAY_STORE) != null
+                && mSettings.getPackage(PLAY_STORE) != null
                 && callingUid != Process.SYSTEM_UID
                 && (AURORA_STORE.equals(installSource.installerPackageName)
                 || AURORA_SERVICES.equals(installSource.installerPackageName))) {
