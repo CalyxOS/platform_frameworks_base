@@ -34,6 +34,24 @@
       "parentUuid": "64160e58_64bf5e57",
       "revId": "62176f6ca2e939778cc33b967593d2722122ff76",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa624aa_b86dd87c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-08-30T14:12:13Z",
+      "side": 1,
+      "message": "Tapping the unlock notification now works properly. PendingIntent starts the activity in the creating user (in this case system, so user 0) unless otherwise directed. Resolved by using getActivityAsUser.",
+      "parentUuid": "53869274_d3226ca8",
+      "revId": "62176f6ca2e939778cc33b967593d2722122ff76",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
