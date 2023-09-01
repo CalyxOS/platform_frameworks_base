@@ -36,6 +36,23 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6d55e3_008231eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-01T18:32:56Z",
+      "side": 1,
+      "message": "There could be a toggle for this.\n\nEasiest way would be sysprop set via Settings, read here.\n\n",
+      "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62138a61_88823bf5",
