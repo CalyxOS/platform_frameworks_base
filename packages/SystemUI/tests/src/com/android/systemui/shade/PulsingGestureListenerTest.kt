@@ -71,6 +71,8 @@ class PulsingGestureListenerTest : SysuiTestCase() {
     @Mock
     private lateinit var shadeLogger: ShadeLogger
     @Mock
+    private lateinit var powerManager: PowerManager
+    @Mock
     private lateinit var userTracker: UserTracker
 
     private lateinit var tunableCaptor: ArgumentCaptor<Tunable>
@@ -88,9 +90,11 @@ class PulsingGestureListenerTest : SysuiTestCase() {
                 ambientDisplayConfiguration,
                 statusBarStateController,
                 shadeLogger,
+                powerManager,
                 userTracker,
                 tunerService,
-                dumpManager
+                dumpManager,
+                mContext
         )
         whenever(dockManager.isDocked).thenReturn(false)
     }
