@@ -28,6 +28,7 @@ import android.testing.AndroidTestingRunner
 import androidx.test.filters.SmallTest
 
 import com.android.systemui.SysuiTestCase
+import com.android.systemui.flags.FeatureFlags
 import com.android.systemui.screenshot.ScreenshotController.SaveImageInBackgroundData
 import com.android.systemui.screenshot.ScreenshotNotificationSmartActionsProvider.ScreenshotSmartActionType
 import com.android.systemui.util.mockito.any
@@ -45,11 +46,14 @@ import org.mockito.Mockito
 @SmallTest
 @RunWith(AndroidTestingRunner::class)
 class SaveImageInBackgroundTaskTest : SysuiTestCase() {
+    private val featureFlags = mock<FeatureFlags>()
     private val imageExporter = mock<ImageExporter>()
     private val smartActions = mock<ScreenshotSmartActions>()
     private val saveImageData = SaveImageInBackgroundData()
     private val sharedTransitionSupplier =
         mock<Supplier<ScreenshotController.SavedImageData.ActionTransition>>()
+    private val screenshotNotificationSmartActionsProvider =
+        mock<ScreenshotNotificationSmartActionsProvider>()
     private val testScreenshotId: String = "testScreenshotId"
     private val testBitmap = mock<Bitmap>()
     private val testUser = UserHandle.getUserHandleForUid(0)
@@ -85,10 +89,12 @@ class SaveImageInBackgroundTaskTest : SysuiTestCase() {
     private val saveImageTask =
         SaveImageInBackgroundTask(
             mContext,
+            featureFlags,
             imageExporter,
             smartActions,
             saveImageData,
             sharedTransitionSupplier,
+            screenshotNotificationSmartActionsProvider,
         )
 
     @Before
