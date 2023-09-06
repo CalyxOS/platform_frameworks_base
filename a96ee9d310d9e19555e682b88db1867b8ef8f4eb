@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fbfbec_399dc2ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-09-06T20:19:06Z",
+      "side": 1,
+      "message": "I guess we might as well allow some time for the change that this reverts to be live to see if it does help anybody. This is why I\u0027m putting -2 for now.",
+      "revId": "a96ee9d310d9e19555e682b88db1867b8ef8f4eb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
