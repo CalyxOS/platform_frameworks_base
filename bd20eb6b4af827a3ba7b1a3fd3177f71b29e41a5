@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4314f2f8_d0871226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-06T23:30:31Z",
+      "side": 1,
+      "message": "This is a rabbit hole.",
+      "revId": "bd20eb6b4af827a3ba7b1a3fd3177f71b29e41a5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
