@@ -16,6 +16,24 @@
       "message": "squash my fixup",
       "revId": "d76a05ef5c31c57c990f1cb82150dac6eba39da4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c5c76d_6402616a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-08T14:15:38Z",
+      "side": 1,
+      "message": "It\u0027ll be squashed when merged and rebased on that.",
+      "parentUuid": "97f7ec48_2c053575",
+      "revId": "d76a05ef5c31c57c990f1cb82150dac6eba39da4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
