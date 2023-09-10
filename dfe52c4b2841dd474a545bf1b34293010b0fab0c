@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8e35e6_118e11d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000098
+      },
+      "writtenOn": "2023-09-10T03:14:22Z",
+      "side": 1,
+      "message": "Cannot test calyxOS as it doesn\u0027t support my device(kebab), but i tested it on crdroid which also has this issue and works.",
+      "revId": "dfe52c4b2841dd474a545bf1b34293010b0fab0c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
