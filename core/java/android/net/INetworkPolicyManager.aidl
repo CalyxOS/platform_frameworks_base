@@ -86,4 +86,5 @@ interface INetworkPolicyManager {
     void applyRestore(in byte[] payload, int user);
 
     Bundle getUidsAllowedTransports();
+    void notifyDenylistChanged(in int[] uidsAdded, in int[] uidsRemoved);
 }
