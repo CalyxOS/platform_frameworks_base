@@ -205,6 +205,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.BestClock;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerExecutor;
@@ -1178,7 +1179,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     }
 
     @GuardedBy("mUidRulesFirstLock")
-    public void sendUidsAllowedTransportsUL() {
+    private void sendUidsAllowedTransportsUL() {
         final int size = mUidPolicy.size();
         final int[] uids = new int[size];
         final long[] allowedTransportsPacked = new long[size];
@@ -1188,7 +1189,34 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             uids[i] = uid;
             allowedTransportsPacked[i] = getAllowedTransportsPackedForUidPolicy(policy);
         }
-        mConnManager.setUidsAllowedTransports(uids, allowedTransportsPacked);
+        dispatchUidsAllowedTransportsUL(uids, allowedTransportsPacked);
+    }
+
+    @GuardedBy("mUidRulesFirstLock")
+    private void dispatchUidsAllowedTransportsUL(@NonNull final int[] uids,
+            @NonNull final long[] transports) {
+        final int length = mListeners.beginBroadcast();
+        for (int i = 0; i < length; i++) {
+            final INetworkPolicyListener listener = mListeners.getBroadcastItem(i);
+            dispatchUidsAllowedTransportsChanged(listener, uids, transports);
+        }
+        mListeners.finishBroadcast();
+    }
+
+    public Bundle getUidsAllowedTransports() {
+        final Bundle bundle = new Bundle();
+        final int size = mUidPolicy.size();
+        final int[] uids = new int[size];
+        final long[] allowedTransports = new long[size];
+        for (int i = 0; i < size; i++) {
+            final int uid = mUidPolicy.keyAt(i);
+            final int policy = mUidPolicy.valueAt(i);
+            uids[i] = uid;
+            allowedTransports[i] = getAllowedTransportsPackedForUidPolicy(policy);
+        }
+        bundle.putIntArray("uids", uids);
+        bundle.putLongArray("transports", allowedTransports);
+        return bundle;
     }
 
     public CountDownLatch networkScoreAndNetworkManagementServiceReady() {
@@ -3232,7 +3260,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         final long allowedTransportsPacked = getAllowedTransportsPackedForUidPolicy(policy);
 
         if (lastAllowedTransportsPacked != allowedTransportsPacked) {
-            mConnManager.setUidsAllowedTransports(new int[] { uid },
+            dispatchUidsAllowedTransportsUL(new int[] { uid },
                     new long[] { allowedTransportsPacked });
         }
 
@@ -5603,6 +5631,15 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    private void dispatchUidsAllowedTransportsChanged(INetworkPolicyListener listener, int[] uids,
+            long[] allowedTransports) {
+        try {
+            listener.onAllowedTransportsChanged(uids, allowedTransports);
+        } catch (RemoteException ignored) {
+            // Ignore if there is an error sending the callback to the client.
+        }
+    }
+
     private void dispatchSubscriptionOverride(INetworkPolicyListener listener, int subId,
             int overrideMask, int overrideValue, int[] networkTypes) {
         try {
@@ -5711,9 +5748,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     final Boolean notifyApp = (Boolean) msg.obj;
                     // First notify internal listeners...
                     final int length = mListeners.beginBroadcast();
+                    final int[] uids = new int[] { uid };
+                    final long[] allowedTransports =
+                            new long[] { getAllowedTransportsPackedForUidPolicy(policy) };
                     for (int i = 0; i < length; i++) {
                         final INetworkPolicyListener listener = mListeners.getBroadcastItem(i);
                         dispatchUidPoliciesChanged(listener, uid, policy);
+                        dispatchUidsAllowedTransportsChanged(listener, uids, allowedTransports);
                     }
                     mListeners.finishBroadcast();
                     // ...then apps listening to ACTION_RESTRICT_BACKGROUND_CHANGED
