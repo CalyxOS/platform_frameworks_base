@@ -580,6 +580,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     final SparseIntArray mUidFirewallRestrictedModeRules = new SparseIntArray();
     @GuardedBy("mUidRulesFirstLock")
     final SparseIntArray mUidFirewallLowPowerStandbyModeRules = new SparseIntArray();
+    @GuardedBy("mDisallowedUidsDenylist")
+    final Set<Integer> mDisallowedUidsDenylist = new ArraySet<Integer>();
 
     /** Set of states for the child firewall chains. True if the chain is active. */
     @GuardedBy("mUidRulesFirstLock")
@@ -1217,6 +1219,18 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         bundle.putIntArray("uids", uids);
         bundle.putLongArray("transports", allowedTransports);
         return bundle;
+    }
+
+    public void notifyDenylistChanged(@NonNull final int[] uidsAdded,
+            @NonNull final int[] uidsRemoved) {
+        synchronized (mDisallowedUidsDenylist) {
+            for (final int uid : uidsAdded) {
+                mDisallowedUidsDenylist.add(uid);
+            }
+            for (final int uid : uidsRemoved) {
+                mDisallowedUidsDenylist.remove(uid);
+            }
+        }
     }
 
     public CountDownLatch networkScoreAndNetworkManagementServiceReady() {
@@ -6391,8 +6405,13 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         mStatLogger.logDurationStat(Stats.IS_UID_NETWORKING_BLOCKED, startTime);
 
-        return blockedReasons != BLOCKED_REASON_NONE
-                || mConnManager.isUidCurrentlyDisallowedByPolicy(uid);
+        if (blockedReasons != BLOCKED_REASON_NONE) {
+            return true;
+        } else {
+            synchronized (mDisallowedUidsDenylist) {
+                return mDisallowedUidsDenylist.contains(uid);
+            }
+        }
     }
 
     @Override

@@ -410,6 +410,17 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
+    public void notifyDenylistChanged(@NonNull int[] uidsAdded, @NonNull int[] uidsRemoved) {
+        try {
+            mService.notifyDenylistChanged(uidsAdded, uidsRemoved);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /** @hide */
     @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.P, trackingBug = 115609023)
     public void registerListener(INetworkPolicyListener listener) {
         try {
