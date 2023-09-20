@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f8bbcf_2ce89273",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-09-20T21:52:44Z",
+      "side": 1,
+      "message": "Not sure if this will be needed...",
+      "revId": "3dfb74b97aeb4bdeb36f41f880765b935a82107a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
