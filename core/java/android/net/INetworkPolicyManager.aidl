@@ -20,6 +20,7 @@ import android.net.INetworkPolicyListener;
 import android.net.Network;
 import android.net.NetworkPolicy;
 import android.net.NetworkTemplate;
+import android.os.Bundle;
 import android.telephony.SubscriptionPlan;
 
 /**
@@ -83,4 +84,6 @@ interface INetworkPolicyManager {
 
     byte[] getBackupPayload(int user);
     void applyRestore(in byte[] payload, int user);
+
+    Bundle getUidsAllowedTransports();
 }
