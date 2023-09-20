@@ -252,6 +252,7 @@ package android.net {
 
   public static interface NetworkPolicyManager.NetworkPolicyCallback {
     method public default void onUidBlockedReasonChanged(int, int);
+    method public default void onUidsAllowedTransportsChanged(@NonNull int[], @NonNull long[]);
   }
 
   public class NetworkWatchlistManager {
