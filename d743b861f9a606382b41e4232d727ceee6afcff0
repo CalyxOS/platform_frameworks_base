@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d79ab1cc_ac6098ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2023-09-25T07:22:24Z",
+      "side": 1,
+      "message": "Fine to do this with Lineage SDK for now? or do we want to add the prop first then proceed?",
+      "parentUuid": "fa9a4144_61fc9861",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1d90983_21db0ddd",
         "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
         "patchSetId": 3
