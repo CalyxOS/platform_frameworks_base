@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f740434b_7fcbd026",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-09-25T13:12:20Z",
+      "side": 1,
+      "message": "Please note, the only reason it is acceptable to throw this exception is because we handle it in the catch block right here in this method. It\u0027s a bit confusing and unconventional, but boils down to a code style choice. It has been marked as tested and working as-is.",
+      "revId": "4e769c52670a657fbf2d69eb5b3d7543fa1ec5c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
