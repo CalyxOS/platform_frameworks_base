@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea238595_4ba6dec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-25T10:14:08Z",
+      "side": 1,
+      "message": "Either way is fine. If SDK works, then we can directly read that.\n\nIf it doesn\u0027t, then we do it indirectly via that mirrored prop.",
+      "parentUuid": "d79ab1cc_ac6098ca",
+      "revId": "d743b861f9a606382b41e4232d727ceee6afcff0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1d90983_21db0ddd",
         "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
         "patchSetId": 3
