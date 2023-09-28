@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7437bd_bca166c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14666f3a_32740eac",
+      "revId": "ad076bc76579ec4558c6b8e7deaa074bb7adbbc9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80fa5bfb_48d10e6e",
