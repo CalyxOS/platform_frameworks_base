@@ -16,6 +16,24 @@
       "message": "I guess we might as well allow some time for the change that this reverts to be live to see if it does help anybody. This is why I\u0027m putting -2 for now.",
       "revId": "a96ee9d310d9e19555e682b88db1867b8ef8f4eb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6f28d2_a61f19c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:27:45Z",
+      "side": 1,
+      "message": "Based on comments on the intune gitlab issue, it\u0027s inconclusive.\n\nNot working for one, original reporter couldn\u0027t test.",
+      "parentUuid": "45fbfbec_399dc2ce",
+      "revId": "a96ee9d310d9e19555e682b88db1867b8ef8f4eb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
