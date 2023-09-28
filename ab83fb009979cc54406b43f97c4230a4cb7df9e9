@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ec98c4_626abcd3",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ImageExporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:15:58Z",
+      "side": 0,
+      "message": "Image Unique ID                 : 32a0fab3-1371-481c-ac97-5083a248c18c",
+      "revId": "ab83fb009979cc54406b43f97c4230a4cb7df9e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "152d60ca_1b111452",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ImageExporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:15:58Z",
+      "side": 0,
+      "message": "Software                        : Android calyx_bluejay-userdebug 13 TQ3A.230901.001 eng.cdesai.20230928.190550 test-keys",
+      "revId": "ab83fb009979cc54406b43f97c4230a4cb7df9e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a575b5c_ba9f0c25",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ImageExporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:15:58Z",
+      "side": 0,
+      "message": "Sub Sec Time Original           : 088",
+      "revId": "ab83fb009979cc54406b43f97c4230a4cb7df9e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3507f10_6e63e954",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ImageExporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:15:58Z",
+      "side": 0,
+      "message": "Offset Time Original            : +05:30",
+      "revId": "ab83fb009979cc54406b43f97c4230a4cb7df9e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0dac9be_6156cd83",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ImageExporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-09-28T21:15:58Z",
+      "side": 0,
+      "message": "Also missing, from the end, a repeat of Date/Time.\n\nDate/Time Original              : 2023:09:29 02:43:00.088+05:30",
+      "revId": "ab83fb009979cc54406b43f97c4230a4cb7df9e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
