@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14666f3a_32740eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-09-28T21:23:05Z",
+      "side": 1,
+      "message": "I like it. Can we get rid of the embedded date and time, too? I think we should keep only the bare minimum to render the image.",
+      "revId": "ad076bc76579ec4558c6b8e7deaa074bb7adbbc9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
