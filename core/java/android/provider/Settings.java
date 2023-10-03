@@ -11098,7 +11098,7 @@ public final class Settings {
          */
         public static final String EXTRA_AUTOMATIC_POWER_SAVE_MODE =
                 "extra_automatic_power_save_mode";
-
+        
         /**
          * Whether tethering is allowed to use VPN upstreams. (0 = false, 1 = true)
          * Any changes here must also be reflected in:
