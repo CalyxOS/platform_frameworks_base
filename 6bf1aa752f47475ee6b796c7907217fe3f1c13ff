@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45065928_c7ac6924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-03T19:34:11Z",
+      "side": 1,
+      "message": "This revert isn\u0027t the same as the change below it. I don\u0027t know how to handle it, like if it should just be squashed with \"SystemUI: Move network traffic to the left\" or what is going on with it. If we skip both that change and this one, then we don\u0027t match 4.12.2.",
+      "revId": "6bf1aa752f47475ee6b796c7907217fe3f1c13ff",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
