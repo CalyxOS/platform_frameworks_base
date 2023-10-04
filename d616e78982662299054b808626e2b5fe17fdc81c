@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4958b3c6_9b68568a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:46:27Z",
+      "side": 1,
+      "message": "** Although it would be nice to not have unneeded code, we know this works; the comments here are optional to address as they can always be fixed up later, even post-14 if needed. **\n\nI am leaving this particular comment unresolved so it\u0027s not hidden.",
+      "revId": "d616e78982662299054b808626e2b5fe17fdc81c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
