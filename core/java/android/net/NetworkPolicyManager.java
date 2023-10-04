@@ -97,6 +97,9 @@ public class NetworkPolicyManager {
      */
     public static final int POLICY_REJECT_WIFI = 0x8000;
     /** Reject network usage on all networks
+     * Not used since 12, since we now use restricted-networking-mode
+     * However, since this was present in earlier builds, keep it around
+     * to help with migration, and as a reminder that this value should not be re-used.
      * @hide
      */
     public static final int POLICY_REJECT_ALL = 0x40000;
