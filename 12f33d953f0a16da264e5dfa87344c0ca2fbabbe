@@ -67,6 +67,74 @@
       "message": "Move to the migration change",
       "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073a0584_dc6eef32",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:28:02Z",
+      "side": 1,
+      "message": "If we are not supporting this list at all, we may not need this.",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97105d50_6402b887",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:28:02Z",
+      "side": 1,
+      "message": "I *think* this is still needed but not entirely sure. If it\u0027s not needed, then the changes to updateRestrictedModeForUidUL (for clearing calling identity) might not be needed either.",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993c173f_dfa8b78f",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 5008,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:28:02Z",
+      "side": 1,
+      "message": "This may not be necessary since we are not relying on this list.",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22518e6_c32147f9",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17834,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:28:02Z",
+      "side": 1,
+      "message": "This might not be necessary and might not even be functional now.",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
