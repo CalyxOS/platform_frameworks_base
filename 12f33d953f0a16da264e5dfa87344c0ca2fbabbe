@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011ff896_58bf28d0",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59bbf26b_1507b5c2",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe62be11_b8a190a9",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-04T23:22:12Z",
       "side": 1,
       "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52e90ff_522e056c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe62be11_b8a190a9",
       "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -52,6 +88,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b18833e_ee702831",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a135d67_f4f6d7fb",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63d602f8_0b3a8b97",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-10-04T23:22:12Z",
       "side": 1,
       "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499e1ebd_f9fde641",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:31:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63d602f8_0b3a8b97",
       "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
