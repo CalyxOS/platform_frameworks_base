@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bbf26b_1507b5c2",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:22:12Z",
+      "side": 1,
+      "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe62be11_b8a190a9",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:22:12Z",
+      "side": 1,
+      "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a135d67_f4f6d7fb",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:22:12Z",
+      "side": 1,
+      "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d602f8_0b3a8b97",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T23:22:12Z",
+      "side": 1,
+      "message": "Move to the migration change",
+      "revId": "12f33d953f0a16da264e5dfa87344c0ca2fbabbe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
