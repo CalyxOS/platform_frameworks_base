@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e687b0_5985a2a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-04T20:55:16Z",
+      "side": 1,
+      "message": "Removed as part of https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/19954",
+      "revId": "63a790843da874c7091bc5dfa0b3428736ea12ab",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
