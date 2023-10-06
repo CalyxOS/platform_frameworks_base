@@ -16,6 +16,24 @@
       "message": "Could skip this for 14",
       "revId": "dc959c3e65daf3012e23dbb1dcb594567419cea5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad2d394_e7de1ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-06T12:48:51Z",
+      "side": 1,
+      "message": "We\u0027d do this with   https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Updater/+/21910\n\nThat way all users would have updated to a build where F-Droid got converted.",
+      "parentUuid": "eb3b5dbe_4a6f4011",
+      "revId": "dc959c3e65daf3012e23dbb1dcb594567419cea5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
