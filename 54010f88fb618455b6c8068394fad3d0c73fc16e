@@ -33,6 +33,24 @@
       "message": "Both ver.buildFingerprint and ver.fingerprint are the same values in the end right? Nothing wrong with that just confusing :)",
       "revId": "54010f88fb618455b6c8068394fad3d0c73fc16e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbc9003_c946cfb2",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2258,
+      "author": {
+        "id": 1000054
+      },
+      "writtenOn": "2023-10-08T01:25:08Z",
+      "side": 1,
+      "message": "well - ver.fingerprint is ofc the digest of all the partition values but it also has the Build.VERSION.INCREMENTAL in it to make it unique",
+      "parentUuid": "5084ecc4_5a7815b8",
+      "revId": "54010f88fb618455b6c8068394fad3d0c73fc16e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
