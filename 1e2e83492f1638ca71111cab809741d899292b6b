@@ -16,6 +16,24 @@
       "message": "The specific issue targeted by the change to this file was resolved upstream in 14 via \"Show confirm credential activity on parent when unpausing work.\" (commit f3ad58a0609abb639c8c75cecf7e44a8128c19a3, Change-Id I97f4ecea33933fe7c404330a056cb274cfc1ed0a)\n\nThe issues addressed in the other files were not resolved in 14.\n\nNot sure if we want to backport their fix to 13 and have only the other file changes remain in this change?",
       "revId": "1e2e83492f1638ca71111cab809741d899292b6b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a1ce99_4605ee86",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-10T19:35:45Z",
+      "side": 1,
+      "message": "Done, now this change is able to be the same on the android14 branch as it is here.",
+      "parentUuid": "2c688e08_52401150",
+      "revId": "1e2e83492f1638ca71111cab809741d899292b6b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
