@@ -14054,6 +14054,7 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
     @Override
     public boolean isProvisioningAllowed(String action, String packageName) {
         Objects.requireNonNull(packageName);
+
         final CallerIdentity caller = getCallerIdentity();
         final long ident = mInjector.binderClearCallingIdentity();
         try {
@@ -14072,14 +14073,16 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
     @Override
     public int checkProvisioningPrecondition(String action, String packageName) {
         Objects.requireNonNull(packageName, "packageName is null");
-        final CallerIdentity caller = getCallerIdentity();
+
         Preconditions.checkCallAuthorization(
                 hasCallingOrSelfPermission(permission.MANAGE_PROFILE_AND_DEVICE_OWNERS));
 
-        return checkProvisioningPreconditionSkipPermission(action, packageName, caller.getUserId());
+        return checkProvisioningPreconditionSkipPermission(action, packageName,
+                mInjector.userHandleGetCallingUserId());
     }
+
     private int checkProvisioningPreconditionSkipPermission(String action,
-            String packageName, int userId) {
+            String packageName, @UserIdInt int callingUserId) {
         if (!mHasFeature) {
             logMissingFeatureAction("Cannot check provisioning for action " + action);
             return STATUS_DEVICE_ADMIN_NOT_SUPPORTED;
@@ -14087,12 +14090,12 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
         if (!isProvisioningAllowed()) {
             return STATUS_PROVISIONING_NOT_ALLOWED_FOR_NON_DEVELOPER_USERS;
         }
-        final int code = checkProvisioningPreConditionSkipPermissionNoLog(
-                action, packageName, userId);
+        final int code = checkProvisioningPreConditionSkipPermissionNoLog(action, packageName,
+                callingUserId);
         if (code != STATUS_OK) {
             Slogf.d(LOG_TAG, "checkProvisioningPreCondition(" + action + ", " + packageName
                     + ") failed: "
-                    + computeProvisioningErrorString(code, mInjector.userHandleGetCallingUserId()));
+                    + computeProvisioningErrorString(code, callingUserId));
         }
         return code;
     }
@@ -14115,14 +14118,14 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
     }
 
     private int checkProvisioningPreConditionSkipPermissionNoLog(String action,
-            String packageName, int userId) {
+            String packageName, @UserIdInt int callingUserId) {
         if (action != null) {
             switch (action) {
                 case DevicePolicyManager.ACTION_PROVISION_MANAGED_PROFILE:
-                    return checkManagedProfileProvisioningPreCondition(packageName, userId);
+                    return checkManagedProfileProvisioningPreCondition(packageName, callingUserId);
                 case DevicePolicyManager.ACTION_PROVISION_MANAGED_DEVICE:
                 case DevicePolicyManager.ACTION_PROVISION_FINANCED_DEVICE:
-                    return checkDeviceOwnerProvisioningPreCondition(userId);
+                    return checkDeviceOwnerProvisioningPreCondition(callingUserId);
             }
         }
         throw new IllegalArgumentException("Unknown provisioning action " + action);
