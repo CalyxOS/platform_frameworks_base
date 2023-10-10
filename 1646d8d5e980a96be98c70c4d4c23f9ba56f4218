@@ -16,6 +16,24 @@
       "message": "Oops, this commit message needs cleanup still.",
       "revId": "1646d8d5e980a96be98c70c4d4c23f9ba56f4218",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e410e140_1fd2176b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-10T19:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e91c955_523312c2",
+      "revId": "1646d8d5e980a96be98c70c4d4c23f9ba56f4218",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
