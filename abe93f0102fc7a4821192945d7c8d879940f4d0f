@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e1119f_150345bb",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-10T20:25:21Z",
+      "side": 1,
+      "message": "We don\u0027t have getProfileParentIdUnchecked. Build fails",
+      "revId": "abe93f0102fc7a4821192945d7c8d879940f4d0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
