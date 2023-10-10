@@ -16,6 +16,24 @@
       "message": "Resolved in 14 via \"Fix work profile with unified challenge in HSUM\" (commit 85a0ffe9767b415dab2dd33aa8ae5452a095cd68, Change-Id I8dc9f5c4aed3d2eaa0104e526d7cdaa7edf92770).\n\nMaybe we want to backport that fix to 13 instead of using this.",
       "revId": "6bedd7392b9cebbcebb7b3488ce9a014e7830a2c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8abbf8_7d80158e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-10T20:55:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81ad6b9b_a3da71fd",
+      "revId": "6bedd7392b9cebbcebb7b3488ce9a014e7830a2c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
