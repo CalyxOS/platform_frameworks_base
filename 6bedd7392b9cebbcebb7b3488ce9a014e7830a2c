@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ad6b9b_a3da71fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-10T18:45:06Z",
+      "side": 1,
+      "message": "Resolved in 14 via \"Fix work profile with unified challenge in HSUM\" (commit 85a0ffe9767b415dab2dd33aa8ae5452a095cd68, Change-Id I8dc9f5c4aed3d2eaa0104e526d7cdaa7edf92770).\n\nMaybe we want to backport that fix to 13 instead of using this.",
+      "revId": "6bedd7392b9cebbcebb7b3488ce9a014e7830a2c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
