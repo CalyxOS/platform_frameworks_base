@@ -54,6 +54,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982b7829_cdba5f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-11T23:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3449d4da_c20e7b32",
+      "revId": "54010f88fb618455b6c8068394fad3d0c73fc16e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5084ecc4_5a7815b8",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "well - ver.fingerprint is ofc the digest of all the partition values but it also has the Build.VERSION.INCREMENTAL in it to make it unique",
       "parentUuid": "5084ecc4_5a7815b8",
+      "revId": "54010f88fb618455b6c8068394fad3d0c73fc16e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c701157c_3bfedd78",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2258,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-11T23:35:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdbc9003_c946cfb2",
       "revId": "54010f88fb618455b6c8068394fad3d0c73fc16e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
