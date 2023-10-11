@@ -6431,11 +6431,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         try {
             mNetworkManager.setUidOnMeteredNetworkDenylist(uid, enable);
             mLogger.meteredDenylistChanged(uid, enable);
-            if (Process.isApplicationUid(uid)) {
-                final int sdkSandboxUid = Process.toSdkSandboxUid(uid);
-                mNetworkManager.setUidOnMeteredNetworkDenylist(sdkSandboxUid, enable);
-                mLogger.meteredDenylistChanged(sdkSandboxUid, enable);
-            }
         } catch (IllegalStateException e) {
             Log.wtf(TAG, "problem setting denylist (" + enable + ") rules for " + uid, e);
         } catch (RemoteException e) {
@@ -6448,11 +6443,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         try {
             mNetworkManager.setUidOnMeteredNetworkAllowlist(uid, enable);
             mLogger.meteredAllowlistChanged(uid, enable);
-            if (Process.isApplicationUid(uid)) {
-                final int sdkSandboxUid = Process.toSdkSandboxUid(uid);
-                mNetworkManager.setUidOnMeteredNetworkAllowlist(sdkSandboxUid, enable);
-                mLogger.meteredAllowlistChanged(sdkSandboxUid, enable);
-            }
         } catch (IllegalStateException e) {
             Log.wtf(TAG, "problem setting allowlist (" + enable + ") rules for " + uid, e);
         } catch (RemoteException e) {
@@ -6545,11 +6535,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             try {
                 mNetworkManager.setFirewallUidRule(chain, uid, rule);
                 mLogger.uidFirewallRuleChanged(chain, uid, rule);
-                if (Process.isApplicationUid(uid)) {
-                    final int sdkSandboxUid = Process.toSdkSandboxUid(uid);
-                    mNetworkManager.setFirewallUidRule(chain, sdkSandboxUid, rule);
-                    mLogger.uidFirewallRuleChanged(chain, sdkSandboxUid, rule);
-                }
             } catch (IllegalStateException e) {
                 Log.wtf(TAG, "problem setting firewall uid rules", e);
             } catch (RemoteException e) {
@@ -6617,9 +6602,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             Log.wtf(TAG, "problem resetting firewall uid rules for " + uid, e);
         } catch (RemoteException e) {
             // ignored; service lives in system_server
-        }
-        if (Process.isApplicationUid(uid)) {
-            resetUidFirewallRules(Process.toSdkSandboxUid(uid));
         }
     }
 
