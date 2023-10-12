@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a4ca9f_8f11b56a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T00:21:55Z",
+      "side": 1,
+      "message": "Functionally partially broken but setting should be fine.",
+      "revId": "c383c14d3099ca9c2ef3b55be8007ea42cc92550",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
