@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb986f3_05705dd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T00:09:28Z",
+      "side": 1,
+      "message": "I don\u0027t see the use of this either. It\u0027s very confusing, even. Could just skip",
+      "revId": "a6b871ee70600decf0cee4fd6679f5f62a165ce7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
