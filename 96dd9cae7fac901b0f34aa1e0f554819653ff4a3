@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23c5fba_00f0afa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T16:22:51Z",
+      "side": 1,
+      "message": "Ok for now, should try to switch to AOSP variant later though",
+      "revId": "96dd9cae7fac901b0f34aa1e0f554819653ff4a3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
