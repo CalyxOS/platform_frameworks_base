@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "401ba766_f7a64ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T01:12:57Z",
+      "side": 1,
+      "message": "To be moved to end of chain",
+      "revId": "6af66f38d0b8c54891b6f619dcc7b02b79a1c705",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
