@@ -16,6 +16,24 @@
       "message": "Should squash with https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/21790/2\n\nhopefully doesn\u0027t cause conflicts :sob:",
       "revId": "8098d5c148a6a4c8a17d9f4237311ffbcd53f088",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb998237_da993a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T02:36:35Z",
+      "side": 1,
+      "message": "Conflicts. :sob",
+      "parentUuid": "3ed9bcd6_7e2cc906",
+      "revId": "8098d5c148a6a4c8a17d9f4237311ffbcd53f088",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
