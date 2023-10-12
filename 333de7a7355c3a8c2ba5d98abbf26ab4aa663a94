@@ -33,6 +33,24 @@
       "message": "Tile works so we\u0027ll just skip this",
       "revId": "333de7a7355c3a8c2ba5d98abbf26ab4aa663a94",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78b4b2f_9dfb19b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T02:27:57Z",
+      "side": 1,
+      "message": "Patch removed",
+      "parentUuid": "e2ace0c4_c8af7f84",
+      "revId": "333de7a7355c3a8c2ba5d98abbf26ab4aa663a94",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
