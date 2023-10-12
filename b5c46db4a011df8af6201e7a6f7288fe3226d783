@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d3eb60_67b775fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T00:22:46Z",
+      "side": 1,
+      "message": "Black theme works, at least.",
+      "revId": "b5c46db4a011df8af6201e7a6f7288fe3226d783",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
