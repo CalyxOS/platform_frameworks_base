@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde48e8f_ee7c35ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T01:23:53Z",
+      "side": 1,
+      "message": "It\u0027s 20 (NONEXISTENT), but the below vibration works.",
+      "revId": "635c0a592c2cc3519e2340626e4112b8ba7210b2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
