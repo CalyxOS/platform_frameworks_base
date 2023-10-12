@@ -16,6 +16,24 @@
       "message": "I don\u0027t see the use of this either. It\u0027s very confusing, even. Could just skip",
       "revId": "a6b871ee70600decf0cee4fd6679f5f62a165ce7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28cf518_15fc0980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T00:16:23Z",
+      "side": 1,
+      "message": "But I don\u0027t feel that strongly about this to block it at this time.",
+      "parentUuid": "abb986f3_05705dd4",
+      "revId": "a6b871ee70600decf0cee4fd6679f5f62a165ce7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
