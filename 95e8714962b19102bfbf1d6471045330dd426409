@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0debef_a826d45c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T01:11:58Z",
+      "side": 1,
+      "message": "In theory we could skip this after stable6. But I\u0027m in no rush to do so.",
+      "revId": "95e8714962b19102bfbf1d6471045330dd426409",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
