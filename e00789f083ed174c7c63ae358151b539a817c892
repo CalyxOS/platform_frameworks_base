@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72048c7_7809e0dc",
+        "filename": "services/core/java/com/android/server/pm/ComputerEngine.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-12T16:17:33Z",
+      "side": 1,
+      "message": "This may not be needed anymore, but it won\u0027t hurt for now, would rather take it out in a fixup.",
+      "revId": "e00789f083ed174c7c63ae358151b539a817c892",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
