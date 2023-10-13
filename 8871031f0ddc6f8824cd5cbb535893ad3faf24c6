@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113fa1bd_43cbe935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-10-13T20:24:24Z",
+      "side": 1,
+      "message": "Moved to Settings SPA\nhttps://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/21638/13",
+      "revId": "8871031f0ddc6f8824cd5cbb535893ad3faf24c6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
