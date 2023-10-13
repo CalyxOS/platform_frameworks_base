@@ -372,6 +372,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private final QuickSettingsControllerImpl mQsController;
     private final NaturalScrollingSettingObserver mNaturalScrollingSettingObserver;
     private final TouchHandler mTouchHandler = new TouchHandler();
+
     private long mDownTime;
     private boolean mTouchSlopExceededBeforeDown;
     private float mOverExpansion;
