@@ -16,6 +16,24 @@
       "message": "Slog.e(TAG, \"startAssist\", e);",
       "revId": "fe0eda56ebe150cc7fb3bcdd15a49da0402a4fa7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7a4b55_585fdd6e",
+        "filename": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2288,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-10-13T20:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e76ed15_921dff7b",
+      "revId": "fe0eda56ebe150cc7fb3bcdd15a49da0402a4fa7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
