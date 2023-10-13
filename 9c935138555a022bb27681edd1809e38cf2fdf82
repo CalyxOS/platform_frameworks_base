@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e15ca1_c340975a",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/CentralSurfacesImpl.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2348,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-10-13T20:39:21Z",
+      "side": 1,
+      "message": "} else",
+      "range": {
+        "startLine": 2347,
+        "startChar": 12,
+        "endLine": 2348,
+        "endChar": 16
+      },
+      "revId": "9c935138555a022bb27681edd1809e38cf2fdf82",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
