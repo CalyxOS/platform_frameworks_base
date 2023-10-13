@@ -62,10 +62,11 @@ internal class PackageManagersImpl(
     private val iPackageManager by lazy { AppGlobals.getPackageManager() }
 
     override fun getPackageInfoAsUser(packageName: String, userId: Int): PackageInfo? =
-        getPackageInfoAsUser(packageName, 0, userId)
+        getPackageInfoAsUser(packageName, PackageManager.MATCH_UNINSTALLED_PACKAGES, userId)
 
     override fun getApplicationInfoAsUser(packageName: String, userId: Int): ApplicationInfo? =
-        PackageManager.getApplicationInfoAsUserCached(packageName, 0, userId)
+        PackageManager.getApplicationInfoAsUserCached(packageName,
+            PackageManager.MATCH_UNINSTALLED_PACKAGES.toLong(), userId)
 
     override fun isPackageInstalledAsUser(packageName: String, userId: Int): Boolean =
         getApplicationInfoAsUser(packageName, userId)?.hasFlag(ApplicationInfo.FLAG_INSTALLED)
