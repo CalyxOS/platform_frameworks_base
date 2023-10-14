@@ -34,6 +34,24 @@
       "parentUuid": "0dfd494e_b5481542",
       "revId": "da62330b5f833c67e5cd98925352576c7f389623",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2a381b_cf3b54ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-10-14T16:31:21Z",
+      "side": 1,
+      "message": "Unhide is available and functional, the entries below are the ones that aren\u0027t. Like app data usage, storage, open link by default, ...",
+      "parentUuid": "3b8ba4b0_dd0425eb",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
