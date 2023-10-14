@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfd494e_b5481542",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-10-14T00:25:47Z",
+      "side": 1,
+      "message": "To have each entry that would normally be available and functional when not hidden requires to add the `PackageManager.MATCH_UNINSTALLED_PACKAGES` to many different classes across Setting and frameworks. If we don\u0027t consider that wortwhile then I\u0027d suggest we abandon this and live with the fact that these will not be clickable or if they do open they don\u0027t change any of the settings.\nIn our case, the entries are available because we choose to be able to unhide from app info entry via settings -\u003e apps. Normally a separate UI would be implemented and call DevicePolicyManager. Otherwise, a user can install the app and the data would still be present.",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
