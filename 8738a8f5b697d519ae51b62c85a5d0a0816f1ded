@@ -16,6 +16,24 @@
       "message": "We need to squash this https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/366067/4 here and also pick https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/366068/5 next in the chain",
       "revId": "8738a8f5b697d519ae51b62c85a5d0a0816f1ded",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481aed13_6bbcd672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-14T15:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf2424b_ebd7d115",
+      "revId": "8738a8f5b697d519ae51b62c85a5d0a0816f1ded",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
