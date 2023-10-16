@@ -70,6 +70,23 @@
       "parentUuid": "fd2a381b_cf3b54ab",
       "revId": "da62330b5f833c67e5cd98925352576c7f389623",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb23973_07fcfb88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T17:31:01Z",
+      "side": 1,
+      "message": "Does this fix anything in its current state, or is the observed behavior known to be the same with and without this change right now?",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
