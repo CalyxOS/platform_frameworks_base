@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d97488_d99d8b67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T15:19:21Z",
+      "side": 1,
+      "message": "Works, and still needed; apps like Chromium, F-Droid in secondary user work profiles still do not launch without this, as described in the issues.",
+      "revId": "c01e5c559f48410d7763c0ba7c28c9eb33d61b29",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
