@@ -70,6 +70,24 @@
       "parentUuid": "ecd1860a_7fa096ff",
       "revId": "7af122c1684a8788ad5754cb28e28f47d8170c72",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6134d6dc_7c671193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T13:35:23Z",
+      "side": 1,
+      "message": "Oh, okay. I\u0027d thought we would be switching to it since we are going to be continuing to support Android 13 for a while going forward, but I guess the changes Android 13 will receive are going to be pretty minimal from now on anyway?",
+      "parentUuid": "41583124_71c4c593",
+      "revId": "7af122c1684a8788ad5754cb28e28f47d8170c72",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
