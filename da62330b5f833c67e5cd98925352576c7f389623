@@ -87,6 +87,41 @@
       "message": "Does this fix anything in its current state, or is the observed behavior known to be the same with and without this change right now?",
       "revId": "da62330b5f833c67e5cd98925352576c7f389623",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d463027_3e5c1d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-10-16T17:34:49Z",
+      "side": 1,
+      "message": "With current patch set I think ",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50528399_902059bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-10-16T17:34:49Z",
+      "side": 1,
+      "message": "As far as I could tell, it didn\u0027t fix anything with current patch set alone. With more changes to add MATCH_UNINSTALLED_PACKAGES in multiple locations in Settings, frameworks and permission module (at least) I could get most of the entries to be functional",
+      "parentUuid": "0cb23973_07fcfb88",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
