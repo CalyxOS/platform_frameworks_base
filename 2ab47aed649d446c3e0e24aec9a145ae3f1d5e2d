@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69cff910_e0eb4951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000054
+      },
+      "writtenOn": "2023-10-16T17:28:34Z",
+      "side": 1,
+      "message": "Thanks to google for keeping the old no longer code appinfo around for a giggle over raging devs 😊",
+      "revId": "2ab47aed649d446c3e0e24aec9a145ae3f1d5e2d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
