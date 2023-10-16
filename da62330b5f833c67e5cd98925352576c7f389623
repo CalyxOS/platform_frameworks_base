@@ -140,6 +140,24 @@
       "parentUuid": "3d463027_3e5c1d9f",
       "revId": "da62330b5f833c67e5cd98925352576c7f389623",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59048896_9c19011a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T17:38:18Z",
+      "side": 1,
+      "message": "Okay, thanks for looking into it. The referenced issue was just about being able to unhide work profile apps -- a user couldn\u0027t even get to the app info dashboard for the app at all. That issue looks like it\u0027s fixed in 14 out-of-the-box, without this change. However, 14 has the additional problems you mentioned, where you can\u0027t access certain sections. I think that\u0027s fine, and we can skip this, since the issue it was meant to fix was more serious and is no longer an issue.",
+      "parentUuid": "50528399_902059bc",
+      "revId": "da62330b5f833c67e5cd98925352576c7f389623",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
