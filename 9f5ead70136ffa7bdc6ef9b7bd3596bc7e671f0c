@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddb2186_528fe751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T15:03:27Z",
+      "side": 1,
+      "message": "Tested with App Manager in Owner and in a secondary user, before and after change. Works with change.",
+      "revId": "9f5ead70136ffa7bdc6ef9b7bd3596bc7e671f0c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
