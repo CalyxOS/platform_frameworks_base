@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e0c362_ebc68664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T15:32:19Z",
+      "side": 1,
+      "message": "Works and is still needed for the scenario described. (CalyxOS enables backup manager for all users. The commit message was tailored for submission to AOSP, where it sits idle.)",
+      "revId": "33c2d804059fffcd88d89348c4509bcd60d70279",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
