@@ -16,6 +16,24 @@
       "message": "Can\u0027t really test this without a way to set a PIN for a work profile other than the first one. `locksettings` refuses to do it because \"Profile uses unified challenge\", and launching Settings\u0027 Security activity e.g. using the app from F-Droid titled Activity Launcher (or with App Manager) doesn\u0027t work since everything refers to the first profile, without further patching.\n\nBut in any case, even though no one can likely benefit from this yet, it worked before and should work now.",
       "revId": "0c9fad5f0d83c4e6e8e8f09ebccecb2b52231fcd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ab72d0_97b60618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-16T18:30:08Z",
+      "side": 1,
+      "message": "How about\n\nuser 0 / Personal Settings -\u003e Security \u0026 Privacy -\u003e Device unlock -\u003e Fingerprint for work -\u003e Requires setting PIN first.\n\nSetting that PIN for work / fingerprint for work is functional here on 5.0.0\n\n\nYou\u0027re saying that doesn\u0027t work for multiple anymore? :-(",
+      "parentUuid": "ed963976_1488c8b2",
+      "revId": "0c9fad5f0d83c4e6e8e8f09ebccecb2b52231fcd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
