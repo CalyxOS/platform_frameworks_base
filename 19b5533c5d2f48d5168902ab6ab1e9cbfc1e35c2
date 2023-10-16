@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81661e7_3abf1df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-16T15:04:30Z",
+      "side": 1,
+      "message": "Before change, hidden apps don\u0027t appear in the list, as expected. After change, they do, along with the option to filter, but also doesn\u0027t show \"not installed for this user\" apps, as expected. Works.",
+      "revId": "19b5533c5d2f48d5168902ab6ab1e9cbfc1e35c2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
