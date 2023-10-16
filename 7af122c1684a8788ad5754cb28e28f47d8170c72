@@ -52,6 +52,24 @@
       "parentUuid": "13c0b6e3_777d92db",
       "revId": "7af122c1684a8788ad5754cb28e28f47d8170c72",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41583124_71c4c593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-16T13:32:38Z",
+      "side": 1,
+      "message": "Well, this rebase was never really meant to ship. It was just meant to ease porting to 14 (which it did)\n\nIt doesn\u0027t have much use anymore other than just making sure we ported all CalyxOS changes from 13 to 14.",
+      "parentUuid": "ecd1860a_7fa096ff",
+      "revId": "7af122c1684a8788ad5754cb28e28f47d8170c72",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
