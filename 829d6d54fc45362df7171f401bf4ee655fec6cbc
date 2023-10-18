@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2f3e5b7_44bcef86",
+        "filename": "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-18T21:33:35Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "7d65610c_0325b17e",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5c0b36_6fc663c4",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-18T21:33:35Z",
+      "side": 1,
+      "message": "Perhaps make this\n\n`  if (!Build.IS_DEBUGGABLE \u0026\u0026 isSystem) {`",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046cd881_aefb831b",
         "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
         "patchSetId": 1
@@ -31,6 +66,24 @@
       "writtenOn": "2023-10-18T21:29:13Z",
       "side": 1,
       "message": "I thought we wouldn\u0027t want this to affect debuggable builds, but it does.",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f41628_3ca12224",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-18T21:33:35Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "046cd881_aefb831b",
       "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
