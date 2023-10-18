@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d65610c_0325b17e",
+        "filename": "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T21:29:13Z",
+      "side": 1,
+      "message": "I think this logic is reversed.",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046cd881_aefb831b",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T21:29:13Z",
+      "side": 1,
+      "message": "I thought we wouldn\u0027t want this to affect debuggable builds, but it does.",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
