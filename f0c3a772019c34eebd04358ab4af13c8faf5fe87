@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9308c059_78a42cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T22:20:24Z",
+      "side": 1,
+      "message": "Working now, and not crashing, with new installs of user apps, upgrades, and same-version.",
+      "parentUuid": "3a042bef_8e4cf0ad",
+      "revId": "f0c3a772019c34eebd04358ab4af13c8faf5fe87",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61833b7a_f58e6660",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-18T22:00:04Z",
       "side": 1,
       "message": "`dataOwnerPs !\u003d null \u0026\u0026 dataOwnerPs.isSystem()`",
+      "range": {
+        "startLine": 2616,
+        "startChar": 61,
+        "endLine": 2616,
+        "endChar": 83
+      },
+      "revId": "f0c3a772019c34eebd04358ab4af13c8faf5fe87",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dce0230_4de9fae5",
+        "filename": "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2616,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T22:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61833b7a_f58e6660",
       "range": {
         "startLine": 2616,
         "startChar": 61,
