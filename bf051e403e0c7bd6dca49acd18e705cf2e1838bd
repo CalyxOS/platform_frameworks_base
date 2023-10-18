@@ -33,6 +33,41 @@
       "message": "Run in an actual `-user` build for a while.",
       "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d41a84_92c8c5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T22:22:22Z",
+      "side": 1,
+      "message": "...and actually test this in it.",
+      "parentUuid": "af280bd2_4f7c5e04",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c7e7c5_70bf693e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T22:22:22Z",
+      "side": 1,
+      "message": "Test that newer builds don\u0027t somehow get confused and reject existing system apps or APEX because the version code is the same!",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
