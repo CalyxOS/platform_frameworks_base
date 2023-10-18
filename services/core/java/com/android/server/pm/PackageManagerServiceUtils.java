@@ -1495,13 +1495,20 @@ public class PackageManagerServiceUtils {
      * Check and throw if the given before/after packages would be considered a
      * downgrade.
      */
-    public static void checkDowngrade(AndroidPackage before, PackageInfoLite after)
-            throws PackageManagerException {
+    public static void checkDowngrade(AndroidPackage before, PackageInfoLite after,
+            boolean isSystemAppDisallowedSameVersion) throws PackageManagerException {
         if (after.getLongVersionCode() < before.getLongVersionCode()) {
             throw new PackageManagerException(INSTALL_FAILED_VERSION_DOWNGRADE,
                     "Update version code " + after.versionCode + " is older than current "
                             + before.getLongVersionCode());
         } else if (after.getLongVersionCode() == before.getLongVersionCode()) {
+            if (isSystemAppDisallowedSameVersion) {
+                // Do not allow a system app to be installed if it is the same version code,
+                // in case it had a security fix without a version code increment.
+                throw new PackageManagerException(INSTALL_FAILED_VERSION_DOWNGRADE,
+                        "Update version code " + after.versionCode + " must be greater than "
+                                + before.getLongVersionCode() + " to upgrade a system app.");
+            }
             if (after.baseRevisionCode < before.getBaseRevisionCode()) {
                 throw new PackageManagerException(INSTALL_FAILED_VERSION_DOWNGRADE,
                         "Update base revision code " + after.baseRevisionCode
