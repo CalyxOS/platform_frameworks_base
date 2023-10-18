@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc668de6_ed322db7",
+        "filename": "services/core/java/com/android/server/pm/InstallPackageHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T21:58:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2f3e5b7_44bcef86",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a5c0b36_6fc663c4",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-10-18T21:33:35Z",
       "side": 1,
       "message": "Perhaps make this\n\n`  if (!Build.IS_DEBUGGABLE \u0026\u0026 isSystem) {`",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e45c34_3f0036ab",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T21:58:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a5c0b36_6fc663c4",
       "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -84,6 +120,24 @@
       "side": 1,
       "message": "Yes.",
       "parentUuid": "046cd881_aefb831b",
+      "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f57ed4_e4d76a1c",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerServiceUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T21:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f41628_3ca12224",
       "revId": "829d6d54fc45362df7171f401bf4ee655fec6cbc",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
