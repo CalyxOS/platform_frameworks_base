@@ -2618,7 +2618,8 @@ final class InstallPackageHelper {
                         dataOwnerPkg.isDebuggable())) {
                     // Downgrade is not permitted; a lower version of the app will not be allowed
                     try {
-                        PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite);
+                        PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite,
+                                dataOwnerPs.isSystem());
                     } catch (PackageManagerException e) {
                         String errorMsg = "Downgrade detected: " + e.getMessage();
                         Slog.w(TAG, errorMsg);
@@ -2636,7 +2637,8 @@ final class InstallPackageHelper {
                     if (!Build.IS_DEBUGGABLE && !dataOwnerPkg.isDebuggable()) {
                         // Only restrict non-debuggable builds and non-debuggable version of the app
                         try {
-                            PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite);
+                            PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite,
+                                    dataOwnerPs.isSystem());
                         } catch (PackageManagerException e) {
                             String errorMsg =
                                     "System app: " + packageName + " cannot be downgraded to"
@@ -2678,8 +2680,14 @@ final class InstallPackageHelper {
         final boolean isAppDebuggable = (activePackage.applicationInfo.flags
                 & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         final long newVersionCode = pkgLite.getLongVersionCode();
+        // For non-debuggable builds and a non-debuggable APEX, do not allow the APEX to be
+        // installed if it is the same version code, in case it had a security fix without a
+        // version code increment.
+        final boolean isDowngrade = (!Build.IS_DEBUGGABLE && !isAppDebuggable)
+                ? newVersionCode < activeVersion
+                : newVersionCode <= activeVersion;
         if (!PackageManagerServiceUtils.isDowngradePermitted(installFlags, isAppDebuggable)
-                && newVersionCode < activeVersion) {
+                && isDowngrade) {
             String errorMsg = "Downgrade of APEX package " + packageName
                     + " is not allowed. Active version: " + activeVersion
                     + " attempted: " + newVersionCode;
