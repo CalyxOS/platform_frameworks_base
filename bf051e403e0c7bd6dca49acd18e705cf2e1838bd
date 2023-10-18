@@ -16,6 +16,23 @@
       "message": "Looks like it is working. With `-userdebug`, there is no change in behavior (can install same-version system app or APEX on top).\n\nI did not build entirely for `-user` yet, just tried changing the added `!Build.IS_DEBUGGABLE` to `true` for testing.\n\nExample output:\n\n```\nadb: failed to install out/target/product/bluejay/system_ext/priv-app/Settings/Settings.apk: Failure [INSTALL_FAILED_VERSION_DOWNGRADE: Downgrade detected: Update version code 34 must be greater than 34 to upgrade a system app.]\nadb: failed to install out/target/product/bluejay/system/apex/com.android.os.statsd.apex: Error [-25] [INSTALL_FAILED_VERSION_DOWNGRADE: Install of same-version APEX package com.android.os.statsd is not allowed. Active version: 340090000]\n```",
       "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af280bd2_4f7c5e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T22:20:45Z",
+      "side": 1,
+      "message": "Run in an actual `-user` build for a while.",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
