@@ -16,6 +16,24 @@
       "message": "[  462.650306] init: Unable to set property \u0027persist.backup.fake-d2d\u0027 from uid:2000 gid:2000 pid:4993: SELinux permission check failed\n[  462.651123] type\u003d1107 audit(1697245181.683:11): uid\u003d0 auid\u003d4294967295 ses\u003d4294967295 subj\u003du:r:init:s0 msg\u003d\u0027avc:  denied  { set } for property\u003dpersist.backup.fake-d2d pid\u003d4993 uid\u003d2000 gid\u003d2000 scontext\u003du:r:shell:s0 tcontext\u003du:object_r:backup_d2d_prop:s0 tclass\u003dproperty_service permissive\u003d0\u0027",
       "revId": "2a73e08e02356c0db1eb7cc95d7f0a8131a57a55",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75f5b80_68a22eed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-18T18:10:38Z",
+      "side": 1,
+      "message": "We apparently never allowed it to be set from shell, but I think we should.\n\nHere\u0027s what we had in 13, which never made it over to 14? https://review.calyxos.org/c/CalyxOS/device_calyx_sepolicy/+/15937",
+      "parentUuid": "82588424_b37f7a58",
+      "revId": "2a73e08e02356c0db1eb7cc95d7f0a8131a57a55",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
