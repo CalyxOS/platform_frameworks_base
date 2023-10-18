@@ -2613,12 +2613,17 @@ final class InstallPackageHelper {
                 }
             }
 
+            final boolean isAppDebuggable = dataOwnerPkg != null && dataOwnerPkg.isDebuggable();
+            final boolean isSystemAppDisallowedSameVersion =
+                    dataOwnerPs != null && dataOwnerPs.isSystem()
+                            && !Build.IS_DEBUGGABLE && !isAppDebuggable;
             if (dataOwnerPkg != null && !dataOwnerPkg.isSdkLibrary()) {
                 if (!PackageManagerServiceUtils.isDowngradePermitted(installFlags,
                         dataOwnerPkg.isDebuggable())) {
                     // Downgrade is not permitted; a lower version of the app will not be allowed
                     try {
-                        PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite);
+                        PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite,
+                                isSystemAppDisallowedSameVersion);
                     } catch (PackageManagerException e) {
                         String errorMsg = "Downgrade detected: " + e.getMessage();
                         Slog.w(TAG, errorMsg);
@@ -2636,7 +2641,8 @@ final class InstallPackageHelper {
                     if (!Build.IS_DEBUGGABLE && !dataOwnerPkg.isDebuggable()) {
                         // Only restrict non-debuggable builds and non-debuggable version of the app
                         try {
-                            PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite);
+                            PackageManagerServiceUtils.checkDowngrade(dataOwnerPkg, pkgLite,
+                                    isSystemAppDisallowedSameVersion);
                         } catch (PackageManagerException e) {
                             String errorMsg =
                                     "System app: " + packageName + " cannot be downgraded to"
@@ -2678,11 +2684,22 @@ final class InstallPackageHelper {
         final boolean isAppDebuggable = (activePackage.applicationInfo.flags
                 & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         final long newVersionCode = pkgLite.getLongVersionCode();
+        // For non-debuggable builds and a non-debuggable APEX, do not allow the APEX to be
+        // installed if it is the same version code, in case it had a security fix without a
+        // version code increment.
+        final boolean isDowngrade = newVersionCode < activeVersion
+                || (newVersionCode == activeVersion && !Build.IS_DEBUGGABLE && !isAppDebuggable);
         if (!PackageManagerServiceUtils.isDowngradePermitted(installFlags, isAppDebuggable)
-                && newVersionCode < activeVersion) {
-            String errorMsg = "Downgrade of APEX package " + packageName
-                    + " is not allowed. Active version: " + activeVersion
-                    + " attempted: " + newVersionCode;
+                && isDowngrade) {
+            final String errorMsg;
+            if (newVersionCode < activeVersion) {
+                errorMsg = "Downgrade of APEX package " + packageName
+                        + " is not allowed. Active version: " + activeVersion
+                        + " attempted: " + newVersionCode;
+            } else {
+                errorMsg = "Install of same-version APEX package " + packageName
+                        + " is not allowed. Active version: " + activeVersion;
+            }
             Slog.w(TAG, errorMsg);
             return Pair.create(PackageManager.INSTALL_FAILED_VERSION_DOWNGRADE, errorMsg);
         }
