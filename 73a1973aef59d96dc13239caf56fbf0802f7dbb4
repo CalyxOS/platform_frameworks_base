@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92183f7b_9f910757",
+        "filename": "services/core/java/com/android/server/pm/UserManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T10:49:48Z",
+      "side": 1,
+      "message": "These are the only things we should need to do if `!enableQuietMode`, not the other stuff. We don\u0027t want the `target !\u003d null` situation to be handled in both of two different fashions for the same event.",
+      "range": {
+        "startLine": 1450,
+        "startChar": 0,
+        "endLine": 1451,
+        "endChar": 69
+      },
+      "revId": "73a1973aef59d96dc13239caf56fbf0802f7dbb4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
