@@ -16301,7 +16301,8 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
 
         @Override
         public boolean isKeepProfilesRunningEnabled() {
-            return getUserDataUnchecked(UserHandle.USER_SYSTEM).mEffectiveKeepProfilesRunning;
+            // Pause means pause.
+            return false;
         }
 
         private @Mode int findInteractAcrossProfilesResetMode(String packageName) {

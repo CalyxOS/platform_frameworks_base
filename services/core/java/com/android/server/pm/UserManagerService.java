@@ -1440,9 +1440,13 @@ public class UserManagerService extends IUserManager.Stub {
         synchronized (mPackagesLock) {
             writeUserLP(profileUserData);
         }
-        if (getDevicePolicyManagerInternal().isKeepProfilesRunningEnabled()) {
+        final boolean keepProfilesRunning =
+                getDevicePolicyManagerInternal().isKeepProfilesRunningEnabled();
+        if (keepProfilesRunning || !enableQuietMode) {
             // New behavior: when quiet mode is enabled, profile user is running, but apps are
             // suspended.
+            // If the new behavior is off, it may have been turned off recently, so if quiet mode is
+            // being disabled, handle all of this now, too, just in case.
             getPackageManagerInternal().setPackagesSuspendedForQuietMode(userId, enableQuietMode);
             setAppOpsRestrictedForQuietMode(userId, enableQuietMode);
 
@@ -1458,7 +1462,8 @@ public class UserManagerService extends IUserManager.Stub {
                     Slog.e(LOG_TAG, "Failed to start intent after disabling quiet mode", e);
                 }
             }
-        } else {
+        }
+        if (!keepProfilesRunning) {
             // Old behavior: when quiet is enabled, profile user is stopped.
             // Old quiet mode behavior: profile user is stopped.
             // TODO(b/265683382) Remove once rollout complete.
