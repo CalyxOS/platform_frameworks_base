@@ -33,6 +33,24 @@
       "message": "There\u0027s a device config for this...\n\n```\n    private static boolean isKeepProfilesRunningFlagEnabled() {\n        return DeviceConfig.getBoolean(\n                NAMESPACE_DEVICE_POLICY_MANAGER,\n                KEEP_PROFILES_RUNNING_FLAG,\n                DEFAULT_KEEP_PROFILES_RUNNING_FLAG);\n    }\n```",
       "revId": "835d7836c32044c981f88f50394c61686459ba59",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe187013_e4d71279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T11:27:21Z",
+      "side": 1,
+      "message": "The migration code looks like it should already work properly, respecting the device config flag referenced below, so there may be nothing to migrate / no extra checks to do, as long as a reboot happens after any change. (We would be changing this in SimpleDeviceConfig or something anyway so reboot not relevant.)",
+      "parentUuid": "1f5d418c_ee6f6538",
+      "revId": "835d7836c32044c981f88f50394c61686459ba59",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
