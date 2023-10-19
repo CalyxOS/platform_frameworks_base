@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1391716_4d25beee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T11:49:05Z",
+      "side": 1,
+      "message": "Let\u0027s pick this ASAP please; it allows pausing work profiles to actually stop their apps from running, as expected. We\u0027ll want to revert it before r11+ merge I think, since that\u0027s where it came from.",
+      "revId": "dc3bee395f3363006cc8b187e34cde6a4f3da782",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
