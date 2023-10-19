@@ -16,6 +16,23 @@
       "message": "Not working for APEX yet. Does appear to be working for system apps.\n\n```\ncat /data/system/uiderrors.txt\n# [...]\nSystem package replacing installed package of same version code; name: com.android.settings; 34 --\u003e 34; /data/app/~~EZ6pvhIzPQr4OaV-2n6BUA\u003d\u003d/com.android.settings-9WnPUV3Unz3SR3aw8MsITQ\u003d\u003d --\u003e /system_ext/priv-app/Settings\n```",
       "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711a76a8_947eebb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-19T20:05:09Z",
+      "side": 1,
+      "message": "TODO: Go through system apps we\u0027ve ever updated out of band, and check versions.\n\nWith 14 / 34 it most likely won\u0027t be an issue, but some have hardcoded versions.",
+      "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
