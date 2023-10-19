@@ -4197,14 +4197,22 @@ final class InstallPackageHelper {
                 && !pkgSetting.getPathString().equals(parsedPackage.getPath());
         final boolean newPkgVersionGreater = pkgAlreadyExists
                 && parsedPackage.getLongVersionCode() > pkgSetting.getVersionCode();
+        final boolean newPkgVersionSame = pkgAlreadyExists
+                && parsedPackage.getLongVersionCode() == pkgSetting.getVersionCode();
         final boolean newSharedUserSetting = pkgAlreadyExists
                 && (initialScanRequest.mOldSharedUserSetting
                 != initialScanRequest.mSharedUserSetting);
+        final boolean newPkgVersionBetter = newPkgVersionGreater
+                || (newPkgVersionSame && !Build.IS_DEBUGGABLE && !parsedPackage.isDebuggable());
         final boolean isSystemPkgBetter = scanSystemPartition && isSystemPkgUpdated
-                && newPkgChangedPaths && (newPkgVersionGreater || newSharedUserSetting);
+                && newPkgChangedPaths && (newPkgVersionBetter || newSharedUserSetting);
         if (isSystemPkgBetter) {
             // The version of the application on /system is greater than the version on
             // /data. Switch back to the application on /system.
+            // For a non-debuggable build and non-debuggable application, the version on
+            // /data must be newer to be retained, not the same; otherwise, applications whose
+            // version codes are tied to the SDK version or otherwise static will never replace
+            // the applcation on /data, even if there are changes.
             // It's safe to assume the application on /system will correctly scan. If not,
             // there won't be a working copy of the application.
             // Also, if the sharedUserSetting of the application on /system is different
@@ -4216,13 +4224,23 @@ final class InstallPackageHelper {
                 mPm.mPackages.remove(pkgSetting.getPackageName());
             }
 
-            logCriticalInfo(Log.WARN,
-                    "System package updated;"
-                            + " name: " + pkgSetting.getPackageName()
-                            + "; " + pkgSetting.getVersionCode() + " --> "
-                            + parsedPackage.getLongVersionCode()
-                            + "; " + pkgSetting.getPathString()
-                            + " --> " + parsedPackage.getPath());
+            if (newPkgVersionSame && !newSharedUserSetting) {
+                logCriticalInfo(Log.WARN,
+                        "System package replacing installed package of same version code;"
+                                + " name: " + pkgSetting.getPackageName()
+                                + "; " + pkgSetting.getVersionCode() + " --> "
+                                + parsedPackage.getLongVersionCode()
+                                + "; " + pkgSetting.getPathString()
+                                + " --> " + parsedPackage.getPath());
+            } else {
+                logCriticalInfo(Log.WARN,
+                        "System package updated;"
+                                + " name: " + pkgSetting.getPackageName()
+                                + "; " + pkgSetting.getVersionCode() + " --> "
+                                + parsedPackage.getLongVersionCode()
+                                + "; " + pkgSetting.getPathString()
+                                + " --> " + parsedPackage.getPath());
+            }
 
             mRemovePackageHelper.cleanUpResources(
                     new File(pkgSetting.getPathString()),
