@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0d6205_a399a1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T14:11:01Z",
+      "side": 1,
+      "message": "Not working for APEX yet. Does appear to be working for system apps.\n\n```\ncat /data/system/uiderrors.txt\n# [...]\nSystem package replacing installed package of same version code; name: com.android.settings; 34 --\u003e 34; /data/app/~~EZ6pvhIzPQr4OaV-2n6BUA\u003d\u003d/com.android.settings-9WnPUV3Unz3SR3aw8MsITQ\u003d\u003d --\u003e /system_ext/priv-app/Settings\n```",
+      "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
