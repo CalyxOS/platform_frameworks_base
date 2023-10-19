@@ -69,6 +69,24 @@
       "parentUuid": "ea0d6205_a399a1e6",
       "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9312f6c_5364cf9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-19T21:33:34Z",
+      "side": 1,
+      "message": "It isn\u0027t worth worrying about apex.\n\nI don\u0027t think we will\n\nThere\u0027s a lot of harm you can do using adb, we can\u0027t stop it all. We won\u0027t go out of our way to add something new, but let\u0027s not worry about existing things possible via adb install. It\u0027s not our problem.\n\nAnd then yes once updates start happening, it\u0027s most likely each build will have a new version.",
+      "parentUuid": "4b851250_fbef47ce",
+      "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
