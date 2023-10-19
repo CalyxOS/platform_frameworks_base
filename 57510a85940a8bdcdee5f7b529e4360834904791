@@ -51,6 +51,24 @@
       "parentUuid": "711a76a8_947eebb7",
       "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b851250_fbef47ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T20:53:50Z",
+      "side": 1,
+      "message": "APEX is complicated and handled largely by apexd.cpp. You need adb to update it anyway, and our prevention change will stop it from happening going forward (not to mention that we will be using prebuilt APEX which will have version codes that vary more often): https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/22204\n\nI don\u0027t think it\u0027s worth worrying about fixing any APEX modules already affected by this, but if it is, the complexity would probably make it better suited for a separate patch.\n\nThis is where I left off:\n```\n        if (isApexPkg) {\n            if (pkgSetting !\u003d null \u0026\u0026 parsedPackage !\u003d null \u0026\u0026 newPkgVersionSame) {\n                logCriticalInfo(Log.WARN,\n                        \"System APEX is updated to same version, removing update;\"\n                                + \" name: \" + pkgSetting.getPackageName());\n                // ... but how do you remove it? it\u0027s not like a regular package\n            }\n        }\n```",
+      "parentUuid": "ea0d6205_a399a1e6",
+      "revId": "57510a85940a8bdcdee5f7b529e4360834904791",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
