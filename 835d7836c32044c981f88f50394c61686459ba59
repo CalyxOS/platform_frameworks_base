@@ -16,6 +16,23 @@
       "message": "There is migration code in DevicePolicyManagerService (setKeepProfileRunningEnabledUnchecked, suspendAppsForQuietProfiles). Maybe just do everything there to avoid complicating the checks.",
       "revId": "835d7836c32044c981f88f50394c61686459ba59",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b57bc5_b942b09e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T11:26:20Z",
+      "side": 1,
+      "message": "There\u0027s a device config for this...\n\n```\n    private static boolean isKeepProfilesRunningFlagEnabled() {\n        return DeviceConfig.getBoolean(\n                NAMESPACE_DEVICE_POLICY_MANAGER,\n                KEEP_PROFILES_RUNNING_FLAG,\n                DEFAULT_KEEP_PROFILES_RUNNING_FLAG);\n    }\n```",
+      "revId": "835d7836c32044c981f88f50394c61686459ba59",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
