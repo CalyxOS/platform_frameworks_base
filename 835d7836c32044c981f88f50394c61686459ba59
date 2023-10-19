@@ -69,6 +69,24 @@
       "parentUuid": "39b57bc5_b942b09e",
       "revId": "835d7836c32044c981f88f50394c61686459ba59",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97796a52_2f5d0e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T11:36:24Z",
+      "side": 1,
+      "message": "Ah, so they\u0027re going back on this. Thank you!!",
+      "parentUuid": "d520637a_8bf05044",
+      "revId": "835d7836c32044c981f88f50394c61686459ba59",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
