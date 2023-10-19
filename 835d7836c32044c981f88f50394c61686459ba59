@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f5d418c_ee6f6538",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-19T11:21:19Z",
+      "side": 1,
+      "message": "There is migration code in DevicePolicyManagerService (setKeepProfileRunningEnabledUnchecked, suspendAppsForQuietProfiles). Maybe just do everything there to avoid complicating the checks.",
+      "revId": "835d7836c32044c981f88f50394c61686459ba59",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
