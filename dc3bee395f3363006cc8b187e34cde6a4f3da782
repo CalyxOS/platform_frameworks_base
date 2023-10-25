@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "00a2734c_36d5acfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-10-25T14:10:43Z",
+      "side": 1,
+      "message": "Passes.",
+      "revId": "dc3bee395f3363006cc8b187e34cde6a4f3da782",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a1391716_4d25beee",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
