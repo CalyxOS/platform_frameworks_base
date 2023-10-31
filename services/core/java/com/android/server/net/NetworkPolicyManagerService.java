@@ -6122,7 +6122,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             final int uid = uidRules.keyAt(index);
             final int rule = uidRules.valueAt(index);
             if (Process.isApplicationUid(uid)) {
-                sdkSandboxUids.put(Process.toSdkSandboxUid(uid), rule);
+                // Deny network access to SDK sandbox UIDs regardless of app UID's access.
+                sdkSandboxUids.put(Process.toSdkSandboxUid(uid), FIREWALL_RULE_DENY);
             }
         }
 
@@ -6133,13 +6134,38 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         }
     }
 
+    /** Return true if the chain is a denylist, or not a known allowlist. */
+    private boolean shouldAddDenyRulesForChain(int chain) {
+        // Sync logic with NetworkManagementService's getFirewallType.
+        switch (chain) {
+            case FIREWALL_CHAIN_STANDBY:
+                return true;
+            case FIREWALL_CHAIN_DOZABLE:
+                return false;
+            case FIREWALL_CHAIN_POWERSAVE:
+                return false;
+            case FIREWALL_CHAIN_RESTRICTED:
+                return false;
+            case FIREWALL_CHAIN_LOW_POWER_STANDBY:
+                return false;
+            default:
+                // Would be false in NetworkManagementService if its "firewall" mode were on,
+                // but in our use cases that's not true. It also doesn't matter, since we
+                // only use this result to decide whether to add deny rules, which should
+                // merely be redundant in that case.
+                return true;
+        }
+    }
+
     /**
      * Set uid rules on a particular firewall chain. This is going to synchronize the rules given
      * here to netd.  It will clean up dead rules and make sure the target chain only contains rules
      * specified here.
      */
     private void setUidFirewallRulesUL(int chain, SparseIntArray uidRules) {
-        addSdkSandboxUidsIfNeeded(uidRules);
+        if (shouldAddDenyRulesForChain(chain)) {
+            addSdkSandboxUidsIfNeeded(uidRules);
+        }
         try {
             int size = uidRules.size();
             int[] uids = new int[size];
@@ -6182,10 +6208,11 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             try {
                 mNetworkManager.setFirewallUidRule(chain, uid, rule);
                 mLogger.uidFirewallRuleChanged(chain, uid, rule);
-                if (Process.isApplicationUid(uid)) {
+                if (Process.isApplicationUid(uid) && shouldAddDenyRulesForChain(chain)) {
                     final int sdkSandboxUid = Process.toSdkSandboxUid(uid);
-                    mNetworkManager.setFirewallUidRule(chain, sdkSandboxUid, rule);
-                    mLogger.uidFirewallRuleChanged(chain, sdkSandboxUid, rule);
+                    // Deny network access to SDK sandbox UIDs regardless of app UID's access.
+                    mNetworkManager.setFirewallUidRule(chain, sdkSandboxUid, FIREWALL_RULE_DENY);
+                    mLogger.uidFirewallRuleChanged(chain, sdkSandboxUid, FIREWALL_RULE_DENY);
                 }
             } catch (IllegalStateException e) {
                 Log.wtf(TAG, "problem setting firewall uid rules", e);
