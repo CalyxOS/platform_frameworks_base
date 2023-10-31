@@ -16,6 +16,57 @@
       "message": "Alternative approach to Ib0483df8.",
       "revId": "e094d8e9a5da4008d634a459ea5b1e0b836fb432",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a30f29_5df96e2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-31T21:52:04Z",
+      "side": 1,
+      "message": "I referred to this as \"more-careful\" but it\u0027s not that careful and not complete or definitive.\n\nSDK sandbox UIDs will be denied only if and when there are rules being set for their corresponding application UIDs, and they\u0027re denied in all sorts of chains, which seems a little excessive.\n\nHowever, even if restricted networking mode is off, the other change in this pair should at least prevent socket creation. As of this writing, neither has been tested.",
+      "revId": "e094d8e9a5da4008d634a459ea5b1e0b836fb432",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f96c378_eb9694f0",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 6060,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-31T21:52:04Z",
+      "side": 1,
+      "message": "Is this a missed spot or is this okay given the other changes?",
+      "revId": "e094d8e9a5da4008d634a459ea5b1e0b836fb432",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5706448e_34f2f8c5",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 6077,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-31T21:52:04Z",
+      "side": 1,
+      "message": "Is this a missed spot or is this okay given the other changes?",
+      "revId": "e094d8e9a5da4008d634a459ea5b1e0b836fb432",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
