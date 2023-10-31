@@ -16,6 +16,23 @@
       "message": "From synthetic test (https://gitlab.com/CalyxOS/calyxos/-/issues/1493#note_1606046675), appears to accomplish the goal of preventing network access for SDK sandbox UIDs.",
       "revId": "3a7af3ba73700f94af3cba327d12710dfb36cef1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5064ffc6_fd06dd68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-31T21:45:15Z",
+      "side": 1,
+      "message": "Alternative, more-careful approach here: I58705c4f",
+      "revId": "3a7af3ba73700f94af3cba327d12710dfb36cef1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
