@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff855f1_9d47a07b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-10-31T21:43:42Z",
+      "side": 1,
+      "message": "Alternative approach to Ib0483df8.",
+      "revId": "e094d8e9a5da4008d634a459ea5b1e0b836fb432",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
