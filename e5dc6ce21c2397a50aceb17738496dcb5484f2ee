@@ -16,6 +16,24 @@
       "message": "UnlaunchableAppActivity.java:97: error: cannot find symbol\nR.string.work_mode_turn_on_calyx\n\nsame for R.string.work_mode_off_title_calyx\n\nNot sure why.",
       "revId": "e5dc6ce21c2397a50aceb17738496dcb5484f2ee",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573fdf61_d04631a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-01T19:51:45Z",
+      "side": 1,
+      "message": "We can\u0027t add new core/res strings, and org.lineageos.platform.internal aren\u0027t accessible from here either so we can\u0027t use strings from there right now.\n\nOh well.",
+      "parentUuid": "00a94090_e8c79274",
+      "revId": "e5dc6ce21c2397a50aceb17738496dcb5484f2ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
