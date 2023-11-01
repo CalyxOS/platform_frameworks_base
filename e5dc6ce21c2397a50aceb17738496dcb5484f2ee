@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a94090_e8c79274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-01T18:37:12Z",
+      "side": 1,
+      "message": "UnlaunchableAppActivity.java:97: error: cannot find symbol\nR.string.work_mode_turn_on_calyx\n\nsame for R.string.work_mode_off_title_calyx\n\nNot sure why.",
+      "revId": "e5dc6ce21c2397a50aceb17738496dcb5484f2ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
