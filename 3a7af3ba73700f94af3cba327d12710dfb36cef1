@@ -33,6 +33,24 @@
       "message": "Alternative, more-careful approach here: I58705c4f",
       "revId": "3a7af3ba73700f94af3cba327d12710dfb36cef1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67026531_9e964d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-01T19:39:08Z",
+      "side": 1,
+      "message": "Decided to go with this change rather than the alternative for now",
+      "parentUuid": "5064ffc6_fd06dd68",
+      "revId": "3a7af3ba73700f94af3cba327d12710dfb36cef1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
