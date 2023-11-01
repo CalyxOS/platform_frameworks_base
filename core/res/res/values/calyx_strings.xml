@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2020 The Calyx Institute
+     Copyright (C) 2023 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,4 +16,16 @@
      limitations under the License.
 -->
 <resources>
+    <!-- Notification text. This notification lets the user know that they will be unable to
+     receive phone calls or texts until the work profile is turned on. [CHAR LIMIT=NONE] -->
+    <string name="work_profile_telephony_paused_text_calyx">Your work apps are off.
+        You won\'t receive phone calls or text messages.</string>
+    <!-- Label for notification button. This button lets the user turn the work profile on.
+         [CHAR LIMIT=15]  -->
+    <string name="work_profile_telephony_paused_turn_on_button_calyx">Turn on work apps</string>
+
+    <!-- Title of a dialog. This text is confirming that the user wants to turn on access to their work apps, which the user had previously paused. "Work" is an adjective. [CHAR LIMIT=30] -->
+    <string name="work_mode_off_title_calyx">Turn on work apps?</string>
+    <!-- Title for button to unpause on work profile. [CHAR LIMIT=NONE] -->
+    <string name="work_mode_turn_on_calyx">Turn on</string>
 </resources>

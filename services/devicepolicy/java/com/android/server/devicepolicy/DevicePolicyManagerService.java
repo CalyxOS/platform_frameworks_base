@@ -21149,7 +21149,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
     private String getUnpauseWorkAppsButtonText() {
         return getUpdatableString(
                 WORK_PROFILE_TELEPHONY_PAUSED_TURN_ON_BUTTON,
-                R.string.work_profile_telephony_paused_turn_on_button);
+                R.string.work_profile_telephony_paused_turn_on_button_calyx);
     }
 
     private String getUnpauseWorkAppsForTelephonyTitle() {
@@ -21160,7 +21160,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
     private String getUnpauseWorkAppsForTelephonyText() {
         return getUpdatableString(
                 WORK_PROFILE_TELEPHONY_PAUSED_BODY,
-                R.string.work_profile_telephony_paused_text);
+                R.string.work_profile_telephony_paused_text_calyx);
     }
 
     @GuardedBy("getLockObject()")

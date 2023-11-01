@@ -94,7 +94,7 @@ public class UnlaunchableAppActivity extends Activity
         }
         builder.setTitle(getDialogTitle())
                 .setOnDismissListener(this)
-                .setPositiveButton(R.string.work_mode_turn_on, this)
+                .setPositiveButton(R.string.work_mode_turn_on_calyx, this)
                 .setNegativeButton(R.string.cancel, null);
 
         final AlertDialog dialog = builder.create();
@@ -112,7 +112,8 @@ public class UnlaunchableAppActivity extends Activity
 
     private String getDialogTitle() {
         return getSystemService(DevicePolicyManager.class).getResources().getString(
-                UNLAUNCHABLE_APP_WORK_PAUSED_TITLE, () -> getString(R.string.work_mode_off_title));
+                UNLAUNCHABLE_APP_WORK_PAUSED_TITLE, () ->
+                        getString(R.string.work_mode_off_title_calyx));
     }
 
     @Override
