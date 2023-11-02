@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad33687a_ab040b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-02T17:02:36Z",
+      "side": 1,
+      "message": "We didn\u0027t pick the original change https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/16335 to 14 btw, if that still applies.",
+      "revId": "a4c2399c778b0d779b0561663f4ec0148f2bc5ba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
