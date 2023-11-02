@@ -16,6 +16,24 @@
       "message": "We didn\u0027t pick the original change https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/16335 to 14 btw, if that still applies.",
       "revId": "a4c2399c778b0d779b0561663f4ec0148f2bc5ba",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3504f029_c9d43050",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-02T17:06:14Z",
+      "side": 1,
+      "message": "Thanks, yes it does, I\u0027ll pick it. Maybe not picking initially turn out to have provided some useful insight for calyxos#1799 someday, but I don\u0027t think it\u0027s even related to that anyway.",
+      "parentUuid": "ad33687a_ab040b96",
+      "revId": "a4c2399c778b0d779b0561663f4ec0148f2bc5ba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
