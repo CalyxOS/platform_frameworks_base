@@ -180,11 +180,11 @@ public class ScreenshotNotificationSmartActionsTest extends SysuiTestCase {
         data.finisher = null;
         data.mActionsReadyListener = null;
         SaveImageInBackgroundTask task =
-                new SaveImageInBackgroundTask(mContext, null, mScreenshotSmartActions, data,
-                        ActionTransition::new);
+                new SaveImageInBackgroundTask(mContext, null, null, mScreenshotSmartActions, data,
+                        ActionTransition::new, mSmartActionsProvider);
 
         Notification.Action viewAction = task.createViewAction(mContext, mContext.getResources(),
-                Uri.parse("Screenshot_123.png")).get().action;
+                Uri.parse("Screenshot_123.png"), true).get().action;
 
         Intent intent = viewAction.actionIntent.getIntent();
         assertNotNull(intent);
