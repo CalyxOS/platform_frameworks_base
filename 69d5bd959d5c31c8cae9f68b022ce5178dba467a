@@ -22,6 +22,30 @@
       },
       "revId": "69d5bd959d5c31c8cae9f68b022ce5178dba467a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cac07be_ddb42bda",
+        "filename": "packages/SystemUI/src/com/android/systemui/shade/NotificationPanelViewController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4494,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-11-07T16:31:56Z",
+      "side": 1,
+      "message": "It is always set https://review.calyxos.org/c/CalyxOS/platform_calyx-sdk/+/22808/-1..1/lineage/res/res/values/config.xml",
+      "parentUuid": "78bd4e5e_6c8f21d3",
+      "range": {
+        "startLine": 4493,
+        "startChar": 24,
+        "endLine": 4494,
+        "endChar": 68
+      },
+      "revId": "69d5bd959d5c31c8cae9f68b022ce5178dba467a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
