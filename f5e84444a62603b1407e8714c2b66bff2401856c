@@ -103,6 +103,29 @@
       "parentUuid": "62138a61_88823bf5",
       "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29ca976_641d11b1",
+        "filename": "services/core/java/com/android/server/pm/permission/PermissionManagerServiceImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-08T15:57:27Z",
+      "side": 1,
+      "message": "should use `.equals()`",
+      "range": {
+        "startLine": 971,
+        "startChar": 36,
+        "endLine": 971,
+        "endChar": 40
+      },
+      "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
