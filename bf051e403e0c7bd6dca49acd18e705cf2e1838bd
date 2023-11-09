@@ -103,6 +103,42 @@
       "parentUuid": "61d41a84_92c8c5df",
       "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876c5021_8685ca1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-09T16:50:37Z",
+      "side": 1,
+      "message": "Ack, and it\u0027s been running on my daily driver and not causing problems except slight dev inconvenience (no out-of-band updates possible for affected system apps; working as intended).",
+      "parentUuid": "5363faac_92671e42",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f0be15_99d4cffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-09T16:50:37Z",
+      "side": 1,
+      "message": "My daily driver didn\u0027t implode, so this part should be fine.",
+      "parentUuid": "62c7e7c5_70bf693e",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
