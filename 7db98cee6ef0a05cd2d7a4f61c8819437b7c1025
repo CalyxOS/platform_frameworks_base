@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e393f5_c3f56dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-09T13:22:09Z",
+      "side": 1,
+      "message": "Empty allowlist (which we have) means allow anything except exclusions. Looks intentional but confused me for a second.",
+      "revId": "7db98cee6ef0a05cd2d7a4f61c8819437b7c1025",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
