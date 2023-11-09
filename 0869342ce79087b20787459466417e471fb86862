@@ -87,6 +87,23 @@
       "parentUuid": "ea72c0bd_17badaec",
       "revId": "0869342ce79087b20787459466417e471fb86862",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3667fa2a_ae96b685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-11-09T20:36:10Z",
+      "side": 1,
+      "message": "Worth checking what makes use of appIsRunningAndEligibleForBackupWithTransport since in our d2d changes, I remember we made our own elegibility function. If that applies here we can copy that to seedvault and remove isStopped there?",
+      "revId": "0869342ce79087b20787459466417e471fb86862",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
