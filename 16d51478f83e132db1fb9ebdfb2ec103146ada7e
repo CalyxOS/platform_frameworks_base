@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefad8ca_96b38d43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-14T20:00:52Z",
+      "side": 1,
+      "message": "Says \"Merge conflict\" but it applies fine on gitlab/android14. Same with the change that follows. (Maybe it\u0027s the placement in the relation chain...)",
+      "revId": "16d51478f83e132db1fb9ebdfb2ec103146ada7e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
