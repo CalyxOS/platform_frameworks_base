@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1901e7ea_65fc236b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-20T18:48:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure why we did this instead of adding a `DevicePolicyManager.clearUserRestriction()` for `DISALLOW_ADD_USER` in Bellis. Seems like if we can avoid a framework change that would be preferred. Maybe that doesn\u0027t work for some reason.",
+      "revId": "1e09b9a075a72820c1e775290a322a86d5bd9cce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
