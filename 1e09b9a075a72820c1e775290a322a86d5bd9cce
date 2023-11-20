@@ -34,6 +34,24 @@
       "parentUuid": "1901e7ea_65fc236b",
       "revId": "1e09b9a075a72820c1e775290a322a86d5bd9cce",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bb5b96_8aa0c5e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-20T19:00:59Z",
+      "side": 1,
+      "message": "`E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{org.calyxos.bellis/org.calyxos.bellis.MainActivity}: java.lang.SecurityException: Profile owner cannot set user restriction no_add_user`\n\nThis happens whether or not we try clearing it on the parent profile itself, or on the user.",
+      "parentUuid": "90cd4520_ee3c7383",
+      "revId": "1e09b9a075a72820c1e775290a322a86d5bd9cce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
