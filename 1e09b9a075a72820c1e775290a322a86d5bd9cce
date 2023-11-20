@@ -52,6 +52,24 @@
       "parentUuid": "90cd4520_ee3c7383",
       "revId": "1e09b9a075a72820c1e775290a322a86d5bd9cce",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b2c2d4_5454fc70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-20T19:19:34Z",
+      "side": 1,
+      "message": "For posterity, it looks like if we wanted to adjust AOSP\u0027s behavior to allow an organization owner to set or unset this, we would have to add it here: https://cs.android.com/android/platform/superproject/main/+/31b82aae91f9e939a33034ae317ef1f375edc0d5:frameworks/base/services/core/java/com/android/server/pm/UserRestrictionsUtils.java;l\u003d237-250\n\nOur approach here is more cautious, and I think we should stick with it, but there wouldn\u0027t be harm in submitting an AOSP change that adds DISALLOW_ADD_USER to the list -- apart from the time it would take and the utter futility.",
+      "parentUuid": "81bb5b96_8aa0c5e4",
+      "revId": "1e09b9a075a72820c1e775290a322a86d5bd9cce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
