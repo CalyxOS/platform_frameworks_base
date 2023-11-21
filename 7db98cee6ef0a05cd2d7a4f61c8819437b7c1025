@@ -16,6 +16,23 @@
       "message": "Empty allowlist (which we have) means allow anything except exclusions. Looks intentional but confused me for a second.",
       "revId": "7db98cee6ef0a05cd2d7a4f61c8819437b7c1025",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd751ba_c23e8e49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2023-11-21T14:46:43Z",
+      "side": 1,
+      "message": "Breaks CtsStrictJavaPackagesTestCases",
+      "revId": "7db98cee6ef0a05cd2d7a4f61c8819437b7c1025",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
