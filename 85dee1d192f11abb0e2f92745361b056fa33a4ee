@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb4ca26_d8f6a652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-11-21T15:34:06Z",
+      "side": 1,
+      "message": "Now: Tapping the screenshot in the popup views the screenshot normally, offering edit/share options at the bottom as usual.\n\nBefore: Tapping the screenshot in the popup opens the edit screen, making the edit button redundant.",
+      "revId": "85dee1d192f11abb0e2f92745361b056fa33a4ee",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
