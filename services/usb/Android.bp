@@ -26,6 +26,7 @@ java_library_static {
         "android.hardware.usb.gadget-V1.1-java",
         "android.hardware.usb.gadget-V1.2-java",
         "android.hardware.usb.gadget-V1-java",
+        "org.lineageos.platform.internal",
     ],
 
     static_libs: [
@@ -34,6 +35,5 @@ java_library_static {
         "android.hardware.usb-V1.2-java",
         "android.hardware.usb-V1.3-java",
         "android.hardware.usb-V2-java",
-        "org.lineageos.platform.internal",
     ],
 }

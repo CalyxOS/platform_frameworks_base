@@ -120,7 +120,8 @@ class PulsingGestureListener @Inject constructor(
             centralSurfaces.wakeUpIfDozing(
                     SystemClock.uptimeMillis(),
                     "PULSING_DOUBLE_TAP",
-                    PowerManager.WAKE_REASON_TAP)
+                    PowerManager.WAKE_REASON_TAP
+            )
             return true
         }
         return false
