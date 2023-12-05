@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7b8d81c_e750f4bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-05T16:29:32Z",
+      "side": 1,
+      "message": "Simple smoke test on bramble is fine (networking, notifications, media playback)",
+      "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a67485b9_dc419471",
         "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/row/NotificationGutsManager.java",
         "patchSetId": 1
