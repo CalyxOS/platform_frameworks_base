@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d37c4d4_8f9db224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-05T15:23:18Z",
+      "side": 1,
+      "message": "This merge confused me a little bit, between android-13.0.0_r83 and android-security-13.0.0_r12. In some places it doesn\u0027t quite match r83 (I left a resolved comment for one of them). But as far as I know, this is all expected and will no longer be a concern regardless when we are supporting android14 exclusively...?",
+      "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67485b9_dc419471",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/row/NotificationGutsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-05T15:23:18Z",
+      "side": 1,
+      "message": "We have userManager, r83 doesn\u0027t?",
+      "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
