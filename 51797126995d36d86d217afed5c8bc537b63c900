@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79fd867_778b0320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-07T21:13:55Z",
+      "side": 1,
+      "message": "QPR1-adapted change is in relation chain.",
+      "revId": "51797126995d36d86d217afed5c8bc537b63c900",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
