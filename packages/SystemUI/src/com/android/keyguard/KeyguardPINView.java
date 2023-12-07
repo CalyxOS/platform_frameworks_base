@@ -80,7 +80,7 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
                 (long) (125 * KeyguardPatternView.DISAPPEAR_MULTIPLIER_LOCKED),
                 0.6f /* translationScale */,
                 0.45f /* delayScale */, AnimationUtils.loadInterpolator(
-                        mContext, android.R.interpolator.fast_out_linear_in));
+                       mContext, android.R.interpolator.fast_out_linear_in));
         mDisappearYTranslation = getResources().getDimensionPixelSize(
                 R.dimen.disappear_y_translation);
         mYTrans = getResources().getDimensionPixelSize(R.dimen.pin_view_trans_y_entry);
@@ -93,8 +93,10 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
     }
 
     void onDevicePostureChanged(@DevicePostureInt int posture) {
-        mLastDevicePosture = posture;
-        updateMargins();
+        if (mLastDevicePosture != posture) {
+            mLastDevicePosture = posture;
+            updateMargins();
+        }
     }
 
     @Override
