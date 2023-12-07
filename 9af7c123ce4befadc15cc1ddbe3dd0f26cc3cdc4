@@ -33,6 +33,24 @@
       "message": "I can double-tap the top of the screen, or pull down the shade and double-tap on an empty area, and the screen turns off like usual.",
       "revId": "9af7c123ce4befadc15cc1ddbe3dd0f26cc3cdc4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b36172_61a46875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-07T21:16:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cadefcfe_32b49b64",
+      "revId": "9af7c123ce4befadc15cc1ddbe3dd0f26cc3cdc4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
