@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83758e33_2ca0b265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-07T21:05:55Z",
+      "side": 1,
+      "message": "Tapping on screenshot views the screenshot instead of editing it. Tapping on pencil icon edits the screenshot.",
+      "revId": "ba1d1d1486a64067668d06d44172b1b4b9431e01",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
