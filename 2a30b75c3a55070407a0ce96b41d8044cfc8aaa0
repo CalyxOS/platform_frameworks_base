@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253da2d1_82c435fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-07T21:25:18Z",
+      "side": 1,
+      "message": "Minor and I am not sure where this belongs, but:\n\nWhen choosing Position Left on cheetah, it seems shifted downward slightly, with the bottom number partially cut off. When displaying only upload or download instead of both, it doesn\u0027t appear cut off, but it still appears shifted down relative to the clock.",
+      "revId": "2a30b75c3a55070407a0ce96b41d8044cfc8aaa0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
