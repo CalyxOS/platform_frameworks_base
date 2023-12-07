@@ -16,6 +16,23 @@
       "message": "I changed it to look like PulsingGestureListener.kt. Build seems to get further, but this is not tested at all and may not be correct.",
       "revId": "9af7c123ce4befadc15cc1ddbe3dd0f26cc3cdc4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee181c0_0fe779e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-07T19:29:15Z",
+      "side": 1,
+      "message": "I can double-tap the top of the screen, or pull down the shade and double-tap on an empty area, and the screen turns off like usual.",
+      "revId": "9af7c123ce4befadc15cc1ddbe3dd0f26cc3cdc4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
