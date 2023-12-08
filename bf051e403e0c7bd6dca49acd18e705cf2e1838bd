@@ -139,6 +139,41 @@
       "parentUuid": "62c7e7c5_70bf693e",
       "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f80a2d3_a0b8d522",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-08T18:17:04Z",
+      "side": 1,
+      "message": "CtsInstallHostTestCases is passing, which includes android.cts.install.host.InstallTest, DowngradeTest, SamegradeTest. It took 4554s to complete, with lots of reboots for the staged tests.\n\nStagedInstallInternalTest passing. There are other tests too, like PackageManagerServiceHostTests or something to that effect, but that failed to even run locally.",
+      "parentUuid": "744ef4e4_ec5d7d01",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810e336d_0ef1ea9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-08T18:17:04Z",
+      "side": 1,
+      "message": "Does this interfere with com.android.cts.ctsshim?",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
