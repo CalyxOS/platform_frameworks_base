@@ -52,6 +52,24 @@
       "parentUuid": "cdecd35b_e946b259",
       "revId": "2a30b75c3a55070407a0ce96b41d8044cfc8aaa0",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc884fb_167dad6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-08T19:13:42Z",
+      "side": 1,
+      "message": "Ack, sounds unrelated.\n\nGitLab ticket / gerrit fix directly is fine :p",
+      "parentUuid": "2f7a51bb_a622fd08",
+      "revId": "2a30b75c3a55070407a0ce96b41d8044cfc8aaa0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
