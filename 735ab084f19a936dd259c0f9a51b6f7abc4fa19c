@@ -50,6 +50,24 @@
       "message": "We have userManager, r83 doesn\u0027t?",
       "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c47ebe5_830050a4",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/row/NotificationGutsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-09T21:55:21Z",
+      "side": 1,
+      "message": "The security tag doesn\u0027t, because those are based on r1 and don\u0027t include QPRs.",
+      "parentUuid": "a67485b9_dc419471",
+      "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
