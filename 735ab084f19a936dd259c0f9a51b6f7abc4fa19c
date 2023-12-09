@@ -68,6 +68,24 @@
       "parentUuid": "a67485b9_dc419471",
       "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171a1a89_062753d5",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/row/NotificationGutsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-09T21:56:16Z",
+      "side": 1,
+      "message": "Actually now that I look at it again, it looks like this change is part of the security update.",
+      "parentUuid": "7c47ebe5_830050a4",
+      "revId": "735ab084f19a936dd259c0f9a51b6f7abc4fa19c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
