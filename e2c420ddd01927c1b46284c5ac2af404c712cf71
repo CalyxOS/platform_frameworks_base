@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f18fd60_6735c3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-11T21:42:48Z",
+      "side": 1,
+      "message": "For an app which is blocked from uninstall, the toggle still turns off, but it is not actually hidden or uninstalled. It\u0027s similar to the behavior observed when turning off \"Work Profile\" itself; it appears to toggle off, but it\u0027s essential and is not truly removed or hidden.",
+      "revId": "e2c420ddd01927c1b46284c5ac2af404c712cf71",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
