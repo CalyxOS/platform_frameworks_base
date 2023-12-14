@@ -88,6 +88,24 @@
       "parentUuid": "e699bfa3_f654ca8b",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9edd3e10_7aa6c56a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T21:00:29Z",
+      "side": 1,
+      "message": "It also seems to be a race somehow, because if debugging with breakpoints, the issue does not occur.",
+      "parentUuid": "d1980140_a37cba3d",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
