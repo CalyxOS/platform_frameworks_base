@@ -16,6 +16,24 @@
       "message": "It looks like this is just changing AOSP\u0027s whitespace. Is it useful for us in terms of catching upstream changes when porting, or should we undo it?",
       "revId": "0fc3c335c188a6fa20384f666704e756adb91104",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b54a5c_926a6bdb",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 18030,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T13:53:04Z",
+      "side": 1,
+      "message": "Ack, I don\u0027t see a point to the whitespace change. We could add a guard comment if truly needed.",
+      "parentUuid": "b972560a_a65346fd",
+      "revId": "0fc3c335c188a6fa20384f666704e756adb91104",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
