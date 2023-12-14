@@ -106,6 +106,24 @@
       "parentUuid": "d1980140_a37cba3d",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf2d0de_95e80c9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T22:07:34Z",
+      "side": 1,
+      "message": "When Tor Browser is working:\n`HAPPY_BOX_MATCH RESTRICTED_MATCH`\n\nWhen it is not working:\n`HAPPY_BOX_MATCH RESTRICTED_MATCH IIF_MATCH ##`\n\n1. Connect Orbot.\n2. Install Tor Browser.\n3. Get its work profile uid via `adb shell pm list packages -U | grep -F org.torproject.torbrowser`\n4. `adb shell dumpsys connectivity trafficcontroller | grep $uid`\n5. You\u0027ll see the \"not working\" result unless you\u0027re lucky, and it won\u0027t work.\n6. Disconnect and reconnect Orbot.\n7. Repeat step 4 and you\u0027ll see the \"working\" result, and it will work.\n\nConnectivity\u0027s PermissionMonitor adjusts IIF_MATCH with updateVpnUid and some other methods, either in response to package changes or called from ConnectivityService. It doesn\u0027t look like the package change response is the conflict, oddly, but I could be wrong.",
+      "parentUuid": "9edd3e10_7aa6c56a",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
