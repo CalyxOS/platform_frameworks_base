@@ -34,6 +34,24 @@
       "parentUuid": "d112418b_37cc3abf",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cf012b_4fd6723a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-12-14T18:56:07Z",
+      "side": 1,
+      "message": "If this change triggers, setVpnForcedLocked, in the previous change, it should be always adding TOR browser",
+      "parentUuid": "0b4038b7_d100bcf4",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
