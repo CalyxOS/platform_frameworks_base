@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d112418b_37cc3abf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T18:50:49Z",
+      "side": 1,
+      "message": "Test: Manual: All operations are in the work profile. Begin without Tor Browser installed. Disconnect and reconnect Orbot. Install Tor Browser. Try to use Tor Browser. It should connect successfully.\n\nThe above test is failing. If I disconnect and reconnect Orbot, it starts working... so I think this change isn\u0027t working.\n\nLet me know I\u0027m misunderstanding this change.",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
