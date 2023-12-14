@@ -70,6 +70,24 @@
       "parentUuid": "a2cf012b_4fd6723a",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1980140_a37cba3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T21:00:04Z",
+      "side": 1,
+      "message": "The change is triggered. setVpnForcedLocked is reached. The package is detected as present, matching, and its uid is successfully retrieved. But ultimately it doesn\u0027t end up being reflected in `ip rule` until disconnecting and reconnecting Orbot. This will need more troubleshooting/debugging.",
+      "parentUuid": "e699bfa3_f654ca8b",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
