@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66ad7de_69790ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T18:53:48Z",
+      "side": 1,
+      "message": "Test: With Orbot as the lockdown VPN, connect Orbot, then turn off its network access using the firewall. Try browsing with Chromium. As expected, it won\u0027t work. Now try browsing with Tor Browser. It will work.\n\nPasses.",
+      "revId": "766905fbd47bb1a3c4f6aaee1674307680217118",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
