@@ -52,6 +52,24 @@
       "parentUuid": "0b4038b7_d100bcf4",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e699bfa3_f654ca8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-14T19:05:12Z",
+      "side": 1,
+      "message": "Is there a command I can use to check that, or do I have to debug? If you\u0027re thinking of this:\n```\nadb shell settings --user 10 list secure | grep always`\nalways_on_vpn_lockdown_whitelist\u003d\n```\n^ It\u0027s empty all the time, and I think that\u0027s normal because we\u0027re not changing it.",
+      "parentUuid": "a2cf012b_4fd6723a",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
