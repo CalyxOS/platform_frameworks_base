@@ -124,6 +124,24 @@
       "parentUuid": "9edd3e10_7aa6c56a",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b289559_6ad99bc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-15T17:29:55Z",
+      "side": 1,
+      "message": "I understand this a bit better now and found a couple of things that seem to work.\n\nTor Browser and Briar don\u0027t only need to be added to the lockdown allowlist (which is an aspect that is working properly); they also need to be successfully processed as part of Orbot\u0027s disallowedApplications list. That list is currently only processed in one of two circumstances:\n- when Orbot is reconnected,\n- when the lockdown toggle is turned off and on (more on that later).\n\nWhen testing this, if Tor Browser is uninstalled or installed, the VPN\u0027s covered UIDs are not updated to reflect this, nor is the required ingress interface (IIF_MATCH), so Tor Browser will remain within Orbot\u0027s covered range when it is installed. Even though it\u0027s *allowed* to bypass VPN lockdown, it isn\u0027t coded to go out of its way to do that, so it simply uses the VPN and fails.\n\nFor example (and I\u0027ve tried this), if you add Chromium to the allowlist, Chromium will still be covered by Orbot and will have the IIF_MATCH, even if you disconnect, reconnect, etc. To allow otherwise, we need to open Orbot and \"Choose apps\" in a way that doesn\u0027t include Chromium. Only then will Chromium bypass Orbot.\n\nSo, we know that stopping and starting Orbot fixes the problem, but another working fix is turning lockdown off and on again in the Settings. Isn\u0027t that basically what we\u0027re doing? Well, no... We\u0027re only setting its always-on state again, to the same values, to force it to update.\n\nFor some reason, in order for the covered UID ranges and the IIF_MATCH state to be updated properly, that isn\u0027t enough. However, toggling it off and then on again, like this, does work (confirmed):\n```\n            if (vpn.getLockdown()) {\n                vpn.setAlwaysOnPackage(vpn.getAlwaysOnPackage(), false,\n                        vpn.getLockdownAllowlist());\n                vpn.setAlwaysOnPackage(vpn.getAlwaysOnPackage(), true,\n                        vpn.getLockdownAllowlist());\n            }\n```\n\nBut it\u0027s not really ideal. We don\u0027t ever want to turn it off. So, why does it work? It appears to work because a new network agent is started, and that new network agent happens to also update the covered UIDs.\n\nFrom Vpn.java:\n```\n            // Lockdown forces the VPN to be non-bypassable (see #agentConnect) because it makes\n            // no sense for a VPN to be bypassable when connected but not when not connected.\n            // As such, changes in lockdown need to restart the agent.\n            if (mNetworkAgent !\u003d null \u0026\u0026 oldLockdownState !\u003d mLockdown) {\n                startNewNetworkAgent(mNetworkAgent, \"Lockdown mode changed\");\n            }\n```\n\nIf we modify the above so that it always starts a new network agent when the always-on vpn state is set and lockdown is on...\n```\n            if (mNetworkAgent !\u003d null \u0026\u0026 ((oldLockdownState !\u003d mLockdown) || mLockdown)) {\n```\n\nThat also resolves this issue, and should do so without the risk of leaking traffic, although I\u0027m not sure of the other implications of creating a new network agent more often, since this would create one any time the always-on state was set while lockdown is on.\n\nThere might be another, better way to handle this; just dumping the info I\u0027ve gleaned so far.\n\n(Also, I can\u0027t explain the apparent \"race condition\" element I mentioned earlier.)",
+      "parentUuid": "bbf2d0de_95e80c9b",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
