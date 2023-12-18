@@ -142,6 +142,24 @@
       "parentUuid": "bbf2d0de_95e80c9b",
       "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49571f68_6ee1a453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-18T16:47:27Z",
+      "side": 1,
+      "message": "Done. It should only start a new agent if the allowlist actually changed.\n\n`adb logcat | grep \u0027Lockdown mode changed\u0027` -- you\u0027ll see it shows if Tor Browser or Briar is uninstalled/installed (or hidden/unhidden), but not other apps.",
+      "parentUuid": "0b289559_6ad99bc7",
+      "revId": "f24e52164c24882e1d2e5a4f7036e8b126e29102",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
