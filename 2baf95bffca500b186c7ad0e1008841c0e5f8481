@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604cdd36_dc644e2d",
+        "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-18T22:57:20Z",
+      "side": 1,
+      "message": "Unused import (all the other added ones here are unused too).",
+      "revId": "2baf95bffca500b186c7ad0e1008841c0e5f8481",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

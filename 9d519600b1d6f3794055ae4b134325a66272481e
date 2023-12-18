@@ -16,6 +16,24 @@
       "message": "Install is still blocked in 14 QPR1.\n\nLooks like this needs to be changed in InstallStart.java (too) which has `checkDevicePolicyRestrictions`.",
       "revId": "9d519600b1d6f3794055ae4b134325a66272481e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b53af3a_5f931efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-12-18T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8566ae8_465af455",
+      "revId": "9d519600b1d6f3794055ae4b134325a66272481e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
