@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce7d74f_aa0f2734",
+        "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageUtil.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-19T06:34:16Z",
+      "side": 1,
+      "message": "Simple package name check is safe because it\u0027s a system app, and regardless this only allows install from 2 particular apps built on f-droid.org.",
+      "revId": "15d464a672786e7d450ca7ce6fcd67d1c764f2f8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
