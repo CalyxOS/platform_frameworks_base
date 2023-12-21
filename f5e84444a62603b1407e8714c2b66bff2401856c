@@ -89,6 +89,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a384f59d_3f792359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-12-21T15:10:29Z",
+      "side": 1,
+      "message": "https://github.com/microg/GmsCore/issues/897#issuecomment-1862785662\nThis supposedly should be the minimum required permissions.",
+      "revId": "f5e84444a62603b1407e8714c2b66bff2401856c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62138a61_88823bf5",
         "filename": "services/core/java/com/android/server/pm/permission/PermissionManagerServiceImpl.java",
         "patchSetId": 1
