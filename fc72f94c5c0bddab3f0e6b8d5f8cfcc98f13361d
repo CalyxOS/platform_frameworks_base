@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ea340d_6e8183b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-12-22T10:48:48Z",
+      "side": 1,
+      "message": "Can you provide an explanation of the change. Reasons, what it fixes, etc.",
+      "revId": "fc72f94c5c0bddab3f0e6b8d5f8cfcc98f13361d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
