@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3b7190_e0bfa0a2",
+        "filename": "packages/SystemUI/res/drawable/stat_sys_ringer_silent.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2023-12-30T22:35:40Z",
+      "side": 1,
+      "message": "-2.5dp looks perfect here, not sure if it\u0027s the same thing on QPR1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "4e8b7b9e4fd02fa6ab3ca466028bcb157ecb82eb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
