@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ecf5df_32f36bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-01-02T21:39:56Z",
+      "side": 1,
+      "message": "Missing initialization",
+      "revId": "0fa6100f384305e4fb51f822768d4a3597ec9871",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
