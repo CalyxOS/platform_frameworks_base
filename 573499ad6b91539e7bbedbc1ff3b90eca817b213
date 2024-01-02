@@ -16,6 +16,24 @@
       "message": "Missing initialization",
       "revId": "573499ad6b91539e7bbedbc1ff3b90eca817b213",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2c2e18_a1bd74f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-01-02T23:07:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a8fc3ea_bc5c3c72",
+      "revId": "573499ad6b91539e7bbedbc1ff3b90eca817b213",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
