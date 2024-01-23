@@ -16,6 +16,24 @@
       "message": "Oops, this is based on an upstream change which is now different:\n\nhttps://review.lineageos.org/c/LineageOS/android_frameworks_base/+/369949",
       "revId": "5eb143ce239bd9acf6220e7a2bd2170d1f295c15",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722d4428_70dac056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-01-23T22:06:11Z",
+      "side": 1,
+      "message": "Unresolving",
+      "parentUuid": "010f59dd_a8560eb7",
+      "revId": "5eb143ce239bd9acf6220e7a2bd2170d1f295c15",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
