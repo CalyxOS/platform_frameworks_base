@@ -16,6 +16,24 @@
       "message": "Need to compare to upstream which may have changed since this was uploaded: https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/372536/38",
       "revId": "07f08d097e09970f5451b294b14229be203a177d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc16020b_0fb7c8af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-01-23T22:58:45Z",
+      "side": 1,
+      "message": "Now matching Lineage upstream merged",
+      "parentUuid": "4b62c253_4b691be2",
+      "revId": "07f08d097e09970f5451b294b14229be203a177d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
