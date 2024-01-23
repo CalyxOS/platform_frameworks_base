@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48f748b_23199ac5",
+        "filename": "packages/SystemUI/src/com/android/systemui/shade/QuickSettingsController.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-01-23T22:58:06Z",
+      "side": 1,
+      "message": "I realize this import is unused, but this matches Lineage upstream, which was been merged.",
+      "revId": "a18557a5d95a9d733a1438a17422d598d3c1e261",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
