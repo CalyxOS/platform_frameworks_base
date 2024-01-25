@@ -310,7 +310,13 @@ public class AppRestrictionsHelper {
                     // System app
                     // Skip excluded packages
                     if (excludePackages.contains(packageName)) continue;
-                    int enabled = pm.getApplicationEnabledSetting(packageName);
+                    int enabled;
+                    try {
+                        enabled = pm.getApplicationEnabledSetting(packageName);
+                    } catch (IllegalArgumentException e) {
+                        // Skip packages that can't actually be found for this user.
+                        continue;
+                    }
                     if (enabled == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
                             || enabled == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
                         // Check if the app is already enabled for the target user
