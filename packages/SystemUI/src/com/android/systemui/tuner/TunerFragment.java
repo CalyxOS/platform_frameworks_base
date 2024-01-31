@@ -45,13 +45,10 @@ public class TunerFragment extends PreferenceFragment {
             "picture_in_picture",
     };
 
-    private final TunerService mTunerService;
-
     // We are the only ones who ever call this constructor, so don't worry about the warning
     @SuppressLint("ValidFragment")
-    public TunerFragment(TunerService tunerService) {
+    public TunerFragment() {
         super();
-        mTunerService = tunerService;
     }
 
     @Override

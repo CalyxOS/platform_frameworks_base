@@ -41,18 +41,15 @@ public class TunerActivity extends CollapsingToolbarBaseActivity implements
     private static final String TAG_TUNER = "tuner";
 
     private final DemoModeController mDemoModeController;
-    private final TunerService mTunerService;
     private final GlobalSettings mGlobalSettings;
 
     @Inject
     TunerActivity(
             DemoModeController demoModeController,
-            TunerService tunerService,
             GlobalSettings globalSettings
     ) {
         super();
         mDemoModeController = demoModeController;
-        mTunerService = tunerService;
         mGlobalSettings = globalSettings;
     }
 
@@ -68,7 +65,7 @@ public class TunerActivity extends CollapsingToolbarBaseActivity implements
             } else if ("com.android.settings.action.STATUS_BAR_TUNER".equals(action)) {
                 fragment = new StatusBarTuner();
             } else {
-                fragment = new TunerFragment(mTunerService);
+                fragment = new TunerFragment();
             }
 
             getFragmentManager().beginTransaction().replace(R.id.content_frame,
