@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6096712_d07ac805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-02-21T22:18:53Z",
+      "side": 1,
+      "message": "Worked for me with a test where I installed an app in a secondary user, then uninstalled it from Owner via Settings \u003e Apps \u003e (app) \u003e 3-dot menu \u003e Uninstall for all users.",
+      "revId": "18b9448fb5628759c31737da388d9b8f827555ae",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
