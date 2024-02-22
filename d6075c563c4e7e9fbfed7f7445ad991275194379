@@ -16,6 +16,23 @@
       "message": "383756: fixup! ScreenOffAnimation: Fix system animation disable check | https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/383756 squashed into this already.",
       "revId": "d6075c563c4e7e9fbfed7f7445ad991275194379",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd430467_46167b04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-02-22T20:12:10Z",
+      "side": 1,
+      "message": "Maybe we give this some more time to marinate just in case?",
+      "revId": "d6075c563c4e7e9fbfed7f7445ad991275194379",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
