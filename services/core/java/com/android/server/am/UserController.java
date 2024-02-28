@@ -791,7 +791,8 @@ class UserController implements Handler.Callback {
             } else if (userId != UserHandle.USER_SYSTEM) {
                 Intent intent = new Intent(Intent.ACTION_USER_INITIALIZE);
                 intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND
-                        | Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND);
+                        | Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND
+                        | Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
                 mInjector.broadcastIntent(intent, null,
                         new IIntentReceiver.Stub() {
                             @Override
