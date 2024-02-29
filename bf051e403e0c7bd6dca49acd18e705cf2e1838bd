@@ -191,6 +191,24 @@
       "message": "Updated system apps should be able to have the same updated version installed again. The goal here is to prevent the system-shipped version from being replaced with a version that matches what was shipped, but is different (vulnerable).\n\nRight now, if you update TrichromeLibrary, you can\u0027t install a new version with the same version code as the updated version. That is not intended.",
       "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f803e304_c8dc67ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-02-29T04:39:27Z",
+      "side": 1,
+      "message": "Actually I think it is fine with TrichromeLibrary, but not with TrichromeChrome. So this change doesn\u0027t handle libraries at all possibly. May be fine that it doesn\u0027t, but the problem stands.",
+      "parentUuid": "71da5e90_17882c8a",
+      "revId": "bf051e403e0c7bd6dca49acd18e705cf2e1838bd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
