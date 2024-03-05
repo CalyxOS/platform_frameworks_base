@@ -41,5 +41,6 @@ class NavigationBarControllerEmptyImpl @Inject constructor() : NavigationBarCont
     override fun getDefaultNavigationBarView(): NavigationBarView? = null
     override fun getNavigationBarView(displayId: Int): NavigationBarView? = null
     override fun isOverviewEnabled(displayId: Int) = false
+    override fun shouldShowTaskbar() = false
     override fun getDefaultNavigationBar(): NavigationBar? = null
 }
