@@ -487,7 +487,6 @@ public class NavigationBarControllerImpl implements
         }
     }
 
-    @Override
     private boolean shouldShowTaskbar() {
         return mTaskbarShowing;
     }
