@@ -67,8 +67,6 @@ public interface NavigationBarController {
 
     boolean isOverviewEnabled(int displayId);
 
-    boolean shouldShowTaskbar;
-
     /** @return {@link NavigationBar} on the default display. */
     @Nullable
     NavigationBar getDefaultNavigationBar();
