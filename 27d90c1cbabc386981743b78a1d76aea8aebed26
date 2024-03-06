@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7480c2_9b416e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-03-06T20:00:43Z",
+      "side": 1,
+      "message": "Likely easiest to rewrite this impl in kotlin, it\u0027s small anyways",
+      "revId": "27d90c1cbabc386981743b78a1d76aea8aebed26",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
