@@ -17,11 +17,8 @@
 package com.android.systemui.lineage
 
 import com.android.systemui.qs.tileimpl.QSTileImpl
-import com.android.systemui.qs.tiles.AmbientDisplayTile
-import com.android.systemui.qs.tiles.AODTile
 import com.android.systemui.qs.tiles.CaffeineTile
 import com.android.systemui.qs.tiles.HeadsUpTile
-import com.android.systemui.qs.tiles.PowerShareTile
 import com.android.systemui.qs.tiles.ReadingModeTile
 import com.android.systemui.qs.tiles.SyncTile
 import com.android.systemui.qs.tiles.UsbTetherTile
@@ -33,18 +30,6 @@ import dagger.multibindings.StringKey
 
 @Module
 interface LineageModule {
-    /** Inject AmbientDisplayTile into tileMap in QSModule */
-    @Binds
-    @IntoMap
-    @StringKey(AmbientDisplayTile.TILE_SPEC)
-    fun bindAmbientDisplayTile(ambientDisplayTile: AmbientDisplayTile): QSTileImpl<*>
-
-    /** Inject AODTile into tileMap in QSModule */
-    @Binds
-    @IntoMap
-    @StringKey(AODTile.TILE_SPEC)
-    fun bindAODTile(aodTile: AODTile): QSTileImpl<*>
-
     /** Inject CaffeineTile into tileMap in QSModule */
     @Binds
     @IntoMap
@@ -56,12 +41,6 @@ interface LineageModule {
     @IntoMap
     @StringKey(HeadsUpTile.TILE_SPEC)
     fun bindHeadsUpTile(headsUpTile: HeadsUpTile): QSTileImpl<*>
-
-    /** Inject PowerShareTile into tileMap in QSModule */
-    @Binds
-    @IntoMap
-    @StringKey(PowerShareTile.TILE_SPEC)
-    fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
 
     /** Inject ReadingModeTile into tileMap in QSModule */
     @Binds
