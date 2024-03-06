@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3c4596_33397d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-03-06T19:55:46Z",
+      "side": 1,
+      "message": "I\u0027m ok to just drop this tbh.\n\nIt depended on a SignalState class which is entirely gone, and it\u0027s removal is big. Not worth it for a cosmetic feature.\n\nMay need xml changes",
+      "revId": "c011b86158374af0360840a2de2a6df1fb919ac1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
