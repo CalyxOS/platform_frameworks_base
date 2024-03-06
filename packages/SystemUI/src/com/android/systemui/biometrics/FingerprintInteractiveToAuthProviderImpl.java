@@ -17,6 +17,7 @@
 package com.android.systemui.biometrics;
 
 import android.content.Context;
+import android.hardware.biometrics.common.AuthenticateReason
 import android.provider.Settings;
 
 import javax.inject.Inject;
@@ -43,5 +44,9 @@ public class FingerprintInteractiveToAuthProviderImpl implements
                     Settings.Secure.SFPS_PERFORMANT_AUTH_ENABLED, value, userId);
         }
         return value == 0;
+    }
+
+    public AuthenticateReason.Vendor getVendorExtension(int userId) {
+    	return null;
     }
 }
