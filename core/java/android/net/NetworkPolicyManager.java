@@ -20,6 +20,7 @@ import static android.app.ActivityManager.PROCESS_STATE_UNKNOWN;
 import static android.app.ActivityManager.procStateToString;
 import static android.content.pm.PackageManager.GET_SIGNATURES;
 
+import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -47,6 +48,7 @@ import android.util.Pair;
 import android.util.Range;
 
 import com.android.internal.util.function.pooled.PooledLambda;
+import com.android.net.flags.Flags;
 
 import com.google.android.collect.Sets;
 
@@ -407,6 +409,7 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @FlaggedApi(Flags.FLAG_TRANSPORT_FIREWALL)
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
     public void notifyDenylistChanged(@NonNull int[] uidsAdded, @NonNull int[] uidsRemoved) {
@@ -1003,6 +1006,7 @@ public class NetworkPolicyManager {
         default void onUidBlockedReasonChanged(int uid, int blockedReasons) {}
 
         /** @hide */
+        @FlaggedApi(Flags.FLAG_TRANSPORT_FIREWALL)
         @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
         default void onUidsAllowedTransportsChanged(@NonNull int[] uids,
                 @NonNull long[] allowedTransports) {}
