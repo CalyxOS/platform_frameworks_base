@@ -33,6 +33,24 @@
       "message": "As I commented in the Connectivity-side change, I\u0027m not exactly sure how this can work at build time. We want to override this method if the transport_firewall flag is set, otherwise not. It shouldn\u0027t be found if the flag isn\u0027t set, so wouldn\u0027t that be a compile error? Not sure how that all works.",
       "revId": "c72434a7af1903fb7b343542a9e0f518092406c5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7acbc71b_f0a1e68f",
+        "filename": "core/api/module-lib-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-03-11T21:48:52Z",
+      "side": 1,
+      "message": "Well... It does work.",
+      "parentUuid": "132c1db9_566cae2f",
+      "revId": "c72434a7af1903fb7b343542a9e0f518092406c5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
