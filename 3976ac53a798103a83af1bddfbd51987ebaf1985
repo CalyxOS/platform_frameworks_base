@@ -16,6 +16,24 @@
       "message": "Test for adverse effects on a Pixel device",
       "revId": "3976ac53a798103a83af1bddfbd51987ebaf1985",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fa5954_133c4338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-03-21T21:02:42Z",
+      "side": 1,
+      "message": "Everything seems to work fine. Did the same tests, and some attempts at regular usage, with and without USB debugging. Tried hooking up USB-OTG devices as well.",
+      "parentUuid": "471f955b_9fa6f916",
+      "revId": "3976ac53a798103a83af1bddfbd51987ebaf1985",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
