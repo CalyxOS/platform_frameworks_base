@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471f955b_9fa6f916",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-03-21T20:31:11Z",
+      "side": 1,
+      "message": "Test for adverse effects on a Pixel device",
+      "revId": "3976ac53a798103a83af1bddfbd51987ebaf1985",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
