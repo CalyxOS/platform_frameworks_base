@@ -1171,8 +1171,8 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
     private final class PanicAction extends SinglePressAction implements LongPressAction  {
         private PanicAction() {
-            super(com.android.systemui.R.drawable.ic_panic,
-                    com.android.systemui.R.string.global_action_panic);
+            super(com.android.systemui.res.R.drawable.ic_panic,
+                    com.android.systemui.res.R.string.global_action_panic);
         }
 
         @Override
