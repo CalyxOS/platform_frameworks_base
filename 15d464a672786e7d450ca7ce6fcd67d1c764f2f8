@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "70e975e6_a59fc083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-04-13T04:24:28Z",
+      "side": 1,
+      "message": "Fails to compile due to https://cs.android.com/android/_/android/platform/frameworks/base/+/1c6b5ff590b31386adfe2579cb079a2ca6f12431",
+      "revId": "15d464a672786e7d450ca7ce6fcd67d1c764f2f8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3ce7d74f_aa0f2734",
         "filename": "packages/PackageInstaller/src/com/android/packageinstaller/PackageUtil.java",
         "patchSetId": 16
