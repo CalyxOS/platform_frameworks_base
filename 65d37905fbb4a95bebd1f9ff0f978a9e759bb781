@@ -69,6 +69,24 @@
       "parentUuid": "5db15d77_43f58dc9",
       "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc95b69_21952ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-04-18T19:01:45Z",
+      "side": 1,
+      "message": "Here we would, but depending where we add the UI we woulnd\u0027t. The current UI for the camera and mic access toggles live in Permission module",
+      "parentUuid": "475197e4_ca7468b8",
+      "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
