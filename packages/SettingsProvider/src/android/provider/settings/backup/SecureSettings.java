@@ -308,6 +308,7 @@ public class SecureSettings {
         Settings.Secure.ON_DEVICE_INTELLIGENCE_IDLE_TIMEOUT_MS,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
         Settings.Secure.STRICT_LOCATION_REDACTION,
+        Settings.Secure.CAMERA_OFF_TIMEOUT,
         Settings.Secure.MANDATORY_BIOMETRICS,
         Settings.Secure.MANDATORY_BIOMETRICS_REQUIREMENTS_SATISFIED,
         Settings.Secure.ADVANCED_PROTECTION_MODE,
