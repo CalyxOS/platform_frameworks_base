@@ -14054,6 +14054,12 @@ public final class Settings {
         public static final String STRICT_LOCATION_REDACTION = "strict_location_redaction";
 
         /**
+         * The amount of time in milliseconds before camera is turned off
+         * @hide
+         */
+        public static final String CAMERA_OFF_TIMEOUT = "camera_off_timeout";
+
+        /**
          * Toggle for whether to redact OTP notification while connected to wifi. Defaults to
          * false/0.
          * @hide

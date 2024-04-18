@@ -20,12 +20,18 @@ import android.Manifest.permission.PACKAGE_USAGE_STATS
 import android.annotation.RequiresPermission
 import android.annotation.WorkerThread
 import android.app.ActivityManager
+import android.app.AlarmManager
+import android.app.AlarmManager.OnAlarmListener
 import android.app.AppOpsManager
 import android.content.Context
 import android.content.PermissionChecker
 import android.content.pm.PackageManager
 import android.content.pm.UserInfo
+import android.database.ContentObserver
+import android.hardware.SensorPrivacyManager
+import android.os.SystemClock
 import android.os.UserHandle
+import android.provider.Settings
 import com.android.internal.annotations.GuardedBy
 import com.android.internal.annotations.VisibleForTesting
 import com.android.internal.logging.UiEvent
@@ -69,16 +75,20 @@ constructor(
 
     @VisibleForTesting
     companion object {
-        val OPS_MIC_CAMERA =
+        private val OPS_MIC =
             intArrayOf(
-                AppOpsManager.OP_CAMERA,
-                AppOpsManager.OP_PHONE_CALL_CAMERA,
                 AppOpsManager.OP_RECORD_AUDIO,
                 AppOpsManager.OP_PHONE_CALL_MICROPHONE,
                 AppOpsManager.OP_RECEIVE_AMBIENT_TRIGGER_AUDIO,
                 AppOpsManager.OP_RECEIVE_EXPLICIT_USER_INTERACTION_AUDIO,
                 AppOpsManager.OP_RECEIVE_SANDBOX_TRIGGER_AUDIO,
             )
+        private val OPS_CAMERA =
+            intArrayOf(
+                AppOpsManager.OP_CAMERA,
+                AppOpsManager.OP_PHONE_CALL_CAMERA,
+            )
+        val OPS_MIC_CAMERA = OPS_MIC + OPS_CAMERA
         val OPS_LOCATION = intArrayOf(AppOpsManager.OP_FINE_LOCATION)
         val OPS = OPS_MIC_CAMERA + OPS_LOCATION
         val USER_INDEPENDENT_OPS =
@@ -136,6 +146,9 @@ constructor(
                     if (code in OPS_LOCATION && !locationAvailable) {
                         return
                     }
+                    if (code in OPS_CAMERA && !active) {
+                        setCameraTimeout()
+                    }
                     if (
                         userTracker.userProfiles.any { it.id == UserHandle.getUserId(uid) } ||
                             code in USER_INDEPENDENT_OPS
@@ -190,8 +203,44 @@ constructor(
             }
         }
 
+    private val cameraTimeoutListener = OnAlarmListener {
+        if (getActivePrivacyItems().none { it.privacyType == PrivacyType.TYPE_CAMERA }) {
+            context.getSystemService(SensorPrivacyManager::class.java)
+                ?.setSensorPrivacy(SensorPrivacyManager.Sensors.CAMERA, true)
+        }
+    }
+
     init {
+        setCameraTimeout()
+        context.contentResolver.registerContentObserver(Settings.Secure.getUriFor(
+                Settings.Secure.CAMERA_OFF_TIMEOUT), false,
+                object : ContentObserver(null) {
+                    override fun onChange(selfChange: Boolean) {
+                        setCameraTimeout()
+                    }
+                })
+        context.getSystemService(SensorPrivacyManager::class.java)
+            ?.addSensorPrivacyListener { sensor, enabled ->
+                if (!enabled) {
+                    when (sensor) {
+                        SensorPrivacyManager.Sensors.CAMERA -> setCameraTimeout()
+                    }
+                }
+            }
         privacyConfig.addCallback(configCallback)
+    }
+
+    private fun setCameraTimeout() {
+        val cameraTimeoutMillis: Long = Settings.Secure.getLong(context.getContentResolver(),
+                Settings.Secure.CAMERA_OFF_TIMEOUT, 0)
+        val alarmManager: AlarmManager? = context.getSystemService(AlarmManager::class.java)
+        alarmManager?.cancel(cameraTimeoutListener)
+        if (cameraTimeoutMillis != 0L) {
+            val timeout: Long = SystemClock.elapsedRealtime() + cameraTimeoutMillis
+            alarmManager?.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout,
+                    AppOpsPrivacyItemMonitor::class.java.simpleName,
+                    Runnable::run, null, cameraTimeoutListener)
+        }
     }
 
     override fun startListening(callback: PrivacyItemMonitor.Callback) {
