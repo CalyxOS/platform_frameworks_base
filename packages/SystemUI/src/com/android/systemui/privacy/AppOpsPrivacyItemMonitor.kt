@@ -107,6 +107,9 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
                 if (code in OPS_CAMERA && !active) {
                     setCameraTimeout()
                 }
+                if (code in OPS_MIC && !active) {
+                    setMicTimeout()
+                }
                 if (userTracker.userProfiles.any { it.id == UserHandle.getUserId(uid) } ||
                         code in USER_INDEPENDENT_OPS) {
                     logger.logUpdatedItemFromAppOps(code, uid, packageName, active)
@@ -154,11 +157,19 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
                         setCameraTimeout()
                     }
                 })
+        context.contentResolver.registerContentObserver(Settings.Secure.getUriFor(
+                Settings.Secure.MIC_OFF_TIMEOUT), false,
+                object : ContentObserver(null) {
+                    override fun onChange(selfChange: Boolean) {
+                        setMicTimeout()
+                    }
+                })
         context.getSystemService(SensorPrivacyManager::class.java)
             ?.addSensorPrivacyListener { sensor, enabled ->
                 if (!enabled) {
                     when (sensor) {
                         SensorPrivacyManager.Sensors.CAMERA -> setCameraTimeout()
+                        SensorPrivacyManager.Sensors.MICROPHONE -> setMicTimeout()
                     }
                 }
             }
@@ -172,6 +183,13 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
         }
     }
 
+    private val micTimeoutListener = OnAlarmListener {
+        if (getActivePrivacyItems().none { it.privacyType == PrivacyType.TYPE_MICROPHONE }) {
+            context.getSystemService(SensorPrivacyManager::class.java)
+                    ?.setSensorPrivacy(SensorPrivacyManager.Sensors.MICROPHONE, true)
+        }
+    }
+
     private fun setCameraTimeout() {
         val cameraTimeoutMillis: Long = Settings.Secure.getLong(context.getContentResolver(),
                 Settings.Secure.CAMERA_OFF_TIMEOUT, 0)
@@ -182,6 +200,19 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
             alarmManager?.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout,
                     AppOpsPrivacyItemMonitor::class.java.simpleName,
                     Runnable::run, null, cameraTimeoutListener)
+        }
+    }
+
+    private fun setMicTimeout() {
+        val micTimeoutMillis: Long = Settings.Secure.getLong(context.getContentResolver(),
+                Settings.Secure.MIC_OFF_TIMEOUT, 0)
+        val alarmManager: AlarmManager? = context.getSystemService(AlarmManager::class.java)
+        alarmManager?.cancel(micTimeoutListener)
+        if (micTimeoutMillis != 0L) {
+            val timeout: Long = SystemClock.elapsedRealtime() + micTimeoutMillis
+            alarmManager?.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout,
+                    AppOpsPrivacyItemMonitor::class.java.simpleName,
+                    Runnable::run, null, micTimeoutListener)
         }
     }
 

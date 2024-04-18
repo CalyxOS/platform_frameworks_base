@@ -12631,6 +12631,12 @@ public final class Settings {
         public static final String CAMERA_OFF_TIMEOUT = "camera_off_timeout";
 
         /**
+         * The amount of time in milliseconds before mic is turned off
+         * @hide
+         */
+        public static final String MIC_OFF_TIMEOUT = "mic_off_timeout";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
