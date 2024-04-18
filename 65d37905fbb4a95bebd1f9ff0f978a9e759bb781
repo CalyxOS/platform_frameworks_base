@@ -33,6 +33,24 @@
       "message": "We typically add these to LineageSettings",
       "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db15d77_43f58dc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-04-18T18:58:32Z",
+      "side": 1,
+      "message": "I added them here because we moved Bluetooth and Wifi timeouts back (iirc because modules couldn\u0027t read LineageSettings?)",
+      "parentUuid": "4f7e9e8e_3acd6fee",
+      "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
