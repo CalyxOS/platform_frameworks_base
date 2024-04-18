@@ -311,6 +311,7 @@ public class SecureSettings {
         Settings.Secure.FIRST_ON_DEVICE_MODELS_DOWNLOADED_TIME,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
         Settings.Secure.STRICT_LOCATION_REDACTION,
+        Settings.Secure.CAMERA_OFF_TIMEOUT,
         Settings.Secure.CONTENT_SAFETY_IDLE_TIMEOUT_MS,
         Settings.Secure.CONTENT_SAFETY_UNBIND_TIMEOUT_MS,
         Settings.Secure.CONTENT_SAFETY_SANDBOXED_UNBIND_TIMEOUT_MS,
