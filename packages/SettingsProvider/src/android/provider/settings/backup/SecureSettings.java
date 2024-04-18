@@ -270,6 +270,7 @@ public class SecureSettings {
         Settings.Secure.VISUAL_QUERY_ACCESSIBILITY_DETECTION_ENABLED,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
         Settings.Secure.STRICT_LOCATION_REDACTION,
-        Settings.Secure.CAMERA_OFF_TIMEOUT
+        Settings.Secure.CAMERA_OFF_TIMEOUT,
+        Settings.Secure.MIC_OFF_TIMEOUT
     };
 }
