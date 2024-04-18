@@ -16,6 +16,23 @@
       "message": "Needs to call timeout function during boot as well. Otherwise works.",
       "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7e9e8e_3acd6fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-04-18T11:35:35Z",
+      "side": 1,
+      "message": "We typically add these to LineageSettings",
+      "revId": "65d37905fbb4a95bebd1f9ff0f978a9e759bb781",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
