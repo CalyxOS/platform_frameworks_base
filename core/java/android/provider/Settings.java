@@ -12144,6 +12144,12 @@ public final class Settings {
         public static final String HIDE_PRIVATESPACE_ENTRY_POINT = "hide_privatespace_entry_point";
 
         /**
+         * The amount of time in milliseconds before camera is turned off
+         * @hide
+         */
+        public static final String CAMERA_OFF_TIMEOUT = "camera_off_timeout";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
