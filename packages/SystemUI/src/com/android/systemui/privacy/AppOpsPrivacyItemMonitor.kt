@@ -16,10 +16,16 @@
 
 package com.android.systemui.privacy
 
+import android.app.AlarmManager
+import android.app.AlarmManager.OnAlarmListener
 import android.app.AppOpsManager
 import android.content.Context
 import android.content.pm.UserInfo
+import android.database.ContentObserver
+import android.hardware.SensorPrivacyManager
+import android.os.SystemClock
 import android.os.UserHandle
+import android.provider.Settings
 import com.android.internal.annotations.GuardedBy
 import com.android.internal.annotations.VisibleForTesting
 import com.android.systemui.appops.AppOpItem
@@ -44,6 +50,7 @@ import javax.inject.Inject
  */
 @SysUISingleton
 class AppOpsPrivacyItemMonitor @Inject constructor(
+    private val context: Context,
     private val appOpsController: AppOpsController,
     private val userTracker: UserTracker,
     private val privacyConfig: PrivacyConfig,
@@ -53,14 +60,16 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
 
     @VisibleForTesting
     companion object {
-        val OPS_MIC_CAMERA = intArrayOf(
-                AppOpsManager.OP_CAMERA,
-                AppOpsManager.OP_PHONE_CALL_CAMERA,
+        private val OPS_MIC = intArrayOf(
                 AppOpsManager.OP_RECORD_AUDIO,
                 AppOpsManager.OP_PHONE_CALL_MICROPHONE,
                 AppOpsManager.OP_RECEIVE_AMBIENT_TRIGGER_AUDIO,
                 AppOpsManager.OP_RECEIVE_EXPLICIT_USER_INTERACTION_AUDIO,
                 AppOpsManager.OP_RECEIVE_SANDBOX_TRIGGER_AUDIO)
+        private val OPS_CAMERA = intArrayOf(
+                AppOpsManager.OP_CAMERA,
+                AppOpsManager.OP_PHONE_CALL_CAMERA)
+        val OPS_MIC_CAMERA = OPS_MIC + OPS_CAMERA
         val OPS_LOCATION = intArrayOf(
                 AppOpsManager.OP_COARSE_LOCATION,
                 AppOpsManager.OP_FINE_LOCATION)
@@ -94,6 +103,9 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
                 }
                 if (code in OPS_LOCATION && !locationAvailable) {
                     return
+                }
+                if (code in OPS_CAMERA && !active) {
+                    setCameraTimeout()
                 }
                 if (userTracker.userProfiles.any { it.id == UserHandle.getUserId(uid) } ||
                         code in USER_INDEPENDENT_OPS) {
@@ -135,7 +147,42 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
     }
 
     init {
+        context.contentResolver.registerContentObserver(Settings.Secure.getUriFor(
+                Settings.Secure.CAMERA_OFF_TIMEOUT), false,
+                object : ContentObserver(null) {
+                    override fun onChange(selfChange: Boolean) {
+                        setCameraTimeout()
+                    }
+                })
+        context.getSystemService(SensorPrivacyManager::class.java)
+            ?.addSensorPrivacyListener { sensor, enabled ->
+                if (!enabled) {
+                    when (sensor) {
+                        SensorPrivacyManager.Sensors.CAMERA -> setCameraTimeout()
+                    }
+                }
+            }
         privacyConfig.addCallback(configCallback)
+    }
+
+    private val cameraTimeoutListener = OnAlarmListener {
+        if (getActivePrivacyItems().none { it.privacyType == PrivacyType.TYPE_CAMERA }) {
+            context.getSystemService(SensorPrivacyManager::class.java)
+                    ?.setSensorPrivacy(SensorPrivacyManager.Sensors.CAMERA, true)
+        }
+    }
+
+    private fun setCameraTimeout() {
+        val cameraTimeoutMillis: Long = Settings.Secure.getLong(context.getContentResolver(),
+                Settings.Secure.CAMERA_OFF_TIMEOUT, 0)
+        val alarmManager: AlarmManager? = context.getSystemService(AlarmManager::class.java)
+        alarmManager?.cancel(cameraTimeoutListener)
+        if (cameraTimeoutMillis != 0L) {
+            val timeout: Long = SystemClock.elapsedRealtime() + cameraTimeoutMillis
+            alarmManager?.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeout,
+                    AppOpsPrivacyItemMonitor::class.java.simpleName,
+                    Runnable::run, null, cameraTimeoutListener)
+        }
     }
 
     override fun startListening(callback: PrivacyItemMonitor.Callback) {

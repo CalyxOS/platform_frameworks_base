@@ -441,5 +441,20 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.ON_DEVICE_INTELLIGENCE_IDLE_TIMEOUT_MS, NONE_NEGATIVE_LONG_VALIDATOR);
         VALIDATORS.put(Secure.TETHERING_ALLOW_VPN_UPSTREAMS, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.STRICT_LOCATION_REDACTION, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(Secure.CAMERA_OFF_TIMEOUT,
+                new DiscreteValueValidator(new String[] {
+                        "0",
+                        "15000",
+                        "30000",
+                        "60000",
+                        "120000",
+                        "300000",
+                        "600000",
+                        "1800000",
+                        "3600000",
+                        "7200000",
+                        "14400000",
+                        "28800000"
+                }));
     }
 }
