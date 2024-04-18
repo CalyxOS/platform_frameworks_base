@@ -269,6 +269,7 @@ public class SecureSettings {
         Settings.Secure.CAMERA_EXTENSIONS_FALLBACK,
         Settings.Secure.VISUAL_QUERY_ACCESSIBILITY_DETECTION_ENABLED,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
-        Settings.Secure.CAMERA_OFF_TIMEOUT
+        Settings.Secure.CAMERA_OFF_TIMEOUT,
+        Settings.Secure.MIC_OFF_TIMEOUT
     };
 }
