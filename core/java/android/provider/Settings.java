@@ -12426,6 +12426,12 @@ public final class Settings {
         public static final String STYLUS_POINTER_ICON_ENABLED = "stylus_pointer_icon_enabled";
 
         /**
+         * The amount of time in milliseconds before camera is turned off
+         * @hide
+         */
+        public static final String CAMERA_OFF_TIMEOUT = "camera_off_timeout";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
