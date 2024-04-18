@@ -295,6 +295,7 @@ public class SecureSettings {
         Settings.Secure.ADVANCED_PROTECTION_MODE,
         Settings.Secure.ACCESSIBILITY_KEY_GESTURE_TARGETS,
         Settings.Secure.CAMERA_OFF_TIMEOUT,
+        Settings.Secure.MIC_OFF_TIMEOUT,
         Settings.Secure.EM_VALUE,
         Settings.Secure.FACE_APP_ENABLED,
         Settings.Secure.FACE_KEYGUARD_ENABLED,
