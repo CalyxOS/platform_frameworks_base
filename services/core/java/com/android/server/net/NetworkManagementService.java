@@ -1185,6 +1185,17 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
     }
 
     @Override
+    public int getUidCleartextNetworkPolicy(int uid) {
+        if (mDeps.getCallingUid() != uid) {
+            PermissionUtils.enforceNetworkStackPermission(mContext);
+        }
+
+        synchronized (mQuotaLock) {
+            return mUidCleartextPolicy.get(uid, StrictMode.NETWORK_POLICY_INVALID);
+        }
+    }
+
+    @Override
     public void setUidCleartextNetworkPolicy(int uid, int policy) {
         if (mDeps.getCallingUid() != uid) {
             PermissionUtils.enforceNetworkStackPermission(mContext);

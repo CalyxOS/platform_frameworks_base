@@ -227,6 +227,7 @@ interface INetworkManagementService
     @EnforcePermission("NETWORK_SETTINGS")
     boolean setDataSaverModeEnabled(boolean enable);
 
+    int getUidCleartextNetworkPolicy(int uid);
     void setUidCleartextNetworkPolicy(int uid, int policy);
 
     /**
