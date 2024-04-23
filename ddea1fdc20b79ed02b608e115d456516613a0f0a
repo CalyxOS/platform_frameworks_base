@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa60c20c_d5e150be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-04-23T17:47:02Z",
+      "side": 1,
+      "message": "Looks like this would take place for any app with package name `com.aurora.store`, which could be spoofed.\n\nI might prefer the suggestions in the issue comments, related to doing this in the Setup Wizard or Lupin. That way, we can be sure of what\u0027s being installed.\n\nThe issue description itself wasn\u0027t specific, though - doing it this way would handle all possible cases, but maybe more than we want or need.",
+      "revId": "ddea1fdc20b79ed02b608e115d456516613a0f0a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
