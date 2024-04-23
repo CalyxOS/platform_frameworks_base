@@ -681,12 +681,16 @@ public class DeviceIdleController extends SystemService
                         updateChargingLocked(present && plugged);
                     }
                 } break;
-                case Intent.ACTION_PACKAGE_REMOVED: {
+                case Intent.ACTION_PACKAGE_REMOVED, Intent.ACTION_PACKAGE_ADDED: {
                     if (!intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) {
                         Uri data = intent.getData();
                         String ssp;
                         if (data != null && (ssp = data.getSchemeSpecificPart()) != null) {
-                            removePowerSaveWhitelistAppInternal(ssp);
+                            if (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)) {
+                                removePowerSaveWhitelistAppInternal(ssp);
+                            } else if (ssp.equals("com.aurora.store")) {
+                                addPowerSaveWhitelistAppsInternal(Collections.singletonList(ssp));
+                            }
                         }
                     }
                 } break;
@@ -2772,6 +2776,7 @@ public class DeviceIdleController extends SystemService
                 getContext().registerReceiver(mReceiver, filter);
 
                 filter = new IntentFilter();
+                filter.addAction(Intent.ACTION_PACKAGE_ADDED);
                 filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
                 filter.addDataScheme("package");
                 getContext().registerReceiver(mReceiver, filter);
