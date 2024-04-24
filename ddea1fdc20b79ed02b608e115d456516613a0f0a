@@ -16,6 +16,24 @@
       "message": "Looks like this would take place for any app with package name `com.aurora.store`, which could be spoofed.\n\nI might prefer the suggestions in the issue comments, related to doing this in the Setup Wizard or Lupin. That way, we can be sure of what\u0027s being installed.\n\nThe issue description itself wasn\u0027t specific, though - doing it this way would handle all possible cases, but maybe more than we want or need.",
       "revId": "ddea1fdc20b79ed02b608e115d456516613a0f0a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e8f257_6447dab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-04-24T15:51:08Z",
+      "side": 1,
+      "message": "Yes, something like\n\nhttps://review.calyxos.org/c/CalyxOS/platform_packages_apps_SetupWizard/+/24774\nhttps://review.calyxos.org/c/CalyxOS/platform_packages_apps_SetupWizard/+/24775",
+      "parentUuid": "aa60c20c_d5e150be",
+      "revId": "ddea1fdc20b79ed02b608e115d456516613a0f0a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
