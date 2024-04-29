@@ -781,7 +781,7 @@ public class Vpn {
     /**
      * Returns whether currently prepared VPN package is set as the global VPN.
      */
-    private synchronized boolean isGlobalVpn() {
+    public synchronized boolean isGlobalVpn() {
         final String globalVpnPkg = LineageSettings.Global.getString(mContext.getContentResolver(),
                 LineageSettings.Global.GLOBAL_VPN_APP);
         return mUserId == UserHandle.USER_SYSTEM && mPackage.equals(globalVpnPkg);
