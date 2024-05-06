@@ -323,6 +323,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
+import lineageos.providers.LineageSettings;
+
 /**
  * Service that maintains low-level network policy rules, using
  * {@link NetworkStatsService} statistics to drive those rules.
@@ -1339,7 +1341,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 // global background data policy
                 // Clear the cache for the app
                 synchronized (mUidRulesFirstLock) {
-                    if (!hasInternetPermissionUL(uid) && !isSystemApp(uid)) {
+                    if ((!hasInternetPermissionUL(uid) && !isSystemApp(uid)) ||
+                            LineageSettings.Global.getInt(mContext.getContentResolver(),
+                                    LineageSettings.Global.RESTRICTED_NETWORKING_MODE, 0) == 1) {
                         Slog.i(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid + ", no INTERNET");
                         addUidPolicy(uid, POLICY_REJECT_ALL);
                     }
