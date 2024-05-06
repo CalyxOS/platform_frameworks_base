@@ -16,6 +16,24 @@
       "message": "Nit: The log message is confusing now, since \"no INTERNET\" is supposed to mean that the app has no INTERNET permission.",
       "revId": "6008292cd27e34da43aab2e0bff7dc71a7eb1f0f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb64c3d_5910bc77",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-05-06T20:59:58Z",
+      "side": 1,
+      "message": "Does it show that and still have internet access?",
+      "parentUuid": "73075513_fb00db6f",
+      "revId": "6008292cd27e34da43aab2e0bff7dc71a7eb1f0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
