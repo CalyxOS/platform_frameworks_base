@@ -34,6 +34,24 @@
       "parentUuid": "73075513_fb00db6f",
       "revId": "6008292cd27e34da43aab2e0bff7dc71a7eb1f0f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf63ffd_3c6d30e3",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-05-06T21:01:47Z",
+      "side": 1,
+      "message": "Haven\u0027t tested yet, but no, it shouldn\u0027t. Maybe we can just change it to \"no internet\" (lowercase)? Nit either way.",
+      "parentUuid": "dbb64c3d_5910bc77",
+      "revId": "6008292cd27e34da43aab2e0bff7dc71a7eb1f0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
