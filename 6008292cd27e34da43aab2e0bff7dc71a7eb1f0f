@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4e61be_db38209f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-05-07T18:50:23Z",
+      "side": 1,
+      "message": "Why is this needed? What does it help with wrt the feature?\n\nThis should all be in the commit message.",
+      "revId": "6008292cd27e34da43aab2e0bff7dc71a7eb1f0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73075513_fb00db6f",
