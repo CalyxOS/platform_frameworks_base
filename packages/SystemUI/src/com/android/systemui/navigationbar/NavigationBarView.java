@@ -620,7 +620,6 @@ public class NavigationBarView extends FrameLayout {
             mTransitionListener.onBackAltCleared();
         }
         mImeVisible = visible;
-        mRotationButtonController.getRotationButton().setCanShowRotationButton(!visible);
     }
 
     void setDisabledFlags(int disabledFlags, SysUiState sysUiState) {

@@ -124,6 +124,7 @@ public class RemoteDisplayChangeController {
                 }
                 callback.onContinueRemoteDisplayChange(null /* transaction */);
             }
+            mCallbacks.clear();
             onCompleted();
         }
     }
