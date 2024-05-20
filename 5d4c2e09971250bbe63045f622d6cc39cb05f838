@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d32ee9_b39d4713",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-05-20T15:27:07Z",
+      "side": 1,
+      "message": "If this is a work profile, do we need to check the parent user?",
+      "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
