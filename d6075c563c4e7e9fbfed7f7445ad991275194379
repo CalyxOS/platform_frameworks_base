@@ -68,6 +68,24 @@
       "parentUuid": "f5c3235a_6c3a44a2",
       "revId": "d6075c563c4e7e9fbfed7f7445ad991275194379",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646d6886_d9dc4574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2024-05-23T12:10:17Z",
+      "side": 1,
+      "message": "Tests are broken and upstream commit has no progress https://android-review.googlesource.com/c/platform/frameworks/base/+/2967148",
+      "parentUuid": "5c73ef61_b6b432dd",
+      "revId": "d6075c563c4e7e9fbfed7f7445ad991275194379",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
