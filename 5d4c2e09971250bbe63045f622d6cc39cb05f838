@@ -34,6 +34,24 @@
       "parentUuid": "f0d32ee9_b39d4713",
       "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0110a5d_6aaece03",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-05-31T20:27:37Z",
+      "side": 1,
+      "message": "Or we change the value for work profiles when toggling it for the parent user?",
+      "parentUuid": "58b007b1_2740bd99",
+      "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
