@@ -52,6 +52,24 @@
       "parentUuid": "58b007b1_2740bd99",
       "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efedc38f_f36eea6b",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-06-03T10:45:45Z",
+      "side": 1,
+      "message": "Work profiles can come and go (deleted, added), so checking the parent user seems easier than having to handle that synchronization.",
+      "parentUuid": "d0110a5d_6aaece03",
+      "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
