@@ -70,6 +70,24 @@
       "parentUuid": "d0110a5d_6aaece03",
       "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3b26f1_825b8fe6",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-03T17:33:23Z",
+      "side": 1,
+      "message": "Handled in Datura",
+      "parentUuid": "efedc38f_f36eea6b",
+      "revId": "5d4c2e09971250bbe63045f622d6cc39cb05f838",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
