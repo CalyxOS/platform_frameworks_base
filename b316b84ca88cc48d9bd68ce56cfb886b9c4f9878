@@ -86,6 +86,24 @@
       "parentUuid": "cc4a22ad_b16a2e7e",
       "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a53ce3_3b22144b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-05T04:01:26Z",
+      "side": 1,
+      "message": "Requires an account to be signed in in MicroG",
+      "parentUuid": "0814bd0a_b1fc3b51",
+      "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
