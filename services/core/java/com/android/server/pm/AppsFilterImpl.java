@@ -93,6 +93,9 @@ import java.util.Objects;
  */
 @VisibleForTesting(visibility = VisibleForTesting.Visibility.PACKAGE)
 public final class AppsFilterImpl extends AppsFilterLocked implements Watchable, Snappable {
+
+    private static final String PLAY_STORE = "com.android.vending";
+
     /**
      * A cached snapshot.
      */
@@ -602,7 +605,8 @@ public final class AppsFilterImpl extends AppsFilterLocked implements Watchable,
                             || (newPkgSetting.isSystem() && (mSystemAppsQueryable
                             || newPkg.isForceQueryable()
                             || ArrayUtils.contains(mForceQueryableByDevicePackageNames,
-                            newPkg.getPackageName())));
+                            newPkg.getPackageName())))
+                            || (PLAY_STORE).equals(newPkg.getPackageName());
             if (newIsForceQueryable
                     || (mSystemSigningDetails != null
                     && isSystemSigned(mSystemSigningDetails, newPkgSetting))) {

@@ -9931,6 +9931,17 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         if (!mHasFeature) {
             return null;
         }
+        int callingUid = getCallerIdentity().getUid();
+        int playStoreUid = Process.INVALID_UID;
+        try {
+            playStoreUid = mIPackageManager.getPackageUid("com.android.vending", 0,
+                    UserHandle.getUserId(callingUid));
+        } catch (RemoteException e) {
+
+        }
+        if (playStoreUid == getCallerIdentity().getUid()) {
+            callingUserOnly = true;
+        }
         if (!callingUserOnly) {
             Preconditions.checkCallAuthorization(canManageUsers(getCallerIdentity())
                     || hasCallingOrSelfPermission(MANAGE_PROFILE_AND_DEVICE_OWNERS));
@@ -10002,8 +10013,18 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         if (!mHasFeature) {
             return null;
         }
-        Preconditions.checkCallAuthorization(canManageUsers(getCallerIdentity())
-                || hasCallingOrSelfPermission(MANAGE_PROFILE_AND_DEVICE_OWNERS));
+        int callingUid = getCallerIdentity().getUid();
+        int playStoreUid = Process.INVALID_UID;
+        try {
+            playStoreUid = mIPackageManager.getPackageUid("com.android.vending", 0,
+                    UserHandle.getUserId(callingUid));
+        } catch (RemoteException e) {
+
+        }
+        if (playStoreUid != getCallerIdentity().getUid()) {
+            Preconditions.checkCallAuthorization(canManageUsers(getCallerIdentity())
+                    || hasCallingOrSelfPermission(MANAGE_PROFILE_AND_DEVICE_OWNERS));
+        }
 
         synchronized (getLockObject()) {
             if (!mOwners.hasDeviceOwner()) {
@@ -10735,8 +10756,18 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         if (!mHasFeature) {
             return null;
         }
-        Preconditions.checkCallAuthorization(canManageUsers(getCallerIdentity())
-                || hasCallingOrSelfPermission(MANAGE_PROFILE_AND_DEVICE_OWNERS));
+        int callingUid = getCallerIdentity().getUid();
+        int playStoreUid = Process.INVALID_UID;
+        try {
+            playStoreUid = mIPackageManager.getPackageUid("com.android.vending", 0,
+                    UserHandle.getUserId(callingUid));
+        } catch (RemoteException e) {
+
+        }
+        if (playStoreUid != getCallerIdentity().getUid()) {
+            Preconditions.checkCallAuthorization(canManageUsers(getCallerIdentity())
+                    || hasCallingOrSelfPermission(MANAGE_PROFILE_AND_DEVICE_OWNERS));
+        }
         return getProfileOwnerNameUnchecked(userHandle);
     }
 

@@ -1411,6 +1411,19 @@ public class UserManagerService extends IUserManager.Stub {
     @Override
     public @NonNull List<UserInfo> getUsers(boolean excludePartial, boolean excludeDying,
             boolean excludePreCreated) {
+        PackageManager packageManager = mContext.getPackageManager();
+        if (packageManager != null) {
+            String[] packages = packageManager.getPackagesForUid(Binder.getCallingUid());
+            if (packages != null) {
+                if (Arrays.asList(packages).contains("com.android.vending")) {
+                    synchronized (mUsersLock) {
+                        return new ArrayList<>(
+                                Arrays.asList(userWithName(
+                                        getUserInfoLU(UserHandle.getCallingUserId()))));
+                    }
+                }
+            }
+        }
         checkCreateUsersPermission("query users");
         return getUsersInternal(excludePartial, excludeDying, excludePreCreated);
     }
