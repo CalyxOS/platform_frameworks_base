@@ -1642,7 +1642,7 @@ public class AccountManagerService
                     "uid %s cannot get user data for accounts of type: %s",
                     callingUid,
                     account.type);
-            throw new SecurityException(msg);
+            //throw new SecurityException(msg);
         }
         if (!isLocalUnlockedUser(userId)) {
             Log.w(TAG, "User " + userId + " data is locked. callingUid " + callingUid);
