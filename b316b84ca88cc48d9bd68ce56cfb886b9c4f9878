@@ -16,6 +16,24 @@
       "message": "Would also likely require a change to make the app force-queryable",
       "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70473ee3_cd5d2831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-05T01:49:46Z",
+      "side": 1,
+      "message": "`adb install --force-queryable` for testing purposes",
+      "parentUuid": "4eec965e_b8a74ec9",
+      "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
