@@ -51,6 +51,23 @@
       "message": "https://cs.android.com/android/platform/superproject/+/main:frameworks/base/services/core/java/com/android/server/accounts/AccountManagerService.java;l\u003d1600?q\u003dgetUserData\nIf we care about play store having access to microG accounts",
       "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43dd514f_ee415567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-05T02:00:04Z",
+      "side": 1,
+      "message": "package_verifier_user_consent\u003d1 global setting may also be required",
+      "revId": "b316b84ca88cc48d9bd68ce56cfb886b9c4f9878",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": [
