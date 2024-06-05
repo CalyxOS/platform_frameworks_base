@@ -5829,6 +5829,7 @@ public class AccountManagerService
         if (accountType == null) {
             return false;
         } else {
+            if ()
             return getTypesManagedByCaller(callingUid, userId).contains(accountType);
         }
     }
