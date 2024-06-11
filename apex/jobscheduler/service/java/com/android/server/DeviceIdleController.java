@@ -2386,6 +2386,11 @@ public class DeviceIdleController extends SystemService
             return DeviceIdleController.this.getFullPowerWhitelistInternalUnchecked();
         }
 
+        @Override
+        public int[] getPowerSaveWhitelistSystemAppIds() {
+            return DeviceIdleController.this.getPowerSaveWhitelistSystemAppIds();
+        }
+
         /**
          * Returns the array of app ids whitelisted by user. Take care not to
          * modify this, as it is a reference to the original copy. But the reference
@@ -2611,7 +2616,7 @@ public class DeviceIdleController extends SystemService
         }
     }
 
-    int[] getPowerSaveSystemWhitelistAppIds() {
+    int[] getPowerSaveWhitelistSystemAppIds() {
         synchronized (this) {
             return mPowerSaveWhitelistSystemAppIdArray;
         }
