@@ -118,7 +118,6 @@ public class QSCustomizerController extends ViewController<QSCustomizer> {
         mLightBarController = lightBarController;
         mConfigurationController = configurationController;
         mUiEventLogger = uiEventLogger;
-        view.setSceneContainerEnabled(sceneContainerFlags.isEnabled());
 
         mToolbar = mView.findViewById(com.android.internal.R.id.action_bar);
     }
