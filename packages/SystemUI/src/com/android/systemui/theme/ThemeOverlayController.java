@@ -860,7 +860,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
         }
 
         mThemeManager.applyCurrentUserOverlays(categoryToPackage, fOverlays, currentUser,
-                managedProfiles, onCompleteCallback);
+                managedProfiles);
 
     }
 
