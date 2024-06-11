@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d08c967_b4119f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-11T19:26:56Z",
+      "side": 1,
+      "message": "Pending:\n* 21750: Long-press power while display is off for torch | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/21750\n* 21836: PowerManager: Add proximity check on wake | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/21836",
+      "revId": "e8d9f5bf2f425626cc9540a99a5f84ca77e933c2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
