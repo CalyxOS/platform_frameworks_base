@@ -1356,9 +1356,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Slog.i(TAG, "Toggling theater mode off.");
                     Settings.Global.putInt(mContext.getContentResolver(),
                             Settings.Global.THEATER_MODE_ON, 0);
-                    if (!interactive) {
-                        wakeUpFromWakeKey(eventTime, KEYCODE_POWER, /* isDown= */ false);
-                    }
+                    //if (!interactive) {
+                        //wakeUpFromWakeKey(eventTime, KEYCODE_POWER, /* isDown= */ false);
+                    //}
                 } else {
                     Slog.i(TAG, "Toggling theater mode on.");
                     Settings.Global.putInt(mContext.getContentResolver(),
@@ -1372,9 +1372,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case MULTI_PRESS_POWER_BRIGHTNESS_BOOST:
                 Slog.i(TAG, "Starting brightness boost.");
-                if (!interactive) {
-                    wakeUpFromWakeKey(eventTime, KEYCODE_POWER, /* isDown= */ false);
-                }
+                //if (!interactive) {
+                    //wakeUpFromWakeKey(eventTime, KEYCODE_POWER, /* isDown= */ false);
+                //}
                 mPowerManager.boostScreenBrightness(eventTime);
                 break;
             case MULTI_PRESS_POWER_LAUNCH_TARGET_ACTIVITY:
@@ -4749,7 +4749,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 shouldTurnOnTv = true;
             } else if (down && (isWakeKey || keyCode == KeyEvent.KEYCODE_WAKEUP)
                     && isWakeKeyWhenScreenOff(keyCode)) {
-                wakeUpFromWakeKey(event, false);
+                //wakeUpFromWakeKey(event, false);
                 shouldTurnOnTv = true;
             }
             if (shouldTurnOnTv) {
@@ -4831,7 +4831,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
 
             if (isWakeKey) {
-                wakeUpFromWakeKey(event, true);
+                //wakeUpFromWakeKey(event, true);
             }
             return result;
         }
@@ -5222,10 +5222,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     "Virtual Key - Press");
         }
 
-        if (isWakeKey) {
+        //if (isWakeKey) {
             // Check proximity only on wake key
-            wakeUpFromWakeKey(event, event.getKeyCode() == KeyEvent.KEYCODE_WAKEUP);
-        }
+            //wakeUpFromWakeKey(event, event.getKeyCode() == KeyEvent.KEYCODE_WAKEUP);
+        //}
 
         // If the key event is targeted to a specific display, then the user is interacting with
         // that display. Therefore, try to give focus to the display that the user is interacting
