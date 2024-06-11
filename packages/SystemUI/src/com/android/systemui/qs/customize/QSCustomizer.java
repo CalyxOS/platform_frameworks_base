@@ -99,19 +99,6 @@ public class QSCustomizer extends LinearLayout {
         );
     }
 
-    void setSceneContainerEnabled(boolean enabled) {
-        if (enabled != mSceneContainerEnabled) {
-            mSceneContainerEnabled = enabled;
-            updateTransparentViewHeight();
-            if (mSceneContainerEnabled) {
-                findViewById(R.id.nav_bar_background).setVisibility(View.GONE);
-            } else {
-                findViewById(R.id.nav_bar_background)
-                        .setVisibility(mIsShowingNavBackdrop ? View.VISIBLE : View.GONE);
-            }
-        }
-    }
-
     void updateResources() {
         updateTransparentViewHeight();
         mRecyclerView.getAdapter().notifyItemChanged(0);
