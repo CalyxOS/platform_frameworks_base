@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5af639_81f332c8",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 9663,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-12T19:11:48Z",
+      "side": 1,
+      "message": "Preferable to allow the call to go through under that circumstance or better to return null?",
+      "range": {
+        "startLine": 9663,
+        "startChar": 12,
+        "endLine": 9663,
+        "endChar": 35
+      },
+      "revId": "cc88c9ecdc584e28433dd6eadac7fa3e593aeb5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c4748c_2580d81f",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 9747,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-12T19:11:48Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 9744,
+        "startChar": 8,
+        "endLine": 9747,
+        "endChar": 9
+      },
+      "revId": "cc88c9ecdc584e28433dd6eadac7fa3e593aeb5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298d69b4_50a386a7",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 10507,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-12T19:11:48Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 10504,
+        "startChar": 8,
+        "endLine": 10507,
+        "endChar": 9
+      },
+      "revId": "cc88c9ecdc584e28433dd6eadac7fa3e593aeb5a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
