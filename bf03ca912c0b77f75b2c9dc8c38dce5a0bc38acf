@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39989fa8_53c4af46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-20T19:41:09Z",
+      "side": 1,
+      "message": "Commit mentions, \"In order to make PackageInstaller an updatable app, ...\". This may mean that we cannot build package installer as a mainline module and updated it independently if that\u0027s something we were looking to do in supporting mainline modules",
+      "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
