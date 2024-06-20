@@ -16,6 +16,41 @@
       "message": "Commit mentions, \"In order to make PackageInstaller an updatable app, ...\". This may mean that we cannot build package installer as a mainline module and updated it independently if that\u0027s something we were looking to do in supporting mainline modules",
       "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2468f146_02de32a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-20T19:51:05Z",
+      "side": 1,
+      "message": "It\u0027d still be nice to solve this differently, but this\u0027ll work in the interim.",
+      "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccb420d_747174ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-20T19:51:05Z",
+      "side": 1,
+      "message": "From the last time we talked about this, we didn\u0027t have immediate plans for out of band updates, especially given even on stock it\u0027s a hit or miss, and people are frequently on older versions, or there\u0027s issues.\n\nInstead we just wanted to take advantage of the newer codebase and include it into the OS updates.\n\nIt could be useful later but we\u0027d deal it with then.",
+      "parentUuid": "39989fa8_53c4af46",
+      "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
