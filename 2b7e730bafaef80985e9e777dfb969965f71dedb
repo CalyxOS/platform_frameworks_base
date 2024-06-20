@@ -16,6 +16,24 @@
       "message": "```frameworks/base/packages/PackageInstaller/src/com/android/packageinstaller/PackageUtil.java:440: error: cannot find symbol\n                if (Signature.areEffectiveMatch(new Signature(trustedPackageSignature),\n                             ^\n  symbol:   method areEffectiveMatch(Signature,Signature)\n  location: class Signature\nframeworks/base/packages/PackageInstaller/src/com/android/packageinstaller/PackageUtil.java:460: error: cannot find symbol\n        for (int profileId : um.getProfileIds(UserHandle.USER_SYSTEM, false /* enabledOnly */)) {\n                                                        ^\n  symbol:   variable USER_SYSTEM\n  location: class UserHandle\nframeworks/base/packages/PackageInstaller/src/com/android/packageinstaller/PackageUtil.java:465: error: cannot find symbol\n            final ComponentName componentName \u003d dpm.getProfileOwnerAsUser(profileId);\n                                                   ^\n  symbol:   method getProfileOwnerAsUser(int)\n  location: variable dpm of type DevicePolicyManager```",
       "revId": "2b7e730bafaef80985e9e777dfb969965f71dedb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e60a3e9_a5a79039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-20T15:47:43Z",
+      "side": 1,
+      "message": "Reflection is the best solution I can think of if we can\u0027t figure out a good way to do this using public APIs",
+      "parentUuid": "50a08181_80d72ee1",
+      "revId": "2b7e730bafaef80985e9e777dfb969965f71dedb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
