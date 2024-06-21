@@ -16,6 +16,24 @@
       "message": "PackageManager with DEBUG_PACKAGE_INFO enabled shows\n`Spoofing signature for microG` log message even if microG services is disabled or hidden",
       "revId": "12668c12b299648cbeacd25d1beb40689cf78393",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e1c38e_15c39e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-21T15:08:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "78ae723b_2ee47d11",
+      "revId": "12668c12b299648cbeacd25d1beb40689cf78393",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
