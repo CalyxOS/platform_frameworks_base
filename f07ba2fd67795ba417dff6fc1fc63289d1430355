@@ -16,6 +16,24 @@
       "message": "Since this isn\u0027t even accessible (due to `@hide`), we can\u0027t make actual use of it in MediaProvider where we need to. I don\u0027t know if we benefit from putting it here apart from being able to keep track of it more easily. Maybe that\u0027s enough of a use.",
       "revId": "f07ba2fd67795ba417dff6fc1fc63289d1430355",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34950ee_556fd5c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-24T22:04:29Z",
+      "side": 1,
+      "message": "Useful enough to just keep track, and we should also back this up (there\u0027s a file in fw/b that contains a list of settings to back up)\n\nThere can also be validation for this.",
+      "parentUuid": "1b8aa74b_0a47c7ac",
+      "revId": "f07ba2fd67795ba417dff6fc1fc63289d1430355",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
