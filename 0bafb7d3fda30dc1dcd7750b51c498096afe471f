@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc9cf4a_8027752c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-24T17:26:17Z",
+      "side": 1,
+      "message": "Yes, because adding Lineage SDK support to AOSP for apex updates is not worth it, given how they\u0027re built.",
+      "revId": "0bafb7d3fda30dc1dcd7750b51c498096afe471f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7826e22b_479f27c4",
