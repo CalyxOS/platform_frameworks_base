@@ -14043,6 +14043,17 @@ public final class Settings {
         public static final String STYLUS_POINTER_ICON_ENABLED = "stylus_pointer_icon_enabled";
 
         /**
+         * Prohibit apps without MANAGE_EXTERNAL_STORAGE or MANAGE_MEDIA from accessing
+         * location metadata in files, regardless of how such files are accessed or shared.
+         * A nonexistent value will be treated as enabled.
+         *
+         * Type: int (0 to disable, 1 to enable)
+         *
+         * @hide
+         */
+        public static final String STRICT_LOCATION_REDACTION = "strict_location_redaction";
+
+        /**
          * Toggle for whether to redact OTP notification while connected to wifi. Defaults to
          * false/0.
          * @hide
