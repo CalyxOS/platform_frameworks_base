@@ -17707,6 +17707,17 @@ public final class Settings {
                 "uids_allowed_on_restricted_networks";
 
         /**
+         * Prohibit apps without MANAGE_EXTERNAL_STORAGE or MANAGE_MEDIA from accessing
+         * location metadata in files, regardless of how such files are accessed or shared.
+         * A nonexistent value will be treated as enabled.
+         *
+         * Type: int (0 to disable, 1 to enable)
+         *
+         * @hide
+         */
+        public static final String STRICT_LOCATION_REDACTION = "strict_location_redaction";
+
+        /**
          * Global settings that shouldn't be persisted.
          *
          * @hide
