@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7826e22b_479f27c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-06-24T17:18:33Z",
+      "side": 1,
+      "message": "I don\u0027t know the answer to the question in the reason but opened this revert to check out at some point.",
+      "revId": "0bafb7d3fda30dc1dcd7750b51c498096afe471f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
