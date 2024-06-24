@@ -34,6 +34,23 @@
       "parentUuid": "1b8aa74b_0a47c7ac",
       "revId": "f07ba2fd67795ba417dff6fc1fc63289d1430355",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335d0f24_b2a19e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-06-24T22:45:21Z",
+      "side": 1,
+      "message": "Thinking of how this should be handled for work profiles... That makes things a bit complicated.\n\nIf we don\u0027t handle it at all, then it will default to true for work profiles and there\u0027s not really anything they can do except change it with `adb` or *maybe* launching a Settings activity in the work profile in an unsupported way.\n\nTo me, it would make sense to have work profiles use the same setting for this as their parent - otherwise it gets kind of confusing and we might need another toggle (ugh). We can\u0027t check the parent\u0027s value in MediaProvider, though, without adding `INTERACT_ACROSS_USERS_FULL` (it only has `INTERACT_ACROSS_USERS`).\n\nIf we didn\u0027t want to add that permission to MediaProvider, then in our Settings app change, we could set it for the children every time it\u0027s changed in the parent. We would also need to be sure to handle it for new work profile creation, too, but that probably wouldn\u0027t be so hard... Could have Settings handle it on `USER_ADDED`.\n\nWish something so simple was easier to do.",
+      "revId": "f07ba2fd67795ba417dff6fc1fc63289d1430355",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
