@@ -16,6 +16,24 @@
       "message": "How do I know if this is working? I can still freely do something like `adb shell settings put secure strict_location_redaction dog` and it doesn\u0027t care.",
       "revId": "f18060dc8908854339c70f903e3dd42b9ab12a9c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f302c6_92c64d63",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/SecureSettingsValidators.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-25T16:20:52Z",
+      "side": 1,
+      "message": "What does `adb shell settings get secure strict_location_redaction` return afterward?",
+      "parentUuid": "9fcf90e2_7cddffbf",
+      "revId": "f18060dc8908854339c70f903e3dd42b9ab12a9c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
