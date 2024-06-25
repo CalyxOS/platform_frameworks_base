@@ -52,6 +52,24 @@
       "parentUuid": "00f302c6_92c64d63",
       "revId": "f18060dc8908854339c70f903e3dd42b9ab12a9c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd499db1_82dd1160",
+        "filename": "packages/SettingsProvider/src/android/provider/settings/validators/SecureSettingsValidators.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-06-25T19:46:23Z",
+      "side": 1,
+      "message": "Other AOSP validators aren\u0027t working when tested in the same way, so I think we can set this aside for this change.",
+      "parentUuid": "bf1c0a1e_8157c376",
+      "revId": "f18060dc8908854339c70f903e3dd42b9ab12a9c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
