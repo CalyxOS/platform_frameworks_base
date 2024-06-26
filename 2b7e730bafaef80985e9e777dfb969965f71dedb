@@ -34,6 +34,24 @@
       "parentUuid": "50a08181_80d72ee1",
       "revId": "2b7e730bafaef80985e9e777dfb969965f71dedb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b831d73b_5aaf8baf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-26T13:36:53Z",
+      "side": 1,
+      "message": "\"Fixed\" with 27099: Partially revert \"Replace hidden APIs with their publicly avaiable variants\" | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/27099 for now.",
+      "parentUuid": "0e60a3e9_a5a79039",
+      "revId": "2b7e730bafaef80985e9e777dfb969965f71dedb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
