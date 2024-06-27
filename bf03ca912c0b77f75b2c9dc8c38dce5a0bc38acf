@@ -69,6 +69,24 @@
       "parentUuid": "dccb420d_747174ed",
       "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10de9d1f_84670c91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-27T00:03:07Z",
+      "side": 1,
+      "message": "It isn\u0027t, checked AP31.240517.022 on lynx",
+      "parentUuid": "06e75c98_92c5ce78",
+      "revId": "bf03ca912c0b77f75b2c9dc8c38dce5a0bc38acf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
