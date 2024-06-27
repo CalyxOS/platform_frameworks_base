@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafad513_83115bcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-06-27T21:03:32Z",
+      "side": 1,
+      "message": "Needs testing for side effects.",
+      "revId": "8672b7c05d439094375fbd080fe930bc0c7fc308",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
