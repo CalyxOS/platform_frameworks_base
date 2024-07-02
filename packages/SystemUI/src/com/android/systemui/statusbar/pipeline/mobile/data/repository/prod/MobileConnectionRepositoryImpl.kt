@@ -77,6 +77,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
@@ -369,7 +370,7 @@ class MobileConnectionRepositoryImpl(
      */
     @SuppressLint("RegisterReceiverViaContext")
     override val networkName: StateFlow<NetworkNameModel> =
-        conflatedCallbackFlow {
+        combine(isInService, carrierName, conflatedCallbackFlow {
                 val receiver =
                     object : BroadcastReceiver() {
                         override fun onReceive(context: Context, intent: Intent) {
@@ -397,6 +398,12 @@ class MobileConnectionRepositoryImpl(
             }
             .flowOn(bgDispatcher)
             .stateIn(scope, SharingStarted.Eagerly, defaultNetworkName)
+        ) { isInServiceVal, carrierNameVal, networkNameVal ->
+            if (isInServiceVal && (networkNameVal == defaultNetworkName))
+                carrierNameVal
+            else
+                networkNameVal
+        }.stateIn(scope, SharingStarted.Eagerly, defaultNetworkName)
 
     override val dataEnabled = run {
         val initial = telephonyManager.isDataConnectionAllowed
