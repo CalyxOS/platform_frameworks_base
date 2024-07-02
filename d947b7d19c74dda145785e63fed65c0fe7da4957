@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88a6712_43825f8d",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/pipeline/mobile/data/repository/prod/MobileConnectionRepositoryImpl.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000065
+      },
+      "writtenOn": "2024-07-02T16:08:53Z",
+      "side": 1,
+      "message": "Braces please",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 43
+      },
+      "revId": "d947b7d19c74dda145785e63fed65c0fe7da4957",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
