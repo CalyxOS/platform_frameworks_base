@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98115b51_47ab4304",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/pipeline/mobile/data/repository/prod/MobileConnectionRepositoryImpl.kt",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-07-02T16:11:54Z",
+      "side": 1,
+      "message": "This indentation looks off, and others have `.stateIn` on a new line.",
+      "revId": "70aebf691038f1a64354a23b5575b7ae2325efc9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

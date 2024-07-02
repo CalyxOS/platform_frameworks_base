@@ -22,6 +22,30 @@
       },
       "revId": "d947b7d19c74dda145785e63fed65c0fe7da4957",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8412e5_99900b5c",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/pipeline/mobile/data/repository/prod/MobileConnectionRepositoryImpl.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-07-02T16:11:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a88a6712_43825f8d",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 43
+      },
+      "revId": "d947b7d19c74dda145785e63fed65c0fe7da4957",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
