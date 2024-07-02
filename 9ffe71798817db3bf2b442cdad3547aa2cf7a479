@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b202dd75_7151546b",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/pipeline/mobile/data/repository/prod/MobileConnectionRepositoryImpl.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-07-02T16:04:57Z",
+      "side": 1,
+      "message": "Aayush suggests leaving this flow alone but renaming it, and then making a new combined flow for networkName.",
+      "revId": "9ffe71798817db3bf2b442cdad3547aa2cf7a479",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de08006b_0385a7fe",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/pipeline/mobile/data/repository/prod/MobileConnectionRepositoryImpl.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-07-02T16:04:57Z",
+      "side": 1,
+      "message": "This can probably be `\u003d\u003d\u003d` since it\u0027s the identity we\u0027re concerned with, don\u0027t need to compare the data value, e.g. the string \"No service\".",
+      "range": {
+        "startLine": 402,
+        "startChar": 50,
+        "endLine": 402,
+        "endChar": 52
+      },
+      "revId": "9ffe71798817db3bf2b442cdad3547aa2cf7a479",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
