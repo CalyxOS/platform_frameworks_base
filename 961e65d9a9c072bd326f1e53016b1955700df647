@@ -69,6 +69,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da930dd_930460c0",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2024-07-03T09:52:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "19861eb1_09e35084",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58a53be_86b47244",
@@ -82,6 +100,24 @@
       "writtenOn": "2023-06-30T17:22:05Z",
       "side": 1,
       "message": "Move this higher.",
+      "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7fdd1c_5da9d03d",
+        "filename": "packages/SystemUI/src/com/android/keyguard/KeyguardUpdateMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2870,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2024-07-03T09:52:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f58a53be_86b47244",
       "revId": "961e65d9a9c072bd326f1e53016b1955700df647",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
