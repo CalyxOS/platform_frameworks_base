@@ -122,6 +122,23 @@
       "parentUuid": "3667fa2a_ae96b685",
       "revId": "0869342ce79087b20787459466417e471fb86862",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ed022b_17b43ca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-07-04T11:19:51Z",
+      "side": 1,
+      "message": "ps://developer.android.com/about/versions/15/behavior-changes-all#enhanced-stop-states\n\n\u003e Apps should only be removed from the stopped state through direct or indirect user action.",
+      "revId": "0869342ce79087b20787459466417e471fb86862",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
