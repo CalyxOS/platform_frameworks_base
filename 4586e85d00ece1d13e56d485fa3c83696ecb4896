@@ -16,6 +16,24 @@
       "message": "There\u0027s a nasty bug I\u0027m still looking into before I can say this works without causing problems. See https://gitlab.com/CalyxOS/calyxos/-/issues/1518#note_1993268339\n\nBut I also want to figure out if it\u0027s still needed at all, given all the Android changes since this was coded.",
       "revId": "4586e85d00ece1d13e56d485fa3c83696ecb4896",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78a3759_41070320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-07-10T15:46:11Z",
+      "side": 1,
+      "message": "Oops, forgot this is already merged... Anyway, issue is reopened.",
+      "parentUuid": "4dc522af_ce275960",
+      "revId": "4586e85d00ece1d13e56d485fa3c83696ecb4896",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
