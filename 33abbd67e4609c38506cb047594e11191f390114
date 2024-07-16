@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c8deba_3a5d75dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-07-16T17:48:14Z",
+      "side": 1,
+      "message": "This uses full backup mechanism instead of K/V like AOSP settings provider does since there\u0027s no backup agent defined",
+      "revId": "33abbd67e4609c38506cb047594e11191f390114",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
