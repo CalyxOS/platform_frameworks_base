@@ -175,7 +175,9 @@ public class BackupEligibilityRules {
 
             // or do not supply their own backup agent
             if (app.backupAgentName == null) {
-                return false;
+                if (!"org.lineageos.lineagesettings".equals(app.packageName)) {
+                    return false;
+                }
             }
         }
 
