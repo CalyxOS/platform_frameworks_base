@@ -16,6 +16,24 @@
       "message": "This uses full backup mechanism instead of K/V like AOSP settings provider does since there\u0027s no backup agent defined",
       "revId": "33abbd67e4609c38506cb047594e11191f390114",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09e4e47_c941198f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-07-16T18:00:16Z",
+      "side": 1,
+      "message": "Unless creating the backup agent runs into major problems, better to do that and wait for it.",
+      "parentUuid": "95c8deba_3a5d75dd",
+      "revId": "33abbd67e4609c38506cb047594e11191f390114",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
