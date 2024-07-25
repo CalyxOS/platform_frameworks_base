@@ -2673,7 +2673,7 @@ public class UserManagerService extends IUserManager.Stub {
             t.traceBegin("getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED");
             final boolean allowUserSwitchingWhenSystemUserLocked = Settings.Global.getInt(
                     mContext.getContentResolver(),
-                    Settings.Global.ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED, 0) != 0;
+                    Settings.Global.ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED, 1) != 0;
             t.traceEnd();
             t.traceBegin("isUserUnlocked-USER_SYSTEM");
             final boolean systemUserUnlocked = mLocalService.isUserUnlocked(UserHandle.USER_SYSTEM);
