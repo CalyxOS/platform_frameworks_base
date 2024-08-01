@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55dc15df_49d762c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-08-01T21:19:32Z",
+      "side": 1,
+      "message": "We should figure out how to proceed with this.\n\nGoal is to allow out-of-band f-droid repo chromium updates, which involves an update of `TrichomeLibrary`, which is not a normal app but a shared library - and thus will always need confirmation.\n\nA good way to observe this behavior is installing Google Chrome from Aurora Store, and keeping it updated - you\u0027ll be asked to confirm a TrichromeLibrary install every time. A bit confusing, not ideal.\n\nIf this patch works (or another approach for the same), then that confirmation shouldn\u0027t be needed.",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946984de_2db8bd9d",
