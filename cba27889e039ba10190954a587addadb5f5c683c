@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fa811a_5c48c9a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-08-01T21:20:03Z",
+      "side": 1,
+      "message": "(And I do realise this info would be better in a ticket)",
+      "parentUuid": "55dc15df_49d762c2",
+      "revId": "cba27889e039ba10190954a587addadb5f5c683c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946984de_2db8bd9d",
