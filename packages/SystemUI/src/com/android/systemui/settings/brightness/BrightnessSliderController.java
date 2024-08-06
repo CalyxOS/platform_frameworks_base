@@ -19,6 +19,7 @@ package com.android.systemui.settings.brightness;
 import static com.android.systemui.Flags.hapticBrightnessSlider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,6 +35,7 @@ import com.android.systemui.Gefingerpoken;
 import com.android.systemui.classifier.Classifier;
 import com.android.systemui.haptics.slider.HapticSliderViewBinder;
 import com.android.systemui.haptics.slider.SeekableSliderHapticPlugin;
+import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.res.R;
 import com.android.systemui.statusbar.VibratorHelper;
@@ -64,6 +66,7 @@ public class BrightnessSliderController extends ViewController<BrightnessSliderV
     private final UiEventLogger mUiEventLogger;
 
     private final SeekableSliderHapticPlugin mBrightnessSliderHapticPlugin;
+    private final ActivityStarter mActivityStarter;
 
     private final Gefingerpoken mOnInterceptListener = new Gefingerpoken() {
         @Override
@@ -86,11 +89,13 @@ public class BrightnessSliderController extends ViewController<BrightnessSliderV
             BrightnessSliderView brightnessSliderView,
             FalsingManager falsingManager,
             UiEventLogger uiEventLogger,
-            SeekableSliderHapticPlugin brightnessSliderHapticPlugin) {
+            SeekableSliderHapticPlugin brightnessSliderHapticPlugin,
+            ActivityStarter activityStarter) {
         super(brightnessSliderView);
         mFalsingManager = falsingManager;
         mUiEventLogger = uiEventLogger;
         mBrightnessSliderHapticPlugin = brightnessSliderHapticPlugin;
+        mActivityStarter = activityStarter;
         mIcon = mView.findViewById(R.id.brightness_icon);
     }
 
@@ -137,7 +142,15 @@ public class BrightnessSliderController extends ViewController<BrightnessSliderV
 
     @Override
     public void setEnforcedAdmin(RestrictedLockUtils.EnforcedAdmin admin) {
-        mView.setEnforcedAdmin(admin);
+        if (admin == null) {
+            mView.setAdminBlocker(null);
+        } else {
+            mView.setAdminBlocker(() -> {
+                Intent intent = RestrictedLockUtils.getShowAdminSupportDetailsIntent(admin);
+                mActivityStarter.postStartActivityDismissingKeyguard(intent, 0);
+                return true;
+            });
+        }
     }
 
     private void setMirror(ToggleSlider toggleSlider) {
@@ -265,18 +278,21 @@ public class BrightnessSliderController extends ViewController<BrightnessSliderV
         private final UiEventLogger mUiEventLogger;
         private final VibratorHelper mVibratorHelper;
         private final SystemClock mSystemClock;
+        private final ActivityStarter mActivityStarter;
 
         @Inject
         public Factory(
                 FalsingManager falsingManager,
                 UiEventLogger uiEventLogger,
                 VibratorHelper vibratorHelper,
-                SystemClock clock
+                SystemClock clock,
+                ActivityStarter activityStarter
         ) {
             mFalsingManager = falsingManager;
             mUiEventLogger = uiEventLogger;
             mVibratorHelper = vibratorHelper;
             mSystemClock = clock;
+            mActivityStarter = activityStarter;
         }
 
         /**
@@ -298,7 +314,8 @@ public class BrightnessSliderController extends ViewController<BrightnessSliderV
             if (hapticBrightnessSlider()) {
                 HapticSliderViewBinder.bind(viewRoot, plugin);
             }
-            return new BrightnessSliderController(root, mFalsingManager, mUiEventLogger, plugin);
+            return new BrightnessSliderController(
+                    root, mFalsingManager, mUiEventLogger, plugin, mActivityStarter);
         }
 
         /** Get the layout to inflate based on what slider to use */
