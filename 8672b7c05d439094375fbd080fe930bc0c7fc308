@@ -16,6 +16,24 @@
       "message": "Needs testing for side effects.",
       "revId": "8672b7c05d439094375fbd080fe930bc0c7fc308",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f84d76_38813c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-08-13T15:17:37Z",
+      "side": 1,
+      "message": "We could use the tests referenced in `frameworks/base/services/backup/TEST_MAPPING`:\n\n`atest --no-metrics CtsBackupTestCases FrameworksMockingServicesTests`\n\nWhen doing so, we fail six of `android.backup.cts.PermissionTest`, with and without this change.\n\n```\nandroid.backup.cts.PermissionTest#testDelayedRestore: expected:\u003c0\u003e but was:\u003c-1\u003e\nandroid.backup.cts.PermissionTest#testGrantDeniedRuntimePermission: expected:\u003c0\u003e but was:\u003c-1\u003e\nandroid.backup.cts.PermissionTest#testGrantDeniedRuntimePermission22: expected:\u003c0\u003e but was:\u003c1\u003e\nandroid.backup.cts.PermissionTest#testGrantForegroundAndBackgroundRuntimePermission: expected:\u003c0\u003e but was:\u003c-1\u003e\nandroid.backup.cts.PermissionTest#testGrantForegroundAndBackgroundRuntimePermission22: expected:\u003c0\u003e but was:\u003c1\u003e\nandroid.backup.cts.PermissionTest#testGrantForegroundRuntimePermission: expected:\u003c0\u003e but was:\u003c-1\u003e\n```\n\nWe fail too many of FrameworksMockingServicesTests to list, even without this change.\n\nI guess it would be safer/easier to run the tests in AOSP, or just submit this straight to upstream and see what they think.",
+      "parentUuid": "aafad513_83115bcc",
+      "revId": "8672b7c05d439094375fbd080fe930bc0c7fc308",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
