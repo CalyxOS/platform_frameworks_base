@@ -1786,9 +1786,17 @@ public class NotificationManagerService extends SystemService {
 
     };
 
-    NotificationManagerPrivate mNotificationManagerPrivate = key -> {
-        synchronized (mNotificationLock) {
-            return mNotificationsByKey.get(key);
+    NotificationManagerPrivate mNotificationManagerPrivate = new NotificationManagerPrivate() {
+        @Override
+        public NotificationRecord getNotificationByKey(String key) {
+            synchronized (mNotificationLock) {
+                return mNotificationsByKey.get(key);
+            }
+        }
+
+        @Override
+        public long getNotificationSoundTimeout(String pkg, int uid) {
+            return mPreferencesHelper.getNotificationSoundTimeout(pkg, uid);
         }
     };
 
