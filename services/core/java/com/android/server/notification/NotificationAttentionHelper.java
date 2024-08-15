@@ -332,6 +332,7 @@ public final class NotificationAttentionHelper {
                     SettingsObserver.NOTIFICATION_COOLDOWN_VIBRATE_UNLOCKED_URI, false,
                     mSettingsObserver, UserHandle.USER_ALL);
         }
+        mSettingsObserver.onChange(false, null);
     }
 
     private void loadUserSettings() {
@@ -1707,7 +1708,7 @@ public final class NotificationAttentionHelper {
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            if (NOTIFICATION_LIGHT_PULSE_URI.equals(uri)) {
+            if (uri == null || NOTIFICATION_LIGHT_PULSE_URI.equals(uri)) {
                 boolean pulseEnabled = Settings.System.getIntForUser(
                         mContext.getContentResolver(),
                         Settings.System.NOTIFICATION_LIGHT_PULSE, 0,
@@ -1719,7 +1720,7 @@ public final class NotificationAttentionHelper {
                 }
             }
             if (Flags.politeNotifications()) {
-                if (NOTIFICATION_COOLDOWN_ENABLED_URI.equals(uri)) {
+                if (uri == null || NOTIFICATION_COOLDOWN_ENABLED_URI.equals(uri)) {
                     mNotificationCooldownEnabled = Settings.System.getIntForUser(
                             mContext.getContentResolver(),
                             Settings.System.NOTIFICATION_COOLDOWN_ENABLED,
@@ -1737,7 +1738,7 @@ public final class NotificationAttentionHelper {
                         mNotificationCooldownForWorkEnabled = false;
                     }
                 }
-                if (NOTIFICATION_COOLDOWN_ALL_URI.equals(uri)) {
+                if (uri == null || NOTIFICATION_COOLDOWN_ALL_URI.equals(uri)) {
                     mNotificationCooldownApplyToAll = Settings.System.getIntForUser(
                             mContext.getContentResolver(),
                             Settings.System.NOTIFICATION_COOLDOWN_ALL,
@@ -1746,7 +1747,7 @@ public final class NotificationAttentionHelper {
                     mStrategy.setApplyCooldownPerPackage(mNotificationCooldownApplyToAll);
                 }
                 if (Flags.vibrateWhileUnlocked()) {
-                    if (NOTIFICATION_COOLDOWN_VIBRATE_UNLOCKED_URI.equals(uri)) {
+                    if (uri == null || NOTIFICATION_COOLDOWN_VIBRATE_UNLOCKED_URI.equals(uri)) {
                         mNotificationCooldownVibrateUnlocked = Settings.System.getIntForUser(
                             mContext.getContentResolver(),
                             Settings.System.NOTIFICATION_COOLDOWN_VIBRATE_UNLOCKED,
