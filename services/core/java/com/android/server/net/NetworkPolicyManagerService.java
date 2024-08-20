@@ -3041,7 +3041,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     final int policy = readIntAttribute(in, ATTR_POLICY);
 
                     if (UserHandle.isApp(uid)) {
-                        setUidPolicyUncheckedUL(uid, policy, false);
+                        setUidPolicyUncheckedUL(uid, policy, forRestore);
                     } else {
                         Slog.w(TAG, "unable to apply policy to UID " + uid + "; ignoring");
                     }
@@ -3053,7 +3053,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     // app policy is deprecated so this is only used in pre system user split.
                     final int uid = UserHandle.getUid(UserHandle.USER_SYSTEM, appId);
                     if (UserHandle.isApp(uid)) {
-                        setUidPolicyUncheckedUL(uid, policy, false);
+                        setUidPolicyUncheckedUL(uid, policy, forRestore);
                     } else {
                         Slog.w(TAG, "unable to apply policy to UID " + uid + "; ignoring");
                     }
@@ -3087,7 +3087,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 final int newPolicy = policy | POLICY_ALLOW_METERED_BACKGROUND;
                 if (LOGV)
                     Log.v(TAG, "new policy for " + uid + ": " + uidPoliciesToString(newPolicy));
-                setUidPolicyUncheckedUL(uid, newPolicy, false);
+                setUidPolicyUncheckedUL(uid, newPolicy, forRestore);
             } else {
                 Slog.w(TAG, "unable to update policy on UID " + uid);
             }
