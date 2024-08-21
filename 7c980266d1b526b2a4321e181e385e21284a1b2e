@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d85fd97_e6d6ae7b",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3045,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-08-21T11:59:38Z",
+      "side": 1,
+      "message": "This should use the UncheckedUL variant. Otherwise, it adds extra checks and leads to double-locking (see readPolicyAL where we are already synchronized on mUidRulesFirstLock). Since this happens on the same thread, it won\u0027t lead to deadlocks, but it\u0027s a practice that should probably be avoided, as other code does.\n\nI know that setUidPolicy handles the retrieval of the old policy for us, which we need in order to not double-up on lockdown rules, but that\u0027s a simple-enough operation to do it ourselves and avoid the other unnecessary baggage of setUidPolicy.",
+      "revId": "7c980266d1b526b2a4321e181e385e21284a1b2e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a96e4a_653851db",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3061,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-08-21T11:59:38Z",
+      "side": 1,
+      "message": "Same as above comment.",
+      "revId": "7c980266d1b526b2a4321e181e385e21284a1b2e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef46bc55_9b033e64",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3099,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-08-21T11:59:38Z",
+      "side": 1,
+      "message": "Same as above comments.",
+      "revId": "7c980266d1b526b2a4321e181e385e21284a1b2e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
