@@ -592,6 +592,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import lineageos.providers.LineageSettings;
+
 /**
  * Implementation of the device policy APIs.
  */
@@ -5219,7 +5221,10 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
             ActiveAdmin admin = (who != null)
                     ? mDeviceAdmins.getActiveAdminUnchecked(who, userHandle, parent)
                     : getAdminWithMinimumFailedPasswordsForWipeLocked(userHandle, parent);
-            return admin != null ? admin.maximumFailedPasswordsForWipe : 0;
+            return admin != null ? admin.maximumFailedPasswordsForWipe
+                    : LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                            LineageSettings.Secure.MAXIMUM_FAILED_PASSWORDS_FOR_WIPE, 0,
+                            userHandle);
         }
     }
 
@@ -5236,7 +5241,10 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
         synchronized (getLockObject()) {
             ActiveAdmin admin = getAdminWithMinimumFailedPasswordsForWipeLocked(
                     userHandle, parent);
-            return admin != null ? getUserIdToWipeForFailedPasswords(admin) : UserHandle.USER_NULL;
+            return admin != null ? getUserIdToWipeForFailedPasswords(admin) :
+                    LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                            LineageSettings.Secure.MAXIMUM_FAILED_PASSWORDS_FOR_WIPE, 0,
+                            userHandle) == 0 ? UserHandle.USER_NULL : userHandle;
         }
     }
 
@@ -7940,6 +7948,9 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
         boolean wipeData = false;
         ActiveAdmin strictestAdmin = null;
         final long ident = mInjector.binderClearCallingIdentity();
+        int maximumFailedPasswordsForWipe = LineageSettings.Secure.getIntForUser(
+                mContext.getContentResolver(),
+                LineageSettings.Secure.MAXIMUM_FAILED_PASSWORDS_FOR_WIPE, 0, userHandle);
         try {
             synchronized (getLockObject()) {
                 DevicePolicyData policy = mDeviceAdmins.getUserData(userHandle);
@@ -7949,7 +7960,8 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
                     strictestAdmin = getAdminWithMinimumFailedPasswordsForWipeLocked(
                             userHandle, /* parent= */ false);
                     int max = strictestAdmin != null
-                            ? strictestAdmin.maximumFailedPasswordsForWipe : 0;
+                            ? strictestAdmin.maximumFailedPasswordsForWipe
+                            : maximumFailedPasswordsForWipe;
 
                     if (max > 0 && policy.mFailedPasswordAttempts >= max) {
                         wipeData = true;
@@ -7964,10 +7976,12 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
             mInjector.binderRestoreCallingIdentity(ident);
         }
 
-        if (wipeData && strictestAdmin != null) {
-            final int userId = getUserIdToWipeForFailedPasswords(strictestAdmin);
+        if (wipeData && (strictestAdmin != null || maximumFailedPasswordsForWipe != 0)) {
+            final int userId = strictestAdmin != null ? getUserIdToWipeForFailedPasswords(
+                    strictestAdmin) : userHandle;
             Slogf.i(LOG_TAG, "Max failed password attempts policy reached for admin: "
-                    + strictestAdmin.info.getComponent().flattenToShortString()
+                    + (strictestAdmin != null
+                    ? strictestAdmin.info.getComponent().flattenToShortString() : "null")
                     + ". Calling wipeData for user " + userId);
 
             // Attempt to wipe the device/user/profile associated with the admin, as if the
@@ -7977,7 +7991,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub
             // able to do so).
             // IMPORTANT: Call without holding the lock to prevent deadlock.
             try {
-                wipeDataNoLock(strictestAdmin.info.getComponent(),
+                wipeDataNoLock(strictestAdmin != null ? strictestAdmin.info.getComponent() : null,
                         /* flags= */ 0,
                         /* reason= */ "reportFailedPasswordAttempt()",
                         getFailedPasswordAttemptWipeMessage(),
