@@ -28,6 +28,10 @@ java_library_static {
         "device_policy_aconfig_flags_lib",
         "androidx.annotation_annotation",
     ],
+
+    static_libs: [
+        "org.lineageos.platform.internal",
+    ],
 }
 
 genrule {
