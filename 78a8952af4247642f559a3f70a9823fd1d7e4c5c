@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44aed6f3_90c20ee2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-08-26T19:46:14Z",
+      "side": 1,
+      "message": "MINIMUM_STRONG_AUTH_TIMEOUT_MS is set to an hour on non-debuggable builds. Not sure if we want to change that too if user would want to set it lower (could lead to confusion if the user sets a value below an hour)?",
+      "revId": "78a8952af4247642f559a3f70a9823fd1d7e4c5c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
