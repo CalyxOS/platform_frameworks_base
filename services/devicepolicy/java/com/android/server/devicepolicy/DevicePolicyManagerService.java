@@ -572,6 +572,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import lineageos.providers.LineageSettings;
+
 /**
  * Implementation of the device policy APIs.
  */
@@ -5613,7 +5615,10 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
             ActiveAdmin admin = (who != null)
                     ? getActiveAdminUncheckedLocked(who, userHandle, parent)
                     : getAdminWithMinimumFailedPasswordsForWipeLocked(userHandle, parent);
-            return admin != null ? admin.maximumFailedPasswordsForWipe : 0;
+            return admin != null ? admin.maximumFailedPasswordsForWipe
+                    : LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                            LineageSettings.Secure.MAXIMUM_FAILED_PASSWORDS_FOR_WIPE, 0,
+                            userHandle);
         }
     }
 
@@ -10960,7 +10965,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         if (mOwners.hasDeviceOwner()) {
             return false;
         }
-        
+
         final ComponentName profileOwner = getProfileOwnerAsUser(userId);
         if (profileOwner == null) {
             return false;
@@ -10969,7 +10974,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         if (isManagedProfile(userId)) {
             return false;
         }
-        
+
         return true;
     }
     private void enforceCanQueryLockTaskLocked(ComponentName who, String callerPackageName) {
@@ -24061,7 +24066,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
             }
         });
     }
-    
+
     private void migrateUserControlDisabledPackagesLocked() {
         Binder.withCleanCallingIdentity(() -> {
             List<UserInfo> users = mUserManager.getUsers();
