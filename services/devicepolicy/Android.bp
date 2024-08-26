@@ -30,6 +30,10 @@ java_library_static {
         "androidx.annotation_annotation",
         "telephony_flags_core_java_lib",
     ],
+
+    static_libs: [
+        "org.lineageos.platform.internal",
+    ],
 }
 
 genrule {
