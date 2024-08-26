@@ -6227,6 +6227,11 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
                     getProfileParentUserIfRequested(userId, parent));
 
             long strongAuthUnlockTimeout = DevicePolicyManager.DEFAULT_STRONG_AUTH_TIMEOUT_MS;
+            strongAuthUnlockTimeout = Math.min(LineageSettings.Secure.getLongForUser(
+                    mContext.getContentResolver(),
+                    LineageSettings.Secure.STRONG_AUTH_TIMEOUT_MS,
+                    DevicePolicyManager.DEFAULT_STRONG_AUTH_TIMEOUT_MS, userId),
+                    strongAuthUnlockTimeout);
             for (int i = 0; i < admins.size(); i++) {
                 final long timeout = admins.get(i).strongAuthUnlockTimeout;
                 if (timeout != 0) { // take only participating admins into account
