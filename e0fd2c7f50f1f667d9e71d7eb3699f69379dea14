@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85db57a0_55c0f18c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-08-28T20:46:59Z",
+      "side": 1,
+      "message": "Not sure why this was originally needed. It sounds like at the time apps would be allowed internet upon upgrade. This doesn\u0027t seem to apply anymore but would appreciate if someone else can confirm",
+      "revId": "e0fd2c7f50f1f667d9e71d7eb3699f69379dea14",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
