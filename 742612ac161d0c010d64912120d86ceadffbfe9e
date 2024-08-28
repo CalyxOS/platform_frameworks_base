@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166c3d69_01c94ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-08-28T21:06:26Z",
+      "side": 1,
+      "message": "Fixed case where an app goes from having internet to no internet and back",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
