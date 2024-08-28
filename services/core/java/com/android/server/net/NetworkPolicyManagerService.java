@@ -38,7 +38,6 @@ import static android.content.Intent.ACTION_PACKAGE_ADDED;
 import static android.content.Intent.ACTION_UID_REMOVED;
 import static android.content.Intent.ACTION_USER_ADDED;
 import static android.content.Intent.ACTION_USER_REMOVED;
-import static android.content.Intent.EXTRA_REPLACING;
 import static android.content.Intent.EXTRA_UID;
 import static android.content.pm.ApplicationInfo.FLAG_INSTALLED;
 import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_HIDDEN;
@@ -1442,16 +1441,12 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             final int uid = intent.getIntExtra(EXTRA_UID, -1);
             if (uid == -1) return;
 
-            if (intent.getBooleanExtra(EXTRA_REPLACING, false)) {
-                if (LOGV) Slog.v(TAG, "ACTION_PACKAGE_ADDED Not new app, skip it uid=" + uid);
-                return;
-            }
-
             if (ACTION_PACKAGE_ADDED.equals(action)) {
                 // update rules for UID, since it might be subject to
                 // global background data policy
                 // Clear the cache for the app
                 synchronized (mUidRulesFirstLock) {
+                    mInternetPermissionMap.delete(uid);
                     int userId = UserHandle.getUserId(uid);
                     UserInfo parentUser = mUserManager.getProfileParent(userId);
                     if ((!hasInternetPermissionUL(uid) && !isSystemApp(uid)) ||
@@ -1462,7 +1457,6 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                         Slog.i(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid + ", no internet");
                         addUidPolicy(uid, POLICY_REJECT_ALL);
                     }
-                    mInternetPermissionMap.delete(uid);
                     updateRestrictionRulesForUidUL(uid);
                 }
             }
