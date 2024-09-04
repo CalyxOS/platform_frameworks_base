@@ -85,7 +85,7 @@ public class RestrictedLockUtils {
      */
     @RequiresApi(Build.VERSION_CODES.M)
     public static void sendShowAdminSupportDetailsIntent(Context context, EnforcedAdmin admin) {
-        final Intent intent = getShowAdminSupportDetailsIntent(admin);
+        final Intent intent = getShowAdminSupportDetailsIntent(context, admin);
         int targetUserId = UserHandle.myUserId();
         if (admin != null) {
             if (admin.user != null
@@ -98,16 +98,9 @@ public class RestrictedLockUtils {
     }
 
     /**
-     * @deprecated No context needed. Use {@link #getShowAdminSupportDetailsIntent(EnforcedAdmin)}.
-     */
-    public static Intent getShowAdminSupportDetailsIntent(Context context, EnforcedAdmin admin) {
-        return getShowAdminSupportDetailsIntent(admin);
-    }
-
-    /**
      * Gets the intent to trigger the {@code android.settings.ShowAdminSupportDetailsDialog}.
      */
-    public static Intent getShowAdminSupportDetailsIntent(EnforcedAdmin admin) {
+    public static Intent getShowAdminSupportDetailsIntent(Context context, EnforcedAdmin admin) {
         final Intent intent = new Intent(Settings.ACTION_SHOW_ADMIN_SUPPORT_DETAILS);
         if (admin != null) {
             if (admin.component != null) {

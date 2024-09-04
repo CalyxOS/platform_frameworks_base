@@ -96,7 +96,10 @@ constructor(
             is PolicyResult.TileEnabled -> false
             is PolicyResult.TileDisabled -> {
                 val intent =
-                    RestrictedLockUtils.getShowAdminSupportDetailsIntent(policyResult.admin)
+                    RestrictedLockUtils.getShowAdminSupportDetailsIntent(
+                        context,
+                        policyResult.admin
+                    )
                 activityStarter.postStartActivityDismissingKeyguard(intent, 0)
                 true
             }
