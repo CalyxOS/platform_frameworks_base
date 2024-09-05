@@ -85,6 +85,24 @@
       "message": "I\u0027m still trying to wrap my head around why the`addUidPolicy(uid, POLICY_REJECT_ALL);` here on a new package install doesn\u0027t do everything we need.\n\nI could understand if it is because of the commented case where an app goes from having INTERNET permission to not having INTERNET permission and back. Otherwise, I don\u0027t understand yet.",
       "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2089aa_24c490bf",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T15:41:05Z",
+      "side": 1,
+      "message": "It\u0027s because of this:\n- https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13836\n- https://gitlab.com/CalyxOS/calyxos/-/issues/1266",
+      "parentUuid": "dc210772_951b502c",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
