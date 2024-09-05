@@ -33,6 +33,24 @@
       "message": "Maybe this should be a fixup of https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/28278 instead of a revert of a patch that probably was previously integrated",
       "revId": "e0fd2c7f50f1f667d9e71d7eb3699f69379dea14",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0ddc1f_9ca7f9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T16:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de7cacf_1bbb7441",
+      "revId": "e0fd2c7f50f1f667d9e71d7eb3699f69379dea14",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

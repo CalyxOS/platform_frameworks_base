@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ca6e81ed_0367447f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T16:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ad46acf_294cec0c",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "166c3d69_01c94ac1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "It\u0027s because of this:\n- https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13836\n- https://gitlab.com/CalyxOS/calyxos/-/issues/1266",
       "parentUuid": "dc210772_951b502c",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3653c6bf_e1731909",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T16:25:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fa2089aa_24c490bf",
       "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
