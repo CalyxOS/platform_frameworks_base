@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad46acf_294cec0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T13:42:25Z",
+      "side": 1,
+      "message": "Let\u0027s add `Reported-by: lucasmz`? @calyxos-gerrit@lucasmz.dev",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "166c3d69_01c94ac1",
