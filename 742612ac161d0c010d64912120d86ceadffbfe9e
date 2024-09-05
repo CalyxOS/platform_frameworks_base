@@ -51,6 +51,40 @@
       "parentUuid": "166c3d69_01c94ac1",
       "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb0541a_4b792cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T13:53:42Z",
+      "side": 1,
+      "message": "I\u0027m still trying to wrap my head around why th",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc210772_951b502c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-05T13:53:42Z",
+      "side": 1,
+      "message": "I\u0027m still trying to wrap my head around why the`addUidPolicy(uid, POLICY_REJECT_ALL);` here on a new package install doesn\u0027t do everything we need.\n\nI could understand if it is because of the commented case where an app goes from having INTERNET permission to not having INTERNET permission and back. Otherwise, I don\u0027t understand yet.",
+      "revId": "742612ac161d0c010d64912120d86ceadffbfe9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
