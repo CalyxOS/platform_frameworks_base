@@ -184,11 +184,11 @@ public final class PowerManagerService extends SystemService
     private static final int MSG_CHECK_FOR_LONG_WAKELOCKS = 4;
     // Message: Sent when an attentive timeout occurs to update the power state.
     private static final int MSG_ATTENTIVE_TIMEOUT = 5;
-    // Message: Sent when waking up with proximity check.
-    private static final int MSG_WAKE_UP = 6;
 
     // Message: Sent when the policy want to release all timeout override wake locks.
     private static final int MSG_RELEASE_ALL_OVERRIDE_WAKE_LOCKS = 6;
+    // Message: Sent when waking up with proximity check.
+    private static final int MSG_WAKE_UP = 7;
 
     // Dirty bit: mWakeLocks changed
     private static final int DIRTY_WAKE_LOCKS = 1 << 0;
