@@ -29,11 +29,11 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.service.quicksettings.Tile;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
+import com.android.systemui.animation.Expandable;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
@@ -108,7 +108,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable Expandable expandable) {
         // If last user clicks < 5 seconds
         // we cycle different duration
         // otherwise toggle on/off
@@ -146,7 +146,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
-    protected void handleLongClick(@Nullable View view) {
+    protected void handleLongClick(@Nullable Expandable expandable) {
         if (mWakeLock.isHeld()) {
             if (mDuration == INFINITE_DURATION_INDEX) {
                 return;
