@@ -22,11 +22,11 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.service.quicksettings.Tile;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
+import com.android.systemui.animation.Expandable;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
@@ -79,7 +79,7 @@ public class ReadingModeTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable Expandable expandable) {
         boolean newStatus = !isReadingModeEnabled();
         mHardware.set(LineageHardwareManager.FEATURE_READING_ENHANCEMENT, newStatus);
         refreshState();
