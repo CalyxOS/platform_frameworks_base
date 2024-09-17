@@ -16,6 +16,24 @@
       "message": "What\u0027s the story with this one? Not working, something else?",
       "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6be188_904c0631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-17T16:29:06Z",
+      "side": 1,
+      "message": "Checked with @olivercscott@gmail.com - the thought was that there is a new aconfig flag that might replace the unported piece of this patch (seen [here](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/21775/10/services/core/java/com/android/server/pm/PackageManagerService.java)).\n\nI can see the new AOSP code calls `crossUserSuspensionEnabledRo()`, which is tied to this (declared in `frameworks/base/core/java/android/app/admin/flags/flags.aconfig`):\n\n```\nflag {\n  name: \"cross_user_suspension_enabled_ro\"\n  namespace: \"enterprise\"\n  description: \"Allow holders of INTERACT_ACROSS_USERS_FULL to suspend apps in different users.\"\n  bug: \"263464464\"\n  is_fixed_read_only: true\n}\n```\n\nAs it says, though, and as we can see in the new code, this requires `INTERACT_ACROSS_USERS_FULL`, not just `INTERACT_ACROSS_USERS`, so we\u0027d need that. Not sure if that\u0027s too much to give to the launcher.",
+      "parentUuid": "2c8b2fef_3bf6633a",
+      "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
