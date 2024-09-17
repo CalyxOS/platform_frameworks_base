@@ -34,6 +34,24 @@
       "parentUuid": "2c8b2fef_3bf6633a",
       "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb148e5_000ddec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-17T21:25:58Z",
+      "side": 1,
+      "message": "Counterpart change (but `_FULL` is still needed here for it to matter): https://review.calyxos.org/c/CalyxOS/platform_build_release/+/30881\n\nI got concerned about possible vulnerabilities when it comes to giving Launcher3 `INTERACT_ACROSS_USERS_FULL`, so I did some basic checks, and at the least, `profileId`s from other users outside the covered profiles are not respected - which is good. Launcher entries with invalid/non-applicable profileIds are just dropped. So if launcher.db in a secondary user can be modified somehow, e.g. restoring a tainted backup set that points to other profiles, then the icons or widgets for those other profiles will be removed with `E LoaderCursor: User has been deleted for item id\u003dX` before they can be interacted with. The fear was that a secondary user could find some exploit or oversight that would allow them to use Launcher3 to launch or suspend apps in another user.\n\nThere may be other ways that `INTERACT_ACROSS_USERS_FULL` could be abused, but I\u0027m not sure what they would be. Ultimately it would be nice to not need to grant this, but this may not be so bad for now.\n\nAlso, documentation isn\u0027t totally clear, but I think we\u0027d been using `INTERACT_ACROSS_USERS` for a different-than-intended purpose. From what I could gather, that permission is meant for an app to [communicate with other instances of itself across users](https://source.android.com/docs/devices/admin/multiuser-apps):\n\u003e Communicate with components in your own app: `(INTERACT_ACROSS_USERS)` Or with components in other apps: `(INTERACT_ACROSS_USERS_FULL)`\n\nThat\u0027s not how we were using it with this framework change in the past, which is potentially fine as long as it had been noted somewhere.",
+      "parentUuid": "de6be188_904c0631",
+      "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
