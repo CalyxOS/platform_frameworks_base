@@ -9072,6 +9072,8 @@ public class WindowManagerService extends IWindowManager.Stub
         final InputApplicationHandle applicationHandle;
         final String name;
         Objects.requireNonNull(outInputChannel);
+        Objects.requireNonNull(inputTransferToken);
+
         synchronized (mGlobalLock) {
             WindowState hostWindowState = hostInputTransferToken != null
                     ? mInputToWindowMap.get(hostInputTransferToken.mToken) : null;
@@ -9096,6 +9098,7 @@ public class WindowManagerService extends IWindowManager.Stub
         Objects.requireNonNull(transferFromToken);
         Objects.requireNonNull(transferToToken);
 
+        final int callingUid = Binder.getCallingUid();
         final long identity = Binder.clearCallingIdentity();
         boolean didTransfer;
         try {
@@ -9105,11 +9108,13 @@ public class WindowManagerService extends IWindowManager.Stub
                 // represents an embedded window so transfer from host to embedded.
                 WindowState windowStateTo = mInputToWindowMap.get(transferToToken.mToken);
                 if (windowStateTo != null) {
-                    didTransfer = mEmbeddedWindowController.transferToHost(transferFromToken,
+                    didTransfer = mEmbeddedWindowController.transferToHost(callingUid,
+                            transferFromToken,
                             windowStateTo);
                 } else {
                     WindowState windowStateFrom = mInputToWindowMap.get(transferFromToken.mToken);
-                    didTransfer = mEmbeddedWindowController.transferToEmbedded(windowStateFrom,
+                    didTransfer = mEmbeddedWindowController.transferToEmbedded(callingUid,
+                            windowStateFrom,
                             transferToToken);
                 }
             }
