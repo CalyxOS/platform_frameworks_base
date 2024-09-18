@@ -52,6 +52,24 @@
       "parentUuid": "de6be188_904c0631",
       "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05f5b11_9ec76dd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-09-18T18:57:42Z",
+      "side": 1,
+      "message": "Can confirm that enabling cross_user_suspension and changing the permission to the full variant works",
+      "parentUuid": "bcb148e5_000ddec0",
+      "revId": "24061490a707b0867bf7de2819cfc11f42ee21d9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
