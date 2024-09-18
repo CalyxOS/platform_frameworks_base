@@ -16,6 +16,24 @@
       "message": "Can you say a bit about why this change is needed?",
       "revId": "75291a0cca9a55e1b8beb5b0c22ae4bf04dfeb0f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6307ca_8257958d",
+        "filename": "core/java/com/android/internal/app/SuspendedAppActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-18T14:35:19Z",
+      "side": 1,
+      "message": "It looks like it\u0027s an oversight in AOSP, possibly something they missed in this commit: https://android.googlesource.com/platform/frameworks/base/+/2cee6416657a49a3e110c8db6906899d0107c0d2%5E%21/\n\nIs that right?",
+      "parentUuid": "f0be39b8_7d4ebb6c",
+      "revId": "75291a0cca9a55e1b8beb5b0c22ae4bf04dfeb0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
