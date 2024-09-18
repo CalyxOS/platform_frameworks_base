@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0be39b8_7d4ebb6c",
+        "filename": "core/java/com/android/internal/app/SuspendedAppActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-18T14:27:42Z",
+      "side": 1,
+      "message": "Can you say a bit about why this change is needed?",
+      "revId": "75291a0cca9a55e1b8beb5b0c22ae4bf04dfeb0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
