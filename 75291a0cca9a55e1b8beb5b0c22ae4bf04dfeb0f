@@ -34,6 +34,24 @@
       "parentUuid": "f0be39b8_7d4ebb6c",
       "revId": "75291a0cca9a55e1b8beb5b0c22ae4bf04dfeb0f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136ae194_b053a330",
+        "filename": "core/java/com/android/internal/app/SuspendedAppActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-09-18T15:05:17Z",
+      "side": 1,
+      "message": "That was my impression yeah. I should submit a fix upstream and see. Doesn\u0027t make sense to me that they\u0027d unconditionally use the target userId as the suspending userId",
+      "parentUuid": "bd6307ca_8257958d",
+      "revId": "75291a0cca9a55e1b8beb5b0c22ae4bf04dfeb0f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
