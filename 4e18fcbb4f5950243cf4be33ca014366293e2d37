@@ -16,6 +16,24 @@
       "message": "I think the changes to this file should be part of \"SystemUI: screenshot: open the screenshot instead of edit\" which I\u0027m working on fixing, so I\u0027m going to move the changes there and fixup them out of this one for now.",
       "revId": "4e18fcbb4f5950243cf4be33ca014366293e2d37",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e470bfdb_8ae52318",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ActionIntentCreator.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T15:12:41Z",
+      "side": 1,
+      "message": "Done at https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/30939",
+      "parentUuid": "e45079cb_f92be8ec",
+      "revId": "4e18fcbb4f5950243cf4be33ca014366293e2d37",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
