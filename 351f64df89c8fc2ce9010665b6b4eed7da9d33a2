@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9c5939_e8c5b9d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2024-09-19T15:57:50Z",
+      "side": 1,
+      "message": "Isn\u0027t this being reverted in the next commit?",
+      "revId": "351f64df89c8fc2ce9010665b6b4eed7da9d33a2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
