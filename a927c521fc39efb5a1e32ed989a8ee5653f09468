@@ -33,6 +33,23 @@
       "message": "Copied comment: [Tommy Webb - Nov 09, 2023](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13383/comment/df242d0f_4d34e6eb/)\n\n\u003e Child profile locking should only be cancelled if the device itself is still unlocked.\n\u003e \n\u003e Otherwise, if someone turns the screen back on and keeps it on, even if the device is locked, the child profiles will remain unlocked. That\u0027s not how this should work.\n\u003e \n\u003e (It\u0027s not an issue in AOSP because they don\u0027t allow disjoint timeout settings the way this change is endeavoring to do, to allow having a separate lock for profiles to be less annoying for those who choose to be less annoyed.)",
       "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78454589_b5ac0db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:45:47Z",
+      "side": 1,
+      "message": "Copied comment: [Tommy Webb - Aug 30, 2023](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13383/comments/31e6c9c0_8b0dd5c0)\n\n\u003e Made an untested change of `UserHandle.myUserId()` to `getCurrentUser()` in a couple places, need to verify it builds and works",
+      "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
