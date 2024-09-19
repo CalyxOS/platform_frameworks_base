@@ -16,6 +16,23 @@
       "message": "Isn\u0027t this being reverted in the next commit?",
       "revId": "351f64df89c8fc2ce9010665b6b4eed7da9d33a2",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5781806_0b2027cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2024-09-19T15:58:33Z",
+      "side": 1,
+      "message": "Never mind, saw the other comments.",
+      "revId": "351f64df89c8fc2ce9010665b6b4eed7da9d33a2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
