@@ -67,6 +67,24 @@
       "message": "Split out the locksettings change into a separate change.",
       "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1631a55_7cde453a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T14:00:50Z",
+      "side": 1,
+      "message": "Done here: https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/30936",
+      "parentUuid": "b9f63f4e_45e71096",
+      "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
