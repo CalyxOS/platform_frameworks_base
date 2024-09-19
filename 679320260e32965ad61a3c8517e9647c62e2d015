@@ -16,6 +16,24 @@
       "message": "Made an untested change of `UserHandle.myUserId()` to `getCurrentUser()` in a couple places, need to verify it builds and works",
       "revId": "679320260e32965ad61a3c8517e9647c62e2d015",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a3dd49_ea4ba47b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:47:30Z",
+      "side": 1,
+      "message": "[Comment moved to new change](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/30935/comments/78454589_b5ac0db7)",
+      "parentUuid": "31e6c9c0_8b0dd5c0",
+      "revId": "679320260e32965ad61a3c8517e9647c62e2d015",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

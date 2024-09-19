@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0adf560e_ae0ba402",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:47:30Z",
+      "side": 1,
+      "message": "[Comment moved to new change](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/30935/comments/5238e42d_ea769027)",
+      "parentUuid": "a0be5f87_0d21ccba",
+      "revId": "66267faeb616b2a01a44aa7d4abdd0b8832c3900",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df242d0f_4d34e6eb",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-09T19:05:56Z",
       "side": 1,
       "message": "Child profile locking should only be cancelled if the device itself is still unlocked.\n\nOtherwise, if someone turns the screen back on and keeps it on, even if the device is locked, the child profiles will remain unlocked. That\u0027s not how this should work.\n\n(It\u0027s not an issue in AOSP because they don\u0027t allow disjoint timeout settings the way this change is endeavoring to do, to allow having a separate lock for profiles to be less annoying for those who choose to be less annoyed.)",
+      "revId": "66267faeb616b2a01a44aa7d4abdd0b8832c3900",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bd3710_ec43c1af",
+        "filename": "packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:47:30Z",
+      "side": 1,
+      "message": "[Comment moved to new change](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/30935/comments/331073b8_e6f1915e)",
+      "parentUuid": "df242d0f_4d34e6eb",
       "revId": "66267faeb616b2a01a44aa7d4abdd0b8832c3900",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
