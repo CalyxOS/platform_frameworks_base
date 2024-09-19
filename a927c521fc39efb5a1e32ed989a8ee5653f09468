@@ -16,6 +16,23 @@
       "message": "Copied comment: [Tommy Webb - Nov 09, 2023](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13383/comment/a0be5f87_0d21ccba/)\n\n\u003e This is acting like it never returns less than 5000 for a work profile.\n\u003e \n\u003e Expected behavior:\n\u003e - If lock_screen_lock_after_timeout is set to 0 for the work profile, the profile should lock when the screen turns off.\n\u003e - If lock_screen_lock_after_timeout is not set for the work profile, the profile should lock at the same time the device locks, after screen timeout.\n\u003e \n\u003e This isn\u0027t happening. It\u0027s a minimum of 5 seconds. (That happens to match up with KEYGUARD_LOCK_AFTER_DELAY_DEFAULT.)\n\u003e \n\u003e Setting it to 7000 appropriately takes 7 seconds, so it\u0027s not like it\u0027s adding 5000 or ignoring the setting entirely.\n\u003e \n\u003e Might be something to do with the min/max logic above, but I can\u0027t immediately tell what.",
       "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331073b8_e6f1915e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:45:07Z",
+      "side": 1,
+      "message": "Copied comment: [Tommy Webb - Nov 09, 2023](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13383/comment/df242d0f_4d34e6eb/)\n\n\u003e Child profile locking should only be cancelled if the device itself is still unlocked.\n\u003e \n\u003e Otherwise, if someone turns the screen back on and keeps it on, even if the device is locked, the child profiles will remain unlocked. That\u0027s not how this should work.\n\u003e \n\u003e (It\u0027s not an issue in AOSP because they don\u0027t allow disjoint timeout settings the way this change is endeavoring to do, to allow having a separate lock for profiles to be less annoying for those who choose to be less annoyed.)",
+      "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
