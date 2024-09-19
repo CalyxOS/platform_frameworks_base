@@ -50,6 +50,23 @@
       "message": "Copied comment: [Tommy Webb - Aug 30, 2023](https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/13383/comments/31e6c9c0_8b0dd5c0)\n\n\u003e Made an untested change of `UserHandle.myUserId()` to `getCurrentUser()` in a couple places, need to verify it builds and works",
       "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f63f4e_45e71096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-19T13:52:52Z",
+      "side": 1,
+      "message": "Split out the locksettings change into a separate change.",
+      "revId": "a927c521fc39efb5a1e32ed989a8ee5653f09468",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
