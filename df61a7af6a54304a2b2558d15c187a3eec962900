@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3e3f6a_f1a833ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-24T14:21:12Z",
+      "side": 1,
+      "message": "No hits for `fake-d2d` in packages/apps/Seedvault",
+      "revId": "df61a7af6a54304a2b2558d15c187a3eec962900",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
