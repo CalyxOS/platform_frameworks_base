@@ -34,6 +34,24 @@
       "parentUuid": "83661886_053ae2bb",
       "revId": "93b3eef3daaf118387f1a7f4d89bede71836f7e3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481666dc_e1d89fa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-26T23:55:19Z",
+      "side": 1,
+      "message": "Yeah.\n\nWe need a middle-ground really.\n\nWe would have separate commits previously but would squash them later for easier rebasing, but it\u0027d be hard to track down.\n\nWe have fixups now which can easily be automatically collected, but unfortunately that loses commit message, which in many cases such as this is quite important.\n\nWe want to retain both the commit message of the \"fixup\" and also squash it easily later, for which there\u0027s no easy way right now. Need a better solution for sure, and then document that.",
+      "parentUuid": "ac321c22_2bd5540f",
+      "revId": "93b3eef3daaf118387f1a7f4d89bede71836f7e3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
