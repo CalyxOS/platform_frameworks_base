@@ -16,6 +16,24 @@
       "message": "wrong indentation",
       "revId": "317723563423b1e93156817becaec83d844b1dec",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a426085_d44de9ae",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-09-26T14:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e845ab3c_0bb28d2e",
+      "revId": "317723563423b1e93156817becaec83d844b1dec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
