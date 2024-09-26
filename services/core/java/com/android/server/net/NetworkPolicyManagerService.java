@@ -38,6 +38,7 @@ import static android.content.Intent.ACTION_PACKAGE_ADDED;
 import static android.content.Intent.ACTION_UID_REMOVED;
 import static android.content.Intent.ACTION_USER_ADDED;
 import static android.content.Intent.ACTION_USER_REMOVED;
+import static android.content.Intent.EXTRA_REPLACING;
 import static android.content.Intent.EXTRA_UID;
 import static android.content.pm.ApplicationInfo.FLAG_INSTALLED;
 import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_HIDDEN;
@@ -1447,19 +1448,40 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 // Clear the cache for the app
                 synchronized (mUidRulesFirstLock) {
                     mInternetPermissionMap.delete(uid);
-                    int userId = UserHandle.getUserId(uid);
-                    UserInfo parentUser = mUserManager.getProfileParent(userId);
-                    if ((!hasInternetPermissionUL(uid) && !isSystemApp(uid)) ||
-                            LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
-                                    LineageSettings.Secure.DEFAULT_RESTRICT_NETWORK_DATA, 0,
-                                    parentUser == null ? UserHandle.getUserId(uid) : parentUser.id)
-                                    == 1) {
+                    final boolean shouldRestrictNetworkData;
+                    if (isSystemApp(uid)) {
+                        shouldRestrictNetworkData = false;
+                    } else if (!hasInternetPermissionUL(uid)) {
+                        shouldRestrictNetworkData = true;
+                    } else {
+                        final boolean isNewInstall =
+                                !intent.getBooleanExtra(EXTRA_REPLACING, false);
+                        shouldRestrictNetworkData =
+                                isNewInstall && shouldRestrictInternetForNewInstalls(uid);
+                    }
+                    if (shouldRestrictNetworkData) {
                         Slog.i(TAG, "ACTION_PACKAGE_ADDED for uid=" + uid + ", no internet");
                         addUidPolicy(uid, POLICY_REJECT_ALL);
                     }
                     updateRestrictionRulesForUidUL(uid);
                 }
             }
+        }
+
+        /**
+         * Whether the user (or parent user, if a profile) has the "Allow internet for new installs"
+         * setting turned off in the Firewall.
+         */
+        private boolean shouldRestrictInternetForNewInstalls(int uid) {
+            final int userId = UserHandle.getUserId(uid);
+            final UserInfo parentUser = mUserManager.getProfileParent(userId);
+            final int userIdForDefaultRestrictNetworkData =
+                    parentUser == null ? UserHandle.getUserId(uid) : parentUser.id;
+            return LineageSettings.Secure.getIntForUser(
+                    mContext.getContentResolver(),
+                    LineageSettings.Secure.DEFAULT_RESTRICT_NETWORK_DATA,
+                    /* def */ 0,
+                    userIdForDefaultRestrictNetworkData) == 1;
         }
     };
 
