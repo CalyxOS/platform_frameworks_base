@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9064b60d_cd6001e2",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-09-27T20:07:45Z",
+      "side": 1,
+      "message": "Wonder if this should occur before `finishUserBoot` so that no users that are going to be stopped receive any broadcasts that would at best result in useless processing and at worst react and modify things in a race before being shut down",
+      "range": {
+        "startLine": 529,
+        "startChar": 12,
+        "endLine": 529,
+        "endChar": 36
+      },
+      "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
