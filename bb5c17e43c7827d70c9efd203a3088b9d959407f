@@ -34,6 +34,23 @@
       "parentUuid": "a947bec2_b1618525",
       "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1523d5d2_242663ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2024-09-27T20:40:51Z",
+      "side": 1,
+      "message": "What\u0027s the story here? How does activating backup service by default help users? Don\u0027t they need to set up backup manually anyway? So couldn\u0027t they just flip the toggle?\n\nOr is this different from isBackupEnabled() and the user has no other way to \"activate\" the backup? is there really no way?",
+      "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
