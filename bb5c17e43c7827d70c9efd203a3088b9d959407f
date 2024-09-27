@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a947bec2_b1618525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-09-27T18:15:32Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/backup/java/com/android/server/backup/BackupManagerService.java;l\u003d481;drc\u003d5d6da708806b5c150ad9db31c422f805543e526c\nLet\u0027s see if we could call this from Seedvault directly instead for compatibility on other systems without requiring frameworks patch",
+      "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
