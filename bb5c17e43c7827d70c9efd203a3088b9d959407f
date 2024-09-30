@@ -51,6 +51,24 @@
       "message": "What\u0027s the story here? How does activating backup service by default help users? Don\u0027t they need to set up backup manually anyway? So couldn\u0027t they just flip the toggle?\n\nOr is this different from isBackupEnabled() and the user has no other way to \"activate\" the backup? is there really no way?",
       "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faff1b87_f4ee9d4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-09-30T14:45:30Z",
+      "side": 1,
+      "message": "From what I recall, backups services are not active on secondary users and work profiles by default. They can only be activated through ADB or by a privileged app (for work profiles, the app must also be root or system UID).\n\nIt is different from `isBackupEnabled()` and there is no UI for users to activate backup services",
+      "parentUuid": "1523d5d2_242663ec",
+      "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
