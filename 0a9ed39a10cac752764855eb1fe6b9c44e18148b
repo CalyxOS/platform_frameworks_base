@@ -105,6 +105,24 @@
       "parentUuid": "80f3b9c8_958836d4",
       "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbf6386_9e55e8c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-02T18:16:45Z",
+      "side": 1,
+      "message": "I can\u0027t easily test, but I assume any app with MANAGE_NETWORK_POLICY is broken in AOSP with Android 15. Not sure if that\u0027s what they intend. I guess submitting it would help to find out.",
+      "parentUuid": "5c87b8d7_19645167",
+      "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
