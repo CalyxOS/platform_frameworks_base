@@ -16,6 +16,24 @@
       "message": "Is this something that AOSP used to have and removed?",
       "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a2ea7b_b0b91685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-02T18:07:54Z",
+      "side": 1,
+      "message": "Seems reasonable assuming the call is guarded by permissions and/or other mechanisms (iirc it is). But wonder why they don\u0027t have it here (especially if they have it for other calls)",
+      "parentUuid": "ab5ddfe9_29c9d389",
+      "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
