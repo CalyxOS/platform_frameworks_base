@@ -34,6 +34,23 @@
       "parentUuid": "ab5ddfe9_29c9d389",
       "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df1e094_0bbd5866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-02T18:11:52Z",
+      "side": 1,
+      "message": "@olivercscott@gmail.com Any thoughts on this? Thinking of uploading to AOSP. From what I can tell, by the time this private method has been reached, any necessary permission checks *should* have already been completed.\n\nBasically, in `updateRulesForDataUsageRestrictionsULInner`, Android 15 adds some calls to `setUidFirewallRuleUL` that weren\u0027t present before, which is where we\u0027re seeing this, on the NetworkManagementService side, since it apparently looks to the system like Datura is trying to interact with NetworkManagementService directly. (The stack trace is in calyxos#2733; be sure to note the remote exception at the bottom too, which is where this happens.)",
+      "revId": "0a9ed39a10cac752764855eb1fe6b9c44e18148b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
