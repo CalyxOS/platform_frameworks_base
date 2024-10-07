@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3e4156_5fdbc9ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-07T21:26:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t really consider other states, like docked, car mode, etc., so would need work.",
+      "revId": "878aa59dbdb100cbc589aafc0fcadec0e84ab127",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
