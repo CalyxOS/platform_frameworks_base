@@ -16,6 +16,24 @@
       "message": "Testing what\u0027s on the gitlab ticket comment but I don\u0027t see logs even when not blocking the UIDs (after a fresh install)?",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0abe70_e03f9bb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-08T19:27:39Z",
+      "side": 1,
+      "message": "Didn\u0027t mean to mark as resolved",
+      "parentUuid": "06e7b279_a93d1214",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
