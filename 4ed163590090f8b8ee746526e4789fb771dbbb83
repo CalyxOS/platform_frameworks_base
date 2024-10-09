@@ -16,6 +16,24 @@
       "message": "This proably needs the fix from 14 branch squashed in",
       "revId": "4ed163590090f8b8ee746526e4789fb771dbbb83",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edaec45_961073a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-09T11:12:31Z",
+      "side": 1,
+      "message": "Yes. We\u0027ll first pick all changes that aren\u0027t in 15 yet, make sure we got everything, and squash after that.\n\nBecause otherwise it\u0027ll be very hard to track and maange.",
+      "parentUuid": "8141c247_dbd4172f",
+      "revId": "4ed163590090f8b8ee746526e4789fb771dbbb83",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
