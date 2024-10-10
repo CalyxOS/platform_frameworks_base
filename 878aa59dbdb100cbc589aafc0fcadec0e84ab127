@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t really consider other states, like docked, car mode, etc., so would need work.",
       "revId": "878aa59dbdb100cbc589aafc0fcadec0e84ab127",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b76344e_80a2d410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-10T12:46:33Z",
+      "side": 1,
+      "message": "`adb shell cmd uimode`\n\nCar mode doesn\u0027t look involved here. Can test it with the above on stock, etc and it doesn\u0027t force a particular theme. Dock mode doesn\u0027t either.\n\nI don\u0027t know if this is perfect but I\u0027ll try it on my daily driver for a while. Not sure how bad it can really be...",
+      "parentUuid": "7e3e4156_5fdbc9ce",
+      "revId": "878aa59dbdb100cbc589aafc0fcadec0e84ab127",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
