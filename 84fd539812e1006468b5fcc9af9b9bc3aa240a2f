@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14d7e88_94add4b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-10T20:19:37Z",
+      "side": 1,
+      "message": "@chirayu@calyxinstitute.org Can you use admin powers to delete this?",
+      "revId": "84fd539812e1006468b5fcc9af9b9bc3aa240a2f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
