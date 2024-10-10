@@ -16,6 +16,23 @@
       "message": "Sync\u0027d with AOSP (except I had to add an extra newline to the commit message before the Change-Id).",
       "revId": "07c96fc3dff9b512f7159791a3036bc1657bf790",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fde17b7_9e137530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-10T20:26:20Z",
+      "side": 1,
+      "message": "Firewall doesn\u0027t work without this, adjusting toggles just crashes it",
+      "revId": "07c96fc3dff9b512f7159791a3036bc1657bf790",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
