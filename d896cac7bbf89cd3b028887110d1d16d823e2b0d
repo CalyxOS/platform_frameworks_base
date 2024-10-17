@@ -34,6 +34,24 @@
       "parentUuid": "06e7b279_a93d1214",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc8214a_9e09bac4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-17T21:37:41Z",
+      "side": 1,
+      "message": "With this change, the verification never happens regardless of whether the app has network access.\n\nWithout the change, it does.",
+      "parentUuid": "ff0abe70_e03f9bb4",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
