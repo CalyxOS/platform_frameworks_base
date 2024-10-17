@@ -46,6 +46,30 @@
       },
       "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aeccb0c_5b1dc238",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-17T21:52:52Z",
+      "side": 1,
+      "message": "P.S. Could do a fixup if it is found to be an improvement that doesn\u0027t cause problems. I just don\u0027t want to hold up getting this merged for something very theoretical in a volatile area of code.",
+      "parentUuid": "49ba738e_5445d4cc",
+      "range": {
+        "startLine": 529,
+        "startChar": 12,
+        "endLine": 529,
+        "endChar": 36
+      },
+      "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
