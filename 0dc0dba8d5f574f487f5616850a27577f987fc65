@@ -22,6 +22,30 @@
       },
       "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ba738e_5445d4cc",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-17T21:49:47Z",
+      "side": 1,
+      "message": "This would have been a problem already, so if this is truly an issue, it would be better to fix it in another patch. `stopExcessRunningUsers` is sort of a refactor, so this isn\u0027t really much different.",
+      "parentUuid": "9064b60d_cd6001e2",
+      "range": {
+        "startLine": 529,
+        "startChar": 12,
+        "endLine": 529,
+        "endChar": 36
+      },
+      "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
