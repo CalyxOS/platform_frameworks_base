@@ -16,6 +16,24 @@
       "message": "Shoudl squash https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/28916/6/services/core/java/com/android/server/net/NetworkPolicyManagerService.java into this change. Should double-check other changes that have been made on 14 branch since initial port to 15 for other changes as well",
       "revId": "a11e69a11caf8d42763ad07c27c28a444da24b37",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f3121c_484ebc4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:21:43Z",
+      "side": 1,
+      "message": "Picked for now, will squash later 31590: fixup! Implement backup/restore for network policy | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/31590",
+      "parentUuid": "0f31f72f_d00ca61c",
+      "revId": "a11e69a11caf8d42763ad07c27c28a444da24b37",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
