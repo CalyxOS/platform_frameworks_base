@@ -70,6 +70,24 @@
       "parentUuid": "bdc8214a_9e09bac4",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b950fb_5e06579d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-18T21:39:56Z",
+      "side": 1,
+      "message": "meant to send https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Connectivity/framework/src/android/net/ConnectivityManager.java;l\u003d907;bpv\u003d0;bpt\u003d1",
+      "parentUuid": "22908701_299cbcbe",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
