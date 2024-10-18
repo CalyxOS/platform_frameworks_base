@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5916dcd3_6437b392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:21:39Z",
+      "side": 1,
+      "message": "Squash into 29903: Implement backup/restore for network policy | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/29903",
+      "revId": "ad7dd35d56764f986bee292eb8cd97d0fb4d9f95",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
