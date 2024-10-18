@@ -34,6 +34,24 @@
       "parentUuid": "e45079cb_f92be8ec",
       "revId": "4e18fcbb4f5950243cf4be33ca014366293e2d37",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2336f6f_aff1668c",
+        "filename": "packages/SystemUI/src/com/android/systemui/screenshot/ActionIntentCreator.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:29:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e470bfdb_8ae52318",
+      "revId": "4e18fcbb4f5950243cf4be33ca014366293e2d37",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
