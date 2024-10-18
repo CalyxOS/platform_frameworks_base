@@ -34,6 +34,24 @@
       "parentUuid": "8141c247_dbd4172f",
       "revId": "4ed163590090f8b8ee746526e4789fb771dbbb83",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f108c2_a7efab21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:20:13Z",
+      "side": 1,
+      "message": "Picked to 31593: Fix default network data restriction handling | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/31593\n\nCan be squashed later.",
+      "parentUuid": "5edaec45_961073a7",
+      "revId": "4ed163590090f8b8ee746526e4789fb771dbbb83",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
