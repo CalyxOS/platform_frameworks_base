@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e145e4f4_b881d44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:20:24Z",
+      "side": 1,
+      "message": "Could be squashed into 29986: Implement internet access for new apps setting | https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/29986 later",
+      "revId": "b5ded2d08f2351cf636f2a0ea88a7fe4d1df0e7b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
