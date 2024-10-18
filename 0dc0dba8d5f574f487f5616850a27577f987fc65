@@ -70,6 +70,30 @@
       },
       "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea9ca73_644186ee",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T17:18:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6aeccb0c_5b1dc238",
+      "range": {
+        "startLine": 529,
+        "startChar": 12,
+        "endLine": 529,
+        "endChar": 36
+      },
+      "revId": "0dc0dba8d5f574f487f5616850a27577f987fc65",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
