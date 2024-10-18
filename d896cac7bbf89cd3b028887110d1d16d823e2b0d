@@ -106,6 +106,24 @@
       "parentUuid": "a8b950fb_5e06579d",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed4608b_ee4cca91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-18T22:02:40Z",
+      "side": 1,
+      "message": "This is a departure from AOSP which always allows verification, even on first install (I think it would also apply upon updating if the app is force stopped).",
+      "parentUuid": "1037b187_b9c64bbd",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
