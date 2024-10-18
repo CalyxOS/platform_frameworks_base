@@ -52,6 +52,24 @@
       "parentUuid": "ff0abe70_e03f9bb4",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22908701_299cbcbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-18T21:39:28Z",
+      "side": 1,
+      "message": "This is the effective reason why it is blocked after fresh install according to `isUidNetworkingBlocked`\nhttps://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Connectivity/framework/src/android/net/ConnectivityManager.java;l\u003d907?q\u003dBLOCKED_REASON_NONE%20",
+      "parentUuid": "bdc8214a_9e09bac4",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
