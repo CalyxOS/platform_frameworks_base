@@ -124,6 +124,24 @@
       "parentUuid": "1037b187_b9c64bbd",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73659584_3c04f025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-19T16:00:58Z",
+      "side": 1,
+      "message": "I think that departure is fine, then.\n\n1. Domain verification still doesn\u0027t work reliably in AOSP anyways 😞\n2. It\u0027d defeat the purpose of our features such as \"don\u0027t allow internet for new installs\" if such bypasses happened\n3. It may potentially break some use-case where first time usage needs verification, but we can wait until there\u0027s some real world report of that to see what to do.\n\nUntil then, as long as it works fine after first usage, I think this is good to go.",
+      "parentUuid": "4ed4608b_ee4cca91",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
