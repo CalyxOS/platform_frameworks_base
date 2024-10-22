@@ -69,6 +69,24 @@
       "parentUuid": "1523d5d2_242663ec",
       "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da987da6_9821b714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-22T19:28:39Z",
+      "side": 1,
+      "message": "Given this, probably won\u0027t be moving the code into the app itself",
+      "parentUuid": "2630b149_98cc8740",
+      "revId": "bb5c17e43c7827d70c9efd203a3088b9d959407f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
