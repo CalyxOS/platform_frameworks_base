@@ -142,6 +142,24 @@
       "parentUuid": "4ed4608b_ee4cca91",
       "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f711934f_bdf2e57c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-23T20:13:29Z",
+      "side": 1,
+      "message": "Latest PS reads our policies directly. So, if \"allow internet for new installs\" is off in the firewall app, it\u0027ll behave like it currently does. But if it\u0027s on, it\u0027ll verify hosts as expected.",
+      "parentUuid": "73659584_3c04f025",
+      "revId": "d896cac7bbf89cd3b028887110d1d16d823e2b0d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
