@@ -55,7 +55,7 @@ object AndroidUtils {
         val receiver = ComponentName(context, DomainVerificationReceiverV2::class.java)
         return when (context.packageManager.getComponentEnabledSetting(receiver)) {
             // Must change this if the manifest ever changes
-            PackageManager.COMPONENT_ENABLED_STATE_DEFAULT -> false
+            PackageManager.COMPONENT_ENABLED_STATE_DEFAULT -> true
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED -> true
             else -> false
         }
