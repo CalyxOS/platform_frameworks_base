@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37e09b1_789eed1c",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2024-10-24T13:33:23Z",
+      "side": 1,
+      "message": "This looks like it blocks the verification if an app has any of the listed policies set - e.g. if the user blocks the app on mobile data, it will be blocked even if they\u0027re currently on Wi-Fi.\n\nSo, a couple of thoughts:\n1. Can we make this consider whether the UID is *actually* blocked?\n2. Can you break out conditionals of this scale so that they are easier to read, assigning them to a boolean that represents what they mean? For example, this one could be something like `val hasAnyRejectPolicy \u003d`?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 80
+      },
+      "revId": "565a8b6b5dcfaee45d1c8fbd4e1d2c133bec7465",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
