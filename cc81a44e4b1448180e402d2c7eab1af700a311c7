@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee25c742_3e2a2827",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-24T22:03:23Z",
+      "side": 1,
+      "message": "Not sure what\u0027s best to do between this and `\u003d\u003d 0`",
+      "range": {
+        "startLine": 101,
+        "startChar": 53,
+        "endLine": 101,
+        "endChar": 85
+      },
+      "revId": "cc81a44e4b1448180e402d2c7eab1af700a311c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
