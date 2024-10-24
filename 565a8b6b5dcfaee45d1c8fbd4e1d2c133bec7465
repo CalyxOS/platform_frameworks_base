@@ -22,6 +22,30 @@
       },
       "revId": "565a8b6b5dcfaee45d1c8fbd4e1d2c133bec7465",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38d0260_b809f311",
+        "filename": "packages/StatementService/src/com/android/statementservice/domain/DomainVerifier.kt",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-10-24T15:37:47Z",
+      "side": 1,
+      "message": "PS6 deals with this but attempts to use `getActiveNetworkForUid` which we no longer expose. I\u0027ll implement something on the ConnectivityManager side and upload it to AOSP",
+      "parentUuid": "b37e09b1_789eed1c",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 80
+      },
+      "revId": "565a8b6b5dcfaee45d1c8fbd4e1d2c133bec7465",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
