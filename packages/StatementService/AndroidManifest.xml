@@ -65,7 +65,6 @@
             android:permission="android.permission.BIND_DOMAIN_VERIFICATION_AGENT"
             android:directBootAware="true"
             android:exported="true"
-            android:enabled="false"
             >
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.DOMAINS_NEED_VERIFICATION"/>
