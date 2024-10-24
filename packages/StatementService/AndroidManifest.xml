@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.INTENT_FILTER_VERIFICATION_AGENT"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.OBSERVE_NETWORK_POLICY"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.UPDATE_DOMAIN_VERIFICATION_USER_SELECTION"/>
@@ -64,7 +65,6 @@
             android:permission="android.permission.BIND_DOMAIN_VERIFICATION_AGENT"
             android:directBootAware="true"
             android:exported="true"
-            android:enabled="false"
             >
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.DOMAINS_NEED_VERIFICATION"/>
