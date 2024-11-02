@@ -71,4 +71,5 @@
     <string name="screenshot_delete_label">წაშლა</string>
     <string name="screenshot_delete_description">ეკრანის სურათის წაშლა</string>
     <string name="screenrecord_delete_label">წაშლა</string>
+    <string name="battery_notification_channel_tv">ბატარეის გაფრთხილება</string>
 </resources>
