@@ -34,14 +34,12 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
-import android.net.INetworkPolicyListener;
 import android.net.Network;
 import android.net.NetworkCapabilities;
-import android.net.NetworkPolicyManager;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Process;
 import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings.Global;
@@ -178,7 +176,6 @@ public class PhoneStatusBarPolicy
     private final PrivacyLogger mPrivacyLogger;
     private final ZenModeInteractor mZenModeInteractor;
     private final ConnectivityManager mConnectivityManager;
-    private final NetworkPolicyManager mNetworkPolicyManager;
 
     private boolean mZenVisible;
     private boolean mVibrateVisible;
@@ -191,7 +188,7 @@ public class PhoneStatusBarPolicy
     private int mLastResumedActivityUid = -1;
 
     private BluetoothController mBluetooth;
-    private AlarmManager.AlarmClockInfo mNextAlarm;
+    private AlarmClockInfo mNextAlarm;
 
     @Inject
     public PhoneStatusBarPolicy(Context context, StatusBarIconController iconController,
@@ -250,7 +247,6 @@ public class PhoneStatusBarPolicy
         mZenModeInteractor = zenModeInteractor;
         mJavaAdapter = javaAdapter;
         mConnectivityManager = context.getSystemService(ConnectivityManager.class);
-        mNetworkPolicyManager = context.getSystemService(NetworkPolicyManager.class);
 
         mSlotCast = resources.getString(com.android.internal.R.string.status_bar_cast);
         mSlotConnectedDisplay = resources.getString(
@@ -301,8 +297,6 @@ public class PhoneStatusBarPolicy
 
         // listen for user / profile change.
         mUserTracker.addCallback(mUserSwitchListener, mMainExecutor);
-
-        mNetworkPolicyManager.registerListener(mNetworkPolicyListener);
 
         // TTY status
         updateTTY();
@@ -704,7 +698,7 @@ public class PhoneStatusBarPolicy
         });
     }
 
-    private void updateFirewall() {
+    private void registerBlockedStatusChangedCallbackForLastResumedActivityUid() {
         mUiBgExecutor.execute(() -> {
             try {
                 final int uid = ActivityTaskManager.getService().getLastResumedActivityUid();
@@ -718,57 +712,69 @@ public class PhoneStatusBarPolicy
                     mConnectivityManager.registerDefaultNetworkCallbackForUid(uid, mNetworkCallback,
                             mHandler);
                 }
-                final boolean isRestricted =
-                        mNetworkPolicyManager.isUidNetworkingBlocked(uid, false /*meteredNetwork*/);
-                boolean isLauncher = false;
-                List<ResolveInfo> homeActivities =
-                        mContext.getPackageManager().queryIntentActivitiesAsUser(
-                                new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
-                                        .addCategory(Intent.CATEGORY_DEFAULT),
-                                PackageManager.ResolveInfoFlags.of(0), UserHandle.getUserId(uid));
-                for (ResolveInfo homeActivity : homeActivities) {
-                    if (uid == homeActivity.activityInfo.applicationInfo.uid) {
-                        isLauncher = true;
-                        break;
-                    }
-                }
-                final boolean finalIsLauncher = isLauncher;
-                mHandler.post(() -> {
-                    final boolean showIcon;
-                    if (!finalIsLauncher && isRestricted && (!mKeyguardStateController.isShowing()
-                            || mKeyguardStateController.isOccluded())) {
-                        showIcon = true;
-                        mIconController.setIcon(mSlotFirewall, R.drawable.stat_sys_firewall, null);
-                    } else {
-                        showIcon = false;
-                    }
-                    if (mFirewallVisible != showIcon) {
-                        mIconController.setIconVisibility(mSlotFirewall, showIcon);
-                        mFirewallVisible = showIcon;
-                    }
-                });
             } catch (RemoteException e) {
-                Log.w(TAG, "updateFirewall: ", e);
+                Log.w(TAG, "registerBlockedStatusChangedCallbackForLastResumedActivityUid", e);
             }
         });
     }
 
     private final ConnectivityManager.NetworkCallback mNetworkCallback =
             new ConnectivityManager.NetworkCallback() {
+
                 @Override
-                public void onCapabilitiesChanged(@NonNull Network network,
-                        @NonNull NetworkCapabilities networkCapabilities) {
-                    mHandler.post(() -> updateFirewall());
+                public void onBlockedStatusChanged(@NonNull Network network, int blocked) {
+                    mHandler.post(() -> {
+                        registerBlockedStatusChangedCallbackForLastResumedActivityUid();
+                        mUiBgExecutor.execute(() -> {
+                            try {
+                                final int uid = ActivityTaskManager.getService()
+                                        .getLastResumedActivityUid();
+                                if (uid != Process.INVALID_UID) {
+                                    mMainExecutor.execute(() -> {
+                                        boolean isLauncher = false;
+                                        List<ResolveInfo> homeActivities = mContext
+                                                .getPackageManager().queryIntentActivitiesAsUser(
+                                                        new Intent(Intent.ACTION_MAIN)
+                                                                .addCategory(Intent.CATEGORY_HOME)
+                                                                .addCategory(
+                                                                        Intent.CATEGORY_DEFAULT),
+                                                        PackageManager.ResolveInfoFlags.of(0),
+                                                        UserHandle.getUserId(uid));
+                                        for (ResolveInfo homeActivity : homeActivities) {
+                                            int homeUid =
+                                                    homeActivity.activityInfo.applicationInfo.uid;
+                                            if (uid == homeUid) {
+                                                isLauncher = true;
+                                                break;
+                                            }
+                                        }
+                                        final boolean finalIsLauncher = isLauncher;
+                                        final boolean showIcon;
+                                        if (!finalIsLauncher
+                                                && blocked
+                                                != ConnectivityManager.BLOCKED_REASON_NONE
+                                                && (!mKeyguardStateController.isShowing()
+                                                || mKeyguardStateController.isOccluded())) {
+                                            showIcon = true;
+                                            mIconController.setIcon(mSlotFirewall,
+                                                    R.drawable.stat_sys_firewall, null);
+                                        } else {
+                                            showIcon = false;
+                                        }
+                                        if (mFirewallVisible != showIcon) {
+                                            mIconController.setIconVisibility(mSlotFirewall,
+                                                    showIcon);
+                                            mFirewallVisible = showIcon;
+                                        }
+                                    });
+                                }
+                            } catch (RemoteException e) {
+                                Log.w(TAG, "onBlockedStatusChanged", e);
+                            }
+                        });
+                    });
                 }
             };
-
-    private final INetworkPolicyListener mNetworkPolicyListener =
-            new NetworkPolicyManager.Listener() {
-        @Override
-        public void onUidPoliciesChanged(int uid, int uidPolicies) {
-            mHandler.post(() -> updateFirewall());
-        }
-    };
 
     private final UserTracker.Callback mUserSwitchListener =
             new UserTracker.Callback() {
@@ -804,7 +810,7 @@ public class PhoneStatusBarPolicy
     private final NextAlarmController.NextAlarmChangeCallback mNextAlarmCallback =
             new NextAlarmController.NextAlarmChangeCallback() {
                 @Override
-                public void onNextAlarmChanged(AlarmManager.AlarmClockInfo nextAlarm) {
+                public void onNextAlarmChanged(AlarmClockInfo nextAlarm) {
                     mNextAlarm = nextAlarm;
                     updateAlarm();
                 }
@@ -825,7 +831,7 @@ public class PhoneStatusBarPolicy
             boolean forced) {
         if (mDisplayId == displayId) {
             updateProfileIcon();
-            updateFirewall();
+            registerBlockedStatusChangedCallbackForLastResumedActivityUid();
         }
     }
 
@@ -833,14 +839,14 @@ public class PhoneStatusBarPolicy
     public void appTransitionFinished(int displayId) {
         if (mDisplayId == displayId) {
             updateProfileIcon();
-            updateFirewall();
+            registerBlockedStatusChangedCallbackForLastResumedActivityUid();
         }
     }
 
     @Override
     public void onKeyguardShowingChanged() {
         updateProfileIcon();
-        updateFirewall();
+        registerBlockedStatusChangedCallbackForLastResumedActivityUid();
     }
 
     @Override
