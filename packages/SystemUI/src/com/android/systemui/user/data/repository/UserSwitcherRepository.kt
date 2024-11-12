@@ -17,8 +17,10 @@
 package com.android.systemui.user.data.repository
 
 import android.content.Context
+import android.database.ContentObserver
 import android.graphics.drawable.Drawable
 import android.os.Handler
+import android.os.UserHandle
 import android.os.UserManager
 import android.provider.Settings.Global.USER_SWITCHER_ENABLED
 import com.android.app.tracing.coroutines.launchTraced as launch
@@ -26,6 +28,7 @@ import com.android.systemui.common.coroutine.ChannelExt.trySendWithFailureLoggin
 import com.android.systemui.dagger.SysUISingleton
 import com.android.systemui.dagger.qualifiers.Application
 import com.android.systemui.dagger.qualifiers.Background
+import com.android.systemui.keyguard.data.repository.KeyguardRepository
 import com.android.systemui.qs.footer.data.model.UserSwitcherStatusModel
 import com.android.systemui.res.R
 import com.android.systemui.statusbar.policy.UserInfoController
@@ -42,6 +45,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.withContext
+import lineageos.providers.LineageSettings
 
 interface UserSwitcherRepository {
     /** The current [UserSwitcherStatusModel]. */
@@ -63,6 +67,7 @@ constructor(
     private val userInfoController: UserInfoController,
     private val globalSetting: GlobalSettings,
     private val userRepository: UserRepository,
+    private val keyguardRepository: KeyguardRepository,
 ) : UserSwitcherRepository {
     private val showUserSwitcherForSingleUser =
         context.resources.getBoolean(R.bool.qs_show_user_switcher_for_single_user)
@@ -125,8 +130,44 @@ constructor(
         awaitClose { userInfoController.removeCallback(listener) }
     }
 
+    private val userSwitcherHiddenWhenLocked: Flow<Boolean> = conflatedCallbackFlow {
+        val observer =
+            object : ContentObserver(null) {
+                override fun onChange(selfChange: Boolean) {
+                    trySend(
+                        LineageSettings.Secure.getIntForUser(
+                            context.contentResolver,
+                            LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED,
+                            0,
+                            userRepository.getSelectedUserInfo().id
+                        ) == 1
+                    )
+                }
+            }
+        context.contentResolver.registerContentObserver(
+            LineageSettings.Secure.getUriFor(
+                LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED
+            ), false, observer, UserHandle.USER_ALL
+        )
+        trySend(
+            LineageSettings.Secure.getIntForUser(
+                context.contentResolver,
+                LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED,
+                0,
+                userRepository.getSelectedUserInfo().id
+            ) == 1
+        )
+        awaitClose { context.contentResolver.unregisterContentObserver(observer) }
+    }
+
     override val userSwitcherStatus: Flow<UserSwitcherStatusModel> =
-        isEnabled
+        combine(
+            isEnabled,
+            keyguardRepository.isKeyguardDismissible,
+            userSwitcherHiddenWhenLocked
+        ) { isEnabled, isKeyguardDismissible, userSwitcherHiddenWhenLocked ->
+            isEnabled && (isKeyguardDismissible || !userSwitcherHiddenWhenLocked)
+        }
             .flatMapLatest { enabled ->
                 if (enabled) {
                     combine(currentUserName, currentUserInfo) { name, (icon, isGuest) ->

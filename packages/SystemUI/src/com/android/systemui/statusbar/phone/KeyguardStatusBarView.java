@@ -20,6 +20,7 @@ import static com.android.systemui.ScreenDecorations.DisplayCutoutView.boundsFro
 import static com.android.systemui.util.Utils.getStatusBarHeaderHeightKeyguard;
 
 import android.annotation.ColorInt;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -54,6 +55,8 @@ import com.android.systemui.statusbar.phone.ui.TintedIconManager;
 import com.android.systemui.statusbar.phone.userswitcher.StatusBarUserSwitcherContainer;
 import com.android.systemui.user.ui.binder.StatusBarUserChipViewBinder;
 import com.android.systemui.user.ui.viewmodel.StatusBarUserChipViewModel;
+
+import lineageos.providers.LineageSettings;
 
 import kotlinx.coroutines.flow.FlowKt;
 import kotlinx.coroutines.flow.MutableStateFlow;
@@ -259,7 +262,10 @@ public class KeyguardStatusBarView extends RelativeLayout {
             // If we have no keyguard switcher, the screen width is under 600dp. In this case,
             // we only show the multi-user switch if it's enabled through UserManager as well as
             // by the user.
-            if (mIsUserSwitcherEnabled) {
+            if (mIsUserSwitcherEnabled && LineageSettings.Secure.getIntForUser(
+                    mContext.getContentResolver(),
+                    LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED, 0,
+                    ActivityManager.getCurrentUser()) == 0) {
                 mMultiUserAvatar.setVisibility(View.VISIBLE);
             } else {
                 mMultiUserAvatar.setVisibility(View.GONE);
