@@ -28,6 +28,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.hardware.biometrics.BiometricSourceType;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
@@ -93,6 +95,7 @@ import com.android.systemui.util.ViewController;
 import com.android.systemui.util.settings.SecureSettings;
 
 import kotlin.Unit;
+import lineageos.providers.LineageSettings;
 
 import kotlinx.coroutines.CoroutineDispatcher;
 
@@ -264,6 +267,14 @@ public class KeyguardStatusBarViewController extends ViewController<KeyguardStat
                     mStatusBarState = newState;
                 }
             };
+
+    private final ContentObserver mUserSwitcherHiddenWhenLockedObserver = new ContentObserver(
+            new Handler(Looper.getMainLooper())) {
+        @Override
+        public void onChange(boolean selfChange) {
+            updateViewState();
+        }
+    };
 
     private boolean mCommunalShowing;
 
@@ -483,6 +494,10 @@ public class KeyguardStatusBarViewController extends ViewController<KeyguardStat
                     mToGlanceableHubStatusBarAlphaConsumer, mCoroutineDispatcher);
             collectFlow(mView, mHubToLockscreenTransitionViewModel.getStatusBarAlpha(),
                     mFromGlanceableHubStatusBarAlphaConsumer, mCoroutineDispatcher);
+            mView.getContext().getContentResolver().registerContentObserver(
+                    LineageSettings.Secure.getUriFor(
+                            LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED), false,
+                    mUserSwitcherHiddenWhenLockedObserver, UserHandle.USER_ALL);
         }
         if (NewStatusBarIcons.isEnabled()) {
             ComposeView batteryComposeView = new ComposeView(mContext);
@@ -508,6 +523,8 @@ public class KeyguardStatusBarViewController extends ViewController<KeyguardStat
         if (mTintedIconManager != null) {
             mStatusBarIconController.removeIconGroup(mTintedIconManager);
         }
+        mView.getContext().getContentResolver().unregisterContentObserver(
+                mUserSwitcherHiddenWhenLockedObserver);
     }
 
     /** Should be called when the theme changes. */

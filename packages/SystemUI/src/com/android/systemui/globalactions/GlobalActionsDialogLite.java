@@ -1241,7 +1241,9 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
         @Override
         public boolean showDuringKeyguard() {
-            return true;
+            return LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
+                    LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED,
+                    /* defaultValue */ 0, getCurrentUser().id) == 0;
         }
 
         @Override
