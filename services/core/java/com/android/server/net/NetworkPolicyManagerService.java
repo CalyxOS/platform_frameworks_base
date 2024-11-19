@@ -3008,7 +3008,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     } else {
                         Slog.w(TAG, "unable to apply policy to UID " + uid + "; ignoring");
                     }
-                } else if (TAG_APP_POLICY.equals(tag)) {
+                } else if (!forRestore && TAG_APP_POLICY.equals(tag)) {
                     final int appId = readIntAttribute(in, ATTR_APP_ID);
                     final int policy = readIntAttribute(in, ATTR_POLICY);
 
@@ -3017,11 +3017,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     final int uid = UserHandle.getUid(UserHandle.USER_SYSTEM, appId);
                     final int oldPolicy = mUidPolicy.get(uid, POLICY_NONE);
                     if (UserHandle.isApp(uid)) {
-                        if (forRestore) {
-                            setUidPolicyUncheckedUL(uid, oldPolicy, policy, true);
-                        } else {
-                            setUidPolicyUncheckedUL(uid, policy, false);
-                        }
+                        setUidPolicyUncheckedUL(uid, policy, false);
                     } else {
                         Slog.w(TAG, "unable to apply policy to UID " + uid + "; ignoring");
                     }
