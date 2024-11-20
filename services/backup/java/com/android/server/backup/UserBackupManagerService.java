@@ -16,6 +16,7 @@
 
 package com.android.server.backup;
 
+import static android.app.ActivityManagerInternal.enableBackupAgentInSeparateProcess;
 import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_BACKUP_IN_FOREGROUND;
 
 import static com.android.server.backup.BackupManagerService.DEBUG;
@@ -2078,18 +2079,20 @@ public class UserBackupManagerService {
             // The agent was running with a stub Application object, so shut it down.
             // !!! We hardcode the confirmation UI's package name here rather than use a
             //     manifest flag!  TODO something less direct.
+            final String processName = enableBackupAgentInSeparateProcess()
+                    ? app.processName + ":BackupAgent" : app.processName;
             if (!UserHandle.isCore(app.uid)
                     && !app.packageName.equals("com.android.backupconfirm")) {
                 if (MORE_DEBUG) {
                     Slog.d(TAG, addUserIdToLogMessage(mUserId, "Killing agent host process"));
                 }
-                mActivityManager.killApplicationProcess(app.processName, app.uid);
+                mActivityManager.killApplicationProcess(processName, app.uid);
             } else {
                 if (MORE_DEBUG) {
                     Slog.d(
                             TAG,
                             addUserIdToLogMessage(
-                                    mUserId, "Not killing after operation: " + app.processName));
+                                    mUserId, "Not killing after operation: " + processName));
                 }
             }
         } catch (RemoteException e) {

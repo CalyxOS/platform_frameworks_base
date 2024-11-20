@@ -42,6 +42,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerExemptionManager.ReasonCode;
 import android.os.PowerExemptionManager.TempAllowListType;
+import android.os.SystemProperties;
 import android.os.TransactionTooLargeException;
 import android.os.WorkSource;
 import android.util.ArraySet;
@@ -1323,4 +1324,9 @@ public abstract class ActivityManagerInternal {
      */
     public abstract void killApplicationSync(String pkgName, int appId, int userId,
             String reason, int exitInfoReason);
+
+    public static boolean enableBackupAgentInSeparateProcess() {
+        return SystemProperties.getBoolean("persist.testing.backup_agent_in_separate_process",
+                false);
+    }
 }
