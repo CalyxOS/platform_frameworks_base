@@ -82,4 +82,5 @@
     <string name="screenrecord_skip_time_summary">Retirer les 3 secondes d\'attente</string>
     <string name="screenrecord_hevc_switch_label">Encodage HEVC</string>
     <string name="screenrecord_hevc_switch_summary">Utiliser l\'encodeur HEVC le plus efficace</string>
+    <string name="battery_notification_channel_tv">Avertissement batterie</string>
 </resources>
