@@ -98,6 +98,8 @@ filegroup {
         ":android.frameworks.location.altitude-V2-java-source",
         ":android.hardware.biometrics.common-V4-java-source",
         ":android.hardware.biometrics.fingerprint-V5-java-source",
+        ":android.hardware.biometrics.fingerprint.virtualhal-java-source",
+        ":android.hardware.biometrics.face.virtualhal-java-source",
         ":android.hardware.biometrics.face-V4-java-source",
         ":android.hardware.gnss-V2-java-source",
         ":android.hardware.graphics.common-V3-java-source",
@@ -109,7 +111,7 @@ filegroup {
         ":android.hardware.security.keymint-V3-java-source",
         ":android.hardware.security.secureclock-V1-java-source",
         ":android.hardware.thermal-V2-java-source",
-        ":android.hardware.tv.tuner-V2-java-source",
+        ":android.hardware.tv.tuner-V3-java-source",
         ":android.security.apc-java-source",
         ":android.security.authorization-java-source",
         ":android.security.legacykeystore-java-source",
@@ -255,13 +257,12 @@ java_library {
         "android.hardware.vibrator-V1.1-java",
         "android.hardware.vibrator-V1.2-java",
         "android.hardware.vibrator-V1.3-java",
-        "android.hardware.vibrator-V2-java",
+        "android.hardware.vibrator-V3-java",
         "android.se.omapi-V1-java",
         "android.system.suspend.control.internal-java",
         "devicepolicyprotosnano",
         "ImmutabilityAnnotation",
 
-        "com.android.sysprop.init",
         "com.android.sysprop.localization",
         "PlatformProperties",
     ],
@@ -401,6 +402,7 @@ java_defaults {
     ],
     sdk_version: "core_platform",
     static_libs: [
+        "aconfig_storage_reader_java",
         "android.hardware.common.fmq-V1-java",
         "bouncycastle-repackaged-unbundled",
         "com.android.sysprop.foldlockbehavior",
@@ -417,7 +419,6 @@ java_defaults {
         "modules-utils-fastxmlserializer",
         "modules-utils-preconditions",
         "modules-utils-statemachine",
-        "modules-utils-synchronous-result-receiver",
         "modules-utils-os",
         "modules-utils-uieventlogger-interface",
         "framework-permission-aidl-java",
@@ -427,6 +428,7 @@ java_defaults {
         "modules-utils-expresslog",
         "perfetto_trace_javastream_protos_jarjar",
         "libaconfig_java_proto_nano",
+        "aconfig_device_paths_java",
     ],
 }
 
@@ -511,6 +513,9 @@ java_library {
     },
     lint: {
         baseline_filename: "lint-baseline.xml",
+        warning_checks: [
+            "FlaggedApi",
+        ],
     },
     jarjar_prefix: "com.android.internal.hidden_from_bootclasspath",
 }
@@ -634,7 +639,6 @@ java_library {
         "core/java/com/android/internal/util/AsyncService.java",
         "core/java/com/android/internal/util/Protocol.java",
         "telephony/java/android/telephony/Annotation.java",
-        ":net-utils-framework-wifi-common-srcs",
     ],
     libs: [
         "framework-annotations-lib",

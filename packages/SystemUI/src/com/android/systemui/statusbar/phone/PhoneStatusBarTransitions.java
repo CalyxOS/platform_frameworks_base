@@ -23,6 +23,7 @@ import android.content.res.Resources;
 import android.view.View;
 
 import com.android.systemui.res.R;
+import com.android.systemui.shared.statusbar.phone.BarTransitions;
 
 import org.lineageos.internal.statusbar.NetworkTraffic;
 

@@ -856,8 +856,9 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
                     params.appPackageName, SYSTEM_UID);
             if (ps != null
                     && PackageArchiver.isArchived(ps.getUserStateOrDefault(userId))
-                    && PackageArchiver.getResponsibleInstallerPackage(ps)
-                            .equals(requestedInstallerPackageName)) {
+                    && TextUtils.equals(
+                        PackageArchiver.getResponsibleInstallerPackage(ps),
+                        requestedInstallerPackageName)) {
                 params.installFlags |= PackageManager.INSTALL_UNARCHIVE;
             }
         }
@@ -1438,7 +1439,8 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
         if (mContext.checkPermission(Manifest.permission.DELETE_PACKAGES, callingPid, callingUid)
                 == PackageManager.PERMISSION_GRANTED) {
             // Sweet, call straight through!
-            mPm.deletePackageVersioned(versionedPackage, adapter.getBinder(), userId, flags);
+            mPm.deletePackageVersioned(versionedPackage, adapter.getBinder(), userId, flags,
+                    callingUid);
         } else if (canSilentlyInstallPackage) {
             // Allow the device owner and affiliated profile owner to silently delete packages
             // Need to clear the calling identity to get DELETE_PACKAGES permission
@@ -1586,8 +1588,9 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
             try {
                 final BroadcastOptions options = BroadcastOptions.makeBasic();
                 options.setPendingIntentBackgroundActivityLaunchAllowed(false);
-                callback.sendIntent(mContext, 0, intent, null /* onFinished*/,
-                        null /* handler */, null /* requiredPermission */, options.toBundle());
+                callback.sendIntent(mContext, 0, intent,
+                        null /* requiredPermission */, options.toBundle(),
+                        null /* executor */, null /* onFinished*/);
             } catch (SendIntentException ignore) {
             }
         });
@@ -1917,8 +1920,9 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
             try {
                 final BroadcastOptions options = BroadcastOptions.makeBasic();
                 options.setPendingIntentBackgroundActivityLaunchAllowed(false);
-                mTarget.sendIntent(mContext, 0, fillIn, null /* onFinished*/,
-                        null /* handler */, null /* requiredPermission */, options.toBundle());
+                mTarget.sendIntent(mContext, 0, fillIn,
+                        null /* requiredPermission */, options.toBundle(),
+                        null /* executor */, null /* onFinished*/);
             } catch (SendIntentException ignored) {
             }
         }
@@ -1950,8 +1954,9 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
             try {
                 final BroadcastOptions options = BroadcastOptions.makeBasic();
                 options.setPendingIntentBackgroundActivityLaunchAllowed(false);
-                mTarget.sendIntent(mContext, 0, fillIn, null /* onFinished*/,
-                        null /* handler */, null /* requiredPermission */, options.toBundle());
+                mTarget.sendIntent(mContext, 0, fillIn,
+                        null /* requiredPermission */, options.toBundle(),
+                        null /* executor */, null /* onFinished*/);
             } catch (SendIntentException ignored) {
             }
         }

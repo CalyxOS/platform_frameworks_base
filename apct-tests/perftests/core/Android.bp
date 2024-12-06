@@ -44,6 +44,7 @@ android_test {
         "apct-perftests-resources-manager-apps",
         "apct-perftests-utils",
         "collector-device-lib",
+        "conscrypt-test-support",
         "compatibility-device-util-axt",
         "junit",
         "junit-params",
@@ -51,7 +52,7 @@ android_test {
         "guava",
     ],
 
-    libs: ["android.test.base"],
+    libs: ["android.test.base.stubs.system"],
 
     java_resources: [":GoogleFontDancingScript"],
 

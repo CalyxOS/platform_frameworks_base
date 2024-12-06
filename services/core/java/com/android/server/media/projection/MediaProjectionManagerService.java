@@ -17,6 +17,7 @@
 package com.android.server.media.projection;
 
 import static android.Manifest.permission.MANAGE_MEDIA_PROJECTION;
+import static android.Manifest.permission.RECORD_SENSITIVE_CONTENT;
 import static android.app.ActivityManagerInternal.MEDIA_PROJECTION_TOKEN_EVENT_CREATED;
 import static android.app.ActivityManagerInternal.MEDIA_PROJECTION_TOKEN_EVENT_DESTROYED;
 import static android.content.Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS;
@@ -34,11 +35,15 @@ import android.Manifest;
 import android.annotation.EnforcePermission;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.RequiresPermission;
 import android.app.ActivityManagerInternal;
 import android.app.ActivityOptions.LaunchCookie;
 import android.app.AppOpsManager;
 import android.app.IProcessObserver;
+import android.app.KeyguardManager;
 import android.app.compat.CompatChanges;
+import android.app.role.RoleManager;
+import android.companion.AssociationRequest;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledSince;
 import android.content.ComponentName;
@@ -78,6 +83,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.DumpUtils;
 import com.android.server.LocalServices;
+import com.android.server.SystemConfig;
 import com.android.server.SystemService;
 import com.android.server.Watchdog;
 import com.android.server.wm.WindowManagerInternal;
@@ -90,7 +96,7 @@ import java.util.Objects;
 
 /**
  * Manages MediaProjection sessions.
- *
+ * <p>
  * The {@link MediaProjectionManagerService} manages the creation and lifetime of MediaProjections,
  * as well as the capabilities they grant. Any service using MediaProjection tokens as permission
  * grants <b>must</b> validate the token before use by calling {@link
@@ -132,6 +138,8 @@ public final class MediaProjectionManagerService extends SystemService
     private final ActivityManagerInternal mActivityManagerInternal;
     private final PackageManager mPackageManager;
     private final WindowManagerInternal mWmInternal;
+    private final KeyguardManager mKeyguardManager;
+    private final RoleManager mRoleManager;
 
     private final MediaRouter mMediaRouter;
     private final MediaRouterCallback mMediaRouterCallback;
@@ -147,7 +155,9 @@ public final class MediaProjectionManagerService extends SystemService
         this(context, new Injector());
     }
 
-    @VisibleForTesting MediaProjectionManagerService(Context context, Injector injector) {
+    @RequiresPermission(Manifest.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE)
+    @VisibleForTesting
+    MediaProjectionManagerService(Context context, Injector injector) {
         super(context);
         mContext = context;
         mInjector = injector;
@@ -163,7 +173,65 @@ public final class MediaProjectionManagerService extends SystemService
         mMediaRouter = (MediaRouter) mContext.getSystemService(Context.MEDIA_ROUTER_SERVICE);
         mMediaRouterCallback = new MediaRouterCallback();
         mMediaProjectionMetricsLogger = injector.mediaProjectionMetricsLogger(context);
+        mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+        mKeyguardManager.addKeyguardLockedStateListener(
+                mContext.getMainExecutor(), this::onKeyguardLockedStateChanged);
+        mRoleManager = mContext.getSystemService(RoleManager.class);
         Watchdog.getInstance().addMonitor(this);
+    }
+
+    /**
+     * In order to record the keyguard, the MediaProjection package must be either:
+     *   - a holder of RECORD_SENSITIVE_CONTENT permission, or
+     *   - be one of the bugreport allowlisted packages, or
+     *   - hold the OP_PROJECT_MEDIA AppOp.
+     */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    private boolean canCaptureKeyguard() {
+        if (!android.companion.virtualdevice.flags.Flags.mediaProjectionKeyguardRestrictions()) {
+            return true;
+        }
+        synchronized (mLock) {
+            if (mProjectionGrant == null || mProjectionGrant.packageName == null) {
+                return false;
+            }
+            if (mPackageManager.checkPermission(RECORD_SENSITIVE_CONTENT,
+                    mProjectionGrant.packageName)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Slog.v(TAG,
+                        "Allowing keyguard capture for package with RECORD_SENSITIVE_CONTENT "
+                                + "permission");
+                return true;
+            }
+            if (AppOpsManager.MODE_ALLOWED == mAppOps.noteOpNoThrow(AppOpsManager.OP_PROJECT_MEDIA,
+                    mProjectionGrant.uid, mProjectionGrant.packageName, /* attributionTag= */ null,
+                    "recording lockscreen")) {
+                // Some tools use media projection by granting the OP_PROJECT_MEDIA app
+                // op via a shell command. Those tools can be granted keyguard capture
+                Slog.v(TAG,
+                        "Allowing keyguard capture for package with OP_PROJECT_MEDIA AppOp ");
+                return true;
+            }
+            if (isProjectionAppHoldingAppStreamingRoleLocked()) {
+                Slog.v(TAG,
+                        "Allowing keyguard capture for package holding app streaming role.");
+                return true;
+            }
+            return SystemConfig.getInstance().getBugreportWhitelistedPackages()
+                    .contains(mProjectionGrant.packageName);
+        }
+    }
+
+    @VisibleForTesting
+    void onKeyguardLockedStateChanged(boolean isKeyguardLocked) {
+        if (!isKeyguardLocked) return;
+        synchronized (mLock) {
+            if (mProjectionGrant != null && !canCaptureKeyguard()) {
+                Slog.d(TAG, "Content Recording: Stopped MediaProjection"
+                        + " due to keyguard lock");
+                mProjectionGrant.stop();
+            }
+        }
     }
 
     /** Functional interface for providing time. */
@@ -645,6 +713,20 @@ public final class MediaProjectionManagerService extends SystemService
         }
     }
 
+    /**
+     * Application holding the app streaming role
+     * ({@value AssociationRequest#DEVICE_PROFILE_APP_STREAMING}) are allowed to record the
+     * lockscreen.
+     *
+     * @return true if the is held by the recording application.
+     */
+    @GuardedBy("mLock")
+    private boolean isProjectionAppHoldingAppStreamingRoleLocked() {
+        return mRoleManager.getRoleHoldersAsUser(AssociationRequest.DEVICE_PROFILE_APP_STREAMING,
+                        mContext.getUser())
+                .contains(mProjectionGrant.packageName);
+    }
+
     private void dump(final PrintWriter pw) {
         pw.println("MEDIA PROJECTION MANAGER (dumpsys media_projection)");
         synchronized (mLock) {
@@ -657,7 +739,7 @@ public final class MediaProjectionManagerService extends SystemService
         }
     }
 
-    private final class BinderService extends IMediaProjectionManager.Stub {
+    final class BinderService extends IMediaProjectionManager.Stub {
 
         BinderService(Context context) {
             super(PermissionEnforcer.fromContext(context));
@@ -846,6 +928,13 @@ public final class MediaProjectionManagerService extends SystemService
         @Override
         public void requestConsentForInvalidProjection(@NonNull IMediaProjection projection) {
             requestConsentForInvalidProjection_enforcePermission();
+
+            if (android.companion.virtualdevice.flags.Flags.mediaProjectionKeyguardRestrictions()
+                    && mKeyguardManager.isKeyguardLocked()) {
+                Slog.v(TAG, "Reusing token: Won't request consent while the keyguard is locked");
+                return;
+            }
+
             synchronized (mLock) {
                 if (!isCurrentProjection(projection)) {
                     Slog.v(TAG, "Reusing token: Won't request consent again for a token that "
@@ -1252,6 +1341,11 @@ public final class MediaProjectionManagerService extends SystemService
         @Override
         public void notifyVirtualDisplayCreated(int displayId) {
             notifyVirtualDisplayCreated_enforcePermission();
+            if (mKeyguardManager.isKeyguardLocked() && !canCaptureKeyguard()) {
+                Slog.w(TAG, "Content Recording: Keyguard locked, aborting MediaProjection");
+                stop();
+                return;
+            }
             synchronized (mLock) {
                 mVirtualDisplayId = displayId;
 

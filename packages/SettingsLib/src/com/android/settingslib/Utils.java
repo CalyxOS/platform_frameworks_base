@@ -66,7 +66,6 @@ import com.android.launcher3.util.UserIconInfo;
 import com.android.settingslib.drawable.UserIconDrawable;
 import com.android.settingslib.fuelgauge.BatteryStatus;
 import com.android.settingslib.fuelgauge.BatteryUtils;
-import com.android.settingslib.utils.BuildCompatUtils;
 
 import java.util.List;
 
@@ -147,7 +146,7 @@ public class Utils {
         String name = info != null ? info.name : null;
         if (info.isManagedProfile()) {
             // We use predefined values for managed profiles
-            return BuildCompatUtils.isAtLeastT()
+            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                     ? getUpdatableManagedUserTitle(context)
                     : context.getString(R.string.managed_user_title);
         } else if (info.isGuest()) {
@@ -496,7 +495,7 @@ public class Utils {
                 || packageName.equals(sServicesSystemSharedLibPackageName)
                 || packageName.equals(sSharedSystemSharedLibPackageName)
                 || packageName.equals(PrintManager.PRINT_SPOOLER_PACKAGE_NAME)
-                || (updateServiceV2() && packageName.equals(getDefaultWebViewPackageName()))
+                || (updateServiceV2() && packageName.equals(getDefaultWebViewPackageName(pm)))
                 || isDeviceProvisioningPackage(resources, packageName);
     }
 
@@ -512,7 +511,7 @@ public class Utils {
 
     /** Fetch the package name of the default WebView provider. */
     @Nullable
-    private static String getDefaultWebViewPackageName() {
+    private static String getDefaultWebViewPackageName(PackageManager pm) {
         if (sDefaultWebViewPackageName != null) {
             return sDefaultWebViewPackageName;
         }
@@ -520,9 +519,8 @@ public class Utils {
         WebViewProviderInfo provider = null;
 
         if (android.webkit.Flags.updateServiceIpcWrapper()) {
-            WebViewUpdateManager manager = WebViewUpdateManager.getInstance();
-            if (manager != null) {
-                provider = manager.getDefaultWebViewPackage();
+            if (pm.hasSystemFeature(PackageManager.FEATURE_WEBVIEW)) {
+                provider = WebViewUpdateManager.getInstance().getDefaultWebViewPackage();
             }
         } else {
             try {

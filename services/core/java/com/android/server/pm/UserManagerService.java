@@ -25,10 +25,12 @@ import static android.content.pm.PackageManager.FEATURE_AUTOMOTIVE;
 import static android.content.pm.PackageManager.FEATURE_EMBEDDED;
 import static android.content.pm.PackageManager.FEATURE_LEANBACK;
 import static android.content.pm.PackageManager.FEATURE_WATCH;
+import static android.os.UserHandle.USER_SYSTEM;
 import static android.os.UserManager.DEV_CREATE_OVERRIDE_PROPERTY;
 import static android.os.UserManager.DISALLOW_USER_SWITCH;
 import static android.os.UserManager.SYSTEM_USER_MODE_EMULATION_PROPERTY;
 import static android.os.UserManager.USER_OPERATION_ERROR_UNKNOWN;
+import static android.os.UserManager.USER_OPERATION_ERROR_USER_RESTRICTED;
 import static android.os.UserManager.USER_TYPE_PROFILE_PRIVATE;
 
 import static com.android.internal.app.SetScreenLockDialogActivity.EXTRA_ORIGIN_USER_ID;
@@ -63,6 +65,8 @@ import android.app.BroadcastOptions;
 import android.app.IActivityManager;
 import android.app.IStopUserCallback;
 import android.app.KeyguardManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.StatsManager;
 import android.app.admin.DevicePolicyEventLogger;
@@ -148,6 +152,8 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.IAppOpsService;
 import com.android.internal.app.SetScreenLockDialogActivity;
 import com.android.internal.logging.MetricsLogger;
+import com.android.internal.messages.nano.SystemMessageProto.SystemMessage;
+import com.android.internal.notification.SystemNotificationChannels;
 import com.android.internal.os.BackgroundThread;
 import com.android.internal.os.RoSystemProperties;
 import com.android.internal.util.DumpUtils;
@@ -342,6 +348,7 @@ public class UserManagerService extends IUserManager.Stub {
     private final Context mContext;
     private final PackageManagerService mPm;
 
+
     /**
      * Lock for packages. If using with {@link #mUsersLock}, {@link #mPackagesLock} should be
      * acquired first.
@@ -378,6 +385,10 @@ public class UserManagerService extends IUserManager.Stub {
 
     /** Count down latch to wait while boot user is not set.*/
     private final CountDownLatch mBootUserLatch = new CountDownLatch(1);
+
+    /** Current boot phase. */
+    private @SystemService.BootPhase int mCurrentBootPhase;
+
     /**
      * Internal non-parcelable wrapper for UserInfo that is not exposed to other system apps.
      */
@@ -967,6 +978,7 @@ public class UserManagerService extends IUserManager.Stub {
 
         @Override
         public void onBootPhase(int phase) {
+            mUms.mCurrentBootPhase = phase;
             if (phase == SystemService.PHASE_ACTIVITY_MANAGER_READY) {
                 mUms.cleanupPartialUsers();
 
@@ -1083,6 +1095,19 @@ public class UserManagerService extends IUserManager.Stub {
         mUser0Allocations = DBG_ALLOCATION ? new AtomicInteger() : null;
         mPrivateSpaceAutoLockSettingsObserver = new SettingsObserver(mHandler);
         emulateSystemUserModeIfNeeded();
+        initPropertyInvalidatedCaches();
+    }
+
+    /**
+     * This method is used to invalidate the caches at server statup,
+     * so that caches can start working.
+     */
+    private static final void initPropertyInvalidatedCaches() {
+        if (android.multiuser.Flags.cachesNotInvalidatedAtStartReadOnly()) {
+            UserManager.invalidateIsUserUnlockedCache();
+            UserManager.invalidateQuietModeEnabledCache();
+            UserManager.invalidateUserSerialNumberCache();
+        }
     }
 
     private boolean doesDeviceHardwareSupportPrivateSpace() {
@@ -1134,6 +1159,12 @@ public class UserManagerService extends IUserManager.Stub {
         if (isAutoLockingPrivateSpaceOnRestartsEnabled()) {
             autoLockPrivateSpace();
         }
+
+        showHsumNotificationIfNeeded();
+
+        if (Flags.addUiForSoundsFromBackgroundUsers()) {
+            new BackgroundUserSoundNotifier(mContext);
+        }
     }
 
     private boolean isAutoLockingPrivateSpaceOnRestartsEnabled() {
@@ -1168,6 +1199,30 @@ public class UserManagerService extends IUserManager.Stub {
         } else {
             Slogf.w(LOG_TAG, "Cannot start Communal Profile because there isn't one");
         }
+    }
+
+    /** Marks the user as slated for deletion during boot if necessary. **/
+    @GuardedBy("mUsersLock")
+    private void markUserForRemovalIfNecessaryLU(UserInfo ui) {
+        if (!ui.isEphemeral()) {
+            // User should be ephemeral to be marked for removal.
+            return;
+        }
+        if (ui.preCreated) {
+            // Avoid marking pre-created users for removal.
+            return;
+        }
+        if (ui.lastLoggedInTime == 0 && ui.isGuest() && Resources.getSystem().getBoolean(
+                com.android.internal.R.bool.config_guestUserAutoCreated)) {
+            // Avoid marking auto-created but not-yet-logged-in guest user for removal. Because a
+            // new one will be created anyway, and this one doesn't have any personal data in it yet
+            // due to not being logged in.
+            return;
+        }
+        // Mark the user for removal.
+        addRemovingUserIdLocked(ui.id);
+        ui.partial = true;
+        ui.flags |= UserInfo.FLAG_DISABLED;
     }
 
     /* Prunes out any partially created or partially removed users. */
@@ -1336,6 +1391,10 @@ public class UserManagerService extends IUserManager.Stub {
         }
 
         if (isHeadlessSystemUserMode()) {
+            if (mContext.getResources()
+                    .getBoolean(com.android.internal.R.bool.config_bootToHeadlessSystemUser)) {
+                return UserHandle.USER_SYSTEM;
+            }
             // Return the previous foreground user, if there is one.
             final int previousUser = getPreviousFullUserToEnterForeground();
             if (previousUser != UserHandle.USER_NULL) {
@@ -1895,6 +1954,7 @@ public class UserManagerService extends IUserManager.Stub {
                 Slog.i(LOG_TAG, "Quiet mode is already " + enableQuietMode);
                 return;
             }
+            UserManager.invalidateQuietModeEnabledCache();
             profile.flags ^= UserInfo.FLAG_QUIET_MODE;
             profileUserData = getUserDataLU(profile.id);
         }
@@ -2073,6 +2133,10 @@ public class UserManagerService extends IUserManager.Stub {
     @Override
     public void setUserAdmin(@UserIdInt int userId) {
         checkManageUserAndAcrossUsersFullPermission("set user admin");
+        if (Flags.unicornModeRefactoringForHsumReadOnly()) {
+            checkAdminStatusChangeAllowed(userId);
+        }
+
         mUserJourneyLogger.logUserJourneyBegin(userId, USER_JOURNEY_GRANT_ADMIN);
         UserData user;
         synchronized (mPackagesLock) {
@@ -2101,6 +2165,10 @@ public class UserManagerService extends IUserManager.Stub {
     @Override
     public void revokeUserAdmin(@UserIdInt int userId) {
         checkManageUserAndAcrossUsersFullPermission("revoke admin privileges");
+        if (Flags.unicornModeRefactoringForHsumReadOnly()) {
+            checkAdminStatusChangeAllowed(userId);
+        }
+
         mUserJourneyLogger.logUserJourneyBegin(userId, USER_JOURNEY_REVOKE_ADMIN);
         UserData user;
         synchronized (mPackagesLock) {
@@ -2469,6 +2537,38 @@ public class UserManagerService extends IUserManager.Stub {
     }
 
     /**
+     * This method validates whether calling user is valid in visible background users feature.
+     * Valid user is the current user or the system or in the same profile group as the current
+     * user. Visible background users are not valid calling users.
+     */
+    public static void enforceCurrentUserIfVisibleBackgroundEnabled(@UserIdInt int currentUserId) {
+        if (!UserManager.isVisibleBackgroundUsersEnabled()) {
+            return;
+        }
+        final int callingUserId = UserHandle.getCallingUserId();
+        if (DBG) {
+            Slog.d(LOG_TAG, "enforceValidCallingUser: callingUserId=" + callingUserId
+                    + " isSystemUser=" + (callingUserId == USER_SYSTEM)
+                    + " currentUserId=" + currentUserId
+                    + " callingPid=" + Binder.getCallingPid()
+                    + " callingUid=" + Binder.getCallingUid());
+        }
+        final long ident = Binder.clearCallingIdentity();
+        try {
+            if (callingUserId != USER_SYSTEM && callingUserId != currentUserId
+                    && !UserManagerService.getInstance()
+                    .isSameProfileGroup(callingUserId, currentUserId)) {
+                throw new SecurityException(
+                        "Invalid calling user on devices that enable visible background users. "
+                                + "callingUserId=" + callingUserId + " currentUserId="
+                                + currentUserId);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(ident);
+        }
+    }
+
+    /**
      * Gets the current and target user ids as a {@link Pair}, calling
      * {@link ActivityManagerInternal} directly (and without performing any permission check).
      *
@@ -2550,11 +2650,15 @@ public class UserManagerService extends IUserManager.Stub {
     }
 
     @Override
-    public int getMainDisplayIdAssignedToUser() {
-        // Not checking for any permission as it returns info about calling user
-        int userId = UserHandle.getUserId(Binder.getCallingUid());
-        int displayId = mUserVisibilityMediator.getMainDisplayAssignedToUser(userId);
-        return displayId;
+    public int getMainDisplayIdAssignedToUser(int userId) {
+        final int callingUserId = UserHandle.getCallingUserId();
+        if (callingUserId != userId
+                && !hasManageUsersOrPermission(android.Manifest.permission.INTERACT_ACROSS_USERS)) {
+            throw new SecurityException("Caller from user " + callingUserId + " needs MANAGE_USERS "
+                    + "or INTERACT_ACROSS_USERS permission to get the main display for (" + userId
+                    + ")");
+        }
+        return mUserVisibilityMediator.getMainDisplayAssignedToUser(userId);
     }
 
     @Override
@@ -4033,6 +4137,26 @@ public class UserManagerService extends IUserManager.Stub {
         }
     }
 
+    /**
+     * Checks if changing the admin status of a target user is restricted
+     * due to the DISALLOW_GRANT_ADMIN restriction. If either the calling
+     * user or the target user has this restriction, a SecurityException
+     * is thrown.
+     *
+     * @param targetUser The user ID of the user whose admin status is being
+     * considered for change.
+     * @throws SecurityException if the admin status change is restricted due
+     * to the DISALLOW_GRANT_ADMIN restriction.
+     */
+    private void checkAdminStatusChangeAllowed(int targetUser) {
+        if (hasUserRestriction(UserManager.DISALLOW_GRANT_ADMIN, UserHandle.getCallingUserId())
+                || hasUserRestriction(UserManager.DISALLOW_GRANT_ADMIN, targetUser)) {
+            throw new SecurityException(
+                    "Admin status change is restricted. The DISALLOW_GRANT_ADMIN "
+                            + "restriction is applied either on the current or the target user.");
+        }
+    }
+
     @GuardedBy({"mPackagesLock"})
     private void writeBitmapLP(UserInfo info, Bitmap bitmap) {
         try {
@@ -4227,6 +4351,48 @@ public class UserManagerService extends IUserManager.Stub {
         mUpdatingSystemUserMode = true;
     }
 
+    /**
+     * If the device's actual HSUM status differs from that which is defined by its build
+     * configuration, warn the user. Ignores HSUM emulated status, since that isn't relevant.
+     *
+     * The goal is to inform dogfooders that they need to factory reset the device to align their
+     * device with its build configuration.
+     */
+    private void showHsumNotificationIfNeeded() {
+        if (RoSystemProperties.MULTIUSER_HEADLESS_SYSTEM_USER == isHeadlessSystemUserMode()) {
+            // Actual state does match the configuration. Great!
+            return;
+        }
+        if (Build.isDebuggable()
+                && !TextUtils.isEmpty(SystemProperties.get(SYSTEM_USER_MODE_EMULATION_PROPERTY))) {
+            // Ignore any device that has been playing around with HSUM emulation.
+            return;
+        }
+        Slogf.w(LOG_TAG, "Posting warning that device's HSUM status doesn't match the build's.");
+
+        final String title = mContext
+                .getString(R.string.wrong_hsum_configuration_notification_title);
+        final String message = mContext
+                .getString(R.string.wrong_hsum_configuration_notification_message);
+
+        final Notification notification =
+                new Notification.Builder(mContext, SystemNotificationChannels.DEVELOPER)
+                        .setSmallIcon(R.drawable.stat_sys_adb)
+                        .setWhen(0)
+                        .setOngoing(true)
+                        .setTicker(title)
+                        .setDefaults(0)
+                        .setColor(mContext.getColor(R.color.system_notification_accent_color))
+                        .setContentTitle(title)
+                        .setContentText(message)
+                        .setVisibility(Notification.VISIBILITY_PUBLIC)
+                        .build();
+
+        final NotificationManager notificationManager =
+                mContext.getSystemService(NotificationManager.class);
+        notificationManager.notifyAsUser(
+                null, SystemMessage.NOTE_WRONG_HSUM_STATUS, notification, UserHandle.ALL);
+    }
 
     private ResilientAtomicFile getUserListFile() {
         File tempBackup = new File(mUserListFile.getParent(), mUserListFile.getName() + ".backup");
@@ -4292,13 +4458,7 @@ public class UserManagerService extends IUserManager.Stub {
                                             || mNextSerialNumber <= userData.info.id) {
                                         mNextSerialNumber = userData.info.id + 1;
                                     }
-                                    if (userData.info.isEphemeral() && !userData.info.preCreated
-                                            && userData.info.id != UserHandle.USER_SYSTEM) {
-                                        // Mark ephemeral user as slated for deletion.
-                                        addRemovingUserIdLocked(userData.info.id);
-                                        userData.info.partial = true;
-                                        userData.info.flags |= UserInfo.FLAG_DISABLED;
-                                    }
+                                    markUserForRemovalIfNecessaryLU(userData.info);
                                 }
                             }
                         } else if (name.equals(TAG_GUEST_RESTRICTIONS)) {
@@ -5375,6 +5535,13 @@ public class UserManagerService extends IUserManager.Stub {
 
         enforceUserRestriction(restriction, UserHandle.getCallingUserId(),
                 "Cannot add user");
+        if (Flags.unicornModeRefactoringForHsumReadOnly()) {
+            if ((flags & UserInfo.FLAG_ADMIN) != 0) {
+                enforceUserRestriction(UserManager.DISALLOW_GRANT_ADMIN,
+                        UserHandle.getCallingUserId(), "Cannot create ADMIN user");
+            }
+        }
+
         return createUserInternalUnchecked(name, userType, flags, parentId,
                 /* preCreate= */ false, disallowedPackages, /* token= */ null);
     }
@@ -5982,9 +6149,11 @@ public class UserManagerService extends IUserManager.Stub {
         return userData;
     }
 
+    /** For testing only! Directly, unnaturally removes userId from list of users. */
     @VisibleForTesting
     void removeUserInfo(@UserIdInt int userId) {
         synchronized (mUsersLock) {
+            UserManager.invalidateUserSerialNumberCache();
             mUsers.remove(userId);
         }
     }
@@ -6101,6 +6270,11 @@ public class UserManagerService extends IUserManager.Stub {
         final String restriction = getUserRemovalRestriction(userId);
         if (getUserRestrictions(UserHandle.getCallingUserId()).getBoolean(restriction, false)) {
             Slog.w(LOG_TAG, "Cannot remove user. " + restriction + " is enabled.");
+            return false;
+        }
+        if (mCurrentBootPhase < SystemService.PHASE_ACTIVITY_MANAGER_READY) {
+            Slog.w(LOG_TAG, "Cannot remove user, removeUser is called too early during boot. "
+                + "ActivityManager is not ready yet.");
             return false;
         }
         return removeUserWithProfilesUnchecked(userId);
@@ -6467,6 +6641,7 @@ public class UserManagerService extends IUserManager.Stub {
 
         // Remove this user from the list
         synchronized (mUsersLock) {
+            UserManager.invalidateUserSerialNumberCache();
             mUsers.remove(userId);
             mIsUserManaged.delete(userId);
         }
@@ -7914,6 +8089,17 @@ public class UserManagerService extends IUserManager.Stub {
         }
 
         @Override
+        public boolean isVisibleBackgroundFullUser(@UserIdInt int userId) {
+            if (!UserManager.isVisibleBackgroundUsersEnabled()) {
+                return false;
+            }
+            boolean isForeground = userId == getCurrentUserId();
+            boolean isProfile = isProfileUnchecked(userId);
+            boolean isVisible = isUserVisible(userId);
+            return isVisible && !isForeground && !isProfile;
+        }
+
+        @Override
         public int getMainDisplayAssignedToUser(@UserIdInt int userId) {
             return mUserVisibilityMediator.getMainDisplayAssignedToUser(userId);
         }
@@ -8015,8 +8201,13 @@ public class UserManagerService extends IUserManager.Stub {
             String errorMessage = (message != null ? (message + ": ") : "")
                     + restriction + " is enabled.";
             Slog.w(LOG_TAG, errorMessage);
-            throw new UserManager.CheckedUserOperationException(errorMessage,
+            if (android.multiuser.Flags.showDifferentCreationErrorForUnsupportedDevices()) {
+                throw new UserManager.CheckedUserOperationException(errorMessage,
+                    USER_OPERATION_ERROR_USER_RESTRICTED);
+            } else {
+                throw new UserManager.CheckedUserOperationException(errorMessage,
                     USER_OPERATION_ERROR_UNKNOWN);
+            }
         }
     }
 

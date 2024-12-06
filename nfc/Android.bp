@@ -38,8 +38,8 @@ java_sdk_library {
     name: "framework-nfc",
     libs: [
         "unsupportedappusage", // for android.compat.annotation.UnsupportedAppUsage
-        "framework-permission-s",
-        "framework-permission",
+        "framework-permission-s.stubs.module_lib",
+        "framework-permission.stubs.module_lib",
     ],
     static_libs: [
         "android.nfc.flags-aconfig-java",
@@ -59,9 +59,6 @@ java_sdk_library {
     hostdex: true, // for hiddenapi check
     permitted_packages: [
         "android.nfc",
-        "com.android.nfc",
-    ],
-    hidden_api_packages: [
         "com.android.nfc",
     ],
     impl_library_visibility: [

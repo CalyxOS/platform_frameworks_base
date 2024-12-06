@@ -40,7 +40,7 @@ import androidx.test.uiautomator.Until
 import com.android.cts.input.DebugInputRule
 import com.android.cts.input.UinputTouchScreen
 
-import java.util.concurrent.TimeUnit
+import java.time.Duration
 
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -166,12 +166,12 @@ class AnrTest {
         val displayManager =
             instrumentation.context.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
         val display = displayManager.getDisplay(obj.getDisplayId())
-        val touchScreen = UinputTouchScreen(instrumentation, display)
-
         val rect: Rect = obj.visibleBounds
-        val pointer = touchScreen.touchDown(rect.centerX(), rect.centerY())
-        pointer.lift()
-        touchScreen.close()
+        UinputTouchScreen(instrumentation, display).use { touchScreen ->
+            touchScreen
+                .touchDown(rect.centerX(), rect.centerY())
+                .lift()
+        }
     }
 
     private fun triggerAnr() {
@@ -193,6 +193,6 @@ class AnrTest {
         val flags = " -W -n "
         val startCmd = "am start $flags $PACKAGE_NAME/.UnresponsiveGestureMonitorActivity"
         instrumentation.uiAutomation.executeShellCommand(startCmd)
-        waitForStableWindowGeometry(5L, TimeUnit.SECONDS)
+        waitForStableWindowGeometry(Duration.ofSeconds(5))
     }
 }

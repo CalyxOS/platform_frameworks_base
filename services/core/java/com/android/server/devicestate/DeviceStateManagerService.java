@@ -19,6 +19,9 @@ package com.android.server.devicestate;
 import static android.Manifest.permission.CONTROL_DEVICE_STATE;
 import static android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.hardware.devicestate.DeviceState.PROPERTY_FEATURE_REAR_DISPLAY;
+import static android.hardware.devicestate.DeviceState.PROPERTY_FOLDABLE_DISPLAY_CONFIGURATION_OUTER_PRIMARY;
+import static android.hardware.devicestate.DeviceState.PROPERTY_POLICY_AVAILABLE_FOR_APP_REQUEST;
 import static android.hardware.devicestate.DeviceState.PROPERTY_POLICY_CANCEL_OVERRIDE_REQUESTS;
 import static android.hardware.devicestate.DeviceState.PROPERTY_POLICY_CANCEL_WHEN_REQUESTER_NOT_ON_TOP;
 import static android.hardware.devicestate.DeviceStateManager.INVALID_DEVICE_STATE_IDENTIFIER;
@@ -176,7 +179,7 @@ public final class DeviceStateManagerService extends SystemService {
 
     private Set<Integer> mDeviceStatesAvailableForAppRequests = new HashSet<>();
 
-    private Set<Integer> mFoldedDeviceStates;
+    private Set<Integer> mFoldedDeviceStates = new HashSet<>();
 
     @Nullable
     private DeviceState mRearDisplayState;
@@ -271,9 +274,12 @@ public final class DeviceStateManagerService extends SystemService {
         publishBinderService(Context.DEVICE_STATE_SERVICE, mBinderService);
         publishLocalService(DeviceStateManagerInternal.class, new LocalService());
 
-        synchronized (mLock) {
-            readStatesAvailableForRequestFromApps();
-            mFoldedDeviceStates = readFoldedStates();
+        if (!Flags.deviceStatePropertyMigration()) {
+            synchronized (mLock) {
+                readStatesAvailableForRequestFromApps();
+                mFoldedDeviceStates = readFoldedStates();
+                setRearDisplayStateLocked();
+            }
         }
 
         mActivityTaskManagerInternal.registerScreenObserver(mOverrideRequestScreenObserver);
@@ -461,8 +467,6 @@ public final class DeviceStateManagerService extends SystemService {
 
             mOverrideRequestController.handleNewSupportedStates(newStateIdentifiers, reason);
             updatePendingStateLocked();
-
-            setRearDisplayStateLocked();
 
             notifyDeviceStateInfoChangedAsync();
 
@@ -839,12 +843,22 @@ public final class DeviceStateManagerService extends SystemService {
             OverrideRequest request = new OverrideRequest(token, callingPid, callingUid,
                     deviceState.get(), flags, OVERRIDE_REQUEST_TYPE_EMULATED_STATE);
 
-            // If we don't have the CONTROL_DEVICE_STATE permission, we want to show the overlay
-            if (!hasControlDeviceStatePermission && mRearDisplayState != null
-                    && state == mRearDisplayState.getIdentifier()) {
-                showRearDisplayEducationalOverlayLocked(request);
+            if (Flags.deviceStatePropertyMigration()) {
+                // If we don't have the CONTROL_DEVICE_STATE permission, we want to show the overlay
+                if (!hasControlDeviceStatePermission && deviceState.get().hasProperty(
+                        PROPERTY_FEATURE_REAR_DISPLAY)) {
+                    showRearDisplayEducationalOverlayLocked(request);
+                } else {
+                    mOverrideRequestController.addRequest(request);
+                }
             } else {
-                mOverrideRequestController.addRequest(request);
+                // If we don't have the CONTROL_DEVICE_STATE permission, we want to show the overlay
+                if (!hasControlDeviceStatePermission && mRearDisplayState != null
+                        && state == mRearDisplayState.getIdentifier()) {
+                    showRearDisplayEducationalOverlayLocked(request);
+                } else {
+                    mOverrideRequestController.addRequest(request);
+                }
             }
         }
     }
@@ -1055,7 +1069,13 @@ public final class DeviceStateManagerService extends SystemService {
 
     private boolean isStateAvailableForAppRequests(int state) {
         synchronized (mLock) {
-            return mDeviceStatesAvailableForAppRequests.contains(state);
+            if (Flags.deviceStatePropertyMigration()) {
+                Optional<DeviceState> deviceState =  getStateLocked(state);
+                return deviceState.isPresent() && deviceState.get().hasProperty(
+                        PROPERTY_POLICY_AVAILABLE_FOR_APP_REQUEST);
+            } else {
+                return mDeviceStatesAvailableForAppRequests.contains(state);
+            }
         }
     }
 
@@ -1117,9 +1137,20 @@ public final class DeviceStateManagerService extends SystemService {
      */
     @GuardedBy("mLock")
     private boolean isDeviceOpeningLocked(int newBaseState) {
-        return mBaseState.filter(
-                deviceState -> mFoldedDeviceStates.contains(deviceState.getIdentifier())
-                        && !mFoldedDeviceStates.contains(newBaseState)).isPresent();
+        if (Flags.deviceStatePropertyMigration()) {
+            final DeviceState currentBaseState = mBaseState.orElse(INVALID_DEVICE_STATE);
+            final DeviceState newDeviceBaseState = getStateLocked(newBaseState).orElse(
+                    INVALID_DEVICE_STATE);
+
+            return currentBaseState.hasProperty(
+                    PROPERTY_FOLDABLE_DISPLAY_CONFIGURATION_OUTER_PRIMARY)
+                    && !newDeviceBaseState.hasProperty(
+                    PROPERTY_FOLDABLE_DISPLAY_CONFIGURATION_OUTER_PRIMARY);
+        } else {
+            return mBaseState.filter(
+                    deviceState -> mFoldedDeviceStates.contains(deviceState.getIdentifier())
+                            && !mFoldedDeviceStates.contains(newBaseState)).isPresent();
+        }
     }
 
     private final class DeviceStateProviderListener implements DeviceStateProvider.Listener {

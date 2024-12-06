@@ -143,6 +143,7 @@ public final class NotificationAttentionHelper {
 
     private final boolean mUseAttentionLight;
     boolean mHasLight;
+    private final boolean mEnableNotificationAccessibilityEvents;
 
     private final SettingsObserver mSettingsObserver;
 
@@ -196,6 +197,9 @@ public final class NotificationAttentionHelper {
         mUseAttentionLight = resources.getBoolean(R.bool.config_useAttentionLight);
         mHasLight =
                 resources.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed);
+        mEnableNotificationAccessibilityEvents =
+                resources.getBoolean(
+                        com.android.internal.R.bool.config_enableNotificationAccessibilityEvents);
 
         // Don't start allowing notifications until the setup wizard has run once.
         // After that, including subsequent boots, init with notifications turned on.
@@ -248,9 +252,17 @@ public final class NotificationAttentionHelper {
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_VOLUME1),
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_VOLUME2),
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_COOLDOWN_COUNTER_RESET),
-                    record -> mPackageManager.checkPermission(
+                    record -> {
+                        final String category = record.getNotification().category;
+                        if (Notification.CATEGORY_ALARM.equals(category)
+                                || Notification.CATEGORY_CAR_EMERGENCY.equals(category)
+                                || Notification.CATEGORY_CAR_WARNING.equals(category)) {
+                            return true;
+                        }
+                        return mPackageManager.checkPermission(
                             permission.RECEIVE_EMERGENCY_BROADCAST,
-                            record.getSbn().getPackageName()) == PERMISSION_GRANTED);
+                            record.getSbn().getPackageName()) == PERMISSION_GRANTED;
+                    });
 
             return new StrategyAvalanche(
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_COOLDOWN_T1),
@@ -266,9 +278,17 @@ public final class NotificationAttentionHelper {
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_VOLUME1),
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_VOLUME2),
                     mFlagResolver.getIntValue(NotificationFlags.NOTIF_COOLDOWN_COUNTER_RESET),
-                    record -> mPackageManager.checkPermission(
+                    record -> {
+                        final String category = record.getNotification().category;
+                        if (Notification.CATEGORY_ALARM.equals(category)
+                                || Notification.CATEGORY_CAR_EMERGENCY.equals(category)
+                                || Notification.CATEGORY_CAR_WARNING.equals(category)) {
+                            return true;
+                        }
+                        return mPackageManager.checkPermission(
                             permission.RECEIVE_EMERGENCY_BROADCAST,
-                            record.getSbn().getPackageName()) == PERMISSION_GRANTED);
+                            record.getSbn().getPackageName()) == PERMISSION_GRANTED;
+                    });
         }
     }
 
@@ -492,6 +512,7 @@ public final class NotificationAttentionHelper {
 
                 } else if ((record.getFlags() & Notification.FLAG_INSISTENT) != 0) {
                     hasValidSound = false;
+                    hasValidVibrate = false;
                 }
             }
         }
@@ -627,6 +648,13 @@ public final class NotificationAttentionHelper {
             }
         }
 
+        // Suppressed because notification was explicitly flagged as silent
+        if (android.service.notification.Flags.notificationSilentFlag()) {
+            if (notification.isSilent()) {
+                return true;
+            }
+        }
+
         // Suppressed for being too recently noisy
         final String pkg = record.getSbn().getPackageName();
         if (mUsageStats.isAlertRateLimited(pkg)) {
@@ -749,6 +777,13 @@ public final class NotificationAttentionHelper {
         // notifying app does not have the VIBRATE permission.
         final long identity = Binder.clearCallingIdentity();
         try {
+            // Need to explicitly cancel a previously playing vibration
+            // Otherwise a looping vibration will not be stopped when starting a new one.
+            if (mVibrateNotificationKey != null
+                    && !mVibrateNotificationKey.equals(record.getKey())) {
+                mVibrateNotificationKey = null;
+                mVibratorHelper.cancelVibration();
+            }
             final float scale = getVibrationIntensity(record);
             final VibrationEffect scaledEffect = Float.compare(scale, DEFAULT_VOLUME) != 0
                     ? mVibratorHelper.scale(effect, scale) : effect;
@@ -1072,7 +1107,7 @@ public final class NotificationAttentionHelper {
     }
 
     void sendAccessibilityEvent(NotificationRecord record) {
-        if (!mAccessibilityManager.isEnabled()) {
+        if (!mAccessibilityManager.isEnabled() || !mEnableNotificationAccessibilityEvents) {
             return;
         }
 
@@ -1216,9 +1251,9 @@ public final class NotificationAttentionHelper {
         }
 
         boolean shouldIgnoreNotification(final NotificationRecord record) {
-            // Ignore group summaries
-            return (record.getSbn().isGroup() && record.getSbn().getNotification()
-                    .isGroupSummary());
+            // Ignore auto-group summaries => don't count them as app-posted notifications
+            // for the cooldown budget
+            return (record.getSbn().isGroup() && GroupHelper.isAggregatedGroup(record));
         }
 
         /**
@@ -1541,7 +1576,14 @@ public final class NotificationAttentionHelper {
         @Override
         public void setLastNotificationUpdateTimeMs(NotificationRecord record,
                 long timestampMillis) {
-            super.setLastNotificationUpdateTimeMs(record, timestampMillis);
+            if (Flags.politeNotificationsAttnUpdate()) {
+                // Set last update per package/channel only for exempt notifications
+                if (isAvalancheExempted(record)) {
+                    super.setLastNotificationUpdateTimeMs(record, timestampMillis);
+                }
+            } else {
+                super.setLastNotificationUpdateTimeMs(record, timestampMillis);
+            }
             mLastNotificationTimestamp = timestampMillis;
             mAppStrategy.setLastNotificationUpdateTimeMs(record, timestampMillis);
         }

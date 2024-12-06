@@ -46,11 +46,12 @@ import com.android.server.LocalManagerRegistry;
 import com.android.server.LocalServices;
 import com.android.server.SystemService;
 import com.android.server.art.ArtManagerLocal;
+import com.android.server.profcollect.Utils;
 import com.android.server.wm.ActivityMetricsLaunchObserver;
 import com.android.server.wm.ActivityMetricsLaunchObserverRegistry;
 import com.android.server.wm.ActivityTaskManagerInternal;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -274,30 +275,15 @@ public final class ProfcollectForwardingService extends SystemService {
         launchObserverRegistry.registerLaunchObserver(mAppLaunchObserver);
     }
 
-    private void traceOnAppStart(String packageName) {
-        if (mIProfcollect == null) {
-            return;
-        }
-
-        // Sample for a fraction of app launches.
-        int traceFrequency = DeviceConfig.getInt(DeviceConfig.NAMESPACE_PROFCOLLECT_NATIVE_BOOT,
-                "applaunch_trace_freq", 2);
-        int randomNum = ThreadLocalRandom.current().nextInt(100);
-        if (randomNum < traceFrequency) {
-            BackgroundThread.get().getThreadHandler().post(() -> {
-                try {
-                    mIProfcollect.trace_once("applaunch");
-                } catch (RemoteException e) {
-                    Log.e(LOG_TAG, "Failed to initiate trace: " + e.getMessage());
-                }
-            });
-        }
-    }
-
     private class AppLaunchObserver extends ActivityMetricsLaunchObserver {
         @Override
         public void onIntentStarted(Intent intent, long timestampNanos) {
-            traceOnAppStart(intent.getPackage());
+            if (mIProfcollect == null) {
+                return;
+            }
+            if (Utils.withFrequency("applaunch_trace_freq", 5)) {
+                Utils.traceSystem(mIProfcollect, "applaunch");
+            }
         }
     }
 
@@ -317,20 +303,9 @@ public final class ProfcollectForwardingService extends SystemService {
         if (mIProfcollect == null) {
             return;
         }
-        // Sample for a fraction of dex2oat runs.
-        final int traceFrequency =
-            DeviceConfig.getInt(DeviceConfig.NAMESPACE_PROFCOLLECT_NATIVE_BOOT,
-                "dex2oat_trace_freq", 25);
-        int randomNum = ThreadLocalRandom.current().nextInt(100);
-        if (randomNum < traceFrequency) {
+        if (Utils.withFrequency("dex2oat_trace_freq", 25)) {
             // Dex2oat could take a while before it starts. Add a short delay before start tracing.
-            BackgroundThread.get().getThreadHandler().postDelayed(() -> {
-                try {
-                    mIProfcollect.trace_once("dex2oat");
-                } catch (RemoteException e) {
-                    Log.e(LOG_TAG, "Failed to initiate trace: " + e.getMessage());
-                }
-            }, 1000);
+            Utils.traceSystem(mIProfcollect, "dex2oat", /* delayMs */ 1000);
         }
     }
 
@@ -353,6 +328,9 @@ public final class ProfcollectForwardingService extends SystemService {
 
     private static void createAndUploadReport(ProfcollectForwardingService pfs) {
         BackgroundThread.get().getThreadHandler().post(() -> {
+            if (pfs.mIProfcollect == null) {
+                return;
+            }
             String reportName;
             try {
                 reportName = pfs.mIProfcollect.report(pfs.mUsageSetting) + ".zip";
@@ -378,28 +356,23 @@ public final class ProfcollectForwardingService extends SystemService {
             @Override
             public void onCameraOpened(String cameraId, String packageId) {
                 Log.d(LOG_TAG, "Received camera open event from: " + packageId);
-                // Skip face auth and Android System Intelligence, since they trigger way too
-                // often.
-                if (packageId.startsWith("client.pid")
-                        || packageId.equals("com.google.android.as")) {
+                // Skip face auth since it triggers way too often.
+                if (packageId.startsWith("client.pid")) {
                     return;
                 }
-                // Sample for a fraction of camera events.
-                final int traceFrequency =
-                        DeviceConfig.getInt(DeviceConfig.NAMESPACE_PROFCOLLECT_NATIVE_BOOT,
-                        "camera_trace_freq", 10);
-                int randomNum = ThreadLocalRandom.current().nextInt(100);
-                if (randomNum >= traceFrequency) {
+                // Additional vendor specific list of apps to skip.
+                String[] cameraSkipPackages =
+                    getContext().getResources().getStringArray(
+                        R.array.config_profcollectOnCameraOpenedSkipPackages);
+                if (Arrays.asList(cameraSkipPackages).contains(packageId)) {
                     return;
                 }
-                // Wait for 1s before starting tracing.
-                BackgroundThread.get().getThreadHandler().postDelayed(() -> {
-                    try {
-                        mIProfcollect.trace_once("camera");
-                    } catch (RemoteException e) {
-                        Log.e(LOG_TAG, "Failed to initiate trace: " + e.getMessage());
-                    }
-                }, 1000);
+                if (Utils.withFrequency("camera_trace_freq", 10)) {
+                    Utils.traceProcess(mIProfcollect,
+                            "camera",
+                            "android.hardware.camera.provider",
+                            /* durationMs */ 5000);
+                }
             }
         }, null);
     }

@@ -16,6 +16,7 @@
 
 package com.android.server.trust;
 
+import static android.security.Flags.shouldTrustManagerListenForPrimaryAuth;
 import static android.service.trust.GrantTrustResult.STATUS_UNLOCKED_BY_GRANT;
 import static android.service.trust.TrustAgentService.FLAG_GRANT_TRUST_TEMPORARY_AND_RENEWABLE;
 
@@ -84,7 +85,11 @@ import com.android.internal.content.PackageMonitor;
 import com.android.internal.infra.AndroidFuture;
 import com.android.internal.util.DumpUtils;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.internal.widget.LockSettingsInternal;
+import com.android.internal.widget.LockSettingsStateListener;
+import com.android.server.LocalServices;
 import com.android.server.SystemService;
+import com.android.server.pm.UserManagerInternal;
 import com.android.server.servicewatcher.CurrentUserServiceSupplier;
 import com.android.server.servicewatcher.ServiceWatcher;
 import com.android.server.utils.Slogf;
@@ -159,12 +164,14 @@ public class TrustManagerService extends SystemService {
 
     /* package */ final TrustArchive mArchive = new TrustArchive();
     private final Context mContext;
+    private final LockSettingsInternal mLockSettings;
     private final LockPatternUtils mLockPatternUtils;
     private final KeyStoreAuthorization mKeyStoreAuthorization;
     private final UserManager mUserManager;
     private final ActivityManager mActivityManager;
     private FingerprintManager mFingerprintManager;
     private FaceManager mFaceManager;
+    private UserManagerInternal mUserManagerInternal;
 
     private enum TrustState {
         // UNTRUSTED means that TrustManagerService is currently *not* giving permission for the
@@ -250,6 +257,20 @@ public class TrustManagerService extends SystemService {
 
     private final StrongAuthTracker mStrongAuthTracker;
 
+    // Used to subscribe to device credential auth attempts.
+    private final LockSettingsStateListener mLockSettingsStateListener =
+            new LockSettingsStateListener() {
+                @Override
+                public void onAuthenticationSucceeded(int userId) {
+                    mHandler.obtainMessage(MSG_DISPATCH_UNLOCK_ATTEMPT, 1, userId).sendToTarget();
+                }
+
+                @Override
+                public void onAuthenticationFailed(int userId) {
+                    mHandler.obtainMessage(MSG_DISPATCH_UNLOCK_ATTEMPT, 0, userId).sendToTarget();
+                }
+            };
+
     private boolean mTrustAgentsCanRun = false;
     private int mCurrentUser = UserHandle.USER_SYSTEM;
 
@@ -294,6 +315,7 @@ public class TrustManagerService extends SystemService {
         mHandler = createHandler(injector.getLooper());
         mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
         mActivityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+        mLockSettings = LocalServices.getService(LockSettingsInternal.class);
         mLockPatternUtils = injector.getLockPatternUtils();
         mKeyStoreAuthorization = injector.getKeyStoreAuthorization();
         mStrongAuthTracker = new StrongAuthTracker(context, injector.getLooper());
@@ -315,6 +337,9 @@ public class TrustManagerService extends SystemService {
             checkNewAgents();
             mPackageMonitor.register(mContext, mHandler.getLooper(), UserHandle.ALL, true);
             mReceiver.register(mContext);
+            if (shouldTrustManagerListenForPrimaryAuth()) {
+                mLockSettings.registerLockSettingsStateListener(mLockSettingsStateListener);
+            }
             mLockPatternUtils.registerStrongAuthTracker(mStrongAuthTracker);
             mFingerprintManager = mContext.getSystemService(FingerprintManager.class);
             mFaceManager = mContext.getSystemService(FaceManager.class);
@@ -1026,12 +1051,7 @@ public class TrustManagerService extends SystemService {
                 continue;
             }
 
-            final boolean trusted;
-            if (android.security.Flags.fixUnlockedDeviceRequiredKeysV2()) {
-                trusted = getUserTrustStateInner(id) == TrustState.TRUSTED;
-            } else {
-                trusted = aggregateIsTrusted(id);
-            }
+            final boolean trusted = getUserTrustStateInner(id) == TrustState.TRUSTED;
             boolean showingKeyguard = true;
             boolean biometricAuthenticated = false;
             boolean currentUserIsUnlocked = false;
@@ -1046,6 +1066,8 @@ public class TrustManagerService extends SystemService {
                     Log.w(TAG, "Unable to check keyguard lock state", e);
                 }
                 currentUserIsUnlocked = unlockedUser == id;
+            } else if (isVisibleBackgroundUser(id)) {
+                showingKeyguard = !mUserManager.isUserUnlocked(id);
             }
             final boolean deviceLocked = secure && showingKeyguard && !trusted
                     && !biometricAuthenticated;
@@ -1077,6 +1099,16 @@ public class TrustManagerService extends SystemService {
         }
     }
 
+    private boolean isVisibleBackgroundUser(int userId) {
+        if (!mUserManager.isVisibleBackgroundUsersSupported()) {
+            return false;
+        }
+        if (mUserManagerInternal == null) {
+            mUserManagerInternal = LocalServices.getService(UserManagerInternal.class);
+        }
+        return mUserManagerInternal.isVisibleBackgroundFullUser(userId);
+    }
+
     private void notifyTrustAgentsOfDeviceLockState(int userId, boolean isLocked) {
         for (int i = 0; i < mActiveAgents.size(); i++) {
             AgentInfo agent = mActiveAgents.valueAt(i);
@@ -1092,19 +1124,15 @@ public class TrustManagerService extends SystemService {
 
     private void notifyKeystoreOfDeviceLockState(int userId, boolean isLocked) {
         if (isLocked) {
-            if (android.security.Flags.fixUnlockedDeviceRequiredKeysV2()) {
-                // A profile with unified challenge is unlockable not by its own biometrics and
-                // trust agents, but rather by those of the parent user.  Therefore, when protecting
-                // the profile's UnlockedDeviceRequired keys, we must use the parent's list of
-                // biometric SIDs and weak unlock methods, not the profile's.
-                int authUserId = mLockPatternUtils.isProfileWithUnifiedChallenge(userId)
-                        ? resolveProfileParent(userId) : userId;
+            // A profile with unified challenge is unlockable not by its own biometrics and
+            // trust agents, but rather by those of the parent user.  Therefore, when protecting
+            // the profile's UnlockedDeviceRequired keys, we must use the parent's list of
+            // biometric SIDs and weak unlock methods, not the profile's.
+            int authUserId = mLockPatternUtils.isProfileWithUnifiedChallenge(userId)
+                    ? resolveProfileParent(userId) : userId;
 
-                mKeyStoreAuthorization.onDeviceLocked(userId, getBiometricSids(authUserId),
-                        isWeakUnlockMethodEnabled(authUserId));
-            } else {
-                mKeyStoreAuthorization.onDeviceLocked(userId, getBiometricSids(userId), false);
-            }
+            mKeyStoreAuthorization.onDeviceLocked(userId, getBiometricSids(authUserId),
+                    isWeakUnlockMethodEnabled(authUserId));
         } else {
             // Notify Keystore that the device is now unlocked for the user.  Note that for unlocks
             // with LSKF, this is redundant with the call from LockSettingsService which provides

@@ -38,7 +38,6 @@ import android.widget.LinearLayout
 import android.widget.Space
 import android.widget.TextView
 import com.android.settingslib.Utils
-import com.android.systemui.biometrics.ui.BiometricPromptLayout
 import com.android.systemui.biometrics.Utils.ellipsize
 import com.android.systemui.lifecycle.repeatWhenAttached
 import com.android.systemui.res.R
@@ -46,7 +45,7 @@ import kotlin.math.ceil
 
 private const val TAG = "BiometricCustomizedViewBinder"
 
-/** Sub-binder for [BiometricPromptLayout.customized_view_container]. */
+/** Sub-binder for Biometric Prompt Customized View */
 object BiometricCustomizedViewBinder {
     const val MAX_DESCRIPTION_CHARACTER_NUMBER = 225
 

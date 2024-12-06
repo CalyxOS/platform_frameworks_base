@@ -52,14 +52,6 @@ flag {
 }
 
 flag {
-    name: "bugreport_mode_max_value"
-    is_exported: true
-    namespace: "telephony"
-    description: "Introduce a constant as maximum value of bugreport mode."
-    bug: "305067125"
-}
-
-flag {
     name: "adpf_prefer_power_efficiency"
     is_exported: true
     namespace: "game"
@@ -73,6 +65,14 @@ flag {
     namespace: "dynamic_spl"
     description: "Guards the Security State API."
     bug: "302189431"
+}
+
+flag {
+    name: "ordered_broadcast_multiple_permissions"
+    is_exported: true
+    namespace: "bluetooth"
+    description: "Guards the Context.sendOrderedBroadcastMultiplePermissions API"
+    bug: "345802719"
 }
 
 flag {
@@ -102,14 +102,6 @@ flag {
     name: "adpf_use_fmq_channel_fixed"
     namespace: "game"
     description: "Guards use of the FMQ channel for ADPF with a readonly flag"
-    is_fixed_read_only: true
-    bug: "315894228"
-}
-
-flag {
-    name: "adpf_fmq_eager_send"
-    namespace: "game"
-    description: "Guards the use of an eager-sending optimization in FMQ for low-latency messages"
     is_fixed_read_only: true
     bug: "315894228"
 }
@@ -161,6 +153,14 @@ flag {
 }
 
 flag {
+    name: "binder_frozen_state_change_callback"
+    is_exported: true
+    namespace: "system_performance"
+    description: "Guards the frozen state change callback API."
+    bug: "361157077"
+}
+
+flag {
     name: "message_queue_tail_tracking"
     namespace: "system_performance"
     description: "track tail of message queue."
@@ -200,4 +200,27 @@ flag {
      name: "perfetto_sdk_tracing"
      description: "Tracing using Perfetto SDK."
      bug: "303199244"
+}
+
+flag {
+    name: "allow_consentless_bugreport_delegated_consent"
+    namespace: "crumpet"
+    description: "Allow privileged apps to call bugreport generation without enforcing user consent and delegate it to the calling app instead"
+    bug: "324046728"
+}
+
+flag {
+    name: "get_private_space_settings"
+    namespace: "profile_experiences"
+    description: "Guards a new Private Profile API in LauncherApps"
+    bug: "346294653"
+    is_exported: true
+}
+
+flag {
+     name: "mainline_vcn_platform_api"
+     namespace: "vcn"
+     description: "Expose platform APIs to mainline VCN"
+     is_exported: true
+     bug: "366598445"
 }
