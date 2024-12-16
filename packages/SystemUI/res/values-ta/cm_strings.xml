@@ -37,7 +37,7 @@
     <string name="quick_settings_profiles_label">சிஸ்டம் சுயவிவரங்கள்</string>
     <string name="accessibility_quick_settings_profiles_off">சுயவிவரங்கள் ஆஃப்.</string>
     <string name="accessibility_quick_settings_profiles">சுயவிவரம்: <xliff:g id="profile" example="Default">%s</xliff:g>.</string>
-    <string name="quick_settings_usb_tether_label">USB டெதெரிங்</string>
+    <string name="quick_settings_usb_tether_label">USB இணைத்தல்</string>
     <string name="accessibility_dpad_left">இடஞ்சுட்டி இடது</string>
     <string name="accessibility_dpad_right">இடஞ்சுட்டி வலது</string>
 </resources>
