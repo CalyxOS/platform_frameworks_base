@@ -68,7 +68,11 @@
     <string name="status_bar_firewall">Firewall</string>
     <string name="screenshot_delete_label">Hapus</string>
     <string name="screenrecord_delete_label">Hapus</string>
+    <string name="screenrecord_delete_description">Rekaman layar dihapus</string>
     <string name="screenrecord_lowquality_label">Kualitas rendah</string>
+    <string name="screenrecord_lowquality_summary">Untuk ukuran file yang lebih kecil</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Batasi ukuran perekaman hingga 15 GB</string>
     <string name="screenrecord_hevc_switch_label">HEVC encoding</string>
     <string name="screenrecord_hevc_switch_summary">Gunakan HEVC encoder yang lebih efisien</string>
+    <string name="battery_notification_channel_tv">Peringatan baterai</string>
 </resources>
