@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Διαγραφή στιγμιότυπου οθόνης</string>
     <string name="screenrecord_delete_label">Διαγραφή</string>
     <string name="screenrecord_delete_description">Η εγγραφή οθόνης διαγράφηκε</string>
-    <string name="screenrecord_stopdot_label">Εμφάνιση κουκίδας παύσης</string>
-    <string name="screenrecord_stopdot_summary">Παρατεταμένο πάτημα για μετακίνηση</string>
     <string name="screenrecord_lowquality_label">Μείωση ποιότητας</string>
     <string name="screenrecord_lowquality_summary">Για μικρότερο μέγεθος αρχείου</string>
     <string name="screenrecord_longer_timeout_switch_label">Μεγαλύτερο όριο μεγέθους αρχείου</string>

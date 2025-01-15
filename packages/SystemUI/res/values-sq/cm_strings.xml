@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Fshi pamjen e ekranit</string>
     <string name="screenrecord_delete_label">Fshije</string>
     <string name="screenrecord_delete_description">Regjistrimi i ekranit u fshi</string>
-    <string name="screenrecord_stopdot_label">Shfaq pikën e ndalimit</string>
-    <string name="screenrecord_stopdot_summary">Shtypni gjatë për ta zhvendosur</string>
     <string name="screenrecord_lowquality_label">Cilësi më të ulët</string>
     <string name="screenrecord_lowquality_summary">Për madhësi më të vogël të skedarit</string>
     <string name="screenrecord_longer_timeout_switch_label">Kufiri më i madh i madhësisë së skedarit</string>

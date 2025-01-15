@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Scrios seat scáileáin</string>
     <string name="screenrecord_delete_label">Scrios</string>
     <string name="screenrecord_delete_description">Scriosadh an taifeadadh scáileáin</string>
-    <string name="screenrecord_stopdot_label">Taispeáin pointe stoptha</string>
-    <string name="screenrecord_stopdot_summary">Brúigh fada chun é a bhogadh</string>
     <string name="screenrecord_lowquality_label">Caighdeán níos ísle</string>
     <string name="screenrecord_lowquality_summary">Le haghaidh méid comhaid níos lú</string>
     <string name="screenrecord_longer_timeout_switch_label">Teorainn méid comhaid níos mó</string>

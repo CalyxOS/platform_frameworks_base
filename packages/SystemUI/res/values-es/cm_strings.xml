@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Eliminar captura de pantalla</string>
     <string name="screenrecord_delete_label">Eliminar</string>
     <string name="screenrecord_delete_description">Grabación de pantalla eliminada</string>
-    <string name="screenrecord_stopdot_label">Indicar punto de parada</string>
-    <string name="screenrecord_stopdot_summary">Mantén presionado para moverlo</string>
     <string name="screenrecord_lowquality_label">Baja calidad</string>
     <string name="screenrecord_lowquality_summary">Para un menor tamaño de archivo</string>
     <string name="screenrecord_longer_timeout_switch_label">Límite de tamaño de archivo más grande</string>

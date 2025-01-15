@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">A képernyőkép törlése</string>
     <string name="screenrecord_delete_label">Törlés</string>
     <string name="screenrecord_delete_description">A képernyőfelvétel törölve</string>
-    <string name="screenrecord_stopdot_label">Látható megállítógomb</string>
-    <string name="screenrecord_stopdot_summary">Áthelyezéshez nyomja hosszan</string>
     <string name="screenrecord_lowquality_label">Gyengébb minőség</string>
     <string name="screenrecord_lowquality_summary">... hogy kisebbek legyenek a fájlok</string>
     <string name="screenrecord_longer_timeout_switch_label">A nagy fájlméret felső határa</string>

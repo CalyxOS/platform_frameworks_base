@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Удалить скриншот</string>
     <string name="screenrecord_delete_label">Удалить</string>
     <string name="screenrecord_delete_description">Запись экрана удалена</string>
-    <string name="screenrecord_stopdot_label">Показать кнопку остановки</string>
-    <string name="screenrecord_stopdot_summary">Удерживайте для перемещения</string>
     <string name="screenrecord_lowquality_label">Низкое качество</string>
     <string name="screenrecord_lowquality_summary">Для уменьшения размера файла</string>
     <string name="screenrecord_longer_timeout_switch_label">Ограничение на размер файла</string>

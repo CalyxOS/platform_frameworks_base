@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Xóa ảnh chụp màn hình</string>
     <string name="screenrecord_delete_label">Xóa</string>
     <string name="screenrecord_delete_description">Đã xóa bản ghi màn hình</string>
-    <string name="screenrecord_stopdot_label">Hiện chấm dừng</string>
-    <string name="screenrecord_stopdot_summary">Nhấn giữ để di chuyển nó</string>
     <string name="screenrecord_lowquality_label">Chất lượng thấp hơn</string>
     <string name="screenrecord_lowquality_summary">Để có kích thước tệp nhỏ hơn</string>
     <string name="screenrecord_longer_timeout_switch_label">Giới hạn kích thước tệp lớn hơn</string>

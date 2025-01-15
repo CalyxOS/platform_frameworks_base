@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Ștergeți captura de ecran</string>
     <string name="screenrecord_delete_label">Șterge</string>
     <string name="screenrecord_delete_description">Înregistrare ecran ștearsă</string>
-    <string name="screenrecord_stopdot_label">Afișare punct stop</string>
-    <string name="screenrecord_stopdot_summary">Apăsați lung pentru a muta</string>
     <string name="screenrecord_lowquality_label">Calitate scăzută</string>
     <string name="screenrecord_lowquality_summary">Pentru o dimensiune mai mică a fișierului</string>
     <string name="screenrecord_longer_timeout_switch_label">Limită mai mare a dimensiunii fișierului</string>

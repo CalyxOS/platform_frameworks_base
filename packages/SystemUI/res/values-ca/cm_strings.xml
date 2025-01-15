@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">Suprimeix la captura</string>
     <string name="screenrecord_delete_label">Suprimeix</string>
     <string name="screenrecord_delete_description">S\'ha eliminat la gravació de pantalla</string>
-    <string name="screenrecord_stopdot_label">Mostra el punt d\'aturada</string>
-    <string name="screenrecord_stopdot_summary">Mantingueu-lo premut per moure\'l</string>
     <string name="screenrecord_lowquality_label">Qualitat més baixa</string>
     <string name="screenrecord_lowquality_summary">Per a una mida de fitxer més petita</string>
     <string name="screenrecord_longer_timeout_switch_label">Límit de mida de fitxer més gran</string>

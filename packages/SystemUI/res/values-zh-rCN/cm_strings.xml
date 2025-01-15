@@ -72,8 +72,6 @@
     <string name="screenshot_delete_description">删除屏幕截图</string>
     <string name="screenrecord_delete_label">删除</string>
     <string name="screenrecord_delete_description">屏幕录制已删除</string>
-    <string name="screenrecord_stopdot_label">显示停止按钮</string>
-    <string name="screenrecord_stopdot_summary">长按以移动</string>
     <string name="screenrecord_lowquality_label">低画质</string>
     <string name="screenrecord_lowquality_summary">以压缩文件体积</string>
     <string name="screenrecord_longer_timeout_switch_label">更大的文件体积限制</string>
