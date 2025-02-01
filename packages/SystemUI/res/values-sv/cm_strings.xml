@@ -18,6 +18,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="clock">Klocka</string>
     <string name="global_action_restart_more">Starta om\u2026</string>
     <string name="global_action_restart_system">System</string>
     <string name="global_action_restart_recovery">Återställning</string>
@@ -67,4 +68,8 @@
     <string name="accessibility_dpad_left">Markör till vänster</string>
     <string name="accessibility_dpad_right">Markör till höger</string>
     <string name="status_bar_firewall">Brandvägg</string>
+    <string name="screenshot_delete_label">Radera</string>
+    <string name="screenrecord_delete_label">Radera</string>
+    <string name="screenrecord_lowquality_summary">För mindre filstorlek</string>
+    <string name="screenrecord_hevc_switch_summary">Använd den effektivare HEVC-kodaren</string>
 </resources>
