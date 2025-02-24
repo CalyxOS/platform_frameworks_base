@@ -6870,7 +6870,7 @@ public final class ActiveServices {
                 }
             }
             if (finishing) {
-                if (r.app != null && !r.app.isPersistent()) {
+                if (r.app != null && !r.app.isPersistent() && !r.app.getShouldRestartOnce()) {
                     stopServiceAndUpdateAllowlistManagerLocked(r);
                 }
                 r.setProcess(null, null, 0, null);
@@ -7313,7 +7313,7 @@ public final class ActiveServices {
 
             // Unless the process is persistent, this process record is going away,
             // so make sure the service is cleaned out of it.
-            if (!app.isPersistent()) {
+            if (!app.isPersistent() && !app.getShouldRestartOnce()) {
                 mAm.mProcessStateController.stopService(psr, sr);
                 psr.updateBoundClientUids();
             }

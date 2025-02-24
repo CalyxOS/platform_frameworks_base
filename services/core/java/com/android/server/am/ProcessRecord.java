@@ -452,6 +452,12 @@ class ProcessRecord implements WindowProcessListener {
     @GuardedBy("mService")
     volatile boolean mWasForceStopped;
 
+    /**
+     * When process dies, restart it like a persistent process, but only once.
+     * This is used when processes are killed following backup to ensure they are restarted.
+     */
+    volatile boolean mShouldRestartOnce = false;
+
     void setStartParams(int startUid, HostingRecord hostingRecord, String seInfo,
             long startUptime, long startElapsedTime) {
         this.mStartUid = startUid;
@@ -556,6 +562,7 @@ class ProcessRecord implements WindowProcessListener {
         if (mState.getSetProcState() > ActivityManager.PROCESS_STATE_SERVICE) {
             mProfile.dumpCputime(pw, prefix);
         }
+        pw.print(prefix); pw.print("shouldRestartOnce="); pw.println(mShouldRestartOnce);
         mProfile.dumpPss(pw, prefix, nowUptime);
         mState.dump(pw, prefix, nowUptime);
         mErrorState.dump(pw, prefix, nowUptime);
@@ -830,6 +837,14 @@ class ProcessRecord implements WindowProcessListener {
     @GuardedBy("mService")
     void setPendingStart(boolean pendingStart) {
         mPendingStart = pendingStart;
+    }
+
+    public void setShouldRestartOnce(boolean value) {
+        mShouldRestartOnce = value;
+    }
+
+    public boolean getShouldRestartOnce() {
+        return mShouldRestartOnce;
     }
 
     @GuardedBy("mService")

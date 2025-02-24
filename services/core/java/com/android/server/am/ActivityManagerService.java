@@ -4107,9 +4107,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         if (callerUid == SYSTEM_UID) {
             synchronized (this) {
                 ProcessRecord app = getProcessRecordLocked(processName, uid);
+                // Guard for killAndMaybeRestartProcessUsedInBackup.
                 IApplicationThread thread;
                 if (app != null && (thread = app.getThread()) != null) {
                     try {
+                        // Guard for killAndMaybeRestartProcessUsedInBackup.
                         thread.scheduleSuicide();
                     } catch (RemoteException e) {
                         // If the other end already died, then our work here is done.
@@ -13576,7 +13578,7 @@ public class ActivityManagerService extends IActivityManager.Stub
             return false;
         }
 
-        if (!app.isPersistent() || app.isolated) {
+        if ((!app.isPersistent() && !app.getShouldRestartOnce()) || app.isolated) {
             if (DEBUG_PROCESSES || DEBUG_CLEANUP) Slog.v(TAG_CLEANUP,
                     "Removing non-persistent process during cleanup: " + app);
             if (!replacingPid) {
@@ -18146,6 +18148,48 @@ public class ActivityManagerService extends IActivityManager.Stub
         @Override
         public void addCreatorToken(Intent intent, String creatorPackage) {
             ActivityManagerService.this.addCreatorToken(intent, creatorPackage);
+        }
+
+        /**
+         * Kill a process and then, if it wasn't created specifically for backup use, indicate that
+         * it should be restarted.
+         * <br/>
+         * This method replicates the important parts of killApplicationProcess to prevent needing
+         * to fetch the process record again or potentially risk getting a different result, since
+         * we already have the record here.
+         */
+        @Override
+        public void killAndMaybeRestartProcessUsedInBackup(String processName, int uid) {
+            if (enableBackupAgentInSeparateProcess()
+                    || !enableRestartProcessesAfterBackup()) {
+                killApplicationProcess(processName, uid);
+                return;
+            }
+            synchronized (ActivityManagerService.this) {
+                final ProcessRecord proc = getProcessRecordLocked(processName, uid);
+                final IApplicationThread thread;
+                if (proc == null || ((thread = proc.getThread()) == null)) {
+                    // Same logic as used in killApplicationProcess.
+                    Slog.w(TAG, "Process/uid not found attempting kill/possible-restart of "
+                            + processName + " / " + uid);
+                    return;
+                }
+
+                // Don't restart if we started it, based on the hosting record. Otherwise, do!
+                final HostingRecord hostingRecord = proc.getHostingRecord();
+                boolean doRestart = hostingRecord == null
+                        || !HostingRecord.HOSTING_TYPE_BACKUP.equals(hostingRecord.getType());
+                if (doRestart) {
+                    proc.setShouldRestartOnce(true);
+                }
+
+                // Do what killApplicationProcess does.
+                try {
+                    thread.scheduleSuicide();
+                } catch (RemoteException e) {
+                    // ignored
+                }
+            }
         }
     }
 

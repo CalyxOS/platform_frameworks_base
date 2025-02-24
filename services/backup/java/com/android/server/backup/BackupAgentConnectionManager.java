@@ -225,7 +225,8 @@ public class BackupAgentConnectionManager {
 
                     final String processName = enableBackupAgentInSeparateProcess()
                             ? app.processName + ":BackupAgent" : app.processName;
-                    mActivityManager.killApplicationProcess(processName, app.uid);
+                    mActivityManagerInternal.killAndMaybeRestartProcessUsedInBackup(
+                            processName, app.uid);
                 }
             } catch (RemoteException e) {
                 // Can't happen - activity manager is local
