@@ -170,7 +170,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -1579,17 +1578,23 @@ public class ComputerEngine implements Computer {
             }
 
             if (isMicroG) {
-                try {
-                    packageInfo.signingInfo = new SigningInfo(
-                            new SigningDetails(
-                                    packageInfo.signatures,
-                                    SigningDetails.SignatureSchemeVersion.SIGNING_BLOCK_V3,
-                                    SigningDetails.toSigningKeys(packageInfo.signatures),
-                                    null
-                            )
-                    );
-                } catch (CertificateException e) {
-                    Slog.e(TAG, "Caught an exception when creating signing keys: ", e);
+                if (packageInfo.signatures == null) {
+                    Log.e(TAG, "No signatures for microG package; does it declare"
+                            + " android.permission.FAKE_PACKAGE_SIGNATURE?");
+                } else {
+                    try {
+                        packageInfo.signingInfo = new SigningInfo(
+                                new SigningDetails(
+                                        packageInfo.signatures,
+                                        SigningDetails.SignatureSchemeVersion.SIGNING_BLOCK_V3,
+                                        SigningDetails.toSigningKeys(packageInfo.signatures),
+                                        null
+                                )
+                        );
+                    } catch (Throwable t) {
+                        // We should never die because of any failures, this is system code!
+                        Slog.e(TAG, "Caught an exception when creating signing keys: ", t);
+                    }
                 }
             }
 
