@@ -21,6 +21,9 @@ import static com.android.systemui.media.dagger.MediaModule.QS_PANEL;
 import static com.android.systemui.qs.QSPanel.QS_SHOW_BRIGHTNESS;
 import static com.android.systemui.qs.dagger.QSScopeModule.QS_USING_MEDIA_PLAYER;
 
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +42,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.qs.customize.QSCustomizerController;
 import com.android.systemui.qs.dagger.QSScope;
 import com.android.systemui.qs.logging.QSLogger;
+import com.android.systemui.res.R;
 import com.android.systemui.scene.shared.flag.SceneContainerFlag;
 import com.android.systemui.settings.brightness.BrightnessController;
 import com.android.systemui.settings.brightness.BrightnessMirrorHandler;
@@ -48,6 +52,8 @@ import com.android.systemui.shade.ShadeDisplayAware;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
+import com.android.systemui.tuner.TunerService;
+import com.android.systemui.user.domain.interactor.SelectedUserInteractor;
 
 import lineageos.providers.LineageSettings;
 
@@ -81,6 +87,8 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
 
     protected final MediaCarouselInteractor mMediaCarouselInteractor;
 
+    private final SelectedUserInteractor mSelectedUserInteractor;
+
     private View.OnTouchListener mTileLayoutTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -88,6 +96,32 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
                 mFalsingManager.isFalseTouch(QS_SWIPE_SIDE);
             }
             return false;
+        }
+    };
+
+    private ContentObserver mContentObserver = new ContentObserver(null) {
+        @Override
+        public void onChange(boolean selfChange, @android.annotation.Nullable Uri uri) {
+            if (LineageSettings.Secure.getUriFor(
+                    LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS).equals(uri)
+                    && mView.getResources().getBoolean(
+                    com.android.internal.R.bool.config_automatic_brightness_available)) {
+                mView.getBrightnessView().findViewById(R.id.brightness_icon).setVisibility(
+                        TunerService.parseIntegerSwitch(LineageSettings.Secure.getStringForUser(
+                                mView.getContext().getContentResolver(),
+                                LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS,
+                                mSelectedUserInteractor.getSelectedUserId()), true) ? View.VISIBLE
+                                : View.GONE);
+            } else if (LineageSettings.Secure.getUriFor(
+                    LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER).equals(uri)
+                    && mView.getBrightnessView() != null) {
+                mView.getBrightnessView().setVisibility(
+                        TunerService.parseIntegerSwitch(LineageSettings.Secure.getStringForUser(
+                                mView.getContext().getContentResolver(),
+                                LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
+                                mSelectedUserInteractor.getSelectedUserId()), true) ? View.VISIBLE
+                                : View.GONE);
+            }
         }
     };
 
@@ -105,7 +139,8 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
             SplitShadeStateController splitShadeStateController,
             Provider<QSLongPressEffect> longPRessEffectProvider,
             MediaCarouselInteractor mediaCarouselInteractor,
-            @ShadeDisplayAware ConfigurationController configurationController) {
+            @ShadeDisplayAware ConfigurationController configurationController,
+            SelectedUserInteractor selectedUserInteractor) {
         super(view, qsHost, qsCustomizerController, usingMediaPlayer, mediaHost,
                 metricsLogger, uiEventLogger, qsLogger, dumpManager, splitShadeStateController,
                 longPRessEffectProvider, configurationController);
@@ -124,6 +159,7 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
         mLastDensity = view.getResources().getConfiguration().densityDpi;
         mSceneContainerEnabled = SceneContainerFlag.isEnabled();
         mMediaCarouselInteractor = mediaCarouselInteractor;
+        mSelectedUserInteractor = selectedUserInteractor;
     }
 
     @Override
@@ -149,17 +185,18 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
 
         getContext().getContentResolver().registerContentObserver(
                 LineageSettings.Secure.getUriFor(LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS),
-                false, mView.getContentObserver());
-        mView.getContentObserver().onChange(true,
+                false, mContentObserver, UserHandle.USER_ALL);
+        mContentObserver.onChange(true,
                 LineageSettings.Secure.getUriFor(LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS));
         getContext().getContentResolver().registerContentObserver(
                 LineageSettings.Secure.getUriFor(LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER),
-                false, mView.getContentObserver());
-        mView.getContentObserver().onChange(true,
+                false, mContentObserver, UserHandle.USER_ALL);
+        mContentObserver.onChange(true,
                 LineageSettings.Secure.getUriFor(LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER));
         getContext().getContentResolver().registerContentObserver(
-                Settings.Secure.getUriFor(QS_SHOW_BRIGHTNESS), false, mView.getContentObserver());
-        mView.getContentObserver().onChange(true,
+                Settings.Secure.getUriFor(QS_SHOW_BRIGHTNESS), false, mContentObserver,
+                UserHandle.USER_ALL);
+        mContentObserver.onChange(true,
                 Settings.Secure.getUriFor(QS_SHOW_BRIGHTNESS));
         mView.updateResources();
         mView.setSceneContainerEnabled(mSceneContainerEnabled);
@@ -181,7 +218,7 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
 
     @Override
     protected void onViewDetached() {
-        getContext().getContentResolver().unregisterContentObserver(mView.getContentObserver());
+        getContext().getContentResolver().unregisterContentObserver(mContentObserver);
         mBrightnessMirrorHandler.onQsPanelDettached();
         super.onViewDetached();
     }
