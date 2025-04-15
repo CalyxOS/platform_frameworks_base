@@ -51,11 +51,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.Insets;
 import android.graphics.Rect;
@@ -64,7 +62,6 @@ import android.graphics.RenderEffect;
 import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Trace;
 import android.util.IndentingPrintWriter;
@@ -290,7 +287,6 @@ public final class NotificationPanelViewController implements
     private final ShadeHeadsUpChangedListener mOnHeadsUpChangedListener =
             new ShadeHeadsUpChangedListener();
     private final ConfigurationListener mConfigurationListener = new ConfigurationListener();
-    private final ContentObserver mDoubleTapToSleepObserver;
     private final StatusBarStateListener mStatusBarStateListener = new StatusBarStateListener();
     private final NotificationPanelView mView;
     private final VibratorHelper mVibratorHelper;
@@ -355,6 +351,8 @@ public final class NotificationPanelViewController implements
     private final UnlockedScreenOffAnimationController mUnlockedScreenOffAnimationController;
     private TrackingStartedListener mTrackingStartedListener;
     private OpenCloseListener mOpenCloseListener;
+    private QQSGestureListener mQQSGestureListener;
+
     private GestureRecorder mGestureRecorder;
 
     private boolean mDozing;
@@ -493,7 +491,6 @@ public final class NotificationPanelViewController implements
     private boolean mIsGestureNavigation;
     private int mOldLayoutDirection;
 
-    private final ContentResolver mContentResolver;
     private float mMinFraction;
 
     private final KeyguardMediaController mKeyguardMediaController;
@@ -581,7 +578,6 @@ public final class NotificationPanelViewController implements
 
     @Inject
     public NotificationPanelViewController(NotificationPanelView view,
-            @Main Handler handler,
             NotificationWakeUpCoordinator coordinator,
             PulseExpansionHandler pulseExpansionHandler,
             DynamicPrivacyController dynamicPrivacyController,
@@ -624,7 +620,6 @@ public final class NotificationPanelViewController implements
             QuickSettingsControllerImpl quickSettingsController,
             FragmentService fragmentService,
             IStatusBarService statusBarService,
-            ContentResolver contentResolver,
             ShadeHeaderController shadeHeaderController,
             ScreenOffAnimationController screenOffAnimationController,
             LockscreenGestureLogger lockscreenGestureLogger,
@@ -659,6 +654,7 @@ public final class NotificationPanelViewController implements
             BrightnessMirrorShowingRepository brightnessMirrorShowingRepository,
             BlurConfig blurConfig,
             Lazy<ShadeDisplaysRepository> shadeDisplaysRepository,
+            QQSGestureListener qqsGestureListener,
             Context context) {
         mBlurConfig = blurConfig;
         SceneContainerFlag.assertInLegacyMode();
@@ -744,7 +740,6 @@ public final class NotificationPanelViewController implements
         mNotificationStackScrollLayoutController = notificationStackScrollLayoutController;
         mKeyguardStatusBarViewComponentFactory = keyguardStatusBarViewComponentFactory;
         mDepthController = notificationShadeDepthController;
-        mContentResolver = contentResolver;
         mFragmentService = fragmentService;
         mStatusBarService = statusBarService;
         mSplitShadeStateController = splitShadeStateController;
@@ -790,15 +785,6 @@ public final class NotificationPanelViewController implements
                 return true;
             }
         });
-        mDoubleTapToSleepObserver = new ContentObserver(handler) {
-            @Override
-            public void onChange(boolean selfChange) {
-                mDoubleTapToSleepEnabled = LineageSettings.System.getInt(mContentResolver,
-                        LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
-                        mResources.getBoolean(org.lineageos.platform.internal.R.bool.
-                                config_dt2sGestureEnabledByDefault) ? 1 : 0) != 0;
-            }
-        };
         mConversationNotificationManager = conversationNotificationManager;
         mScreenOffAnimationController = screenOffAnimationController;
         mUnlockedScreenOffAnimationController = unlockedScreenOffAnimationController;
@@ -842,6 +828,7 @@ public final class NotificationPanelViewController implements
         mIsBrightnessMirrorShowing.setValue(
                 mBrightnessMirrorShowingRepository.isShowing().getValue()
         );
+        mQQSGestureListener = qqsGestureListener;
         onFinishInflate();
         keyguardUnlockAnimationController.addKeyguardUnlockAnimationListener(
                 new KeyguardUnlockAnimationController.KeyguardUnlockAnimationListener() {
@@ -862,6 +849,11 @@ public final class NotificationPanelViewController implements
                 });
         mAlternateBouncerInteractor = alternateBouncerInteractor;
         dumpManager.registerDumpable(this);
+    }
+
+    private Unit setDoubleTapToSleepEnabled(boolean value) {
+        mDoubleTapToSleepEnabled = value;
+        return null;
     }
 
     private void unlockAnimationFinished() {
@@ -3676,10 +3668,8 @@ public final class NotificationPanelViewController implements
                 mStatusBarStateListener.onStateChanged(mStatusBarStateController.getState(), true);
             }
             mConfigurationController.addCallback(mConfigurationListener);
-            mContentResolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE), false,
-                    mDoubleTapToSleepObserver);
-            mDoubleTapToSleepObserver.onChange(true);
+            mQQSGestureListener.addDoubleTapToSleepCallbackAndInvoke(
+                    NotificationPanelViewController.this::setDoubleTapToSleepEnabled);
             // Theme might have changed between inflating this view and attaching it to the
             // window, so
             // force a call to onThemeChanged
@@ -3690,7 +3680,8 @@ public final class NotificationPanelViewController implements
 
         @Override
         public void onViewDetachedFromWindow(View v) {
-            mContentResolver.unregisterContentObserver(mDoubleTapToSleepObserver);
+            mQQSGestureListener.removeDoubleTapToSleepCallback(
+                    NotificationPanelViewController.this::setDoubleTapToSleepEnabled);
             mFragmentService.getFragmentHostManager(mView)
                     .removeTagListener(QS.TAG, mQsController.getQsFragmentListener());
             mStatusBarStateController.removeCallback(mStatusBarStateListener);
