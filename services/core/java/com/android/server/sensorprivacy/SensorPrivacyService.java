@@ -833,7 +833,7 @@ public final class SensorPrivacyService extends SystemService {
             // Enforce valid calling user on devices that enable visible background users.
             enforceValidCallingUser(userId);
 
-            if (!canChangeToggleSensorPrivacy(userId, sensor)) {
+            if (!canChangeToggleSensorPrivacy(userId, sensor, enable ? ENABLED : DISABLED)) {
                 return;
             }
             if (enable && !supportsSensorToggle(TOGGLE_TYPE_SOFTWARE, sensor)) {
@@ -867,7 +867,7 @@ public final class SensorPrivacyService extends SystemService {
             // Enforce valid calling user on devices that enable visible background users.
             enforceValidCallingUser(userId);
 
-            if (!canChangeToggleSensorPrivacy(userId, sensor)) {
+            if (!canChangeToggleSensorPrivacy(userId, sensor, state)) {
                 return;
             }
             if (!supportsSensorToggle(TOGGLE_TYPE_SOFTWARE, sensor)) {
@@ -1089,7 +1089,8 @@ public final class SensorPrivacyService extends SystemService {
             });
         }
 
-        private boolean canChangeToggleSensorPrivacy(@UserIdInt int userId, int sensor) {
+        private boolean canChangeToggleSensorPrivacy(@UserIdInt int userId, int sensor,
+                int newState) {
             if (sensor == MICROPHONE && mCallStateHelper.isInEmergencyCall()) {
                 // During emergency call the microphone toggle managed automatically
                 Log.i(TAG, "Can't change mic toggle during an emergency call");
@@ -1097,8 +1098,9 @@ public final class SensorPrivacyService extends SystemService {
             }
 
             if (requiresAuthentication() && mKeyguardManager != null
-                    && mKeyguardManager.isDeviceLocked(userId)) {
-                Log.i(TAG, "Can't change mic/cam toggle while device is locked");
+                    && mKeyguardManager.isDeviceLocked(userId)
+                    && newState != ENABLED) {
+                Log.i(TAG, "Can't change mic/cam toggle for less privacy while device is locked");
                 return false;
             }
 
