@@ -1404,14 +1404,14 @@
     <string name="launch_keyboard_touchpad_tutorial_notification_title" msgid="1940023776496198762">"ניווט באמצעות המקלדת ולוח המגע"</string>
     <string name="launch_keyboard_touchpad_tutorial_notification_content" msgid="1780725168171929365">"מידע על התנועות בלוח המגע, מקשי קיצור ועוד"</string>
     <string name="touchpad_tutorial_back_gesture_button" msgid="2746834288077265946">"תנועת חזרה"</string>
-    <string name="touchpad_tutorial_home_gesture_button" msgid="7640544867625955304">"תנועת חזרה למסך הבית"</string>
+    <string name="touchpad_tutorial_home_gesture_button" msgid="7640544867625955304">"מעבר למסך הבית"</string>
     <string name="touchpad_tutorial_recent_apps_gesture_button" msgid="8919227647650347359">"הצגת האפליקציות האחרונות"</string>
     <string name="touchpad_tutorial_done_button" msgid="176168488821755503">"סיום"</string>
     <string name="touchpad_back_gesture_action_title" msgid="7199067250654332735">"חזרה"</string>
     <string name="touchpad_back_gesture_guidance" msgid="6263750214998421587">"‏כדי לחזור אחורה, מחליקים שמאלה או ימינה עם שלוש אצבעות בכל מקום על לוח המגע.\n\nאפשר לבצע את הפעולה הזו גם באמצעות קיצור הדרך לפעולה + מקש ESC."</string>
     <string name="touchpad_back_gesture_success_title" msgid="7240576648330612171">"מעולה!"</string>
     <string name="touchpad_back_gesture_success_body" msgid="2324724953720741719">"השלמת את התנועה \'הקודם\'."</string>
-    <string name="touchpad_home_gesture_action_title" msgid="8885107349719257882">"מעבר לדף הבית"</string>
+    <string name="touchpad_home_gesture_action_title" msgid="8885107349719257882">"מעבר למסך הבית"</string>
     <string name="touchpad_home_gesture_guidance" msgid="3043931356096731966">"כדי לעבור למסך הבית בכל שלב, צריך להחליק למעלה עם שלוש אצבעות מהחלק התחתון של המסך."</string>
     <string name="touchpad_home_gesture_success_title" msgid="3778407003948209795">"איזה יופי!"</string>
     <string name="touchpad_home_gesture_success_body" msgid="2404031094918807067">"השלמת את תנועת המעבר למסך הבית."</string>

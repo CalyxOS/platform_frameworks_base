@@ -551,7 +551,7 @@
     <string name="media_projection_entry_cast_permission_dialog_option_text_entire_screen" msgid="8389508187954155307">"Пребаци цео екран"</string>
     <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"Када пребацујете цео екран, види се све што је на њему. Зато пазите на лозинке, информације о плаћању, поруке, слике, аудио и видео садржај."</string>
     <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"Када пребацујете апликацију, види се сав садржај који се приказује или пушта у њој. Зато пазите на лозинке, информације о плаћању, поруке, слике, аудио и видео садржај."</string>
-    <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"Пребацивање екрана"</string>
+    <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"Пребаци екран"</string>
     <string name="media_projection_entry_cast_app_selector_title" msgid="6323062146661922387">"Одаберите апликацију коју желите да пребаците"</string>
     <string name="media_projection_entry_generic_permission_dialog_title" msgid="4519802931547483628">"Желите да почнете да делите?"</string>
     <string name="media_projection_entry_generic_permission_dialog_warning_entire_screen" msgid="5407906851409410209">"Када делите, снимате или пребацујете, Android има приступ комплетном садржају који је видљив на екрану или се пушта на уређају. Зато пазите на лозинке, информације о плаћању, поруке, слике, и аудио и видео садржај."</string>

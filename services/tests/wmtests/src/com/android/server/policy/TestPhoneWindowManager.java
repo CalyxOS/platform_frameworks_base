@@ -558,6 +558,10 @@ class TestPhoneWindowManager {
         doNothing().when(mPhoneWindowManager).launchHomeFromHotKey(anyInt());
     }
 
+    void overrideKeyguardOn(boolean isKeyguardOn) {
+        doReturn(isKeyguardOn).when(mPhoneWindowManager).keyguardOn();
+    }
+
     void overrideIsUserSetupComplete(boolean isCompleted) {
         doReturn(isCompleted).when(mPhoneWindowManager).isUserSetupComplete();
     }
@@ -698,6 +702,11 @@ class TestPhoneWindowManager {
     void assertSearchManagerLaunchAssist() {
         mTestLooper.dispatchAll();
         verify(mSearchManager).launchAssist(any());
+    }
+
+    void assertSearchManagerDoesntLaunchAssist() {
+        mTestLooper.dispatchAll();
+        verify(mSearchManager, never()).launchAssist(any());
     }
 
     void assertLaunchSystemSettings() {
@@ -888,5 +897,11 @@ class TestPhoneWindowManager {
     void assertTalkBack(boolean expectEnabled) {
         mTestLooper.dispatchAll();
         Assert.assertEquals(expectEnabled, mIsTalkBackEnabled);
+    }
+
+    void assertNoActivityLaunched() {
+        mTestLooper.dispatchAll();
+        verify(mContext, never()).startActivityAsUser(any(), any(), any());
+        verify(mContext, never()).startActivityAsUser(any(), any());
     }
 }

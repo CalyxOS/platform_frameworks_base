@@ -1442,8 +1442,8 @@
     <string name="overview_edu_notification_content" msgid="3578204677648432500">"Leret ke atas, tahan dengan tiga jari. Ketik untuk mengetahui lebih lanjut tentang gerak isyarat."</string>
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"Gunakan papan kekunci anda untuk melihat semua apl"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Tekan kekunci tindakan pada bila-bila masa. Ketik dan ketahui lebih lanjut tentang gerak isyarat."</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"Kini ciri amat malap merupakan sebahagian daripada peluncur kecerahan"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Kini anda boleh menjadikan skrin amat malap dengan merendahkan lebih lagi tahap kecerahan.\n\nMemandangkan ciri ini kini merupakan sebahagian daripada peluncur kecerahan, pintasan amat malap dialih keluar."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"Ciri amat malap kini bergabung dengan peluncur kecerahan"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Skrin boleh dijadikan amat malap dengan menurunkan lagi tahap kecerahannya.\n\nOleh sebab ciri ini telah bergabung dengan peluncur kecerahan, pintasan amat malap dialih keluar."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Alih keluar pintasan amat malap"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Pintasan amat malap dialih keluar"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Kesambungan"</string>

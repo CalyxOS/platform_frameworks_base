@@ -1448,7 +1448,7 @@
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Snarveiene for ekstra dimming er fjernet"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Tilkobling"</string>
     <string name="qs_edit_mode_category_accessibility" msgid="7969091385071475922">"Tilgjengelighet"</string>
-    <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"Systemverktøy"</string>
+    <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"Verktøy"</string>
     <string name="qs_edit_mode_category_privacy" msgid="6577774443194551775">"Personvern"</string>
     <string name="qs_edit_mode_category_providedByApps" msgid="8346112074897919019">"Levert av apper"</string>
     <string name="qs_edit_mode_category_display" msgid="4749511439121053942">"Skjerm"</string>

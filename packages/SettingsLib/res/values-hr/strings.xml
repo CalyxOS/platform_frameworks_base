@@ -287,7 +287,7 @@
     <string name="oem_unlock_enable_summary" msgid="5857388174390953829">"Neka kôd za pokretanje sustava bude otključan"</string>
     <string name="confirm_enable_oem_unlock_title" msgid="8249318129774367535">"Želite li dopustiti OEM otključavanje?"</string>
     <string name="confirm_enable_oem_unlock_text" msgid="854131050791011970">"UPOZORENJE: značajke za zaštitu uređaja neće funkcionirati na ovom uređaju dok je ta postavka uključena."</string>
-    <string name="mock_location_app" msgid="6269380172542248304">"Odabir aplikacije za lažnu lokaciju"</string>
+    <string name="mock_location_app" msgid="6269380172542248304">"Odaberi aplikaciju za lažnu lokaciju"</string>
     <string name="mock_location_app_not_set" msgid="6972032787262831155">"Aplikacija za lažnu lokaciju nije postavljena"</string>
     <string name="mock_location_app_set" msgid="4706722469342913843">"Aplikacija za lažnu lokaciju: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="debug_networking_category" msgid="6829757985772659599">"Umrežavanje"</string>
@@ -418,7 +418,7 @@
     <string name="verbose_vendor_logging_preference_summary_on" msgid="9017757242481762036">"Omogućeno na neograničeno vrijeme"</string>
     <string name="window_animation_scale_title" msgid="5236381298376812508">"Brzina animacije prozora"</string>
     <string name="transition_animation_scale_title" msgid="1278477690695439337">"Brzina animacije prijelaza"</string>
-    <string name="animator_duration_scale_title" msgid="7082913931326085176">"Razmjer duljine animatora"</string>
+    <string name="animator_duration_scale_title" msgid="7082913931326085176">"Brzina generiranja animacija"</string>
     <string name="overlay_display_devices_title" msgid="5411894622334469607">"Simulacija sekundarnih zaslona"</string>
     <string name="debug_applications_category" msgid="5394089406638954196">"Aplikacije"</string>
     <string name="immediately_destroy_activities" msgid="1826287490705167403">"Ukloni aktivnosti"</string>

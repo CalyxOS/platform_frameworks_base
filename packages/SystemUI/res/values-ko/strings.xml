@@ -549,8 +549,8 @@
     <string name="media_projection_entry_cast_permission_dialog_title" msgid="752756942658159416">"화면을 전송하시겠습니까?"</string>
     <string name="media_projection_entry_cast_permission_dialog_option_text_single_app" msgid="6073353940838561981">"앱 1개 전송"</string>
     <string name="media_projection_entry_cast_permission_dialog_option_text_entire_screen" msgid="8389508187954155307">"전체 화면 전송"</string>
-    <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"전체 화면을 전송하면 화면이 있는 모든 항목이 표시됩니다. 따라서 비밀번호, 결제 세부정보, 메시지, 사진, 오디오 및 동영상 등이 노출되지 않도록 주의하세요."</string>
-    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"앱을 전송하면 해당 앱에 표시되거나 재생되는 모든 항목이 표시됩니다. 따라서 비밀번호, 결제 세부정보, 메시지, 사진, 오디오 및 동영상 등이 노출되지 않도록 주의하세요."</string>
+    <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"전체 화면을 전송하면 화면에 있는 모든 항목을 볼 수 있게 됩니다. 따라서 비밀번호, 결제 세부정보, 메시지, 사진, 오디오 및 동영상 등이 노출되지 않도록 주의하세요."</string>
+    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"앱을 전송하면 해당 앱에 표시되거나 재생되는 모든 항목을 볼 수 있게 됩니다. 따라서 비밀번호, 결제 세부정보, 메시지, 사진, 오디오 및 동영상 등이 노출되지 않도록 주의하세요."</string>
     <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"화면 전송"</string>
     <string name="media_projection_entry_cast_app_selector_title" msgid="6323062146661922387">"전송할 앱 선택"</string>
     <string name="media_projection_entry_generic_permission_dialog_title" msgid="4519802931547483628">"공유를 시작하시겠습니까?"</string>
@@ -1442,8 +1442,8 @@
     <string name="overview_edu_notification_content" msgid="3578204677648432500">"세 손가락을 사용해 위로 스와이프한 다음 잠시 기다리세요. 더 많은 동작을 알아보려면 탭하세요."</string>
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"키보드를 사용하여 모든 앱 보기"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"언제든지 작업 키를 누릅니다. 더 많은 동작을 알아보려면 탭하세요."</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"이제 \'더 어둡게\' 기능이 밝기 슬라이더에 추가되었습니다"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"이제 밝기 수준을 더 낮춰 화면을 더 어둡게 만들 수 있습니다.\n\n이 기능은 이제 밝기 슬라이더에 포함되므로 \'더 어둡게\' 단축키가 삭제됩니다."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"\'더 어둡게\' 기능이 밝기 슬라이더에 추가되었습니다"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"이제 밝기 수준을 더 낮춰 화면을 더 어둡게 만들 수 있습니다.\n\n밝기 슬라이더에서 이 기능을 이용할 수 있으므로 \'더 어둡게\' 단축키가 삭제됩니다."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"\'더 어둡게\' 단축키 삭제"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"\'더 어둡게\' 단축키가 삭제되었습니다."</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"연결"</string>

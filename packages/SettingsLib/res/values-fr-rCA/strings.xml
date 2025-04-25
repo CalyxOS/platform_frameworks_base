@@ -393,7 +393,7 @@
     <string name="disable_overlays_summary" msgid="1954852414363338166">"Toujours utiliser le GPU pour la composition écran"</string>
     <string name="simulate_color_space" msgid="1206503300335835151">"Simuler espace colorimétrique"</string>
     <string name="enable_opengl_traces_title" msgid="4638773318659125196">"Enable OpenGL traces"</string>
-    <string name="usb_audio_disable_routing" msgid="3367656923544254975">"Désact. routage audio USB"</string>
+    <string name="usb_audio_disable_routing" msgid="3367656923544254975">"Désactiver le routage audio USB"</string>
     <string name="usb_audio_disable_routing_summary" msgid="8768242894849534699">"Désactiver routage automatique appareils audio USB"</string>
     <string name="debug_layout" msgid="1659216803043339741">"Afficher les contours"</string>
     <string name="debug_layout_summary" msgid="8825829038287321978">"Afficher les limites, les marges de clip, etc."</string>

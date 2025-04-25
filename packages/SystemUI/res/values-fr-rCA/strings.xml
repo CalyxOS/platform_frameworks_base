@@ -1443,7 +1443,7 @@
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"Utiliser votre clavier pour afficher toutes les applis"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Appuyez sur la touche d\'action à tout moment. Touchez pour apprendre d\'autres gestes."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"La réduction supplémentaire de la luminosité fait désormais partie du curseur de luminosité"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Vous pouvez désormais réduire la luminosité de l\'écran encore plus.\n\nÉtant donné que cette fonctionnalité fait désormais partie du curseur de luminosité, les raccourcis de la réduction supplémentaire de la luminosité sont retirés."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Vous pouvez désormais réduire la luminosité de l\'écran encore plus.\n\nÉtant donné que cette fonctionnalité fait maintenant partie du curseur de luminosité, les raccourcis de la réduction supplémentaire de la luminosité sont retirés."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Retirer les raccourcis de la réduction supplémentaire de la luminosité"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Les raccourcis de la réduction supplémentaire de la luminosité ont été retirés"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Connectivité"</string>

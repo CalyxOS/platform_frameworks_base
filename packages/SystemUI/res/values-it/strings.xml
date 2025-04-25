@@ -1443,7 +1443,7 @@
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"Usa la tastiera per visualizzare tutte le app"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Premi il tasto azione in qualsiasi momento. Tocca per scoprire altri gesti."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"Ora l\'attenuazione extra è nel cursore della luminosità"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Ora puoi usare l\'attenuazione extra per lo schermo abbassando il livello di luminosità ancora di più.\n\nDato che questa funzionalità ora fa parte del cursore della luminosità, le scorciatoie per l\'attenuazione extra vengono rimosse."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Ora puoi usare l\'attenuazione extra per lo schermo abbassando ulteriormente il livello di luminosità.\n\nDato che questa funzionalità è ora integrata nel cursore della luminosità, le scorciatoie per l\'attenuazione extra vengono rimosse."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Rimuovi scorciatoie attenuazione extra"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Scorciatoie attenuazione extra rimosse"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Connettività"</string>

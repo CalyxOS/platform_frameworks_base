@@ -550,7 +550,7 @@
     <string name="media_projection_entry_cast_permission_dialog_option_text_single_app" msgid="6073353940838561981">"Transmitir una app"</string>
     <string name="media_projection_entry_cast_permission_dialog_option_text_entire_screen" msgid="8389508187954155307">"Transmitir pantalla entera"</string>
     <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"Cuando transmitas la pantalla entera, todo lo que se muestre es visible. Por lo tanto, debes tener cuidado con contraseñas, detalles de pagos, mensajes, fotos, audios y videos."</string>
-    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"Cuando transmitas una app, todo lo que se muestre o reproduzcas en ella será visible. Por lo tanto, debes tener cuidado con contraseñas, detalles de pagos, mensajes, fotos, audios y videos."</string>
+    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"Cuando transmitas una app, todo lo que se muestre o reproduzca en ella será visible. Por lo tanto, debes tener cuidado con contraseñas, detalles de pagos, mensajes, fotos, audios y videos."</string>
     <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"Transmitir pantalla"</string>
     <string name="media_projection_entry_cast_app_selector_title" msgid="6323062146661922387">"Elige la app para transmitir"</string>
     <string name="media_projection_entry_generic_permission_dialog_title" msgid="4519802931547483628">"¿Quieres empezar a compartir?"</string>
@@ -1443,7 +1443,7 @@
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"Usa el teclado para ver todas las apps"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Presiona la tecla de acción en cualquier momento. Presiona para aprender más gestos."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"La atenuación extra ahora es parte del control deslizante de brillo"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Ahora puedes bajar el nivel del brillo de la pantalla para atenuarla aún más.\n\nComo esta función ahora es parte del control deslizante de brillo, se quitaron los accesos directos de atenuación extra."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Ahora puedes bajar el nivel del brillo de la pantalla para atenuarla aún más.\n\nComo esta función ahora es parte del control deslizante de brillo, se quitaron los accesos directos a la atenuación extra."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Quitar accesos directos a la atenuación extra"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Se quitaron los accesos directos a la atenuación extra"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Conectividad"</string>

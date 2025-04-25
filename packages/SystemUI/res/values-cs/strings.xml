@@ -112,8 +112,8 @@
     <string name="screenrecord_permission_dialog_title" msgid="7415261783188749730">"Pořídit nahrávku obrazovky?"</string>
     <string name="screenrecord_permission_dialog_option_text_single_app" msgid="1996450687814647583">"Nahrát jednu aplikaci"</string>
     <string name="screenrecord_permission_dialog_option_text_entire_screen" msgid="2794896384693120020">"Nahrát celou obrazovku"</string>
-    <string name="screenrecord_permission_dialog_warning_entire_screen" msgid="1321758636709366068">"Při nahrávání celé obrazovky se zaznamenává veškerý obsah na obrazovce. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
-    <string name="screenrecord_permission_dialog_warning_single_app" msgid="3738199712880063924">"Při nahrávání aplikace se zaznamenává všechno, co se v dané obrazovce zobrazuje nebo přehrává. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="screenrecord_permission_dialog_warning_entire_screen" msgid="1321758636709366068">"Při nahrávání celé obrazovky se zaznamenává veškerý obsah na obrazovce. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="screenrecord_permission_dialog_warning_single_app" msgid="3738199712880063924">"Při nahrávání aplikace se zaznamenává všechno, co se v dané obrazovce zobrazuje nebo přehrává. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
     <string name="screenrecord_permission_dialog_continue_entire_screen" msgid="5557974446773486600">"Nahrát obrazovku"</string>
     <string name="screenrecord_app_selector_title" msgid="3854492366333954736">"Vyberte aplikaci, ze které chcete pořídit nahrávku"</string>
     <string name="screenrecord_audio_label" msgid="6183558856175159629">"Nahrávat zvuk"</string>
@@ -541,20 +541,20 @@
     <string name="screen_share_permission_dialog_option_entire_screen" msgid="4493174362775038997">"Sdílet celou obrazovku"</string>
     <!-- no translation found for media_projection_entry_app_permission_dialog_option_text_entire_screen (5100078808078139706) -->
     <skip />
-    <string name="media_projection_entry_app_permission_dialog_warning_entire_screen" msgid="5504288438067851086">"Při sdílení celé obrazovky vidí aplikace <xliff:g id="APP_SEEKING_PERMISSION">%s</xliff:g> vše, co se na obrazovce nachází nebo děje. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
-    <string name="media_projection_entry_app_permission_dialog_warning_single_app" msgid="7094417930857938876">"Při sdílení aplikace vidí aplikace <xliff:g id="APP_SEEKING_PERMISSION">%s</xliff:g> vše, co se ve sdílené aplikaci nachází nebo děje. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="media_projection_entry_app_permission_dialog_warning_entire_screen" msgid="5504288438067851086">"Při sdílení celé obrazovky vidí aplikace <xliff:g id="APP_SEEKING_PERMISSION">%s</xliff:g> vše, co se na obrazovce nachází nebo děje. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="media_projection_entry_app_permission_dialog_warning_single_app" msgid="7094417930857938876">"Při sdílení aplikace vidí aplikace <xliff:g id="APP_SEEKING_PERMISSION">%s</xliff:g> vše, co se ve sdílené aplikaci nachází nebo děje. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
     <string name="media_projection_entry_app_permission_dialog_continue_entire_screen" msgid="1850848182344377579">"Sdílet obrazovku"</string>
     <string name="media_projection_entry_app_permission_dialog_single_app_disabled" msgid="8999903044874669995">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> tuto možnost zakázala"</string>
     <string name="media_projection_entry_share_app_selector_title" msgid="1419515119767501822">"Vyberte aplikaci ke sdílení"</string>
     <string name="media_projection_entry_cast_permission_dialog_title" msgid="752756942658159416">"Odeslat obrazovku?"</string>
     <string name="media_projection_entry_cast_permission_dialog_option_text_single_app" msgid="6073353940838561981">"Odeslat jednu aplikaci"</string>
     <string name="media_projection_entry_cast_permission_dialog_option_text_entire_screen" msgid="8389508187954155307">"Odeslat celou obrazovku"</string>
-    <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"Při odesílání celé obrazovky je vidět vše, co se na obrazovce nachází nebo děje. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
-    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"Při odesílání aplikace je vidět vše, co se v aplikaci nachází nebo děje. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
-    <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"Odesílání obrazovky"</string>
+    <string name="media_projection_entry_cast_permission_dialog_warning_entire_screen" msgid="4040447861037324017">"Při odesílání celé obrazovky je vidět vše, co se na obrazovce nachází nebo děje. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="media_projection_entry_cast_permission_dialog_warning_single_app" msgid="7487834861348460736">"Při odesílání aplikace je vidět vše, co se v aplikaci nachází nebo děje. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="media_projection_entry_cast_permission_dialog_continue_entire_screen" msgid="3261124185304676483">"Odeslat obrazovku"</string>
     <string name="media_projection_entry_cast_app_selector_title" msgid="6323062146661922387">"Vyberte aplikaci k odesílání"</string>
     <string name="media_projection_entry_generic_permission_dialog_title" msgid="4519802931547483628">"Začít sdílet?"</string>
-    <string name="media_projection_entry_generic_permission_dialog_warning_entire_screen" msgid="5407906851409410209">"Během sdílení, nahrávání nebo odesílání má Android přístup k veškerému obsahu, který je viditelný na obrazovce nebo se přehrává v zařízení. Buďte proto opatrní s věcmi, jako jsou hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
+    <string name="media_projection_entry_generic_permission_dialog_warning_entire_screen" msgid="5407906851409410209">"Během sdílení, nahrávání nebo odesílání má Android přístup k veškerému obsahu, který je viditelný na obrazovce nebo se přehrává v zařízení. Buďte proto opatrní, když jde o hesla, platební údaje, zprávy, fotografie, zvuk a video."</string>
     <string name="media_projection_entry_generic_permission_dialog_warning_single_app" msgid="3454859977888159495">"Během sdílení, nahrávání nebo odesílání aplikace má Android přístup k veškerému obsahu, který je v dané aplikaci zobrazen nebo přehráván. Buďte proto opatrní s informacemi, jako jsou hesla, platební údaje, zprávy, fotky, zvukové záznamy a videa."</string>
     <string name="media_projection_entry_generic_permission_dialog_continue" msgid="8640381403048097116">"Začít"</string>
     <string name="media_projection_entry_generic_permission_dialog_continue_single_app" msgid="5920814988611877051">"Další"</string>
@@ -928,8 +928,8 @@
     <string name="accessibility_qs_edit_tile_add_to_position" msgid="9029163095148274690">"Přidat dlaždici na pozici <xliff:g id="POSITION">%1$d</xliff:g>"</string>
     <string name="accessibilit_qs_edit_tile_add_move_invalid_position" msgid="2858467994472624487">"Pozice není platná."</string>
     <string name="accessibility_qs_edit_position" msgid="4509277359815711830">"Pozice <xliff:g id="POSITION">%1$d</xliff:g>"</string>
-    <string name="accessibility_qs_edit_tile_added" msgid="9067146040380836334">"Karta byla přidána"</string>
-    <string name="accessibility_qs_edit_tile_removed" msgid="1175925632436612036">"Karta byla odstraněna"</string>
+    <string name="accessibility_qs_edit_tile_added" msgid="9067146040380836334">"Dlaždice byla přidána"</string>
+    <string name="accessibility_qs_edit_tile_removed" msgid="1175925632436612036">"Dlaždice byla odstraněna"</string>
     <string name="accessibility_desc_quick_settings_edit" msgid="741658939453595297">"Editor rychlého nastavení"</string>
     <string name="accessibility_desc_notification_icon" msgid="7331265967584178674">"Oznámení aplikace <xliff:g id="ID_1">%1$s</xliff:g>: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="accessibility_quick_settings_settings" msgid="7098489591715844713">"Otevřít nastavení."</string>

@@ -599,4 +599,44 @@ public class KeyGestureEventTests extends ShortcutKeyTestBase {
                 sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_SEARCH));
         mPhoneWindowManager.assertLaunchSearch();
     }
+
+    @Test
+    public void testLaunchSettingsAndSearchDoesntOpenAnything_withKeyguardOn() {
+        mPhoneWindowManager.overrideKeyguardOn(true);
+
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_SYSTEM_SETTINGS);
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_SEARCH);
+
+        mPhoneWindowManager.assertNoActivityLaunched();
+    }
+
+    @Test
+    public void testLaunchSettingsAndSearchDoesntOpenAnything_withUserSetupIncomplete() {
+        mPhoneWindowManager.overrideIsUserSetupComplete(false);
+
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_SYSTEM_SETTINGS);
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_SEARCH);
+
+        mPhoneWindowManager.assertNoActivityLaunched();
+    }
+
+    @Test
+    public void testLaunchAssistantDoesntWork_withKeyguardOn() {
+        mPhoneWindowManager.overrideKeyguardOn(true);
+
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_ASSISTANT);
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_VOICE_ASSISTANT);
+
+        mPhoneWindowManager.assertSearchManagerDoesntLaunchAssist();
+    }
+
+    @Test
+    public void testLaunchAssistantDoesntWork_withUserSetupIncomplete() {
+        mPhoneWindowManager.overrideIsUserSetupComplete(false);
+
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_ASSISTANT);
+        sendKeyGestureEventComplete(KeyGestureEvent.KEY_GESTURE_TYPE_LAUNCH_VOICE_ASSISTANT);
+
+        mPhoneWindowManager.assertSearchManagerDoesntLaunchAssist();
+    }
 }

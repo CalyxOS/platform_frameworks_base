@@ -1443,7 +1443,7 @@
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"Gamitin ang iyong keyboard para tingnan ang lahat ng app"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Pindutin ang action key kahit kailan. I-tap para matuto pa tungkol sa mga galaw."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"Bahagi na ng slider ng liwanag ang extra dim"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Puwede mo nang gawing extra dim ang screen sa pamamagitan ng pagbababa pa sa antas ng liwanag .\n\nDahil bahagi na ang feature na ito ng slider ng liwanag, aalisin na ang mga shortcut sa extra dim."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Puwede mo nang gawing extra dim ang screen sa pamamagitan ng pagbababa pa ng antas ng liwanag .\n\nDahil bahagi na ang feature na ito ng slider ng liwanag, aalisin na ang mga shortcut sa extra dim."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Alisin ang mga shortcut sa extra dim"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Inalis ang mga shortcut sa extra dim"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Pagkakonekta"</string>

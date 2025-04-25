@@ -287,7 +287,7 @@
     <string name="oem_unlock_enable_summary" msgid="5857388174390953829">"Izinkan bootloader dibuka kuncinya"</string>
     <string name="confirm_enable_oem_unlock_title" msgid="8249318129774367535">"Izinkan buka kunci OEM?"</string>
     <string name="confirm_enable_oem_unlock_text" msgid="854131050791011970">"PERINGATAN: Fitur perlindungan perangkat tidak akan berfungsi di perangkat ini saat setelan diaktifkan."</string>
-    <string name="mock_location_app" msgid="6269380172542248304">"Pilih aplikasi lokasi palsu"</string>
+    <string name="mock_location_app" msgid="6269380172542248304">"Pilih aplikasi lokasi simulasi"</string>
     <string name="mock_location_app_not_set" msgid="6972032787262831155">"Tidak ada aplikasi lokasi simulasi yang disetel"</string>
     <string name="mock_location_app_set" msgid="4706722469342913843">"Aplikasi lokasi palsu: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="debug_networking_category" msgid="6829757985772659599">"Jaringan"</string>

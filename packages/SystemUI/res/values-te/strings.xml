@@ -21,7 +21,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="4811759950673118541">"సిస్టమ్ UI"</string>
     <string name="battery_low_title" msgid="5319680173344341779">"బ్యాటరీ సేవర్‌ను ఆన్ చేయాలా?"</string>
-    <string name="battery_low_description" msgid="3282977755476423966">"మీకు <xliff:g id="PERCENTAGE">%s</xliff:g> బ్యాటరీ మిగిలి ఉంది. బ్యాటరీ సేవర్ ముదురు రంగు రూపాన్ని ఆన్ చేస్తుంది, బ్యాక్‌గ్రౌండ్ యాక్టివిటీని పరిమితం చేస్తుంది, అలాగే నోటిఫికేషన్‌లను ఆలస్యంగా పంపిస్తుంది."</string>
+    <string name="battery_low_description" msgid="3282977755476423966">"బ్యాటరీ <xliff:g id="PERCENTAGE">%s</xliff:g> మిగిలి ఉంది. \"బ్యాటరీ సేవర్\" వల్ల డార్క్ థీమ్ ఆన్ అవుతుంది, బ్యాక్‌గ్రౌండ్ యాక్టివిటీ పరిమితం అవుతుంది, అలాగే నోటిఫికేషన్‌లు ఆలస్యంగా వస్తాయి."</string>
     <string name="battery_low_intro" msgid="5148725009653088790">"బ్యాటరీ సేవర్ ముదురు రంగు రూపాన్ని ఆన్ చేస్తుంది, బ్యాక్‌గ్రౌండ్ యాక్టివిటీని పరిమితం చేస్తుంది, అలాగే నోటిఫికేషన్‌లను ఆలస్యంగా పంపిస్తుంది."</string>
     <string name="battery_low_percent_format" msgid="4276661262843170964">"<xliff:g id="PERCENTAGE">%s</xliff:g> మిగిలి ఉంది"</string>
     <string name="invalid_charger_title" msgid="938685362320735167">"USB ద్వారా ఛార్జ్ చేయలేరు"</string>
@@ -1443,7 +1443,7 @@
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"యాప్‌లన్నింటినీ చూడటానికి మీ కీబోర్డ్‌ను ఉపయోగించండి"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"ఏ సమయంలోనైనా యాక్షన్ కీని నొక్కండి. మరిన్ని సంజ్ఞల గురించి తెలుసుకోవడానికి ట్యాప్ చేయండి."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"కాంతిని మరింత డిమ్ చేసే ఫీచర్ ఇప్పుడు బ్రైట్‌నెస్ స్లయిడర్‌లో ఒక భాగం"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"మీరు ఇప్పుడు బ్రైట్‌నెస్ స్థాయిని మరింత తగ్గించడం ద్వారా స్క్రీన్‌ను కాంతిని మరింత డిమ్ చేయవచ్చు.\n\nఈ ఫీచర్ ఇప్పుడు బ్రైట్‌నెస్ స్లయిడర్‌లో భాగం కాబట్టి, కాంతిని మరింత డిమ్ చేసే షార్ట్‌కట్‌లు తీసివేయబడుతున్నాయి."</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"మీరు ఇప్పుడు బ్రైట్‌నెస్ స్థాయిని మరింత తగ్గించడం ద్వారా స్క్రీన్‌ కాంతిని మరింత డిమ్ చేయవచ్చు.\n\nఈ ఫీచర్ ఇప్పుడు బ్రైట్‌నెస్ స్లయిడర్‌లో భాగం కాబట్టి, కాంతిని మరింత డిమ్ చేసే షార్ట్‌కట్‌లు తీసివేయబడుతున్నాయి."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"కాంతిని మరింత డిమ్ చేసే షార్ట్‌కట్‌లను తీసివేయండి"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"కాంతిని మరింత డిమ్ చేసే షార్ట్‌కట్‌లు తీసివేయబడ్డాయి"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"కనెక్టివిటీ"</string>

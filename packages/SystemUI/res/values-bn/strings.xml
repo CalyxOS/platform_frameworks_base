@@ -1448,7 +1448,7 @@
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"\'অতিরিক্ত কম ব্রাইটনেস\' ফিচারের শর্টকাট সরানো হয়েছে"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"কানেক্টিভিটি"</string>
     <string name="qs_edit_mode_category_accessibility" msgid="7969091385071475922">"অ্যাক্সেসিবিলিটি"</string>
-    <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"উপযোগিতা"</string>
+    <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"ইউটিলিটি"</string>
     <string name="qs_edit_mode_category_privacy" msgid="6577774443194551775">"গোপনীয়তা"</string>
     <string name="qs_edit_mode_category_providedByApps" msgid="8346112074897919019">"অ্যাপের তরফ থেকে দেওয়া"</string>
     <string name="qs_edit_mode_category_display" msgid="4749511439121053942">"ডিসপ্লে"</string>

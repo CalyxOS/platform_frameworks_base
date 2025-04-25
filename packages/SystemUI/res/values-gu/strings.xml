@@ -1442,7 +1442,7 @@
     <string name="overview_edu_notification_content" msgid="3578204677648432500">"ત્રણ આંગળીઓનો ઉપયોગ કરીને ઉપર સ્વાઇપ કરો અને દબાવી રાખો. સંકેતો વિશે વધુ જાણવા માટે ટૅપ કરો."</string>
     <string name="all_apps_edu_notification_title" msgid="372262997265569063">"બધી ઍપ જોવા માટે તમારા કીબોર્ડનો ઉપયોગ કરો"</string>
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"કોઈપણ સમયે ઍક્શન કી દબાવો. સંકેતો વિશે વધુ જાણવા માટે ટૅપ કરો."</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"બ્રાઇટનેસ સ્લાઇડર હવે એક્સ્ટ્રા ડિમનો ભાગ છે"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"એક્સ્ટ્રા ડિમ હવે બ્રાઇટનેસ સ્લાઇડરનો ભાગ છે"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"તમે હવે બ્રાઇટનેસ લેવલને હજી પણ ઘટાડીને સ્ક્રીનને એક્સ્ટ્રા ડિમ બનાવી શકો છો.\n\nઆ સુવિધા હવે બ્રાઇટનેસ સ્લાઇડરનો ભાગ હોવાથી એક્સ્ટ્રા ડિમ શૉર્ટકટને કાઢી નાખવામાં આવી રહ્યાં છે."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"એક્સ્ટ્રા ડિમ શૉર્ટકટ કાઢી નાખો"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"એક્સ્ટ્રા ડિમ શૉર્ટકટ કાઢી નાખ્યા"</string>

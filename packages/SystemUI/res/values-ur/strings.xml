@@ -1445,7 +1445,7 @@
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"اضافی دھندلا اب چمک سلائیڈر کا حصہ ہے"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"آپ چمکیلے پن لیول کو مزید کم کر کے اپنی اسکرین کو اضافی دھندلی بنا سکتے ہیں۔\n\nچونکہ یہ خصوصیت اب چمکیلے پن کے سلائیڈر کا حصہ ہے، اس لیے اضافی دھندلا شارٹ کٹس کو ہٹایا جا رہا ہے۔"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"اضافی دھندلا شارٹ کٹس کو ہٹائیں"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"اضافی دھندلا شارٹ کٹس ہٹا دیے گئے"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"اضافی دھندلے شارٹ کٹس ہٹا دیے گئے"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"کنیکٹویٹی"</string>
     <string name="qs_edit_mode_category_accessibility" msgid="7969091385071475922">"ایکسیسبیلٹی"</string>
     <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"یوٹیلیٹیز"</string>

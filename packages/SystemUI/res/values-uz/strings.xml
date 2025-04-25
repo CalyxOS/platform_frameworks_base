@@ -1444,8 +1444,8 @@
     <string name="all_apps_edu_notification_content" msgid="3255070575694025585">"Amal tugmasini istalganda bosing. Boshqa ishoralar bilan tanishish uchun bosing."</string>
     <string name="accessibility_deprecate_extra_dim_dialog_title" msgid="910988771011857460">"Juda xira endi yorqinlik slayderida joylashgan"</string>
     <string name="accessibility_deprecate_extra_dim_dialog_description" msgid="4453123359258743230">"Endi yorqinlik darajasini yanada pasaytirish orqali ekranni yanada xiralashtirishingiz mumkin.\n\nBu funksiya yorqinlik slayderiga kiritilgani uchun \"juda xira\" buyruqlari olib tashlanmoqda."</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"Juda xira buyruqlarini olib tashlash"</string>
-    <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"Juda xira buyruqlari olib tashlandi"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_button" msgid="3947537827396916005">"“Juda xira” buyruqlarini olib tashlash"</string>
+    <string name="accessibility_deprecate_extra_dim_dialog_toast" msgid="165474092660941104">"“Juda xira” buyruqlari olib tashlandi"</string>
     <string name="qs_edit_mode_category_connectivity" msgid="4559726936546032672">"Aloqa"</string>
     <string name="qs_edit_mode_category_accessibility" msgid="7969091385071475922">"Qulayliklar"</string>
     <string name="qs_edit_mode_category_utilities" msgid="8123080090108420095">"Vositalar"</string>
