@@ -714,6 +714,10 @@ public class CompanionDeviceManagerService extends SystemService {
 
         @Override
         public void setAssociationTag(int associationId, String tag) {
+            if (tag.length() > 1024) {
+                throw new IllegalArgumentException("Length of the tag must be at most"
+                    + 1024 + " characters");
+        }
             mAssociationRequestsProcessor.setAssociationTag(associationId, tag);
         }
 

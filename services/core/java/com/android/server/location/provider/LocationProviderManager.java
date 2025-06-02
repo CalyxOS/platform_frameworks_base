@@ -283,6 +283,7 @@ public class LocationProviderManager extends
                 throws PendingIntent.CanceledException {
             BroadcastOptions options = BroadcastOptions.makeBasic();
             options.setDontSendToRestrictedApps(true);
+            options.setPendingIntentBackgroundActivityLaunchAllowed(false);
             // allows apps to start a fg service in response to a location PI
             options.setTemporaryAppAllowlist(TEMPORARY_APP_ALLOWLIST_DURATION_MS,
                     TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
@@ -325,6 +326,7 @@ public class LocationProviderManager extends
                 throws PendingIntent.CanceledException {
             BroadcastOptions options = BroadcastOptions.makeBasic();
             options.setDontSendToRestrictedApps(true);
+            options.setPendingIntentBackgroundActivityLaunchAllowed(false);
 
             mPendingIntent.send(mContext, 0, new Intent().putExtra(KEY_PROVIDER_ENABLED, enabled),
                     null, null, null, options.toBundle());
