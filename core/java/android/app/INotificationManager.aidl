@@ -222,9 +222,9 @@ interface INotificationManager
     void setNotificationPolicyAccessGrantedForUser(String pkg, int userId, boolean granted);
     ZenPolicy getDefaultZenPolicy();
     AutomaticZenRule getAutomaticZenRule(String id);
-    ParceledListSlice<AutomaticZenRule.AzrWithId> getAutomaticZenRules();
+    Map<String, AutomaticZenRule> getAutomaticZenRules();
     // TODO: b/310620812 - Remove getZenRules() when MODES_API is inlined.
-    ParceledListSlice<ZenModeConfig.ZenRule> getZenRules();
+    List<ZenModeConfig.ZenRule> getZenRules();
     String addAutomaticZenRule(in AutomaticZenRule automaticZenRule, String pkg, boolean fromUser);
     boolean updateAutomaticZenRule(String id, in AutomaticZenRule automaticZenRule, boolean fromUser);
     boolean removeAutomaticZenRule(String id, boolean fromUser);

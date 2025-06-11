@@ -62,7 +62,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ParceledListSlice;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
@@ -467,21 +466,14 @@ public class ZenModeConfig implements Parcelable {
     }
 
     private static void readRulesFromParcel(ArrayMap<String, ZenRule> ruleMap, Parcel source) {
-        int len = source.readInt();
+        final int len = source.readInt();
         if (len > 0) {
             final String[] ids = new String[len];
-            source.readString8Array(ids);
-            ParceledListSlice<?> parceledRules = source.readParcelable(
-                    ZenRule.class.getClassLoader(), ParceledListSlice.class);
-            List<?> rules = parceledRules != null ? parceledRules.getList() : new ArrayList<>();
-            if (rules.size() != len) {
-                Slog.wtf(TAG, String.format(
-                        "Unexpected parceled rules count (%s != %s), throwing them out",
-                        rules.size(), len));
-                len = 0;
-            }
+            final ZenRule[] rules = new ZenRule[len];
+            source.readStringArray(ids);
+            source.readTypedArray(rules, ZenRule.CREATOR);
             for (int i = 0; i < len; i++) {
-                ruleMap.put(ids[i], (ZenRule) rules.get(i));
+                ruleMap.put(ids[i], rules[i]);
             }
         }
     }
@@ -499,9 +491,9 @@ public class ZenModeConfig implements Parcelable {
         }
         dest.writeInt(user);
         dest.writeParcelable(manualRule, 0);
-        writeRulesToParcel(automaticRules, dest, flags);
+        writeRulesToParcel(automaticRules, dest);
         if (Flags.modesApi()) {
-            writeRulesToParcel(deletedRules, dest, flags);
+            writeRulesToParcel(deletedRules, dest);
         }
         if (!Flags.modesUi()) {
             dest.writeInt(allowAlarms ? 1 : 0);
@@ -519,19 +511,18 @@ public class ZenModeConfig implements Parcelable {
         }
     }
 
-    private static void writeRulesToParcel(ArrayMap<String, ZenRule> ruleMap, Parcel dest,
-            int flags) {
+    private static void writeRulesToParcel(ArrayMap<String, ZenRule> ruleMap, Parcel dest) {
         if (!ruleMap.isEmpty()) {
             final int len = ruleMap.size();
             final String[] ids = new String[len];
-            final ArrayList<ZenRule> rules = new ArrayList<>();
+            final ZenRule[] rules = new ZenRule[len];
             for (int i = 0; i < len; i++) {
                 ids[i] = ruleMap.keyAt(i);
-                rules.add(ruleMap.valueAt(i));
+                rules[i] = ruleMap.valueAt(i);
             }
             dest.writeInt(len);
-            dest.writeString8Array(ids);
-            dest.writeParcelable(new ParceledListSlice<>(rules), flags);
+            dest.writeStringArray(ids);
+            dest.writeTypedArray(rules, 0);
         } else {
             dest.writeInt(0);
         }
@@ -2674,7 +2665,7 @@ public class ZenModeConfig implements Parcelable {
             enabled = source.readInt() == 1;
             snoozing = source.readInt() == 1;
             if (source.readInt() == 1) {
-                name = source.readString8();
+                name = source.readString();
             }
             zenMode = source.readInt();
             conditionId = source.readParcelable(null, android.net.Uri.class);
@@ -2682,22 +2673,22 @@ public class ZenModeConfig implements Parcelable {
             component = source.readParcelable(null, android.content.ComponentName.class);
             configurationActivity = source.readParcelable(null, android.content.ComponentName.class);
             if (source.readInt() == 1) {
-                id = source.readString8();
+                id = source.readString();
             }
             creationTime = source.readLong();
             if (source.readInt() == 1) {
-                enabler = source.readString8();
+                enabler = source.readString();
             }
             zenPolicy = source.readParcelable(null, android.service.notification.ZenPolicy.class);
             if (Flags.modesApi()) {
                 zenDeviceEffects = source.readParcelable(null, ZenDeviceEffects.class);
             }
             modified = source.readInt() == 1;
-            pkg = source.readString8();
+            pkg = source.readString();
             if (Flags.modesApi()) {
                 allowManualInvocation = source.readBoolean();
-                iconResName = source.readString8();
-                triggerDescription = source.readString8();
+                iconResName = source.readString();
+                triggerDescription = source.readString();
                 type = source.readInt();
                 userModifiedFields = source.readInt();
                 zenPolicyUserModifiedFields = source.readInt();
@@ -2742,7 +2733,7 @@ public class ZenModeConfig implements Parcelable {
             dest.writeInt(snoozing ? 1 : 0);
             if (name != null) {
                 dest.writeInt(1);
-                dest.writeString8(name);
+                dest.writeString(name);
             } else {
                 dest.writeInt(0);
             }
@@ -2753,14 +2744,14 @@ public class ZenModeConfig implements Parcelable {
             dest.writeParcelable(configurationActivity, 0);
             if (id != null) {
                 dest.writeInt(1);
-                dest.writeString8(id);
+                dest.writeString(id);
             } else {
                 dest.writeInt(0);
             }
             dest.writeLong(creationTime);
             if (enabler != null) {
                 dest.writeInt(1);
-                dest.writeString8(enabler);
+                dest.writeString(enabler);
             } else {
                 dest.writeInt(0);
             }
@@ -2769,11 +2760,11 @@ public class ZenModeConfig implements Parcelable {
                 dest.writeParcelable(zenDeviceEffects, 0);
             }
             dest.writeInt(modified ? 1 : 0);
-            dest.writeString8(pkg);
+            dest.writeString(pkg);
             if (Flags.modesApi()) {
                 dest.writeBoolean(allowManualInvocation);
-                dest.writeString8(iconResName);
-                dest.writeString8(triggerDescription);
+                dest.writeString(iconResName);
+                dest.writeString(triggerDescription);
                 dest.writeInt(type);
                 dest.writeInt(userModifiedFields);
                 dest.writeInt(zenPolicyUserModifiedFields);

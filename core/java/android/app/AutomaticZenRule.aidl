@@ -17,5 +17,3 @@
 package android.app;
 
 parcelable AutomaticZenRule;
-
-parcelable AutomaticZenRule.AzrWithId;
