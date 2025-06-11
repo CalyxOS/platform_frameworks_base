@@ -48,6 +48,8 @@ import com.android.settingslib.Utils;
 import com.android.systemui.battery.BatteryMeterView;
 import com.android.systemui.plugins.DarkIconDispatcher.DarkReceiver;
 import com.android.systemui.res.R;
+import com.android.systemui.statusbar.core.NewStatusBarIcons;
+import com.android.systemui.statusbar.layout.StatusBarContentInsetsProvider;
 import com.android.systemui.statusbar.phone.SysuiDarkIconDispatcher.DarkChange;
 import com.android.systemui.statusbar.phone.ui.TintedIconManager;
 import com.android.systemui.statusbar.phone.userswitcher.StatusBarUserSwitcherContainer;
@@ -62,6 +64,7 @@ import lineageos.providers.LineageSettings;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * The header group on Keyguard.
@@ -79,7 +82,7 @@ public class KeyguardStatusBarView extends RelativeLayout {
 
     private TextView mCarrierLabel;
     private ImageView mMultiUserAvatar;
-    private BatteryMeterView mBatteryView;
+    @Nullable private BatteryMeterView mBatteryView;
     private StatusIconContainer mStatusIconContainer;
     private StatusBarUserSwitcherContainer mUserSwitcherContainer;
 
@@ -103,6 +106,9 @@ public class KeyguardStatusBarView extends RelativeLayout {
      * Draw this many pixels into the left/right side of the cutout to optimally use the space
      */
     private int mCutoutSideNudge = 0;
+
+    @Nullable
+    private WindowInsets mPreviousInsets = null;
 
     private DisplayCutout mDisplayCutout;
     private int mRoundedCornerPadding = 0;
@@ -128,6 +134,11 @@ public class KeyguardStatusBarView extends RelativeLayout {
         mMultiUserAvatar = findViewById(R.id.multi_user_avatar);
         mCarrierLabel = findViewById(R.id.keyguard_carrier_text);
         mBatteryView = mSystemIconsContainer.findViewById(R.id.battery);
+        if (NewStatusBarIcons.isEnabled()) {
+            // When this flag is rolled forward, this whole view can be removed
+            mBatteryView.setVisibility(View.GONE);
+            mBatteryView = null;
+        }
         mCutoutSpace = findViewById(R.id.cutout_space_view);
         mStatusIconArea = findViewById(R.id.status_icon_area);
         mStatusIconContainer = findViewById(R.id.statusIcons);
@@ -259,7 +270,10 @@ public class KeyguardStatusBarView extends RelativeLayout {
                 mMultiUserAvatar.setVisibility(View.GONE);
             }
         }
-        mBatteryView.setForceShowPercent(mBatteryCharging && mShowPercentAvailable);
+
+        if (mBatteryView != null) {
+            mBatteryView.setForceShowPercent(mBatteryCharging && mShowPercentAvailable);
+        }
     }
 
     private void updateSystemIconsLayoutParams() {
@@ -288,9 +302,12 @@ public class KeyguardStatusBarView extends RelativeLayout {
     WindowInsets updateWindowInsets(
             WindowInsets insets,
             StatusBarContentInsetsProvider insetsProvider) {
-        mLayoutState = LAYOUT_NONE;
-        if (updateLayoutConsideringCutout(insetsProvider)) {
-            requestLayout();
+        if (!Objects.equals(mPreviousInsets, insets)) {
+            mLayoutState = LAYOUT_NONE;
+            if (updateLayoutConsideringCutout(insetsProvider)) {
+                requestLayout();
+            }
+            mPreviousInsets = new WindowInsets(insets);
         }
         return super.onApplyWindowInsets(insets);
     }
@@ -439,15 +456,19 @@ public class KeyguardStatusBarView extends RelativeLayout {
 
     /** Should only be called from {@link KeyguardStatusBarViewController}. */
     void onThemeChanged(TintedIconManager iconManager) {
-        mBatteryView.setColorsFromContext(mContext);
+        if (mBatteryView != null) {
+            mBatteryView.setColorsFromContext(mContext);
+        }
         updateIconsAndTextColors(iconManager);
     }
 
     /** Should only be called from {@link KeyguardStatusBarViewController}. */
     void onOverlayChanged() {
-        final int carrierTheme = R.style.TextAppearance_StatusBar_Clock;
+        final int carrierTheme = R.style.TextAppearance_StatusBar_Default;
         mCarrierLabel.setTextAppearance(carrierTheme);
-        mBatteryView.updatePercentView();
+        if (mBatteryView != null) {
+            mBatteryView.updatePercentView();
+        }
 
         final int userSwitcherTheme = R.style.TextAppearance_StatusBar_UserChip;
         TextView userSwitcherName = mUserSwitcherContainer.findViewById(R.id.current_user_name);

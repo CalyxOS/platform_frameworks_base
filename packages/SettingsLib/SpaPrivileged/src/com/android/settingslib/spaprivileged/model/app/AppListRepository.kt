@@ -103,6 +103,7 @@ class AppListRepositoryImpl(
         matchAnyUserForAdmin: Boolean,
     ): List<ApplicationInfo> = try {
         coroutineScope {
+            // TODO(b/382016780): to be removed after flag cleanup.
             val hiddenSystemModulesDeferred = async(IPC) { packageManager.getHiddenSystemModules() }
             val hideWhenDisabledPackagesDeferred = async {
                 context.resources.getStringArray(R.array.config_hideWhenDisabled_packageNames)
@@ -110,6 +111,7 @@ class AppListRepositoryImpl(
             val installedApplicationsAsUser =
                 getInstalledApplications(userId, matchAnyUserForAdmin)
 
+            // TODO(b/382016780): to be removed after flag cleanup.
             val hiddenSystemModules = hiddenSystemModulesDeferred.await()
             val hideWhenDisabledPackages = hideWhenDisabledPackagesDeferred.await()
             installedApplicationsAsUser.filter { app ->
@@ -229,6 +231,7 @@ class AppListRepositoryImpl(
     private fun isSystemApp(app: ApplicationInfo, homeOrLauncherPackages: Set<String>): Boolean =
         app.isSystemApp && !app.isUpdatedSystemApp && app.packageName !in homeOrLauncherPackages
 
+    // TODO(b/382016780): to be removed after flag cleanup.
     private fun PackageManager.getHiddenSystemModules(): Set<String> {
         val moduleInfos = getInstalledModules(0).filter { it.isHidden }
         val hiddenApps = moduleInfos.mapNotNull { it.packageName }.toMutableSet()
@@ -241,13 +244,14 @@ class AppListRepositoryImpl(
     companion object {
         private const val TAG = "AppListRepository"
 
+        // TODO(b/382016780): to be removed after flag cleanup.
         private fun ApplicationInfo.isInAppList(
             showInstantApps: Boolean,
             hiddenSystemModules: Set<String>,
             hideWhenDisabledPackages: Array<String>,
         ) = when {
             !showInstantApps && isInstantApp -> false
-            packageName in hiddenSystemModules -> false
+            !Flags.removeHiddenModuleUsage() && (packageName in hiddenSystemModules) -> false
             packageName in hideWhenDisabledPackages -> enabled && !isDisabledUntilUsed
             enabled -> true
             else -> enabledSetting == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER

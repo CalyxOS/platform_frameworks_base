@@ -40,6 +40,7 @@ import com.android.systemui.qs.footer.data.model.UserSwitcherStatusModel
 import com.android.systemui.qs.footer.data.repository.ForegroundServicesRepository
 import com.android.systemui.qs.footer.domain.model.SecurityButtonConfig
 import com.android.systemui.security.data.repository.SecurityRepository
+import com.android.systemui.shade.ShadeDisplayAware
 import com.android.systemui.statusbar.policy.DeviceProvisionedController
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.user.data.repository.UserSwitcherRepository
@@ -110,6 +111,7 @@ constructor(
     userSwitcherRepository: UserSwitcherRepository,
     broadcastDispatcher: BroadcastDispatcher,
     @Background bgDispatcher: CoroutineDispatcher,
+    @ShadeDisplayAware private val context: Context,
 ) : FooterActionsInteractor {
     override val securityButtonConfig: Flow<SecurityButtonConfig?> =
         securityRepository.security.map { security ->
@@ -159,6 +161,7 @@ constructor(
             keyguardStateController.isShowing(),
             /* isDeviceProvisioned= */ true,
             expandable,
+            context.displayId,
         )
     }
 

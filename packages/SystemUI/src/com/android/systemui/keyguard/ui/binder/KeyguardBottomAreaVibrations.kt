@@ -17,13 +17,24 @@
 package com.android.systemui.keyguard.ui.binder
 
 import android.os.VibrationEffect
+import com.android.systemui.Flags
 import com.android.systemui.statusbar.VibratorHelper
 import kotlin.time.Duration.Companion.milliseconds
 
 object KeyguardBottomAreaVibrations {
 
-    val ShakeAnimationDuration = 300.milliseconds
-    const val ShakeAnimationCycles = 5f
+    val ShakeAnimationDuration =
+        if (Flags.msdlFeedback()) {
+            285.milliseconds
+        } else {
+            300.milliseconds
+        }
+    val ShakeAnimationCycles =
+        if (Flags.msdlFeedback()) {
+            3f
+        } else {
+            5f
+        }
 
     private const val SmallVibrationScale = 0.3f
     private const val BigVibrationScale = 0.6f
@@ -41,7 +52,7 @@ object KeyguardBottomAreaVibrations {
             .apply {
                 val vibrationDelayMs =
                     (ShakeAnimationDuration.inWholeMilliseconds / (ShakeAnimationCycles * 2))
-                    .toInt()
+                        .toInt()
 
                 val vibrationCount = ShakeAnimationCycles.toInt() * 2
                 repeat(vibrationCount) {
@@ -57,30 +68,14 @@ object KeyguardBottomAreaVibrations {
     val ActivatedAlt = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK)
     val Activated =
         VibrationEffect.startComposition()
-            .addPrimitive(
-                VibrationEffect.Composition.PRIMITIVE_TICK,
-                BigVibrationScale,
-                0,
-            )
-            .addPrimitive(
-                VibrationEffect.Composition.PRIMITIVE_QUICK_RISE,
-                0.1f,
-                0,
-            )
+            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_TICK, BigVibrationScale, 0)
+            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_QUICK_RISE, 0.1f, 0)
             .compose()
 
     val DeactivatedAlt = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK)
     val Deactivated =
         VibrationEffect.startComposition()
-            .addPrimitive(
-                VibrationEffect.Composition.PRIMITIVE_TICK,
-                BigVibrationScale,
-                0,
-            )
-            .addPrimitive(
-                VibrationEffect.Composition.PRIMITIVE_QUICK_FALL,
-                0.1f,
-                0,
-            )
+            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_TICK, BigVibrationScale, 0)
+            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_QUICK_FALL, 0.1f, 0)
             .compose()
 }

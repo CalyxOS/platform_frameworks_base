@@ -71,7 +71,6 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.deviceentry.domain.interactor.DeviceEntryFaceAuthInteractor;
 import com.android.systemui.dump.DumpManager;
 import com.android.systemui.fragments.FragmentHostManager;
-import com.android.systemui.keyguard.MigrateClocksToBlueprint;
 import com.android.systemui.media.controls.domain.pipeline.MediaDataManager;
 import com.android.systemui.media.controls.ui.controller.MediaHierarchyManager;
 import com.android.systemui.plugins.FalsingManager;
@@ -90,7 +89,6 @@ import com.android.systemui.statusbar.PulseExpansionHandler;
 import com.android.systemui.statusbar.QsFrameTranslateController;
 import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.notification.domain.interactor.ActiveNotificationsInteractor;
-import com.android.systemui.statusbar.notification.footer.shared.FooterViewRefactor;
 import com.android.systemui.statusbar.notification.stack.AmbientState;
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayoutController;
@@ -100,14 +98,15 @@ import com.android.systemui.statusbar.phone.KeyguardStatusBarView;
 import com.android.systemui.statusbar.phone.LightBarController;
 import com.android.systemui.statusbar.phone.LockscreenGestureLogger;
 import com.android.systemui.statusbar.phone.ScrimController;
-import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.phone.ShadeTouchableRegionManager;
+import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.policy.CastController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
 import com.android.systemui.user.domain.interactor.SelectedUserInteractor;
 import com.android.systemui.util.LargeScreenUtils;
 import com.android.systemui.util.kotlin.JavaAdapter;
+import com.android.systemui.utils.windowmanager.WindowManagerProvider;
 
 import lineageos.providers.LineageSettings;
 
@@ -122,9 +121,7 @@ import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-/** Handles QuickSettings touch handling, expansion and animation state
- * TODO (b/264460656) make this dumpable
- */
+/** Handles QuickSettings touch handling, expansion and animation state. */
 @SysUISingleton
 public class QuickSettingsControllerImpl implements QuickSettingsController, Dumpable {
     public static final String TAG = "QuickSettingsController";
@@ -305,13 +302,14 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     private ValueAnimator mSizeChangeAnimator;
 
     private ExpansionHeightListener mExpansionHeightListener;
-    private QsStateUpdateListener mQsStateUpdateListener;
     private ApplyClippingImmediatelyListener mApplyClippingImmediatelyListener;
     private FlingQsWithoutClickListener mFlingQsWithoutClickListener;
     private ExpansionHeightSetToMaxListener mExpansionHeightSetToMaxListener;
     private final QS.HeightListener mQsHeightListener = this::onHeightChanged;
     private final Runnable mQsCollapseExpandAction = this::collapseOrExpandQs;
     private final QS.ScrollListener mQsScrollListener = this::onScroll;
+
+    private final WindowManagerProvider mWindowManagerProvider;
 
     @Inject
     public QuickSettingsControllerImpl(
@@ -351,6 +349,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
             SplitShadeStateController splitShadeStateController,
             Lazy<CommunalTransitionViewModel> communalTransitionViewModelLazy,
             Lazy<LargeScreenHeaderHelper> largeScreenHeaderHelperLazy,
+            WindowManagerProvider windowManagerProvider,
             SelectedUserInteractor selectedUserInteractor
     ) {
         SceneContainerFlag.assertInLegacyMode();
@@ -413,6 +412,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         };
 
         dumpManager.registerDumpable(this);
+
+        mWindowManagerProvider = windowManagerProvider;
     }
 
     @VisibleForTesting
@@ -422,10 +423,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
 
     void setExpansionHeightListener(ExpansionHeightListener listener) {
         mExpansionHeightListener = listener;
-    }
-
-    void setQsStateUpdateListener(QsStateUpdateListener listener) {
-        mQsStateUpdateListener = listener;
     }
 
     void setApplyClippingImmediatelyListener(ApplyClippingImmediatelyListener listener) {
@@ -562,7 +559,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
      *  on ACTION_DOWN, and safely queried repeatedly thereafter during ACTION_MOVE events.
      */
     void updateGestureInsetsCache() {
-        WindowManager wm = this.mPanelView.getContext().getSystemService(WindowManager.class);
+        WindowManager wm = mWindowManagerProvider.getWindowManager(this.mPanelView.getContext());
         WindowMetrics windowMetrics = wm.getCurrentWindowMetrics();
         mCachedGestureInsets = windowMetrics.getWindowInsets().getInsets(
                 WindowInsets.Type.systemGestures());
@@ -585,7 +582,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         }
         // TODO (b/265193930): remove dependency on NPVC
         // Let's reject anything at the very bottom around the home handle in gesture nav
-        if (mPanelViewControllerLazy.get().isInGestureNavHomeHandleArea(x, y)) {
+        if (mPanelViewControllerLazy.get().isInGestureNavHomeHandleArea(y)) {
             return false;
         }
         return y <= mNotificationStackScrollLayoutController.getBottomMostNotificationBottom()
@@ -842,7 +839,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         if (changed) {
             mShadeRepository.setLegacyIsQsExpanded(expanded);
             updateQsState();
-            mPanelViewControllerLazy.get().onQsExpansionChanged(expanded);
+            mPanelViewControllerLazy.get().onQsExpansionChanged();
             mShadeLog.logQsExpansionChanged("QS Expansion Changed.", expanded,
                     getMinExpansionHeight(), getMaxExpansionHeight(),
                     mStackScrollerOverscrolling, mAnimatorExpand, mAnimating);
@@ -1004,6 +1001,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     void setShadeExpansion(float expandedHeight, float expandedFraction) {
         mShadeExpandedHeight = expandedHeight;
         mShadeExpandedFraction = expandedFraction;
+        mMediaHierarchyManager.setShadeExpandedFraction(expandedFraction);
     }
 
     @VisibleForTesting
@@ -1059,16 +1057,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     }
 
     void updateQsState() {
-        if (!FooterViewRefactor.isEnabled()) {
-            // Update full screen state; note that this will be true if the QS panel is only
-            // partially expanded, and that is fixed with the footer view refactor.
-            setQsFullScreen(/* qsFullScreen = */ getExpanded() && !mSplitShadeEnabled);
-        }
-
-        if (mQsStateUpdateListener != null) {
-            mQsStateUpdateListener.onQsStateUpdated(getExpanded(), mStackScrollerOverscrolling);
-        }
-
         if (mQs == null) return;
         mQs.setExpanded(getExpanded());
     }
@@ -1131,10 +1119,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         // Update the light bar
         mLightBarController.setQsExpanded(mFullyExpanded);
 
-        if (FooterViewRefactor.isEnabled()) {
-            // Update full screen state
-            setQsFullScreen(/* qsFullScreen = */ mFullyExpanded && !mSplitShadeEnabled);
-        }
+        // Update full screen state
+        setQsFullScreen(/* qsFullScreen = */ mFullyExpanded && !mSplitShadeEnabled);
     }
 
     float getLockscreenShadeDragProgress() {
@@ -1236,7 +1222,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                 !mSplitShadeEnabled && qsExpansionFraction == 0 && qsPanelBottomY > 0;
         final boolean qsVisible = qsExpansionFraction > 0;
         final boolean qsOrQqsVisible = qqsVisible || qsVisible;
-        checkCorrectScrimVisibility(qsExpansionFraction);
 
         int top = calculateTopClippingBound(qsPanelBottomY);
         int bottom = calculateBottomClippingBound(top);
@@ -1250,7 +1235,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     /**
      * Applies clipping to quick settings, notifications layout and
      * updates bounds of the notifications background (notifications scrim).
-     *
+     * <p>
      * The parameters are bounds of the notifications area rectangle, this function
      * calculates bounds for the QS clipping based on the notifications bounds.
      */
@@ -1437,21 +1422,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
             return -mAmbientState.getStackTopMargin();
         } else {
             return qsTop - mNotificationStackScrollLayoutController.getTop();
-        }
-    }
-
-    private void checkCorrectScrimVisibility(float expansionFraction) {
-        // issues with scrims visible on keyguard occur only in split shade
-        if (mSplitShadeEnabled) {
-            // TODO (b/265193930): remove dependency on NPVC
-            boolean keyguardViewsVisible = mBarState == KEYGUARD
-                            && mPanelViewControllerLazy.get().getKeyguardOnlyContentAlpha() == 1;
-            // expansionFraction == 1 means scrims are fully visible as their size/visibility depend
-            // on QS expansion
-            if (expansionFraction == 1 && keyguardViewsVisible) {
-                Log.wtf(TAG,
-                        "Incorrect state, scrim is visible at the same time when clock is visible");
-            }
         }
     }
 
@@ -1864,16 +1834,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                             "onQsIntercept: down action, QS partially expanded/collapsed");
                     return true;
                 }
-                // TODO (b/265193930): remove dependency on NPVC
-                if (mPanelViewControllerLazy.get().isKeyguardShowing()
-                        && shouldQuickSettingsIntercept(mInitialTouchX, mInitialTouchY, 0)) {
-                    // Dragging down on the lockscreen statusbar should prohibit other interactions
-                    // immediately, otherwise we'll wait on the touchslop. This is to allow
-                    // dragging down to expanded quick settings directly on the lockscreen.
-                    if (!MigrateClocksToBlueprint.isEnabled()) {
-                        mPanelView.getParent().requestDisallowInterceptTouchEvent(true);
-                    }
-                }
                 if (mExpansionAnimator != null) {
                     mInitialHeightOnTouch = mExpansionHeight;
                     mShadeLog.logMotionEvent(event,
@@ -1915,9 +1875,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                         && Math.abs(h) > Math.abs(x - mInitialTouchX)
                         && shouldQuickSettingsIntercept(
                         mInitialTouchX, mInitialTouchY, h)) {
-                    if (!MigrateClocksToBlueprint.isEnabled()) {
-                        mPanelView.getParent().requestDisallowInterceptTouchEvent(true);
-                    }
                     mShadeLog.onQsInterceptMoveQsTrackingEnabled(h);
                     setTracking(true);
                     traceQsJank(true, false);
@@ -2244,6 +2201,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
 
     /** */
     public final class QsFragmentListener implements FragmentHostManager.FragmentListener {
+        private boolean mPreviouslyVisibleMedia = false;
+
         /** */
         @Override
         public void onFragmentViewCreated(String tag, Fragment fragment) {
@@ -2269,7 +2228,12 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                     setAnimateNextNotificationBounds(
                             StackStateAnimator.ANIMATION_DURATION_STANDARD, 0);
                     mNotificationStackScrollLayoutController.animateNextTopPaddingChange();
+                    if (QSComposeFragment.isEnabled() && mPreviouslyVisibleMedia && !visible) {
+                        updateHeightsOnShadeLayoutChange();
+                        mPanelViewControllerLazy.get().positionClockAndNotifications();
+                    }
                 }
+                mPreviouslyVisibleMedia = visible;
             });
             mLockscreenShadeTransitionController.setQS(mQs);
             if (QSComposeFragment.isEnabled()) {
@@ -2342,10 +2306,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                     setExpansionHeight(qsHeight);
                 }
 
-                boolean hasNotifications = FooterViewRefactor.isEnabled()
-                        ? mActiveNotificationsInteractor.getAreAnyNotificationsPresentValue()
-                        : mNotificationStackScrollLayoutController.getVisibleNotificationCount()
-                                != 0;
+                boolean hasNotifications =
+                        mActiveNotificationsInteractor.getAreAnyNotificationsPresentValue();
                 if (!hasNotifications && !mMediaDataManager.hasActiveMediaOrRecommendation()) {
                     // No notifications are visible, let's animate to the height of qs instead
                     if (isQsFragmentCreated()) {
@@ -2478,10 +2440,6 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
 
     interface ExpansionHeightListener {
         void onQsSetExpansionHeightCalled(boolean qsFullyExpanded);
-    }
-
-    interface QsStateUpdateListener {
-        void onQsStateUpdated(boolean qsExpanded, boolean isStackScrollerOverscrolling);
     }
 
     interface ApplyClippingImmediatelyListener {

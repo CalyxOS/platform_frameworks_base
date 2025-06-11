@@ -39,8 +39,10 @@ import com.android.systemui.qs.footer.data.repository.ForegroundServicesReposito
 import com.android.systemui.qs.footer.domain.interactor.FooterActionsInteractor
 import com.android.systemui.qs.footer.domain.interactor.FooterActionsInteractorImpl
 import com.android.systemui.qs.footer.ui.viewmodel.FooterActionsViewModel
+import com.android.systemui.qs.footer.ui.viewmodel.createFooterActionsViewModel
 import com.android.systemui.security.data.repository.SecurityRepository
 import com.android.systemui.security.data.repository.SecurityRepositoryImpl
+import com.android.systemui.shade.shared.model.ShadeMode
 import com.android.systemui.statusbar.policy.DeviceProvisionedController
 import com.android.systemui.statusbar.policy.FakeSecurityController
 import com.android.systemui.statusbar.policy.FakeUserInfoController
@@ -57,6 +59,7 @@ import com.android.systemui.util.mockito.mock
 import com.android.systemui.util.settings.FakeGlobalSettings
 import com.android.systemui.util.settings.GlobalSettings
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestCoroutineScheduler
 
@@ -70,6 +73,7 @@ class FooterActionsTestUtils(
     private val scheduler: TestCoroutineScheduler,
 ) {
     private val mockActivityStarter: ActivityStarter = mock<ActivityStarter>()
+
     /** Enable or disable the user switcher in the settings. */
     fun setUserSwitcherEnabled(settings: GlobalSettings, enabled: Boolean) {
         settings.putBool(Settings.Global.USER_SWITCHER_ENABLED, enabled)
@@ -86,10 +90,12 @@ class FooterActionsTestUtils(
         falsingManager: FalsingManager = FalsingManagerFake(),
         globalActionsDialogLite: GlobalActionsDialogLite = mock(),
         showPowerButton: Boolean = true,
+        shadeMode: ShadeMode,
     ): FooterActionsViewModel {
-        return FooterActionsViewModel(
+        return createFooterActionsViewModel(
             context,
             footerActionsInteractor,
+            MutableStateFlow(shadeMode),
             falsingManager,
             globalActionsDialogLite,
             mockActivityStarter,
@@ -112,6 +118,7 @@ class FooterActionsTestUtils(
         userSwitcherRepository: UserSwitcherRepository = userSwitcherRepository(),
         broadcastDispatcher: BroadcastDispatcher = mock(),
         bgDispatcher: CoroutineDispatcher = StandardTestDispatcher(scheduler),
+        context: Context = mock(),
     ): FooterActionsInteractor {
         return FooterActionsInteractorImpl(
             activityStarter,
@@ -127,6 +134,7 @@ class FooterActionsTestUtils(
             userSwitcherRepository,
             broadcastDispatcher,
             bgDispatcher,
+            context,
         )
     }
 
@@ -135,15 +143,12 @@ class FooterActionsTestUtils(
         securityController: SecurityController = FakeSecurityController(),
         bgDispatcher: CoroutineDispatcher = StandardTestDispatcher(scheduler),
     ): SecurityRepository {
-        return SecurityRepositoryImpl(
-            securityController,
-            bgDispatcher,
-        )
+        return SecurityRepositoryImpl(securityController, bgDispatcher)
     }
 
     /** Create a [SecurityRepository] to be used in tests. */
     fun foregroundServicesRepository(
-        fgsManagerController: FakeFgsManagerController = FakeFgsManagerController(),
+        fgsManagerController: FakeFgsManagerController = FakeFgsManagerController()
     ): ForegroundServicesRepository {
         return ForegroundServicesRepositoryImpl(fgsManagerController)
     }

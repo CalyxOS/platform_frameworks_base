@@ -48,7 +48,9 @@ import com.android.systemui.settings.brightness.BrightnessController;
 import com.android.systemui.settings.brightness.BrightnessMirrorHandler;
 import com.android.systemui.settings.brightness.BrightnessSliderController;
 import com.android.systemui.settings.brightness.MirrorController;
+import com.android.systemui.shade.ShadeDisplayAware;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
+import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.user.domain.interactor.SelectedUserInteractor;
@@ -137,10 +139,11 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
             SplitShadeStateController splitShadeStateController,
             Provider<QSLongPressEffect> longPRessEffectProvider,
             MediaCarouselInteractor mediaCarouselInteractor,
+            @ShadeDisplayAware ConfigurationController configurationController,
             SelectedUserInteractor selectedUserInteractor) {
         super(view, qsHost, qsCustomizerController, usingMediaPlayer, mediaHost,
                 metricsLogger, uiEventLogger, qsLogger, dumpManager, splitShadeStateController,
-                longPRessEffectProvider);
+                longPRessEffectProvider, configurationController);
         mQsCustomizerController = qsCustomizerController;
         mQsTileRevealControllerFactory = qsTileRevealControllerFactory;
         mFalsingManager = falsingManager;
