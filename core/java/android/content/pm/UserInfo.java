@@ -486,7 +486,7 @@ public class UserInfo implements Parcelable {
         if (isProfile() || isGuest() || isRestricted()) {
             return false;
         }
-        return isMain() || isFull();
+        return isMain();
     }
 
     // TODO(b/142482943): Get rid of this (after removing it from all tests) if feasible.
