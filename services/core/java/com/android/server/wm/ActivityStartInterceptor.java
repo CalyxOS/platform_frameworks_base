@@ -501,7 +501,7 @@ class ActivityStartInterceptor {
         }
 
         boolean intercepted = false;
-        if (!ACTION_MAIN.equals(mIntent.getAction()) || (!mIntent.hasCategory(CATEGORY_HOME)
+       if (!ACTION_MAIN.equals(mIntent.getAction()) || (!mIntent.hasCategory(CATEGORY_HOME)
                 && !mIntent.hasCategory(CATEGORY_SECONDARY_HOME))) {
             // not a home intent
             return false;

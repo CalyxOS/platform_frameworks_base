@@ -315,7 +315,7 @@ class BroadcastController {
                 Slog.w(TAG, "registerReceiverWithFeature: no app for " + caller);
                 return null;
             }
-            if (!UserHandle.isCore(callerApp.info.uid)
+            if (callerApp.info.uid != SYSTEM_UID
                     && !callerApp.getPkgList().containsKey(callerPackage)) {
                 throw new SecurityException("Given caller package " + callerPackage
                         + " is not running in process " + callerApp);
