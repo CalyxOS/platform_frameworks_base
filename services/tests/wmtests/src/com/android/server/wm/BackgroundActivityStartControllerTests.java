@@ -115,6 +115,8 @@ public class BackgroundActivityStartControllerTests {
     VisibleActivityProcessTracker mVisibleActivityProcessTracker;
 
     WindowProcessControllerMap mProcessMap = new WindowProcessControllerMap();
+    @Mock
+    VisibleActivityProcessTracker mVisibleActivityProcessTracker;
 
     @Mock
     ActivityTaskSupervisor mSupervisor;
@@ -563,6 +565,7 @@ public class BackgroundActivityStartControllerTests {
                         + "callingPid: 11001; "
                         + "appSwitchState: 0; "
                         + "callingUidHasVisibleActivity: false; "
+                        + "callingUidHasVisibleNotPinnedActivity: false; "
                         + "callingUidHasNonAppVisibleWindow: false; "
                         + "callingUidProcState: NONEXISTENT; "
                         + "isCallingUidPersistentSystemProcess: false; "
@@ -583,6 +586,7 @@ public class BackgroundActivityStartControllerTests {
                         + "realCallingUid: 1; "
                         + "realCallingPid: 1; "
                         + "realCallingUidHasVisibleActivity: false; "
+                        + "realCallingUidHasVisibleNotPinnedActivity: false; "
                         + "realCallingUidHasNonAppVisibleWindow: false; "
                         + "realCallingUidProcState: NONEXISTENT; "
                         + "isRealCallingUidPersistentSystemProcess: false; "
@@ -668,6 +672,7 @@ public class BackgroundActivityStartControllerTests {
                         + "callingPid: 11001; "
                         + "appSwitchState: 0; "
                         + "callingUidHasVisibleActivity: false; "
+                        + "callingUidHasVisibleNotPinnedActivity: false; "
                         + "callingUidHasNonAppVisibleWindow: false; "
                         + "callingUidProcState: NONEXISTENT; "
                         + "isCallingUidPersistentSystemProcess: false; "
@@ -688,6 +693,7 @@ public class BackgroundActivityStartControllerTests {
                         + "realCallingUid: 1; "
                         + "realCallingPid: 1; "
                         + "realCallingUidHasVisibleActivity: false; "
+                        + "realCallingUidHasVisibleNotPinnedActivity: false; "
                         + "realCallingUidHasNonAppVisibleWindow: false; "
                         + "realCallingUidProcState: NONEXISTENT; "
                         + "isRealCallingUidPersistentSystemProcess: false; "

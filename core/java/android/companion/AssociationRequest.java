@@ -235,6 +235,8 @@ public final class AssociationRequest implements Parcelable {
      */
     private boolean mSkipPrompt;
 
+    private static final int DISPLAY_NAME_LENGTH_LIMIT = 1024;
+
     /**
      * The device icon displayed in selfManaged association dialog.
      * @hide
@@ -443,6 +445,11 @@ public final class AssociationRequest implements Parcelable {
         public Builder setDisplayName(@NonNull CharSequence displayName) {
             checkNotUsed();
             mDisplayName = requireNonNull(displayName);
+            if (displayName.length() > DISPLAY_NAME_LENGTH_LIMIT) {
+                throw new IllegalArgumentException("Length of the display name must be at most "
+                        + DISPLAY_NAME_LENGTH_LIMIT + " characters");
+            }
+
             return this;
         }
 
