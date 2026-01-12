@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Penampil Statistik Baterai</string>
+    <string name="header">Statistik baterai</string>
+    <string name="display_dashboard_summary">Lihat statistik penggunaan baterai secara terperinci</string>
+</resources>
