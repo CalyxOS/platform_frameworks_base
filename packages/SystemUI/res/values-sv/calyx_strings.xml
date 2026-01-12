@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="global_action_panic">Panikhändelse</string>
+    <string name="global_action_panic">Panikutlösare</string>
 </resources>
