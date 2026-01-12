@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Prikaz statistike baterije</string>
+    <string name="header">Statistika baterije</string>
+    <string name="display_dashboard_summary">Prikaži detaljnu statistiku korištenja baterije</string>
+</resources>
