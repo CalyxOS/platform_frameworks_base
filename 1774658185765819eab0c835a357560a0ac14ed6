@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d722ff67_26bf3890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2026-03-23T18:25:59Z",
+      "side": 1,
+      "message": "Not sure how this is supposed to work, but contrary to the owner, I don\u0027t find the option to set up a private space in another user.",
+      "revId": "1774658185765819eab0c835a357560a0ac14ed6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
