@@ -50,6 +50,24 @@
       "message": "We\u0027ve dropped this from our local repo, do we still want it included in this commit?",
       "revId": "a27ccb550c2a8daa674e85866fe40dfebde46706",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a57a012f_4ac92f6a",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2026-03-25T17:13:13Z",
+      "side": 1,
+      "message": "Even though we dropped it from our repo, it is still trusted and people may still run it, so I personally would keep it for now and maybe revisit with Android 17.",
+      "parentUuid": "2e76523a_3550785f",
+      "revId": "a27ccb550c2a8daa674e85866fe40dfebde46706",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
