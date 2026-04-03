@@ -16,6 +16,24 @@
       "message": "Not sure how this is supposed to work, but contrary to the owner, I don\u0027t find the option to set up a private space in another user.",
       "revId": "1774658185765819eab0c835a357560a0ac14ed6",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4280613_e31189e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-04-03T09:49:04Z",
+      "side": 1,
+      "message": "The Settings part was never merged due to outstanding comments, so this feature can be merged later and not in the initial release. https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/33301",
+      "parentUuid": "d722ff67_26bf3890",
+      "revId": "1774658185765819eab0c835a357560a0ac14ed6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
