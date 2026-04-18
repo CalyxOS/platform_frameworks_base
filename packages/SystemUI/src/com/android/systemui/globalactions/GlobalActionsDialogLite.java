@@ -1267,6 +1267,16 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
         }
 
         @Override
+        public boolean shouldShow() {
+            int numProfiles = 0;
+            for (UserHandle userHandle : mUserManager.getUserProfiles()) {
+                boolean isManaged = mUserManager.isManagedProfile(userHandle.getIdentifier());
+                if (!isManaged) numProfiles++;
+            }
+            return numProfiles > 1;
+        }
+
+        @Override
         public boolean showDuringKeyguard() {
             return LineageSettings.Secure.getIntForUser(mContext.getContentResolver(),
                     LineageSettings.Secure.USER_SWITCHER_HIDDEN_WHEN_LOCKED,
