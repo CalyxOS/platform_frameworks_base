@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t sound right to me, if there are multiple users, it still wouldn\u0027t mean that the primary user should have this option shown.\n\nA check here should check if it\u0027s the primary user (the Owner user), the user you get when booting up, first setting up a device, etc",
       "revId": "e9cecd357da7a95e4315a407360c324880b5ea8d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fb9bc3_c43d22a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2026-04-18T20:30:36Z",
+      "side": 1,
+      "message": "Not using multiple users, I thought the primary user can end their session too.",
+      "parentUuid": "4e06b209_d2444a00",
+      "revId": "e9cecd357da7a95e4315a407360c324880b5ea8d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
