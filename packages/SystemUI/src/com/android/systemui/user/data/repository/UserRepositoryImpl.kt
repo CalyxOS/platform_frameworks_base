@@ -225,7 +225,7 @@ constructor(
                 when {
                     !resources.getBoolean(
                         com.android.internal.R.bool.config_userSwitchingMustGoThroughLoginScreen
-                    ) -> false
+                    ) -> selectedUser.userInfo.id != UserHandle.USER_SYSTEM
 
                     selectedUser.selectionStatus != SelectionStatus.SELECTION_COMPLETE -> false
 
