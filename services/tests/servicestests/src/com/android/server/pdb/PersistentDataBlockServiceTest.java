@@ -58,7 +58,6 @@ import androidx.test.core.app.ApplicationProvider;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -103,9 +102,10 @@ public class PersistentDataBlockServiceTest {
         private int mCallingUserId = UserHandle.getCallingUserId();
 
         FakePersistentDataBlockService(Context context, String dataBlockFile,
-                long blockDeviceSize, String frpSecretFile, String frpSecretTmpFile) {
-            super(context, /* isFileBacked */ true, dataBlockFile, blockDeviceSize, frpSecretFile,
-                    frpSecretTmpFile);
+                long blockDeviceSize, boolean frpEnabled, String frpSecretFile,
+                String frpSecretTmpFile) {
+            super(context, /* isFileBacked */ true, dataBlockFile, blockDeviceSize, frpEnabled,
+                    frpSecretFile, frpSecretTmpFile);
             // In the real service, this is done by onStart(), which we don't want to call because
             // it registers the service, etc.  But we need to signal init done to prevent
             // `isFrpActive` from blocking.
@@ -129,8 +129,7 @@ public class PersistentDataBlockServiceTest {
 
     @Rule public TemporaryFolder mTemporaryFolder = new TemporaryFolder();
 
-    @Before
-    public void setUp() throws Exception {
+    private void setUp(boolean frpEnabled) throws Exception {
         MockitoAnnotations.initMocks(this);
 
         mDataBlockFile = mTemporaryFolder.newFile();
@@ -138,7 +137,8 @@ public class PersistentDataBlockServiceTest {
         mFrpSecretTmpFile = mTemporaryFolder.newFile();
         mContext = spy(ApplicationProvider.getApplicationContext());
         mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
-                DEFAULT_BLOCK_DEVICE_SIZE, mFrpSecretFile.getPath(), mFrpSecretTmpFile.getPath());
+                DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled, mFrpSecretFile.getPath(),
+                mFrpSecretTmpFile.getPath());
         mPdbService.setAllowedUid(Binder.getCallingUid());
         mPdbService.formatPartitionLocked();
         mInterface = mPdbService.getInterfaceForTesting();
@@ -194,18 +194,19 @@ public class PersistentDataBlockServiceTest {
                     }
                 };
         return new Object[][] {
-                { simpleReadWrite },
-                { simpleReadWrite },
-                { credHandle },
-                { credHandle },
-                { testHarness },
-                { testHarness },
+                { simpleReadWrite, false },
+                { simpleReadWrite, true },
+                { credHandle, false },
+                { credHandle, true },
+                { testHarness, false },
+                { testHarness, true },
         };
     }
 
     @Test
     @Parameters(method = "getTestParametersForBlocks")
-    public void writeThenRead(Block block) throws Exception {
+    public void writeThenRead(Block block, boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         block.service = mPdbService;
         assertThat(block.write(SMALL_DATA)).isEqualTo(SMALL_DATA.length);
         assertThat(block.read()).isEqualTo(SMALL_DATA);
@@ -213,7 +214,8 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     @Parameters(method = "getTestParametersForBlocks")
-    public void writeWhileAlreadyCorrupted(Block block) throws Exception {
+    public void writeWhileAlreadyCorrupted(Block block, boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         block.service = mPdbService;
         assertThat(block.write(SMALL_DATA)).isEqualTo(SMALL_DATA.length);
         assertThat(block.read()).isEqualTo(SMALL_DATA);
@@ -225,7 +227,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void frpWriteOutOfBound() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpWriteOutOfBound(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         byte[] maxData = new byte[mPdbService.getMaximumFrpDataSize()];
         assertThat(mInterface.write(maxData)).isEqualTo(maxData.length);
 
@@ -234,7 +238,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void frpCredentialWriteOutOfBound() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpCredentialWriteOutOfBound(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         byte[] maxData = new byte[MAX_FRP_CREDENTIAL_HANDLE_SIZE];
         mInternalInterface.setFrpCredentialHandle(maxData);
 
@@ -244,7 +250,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void testHardnessWriteOutOfBound() throws Exception {
+    @Parameters({"false", "true"})
+    public void testHardnessWriteOutOfBound(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         byte[] maxData = new byte[MAX_TEST_MODE_DATA_SIZE];
         mInternalInterface.setTestHarnessModeData(maxData);
 
@@ -254,7 +262,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void readCorruptedFrpData() throws Exception {
+    @Parameters({"false", "true"})
+    public void readCorruptedFrpData(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThat(mInterface.write(SMALL_DATA)).isEqualTo(SMALL_DATA.length);
         assertThat(mInterface.read()).isEqualTo(SMALL_DATA);
 
@@ -265,7 +275,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void readCorruptedFrpCredentialData() throws Exception {
+    @Parameters({"false", "true"})
+    public void readCorruptedFrpCredentialData(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mInternalInterface.setFrpCredentialHandle(SMALL_DATA);
         assertThat(mInternalInterface.getFrpCredentialHandle()).isEqualTo(SMALL_DATA);
 
@@ -276,7 +288,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void readCorruptedTestHarnessData() throws Exception {
+    @Parameters({"false", "true"})
+    public void readCorruptedTestHarnessData(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mInternalInterface.setTestHarnessModeData(SMALL_DATA);
         assertThat(mInternalInterface.getTestHarnessModeData()).isEqualTo(SMALL_DATA);
 
@@ -287,14 +301,18 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void nullWrite() throws Exception {
+    @Parameters({"false", "true"})
+    public void nullWrite(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThrows(NullPointerException.class, () -> mInterface.write(null));
         mInternalInterface.setFrpCredentialHandle(null);  // no exception
         mInternalInterface.setTestHarnessModeData(null);  // no exception
     }
 
     @Test
-    public void emptyDataWrite() throws Exception {
+    @Parameters({"false", "true"})
+    public void emptyDataWrite(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         var empty = new byte[0];
         assertThat(mInterface.write(empty)).isEqualTo(0);
 
@@ -305,10 +323,12 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void frpWriteMoreThan100K() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpWriteMoreThan100K(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         File dataBlockFile = mTemporaryFolder.newFile();
         PersistentDataBlockService pdbService = new FakePersistentDataBlockService(mContext,
-                dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000,
+                dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000, frpEnabled,
                 /* frpSecretFile */ null, /* frpSecretTmpFile */ null);
         pdbService.setAllowedUid(Binder.getCallingUid());
         pdbService.formatPartitionLocked();
@@ -320,30 +340,38 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void frpBlockReadWriteWithoutPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpBlockReadWriteWithoutPermission(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
         assertThrows(SecurityException.class, () -> mInterface.write(SMALL_DATA));
         assertThrows(SecurityException.class, () -> mInterface.read());
     }
 
     @Test
-    public void getMaximumDataBlockSizeDenied() throws Exception {
+    @Parameters({"false", "true"})
+    public void getMaximumDataBlockSizeDenied(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
         assertThrows(SecurityException.class, () -> mInterface.getMaximumDataBlockSize());
     }
 
     @Test
-    public void getMaximumDataBlockSize() throws Exception {
+    @Parameters({"false", "true"})
+    public void getMaximumDataBlockSize(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mPdbService.setAllowedUid(Binder.getCallingUid());
         assertThat(mInterface.getMaximumDataBlockSize())
                 .isEqualTo(mPdbService.getMaximumFrpDataSize());
     }
 
     @Test
-    public void getMaximumDataBlockSizeOfLargerPartition() throws Exception {
+    @Parameters({"false", "true"})
+    public void getMaximumDataBlockSizeOfLargerPartition(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         File dataBlockFile = mTemporaryFolder.newFile();
         PersistentDataBlockService pdbService = new FakePersistentDataBlockService(mContext,
-                dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000,
+                dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000, frpEnabled,
                 /* frpSecretFile */null, /* mFrpSecretTmpFile */ null);
         pdbService.setAllowedUid(Binder.getCallingUid());
         pdbService.formatPartitionLocked();
@@ -353,7 +381,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void getFrpDataBlockSizeGrantedByUid() throws Exception {
+    @Parameters({"false", "true"})
+    public void getFrpDataBlockSizeGrantedByUid(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThat(mInterface.write(SMALL_DATA)).isEqualTo(SMALL_DATA.length);
 
         mPdbService.setAllowedUid(Binder.getCallingUid());
@@ -366,7 +396,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void getFrpDataBlockSizeGrantedByPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void getFrpDataBlockSizeGrantedByPermission(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThat(mInterface.write(SMALL_DATA)).isEqualTo(SMALL_DATA.length);
 
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
@@ -381,7 +413,10 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void testPartitionFormat() throws Exception {
+    @Parameters({"false", "true"})
+    public void testPartitionFormat(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
+
         /*
          * 1. Fill the PDB with a specific value, so we can check regions that weren't touched
          *    by formatting
@@ -411,12 +446,15 @@ public class PersistentDataBlockServiceTest {
         assertContains("FRP data", readData(channel, mPdbService.getMaximumFrpDataSize()).array(),
                 (byte) 0);
 
-        // 3c. The FRP secret magic & value
-        assertThat(mPdbService.getFrpSecretMagicOffset()).isEqualTo(channel.position());
-        assertThat(readData(channel, FRP_SECRET_MAGIC.length).array()).isEqualTo(
-                FRP_SECRET_MAGIC);
-        assertThat(mPdbService.getFrpSecretDataOffset()).isEqualTo(channel.position());
-        assertContains("FRP secret", readData(channel, FRP_SECRET_SIZE).array(), (byte) 0);
+        if (frpEnabled) {
+            // 3c. The FRP secret magic & value
+            assertThat(mPdbService.getFrpSecretMagicOffset()).isEqualTo(channel.position());
+            assertThat(readData(channel, FRP_SECRET_MAGIC.length).array()).isEqualTo(
+                    FRP_SECRET_MAGIC);
+
+            assertThat(mPdbService.getFrpSecretDataOffset()).isEqualTo(channel.position());
+            assertContains("FRP secret", readData(channel, FRP_SECRET_SIZE).array(), (byte) 0);
+        }
 
         // 3d. The test mode data (unmodified by formatPartitionLocked()).
         assertThat(mPdbService.getTestHarnessModeDataOffset()).isEqualTo(channel.position());
@@ -437,14 +475,18 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void wipePermissionCheck() throws Exception {
+    @Parameters({"false", "true"})
+    public void wipePermissionCheck(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         denyOemUnlockPermission();
         assertThrows(SecurityException.class, () -> mInterface.wipe());
     }
 
     @Test
-    public void wipeMakesItNotWritable() throws Exception {
-        grantOemUnlockPermission(); // This permission check is still relevant
+    @Parameters({"false", "true"})
+    public void wipeMakesItNotWritable(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
+        grantOemUnlockPermission();
         mInterface.wipe();
 
         // Verify that nothing is written.
@@ -467,7 +509,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void hasFrpCredentialHandle_GrantedByUid() throws Exception {
+    @Parameters({"false", "true"})
+    public void hasFrpCredentialHandle_GrantedByUid(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mPdbService.setAllowedUid(Binder.getCallingUid());
 
         assertThat(mInterface.hasFrpCredentialHandle()).isFalse();
@@ -476,19 +520,28 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void hasFrpCredentialHandle_GrantedByConfigureFrpPermission()
+    @Parameters({"false", "true"})
+    public void hasFrpCredentialHandle_GrantedByConfigureFrpPermission(boolean frpEnabled)
             throws Exception {
+        setUp(frpEnabled);
         grantConfigureFrpPermission();
 
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
 
-        assertThat(mInterface.hasFrpCredentialHandle()).isFalse();
-        mInternalInterface.setFrpCredentialHandle(SMALL_DATA);
-        assertThat(mInterface.hasFrpCredentialHandle()).isTrue();
+        if (frpEnabled) {
+            assertThat(mInterface.hasFrpCredentialHandle()).isFalse();
+            mInternalInterface.setFrpCredentialHandle(SMALL_DATA);
+            assertThat(mInterface.hasFrpCredentialHandle()).isTrue();
+        } else {
+            assertThrows(SecurityException.class, () -> mInterface.hasFrpCredentialHandle());
+        }
     }
 
     @Test
-    public void hasFrpCredentialHandle_GrantedByAccessPdbStatePermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void hasFrpCredentialHandle_GrantedByAccessPdbStatePermission(boolean frpEnabled)
+            throws Exception {
+        setUp(frpEnabled);
         grantAccessPdbStatePermission();
 
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
@@ -499,14 +552,19 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void hasFrpCredentialHandle_Unauthorized() throws Exception {
+    @Parameters({"false", "true"})
+    public void hasFrpCredentialHandle_Unauthorized(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
+
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
 
         assertThrows(SecurityException.class, () -> mInterface.hasFrpCredentialHandle());
     }
 
     @Test
-    public void clearTestHarnessModeData() throws Exception {
+    @Parameters({"false", "true"})
+    public void clearTestHarnessModeData(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         mInternalInterface.setTestHarnessModeData(SMALL_DATA);
         mInternalInterface.clearTestHarnessModeData();
 
@@ -516,12 +574,16 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void getAllowedUid() throws Exception {
+    @Parameters({"false", "true"})
+    public void getAllowedUid(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThat(mInternalInterface.getAllowedUid()).isEqualTo(Binder.getCallingUid());
     }
 
     @Test
-    public void oemUnlockWithoutPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlockWithoutPermission(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         denyOemUnlockPermission();
 
         assertThrows(SecurityException.class, () -> mInterface.setOemUnlockEnabled(true));
@@ -529,7 +591,10 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     @DisableFlags(android.multiuser.Flags.FLAG_HSU_NOT_ADMIN)
-    public void oemUnlockNotAdmin_hsuNotAdminDisabled_throwsSecurityException() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlockNotAdmin_hsuNotAdminDisabled_throwsSecurityException(boolean frpEnabled)
+            throws Exception {
+        setUp(frpEnabled);
         grantOemUnlockPermission();
         makeUserAdmin(false);
 
@@ -538,8 +603,10 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     @EnableFlags(android.multiuser.Flags.FLAG_HSU_NOT_ADMIN)
-    public void oemUnlockNotAdmin_neitherUserSystemHsuNorAdmin_throwsSecurityException()
+    @Parameters({"false", "true"})
+    public void oemUnlockNotAdmin_neitherUserSystemHsuNorAdmin_throwsSecurityException(boolean frpEnabled)
             throws Exception {
+        setUp(frpEnabled);
         mPdbService.setCallingUserId(UserHandle.USER_SYSTEM + 1);
 
         grantOemUnlockPermission();
@@ -561,7 +628,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void oemUnlock() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlock(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         grantOemUnlockPermission();
         makeUserAdmin(true);
 
@@ -570,7 +639,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void oemUnlockUserRestriction_OemUnlock() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlockUserRestriction_OemUnlock(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         grantOemUnlockPermission();
         makeUserAdmin(true);
         when(mUserManager.hasUserRestriction(eq(UserManager.DISALLOW_OEM_UNLOCK)))
@@ -580,7 +651,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void oemUnlockUserRestriction_FactoryReset() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlockUserRestriction_FactoryReset(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         grantOemUnlockPermission();
         makeUserAdmin(true);
         when(mUserManager.hasUserRestriction(eq(UserManager.DISALLOW_FACTORY_RESET)))
@@ -590,7 +663,9 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void oemUnlockIgnoreTampering() throws Exception {
+    @Parameters({"false", "true"})
+    public void oemUnlockIgnoreTampering(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         grantOemUnlockPermission();
         makeUserAdmin(true);
 
@@ -602,27 +677,37 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void getOemUnlockEnabledPermissionCheck_NoPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void getOemUnlockEnabledPermissionCheck_NoPermission(boolean frpEnabled)
+            throws Exception {
+        setUp(frpEnabled);
         assertThrows(SecurityException.class, () -> mInterface.getOemUnlockEnabled());
     }
 
     @Test
-    public void getOemUnlockEnabledPermissionCheck_OemUnlockState() throws Exception {
+    @Parameters({"false", "true"})
+    public void getOemUnlockEnabledPermissionCheck_OemUnlockState(boolean frpEnabled)
+            throws Exception {
+        setUp(frpEnabled);
         doReturn(PackageManager.PERMISSION_GRANTED).when(mContext)
                 .checkCallingOrSelfPermission(eq(Manifest.permission.OEM_UNLOCK_STATE));
         assertThat(mInterface.getOemUnlockEnabled()).isFalse();
     }
 
     @Test
-    public void getOemUnlockEnabledPermissionCheck_ReadOemUnlockState()
+    @Parameters({"false", "true"})
+    public void getOemUnlockEnabledPermissionCheck_ReadOemUnlockState(boolean frpEnabled)
             throws Exception {
+        setUp(frpEnabled);
         doReturn(PackageManager.PERMISSION_GRANTED).when(mContext)
                 .checkCallingOrSelfPermission(eq(Manifest.permission.READ_OEM_UNLOCK_STATE));
         assertThat(mInterface.getOemUnlockEnabled()).isFalse();
     }
 
     @Test
-    public void forceOemUnlock_RequiresNoPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void forceOemUnlock_RequiresNoPermission(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         denyOemUnlockPermission();
 
         mInternalInterface.forceOemUnlockEnabled(true);
@@ -632,34 +717,49 @@ public class PersistentDataBlockServiceTest {
     }
 
     @Test
-    public void getFlashLockStatePermissionCheck_NoPermission() throws Exception {
+    @Parameters({"false", "true"})
+    public void getFlashLockStatePermissionCheck_NoPermission(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         assertThrows(SecurityException.class, () -> mInterface.getFlashLockState());
     }
 
     @Test
-    public void getFlashLockStatePermissionCheck_OemUnlockState()
+    @Parameters({"false", "true"})
+    public void getFlashLockStatePermissionCheck_OemUnlockState(boolean frpEnabled)
             throws Exception {
+        setUp(frpEnabled);
         doReturn(PackageManager.PERMISSION_GRANTED).when(mContext)
                 .checkCallingOrSelfPermission(eq(Manifest.permission.OEM_UNLOCK_STATE));
         mInterface.getFlashLockState();  // Do not throw
     }
 
     @Test
-    public void getFlashLockStatePermissionCheck_ReadOemUnlockState() throws Exception {
+    @Parameters({"false", "true"})
+    public void getFlashLockStatePermissionCheck_ReadOemUnlockState(boolean frpEnabled)
+            throws Exception {
+        setUp(frpEnabled);
         doReturn(PackageManager.PERMISSION_GRANTED).when(mContext)
                 .checkCallingOrSelfPermission(eq(Manifest.permission.READ_OEM_UNLOCK_STATE));
         mInterface.getFlashLockState();  // Do not throw
     }
 
     @Test
-    public void frpMagicTest() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpMagicTest(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         byte[] magicField = mPdbService.readDataBlock(mPdbService.getFrpSecretMagicOffset(),
                 PersistentDataBlockService.FRP_SECRET_MAGIC.length);
-        assertThat(magicField).isEqualTo(PersistentDataBlockService.FRP_SECRET_MAGIC);
+        if (frpEnabled) {
+            assertThat(magicField).isEqualTo(PersistentDataBlockService.FRP_SECRET_MAGIC);
+        } else {
+            assertThat(magicField).isNotEqualTo(PersistentDataBlockService.FRP_SECRET_MAGIC);
+        }
     }
 
     @Test
     public void frpSecret_StartsAsDefault() throws Exception {
+        setUp(/* frpEnabled */ true);
+
         byte[] secretField = mPdbService.readDataBlock(
                 mPdbService.getFrpSecretDataOffset(), PersistentDataBlockService.FRP_SECRET_SIZE);
         assertThat(secretField).isEqualTo(new byte[PersistentDataBlockService.FRP_SECRET_SIZE]);
@@ -667,6 +767,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpSecret_SetSecret() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         byte[] hashedSecret = hashStringto32Bytes("secret");
@@ -685,6 +786,8 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpSecret_SetSecretByUnauthorizedCaller() throws Exception {
+        setUp(/* frpEnforcement */ true);
+
         mPdbService.setAllowedUid(Binder.getCallingUid() + 1);  // unexpected uid
         assertThrows(SecurityException.class,
                 () -> mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret")));
@@ -695,16 +798,20 @@ public class PersistentDataBlockServiceTest {
      * deactivate it.
      */
     @Test
-    public void frpState_StartsActive() throws Exception {
+    @Parameters({"false", "true"})
+    public void frpState_StartsActive(boolean frpEnabled) throws Exception {
+        setUp(frpEnabled);
         // Create a service without calling formatPartition, which deactivates FRP.
         PersistentDataBlockService pdbService = new FakePersistentDataBlockService(mContext,
-                mDataBlockFile.getPath(), DEFAULT_BLOCK_DEVICE_SIZE, mFrpSecretFile.getPath(),
-                mFrpSecretTmpFile.getPath());
-        assertThat(pdbService.isFrpActive()).isTrue();
+                mDataBlockFile.getPath(), DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled,
+                mFrpSecretFile.getPath(), mFrpSecretTmpFile.getPath());
+        assertThat(pdbService.isFrpActive()).isEqualTo(frpEnabled);
     }
 
     @Test
     public void frpState_AutomaticallyDeactivateWithDefault() throws Exception {
+        setUp(/* frpEnforcement */ true);
+
         mPdbService.activateFrp();
         assertThat(mPdbService.isFrpActive()).isTrue();
 
@@ -714,6 +821,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpState_AutomaticallyDeactivateWithPrimaryDataFile() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret"));
@@ -726,6 +834,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpState_AutomaticallyDeactivateWithBackupDataFile() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret"));
@@ -739,6 +848,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpState_DeactivateWithSecret() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret"));
@@ -770,6 +880,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpState_DeactivateOnUpgradeFromPreV() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret"));
@@ -789,8 +900,80 @@ public class PersistentDataBlockServiceTest {
         assertThat(mPdbService.isFrpActive()).isFalse();
     }
 
+    /**
+     * There is code in PersistentDataBlockService to handle a specific corner case, that of a
+     * device that is upgraded from pre-V to V+, downgraded to pre-V and then upgraded to V+. In
+     * this scenario, the following happens:
+     *
+     * 1. When the device is upgraded to V+ and the user sets an LSKF and GAIA creds, FRP
+     *    enforcement is activated and three copies of the FRP secret are written to:
+     *     a.  The FRP secret field in PDB (plaintext).
+     *     b.  The GAIA challenge in PDB (encrypted).
+     *     c.  The FRP secret file in /data (plaintext).
+     * 2. When the device is downgraded to pre-V, /data is wiped, so copy (c) is destroyed. When the
+     *    user sets LSKF and GAIA creds, copy (b) is overwritten.  Copy (a) survives.
+     * 3. When the device is upgraded to V and boots the first time, FRP cannot be automatically
+     *    deactivated using copy (c), nor can the user deactivate FRP using copy (b), because both
+     *    are gone. Absent some special handling of this case, the device would be unusable.
+     *
+     *  To address this problem, if PersistentDataBlockService finds an FRP secret in (a) but none
+     *  in (b) or (c), and PackageManager reports that the device has just upgraded from pre-V to
+     *  V+, it zeros the FRP secret in (a).
+     *
+     * This test checks that the service handles this sequence of events correctly.
+     */
+    @Test
+    public void frpState_TestDowngradeUpgradeSequence() throws Exception {
+        // Simulate device in V+, with FRP configured.
+        setUp(/* frpEnforcement */ true);
+        grantConfigureFrpPermission();
+
+        assertThat(mInterface.setFactoryResetProtectionSecret(hashStringto32Bytes("secret")))
+                .isTrue();
+        assertThat(mPdbService.isFrpActive()).isFalse();
+
+        // Simulate reboot, still in V+.
+        boolean frpEnabled = true;
+        mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
+                DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled, mFrpSecretFile.getPath(),
+                mFrpSecretTmpFile.getPath());
+        assertThat(mPdbService.isFrpActive()).isTrue();
+        assertThat(mPdbService.automaticallyDeactivateFrpIfPossible()).isTrue();
+        assertThat(mPdbService.isFrpActive()).isFalse();
+
+        // Simulate reboot after data wipe and downgrade to pre-V.
+        simulateDataWipe();
+        frpEnabled = false;
+        mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
+                DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled, mFrpSecretFile.getPath(),
+                mFrpSecretTmpFile.getPath());
+        assertThat(mPdbService.isFrpActive()).isFalse();
+
+        // Simulate reboot after upgrade to V+, no data wipe.
+        frpEnabled = true;
+        mIsUpgradingFromPreV = true;
+        mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
+                DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled, mFrpSecretTmpFile.getPath(),
+                mFrpSecretTmpFile.getPath());
+        mPdbService.setAllowedUid(Binder.getCallingUid()); // Needed for setFrpSecret().
+        assertThat(mPdbService.isFrpActive()).isTrue();
+        assertThat(mPdbService.automaticallyDeactivateFrpIfPossible()).isTrue();
+        assertThat(mPdbService.isFrpActive()).isFalse();
+        assertThat(mPdbService.getInterfaceForTesting()
+                .setFactoryResetProtectionSecret(new byte[FRP_SECRET_SIZE])).isTrue();
+
+        // Simulate one more reboot.
+        mIsUpgradingFromPreV = false;
+        mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
+                DEFAULT_BLOCK_DEVICE_SIZE, frpEnabled, mFrpSecretTmpFile.getPath(),
+                mFrpSecretTmpFile.getPath());
+        assertThat(mPdbService.automaticallyDeactivateFrpIfPossible()).isTrue();
+        assertThat(mPdbService.isFrpActive()).isFalse();
+    }
+
     @Test
     public void frpState_PrivilegedDeactivationByAuthorizedCaller() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         assertThat(mPdbService.isFrpActive()).isFalse();
@@ -810,6 +993,8 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpActive_WipeFails() throws Exception {
+        setUp(/* frpEnforcement */ true);
+
         grantOemUnlockPermission();
         mPdbService.activateFrp();
         SecurityException e = assertThrows(SecurityException.class, () -> mInterface.wipe());
@@ -818,6 +1003,8 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpActive_WriteFails() throws Exception {
+        setUp(/* frpEnforcement */ true);
+
         mPdbService.activateFrp();
         SecurityException e =
                 assertThrows(SecurityException.class, () -> mInterface.write("data".getBytes()));
@@ -826,6 +1013,7 @@ public class PersistentDataBlockServiceTest {
 
     @Test
     public void frpActive_SetSecretFails() throws Exception {
+        setUp(/* frpEnforcement */ true);
         grantConfigureFrpPermission();
 
         mPdbService.activateFrp();
