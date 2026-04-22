@@ -31,6 +31,7 @@ import static android.content.pm.PackageInstaller.DEVELOPER_VERIFICATION_USER_RE
 import static android.content.pm.PackageInstaller.DEVELOPER_VERIFICATION_USER_RESPONSE_INSTALL_ANYWAY;
 import static android.content.pm.PackageInstaller.DEVELOPER_VERIFICATION_USER_RESPONSE_RETRY;
 import static android.content.pm.PackageInstaller.DeveloperVerificationUserConfirmationInfo.DEVELOPER_VERIFICATION_USER_ACTION_NEEDED_REASON_DEVELOPER_BLOCKED;
+import static android.content.pm.PackageInstaller.DeveloperVerificationUserConfirmationInfo.DEVELOPER_VERIFICATION_USER_ACTION_NEEDED_REASON_LITE_VERIFICATION;
 import static android.content.pm.PackageInstaller.DeveloperVerificationUserConfirmationInfo.DEVELOPER_VERIFICATION_USER_ACTION_NEEDED_REASON_NETWORK_UNAVAILABLE;
 import static android.content.pm.PackageInstaller.DeveloperVerificationUserConfirmationInfo.DEVELOPER_VERIFICATION_USER_ACTION_NEEDED_REASON_UNKNOWN;
 import static android.content.pm.PackageInstaller.EXTRA_DEVELOPER_VERIFICATION_EXTENSION_RESPONSE;
@@ -179,6 +180,7 @@ import android.os.incremental.StorageHealthCheckParams;
 import android.os.incremental.V4Signature;
 import android.os.storage.StorageManager;
 import android.provider.DeviceConfig;
+import android.provider.Settings.Global;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.stats.devicepolicy.DevicePolicyEnums;
 import android.system.ErrnoException;
@@ -2647,14 +2649,19 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
             assertNoWriteFileTransfersOpenLocked();
 
             boolean isSecureFrpEnabled;
-            PersistentDataBlockManager pdbManager =
-                    mContext.getSystemService(PersistentDataBlockManager.class);
-            if (pdbManager == null) {
-                // Some devices may not support FRP. In that case, we can't block the install
-                // accordingly.
-                isSecureFrpEnabled = false;
+            if (android.security.Flags.frpEnforcement()) {
+                PersistentDataBlockManager pdbManager =
+                        mContext.getSystemService(PersistentDataBlockManager.class);
+                if (pdbManager == null) {
+                    // Some devices may not support FRP. In that case, we can't block the install
+                    // accordingly.
+                    isSecureFrpEnabled = false;
+                } else {
+                    isSecureFrpEnabled = pdbManager.isFactoryResetProtectionActive();
+                }
             } else {
-                isSecureFrpEnabled = pdbManager.isFactoryResetProtectionActive();
+                isSecureFrpEnabled = Global.getInt(mContext.getContentResolver(),
+                        Global.SECURE_FRP_MODE, 0) == 1;
             }
 
             if (isSecureFrpEnabled

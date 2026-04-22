@@ -319,7 +319,9 @@ public abstract class BaseLockSettingsServiceTests {
     }
 
     protected void setSecureFrpMode(boolean secure) {
-        mStorage.setTestFactoryResetProtectionState(secure);
+        if (android.security.Flags.frpEnforcement()) {
+            mStorage.setTestFactoryResetProtectionState(secure);
+        }
         Settings.Secure.putIntForUser(mContext.getContentResolver(),
                 Settings.Secure.SECURE_FRP_MODE, secure ? 1 : 0, UserHandle.USER_SYSTEM);
     }
