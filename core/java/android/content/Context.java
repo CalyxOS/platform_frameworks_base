@@ -6407,6 +6407,7 @@ public abstract class Context {
      * @see #getSystemService(String)
      * @see android.service.persistentdata.PersistentDataBlockManager
      */
+    @FlaggedApi(android.security.Flags.FLAG_FRP_ENFORCEMENT)
     public static final String PERSISTENT_DATA_BLOCK_SERVICE = "persistent_data_block";
 
     /**

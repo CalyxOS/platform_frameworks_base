@@ -19,6 +19,7 @@ package android.content;
 import static android.content.ContentProvider.maybeAddUserId;
 import static android.content.flags.Flags.FLAG_STOP_VOICE_COMMAND;
 import static android.os.Flags.FLAG_ALLOW_PRIVATE_PROFILE;
+import static android.security.Flags.FLAG_FRP_ENFORCEMENT;
 import static android.security.Flags.FLAG_PREVENT_INTENT_REDIRECT;
 import static android.security.Flags.preventIntentRedirect;
 
@@ -4071,6 +4072,7 @@ public class Intent implements Parcelable, Cloneable {
      *
      * @hide
      */
+    @FlaggedApi(FLAG_FRP_ENFORCEMENT)
     @SystemApi
     @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     @BroadcastBehavior(protectedBroadcast = true)
