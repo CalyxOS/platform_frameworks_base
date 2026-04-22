@@ -43,6 +43,7 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
+import android.security.Flags;
 import android.service.persistentdata.IPersistentDataBlockService;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.text.TextUtils;
@@ -201,12 +202,14 @@ public class PersistentDataBlockService extends SystemService {
     private int mAllowedUid = -1;
     private long mBlockDeviceSize = -1; // Load lazily
 
+    private final boolean mFrpEnforced;
+
     /**
      * FRP active state.  When true (the default) we may have had an untrusted factory reset. In
      * that case we block any updates of the persistent data block.  To exit active state, it's
      * necessary for some caller to provide the FRP secret.
      */
-    private boolean mFrpActive = true;
+    private boolean mFrpActive = false;
 
     @GuardedBy("mLock")
     private boolean mIsWritable = true;
@@ -214,6 +217,8 @@ public class PersistentDataBlockService extends SystemService {
     public PersistentDataBlockService(Context context) {
         super(context);
         mContext = context;
+        mFrpEnforced = Flags.frpEnforcement();
+        mFrpActive = mFrpEnforced;
         mFrpSecretFile = FRP_SECRET_FILE;
         mFrpSecretTmpFile = FRP_SECRET_TMP_FILE;
         if (SystemProperties.getBoolean(GSI_RUNNING_PROP, false)) {
@@ -227,12 +232,15 @@ public class PersistentDataBlockService extends SystemService {
 
     @VisibleForTesting
     PersistentDataBlockService(Context context, boolean isFileBacked, String dataBlockFile,
-            long blockDeviceSize, String frpSecretFile, String frpSecretTmpFile) {
+            long blockDeviceSize, boolean frpEnabled, String frpSecretFile,
+            String frpSecretTmpFile) {
         super(context);
         mContext = context;
         mIsFileBacked = isFileBacked;
         mDataBlockFile = dataBlockFile;
         mBlockDeviceSize = blockDeviceSize;
+        mFrpEnforced = frpEnabled;
+        mFrpActive = mFrpEnforced;
         mFrpSecretFile = frpSecretFile;
         mFrpSecretTmpFile = frpSecretTmpFile;
     }
@@ -264,8 +272,12 @@ public class PersistentDataBlockService extends SystemService {
         // Do init on a separate thread, will join in PHASE_ACTIVITY_MANAGER_READY
         SystemServerInitThreadPool.submit(() -> {
             enforceChecksumValidity();
-            automaticallyDeactivateFrpIfPossible();
-            setOldSettingForBackworkCompatibility(mFrpActive);
+            if (mFrpEnforced) {
+                automaticallyDeactivateFrpIfPossible();
+                setOldSettingForBackworkCompatibility(mFrpActive);
+            } else {
+                formatIfOemUnlockEnabled();
+            }
             publishBinderService(Context.PERSISTENT_DATA_BLOCK_SERVICE, mService);
             signalInitDone();
         }, TAG + ".onStart");
@@ -343,7 +355,7 @@ public class PersistentDataBlockService extends SystemService {
     }
 
     private void enforceConfigureFrpPermission() {
-        if (mContext.checkCallingOrSelfPermission(
+        if (mFrpEnforced && mContext.checkCallingOrSelfPermission(
                 Manifest.permission.CONFIGURE_FACTORY_RESET_PROTECTION)
                 == PackageManager.PERMISSION_DENIED) {
             throw new SecurityException(("Can't configure Factory Reset Protection. Requires "
@@ -416,7 +428,7 @@ public class PersistentDataBlockService extends SystemService {
 
     @VisibleForTesting
     int getMaximumFrpDataSize() {
-        long frpSecretSize = FRP_SECRET_MAGIC.length + FRP_SECRET_SIZE;
+        long frpSecretSize = mFrpEnforced ? FRP_SECRET_MAGIC.length + FRP_SECRET_SIZE : 0;
         return (int) (getTestHarnessModeDataOffset() - DIGEST_SIZE_BYTES - HEADER_SIZE
                 - frpSecretSize);
     }
@@ -549,20 +561,28 @@ public class PersistentDataBlockService extends SystemService {
 
             // 2. corrupt the legacy FRP data explicitly
             int payload_size = (int) getBlockDeviceSize() - header_size;
-            buf = ByteBuffer.allocate(payload_size - TEST_MODE_RESERVED_SIZE
-                    - FRP_SECRET_MAGIC.length - FRP_SECRET_SIZE - FRP_CREDENTIAL_RESERVED_SIZE - 1);
+            if (mFrpEnforced) {
+                buf = ByteBuffer.allocate(payload_size - TEST_MODE_RESERVED_SIZE
+                        - FRP_SECRET_MAGIC.length - FRP_SECRET_SIZE - FRP_CREDENTIAL_RESERVED_SIZE
+                        - 1);
+            } else {
+                buf = ByteBuffer.allocate(payload_size - TEST_MODE_RESERVED_SIZE
+                        - FRP_CREDENTIAL_RESERVED_SIZE - 1);
+            }
             channel.write(buf);
             channel.force(true);
 
             // 3. Write the default FRP secret (all zeros).
-            Slog.i(TAG, "Writing FRP secret magic");
-            channel.write(ByteBuffer.wrap(FRP_SECRET_MAGIC));
+            if (mFrpEnforced) {
+                Slog.i(TAG, "Writing FRP secret magic");
+                channel.write(ByteBuffer.wrap(FRP_SECRET_MAGIC));
 
-            Slog.i(TAG, "Writing default FRP secret");
-            channel.write(ByteBuffer.allocate(FRP_SECRET_SIZE));
-            channel.force(true);
+                Slog.i(TAG, "Writing default FRP secret");
+                channel.write(ByteBuffer.allocate(FRP_SECRET_SIZE));
+                channel.force(true);
 
-            mFrpActive = false;
+                mFrpActive = false;
+            }
 
             // 4. skip the test mode data and leave it unformatted.
             //    This is for a feature that enables testing.
@@ -820,7 +840,8 @@ public class PersistentDataBlockService extends SystemService {
     }
 
     private long doGetMaximumDataBlockSize() {
-        final long frpSecretSize = FRP_SECRET_MAGIC.length + FRP_SECRET_SIZE;
+        final long frpSecretSize =
+                mFrpEnforced ? (FRP_SECRET_MAGIC.length + FRP_SECRET_SIZE) : 0;
         final long actualSize = getBlockDeviceSize() - HEADER_SIZE - DIGEST_SIZE_BYTES
                 - TEST_MODE_RESERVED_SIZE - frpSecretSize - FRP_CREDENTIAL_RESERVED_SIZE - 1;
         return actualSize <= MAX_DATA_BLOCK_SIZE ? actualSize : MAX_DATA_BLOCK_SIZE;
@@ -846,7 +867,7 @@ public class PersistentDataBlockService extends SystemService {
 
             pw.println("FRP state");
             pw.println("=========");
-            pw.println("Enforcement enabled: true");
+            pw.println("Enforcement enabled: " + mFrpEnforced);
             pw.println("FRP state: " + mFrpActive);
             printFrpDataFilesContents(pw, printSecrets);
             printFrpSecret(pw, printSecrets);
@@ -904,6 +925,10 @@ public class PersistentDataBlockService extends SystemService {
                 @Nullable FileDescriptor err,
                 @NonNull String[] args, @Nullable ShellCallback callback,
                 @NonNull ResultReceiver resultReceiver) throws RemoteException {
+            if (!mFrpEnforced) {
+                super.onShellCommand(in, out, err, args, callback, resultReceiver);
+                return;
+            }
             new ShellCommand(){
                 @Override
                 public int onCommand(final String cmd) {
@@ -1173,10 +1198,14 @@ public class PersistentDataBlockService extends SystemService {
         }
 
         private void enforceConfigureFrpPermissionOrPersistentDataBlockAccess() {
-            if (mContext.checkCallingOrSelfPermission(
-                    Manifest.permission.CONFIGURE_FACTORY_RESET_PROTECTION)
-                        == PackageManager.PERMISSION_DENIED) {
+            if (!mFrpEnforced) {
                 enforcePersistentDataBlockAccess();
+            } else {
+                if (mContext.checkCallingOrSelfPermission(
+                        Manifest.permission.CONFIGURE_FACTORY_RESET_PROTECTION)
+                        == PackageManager.PERMISSION_DENIED) {
+                    enforcePersistentDataBlockAccess();
+                }
             }
         }
 
@@ -1243,7 +1272,7 @@ public class PersistentDataBlockService extends SystemService {
     };
 
     private void enforceFactoryResetProtectionInactive() {
-        if (isFrpActive()) {
+        if (mFrpEnforced && isFrpActive()) {
             Slog.w(TAG, "Attempt to update PDB was blocked because FRP is active.");
             throw new SecurityException("FRP is active");
         }
