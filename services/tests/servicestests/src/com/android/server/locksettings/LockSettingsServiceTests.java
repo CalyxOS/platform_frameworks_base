@@ -589,6 +589,15 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
+    @DisableFlags(android.security.Flags.FLAG_FRP_ENFORCEMENT)
+    public void testSetCredentialPossibleInSecureFrpModeAfterSuw_FlagOff() throws RemoteException {
+        setUserSetupComplete(true);
+        setSecureFrpMode(true);
+        setCredential(PRIMARY_USER_ID, newPassword("1234"));
+    }
+
+    @Test
+    @EnableFlags(android.security.Flags.FLAG_FRP_ENFORCEMENT)
     public void testSetCredentialNotPossibleInSecureFrpModeAfterSuw_FlagOn()
             throws RemoteException {
         setUserSetupComplete(true);
@@ -1067,13 +1076,20 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     private void checkRecordedFrpNotificationIntent() {
-        Intent savedNotificationIntent = mService.getSavedFrpNotificationIntent();
-        assertNotNull(savedNotificationIntent);
-        UserHandle userHandle = mService.getSavedFrpNotificationUserHandle();
-        assertEquals(userHandle, UserHandle.of(mInjector.getUserManagerInternal().getMainUserId()));
+        if (android.security.Flags.frpEnforcement()) {
+            Intent savedNotificationIntent = mService.getSavedFrpNotificationIntent();
+            assertNotNull(savedNotificationIntent);
+            UserHandle userHandle = mService.getSavedFrpNotificationUserHandle();
+            assertEquals(userHandle,
+                    UserHandle.of(mInjector.getUserManagerInternal().getMainUserId()));
 
-        String permission = mService.getSavedFrpNotificationPermission();
-        assertEquals(CONFIGURE_FACTORY_RESET_PROTECTION, permission);
+            String permission = mService.getSavedFrpNotificationPermission();
+            assertEquals(CONFIGURE_FACTORY_RESET_PROTECTION, permission);
+        } else {
+            assertNull(mService.getSavedFrpNotificationIntent());
+            assertNull(mService.getSavedFrpNotificationUserHandle());
+            assertNull(mService.getSavedFrpNotificationPermission());
+        }
     }
 
     private void checkPasswordHistoryLength(int userId, int expectedLen) {

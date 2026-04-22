@@ -75,6 +75,7 @@ import android.app.admin.PasswordMetrics;
 import android.app.trust.IStrongAuthTracker;
 import android.app.trust.TrustManager;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -1308,7 +1309,15 @@ public class LockSettingsService extends ILockSettings.Stub {
             return;
         }
 
-        if (mStorage.isFactoryResetProtectionActive()) {
+        final ContentResolver cr = mContext.getContentResolver();
+        final boolean inSetupWizard = Settings.Secure.getIntForUser(cr,
+                Settings.Secure.USER_SETUP_COMPLETE, 0, mainUserId) == 0;
+        final boolean isFrpActive = android.security.Flags.frpEnforcement()
+                ? mStorage.isFactoryResetProtectionActive()
+                : (Settings.Global.getInt(cr, Settings.Global.SECURE_FRP_MODE, 0) == 1)
+                        && inSetupWizard;
+
+        if (isFrpActive) {
             throw new SecurityException("Cannot change credential while factory reset protection"
                     + " is active");
         }
@@ -2463,7 +2472,8 @@ public class LockSettingsService extends ILockSettings.Stub {
             if (isSpecialUserId(userId)) {
                 response = mSpManager.verifySpecialUserCredential(userId, getGateKeeperService(),
                         credential, progressCallback);
-                if (response.isMatched() && userId == USER_FRP) {
+                if (android.security.Flags.frpEnforcement() && response.isMatched()
+                        && userId == USER_FRP) {
                     mStorage.deactivateFactoryResetProtectionWithoutSecret();
                 }
                 return reportResultToSoftwareRateLimiter(response, lskfId, credential);
@@ -3255,6 +3265,10 @@ public class LockSettingsService extends ILockSettings.Stub {
     }
 
     private void sendMainUserCredentialChangedNotificationIfNeeded(int userId) {
+        if (!android.security.Flags.frpEnforcement()) {
+            return;
+        }
+
         if (userId != mInjector.getUserManagerInternal().getMainUserId()) {
             return;
         }
