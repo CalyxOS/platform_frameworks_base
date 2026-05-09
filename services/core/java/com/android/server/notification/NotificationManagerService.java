@@ -13416,7 +13416,12 @@ public class NotificationManagerService extends SystemService {
                     || android.app.Flags.nmSummarization())) {
                 return new HashSet<>();
             }
-            return mNasUnsupported.getOrDefault(userId, new HashSet<>());
+            Set<String> disabledAdjustments = mNasUnsupported.get(userId);
+            if (disabledAdjustments == null || disabledAdjustments.isEmpty()) {
+                setNasUnsupportedDefaults(userId);
+                return mNasUnsupported.getOrDefault(userId, new HashSet<>());
+            }
+            return disabledAdjustments;
         }
 
         void setNasUnsupportedDefaults(@UserIdInt int userId) {
