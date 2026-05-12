@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836449d5_f9e80003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-05-12T23:59:39Z",
+      "side": 1,
+      "message": "Worked on my device from 7.2.1.0 -\u003e 7.2.2.0 and hypothetical 7.2.3.0 with this change reverted was still fine.",
+      "revId": "a56cf0c31fda1133e16169c8266afad27f223d77",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
