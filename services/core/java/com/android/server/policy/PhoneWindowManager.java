@@ -5706,6 +5706,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void wakeUpFromWakeKey(KeyEvent event, boolean withProximityCheck) {
         wakeUpFromWakeKey(
+                event.getDisplayId(),
                 event.getEventTime(),
                 event.getKeyCode(),
                 event.getAction() == KeyEvent.ACTION_DOWN,
@@ -5713,8 +5714,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 withProximityCheck);
     }
 
-    private void wakeUpFromWakeKey(long eventTime, int keyCode, boolean isDown, int keyEventFlags) {
-        wakeUpFromWakeKey(eventTime, keyCode, isDown, keyEventFlags, false);
+    private void wakeUpFromWakeKey(
+            int eventDisplayId, long eventTime, int keyCode, boolean isDown, int keyEventFlags) {
+        wakeUpFromWakeKey(eventDisplayId, eventTime, keyCode, isDown, keyEventFlags, false);
     }
 
     private void wakeUpFromWakeKey(
