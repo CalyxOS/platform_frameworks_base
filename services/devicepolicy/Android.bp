@@ -29,9 +29,6 @@ java_library_static {
         "device_policy_aconfig_flags_lib",
         "androidx.annotation_annotation",
         "telephony_flags_core_java_lib",
-    ],
-
-    static_libs: [
         "org.lineageos.platform.internal",
     ],
 }
