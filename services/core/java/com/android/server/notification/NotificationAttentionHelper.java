@@ -288,7 +288,7 @@ public final class NotificationAttentionHelper {
 
         mZenModeHelper.addCallback(new ZenModeHelper.Callback() {
             @Override
-            void onZenModeChanged() {
+            public void onZenModeChanged() {
                 Binder.withCleanCallingIdentity(() -> {
                     mLineageNotificationLights.setZenMode(mZenModeHelper.getZenMode());
                 });
