@@ -26,6 +26,7 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
+import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.annotation.TestApi;
@@ -437,6 +438,7 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @SuppressLint("UnflaggedApi")
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     @RequiresPermission(NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK)
     public void notifyDenylistChanged(@NonNull int[] uidsAdded, @NonNull int[] uidsRemoved) {
@@ -1162,6 +1164,7 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @SuppressLint("UnflaggedApi")
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     @RequiresPermission(android.Manifest.permission.OBSERVE_NETWORK_POLICY)
     public void registerAllowedTransportsCallback(@Nullable Executor executor,
@@ -1177,6 +1180,7 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @SuppressLint("UnflaggedApi")
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     @RequiresPermission(android.Manifest.permission.OBSERVE_NETWORK_POLICY)
     public void unregisterAllowedTransportsCallback(@NonNull AllowedTransportsCallback callback) {
@@ -1191,6 +1195,7 @@ public class NetworkPolicyManager {
     }
 
     /** @hide */
+    @SuppressLint("UnflaggedApi")
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     public interface AllowedTransportsCallback {
         /** @hide */
@@ -1227,7 +1232,8 @@ public class NetworkPolicyManager {
         }
     }
 
-    /** {@hide} */
+    /** @hide */
+    @SuppressLint({"ListenerInterface", "MissingNullability", "RawAidl", "UnflaggedApi"})
     public static class Listener extends INetworkPolicyListener.Stub {
         @Override public void onUidRulesChanged(int uid, int uidRules) { }
         @Override public void onMeteredIfacesChanged(String[] meteredIfaces) { }
