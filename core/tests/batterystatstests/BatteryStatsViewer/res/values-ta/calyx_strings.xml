@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">பேட்டரி புள்ளிவிவரங்கள் பார்வையாளர்</string>
+    <string name="header">பேட்டரி புள்ளிவிவரங்கள்</string>
+    <string name="display_dashboard_summary">விரிவான பேட்டரி பயன்பாட்டு புள்ளிவிவரங்களைக் காண்க</string>
+</resources>

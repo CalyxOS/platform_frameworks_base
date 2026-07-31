@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Batteristatistiksvisare</string>
+    <string name="header">Batteristatistik</string>
+    <string name="display_dashboard_summary">Visa detaljerad batterianvändningsstatistik</string>
+</resources>
