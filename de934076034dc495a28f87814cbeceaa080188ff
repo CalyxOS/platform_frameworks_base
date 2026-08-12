@@ -16,6 +16,23 @@
       "message": "Also pushed this to Lineage gerrit",
       "revId": "de934076034dc495a28f87814cbeceaa080188ff",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b370336_819b1627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000235
+      },
+      "writtenOn": "2026-08-12T05:04:14Z",
+      "side": 1,
+      "message": "Fixes launching and using chromium on bronco",
+      "revId": "de934076034dc495a28f87814cbeceaa080188ff",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
