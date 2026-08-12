@@ -2409,8 +2409,12 @@ public final class ProcessList extends ProcessListInternal
                     getUidTransitionPolicy().disallowAllUidTransitionsFrom(uid);
                 } else {
                     final IsolatedUidRange uidRange =
-                        mAppIsolatedUidRangeAllocator.getIsolatedUidRangeLocked(
+                        mAppIsolatedUidRangeAllocator.getOrCreateIsolatedUidRangeLocked(
                                 app.info.processName, app.getHostingRecord().getDefiningUid());
+                    if (uidRange == null) {
+                        Slog.e(TAG, "Failed to allocate IsolatedUidRange for " + app.info.processName);
+                        return null;
+                    }
                     // Create the app-zygote and provide it with the UID-range it's allowed
                     // to setresuid/setresgid to.
                     firstUid = UserHandle.getUid(userId, uidRange.mFirstUid);
