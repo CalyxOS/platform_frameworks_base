@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052c46d5_b539294d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000235
+      },
+      "writtenOn": "2026-08-12T05:03:30Z",
+      "side": 1,
+      "message": "Also pushed this to Lineage gerrit",
+      "revId": "de934076034dc495a28f87814cbeceaa080188ff",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
