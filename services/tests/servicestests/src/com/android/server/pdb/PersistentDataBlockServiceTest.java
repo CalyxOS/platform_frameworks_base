@@ -140,7 +140,7 @@ public class PersistentDataBlockServiceTest {
         mPdbService = new FakePersistentDataBlockService(mContext, mDataBlockFile.getPath(),
                 DEFAULT_BLOCK_DEVICE_SIZE, mFrpSecretFile.getPath(), mFrpSecretTmpFile.getPath());
         mPdbService.setAllowedUid(Binder.getCallingUid());
-        mPdbService.formatPartitionLocked();
+        mPdbService.formatPartitionLocked(/* setOemUnlockEnabled */ false);
         mInterface = mPdbService.getInterfaceForTesting();
         mInternalInterface = mPdbService.getInternalInterfaceForTesting();
 
@@ -311,7 +311,7 @@ public class PersistentDataBlockServiceTest {
                 dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000,
                 /* frpSecretFile */ null, /* frpSecretTmpFile */ null);
         pdbService.setAllowedUid(Binder.getCallingUid());
-        pdbService.formatPartitionLocked();
+        pdbService.formatPartitionLocked(/* setOemUnlockEnabled */ false);
 
         IPersistentDataBlockService service = pdbService.getInterfaceForTesting();
         int maxDataSize = (int) service.getMaximumDataBlockSize();
@@ -346,7 +346,7 @@ public class PersistentDataBlockServiceTest {
                 dataBlockFile.getPath(), /* blockDeviceSize */ 128 * 1000,
                 /* frpSecretFile */null, /* mFrpSecretTmpFile */ null);
         pdbService.setAllowedUid(Binder.getCallingUid());
-        pdbService.formatPartitionLocked();
+        pdbService.formatPartitionLocked(/* setOemUnlockEnabled */ false);
 
         IPersistentDataBlockService service = pdbService.getInterfaceForTesting();
         assertThat(service.getMaximumDataBlockSize()).isEqualTo(MAX_DATA_BLOCK_SIZE);
@@ -397,7 +397,7 @@ public class PersistentDataBlockServiceTest {
         /*
          * 2. Format it.
          */
-        mPdbService.formatPartitionLocked();
+        mPdbService.formatPartitionLocked(true);
 
         /*
          * 3. Check it.
@@ -430,7 +430,7 @@ public class PersistentDataBlockServiceTest {
 
         // 3f. OEM unlock byte.
         assertThat(mPdbService.getOemUnlockDataOffset()).isEqualTo(channel.position());
-        assertThat(new byte[]{0}).isEqualTo(readData(channel, 1).array());
+        assertThat(new byte[]{1}).isEqualTo(readData(channel, 1).array());
 
         // 3g. EOF
         assertThat(channel.position()).isEqualTo(channel.size());
