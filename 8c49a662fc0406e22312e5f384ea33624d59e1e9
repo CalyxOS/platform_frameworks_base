@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8ec730_9b2aa570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-08-26T07:28:51Z",
+      "side": 1,
+      "message": "This should fix location when microG is not present",
+      "revId": "8c49a662fc0406e22312e5f384ea33624d59e1e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
