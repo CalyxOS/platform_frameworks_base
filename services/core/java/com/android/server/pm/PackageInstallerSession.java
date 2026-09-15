@@ -1171,7 +1171,8 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
         // dialog can be displayed for updating archived apps.
         final int targetPackageUid = snapshot.getPackageUid(packageName,
                 PackageManager.MATCH_ARCHIVED_PACKAGES, userId);
-        final boolean isUpdate = targetPackageUid != -1 || isApexSession();
+        final boolean isUpdate = targetPackageUid != -1 || isApexSession() ||
+                packageName.equals("org.calyxos.trichromelibrary");
         final InstallSourceInfo existingInstallSourceInfo = isUpdate
                 ? snapshot.getInstallSourceInfo(packageName, userId)
                 : null;
