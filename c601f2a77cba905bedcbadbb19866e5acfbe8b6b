@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "998b4bd6_8e1e4ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-09-23T19:40:44Z",
+      "side": 1,
+      "message": "Code hasn\u0027t changed since android16-qpr2",
+      "revId": "c601f2a77cba905bedcbadbb19866e5acfbe8b6b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
