@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fe6712_13b72681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-09-23T22:19:41Z",
+      "side": 1,
+      "message": "Works on stallion but broken on devon. This feature is not user facing and can only be enabled through adb like in the test steps. I will assume this is a device specific issue/related to the older kernel version on devon.",
+      "revId": "b7edfaa6b7eb29dd9be7c0fa1c5992c8de5302ba",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
