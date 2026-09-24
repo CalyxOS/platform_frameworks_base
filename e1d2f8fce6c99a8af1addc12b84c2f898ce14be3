@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d5cb5e_bdef6abc",
+        "filename": "services/core/java/com/android/server/pm/PackageInstallerSession.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-09-24T23:49:04Z",
+      "side": 1,
+      "message": "packageName can be null here which would cause a NPE, so the .equals check should be swapped. Shouldn\u0027t we also check that installer app is lupin updater only?\n\n```suggestion\n        final boolean isCalyxosTrichromeUpdate \u003d\n                \"org.calyxos.trichromelibrary\".equals(packageName)\n                        \u0026\u0026 \"org.calyxos.lupin.installer\".equals(getInstallerPackageName());\n        final boolean isUpdate \u003d targetPackageUid !\u003d -1 || isApexSession()\n                || isCalyxosTrichromeUpdate;\n```",
+      "range": {
+        "startLine": 1174,
+        "startChar": 0,
+        "endLine": 1175,
+        "endChar": 67
+      },
+      "revId": "e1d2f8fce6c99a8af1addc12b84c2f898ce14be3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
