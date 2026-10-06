@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4745e67a_d4b64b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-10-06T00:52:26Z",
+      "side": 1,
+      "message": "Installed 16 QPR2 build, added several widgets on home screen, set up a work profile. Upgraded to 17 build, widgets remained on home screen.",
+      "revId": "1ae06a0b34dce8fcba9f3bad5defd181e3db4efc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
